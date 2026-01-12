@@ -13,12 +13,31 @@ should go into clear, structured PGML prompts.
 - If you are editing chapter content: use `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` as the source of truth for what each
   page is intended to cover (align the HTML pages to match it).
 
+## Documentation
+- Book plan and intended scope per page: [Textbook/TEXTBOOK_PAGE_SUMMARIES.md](Textbook/TEXTBOOK_PAGE_SUMMARIES.md)
+- LibreTexts authoring constraints: [docs/LIBRETEXTS_HTML_GUIDE.md](docs/LIBRETEXTS_HTML_GUIDE.md)
+- Repo conventions: [docs/REPO_STYLE.md](docs/REPO_STYLE.md)
+- Markdown style: [docs/MARKDOWN_STYLE.md](docs/MARKDOWN_STYLE.md)
+- Python style (for `tools/` scripts): [docs/PYTHON_STYLE.md](docs/PYTHON_STYLE.md)
+- Repo maps: [docs/CODE_ARCHITECTURE.md](docs/CODE_ARCHITECTURE.md), [docs/FILE_STRUCTURE.md](docs/FILE_STRUCTURE.md)
+- Changelog: [docs/CHANGELOG.md](docs/CHANGELOG.md)
+
 ## Repository layout
 - `Textbook/`: the book content (HTML), organized by chapter folders.
 - `Insight-HTML/` and `WebWorK-HTML/`: extracted source material used for writing (do not edit).
 - `docs/`: repo conventions and HTML authoring rules.
 - `tools/`: authoring utilities (for example, linting/formatters).
 - `tests/`: local checks (HTML lint, Python checks).
+
+## External resources
+Textbook pages under `Textbook/` avoid HTML links (`<a href=...>`) for LibreTexts compatibility, so external
+references live here (and in `Links/`).
+
+- LibreTexts Insight: [WeBWorK techniques](https://commons.libretexts.org/insight/webwork-techniques)
+- OpenWeBWorK PG docs: [sample problems index](https://openwebwork.github.io/pg-docs/sample-problems/)
+- OpenWeBWorK PG docs: [MultipleChoiceCheckbox example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html)
+- GitHub: [vosslab/webwork-pg-renderer](https://github.com/vosslab/webwork-pg-renderer)
+- Biology Problems: [biologyproblems.org](https://biologyproblems.org/)
 
 ## Entry points
 - `Textbook/01_Introduction/1.0-Index.html`
@@ -27,6 +46,7 @@ should go into clear, structured PGML prompts.
 - `Textbook/04_Breaking_Down_the_Components/4.0-Index.html`
 - `Textbook/05_Different_Question_Types/5.0-Index.html`
 - `Textbook/06_Subject-Specific_Applications/6.0-Index.html`
+- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.0-Index.html`
 - `Textbook/90_Appendices/90.0-Index.html`
 
 ## Chapter map (current)
@@ -36,6 +56,7 @@ should go into clear, structured PGML prompts.
 - 04 Worked example: a complete copy-and-edit PGML-first life-science problem.
 - 05 ADAPT workflow and question types: interaction patterns plus workflow habits and QA checks.
 - 06 Different subjects: biology-first pattern catalog and subject adaptations.
+- 07 Local testing: preview and debug PG/PGML problems with a tight edit-preview loop.
 - 90 Appendices: templates, cheat sheets, glossary, troubleshooting, and "further techniques".
 
 ## LibreTexts authoring rules (high importance)

@@ -1,0 +1,46 @@
+<p>
+This page combines a practical ADAPT workflow checklist with a compact QA pass for biology-style
+WeBWorK items. The goal is to give you a repeatable routine that turns "generic error" screens
+into specific fixes before you publish to students.
+</p>
+
+<h2>Workflow: clone, edit, preview, assign</h2>
+<ol>
+	<li>Start from a working question (clone or copy a trusted template).</li>
+	<li>Edit one small thing at a time: story text, values, answer checker, or prompt structure.</li>
+	<li>Preview and revise until the student view and grading are stable.</li>
+	<li>Add the question to an assignment and confirm ordering and point values.</li>
+	<li>Publish, then spot-check student view for the assignment context.</li>
+</ol>
+
+<h2>QA: variants, blanks, text variants, units, plausibility</h2>
+<ul>
+	<li>
+		<strong>Variants</strong>: preview multiple variants and watch for impossible biology and awkward rounding.
+	</li>
+	<li>
+		<strong>Blanks</strong>: confirm each blank is bound to the intended answer checker and that blank order matches
+		prompt order.
+	</li>
+	<li>
+		<strong>Text variants</strong>: decide what you accept for plural/singular, hyphens, spacing, and case (gene and
+		protein naming is a common trap).
+	</li>
+	<li>
+		<strong>Units</strong>: prevent unit drift (&mu;M vs mM, &mu;L vs mL) and restate expected units next to the blank.
+	</li>
+	<li>
+		<strong>Plausibility</strong>: constrain random ranges (no negative concentrations, no unrealistic pipette
+		volumes).
+	</li>
+	<li>
+		<strong>Log-scale traps</strong>: state the model and reporting format for pH, Ct, and fold change.
+	</li>
+</ul>
+
+<h2>Recommended testing loop</h2>
+<ul>
+	<li>First pass: use local rendering to get line-level errors and to sweep variants quickly.</li>
+	<li>Final pass: use ADAPT preview to confirm permissions, assignment behavior, and student view.</li>
+</ul>
+

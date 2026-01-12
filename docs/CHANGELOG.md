@@ -1,6 +1,21 @@
 # Changelog
 
 ## 2026-01-12
+- Refined the Chapter 1.5 and Chapter 2.2 local-testing notes to explicitly use the ADAPT preview as the final check
+  and webwork-pg-renderer (Chapter 7) as the line-level debugging path.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to refer to the Chapter 7 health check without a leading slash.
+- Updated Chapter 1 and Chapter 2 pages to reference Chapter 7 local rendering at the points where authors most often
+  hit generic ADAPT errors (quickstart and after macro/setup changes).
+- Merged the Chapter 5 workflow and QA pages into
+  `Textbook/05_Different_Question_Types/5.9-Workflow_and_QA_in_ADAPT.html` so Chapter 5 has at most 9 subsections
+  after the index.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to recommend Chapter 7 local testing as the default for authors building
+  a bank (with fallbacks), and to reference Chapter 7 from key workflow pages (Quickstart, file skeleton, blanks,
+  deep-dive randomization, and QA).
+- Updated `README.md` to better reflect the current repo layout by adding links to `docs/` and
+  `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` and by restoring the Chapter 7 entry point in the chapter list.
+- Added an external resource list to `README.md` (kept out of `Textbook/` to avoid HTML links in LibreTexts-imported
+  content) and added the same URLs to `Links/webwork_links.txt`.
 - Tightened Chapter 2 to treat minimal PG as an explicit contract (PG is setup, PGML is the prompt), added a
   life-science-first mindset checklist, updated the minimal template to a dilution-style prompt, and labeled advanced
   macros as recognition-only.
@@ -65,10 +80,8 @@
 - Updated the worked example in `Textbook/04_Simple_Problem_Example_in_WeBWorK/4.0-Index.html` to a
   PCR mix concentration calculation (life-science lab context).
 - Integrated ADAPT workflow notes and QA guidance into Chapter 5 via
-  `Textbook/05_Question_Types/5.9-ADAPT_workflow_checklist.html` and
-  `Textbook/05_Question_Types/5.10-QA_and_common_failures.html` and removed the separate
-  `Textbook/07_*` through `Textbook/13_*` standalone chapter folders to keep the main chapter list
-  compact.
+  `Textbook/05_Different_Question_Types/5.9-Workflow_and_QA_in_ADAPT.html` and removed the separate
+  `Textbook/07_*` through `Textbook/13_*` standalone chapter folders to keep the main chapter list compact.
 - Added Chapter 6 subject-specific subsections with a biology-first pattern catalog (dilutions,
   kinetics, genetics mapping, pathways, gels/blots, qPCR Ct, pedigrees, and experimental design).
 - Added `Textbook/90_Appendices/90.5-Advanced_patterns_and_further_techniques.html` as a curated
