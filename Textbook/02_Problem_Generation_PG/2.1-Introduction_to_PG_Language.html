@@ -1,4 +1,8 @@
 <p>
+This page only covers the PG you need to support a PGML prompt.
+</p>
+
+<p>
 PG is the language used to define WeBWorK problems. It is implemented in Perl and uses macros to
 provide features like answer checking, randomization, and formatting.
 </p>
@@ -17,6 +21,12 @@ and write the student-facing prompt in PGML.
 	<li><code>ENDDOCUMENT();</code> at the end of the file.</li>
 </ul>
 
+<p>
+This page does not cover custom Perl subroutines, long loops, or heavy conditional prompt
+generation. If you feel pulled toward writing a Perl novel, stop and consider tightening ranges,
+simplifying the prompt, or choosing a different interaction pattern instead.
+</p>
+
 <h2>How much Perl do I need to know?</h2>
 <p>
 Usually: a little. Most problems only need a few scalar variables (like <code>$a</code>,
@@ -28,7 +38,17 @@ advanced Perl patterns.
 <h2>A mindset for science problems</h2>
 <ul>
 	<li>Randomize the values, not the story.</li>
-	<li>Keep units explicit and consistent.</li>
+	<li>Keep units explicit and consistent (and prevent unit drift: &mu;M vs mM, &mu;L vs mL).</li>
+	<li>Use realistic ranges (no negative concentrations, no 10,000 &mu;L pipettes).</li>
+	<li>For text answers, state naming expectations (gene/protein symbols, case, and hyphens).</li>
 	<li>Prefer one or two answer blanks with clear interpretation.</li>
 	<li>When you need a table or structured layout, reach for PGML helpers rather than ad-hoc HTML.</li>
+</ul>
+
+<h2>Safe defaults (micro-pattern)</h2>
+<ul>
+	<li>Choose a context early.</li>
+	<li>Define a small set of values with constrained ranges.</li>
+	<li>Define answers as MathObjects.</li>
+	<li>Attach answers directly to blanks in PGML.</li>
 </ul>

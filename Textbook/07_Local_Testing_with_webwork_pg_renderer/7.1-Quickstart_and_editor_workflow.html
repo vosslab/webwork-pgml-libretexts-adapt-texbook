@@ -1,0 +1,32 @@
+<p>
+Local rendering works best when it feels like editing a document: open a problem file, render it,
+make a small change, and render again. This section outlines a simple workflow you can repeat
+every day.
+</p>
+
+<h2>Choose one file and make it reproducible</h2>
+<ul>
+	<li>Pick one <code>.pg</code> file to work on and keep the path stable while you iterate.</li>
+	<li>Use a fixed seed when you are debugging so the same random variant renders each time.</li>
+	<li>Change one thing per iteration so you can tell what caused the difference.</li>
+</ul>
+
+<h2>Render and check the student-facing prompt</h2>
+<ul>
+	<li>Render the problem and read it like a student would read it.</li>
+	<li>Confirm the story makes sense with the chosen randomized values (units, ranges, and rounding).</li>
+	<li>Confirm every answer blank is visible, in the right order, and has the right unit/format cues nearby.</li>
+</ul>
+
+<h2>Save edits back to disk</h2>
+<ul>
+	<li>Keep edits small and frequent rather than making one large rewrite.</li>
+	<li>When you find a failing case, keep the file path and seed so you can reproduce it later.</li>
+	<li>Once the local render looks right, move to course-level testing for the final check.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use local rendering for the tight edit-preview loop, then use ADAPT for the final publish workflow.</li>
+	<li>When debugging, write down the failing seed and do not change it until the failure is fixed.</li>
+</ul>

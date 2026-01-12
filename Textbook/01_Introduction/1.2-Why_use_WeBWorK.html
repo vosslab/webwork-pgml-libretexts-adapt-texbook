@@ -1,16 +1,23 @@
 <p>
 WeBWorK is useful when you want repeated, low-friction practice with immediate feedback and
 consistent grading. In science courses, the strength is not "more math", but rather repeatable
-workflows for units, significant figures, tabular data, and numeric reasoning inside realistic
-prompts.
+workflows for concentrations, dilutions, rates, fold change, and small data tables inside
+realistic prompts.
 </p>
 
-<h2>Reasons instructors use it</h2>
+<h2>Choose WeBWorK when</h2>
 <ul>
-	<li>Immediate feedback supports iterative learning.</li>
-	<li>Algorithmic variants reduce copying and encourage practice.</li>
-	<li>Answer checking is explicit and reproducible (tolerances, formats, partial credit patterns).</li>
-	<li>Problems are text-based and versionable (easy to clone and modify).</li>
+	<li>You want repeated practice with immediate feedback and consistent grading.</li>
+	<li>You want algorithmic variants where only the numbers change, not the story.</li>
+	<li>You want explicit answer checking (tolerances, formats, and controlled text variants).</li>
+	<li>You want prompts that mix text, values, and structured data without fragile formatting.</li>
+</ul>
+
+<h2>Choose something else when</h2>
+<ul>
+	<li>The task depends on rich interaction that is better served by a dedicated widget or simulation.</li>
+	<li>The assessment is primarily writing or multi-step reasoning that is not a good fit for auto-grading.</li>
+	<li>You need a standardized export/import workflow and accept the constraints of an LMS package format.</li>
 </ul>
 
 <h2>Why PGML matters</h2>
@@ -29,9 +36,22 @@ can be tied directly to answers in the same place you write the question.
 <h2>Science-friendly patterns</h2>
 <ul>
 	<li>Use a short narrative plus a table of measurements.</li>
-	<li>Ask for a computed quantity with units and controlled rounding.</li>
-	<li>Include one or two conceptual checks (multiple choice) when appropriate.</li>
-	<li>Prefer small, composable randomizations over complicated logic.</li>
+	<li>Ask for one computed quantity with clear units and controlled rounding.</li>
+	<li>Include one or two recognition checks (multiple choice or matching) when appropriate.</li>
+	<li>Prefer small, constrained randomizations over complicated logic.</li>
+</ul>
+
+<h2>Tradeoffs to be honest about</h2>
+<ul>
+	<li>There is setup cost (macros, contexts, and answer checkers), especially for new authors.</li>
+	<li>Randomization needs constraints and previewing, or you will generate broken variants.</li>
+	<li>Format decisions (units, rounding, accepted text variants) must be stated to avoid grading disputes.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Pick one life-science workflow (a dilution, a rate, or a fold change) and write the prompt in PGML.</li>
+	<li>Write down the reporting rule (units and rounding) next to the answer blank.</li>
 </ul>
 
 <h2>How WeBWorK compares (briefly)</h2>

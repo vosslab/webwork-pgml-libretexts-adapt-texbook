@@ -1,4 +1,12 @@
 <p>
+This page only covers the PG you need to support a PGML prompt.
+</p>
+
+<p>
+Use this page when refactoring a problem or when answers feel disconnected from the prompt.
+</p>
+
+<p>
 Most WeBWorK examples describe a PG file as having several sections (description, initialization,
 setup, text, answers/solutions). That model is still useful, but when you write PGML-first, the
 roles shift:
@@ -33,4 +41,8 @@ roles shift:
 When you attach the correct answer directly to an answer blank (for example
 <code>[______]{Real(12)}</code>), the connection between prompt and grading stays obvious. This is
 especially helpful for science prompts with multiple values and multiple parts.
+</p>
+
+<p>
+Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 </p>

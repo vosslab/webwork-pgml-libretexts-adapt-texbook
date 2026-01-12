@@ -1,0 +1,33 @@
+<p>
+Local testing can save a lot of time when you are iterating on PG and PGML: you make an edit, render
+the problem, and see the result immediately without importing into a course or publishing an
+assignment.
+</p>
+
+<p>
+This chapter introduces <code>webwork-pg-renderer</code> as a lightweight way to preview and test
+problems locally. The goal is not to replace full testing in WeBWorK or ADAPT, but to give you a
+tight edit-preview loop for day-to-day authoring.
+</p>
+
+<h2>What local rendering is good for</h2>
+<ul>
+	<li>Quick checks while you are editing a prompt, table, or multi-part blank structure.</li>
+	<li>Reproducing a failure with a fixed seed and file path, so you can debug the same variant.</li>
+	<li>Spot-checking that substitutions, formatting, and answer blanks render as you expect.</li>
+</ul>
+
+<h2>What it does not replace</h2>
+<ul>
+	<li>Student-view behavior inside a real course (permissions, settings, and submit controls).</li>
+	<li>ADAPT import and assignment workflow checks.</li>
+	<li>Final review of grading behavior across multiple variants in the real deployment.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Pick one problem you are editing and use local rendering to preview the prompt after each small change.</li>
+	<li>When a variant breaks, keep the failing seed so you can reproduce the same case while debugging.</li>
+</ul>
+
+<p>{{template.ShowOrg()}}</p>

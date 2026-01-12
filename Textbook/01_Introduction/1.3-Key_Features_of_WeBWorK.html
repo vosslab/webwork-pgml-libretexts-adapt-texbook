@@ -3,7 +3,7 @@ WeBWorK's power is not a single feature, but a stable combination: algorithmic q
 structured answer checking, and readable authoring of the student prompt.
 </p>
 
-<h2>Core features (author view)</h2>
+<h2>What matters for authors</h2>
 <ul>
 	<li>
 		PGML for prompt authoring (recommended): readable markup, math delimiters, and answer blanks.
@@ -20,17 +20,27 @@ structured answer checking, and readable authoring of the student prompt.
 	</li>
 </ul>
 
-<h2>Core features (student view)</h2>
-<ul>
-	<li>Immediate feedback on correctness.</li>
-	<li>Consistent formatting for mathematical expressions.</li>
-	<li>Hints and solutions when enabled by the instructor.</li>
-</ul>
-
-<h2>Features that matter in sciences</h2>
+<h2>What matters for life-science prompts</h2>
 <ul>
 	<li>Prompts that mix words, values, and math without fragile escaping.</li>
-	<li>Tables for measurement data (use table helpers rather than layout hacks).</li>
-	<li>Clean embedding of images/figures when needed (via command substitution).</li>
-	<li>Links to external references or built-in help links when appropriate.</li>
+	<li>Tables for small datasets (measurements, lanes, conditions) in a readable format.</li>
+	<li>Common biology workflows such as concentrations, dilutions, rates, and fold change.</li>
+	<li>Clear expectations about units, rounding, and accepted formats to reduce grading disputes.</li>
 </ul>
+
+<h2>Tradeoffs and constraints</h2>
+<ul>
+	<li>There is setup cost (macros, contexts, and answer checkers), so templates matter.</li>
+	<li>Randomization needs constraints and previewing to avoid broken variants.</li>
+	<li>Auto-grading is only as clear as your reporting rules (units, rounding, accepted text variants).</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Pick the interaction first, then keep setup minimal and write the student-facing prompt in PGML.</li>
+	<li>Write one biology-native task (a dilution, a rate, or a fold change) and decide the reporting rule up front.</li>
+</ul>
+
+<p>
+Next step: use Section 1.4 to choose WeBWorK versus another format for a specific activity.
+</p>

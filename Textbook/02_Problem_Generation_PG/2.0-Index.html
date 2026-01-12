@@ -1,24 +1,32 @@
 <p>
-WeBWorK problems are written in PG, but in this guide the goal is not to turn instructors into
-Perl programmers. Regular PG is treated as the minimum setup needed to support a clean PGML
-prompt: define a few variables, define answer checkers, and let PGML carry the student-facing
-text.
+This page only covers the PG you need to support a PGML prompt.
 </p>
 
-<h2>What "PG" is used for (in this guide)</h2>
+<p>
+WeBWorK problems are written in PG, but this guide is not trying to turn instructors into Perl
+developers. Regular PG is treated as the minimum setup needed to support a clean PGML prompt:
+define a few variables, define answer checkers, and let PGML carry the student-facing text.
+</p>
+
+<h2>What PG is used for in this guide</h2>
 <ul>
-	<li>Load macros needed for PGML and answer checking.</li>
-	<li>Choose an appropriate MathObjects context.</li>
-	<li>Generate a small number of randomized values.</li>
-	<li>Compute the target answer(s) and configure the answer checkers.</li>
+	<li>Load the macros needed for PGML and answer checking.</li>
+	<li>Choose a MathObjects context that matches the expected input.</li>
+	<li>Generate a small number of randomized values with sensible ranges.</li>
+	<li>Compute the target answer(s) and attach the right answer checkers.</li>
 </ul>
 
-<h2>What "regular PG" is not used for (in this guide)</h2>
+<h2>What regular PG is not used for in this guide</h2>
 <ul>
 	<li>Writing the prompt as long blocks of <code>BEGIN_TEXT/END_TEXT</code>.</li>
 	<li>Building complex formatting by hand (PGML is preferred).</li>
-	<li>Large "programs" inside a single question.</li>
+	<li>Turning a single problem into a large Perl script.</li>
 </ul>
+
+<p>
+If a problem feels like it needs complexity, prefer clearer prompts, tighter ranges, or a
+different interaction pattern before adding more PG logic.
+</p>
 
 <h2>How this chapter fits the book</h2>
 <p>

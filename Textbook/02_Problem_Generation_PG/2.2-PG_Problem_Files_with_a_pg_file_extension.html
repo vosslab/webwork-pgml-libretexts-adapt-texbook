@@ -1,4 +1,12 @@
 <p>
+This page only covers the PG you need to support a PGML prompt.
+</p>
+
+<p>
+Use this page when starting a new file or diagnosing a broken one.
+</p>
+
+<p>
 A WeBWorK problem is typically stored in a file with a <code>.pg</code> extension. The file is a
 mix of:
 </p>
@@ -45,17 +53,21 @@ loadMacros(
 
 Context("Numeric");
 
-$a = random(2, 8, 1);
-$b = random(3, 9, 1);
+$c_stock = random(10, 50, 5);   # mM
+$v_stock = random(1, 5, 1);     # mL
+$v_final = random(10, 50, 5);   # mL
 
-$ans = Real($a + $b);
+$c_final = Real($c_stock * $v_stock / $v_final);
 
 BEGIN_PGML
-In a sample, the counts were [$a] and [$b].
+You are preparing a dilution from a stock solution.
+The stock concentration is [`c_{stock} = [$c_stock]`] mM.
+You pipet [`V_{stock} = [$v_stock]`] mL of stock and bring the total volume to
+[`V_{final} = [$v_final]`] mL.
 
-What is the total count?
+What is the final concentration [`c_{final}`] in mM?
 
-[`Total = `] [________]{$ans}
+[`c_{final} = `] [________]{$c_final} mM
 END_PGML
 
 ENDDOCUMENT();

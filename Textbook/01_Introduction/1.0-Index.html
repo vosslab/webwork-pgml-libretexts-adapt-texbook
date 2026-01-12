@@ -1,23 +1,61 @@
 <p>
 There are plenty of guides for writing mathematics assessment questions in WeBWorK. This guide
-tries to take a different approach and is written for an audience in the sciences and descriptive
-fields. Neil Voss, the initial author of this guide, is a professor in life science, though he has
-a background in mathematics and physics.
+takes a different approach and is written for people in the sciences and other descriptive fields,
+especially in the life sciences.
+</p>
+
+<p>
+This book assumes you want questions that read like real lab and lecture tasks, grade reliably,
+and are easy to reuse across semesters.
 </p>
 
 <h2>What this guide emphasizes</h2>
 <ul>
 	<li>
-		PGML-first authoring: write the student-facing prompt in PGML and keep "regular PG"
-		code to the minimum needed to support PGML.
+		PGML-first authoring: write the student-facing prompt in PGML and keep regular PG as short
+		setup code for values and answer checking.
 	</li>
 	<li>
-		Science-friendly prompts: units, significant figures, tabular data, and story problems that match
-		lab and lecture workflows.
+		Life-science style prompts: short narratives, concentrations and dilution workflows, structured
+		data, and interpretation questions that match how biology is taught and practiced.
 	</li>
 	<li>
-		Practical reuse: patterns you can clone and modify to build question banks quickly and safely.
+		Practical reuse: stable patterns you can clone and copy-edit to build question banks quickly
+		without breaking grading.
 	</li>
+</ul>
+
+<h2>How to use this book (quick start)</h2>
+<p>
+This guide is organized as short pages you can read out of order. Pick the path that matches what
+you are doing today.
+</p>
+
+<ul>
+	<li>
+		First win: start with Chapter 1.5 and copy-edit a complete PGML-first problem, then preview a few variants.
+	</li>
+	<li>
+		Setup conventions: read Chapter 2 and adopt the minimal PG scaffolding pattern for new files.
+	</li>
+	<li>
+		Prompt writing: go to Chapter 3 for PGML patterns such as blanks, lists, and tables.
+	</li>
+	<li>
+		One complete example: read Chapter 4 to see how preamble, setup, prompt, and solution fit together in a single file.
+	</li>
+	<li>
+		Interaction choice: use Chapter 5 as a catalog when you are deciding between multiple choice, matching, numerical entry, or fill-in-the-blank.
+	</li>
+	<li>
+		Biology-first patterns: use Chapter 6 for common life science templates such as dilutions, kinetics, gels, qPCR, and pedigrees.
+	</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Pick one page that matches what you are building today and copy-edit the example rather than starting from scratch.</li>
+	<li>Keep regular PG minimal and write student-facing sentences in PGML.</li>
 </ul>
 
 <p>{{template.ShowOrg()}}</p>

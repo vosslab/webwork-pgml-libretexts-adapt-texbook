@@ -1,0 +1,33 @@
+<p>
+Most failures in WeBWorK problem authoring are predictable: a blank is not tied to the intended
+answer, a random value produces an impossible case, or the student-facing render hides an
+assumption you thought was obvious. This section collects a small QA pass that catches most issues
+quickly.
+</p>
+
+<h2>Variant sweeps (catch broken randomization)</h2>
+<ul>
+	<li>Render multiple variants and scan for impossible or meaningless cases.</li>
+	<li>Watch for awkward rounding, repeating decimals, or values that make the story unclear.</li>
+	<li>Constrain random values so the biology stays plausible (concentrations, probabilities, rates).</li>
+</ul>
+
+<h2>Boundary values (catch grading edge cases)</h2>
+<ul>
+	<li>Test values near expected boundaries (zero, one, and simple fractions).</li>
+	<li>Check that tolerances and rounding expectations match what the prompt asks for.</li>
+	<li>For text answers, decide what variants you accept (plural/singular, hyphens, and case).</li>
+</ul>
+
+<h2>Student-view behavior (catch workflow surprises)</h2>
+<ul>
+	<li>Confirm the prompt reads cleanly and does not rely on hidden formatting.</li>
+	<li>Confirm each blank appears where you expect and has clear unit and format cues.</li>
+	<li>Use logs and any available health check to separate PG syntax problems from environment or rendering issues.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Adopt a repeatable QA pass: preview, sweep variants, test one boundary case, then publish.</li>
+	<li>When something breaks, keep the failing seed and file path so you can reproduce the same case.</li>
+</ul>

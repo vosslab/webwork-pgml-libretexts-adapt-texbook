@@ -1,6 +1,17 @@
 # Changelog
 
 ## 2026-01-12
+- Tightened Chapter 2 to treat minimal PG as an explicit contract (PG is setup, PGML is the prompt), added a
+  life-science-first mindset checklist, updated the minimal template to a dilution-style prompt, and labeled advanced
+  macros as recognition-only.
+- Tightened Chapter 1 pages to use a more consistent page structure (short opener, decision-oriented sections, and an
+  "Apply it today" closer) while keeping content aligned with `Textbook/TEXTBOOK_PAGE_SUMMARIES.md`.
+- Filled previously-empty Chapter 7 local-testing pages to match `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` and to restore
+  a clean `tests/run_html_lint.sh` run.
+- Updated `README.md` into a clearer landing page and corrected the chapter entry-point paths to match the current
+  `Textbook/` layout.
+- Aligned Chapter 1 HTML pages with `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` by adding a quick-start/navigation section
+  to `Textbook/01_Introduction/1.0-Index.html` and tightening the Chapter 1 feature and quickstart pages.
 - Added `docs/CODE_ARCHITECTURE.md` and `docs/FILE_STRUCTURE.md` to document the repo workflows, components, and
   directory layout.
 - Rewrote `README.md` as a stable repository overview and authoring guide (LibreTexts constraints,

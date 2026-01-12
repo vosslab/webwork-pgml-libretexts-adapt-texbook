@@ -1,22 +1,24 @@
 <p>
-The name "WeBWorK" is derived from the combination of "Web" and "Homework." It reflects the
-system's primary function of delivering and managing homework assignments over the web. The
-project started in the mid-1990s at the University of Rochester.
+WeBWorK delivers automatically graded questions to students through a web interface.
+As an author, you write a text-based problem file (usually a <code>.pg</code> file) that defines
+values, a prompt, answer blanks, and grading rules.
 </p>
 
 <p>
-In practice, WeBWorK is a system for delivering automatically graded questions where the student
-experience is a web page and the author experience is a text-based problem file (usually a
-<code>.pg</code> file). A problem can randomize values, format mathematical content, collect student
-answers, and grade them immediately.
+A single problem can randomize values, present structured data, collect student answers, and grade
+them immediately. In this guide, regular PG is treated as the setup layer and PGML is treated as
+the student-facing prompt.
 </p>
 
-<h2>PGML-first authoring</h2>
+<h2>PGML-first rule of thumb</h2>
 <p>
 WeBWorK problems are written in a language called PG, but most authors should treat "regular PG"
 as the plumbing that sets up variables and answer checkers. The student-facing prompt should be
 written in PGML (PG Markup Language), which is designed to replace older <code>BEGIN_TEXT</code>
 authoring.
+</p>
+<p>
+Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 </p>
 
 <ul>
@@ -28,10 +30,20 @@ authoring.
 	</li>
 </ul>
 
-<h2>Why it works well for sciences</h2>
+<h2>Why it works well for life sciences</h2>
 <ul>
-	<li>Short prompts with structured data (tables, values, units).</li>
+	<li>Short prompts with structured data (tables, concentrations, rates, and units).</li>
 	<li>Algorithmic variants for repeated practice without reusing the same numbers.</li>
-	<li>Clear answer checking via MathObjects (numeric, formula, list, multiple choice).</li>
-	<li>Consistent formatting for math and variables inside the prompt via PGML substitutions.</li>
+	<li>Clear answer checking via MathObjects (numeric, formulas, lists, and recognition checks).</li>
+	<li>Clean prompts for common biology patterns (dilutions, fold change, and small data tables).</li>
 </ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Write one prompt sentence in PGML and move any student-facing text out of regular PG.</li>
+	<li>Pick one biology-native pattern (a dilution, a rate, or a fold change) and randomize only the numbers.</li>
+</ul>
+
+<p>
+Next step: read Section 1.2 to decide when a prompt belongs in WeBWorK and when a simpler tool is a better fit.
+</p>
