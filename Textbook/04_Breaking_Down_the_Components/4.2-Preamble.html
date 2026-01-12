@@ -1,0 +1,179 @@
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 12%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>Color</th>
+			<th>What it controls</th>
+			<th>What to check when debugging</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section">Preamble</td>
+			<td data-th="Color">Blue</td>
+			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section">Setup</td>
+			<td data-th="Color">Green</td>
+			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section">Statement</td>
+			<td data-th="Color">Orange</td>
+			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section">Solution</td>
+			<td data-th="Color">Pink</td>
+			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+The Preamble is where you load macros and set the global options that make the rest of the file
+render. If the Preamble is wrong, nothing else works.
+</p>
+
+<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble (blue)</strong></p>
+<p>
+Why this exists: it declares which macro files and features the problem can use.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Add a macro to enable a new interaction.</li>
+					<li>Remove a macro that is not used.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>A feature is missing because the macro is not loaded.</li>
+					<li>Load order masks a macro or parser option.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Macro selection (what to load)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 26%;">
+		<col style="width: 26%;">
+		<col style="width: 26%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>What it enables</th>
+			<th>When you need it</th>
+			<th>Common failure</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGstandard.pl</td>
+			<td data-th="What it enables">Core PG functions and helpers.</td>
+			<td data-th="When you need it">Always (baseline PG utilities).</td>
+			<td data-th="Common failure">Undefined basic functions.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">MathObjects.pl</td>
+			<td data-th="What it enables">MathObjects, Context(), and answer checkers.</td>
+			<td data-th="When you need it">Any numeric or formula answer.</td>
+			<td data-th="Common failure">Context or answer objects are missing.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGML.pl</td>
+			<td data-th="What it enables">PGML prompt blocks and inserts.</td>
+			<td data-th="When you need it">Any PGML-first prompt.</td>
+			<td data-th="Common failure">BEGIN_PGML fails or renders raw text.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGcourse.pl</td>
+			<td data-th="What it enables">Course macros and shared helpers.</td>
+			<td data-th="When you need it">You rely on course-wide helpers.</td>
+			<td data-th="Common failure">Custom helper not found.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGchoicemacros.pl</td>
+			<td data-th="What it enables">Choice utilities and display helpers.</td>
+			<td data-th="When you need it">MC, MA, matching, and ordered lists.</td>
+			<td data-th="Common failure">Choice widgets do not render.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">parserMultiAnswer.pl</td>
+			<td data-th="What it enables">MultiAnswer coordination across blanks.</td>
+			<td data-th="When you need it">Interdependent multi-part answers.</td>
+			<td data-th="Common failure">Blanks accept answers independently.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+For choice-based interactions, rely on <code>PGchoicemacros.pl</code> and mirror the official
+technique sample pages in the OpenWeBWorK PG samples so the UI matches the pattern you want.
+</p>
+
+<p>
+PopUp is considered deprecated; prefer DropDown for new work unless you are maintaining legacy
+content.
+</p>
+
+<h2>When it breaks</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 36%;">
+		<col style="width: 36%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Symptom</th>
+			<th>Likely cause</th>
+			<th>Fix</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Symptom">Macro not found error</td>
+			<td data-th="Likely cause">Missing macro file in <code>loadMacros()</code>.</td>
+			<td data-th="Fix">Add the macro and keep load order consistent.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Choice widget renders as plain text</td>
+			<td data-th="Likely cause">Choice macro file not loaded.</td>
+			<td data-th="Fix">Load <code>PGchoicemacros.pl</code> in the Preamble.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">PGML block not recognized</td>
+			<td data-th="Likely cause">Missing <code>PGML.pl</code>.</td>
+			<td data-th="Fix">Load <code>PGML.pl</code> before the PGML block.</td>
+		</tr>
+	</tbody>
+</table>

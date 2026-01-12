@@ -1,106 +1,264 @@
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 12%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>Color</th>
+			<th>What it controls</th>
+			<th>What to check when debugging</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section">Preamble</td>
+			<td data-th="Color">Blue</td>
+			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section">Setup</td>
+			<td data-th="Color">Green</td>
+			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section">Statement</td>
+			<td data-th="Color">Orange</td>
+			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section">Solution</td>
+			<td data-th="Color">Pink</td>
+			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>
-This chapter provides a complete, copy-and-edit example of a PGML-first WeBWorK problem written in
-a science-friendly style. The goal is to show the smallest amount of PG setup needed to support a
-clear PGML prompt.
+Chapter 4 is a single worked problem sliced into Preamble, Setup, Statement, Solution, and a
+Put it together workflow page. It mirrors the OpenWeBWorK PG sample-problem structure so you can
+scan each layer quickly and edit the right section first.
 </p>
 
-<h2>How to read the file (structure)</h2>
+<h2>One-screen anatomy (table version)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 39%;">
+		<col style="width: 39%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section name</th>
+			<th>What readers usually change</th>
+			<th>What usually breaks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section name">Preamble</td>
+			<td data-th="What readers usually change">Macro list, display options, parser features.</td>
+			<td data-th="What usually breaks">Missing macro file, wrong load order, or missing feature.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section name">Setup</td>
+			<td data-th="What readers usually change">Value ranges, answer objects, tolerances.</td>
+			<td data-th="What usually breaks">Impossible variants, unit drift, tolerance mismatch.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section name">Statement</td>
+			<td data-th="What readers usually change">Story wording, tables, blanks, formatting.</td>
+			<td data-th="What usually breaks">Unbound blanks, missing variables, malformed PGML.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section name">Solution</td>
+			<td data-th="What readers usually change">Explanation steps, rounding notes, units.</td>
+			<td data-th="What usually breaks">Solution shows a different convention than the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>
-Most problems can be read as a small number of sections. If you keep your own files in this
-structure, you will debug faster and reuse patterns more reliably.
+If ADAPT reports only a generic error, do a fast local render from Chapter 7 to get a line number
+before you troubleshoot the section tables below.
 </p>
-<ol>
-	<li>Optional tagging and description comments (for humans and indexing).</li>
-	<li>Initialization: <code>DOCUMENT();</code> and <code>loadMacros(...);</code>.</li>
-	<li>Setup: contexts, random values, and answer objects.</li>
-	<li>Text: the PGML prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>.</li>
-	<li>Optional hint/solution blocks, then <code>ENDDOCUMENT();</code>.</li>
-</ol>
 
-<h2>Example: PCR mix concentration calculation</h2>
+<h2>Practical edit map</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Where to edit</th>
+			<th>Fast check</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Task">Change values</td>
+			<td data-th="Where to edit">Setup (ranges and constraints)</td>
+			<td data-th="Fast check">Render 3 seeds and scan the units.</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Change prompt wording</td>
+			<td data-th="Where to edit">Statement (PGML)</td>
+			<td data-th="Fast check">Confirm each blank still has an answer attached.</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Add another blank</td>
+			<td data-th="Where to edit">Setup then Statement</td>
+			<td data-th="Fast check">Verify the new blank label maps to the right answer.</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Tighten grading</td>
+			<td data-th="Where to edit">Setup (tolerances)</td>
+			<td data-th="Fast check">Compare expected rounding in the Solution.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Section snapshots</h2>
+<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble (blue)</strong></p>
 <p>
-In a wet-lab workflow, students often prepare reaction mixes from stock solutions. This problem
-asks for a final concentration in a PCR reaction after adding a small volume of a primer stock and
-bringing the reaction to a final volume. The story stays fixed and only the numeric values change.
+Why this exists: it declares the macros and global options that make the rest of the file possible.
 </p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Add or remove macro files.</li>
+					<li>Enable a parser or display option.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Macro file not loaded.</li>
+					<li>Macro load order hides a feature.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
-<h3>Annotated skeleton (copy-edit target)</h3>
-<pre>
-# 1) Tagging/description (optional)
+<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup (green)</strong></p>
+<p>
+Why this exists: it defines the values, constraints, and answer objects that the PGML uses.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Adjust random ranges and constraints.</li>
+					<li>Update answer checker tolerances.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Impossible wet-lab variants.</li>
+					<li>Unit conversions applied twice.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
-# 2) Initialization (required)
-DOCUMENT();
-loadMacros(...);
+<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement (orange)</strong></p>
+<p>
+Why this exists: it is the PGML prompt students read, including data, structure, and blanks.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Rewrite the story or add a data table.</li>
+					<li>Insert or remove answer blanks.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Blank missing its attached answer.</li>
+					<li>Variable used before it is defined.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
-# 3) Setup (keep small)
-Context("Numeric");
-# ... random values ...
-# ... answer object + grader ...
-
-# 4) Text (PGML prompt)
-BEGIN_PGML
-... story, data, and task ...
-... attach answers to blanks ...
-END_PGML
-
-# 5) Optional hint/solution blocks, then end
-ENDDOCUMENT();
-</pre>
-
-<h3>Complete PG file (template)</h3>
-<pre>
-DOCUMENT();
-
-loadMacros(
-	"PGstandard.pl",
-	"MathObjects.pl",
-	"PGML.pl",
-	"PGcourse.pl",
-);
-
-Context("Numeric");
-
-$c_stock = random(5, 20, 5);     # uM (primer stock)
-$v_stock = random(1, 5, 1);      # uL (pipetted primer volume)
-$v_final = random(20, 50, 5);    # uL (final reaction volume)
-
-$c_final = Real($c_stock * $v_stock / $v_final);
-$c_final->cmp(tolType => "absolute", tol => 0.05);
-
-BEGIN_PGML
-You are setting up a PCR reaction. You have a primer stock solution with concentration
-[`c_{stock} = [$c_stock]`] &mu;M. You add [`V_{stock} = [$v_stock]`] &mu;L of the primer stock and
-bring the total reaction volume to [`V_{final} = [$v_final]`] &mu;L.
-
-What is the final primer concentration [`c_{final}`] in &mu;M?
-
-[`c_{final} = `] [________]{$c_final} &mu;M
-END_PGML
-
-ENDDOCUMENT();
-</pre>
-
-<h2>Why this example is PGML-first</h2>
-<ul>
-	<li>PG setup defines only the randomized values and the answer checker.</li>
-	<li>PGML contains the full prompt, with variables substituted into the text.</li>
-	<li>The answer blank includes the answer object right next to the question.</li>
-</ul>
-
-<h2>How to adapt this example</h2>
-<ul>
-	<li>Change the story and keep the math.</li>
-	<li>Keep units explicit in the prompt.</li>
-	<li>Add a second part only when it helps learning, not because it is possible.</li>
-	<li>If you need a table of measurements, use the table helpers rather than ad-hoc HTML.</li>
-</ul>
-
-<h2>Quick copy-edit checklist</h2>
-<ul>
-	<li>Keep the story stable and change only a few values.</li>
-	<li>Keep units explicit in the prompt and next to the answer blank.</li>
-	<li>Attach answers to blanks in PGML so multi-part prompts stay aligned with grading.</li>
-	<li>Preview multiple variants to catch randomization and rounding issues.</li>
-</ul>
+<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution (pink)</strong></p>
+<p>
+Why this exists: it shows the grading target and builds trust without becoming a second lecture.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Clarify formula or unit usage.</li>
+					<li>Explain rounding or tolerance rules.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Solution implies a different convention.</li>
+					<li>Displayed rounding contradicts grading.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 <p>{{template.ShowOrg()}}</p>

@@ -1,0 +1,187 @@
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 12%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>Color</th>
+			<th>What it controls</th>
+			<th>What to check when debugging</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section">Preamble</td>
+			<td data-th="Color">Blue</td>
+			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section">Setup</td>
+			<td data-th="Color">Green</td>
+			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section">Statement</td>
+			<td data-th="Color">Orange</td>
+			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section">Solution</td>
+			<td data-th="Color">Pink</td>
+			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+Setup is small PG that supports PGML: it defines values, constraints, answers, and answer checkers.
+Keep it short, readable, and focused on what the prompt needs.
+</p>
+
+<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup (green)</strong></p>
+<p>
+Why this exists: it turns a story into randomized values and answer objects that the PGML can use.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Adjust ranges, units, or constraints.</li>
+					<li>Change tolerances or grading rules.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Random values create impossible wet-lab variants.</li>
+					<li>Units drift between setup and prompt.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Variables and constraints</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 20%;">
+		<col style="width: 28%;">
+		<col style="width: 32%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Variable</th>
+			<th>Range</th>
+			<th>Constraint</th>
+			<th>Why it exists</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Variable">c_stock</td>
+			<td data-th="Range">5 to 20 &mu;M</td>
+			<td data-th="Constraint">Multiples of 5</td>
+			<td data-th="Why it exists">Keeps pipetting values realistic.</td>
+		</tr>
+		<tr>
+			<td data-th="Variable">v_stock</td>
+			<td data-th="Range">1 to 5 &mu;L</td>
+			<td data-th="Constraint">Whole microliters</td>
+			<td data-th="Why it exists">Avoids fractional pipetting in wet lab.</td>
+		</tr>
+		<tr>
+			<td data-th="Variable">v_final</td>
+			<td data-th="Range">20 to 50 &mu;L</td>
+			<td data-th="Constraint">Multiples of 5</td>
+			<td data-th="Why it exists">Standard reaction volumes.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Computed targets</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 34%;">
+		<col style="width: 22%;">
+		<col style="width: 22%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Target</th>
+			<th>How computed</th>
+			<th>Units/format</th>
+			<th>Used by which blank</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Target">c_final</td>
+			<td data-th="How computed">c_stock * v_stock / v_final</td>
+			<td data-th="Units/format">&mu;M, numeric</td>
+			<td data-th="Used by which blank">c_final blank</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Grading knobs (tolerance patterns)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 36%;">
+		<col style="width: 42%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Where to set it</th>
+			<th>What it controls</th>
+			<th>When to use it</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Where to set it">On <code>cmp()</code></td>
+			<td data-th="What it controls">Per-answer tolerance (absolute or relative).</td>
+			<td data-th="When to use it">One answer needs a custom tolerance.</td>
+		</tr>
+		<tr>
+			<td data-th="Where to set it">On <code>Context()</code></td>
+			<td data-th="What it controls">Defaults for the entire problem.</td>
+			<td data-th="When to use it">Most answers share the same tolerance rules.</td>
+		</tr>
+		<tr>
+			<td data-th="Where to set it">On <code>Compute()</code></td>
+			<td data-th="What it controls">Explicit rounding to a target format.</td>
+			<td data-th="When to use it">You want to lock a specific display format.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+For tolerance details, follow the NumericalTolerance sample problem in the OpenWeBWorK PG samples
+and mirror its three-option pattern (cmp, Context, Compute).
+</p>
+
+<p>
+Life-science constraints matter most here: keep units consistent, choose plausible ranges, and
+avoid variants that would be impossible in a wet lab.
+</p>

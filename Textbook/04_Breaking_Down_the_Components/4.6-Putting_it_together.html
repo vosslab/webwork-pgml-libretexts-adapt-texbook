@@ -1,0 +1,217 @@
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 12%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>Color</th>
+			<th>What it controls</th>
+			<th>What to check when debugging</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section">Preamble</td>
+			<td data-th="Color">Blue</td>
+			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section">Setup</td>
+			<td data-th="Color">Green</td>
+			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section">Statement</td>
+			<td data-th="Color">Orange</td>
+			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section">Solution</td>
+			<td data-th="Color">Pink</td>
+			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+This page turns the deep dive into a repeatable workflow: edit the right section first, then
+verify in a predictable loop.
+</p>
+
+<h2>Common edits (workflow map)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 32%;">
+		<col style="width: 23%;">
+		<col style="width: 23%;">
+		<col style="width: 22%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>What you want to change</th>
+			<th>Edit here first</th>
+			<th>Then verify here</th>
+			<th>Fast test</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="What you want to change">Swap interaction type</td>
+			<td data-th="Edit here first">Preamble</td>
+			<td data-th="Then verify here">Statement</td>
+			<td data-th="Fast test">Check that the widget renders.</td>
+		</tr>
+		<tr>
+			<td data-th="What you want to change">Change ranges or units</td>
+			<td data-th="Edit here first">Setup</td>
+			<td data-th="Then verify here">Solution</td>
+			<td data-th="Fast test">Render 3 seeds and scan units.</td>
+		</tr>
+		<tr>
+			<td data-th="What you want to change">Add a new blank</td>
+			<td data-th="Edit here first">Setup</td>
+			<td data-th="Then verify here">Statement</td>
+			<td data-th="Fast test">Confirm the blank shows the right answer.</td>
+		</tr>
+		<tr>
+			<td data-th="What you want to change">Explain rounding rules</td>
+			<td data-th="Edit here first">Solution</td>
+			<td data-th="Then verify here">Setup</td>
+			<td data-th="Fast test">Compare to the tolerance settings.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Preflight before ADAPT import</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 60%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Check</th>
+			<th>Why it matters</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Check">Render locally (Chapter 7) if ADAPT gives only a generic error.</td>
+			<td data-th="Why it matters">Line numbers save time when a macro or PGML issue appears.</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Preview 3 to 5 seeds.</td>
+			<td data-th="Why it matters">Catches impossible variants early.</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Scan units in prompt, blank, and solution.</td>
+			<td data-th="Why it matters">Prevents silent grading mismatches.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+When you want to swap interaction types, use the techniques list in the OpenWeBWorK PG samples as
+your menu of proven patterns.
+</p>
+
+<h2>Section cues (fast reminders)</h2>
+<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble (blue)</strong></p>
+<p>
+Why this exists: it unlocks the macros you need for the interaction you choose.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">Add or remove a macro.</td>
+			<td data-th="Common failures">Missing macro for a widget.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup (green)</strong></p>
+<p>
+Why this exists: it sets the values and answer objects that the prompt depends on.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">Adjust ranges or tolerance.</td>
+			<td data-th="Common failures">Impossible variant slips in.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement (orange)</strong></p>
+<p>
+Why this exists: it is the student-facing prompt and the location of the blanks.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">Rewrite text or add a table.</td>
+			<td data-th="Common failures">Blank not tied to an answer.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution (pink)</strong></p>
+<p>
+Why this exists: it keeps the grading target transparent and trustworthy.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">Clarify the final units.</td>
+			<td data-th="Common failures">Solution implies different rounding.</td>
+		</tr>
+	</tbody>
+</table>

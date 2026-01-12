@@ -1,0 +1,176 @@
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 12%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>Color</th>
+			<th>What it controls</th>
+			<th>What to check when debugging</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="background-color: #dbeafe;">
+			<td data-th="Section">Preamble</td>
+			<td data-th="Color">Blue</td>
+			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		</tr>
+		<tr style="background-color: #dcfce7;">
+			<td data-th="Section">Setup</td>
+			<td data-th="Color">Green</td>
+			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		</tr>
+		<tr style="background-color: #ffedd5;">
+			<td data-th="Section">Statement</td>
+			<td data-th="Color">Orange</td>
+			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		</tr>
+		<tr style="background-color: #fce7f3;">
+			<td data-th="Section">Solution</td>
+			<td data-th="Color">Pink</td>
+			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+The Solution is for feedback and trust: it explains the grading target and the method without
+becoming a second textbook.
+</p>
+
+<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution (pink)</strong></p>
+<p>
+Why this exists: it clarifies the target, the method, and the reporting format that the grader
+expects.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Common edits</th>
+			<th>Common failures</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Common edits">
+				<ul>
+					<li>Add a short formula line and unit reminder.</li>
+					<li>Note the rounding rule used by the checker.</li>
+				</ul>
+			</td>
+			<td data-th="Common failures">
+				<ul>
+					<li>Solution implies a different tolerance.</li>
+					<li>Units shown do not match the blank.</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Solution checklist</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 24%;">
+		<col style="width: 36%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Include</th>
+			<th>Why</th>
+			<th>One-sentence example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Include">Restate givens</td>
+			<td data-th="Why">Confirms the student is using the same data.</td>
+			<td data-th="One-sentence example">"Given c_stock and V_stock in &mu;M and &mu;L..."</td>
+		</tr>
+		<tr>
+			<td data-th="Include">Show the formula</td>
+			<td data-th="Why">Keeps the method transparent.</td>
+			<td data-th="One-sentence example">"Use c_final = c_stock * V_stock / V_final."</td>
+		</tr>
+		<tr>
+			<td data-th="Include">Show substitution</td>
+			<td data-th="Why">Connects values to the computed target.</td>
+			<td data-th="One-sentence example">"Substitute 10 * 2 / 40."</td>
+		</tr>
+		<tr>
+			<td data-th="Include">Final units/format</td>
+			<td data-th="Why">Matches what the checker expects.</td>
+			<td data-th="One-sentence example">"Report in &mu;M to two decimals."</td>
+		</tr>
+		<tr>
+			<td data-th="Include">Rounding rule</td>
+			<td data-th="Why">Prevents mismatch with tolerance.</td>
+			<td data-th="One-sentence example">"Use the same rounding as the answer checker."</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Debugging alignment</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>If grading expects X</th>
+			<th>Solution must show X</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="If grading expects X">Absolute tolerance of 0.05</td>
+			<td data-th="Solution must show X">A rounded value that matches that window.</td>
+		</tr>
+		<tr>
+			<td data-th="If grading expects X">Unitless numeric answer</td>
+			<td data-th="Solution must show X">Explicitly state the unit in text.</td>
+		</tr>
+		<tr>
+			<td data-th="If grading expects X">Specific sig-fig rule</td>
+			<td data-th="Solution must show X">The same sig-fig convention in the final line.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Helpful feedback hooks (optional)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 32%;">
+		<col style="width: 68%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Hook</th>
+			<th>Why it helps</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Hook">Short note about units</td>
+			<td data-th="Why it helps">Prevents the most common biology grading disputes.</td>
+		</tr>
+		<tr>
+			<td data-th="Hook">One-line check</td>
+			<td data-th="Why it helps">Confirms the answer scale before submission.</td>
+		</tr>
+	</tbody>
+</table>
