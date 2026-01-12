@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>LimitedComplex.pg</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>LimitedComplex.pg</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/Complex/LimitedComplex.html">https://openwebwork.github.io/pg-docs/sample-problems/Complex/LimitedComplex.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Complex Numbers, Limited Input</h1>
+				<p>This shows the capabilities of the LimitedComplex context.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="LimitedComplex.pg">LimitedComplex.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextLimitedComplex.html">contextLimitedComplex.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',            'PGML.pl',
+    'contextLimitedComplex.pl', 'PGcourse.pl'
+);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">DOCUMENT</span>();
+
+<span class="ͼb">loadMacros</span>(
+    <span class="ͼe">'PGstandard.pl'</span>,            <span class="ͼe">'PGML.pl'</span>,
+    <span class="ͼe">'contextLimitedComplex.pl'</span>, <span class="ͼe">'PGcourse.pl'</span>
+);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>This problems shows the capabilities of the <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextLimitedComplex.html">contextLimitedComplex.pl</a>
+macro, so it must be loaded.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context('LimitedComplex');
+
+$x0 = non_zero_random(-5, 5);
+$y0 = non_zero_random(-5, 5);
+$x1 = non_zero_random(-5, 5);
+$y1 = non_zero_random(-5, 5);
+
+$z0 = Complex($x0, $y0);
+$z1 = Complex($x1, $y1);
+
+$ans1 = $z0 + $z1;
+$ans2 = $z0 * $z1;
+
+$arg0 = atan($y0 / $x0) + ($x0 &gt; 0 ? ($y0 &gt; 0 ? 0 : 2 * pi) : pi);
+$arg1 = atan($y1 / $x1) + ($x1 &gt; 0 ? ($y1 &gt; 0 ? 0 : 2 * pi) : pi);
+$abs0 = sqrt($x0**2 + $y0**2);
+$abs1 = sqrt($x1**2 + $y1**2);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">Context</span>(<span class="ͼe">'LimitedComplex'</span>);
+
+<span class="ͼh">$x0</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+<span class="ͼh">$y0</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+<span class="ͼh">$x1</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+<span class="ͼh">$y1</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+
+<span class="ͼh">$z0</span> = <span class="ͼb">Complex</span>(<span class="ͼh">$x0</span>, <span class="ͼh">$y0</span>);
+<span class="ͼh">$z1</span> = <span class="ͼb">Complex</span>(<span class="ͼh">$x1</span>, <span class="ͼh">$y1</span>);
+
+<span class="ͼh">$ans1</span> = <span class="ͼh">$z0</span> + <span class="ͼh">$z1</span>;
+<span class="ͼh">$ans2</span> = <span class="ͼh">$z0</span> * <span class="ͼh">$z1</span>;
+
+<span class="ͼh">$arg0</span> = <span class="ͼb">atan</span>(<span class="ͼh">$y0</span> / <span class="ͼh">$x0</span>) + (<span class="ͼh">$x0</span> &gt; <span class="ͼd">0</span> ? (<span class="ͼh">$y0</span> &gt; <span class="ͼd">0</span> ? <span class="ͼd">0</span> : <span class="ͼd">2</span> * <span class="ͼh">pi</span>) : <span class="ͼh">pi</span>);
+<span class="ͼh">$arg1</span> = <span class="ͼb">atan</span>(<span class="ͼh">$y1</span> / <span class="ͼh">$x1</span>) + (<span class="ͼh">$x1</span> &gt; <span class="ͼd">0</span> ? (<span class="ͼh">$y1</span> &gt; <span class="ͼd">0</span> ? <span class="ͼd">0</span> : <span class="ͼd">2</span> * <span class="ͼh">pi</span>) : <span class="ͼh">pi</span>);
+<span class="ͼh">$abs0</span> = <span class="ͼb">sqrt</span>(<span class="ͼh">$x0</span>**<span class="ͼd">2</span> + <span class="ͼh">$y0</span>**<span class="ͼd">2</span>);
+<span class="ͼh">$abs1</span> = <span class="ͼb">sqrt</span>(<span class="ͼh">$x1</span>**<span class="ͼd">2</span> + <span class="ͼh">$y1</span>**<span class="ͼd">2</span>);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>Often when students are asked to perform operations with complex
+numbers, usually it is not desirable for them to be able to enter those
+operations in their answer. One way to achieve this is by using the
+<code>LimitedComplex</code> context via
+<code>Context('LimitedComplex')</code>. This context will only allow a
+simplified complex number in either Cartesian or polar form to be
+entered. Note that Perl operations on complex numbers are still allowed,
+but operations in a string passed to the <code>Compute</code> call or in
+a student answer are not.</p>
+<p>If you only want complex numbers to be entered in Cartesian form you
+can use <code>Context('LimitedComplex-cartesian')</code> and if you only
+want students to enter numbers in polar form use
+<code>Context('LimitedComplex-polar')</code>.</p>
+<p>The final computation determines the polar form of the answer for use
+in the solution. In the <code>LimitedComplex</code> context, most
+functions are disabled, so the computations are performed on the real
+and imaginary components directly.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+Let [`z_0 = [$z0]`] and [`z_1 = [$z1]`]. Find
+
+[`z_0 + z_1 =`] [___]{$ans1}
+
+[`z_0 z_1 =`] [___]{$ans2}
+
+Give the answers in simplified Cartesian or polar form.
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML</span>
+Let <span class="ͼn">[`</span><span class="ͼc">z_0 = </span><span class="ͼn">[</span><span class="ͼh">$z0</span><span class="ͼn">]</span><span class="ͼn">`]</span> and <span class="ͼn">[`</span><span class="ͼc">z_1 = </span><span class="ͼn">[</span><span class="ͼh">$z1</span><span class="ͼn">]</span><span class="ͼn">`]</span>. Find
+
+<span class="ͼn">[`</span><span class="ͼc">z_0 + z_1 =</span><span class="ͼn">`]</span> <span class="ͼc">[___]</span><span class="ͼn">{</span><span class="ͼh">$ans1</span><span class="ͼn">}</span>
+
+<span class="ͼn">[`</span><span class="ͼc">z_0 z_1 =</span><span class="ͼn">`]</span> <span class="ͼc">[___]</span><span class="ͼn">{</span><span class="ͼh">$ans2</span><span class="ͼn">}</span>
+
+Give the answers in simplified Cartesian or polar form.
+<span class="ͼb">END_PGML</span>
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+The first answer in Cartesian form is [`[$ans1]`].
+
+The second answer in polar form is
+[`[@ Round($abs0 * $abs1, 4) @] e^{[@ Round($arg0 + $arg1, 4) @]i}`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML_SOLUTION</span>
+The first answer in Cartesian form is <span class="ͼn">[`</span><span class="ͼn">[</span><span class="ͼh">$ans1</span><span class="ͼn">]</span><span class="ͼn">`]</span>.
+
+The second answer in polar form is
+<span class="ͼn">[`</span><span class="ͼn">[@</span> <span class="ͼb">Round</span>(<span class="ͼh">$abs0</span> * <span class="ͼh">$abs1</span>, <span class="ͼd">4</span>) <span class="ͼn">@]</span><span class="ͼc"> e^{</span><span class="ͼn">[@</span> <span class="ͼb">Round</span>(<span class="ͼh">$arg0</span> + <span class="ͼh">$arg1</span>, <span class="ͼd">4</span>) <span class="ͼn">@]</span><span class="ͼc">i}</span><span class="ͼn">`]</span>.
+<span class="ͼb">END_PGML_SOLUTION</span>
+
+<span class="ͼb">ENDDOCUMENT</span><span class="ͼo">();</span></pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						<p>Note that a solution should do better than is demonstrated here.
+Don’t just give the answers. Show how to find the answers.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

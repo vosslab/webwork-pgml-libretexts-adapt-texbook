@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Command Substitution in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Command Substitution in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/command-substitution-in-pgml">https://commons.libretexts.org/insight/command-substitution-in-pgml</a></div>
+	<div class="meta">Last updated at 03/31/2024 03:25 PM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/Command_substitution_-_PGML</span></p>
+<div class="prose !max-w-full"><p>You can perform a perl command by surrounding it with&nbsp;[@ ... @]&nbsp;and its output will be placed into the problem at that point.</p><p>&nbsp;</p><p>&nbsp;The sum of 1 and 2 is [@ 1+2 @].
+</p><p>&nbsp;</p><p>You can use this inside math mode as well, which can help make it easier to produce solutions (without having to have lots of variables that contain intermediate results).</p><p>&nbsp;</p><p>&nbsp;To solve for [: x + [$a] = [$b]x&nbsp;:], subtract the [:x:] from both sides
+ to get [: [$a] = [$b]x - x = ([$b] - 1) x = [@ $b-1 @] x:], and then
+ divide by [: [@ $b-1 @]&nbsp;:] to get [: x = [$a]/[@ $b-1 @] =
+ [@ Fraction($a,$b - 1)-&gt;reduce @]&nbsp;:].
+</p><p>&nbsp;</p><p>If the command produces output that is already formatted, follow it by a star.</p><p>&nbsp;</p><p>&nbsp;Enter your response: &nbsp;
+ [@ ANS(String("none")-&gt;cmp); ans_box(3,40) @]*
+</p><p>&nbsp;</p><p>Since PGML doesn't include a means of producing an answer box, the example above shows how you can do so using the PG commands directly.</p><p>&nbsp;</p><p>See the section on&nbsp;<a href="https://webwork.maa.org/wiki/Escaping_Substitutions_-_PGML" target="_blank" rel="noopener noreferrer">Escaping Substitutions</a>&nbsp;for more details about how the result will be interpreted when it is inserted into the output by PGML.</p></div>
+</body>
+</html>

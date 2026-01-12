@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DynamicGraphPolygon.pg</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>DynamicGraphPolygon.pg</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/DynamicGraphPolygon.html">https://openwebwork.github.io/pg-docs/sample-problems/Misc/DynamicGraphPolygon.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Shaded Polygon Graph</h1>
+				<p>Dynamically generated graph of a function</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="DynamicGraphPolygon.pg">DynamicGraphPolygon.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a></li>
+					</ul>
+				</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Algebra/DynamicGraph.html">
+Dynamic Graph						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">DOCUMENT</span>();
+
+<span class="ͼb">loadMacros</span>(<span class="ͼe">'PGstandard.pl'</span>, <span class="ͼe">'PGML.pl'</span>, <span class="ͼe">'PGtikz.pl'</span>, <span class="ͼe">'PGcourse.pl'</span>);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The dynamic graphs are generated with <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/PGtikz.html">PGtikz.pl</a>,
+so load that macro.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="$plot_setup = qq/
+\tikzset{&gt;={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-5, 5) rectangle (5, -5);
+\draw[lightgray, dashed] (-5, -5) grid (5, 5);
+\draw[-&gt;] (-5, 0) -- (5, 0) node[below left] {\(x\)};
+\foreach \x in {-4, ..., -1, 1, 2, ..., 4} \draw (\x, -4.5) node {\(\x\)};
+\draw[-&gt;] (0, -5) -- (0, 5) node[below right] {\(y\)};
+\foreach \y in {-4, ..., -1, 1, 2, ..., 4} \draw (-4.5, \y) node {\(\y\)};
+/;
+
+# The vertices of the triangle chosen randomly will be ($x0, $y0), ($x1, $y0)
+# and ($x0, $y1).
+$x0 = random(-3, -1);
+$x1 = random( 1,  3);
+$y0 = random(-3, -1);
+$y1 = random( 1,  3);
+
+$graph1 = createTikZImage();
+$graph1-&gt;tikzLibraries('arrows.meta');
+$graph1-&gt;BEGIN_TIKZ
+$plot_setup;
+\filldraw[very thick, fill = LightGreen, draw = DarkGreen, opacity = 0.5]
+    ($x0, $y0) -- ($x1, $y0) -- ($x0, $y1) -- cycle;
+END_TIKZ
+
+$graph1AltText =
+    &quot;A filled triangle with vertices at ($x0, $y0), ($x1, $y0), and ($x0, $y1).&quot;;
+
+# A plot of 1+sqrt(x) and shade underneath the graph.
+
+$graph2 = createTikZImage();
+$graph2-&gt;tikzLibraries('arrows.meta');
+$graph2-&gt;BEGIN_TIKZ
+$plot_setup;
+\filldraw[fill = LightBlue, opacity = 0.5, draw = blue]
+    (1,0) -- plot[domain = 1:4] (\x, {1 + sqrt(\x)}) -- (4,0) -- cycle;
+\draw[very thick, DarkBlue]
+    plot [samples = 100, domain = 0:5, smooth] (\x, {1 + sqrt(\x)});
+END_TIKZ
+
+$graph2AltText =
+    'The graph of a curve that starts at (0, 1) and increases to the right, '
+    . 'increasing sharply at first, and less so as it continues to the right. '
+    . 'The region above the x-axis and below the curve between '
+    . 'x = 1 and x = 4 is filled.';
+
+# A circle of radius 3 centered at ($x, $y).
+$x = random(-2, 2);
+$y = random(-2, 2);
+
+$graph3 = createTikZImage();
+$graph3-&gt;tikzLibraries('arrows.meta');
+$graph3-&gt;BEGIN_TIKZ
+$plot_setup;
+\filldraw[very thick, fill = LightSalmon, opacity = 0.5, draw = DarkOrange]
+    ($x, $y) circle[radius = 3];
+END_TIKZ
+
+$graph3AltText = &quot;A circle of radius 3 centered at ($x, $y).&quot;;
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼh">$plot_setup</span> = <span class="ͼe">qq</span><span class="ͼe">/</span>
+<span class="ͼe">\tikzset{&gt;={Stealth[scale = 1.5]}}</span>
+<span class="ͼe">\filldraw[</span>
+<span class="ͼe">    draw = LightBlue,</span>
+<span class="ͼe">    fill = white,</span>
+<span class="ͼe">    rounded corners = 10pt,</span>
+<span class="ͼe">    thick,</span>
+<span class="ͼe">    use as bounding box</span>
+<span class="ͼe">] (-5, 5) rectangle (5, -5);</span>
+<span class="ͼe">\draw[lightgray, dashed] (-5, -5) grid (5, 5);</span>
+<span class="ͼe">\draw[-&gt;] (-5, 0) -- (5, 0) node[below left] {\(x\)};</span>
+<span class="ͼe">\foreach \x in {-4, ..., -1, 1, 2, ..., 4} \draw (\x, -4.5) node {\(\x\)};</span>
+<span class="ͼe">\draw[-&gt;] (0, -5) -- (0, 5) node[below right] {\(y\)};</span>
+<span class="ͼe">\foreach \y in {-4, ..., -1, 1, 2, ..., 4} \draw (-4.5, \y) node {\(\y\)};</span>
+<span class="ͼe">/</span>;
+
+<span class="ͼo"># The vertices of the triangle chosen randomly will be ($x0, $y0), ($x1, $y0)</span>
+<span class="ͼo"># and ($x0, $y1).</span>
+<span class="ͼh">$x0</span> = <span class="ͼb">random</span>(-<span class="ͼd">3</span>, -<span class="ͼd">1</span>);
+<span class="ͼh">$x1</span> = <span class="ͼb">random</span>( <span class="ͼd">1</span>,  <span class="ͼd">3</span>);
+<span class="ͼh">$y0</span> = <span class="ͼb">random</span>(-<span class="ͼd">3</span>, -<span class="ͼd">1</span>);
+<span class="ͼh">$y1</span> = <span class="ͼb">random</span>( <span class="ͼd">1</span>,  <span class="ͼd">3</span>);
+
+<span class="ͼh">$graph1</span> = <span class="ͼb">createTikZImage</span>();
+<span class="ͼh">$graph1</span>-&gt;<span class="ͼg">tikzLibraries</span>(<span class="ͼe">'arrows.meta'</span>);
+<span class="ͼh">$graph1</span>-&gt;<span class="ͼe">BEGIN_TIKZ</span>
+<span class="ͼh">$plot_setup</span><span class="ͼe">;</span>
+<span class="ͼe">\filldraw[very thick, fill = LightGreen, draw = DarkGreen, opacity = 0.5]</span>
+<span class="ͼe">    (</span><span class="ͼh">$x0</span><span class="ͼe">, </span><span class="ͼh">$y0</span><span class="ͼe">) -- (</span><span class="ͼh">$x1</span><span class="ͼe">, </span><span class="ͼh">$y0</span><span class="ͼe">) -- (</span><span class="ͼh">$x0</span><span class="ͼe">, </span><span class="ͼh">$y1</span><span class="ͼe">) -- cycle;</span>
+<span class="ͼe">END_TIKZ</span>
+
+<span class="ͼh">$graph1AltText</span> =
+    <span class="ͼe">"A filled triangle with vertices at (</span><span class="ͼh">$x0</span><span class="ͼe">, </span><span class="ͼh">$y0</span><span class="ͼe">), (</span><span class="ͼh">$x1</span><span class="ͼe">, </span><span class="ͼh">$y0</span><span class="ͼe">), and (</span><span class="ͼh">$x0</span><span class="ͼe">, </span><span class="ͼh">$y1</span><span class="ͼe">)."</span>;
+
+<span class="ͼo"># A plot of 1+sqrt(x) and shade underneath the graph.</span>
+
+<span class="ͼh">$graph2</span> = <span class="ͼb">createTikZImage</span>();
+<span class="ͼh">$graph2</span>-&gt;<span class="ͼg">tikzLibraries</span>(<span class="ͼe">'arrows.meta'</span>);
+<span class="ͼh">$graph2</span>-&gt;<span class="ͼe">BEGIN_TIKZ</span>
+<span class="ͼh">$plot_setup</span><span class="ͼe">;</span>
+<span class="ͼe">\filldraw[fill = LightBlue, opacity = 0.5, draw = blue]</span>
+<span class="ͼe">    (1,0) -- plot[domain = 1:4] (\x, {1 + sqrt(\x)}) -- (4,0) -- cycle;</span>
+<span class="ͼe">\draw[very thick, DarkBlue]</span>
+<span class="ͼe">    plot [samples = 100, domain = 0:5, smooth] (\x, {1 + sqrt(\x)});</span>
+<span class="ͼe">END_TIKZ</span>
+
+<span class="ͼh">$graph2AltText</span> =
+    <span class="ͼe">'The graph of a curve that starts at (0, 1) and increases to the right, '</span>
+    . <span class="ͼe">'increasing sharply at first, and less so as it continues to the right. '</span>
+    . <span class="ͼe">'The region above the x-axis and below the curve between '</span>
+    . <span class="ͼe">'x = 1 and x = 4 is filled.'</span>;
+
+<span class="ͼo"># A circle of radius 3 centered at ($x, $y).</span>
+<span class="ͼh">$x</span> = <span class="ͼb">random</span>(-<span class="ͼd">2</span>, <span class="ͼd">2</span>);
+<span class="ͼh">$y</span> = <span class="ͼb">random</span>(-<span class="ͼd">2</span>, <span class="ͼd">2</span>);
+
+<span class="ͼh">$graph3</span> = <span class="ͼb">createTikZImage</span>();
+<span class="ͼh">$graph3</span>-&gt;<span class="ͼg">tikzLibraries</span>(<span class="ͼe">'arrows.meta'</span>);
+<span class="ͼh">$graph3</span>-&gt;<span class="ͼe">BEGIN_TIKZ</span>
+<span class="ͼh">$plot_setup</span><span class="ͼe">;</span>
+<span class="ͼe">\filldraw[very thick, fill = LightSalmon, opacity = 0.5, draw = DarkOrange]</span>
+<span class="ͼe">    (</span><span class="ͼh">$x</span><span class="ͼe">, </span><span class="ͼh">$y</span><span class="ͼe">) circle[radius = 3];</span>
+<span class="ͼe">END_TIKZ</span>
+
+<span class="ͼh">$graph3AltText</span> = <span class="ͼe">"A circle of radius 3 centered at (</span><span class="ͼh">$x</span><span class="ͼe">, </span><span class="ͼh">$y</span><span class="ͼe">)."</span>;
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>See <a href="https://openwebwork.github.io/pg-docs/sample-problems/Algebra/DynamicGraph.html">Dynamic
+Graph</a> for the basics of using TikZ.</p>
+<p>Since three plots are created with the same setup, this common setup
+is defined in the Perl string <code>$plot_setup</code>.</p>
+<p>Each of the plots uses the <code>\filldraw</code> command. Options
+for this are</p>
+<ul>
+<li><code>fill</code>: the color of the fill region</li>
+<li><code>draw</code>: the color of the boundary.</li>
+<li><code>very thick</code>: the thickness of the boundary</li>
+<li><code>opacity</code>: the opacity (between 0 and 1) of the fill
+region.</li>
+</ul>
+<p>In the polygon and region under the curve, the <code>draw</code>
+method uses the vertices (or the <code>plot</code> command which uses
+the curve itself) and ends with <code>cycle</code> indicating that the
+region is closed.</p>
+<p>The colors are defined in the LaTeX <a href="https://mirrors.mit.edu/CTAN/macros/latex/contrib/xcolor/xcolor.pdf">xcolor
+package</a></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+[![$graph1AltText]!]{$graph1}{400}
+
+[![$graph2AltText]!]{$graph2}{400}
+
+[![$graph3AltText]!]{$graph3}{400}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML</span>
+<span class="ͼn">[!</span><span class="ͼn">[</span><span class="ͼh">$graph1AltText</span><span class="ͼn">]</span><span class="ͼn">!]</span><span class="ͼn">{</span><span class="ͼh">$graph1</span><span class="ͼn">}</span><span class="ͼn">{</span><span class="ͼd">400</span><span class="ͼn">}</span>
+
+<span class="ͼn">[!</span><span class="ͼn">[</span><span class="ͼh">$graph2AltText</span><span class="ͼn">]</span><span class="ͼn">!]</span><span class="ͼn">{</span><span class="ͼh">$graph2</span><span class="ͼn">}</span><span class="ͼn">{</span><span class="ͼd">400</span><span class="ͼn">}</span>
+
+<span class="ͼn">[!</span><span class="ͼn">[</span><span class="ͼh">$graph3AltText</span><span class="ͼn">]</span><span class="ͼn">!]</span><span class="ͼn">{</span><span class="ͼh">$graph3</span><span class="ͼn">}</span><span class="ͼn">{</span><span class="ͼd">400</span><span class="ͼn">}</span>
+<span class="ͼb">END_PGML</span>
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>Note that the TikZ graphs in <code>$graph1</code>,
+<code>$graph2</code> and <code>$graph3</code> are inserted in the
+problem text via the <code>PGML</code> image syntax with their
+corresponding alternate texts for screen reader users.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML_SOLUTION</span>
+Solution explanation goes here.
+<span class="ͼb">END_PGML_SOLUTION</span>
+
+<span class="ͼb">ENDDOCUMENT</span><span class="ͼo">();</span></pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Variable Substitution in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Variable Substitution in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/variable-substitution">https://commons.libretexts.org/insight/variable-substitution</a></div>
+	<div class="meta">Last updated at 06/04/2024 02:02 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/Introduction_to_PGML</span></p>
+<div class="prose !max-w-full"><p>To insert the value of a variable into your PGML text, enclose the variable name with&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[...]</code>. For example, if you have a variable&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">$a</code>&nbsp;in your problem, then you can use</p><pre class="ql-syntax" spellcheck="false"> BEGIN_PGML
+ Suppose that a train leaves Chicago traveling [$a] miles per hour due south.
+ END_PGML
+</pre><p>You can access array or hash entries similarly, e.g.,&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[$b[0]]</code>&nbsp;or&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[$c{neg}]</code>&nbsp;or&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[$d-&gt;{period}]</code>.</p><p>Note that a variable that holds a&nbsp;<a href="https://webwork.maa.org/wiki/Category:MathObjects" rel="noopener noreferrer" style="color: rgb(6, 69, 173);" target="_blank">MathObject</a>&nbsp;can produce either a TeX string or a calculator-notation string; which one it produces depends on the context in which it is used. If it is inserted inside of TeX math delimiters (e.g., inside&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[`...`]</code>), it will produce its TeX form, while if it is inserted inside calculator delimiters (e.g.,&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">[: ...&nbsp;:]</code>), or not inside any delimiters, then it produces calculator-style notation. So if&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">$f = Formula("(x+1)/(x-1)")</code>, then</p><pre class="ql-syntax" spellcheck="false"> Suppose [`f(x) = [$f]`].
+</pre><p>and</p><pre class="ql-syntax" spellcheck="false"> Suppose [:f(x) = [$f]:].
+</pre><p>will both produce properly formatted mathematical output with no special handling needed on your part. (Note that this is in sharp contrast to the traditional&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">BEGIN_TEXT/END_TEXT</code>&nbsp;approach, which requires you to handle the TeX versions specially.)</p><p><br></p><p>This is for substituting a previously defined variable into PGML, inside or outside an existing expression.</p><p><br></p><p>The format is [$variable].E.G.[`f(x) =[$f]`]. It supports the following options:</p><p><br></p><ul><li>[$var]* -Do note scape HTML special characters.</li><li>[$var]**-Substitute variable and process the result as PGML.</li><li>[$var]***-Substitute the variable and process the result as LaTeX.</li></ul><p><br></p><p>See <a href="https://commons.libretexts.org/insight/command-substitution-in-pgml" rel="noopener noreferrer" style="background-color: rgb(241, 245, 249);" target="_blank">Command Substitution in PGML</a> for contextual mathematics in PGML.</p></div>
+</body>
+</html>

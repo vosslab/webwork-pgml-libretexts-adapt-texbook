@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PGLabs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>PGLabs</h1>
+	<div class="source">Source: <a href="https://webwork.maa.org/wiki/PGLabs">https://webwork.maa.org/wiki/PGLabs</a></div>
+<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>On-line labs for rendering of PG code.  These two 
+labs allow you to experiment with PG syntax.
+</p>
+<h3><span class="mw-headline" id="Test_your_PG_code_fragments">Test your PG code fragments</span></h3>
+<p>Click on this link to go to PG calculator:
+</p><p><a rel="nofollow" class="external free" href="https://demo.webwork.rochester.edu/webwork2/wikiExamples/MathObjectsLabs2/2/?login_practice_user=true">https://demo.webwork.rochester.edu/webwork2/wikiExamples/MathObjectsLabs2/2/?login_practice_user=true</a> 
+</p><p>For example you could enter the code fragment below into the calculator:
+</p>
+<pre>   Context("Numeric");
+   $f = Compute("x^2-3x+5");
+   $fp = $f-&gt;D; # calculate the derivative
+   checkAnswer($fp, "2x-3");      # the first argument is a MathObject, the second the student's answer string
+</pre>
+<ul><li>On the last line <code>TEXT</code> prints the results of (reading from left to right)
+<ul><li>Constructing the AnswerEvaluator for the contents of the Formula <code>$fp</code></li>
+<li>Evaluating the string <code>"2x-3"</code> using this AnswerEvaluator to produce an AnswerHash</li>
+<li>Recursively representing the contents of the AnswerHash in a nice table.</li></ul></li></ul>
+<p><code>checkAnswer()</code> inserts its arguments into a more complicated command.  e.g. last line above becomes:
+</p>
+<pre>   TEXT($fp-&gt;cmp-&gt;evaluate("2x-3")-&gt;pretty_print);
+</pre>
+<h3><span class="mw-headline" id="PGML_markup_lab">PGML markup lab</span></h3>
+<ul><li>Experiment with the new PG markup language syntax (PGML) which simplifies the graphical layout of the mathematics question.</li></ul>
+<p><a rel="nofollow" class="external free" href="https://courses1.webwork.maa.org/webwork2/cervone_course/PGML?login_practice_user=true">https://courses1.webwork.maa.org/webwork2/cervone_course/PGML?login_practice_user=true</a>
+</p><p>Several dozen questions illustrating the use of PGML:
+</p><p><a rel="nofollow" class="external free" href="https://courses1.webwork.maa.org/webwork2/cervone_course/PGML-examples/?login_practice_user=true">https://courses1.webwork.maa.org/webwork2/cervone_course/PGML-examples/?login_practice_user=true</a>
+</p><p>To use these commands in your own courses you will need to include <code>PGML.pl</code> in your <code>loadMacros()</code> segment.  Start the display of your problem text with <code>BEGIN_PGML</code> which expands to
+</p>
+<pre>   TEXT(PGML::Format2(&lt;&lt;'END_PGML'));
+</pre>
+<p>and end with <code>END_PGML</code>.  These are used instead of the usual  <code>BEGIN_TEXT/END_TEXT</code> construction.  You can use both <code>BEGIN_TEXT/END_TEXT</code> and <code>BEGIN_PGML/END_PGML</code> in the same problem, if you wish.  See <a href="/wiki/SampleProblem4" title="SampleProblem4">SampleProblem4</a> for an example (with explanation) that uses PGML.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260112190049
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [no‐toc‐conversion]
+CPU time usage: 0.008 seconds
+Real time usage: 0.018 seconds
+Preprocessor visited node count: 6/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key mediawiki_new:pcache:idhash:11-0!canonical and timestamp 20260112190049 and revision id 18403. Rendering was triggered because: page-view
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.openwebwork.org/index.php?title=PGLabs&amp;oldid=18403">https://wiki.openwebwork.org/index.php?title=PGLabs&amp;oldid=18403</a>"</div></div>
+</body>
+</html>

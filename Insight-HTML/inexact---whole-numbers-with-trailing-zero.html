@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Whole numbers with Trailing Zero in Inexact Variables</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Whole numbers with Trailing Zero in Inexact Variables</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/inexact---whole-numbers-with-trailing-zero">https://commons.libretexts.org/insight/inexact---whole-numbers-with-trailing-zero</a></div>
+	<div class="meta">Last updated at 07/07/2024 03:24 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">Inexact - Whole numbers with trailing zero</span></p>
+<div class="prose !max-w-full"><p>This is slightly tricky. If you want to generate a random number that has trailing zeros in the whole number position like 25000 and have those zeros be significant, it's probably better to generate scientific notation. However, if you need them in decimal form for display purposes, you can do the following:</p><p># generate random number: 24000, 25000, ...., 38000, 39000&nbsp;</p><p>$randomNumber = random(24000, 39000, 1000);</p><p># force a string in decimal format with a trailing decimal point</p><p>$wholeNumberString = sprintf('%0f', $randomNumber) . '.';</p><p>Notice the appending of a decimal point <i>after</i> the sprintf function. This would actually work without using the sprintf function, too. I have included it just in case.</p></div>
+</body>
+</html>

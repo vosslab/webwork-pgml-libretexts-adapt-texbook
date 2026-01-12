@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tagging Problems</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Tagging Problems</h1>
+	<div class="source">Source: <a href="https://webwork.maa.org/wiki/Tagging_Problems">https://webwork.maa.org/wiki/Tagging_Problems</a></div>
+<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>The OPL uses information embedded in WeBWorK
+problems as comments.  Although the comments can appear anywhere in the file,
+best practice is to insert them at the top of the file.
+</p>
+<h2><span class="mw-headline" id="Example">Example</span></h2>
+<p>A typical set of tags are:
+</p>
+<pre>## DBsubject(Calculus - single variable)
+## DBchapter(Limits and continuity)
+## DBsection(Evaluating limits - factoring)
+## Level(2)
+## KEYWORDS('limits', 'factoring', 'rational function')
+## TitleText1(Calculus)
+## EditionText1(5e)
+## AuthorText1(Stewart)
+## Section1(2.9)
+## Problem1(22)
+## Author(Jeff Holt)
+## Institution(UVA)
+## Language(en)
+</pre>
+<p>Each line is a tag.  The structure of a tag must be:
+</p>
+<pre>## Tagname(tag value)
+</pre>
+<p>starting at the first character of the line, one tag per line.  The
+only exception is <code>Keywords</code> where a comma-separated list
+of values is allowed.  Quotation marks are also not required, <i>except</i> for keywords.
+</p>
+<h2><span class="mw-headline" id="Required_Tags">Required Tags</span></h2>
+<p>The only <i>required</i> tags
+are <code>DBsubject</code>, <code>DBchapter</code>,
+and <code>DBsection</code>.  
+These serve to place the problem in 
+the <a rel="nofollow" class="external text" href="https://raw.githubusercontent.com/openwebwork/webwork-open-problem-library/main/OpenProblemLibrary/Taxonomy2">hierarchical framework</a> of the database.  They are essentially a generic textbook, chapter, and section for finding the problem.
+</p><p>Problems should also have a <code>Level</code>.  Levels are described in <a href="/wiki/Problem_Levels" title="Problem Levels">Problem Levels</a>.
+</p><p>By following the link to the hierarchical framework, you can see the
+values currently in use.  If you are tagging problems which don't
+seem to fit any of the categories which already present, use values
+which seem appropriate, and then send the problems
+to <a rel="nofollow" class="external text" href="https://www.citytech.cuny.edu/faculty/KParker">K. Andrew Parker</a> as soon as
+you can so that the new values can be incorporated into the official
+listing linked to above.
+</p>
+<h2><span class="mw-headline" id="Optional_Tags">Optional Tags</span></h2>
+<p>Other tags have the following meanings:
+</p>
+<ul>
+<li> <code>MO</code>: value is 1 if the problem uses Mathobjects for answer checking, otherwise omit, or set to 0
+</li><li> <code>Static</code>: value is 1 if the problem is static, i.e., does not change based on random parameters
+</li><li> <code>KEYWORDS</code>: a list of keywords to facilitate searching.
+  Keywords themselves should not contain commas or quotation marks.
+  We maintain a list of <a rel="nofollow" class="external text" href="http://hobbes.la.asu.edu/Holt/keywords.html">all keywords currently in use</a>.  If you have a keyword which seems
+  to deserve a quotation mark, such as <code>L'Hopital's rule</code>,
+  just omit the quotation marks so it becomes <code>LHopitals rule</code>.
+</li><li><code>TitleText1</code>, <code>EditionText1</code>, 
+  <code>AuthorText1</code>, <code>Section1</code>,
+  and <code>Problem1</code>.  This is a cross-reference to particular
+  problem(s) in a textbook.  The value of <code>Problem1</code> can be
+  a space separated list of values, as in <code>Problem1("2 3
+  4")</code>.
+
+  If you want to cross-reference a WeBWorK problem to more than one
+  text, then use <code>TitleText1</code> etc. for the first
+  text, <code>TitleText2</code> etc. for the second text, and so on.
+  In this way, a single <code>.pg</code> file can be cross-referenced to many texts.
+
+</li><li> <code>Language</code>: code from <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/ISO_639-1">ISO 639.1</a> for the language in which the problem is written (English, French, German, etc.)  If left out, the default is English.
+
+</li><li><code>Author</code>: name of the problem's author, if you are
+  certain of who wrote the problem.
+</li><li><code>Institution</code>: name of the institution where the
+  problem was written, but only if you are certain of where it was
+  written.
+</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260111230037
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [no‐toc‐conversion]
+CPU time usage: 0.009 seconds
+Real time usage: 0.010 seconds
+Preprocessor visited node count: 20/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 393/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key mediawiki_new:pcache:idhash:26-0!canonical and timestamp 20260111230037 and revision id 22840. Rendering was triggered because: page-view
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.openwebwork.org/index.php?title=Tagging_Problems&amp;oldid=22840">https://wiki.openwebwork.org/index.php?title=Tagging_Problems&amp;oldid=22840</a>"</div></div>
+</body>
+</html>

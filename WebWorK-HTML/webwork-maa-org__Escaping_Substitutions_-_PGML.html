@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Escaping Substitutions - PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Escaping Substitutions - PGML</h1>
+	<div class="source">Source: <a href="https://webwork.maa.org/wiki/Escaping_Substitutions_-_PGML">https://webwork.maa.org/wiki/Escaping_Substitutions_-_PGML</a></div>
+<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Escaped_Substitutions"><span class="tocnumber">1</span> <span class="toctext">Escaped Substitutions</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Direct_Substitutions"><span class="tocnumber">2</span> <span class="toctext">Direct Substitutions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#PGML-Processed_Substitutions"><span class="tocnumber">3</span> <span class="toctext">PGML-Processed Substitutions</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Escaped_Substitutions">Escaped Substitutions</span></h2>
+<p>When a variable or command is substituted into a problem in PGML, it will be inserted so that all the characters in the substitution will appear in the problem (special HTML and TeX chacaters and PGML command characters included).  For example:
+</p>
+<pre> $a = "[:x:]", $b = "&lt;b&gt;bold&lt;/b&gt;"; $c = "25%";
+ BEGIN_PGML
+  * [$a] (PGML specials not processed)
+  * [$b] (HTML specials display verbatim)
+  * [$c] (TeX specials not processed)
+ END_PGML
+</pre>
+<p>should produce a list like the following
+</p>
+<pre> * [:x:] (PGML specials not processed)
+ * &lt;b&gt;bold&lt;/b&gt; (HTML specials display verbatim)
+ * 25% (TeX specials not processed)
+</pre>
+<p>in both screen and hardcopy output.
+</p>
+<h2><span class="mw-headline" id="Direct_Substitutions">Direct Substitutions</span></h2>
+<p>You can prevent the special characters from being escaped by adding a star after the substitution.  This will cause the value of the variable to be inserted into the output directly with no additional processing.
+</p>
+<pre> BEGIN_PGML
+ Escaped: [$BSMALL] not small [$ESMALL]  
+ Verbatim: [$BSMALL]* small [$ESMALL]*
+ END_PGML
+</pre>
+<p>should produce
+</p>
+<pre> Escaped: &lt;SMALL&gt; not small &lt;/SMALL&gt;
+ Verbatim: <small> small </small>
+</pre>
+<p>Note that the requirements for hardcopy output differ from those for screen output, so you need to be sure that your values are appropriate for the current output mode.  This is most useful for the variables predefined by WeBWorK, like the <code>$BSMALL</code> and <code>$ESMALL</code> values in the example above, as these are set properly according to the active display mode.
+</p>
+<h2><span class="mw-headline" id="PGML-Processed_Substitutions">PGML-Processed Substitutions</span></h2>
+<p>Sometimes the contents of a variable may contain commands that you want to have processed by PGML after the value is inserted into the text.  You can request that PGML interprets the contents of the variable by putting <i>two</i> stars after it rather than just one.
+</p>
+<pre> $pgml = "more PGML math: [:x:], and some *bold* text";
+ BEGIN_PGML
+ An insertion with [$pgml]** in it.
+ END_PGML
+</pre>
+<p>will generate
+</p>
+<pre> An insertion with more PGML math: <i>x</i>, and some <b>bold</b> text in it.
+</pre>
+<p>With no stars (or one star), you would get
+</p>
+<pre> An insertion with more PGML math: [:x:], and some *bold* text in it.
+</pre>
+<!-- 
+NewPP limit report
+Cached time: 20260111190752
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc, no‐toc‐conversion]
+CPU time usage: 0.006 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 9/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key mediawiki_new:pcache:idhash:3429-0!canonical and timestamp 20260111190752 and revision id 16453. Rendering was triggered because: page-view
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.openwebwork.org/index.php?title=Escaping_Substitutions_-_PGML&amp;oldid=16453">https://wiki.openwebwork.org/index.php?title=Escaping_Substitutions_-_PGML&amp;oldid=16453</a>"</div></div>
+</body>
+</html>

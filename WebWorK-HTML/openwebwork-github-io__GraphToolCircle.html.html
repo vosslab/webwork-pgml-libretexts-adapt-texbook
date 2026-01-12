@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>GraphToolCircle.pg</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>GraphToolCircle.pg</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCircle.html">https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCircle.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Graph Tool, plotting a circle</h1>
+				<p>Interactive graphing tool problem that asks the student to plot a circle.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="GraphToolCircle.pg">GraphToolCircle.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/parserGraphTool.html">parserGraphTool.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserGraphTool.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">DOCUMENT</span>();
+
+<span class="ͼb">loadMacros</span>(<span class="ͼe">'PGstandard.pl'</span>, <span class="ͼe">'PGML.pl'</span>, <span class="ͼe">'parserGraphTool.pl'</span>, <span class="ͼe">'PGcourse.pl'</span>);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>This example shows how to get student input in the form of a graph (a
+circle) by using interactive graphing tools. Load the <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/parserGraphTool.html">parserGraphTool.pl</a>
+macro for this.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="$h = non_zero_random(-5, 5);
+$k = non_zero_random(-5, 5);
+$r = random(1, 4);
+
+Context()-&gt;variables-&gt;add('y' =&gt; 'Real');
+$circle_eq_lhs = Formula(&quot;(x-$h)^2 + (y-$k)^2&quot;)-&gt;reduce;
+
+$gt = GraphTool(&quot;{circle, solid, ($h, $k), ($h + $r, $k)}&quot;)
+    -&gt;with(bBox =&gt; [ -11, 11, 11, -11 ]);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼh">$h</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+<span class="ͼh">$k</span> = <span class="ͼb">non_zero_random</span>(-<span class="ͼd">5</span>, <span class="ͼd">5</span>);
+<span class="ͼh">$r</span> = <span class="ͼb">random</span>(<span class="ͼd">1</span>, <span class="ͼd">4</span>);
+
+<span class="ͼb">Context</span>()-&gt;<span class="ͼg">variables</span>-&gt;<span class="ͼg">add</span>(<span class="ͼe">'y'</span> =&gt; <span class="ͼe">'Real'</span>);
+<span class="ͼh">$circle_eq_lhs</span> = <span class="ͼb">Formula</span>(<span class="ͼe">"(x-</span><span class="ͼh">$h</span><span class="ͼe">)^2 + (y-</span><span class="ͼh">$k</span><span class="ͼe">)^2"</span>)-&gt;<span class="ͼg">reduce</span>;
+
+<span class="ͼh">$gt</span> = <span class="ͼb">GraphTool</span>(<span class="ͼe">"{circle, solid, (</span><span class="ͼh">$h</span><span class="ͼe">, </span><span class="ͼh">$k</span><span class="ͼe">), (</span><span class="ͼh">$h</span><span class="ͼe"> + </span><span class="ͼh">$r</span><span class="ͼe">, </span><span class="ͼh">$k</span><span class="ͼe">)}"</span>)
+    -&gt;<span class="ͼg">with</span>(<span class="ͼe">bBox</span> =&gt; [ -<span class="ͼd">11</span>, <span class="ͼd">11</span>, <span class="ͼd">11</span>, -<span class="ͼd">11</span> ]);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>The variables <code>$h</code>, <code>$k</code> and <code>$r</code>
+randomly pick a center and radius of the circle.</p>
+<p>The lines</p>
+<div class="sourceCode" id="equation"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="equation-1"><a href="#equation-1" aria-hidden="true" tabindex="-1"></a>Context()-&gt;variables-&gt;add(<span class="ot">y </span>=&gt; <span class="ot">'</span><span class="ss">Real</span><span class="ot">'</span>);</span>
+<span id="equation-2"><a href="#equation-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$circle_eq_lhs</span> = Formula(<span class="ot">"</span><span class="st">(x - </span><span class="dt">$h</span><span class="st">)^2 + (y - </span><span class="dt">$k</span><span class="st">)^2</span><span class="ot">"</span>)-&gt;reduce;</span></code></pre></div>
+<p>define the equation of the circle that is shown in the problem and
+solution.</p>
+<p>The <code>GraphTool</code> method creates the graph tool object. The
+only argument is the correct answer. This is a string that contains a
+list of objects that the student will be expected to graph. Each object
+is a brace delimited list of the attributes of the object. The first
+attribute in each list is the type of object to be graphed,
+<code>circle</code> in this case. What the remaining attributes are
+depend on the type. For a circle the second attribute is whether the
+object is to be <code>solid</code> or <code>dashed</code>, the third
+attribute is the center of the circle, and the fourth attribute is a
+point on the circle.</p>
+<p>The <code>-&gt;with</code> method is then used to set options for the
+<code>GraphTool</code> object. In this case the options that are set
+are:</p>
+<ul>
+<li><code>bBox</code>: This is an array reference of four values xmin,
+ymax, xmax, ymin indicating the upper left and lower right corners of
+the visible graph.</li>
+</ul>
+<p>There is a default checker for the GraphTool that will mark correct a
+student answer that ‘looks’ like the correct one. This means that if a
+student adds two circles that are equivalent with one solid and one
+dashed, that if the solid one is plotted second, credit will be given.
+For simple graphs, the default should be sufficient. See <a href="https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCustomChecker.html">Graph
+Tool, custom checker</a> for an example of how to use a custom
+checker.</p>
+<p>For more details, see <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/graph/parserGraphTool.html">parserGraphTool.pl</a>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+Graph the circle given by the following equation.
+
+    [`[$circle_eq_lhs] = [$r ** 2]`]
+
+[_]{$gt}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML</span>
+Graph the circle given by the following equation.
+
+    <span class="ͼn">[`</span><span class="ͼn">[</span><span class="ͼh">$circle_eq_lhs</span><span class="ͼn">]</span><span class="ͼc"> = </span><span class="ͼn">[</span><span class="ͼh">$r</span> ** <span class="ͼd">2</span><span class="ͼn">]</span><span class="ͼn">`]</span>
+
+<span class="ͼc">[_]</span><span class="ͼn">{</span><span class="ͼh">$gt</span><span class="ͼn">}</span>
+<span class="ͼb">END_PGML</span>
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>This asks the student to graph the circle given by the equation. The
+code <code>[_]{$gt}</code> inserts the GraphTool.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+The equation of the circle of the form:
+
+    [`[$circle_eq_lhs] = [$r ** 2]`]
+
+has a center at [`([$h],[$k])`] and radius [$r].  To enter the graph, click the
+circle tool, then click the center at [`([$h],[$k])`] and then click a second
+point that is [$r] units from the center.  This is easiest going left, right, up
+or down from the center.
+
+The solution is
+[! the graph of a circle centered at ([$h], [$k]) of radius [$r] !]{$gt}
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="ͼb">BEGIN_PGML_SOLUTION</span>
+The equation of the circle of the form:
+
+    <span class="ͼn">[`</span><span class="ͼn">[</span><span class="ͼh">$circle_eq_lhs</span><span class="ͼn">]</span><span class="ͼc"> = </span><span class="ͼn">[</span><span class="ͼh">$r</span> ** <span class="ͼd">2</span><span class="ͼn">]</span><span class="ͼn">`]</span>
+
+has a center at <span class="ͼn">[`</span><span class="ͼc">(</span><span class="ͼn">[</span><span class="ͼh">$h</span><span class="ͼn">]</span><span class="ͼc">,</span><span class="ͼn">[</span><span class="ͼh">$k</span><span class="ͼn">]</span><span class="ͼc">)</span><span class="ͼn">`]</span> and radius <span class="ͼn">[</span><span class="ͼh">$r</span><span class="ͼn">]</span>.  To enter the graph, click the
+circle tool, then click the center at <span class="ͼn">[`</span><span class="ͼc">(</span><span class="ͼn">[</span><span class="ͼh">$h</span><span class="ͼn">]</span><span class="ͼc">,</span><span class="ͼn">[</span><span class="ͼh">$k</span><span class="ͼn">]</span><span class="ͼc">)</span><span class="ͼn">`]</span> and then click a second
+point that is <span class="ͼn">[</span><span class="ͼh">$r</span><span class="ͼn">]</span> units from the center.  This is easiest going left, right, up
+or down from the center.
+
+The solution is
+<span class="ͼn">[!</span><span class="ͼc"> the graph of a circle centered at (</span><span class="ͼn">[</span><span class="ͼh">$h</span><span class="ͼn">]</span><span class="ͼc">, </span><span class="ͼn">[</span><span class="ͼh">$k</span><span class="ͼn">]</span><span class="ͼc">) of radius </span><span class="ͼn">[</span><span class="ͼh">$r</span><span class="ͼn">]</span><span class="ͼc"> </span><span class="ͼn">!]</span><span class="ͼn">{</span><span class="ͼh">$gt</span><span class="ͼn">}</span>
+<span class="ͼb">END_PGML_SOLUTION</span>
+
+<span class="ͼb">ENDDOCUMENT</span><span class="ͼo">();</span></pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						<p>The solution describes how to obtain the graph of the circle from the
+equation.</p>
+<p>The line
+<code>[! the graph of a circle centered at ([$h], [$k]) of radius [$r] !]{$gt}</code>
+inserts the correct answer graph.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

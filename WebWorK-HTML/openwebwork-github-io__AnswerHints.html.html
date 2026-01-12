@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AnswerHints</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>AnswerHints</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AnswerHints.html">https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AnswerHints.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Answer Hints</h1>
+				<p>Shows how to provide answer hints to students.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="AnswerHints.pg">AnswerHints.pg</a>
+</p>
+			</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/answers/answerHints.html">answerHints.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'answerHints.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'answerHints.pl', 'PGcourse.pl');
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Preamble</b></p>
+						<p>Make sure the <code>answerHints.pl</code> macro is loaded.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context()-&gt;variables-&gt;are(t =&gt; 'Real', u =&gt; 'Real');
+
+$f   = Formula('2 t');
+$ans = Formula('6 u')-&gt;cmp-&gt;withPostFilter(AnswerHints(
+    Formula('6 t') =&gt; 'Are you using the correct variable?',
+    Formula('6 u') =&gt; 'Good work!'
+));
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;variables-&gt;are(t =&gt; 'Real', u =&gt; 'Real');
+
+$f   = Formula('2 t');
+$ans = Formula('6 u')-&gt;cmp-&gt;withPostFilter(AnswerHints(
+    Formula('6 t') =&gt; 'Are you using the correct variable?',
+    Formula('6 u') =&gt; 'Good work!'
+));
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Setup</b></p>
+						<p>To generate specific, customized answer hints for particular answers, we use the <code>AnswerHints</code> postfilter provided by <code>answerHints.pl</code>. The answer hints should be provided by a particular answer, followed by the hash table association operator <code>=&gt;</code>, followed by a string that will show up in the messages portion of the answer preview and feedback box when students submit their answers. You may include as many answer and hint pairs as you like, and even use subroutines in them (see answerHints.pl for more on this).</p>
+<p>If the same error message should be given for several different answers, you should make a square bracketed list of those answers. For example, if the variables x, t, and u were all in the context, we could use</p>
+<div class="sourceCode" id="answer-hint-multiple"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="answer-hint-multiple-1"><a href="#answer-hint-multiple-1" aria-hidden="true"></a> <span class="dt">$ans</span>-&gt;<span class="dt">cmp</span>-&gt;<span class="dt">withPostFilter</span>(AnswerHints(</span>
+<span id="answer-hint-multiple-2"><a href="#answer-hint-multiple-2" aria-hidden="true"></a>     [ Compute(<span class="kw">'</span><span class="st">6 t</span><span class="kw">'</span>), Compute(<span class="kw">'</span><span class="st">6 x</span><span class="kw">'</span>) ] =&gt;</span>
+<span id="answer-hint-multiple-3"><a href="#answer-hint-multiple-3" aria-hidden="true"></a>         <span class="kw">'</span><span class="st">Are you using the correct variable?</span><span class="kw">'</span></span>
+<span id="answer-hint-multiple-4"><a href="#answer-hint-multiple-4" aria-hidden="true"></a> ))</span></code></pre></div>
+<p>If the MathObjects answer evaluator normally generates a message, the default is not to change a message that is already in place. To override a message generated by a MathObjects answer evaluator, you should set <code>replaceMessage =&gt; 1</code> as below.</p>
+<div class="sourceCode" id="answer-hint-single"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="answer-hint-single-1"><a href="#answer-hint-single-1" aria-hidden="true"></a> <span class="dt">$ans</span>-&gt;<span class="dt">cmp</span>-&gt;<span class="dt">withPostFilter</span>(AnswerHints(</span>
+<span id="answer-hint-single-2"><a href="#answer-hint-single-2" aria-hidden="true"></a>     Compute(<span class="kw">'</span><span class="st">6 u</span><span class="kw">'</span>) =&gt; [ <span class="kw">'</span><span class="st">Good work!</span><span class="kw">'</span>, replaceMessage =&gt; <span class="dv">1</span> ]</span>
+<span id="answer-hint-single-3"><a href="#answer-hint-single-3" aria-hidden="true"></a> ))</span></code></pre></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+If [`f(t) = [$f]`], then [`f(3u)`] = [____]{$ans}
+
+[@ knowlLink(
+    'Click for a hint',
+    value =&gt; 'Substitute \(3u\) wherever you see \(t\) in the formula for \(f\).'
+) @]*
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+If [`f(t) = [$f]`], then [`f(3u)`] = [____]{$ans}
+
+[@ knowlLink(
+    'Click for a hint',
+    value =&gt; 'Substitute \(3u\) wherever you see \(t\) in the formula for \(f\).'
+) @]*
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Statement</b></p>
+						<p>Knowls (little bits of knowledge) provide an always present link to a hint that expand to reveal the hint when clicked on, and collapse to hide the hint when clicked on again.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="#; generate the word HINT: before the block of text that is the hint, so you
+BEGIN_PGML_HINT
+Substitute [`3u`] wherever you see [`t`] in the formula for [`f(t) = [$f]`].
+END_PGML_HINT
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">#; generate the word HINT: before the block of text that is the hint, so you
+BEGIN_PGML_HINT
+Substitute [`3u`] wherever you see [`t`] in the formula for [`f(t) = [$f]`].
+END_PGML_HINT
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation hint col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Hint</b></p>
+						<p>This is a hint that is revealed to students only after a certain number of submissions. The number of submissions before the hint is shown is specified by the instructor in webwork settings.</p>
+<p>These hints are added to the problem in the block of text between the commands <code>BEGIN_PGML_HINT</code> and <code>END_PGML_HINT</code>, which must be on their own lines and at the start of a line. The hint will automatically should not add it manually.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

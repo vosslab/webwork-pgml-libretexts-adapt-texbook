@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ADAPT-LMS Deadlines and Other Timing</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>ADAPT-LMS Deadlines and Other Timing</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/adapt-lms-timing">https://commons.libretexts.org/insight/adapt-lms-timing</a></div>
+	<div class="meta">Last updated at 08/22/2025 03:07 PM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">asdf</span></p>
+<div class="prose !max-w-full"><p>When ADAPT is integrated with an LMS, managing assignment timing can be challenging because both systems have their own independent settings for opening, closing, and late submissions. For students to access ADAPT questions, the assignment windows in <strong>both</strong> ADAPT and the LMS must be open; if either is closed, access is blocked. Instructors therefore need to choose from three possible modes of operation to coordinate timing between the two systems.</p><ul><li>Mode 1: LMS is the Gate Keeper</li><li>Mode 2: ADAPT is the Gate Keeper (recommended)</li><li>Mode 3: No Gate Keeper (ADAPT and LMS synced)</li></ul><h3>Mode 1: LMS is the Gate Keeper</h3><p>In this mode of operation, ADAPT dates are set broadly (e.g., spanning the overall course duration), while Canvas acts as the primary gatekeeper. Instructors define the specific assignment open and close times within the LMS. This setup can work, but it is not suitable if late submissions or penalties are used, since ADAPT does not track those restrictions. For this reason, we generally do not recommend this configuration. However, if late submissions are not permitted, it can be a practical option. The main limitation is that students must be clearly instructed to ignore ADAPT dates and rely exclusively on the LMS for accurate assignment deadlines.</p><figure class="image"><img style="aspect-ratio:1284/690;" src="https://d33dptvk57h9ai.cloudfront.net/5ea7fa48-65a0-458b-9422-bfc2672d0191/5428f155-b12c-4a17-984d-405117fb65cc" width="1284" height="690"></figure><h3>Mode 2: ADAPT &nbsp;is the Gate Keeper (recommended)</h3><p>In this mode of operation, the LMS dates are set broadly (e.g., covering the overall course duration), while ADAPT serves as the primary gatekeeper. Instructors configure the specific assignment open and close times directly in ADAPT. This approach is ideal, as ADAPT reliably manages late submissions and penalties. For this reason, we <strong>recommend</strong> using this timing configuration. The main drawback is that students must be instructed to disregard the LMS dates and rely solely on ADAPT for accurate assignment deadlines.</p><figure class="image"><img style="aspect-ratio:1287/694;" src="https://d33dptvk57h9ai.cloudfront.net/5ea7fa48-65a0-458b-9422-bfc2672d0191/5f6b182c-7ef6-4ef7-88d6-710e68e1210b" width="1287" height="694"></figure><h3>Mode 3: No Gate Keeper (ADAPT and LMS synced)</h3><p>In this mode of operation, neither the LMS nor ADAPT functions as the sole gatekeeper—instead, both enforce the same assignment open and close dates. While this approach can work, it requires instructors to duplicate their efforts in both systems. It also creates complications with handling late submissions and applying penalties. For these reasons, we do not recommend this timing configuration.</p><p>A better solution is to develop LMS-specific API bridges that automatically synchronize assignment settings between the LMS and ADAPT and this is under development.</p><figure class="image"><img style="aspect-ratio:1275/692;" src="https://d33dptvk57h9ai.cloudfront.net/5ea7fa48-65a0-458b-9422-bfc2672d0191/3cf1f24b-b1f7-49cf-b69f-11ccd9fd8514" width="1275" height="692"></figure></div>
+</body>
+</html>

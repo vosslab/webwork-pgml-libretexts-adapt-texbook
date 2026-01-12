@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mathematical Notation in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Mathematical Notation in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/mathematical-notation-in-pgml">https://commons.libretexts.org/insight/mathematical-notation-in-pgml</a></div>
+	<div class="meta">Last updated at 07/07/2024 03:28 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">Mathematical Notation</span></p>
+<div class="prose !max-w-full"><p>PGML allows you to specify mathematics in two different formats: TeX and calculator notation. The TeX notation allows you to use the standard TeX and LaTeX commands to format your mathematics. The calculator notation uses MathObjects to parse and format the mathematics (so this is the notation that you use to create formulas in your PG problems, and that students use to enter their answers). Both formats come in three forms: inline, display-style inline, and display style. The inline form uses spacing rules that try to minimize the impact on line spacing, while display-style inline allows for easier readability at the cost of using more vertical space. Full display style places the math on its own line with buffering space above and below.</p><p>To use TeX-formatted mathematics, enclose it in&nbsp;[`...`]&nbsp;for inline math,&nbsp;[``...``]&nbsp;for display-style inline math, and&nbsp;[```...```]&nbsp;for display style math.</p><p>To use calculator notation, enclose it in&nbsp;[: ...&nbsp;:]&nbsp;for inline math,&nbsp;[:: ...&nbsp;::]&nbsp;for display-style inline math, and&nbsp;[::: ...&nbsp;:::]&nbsp;for display style math.</p><p>For example,</p><p>&nbsp;What [`x`] makes [`\frac{x+2}{3} = 1`]?
+ 
+ What [:x:] makes [:(x+2)/3 = 1:]?
+</p><p>Both produce the same results with inline math.</p><p>And for example,</p><p>&nbsp;What [`x`] makes [``\frac{x+2}{3} = 1``]?
+ 
+ What [:x:] makes [::(x+2)/3 = 1::]?
+</p><p>Both produce the same results with inline math, but the second math is display-style inline, so the fraction numerator and denominator typically will appear larger. This can comes at the cost of awkward spacing between consecutive lines of text.</p><p>And for example,</p><p>&nbsp;Find [`x`] that solves the equation: [```\frac{x+2}{3} = 1```]
+ 
+ Find [:x:] that solves the equation: [:::(x+2)/3 = 1:::]
+</p><p>Both produce the same results with inline math for the "x", and then displayed math on its own line for the equation.</p></div>
+</body>
+</html>
