@@ -5,6 +5,10 @@
   templates, titles, tables, images, and embedded media.
 - Updated `AGENTS.md` and the HTML lint checker so internal LibreTexts links are allowed while
   relative file links are still flagged as errors.
+- Added `docs/READING_JSON_MAP_FILE.md` and `tools/libretexts_map_json_to_page_id_csv.py` to
+  document and extract LibreTexts section label to `page_id` mappings from a Remixer map JSON.
+- Updated the map parser script to fix section label parsing, add `-i/-o` flags, default the
+  output filename from the input, and put `page_id` as the first CSV column.
 - Switched the Chapter 4 worked example to a radio-button choice prompt, updating the full file
   reference and the Preamble/Setup/Statement/Solution walkthroughs to match the parserRadioButtons
   pattern.
