@@ -12,6 +12,8 @@
   show common failure modes and the quickest diagnostic checks.
 - Refreshed Chapter 4 page summaries in `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to match the new
   example and macro focus.
+- Tuned Chapter 1 pages with instructor-facing reassurance, clearer tool-fit guidance, and
+  stronger “where to focus first” cues across sections 1.0 to 1.6.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
   including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
 
