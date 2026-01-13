@@ -3,8 +3,38 @@ Lists are one of the most useful PGML features for life science prompts because 
 multi-step workflows. Use lists to make expectations scannable and to reduce "I missed that part"
 errors.
 </p>
+
 <p>
 <strong>Use this when:</strong> you want a lab-style sequence that doubles as a grading rubric.
+</p>
+
+<h2>Copy and edit</h2>
+<pre>
+BEGIN_PGML
+You are preparing a PCR reaction. Follow these steps:
+
+1. Compute the final primer concentration in &mu;M: [____]{$c_final}
+2. Report the MgCl2 concentration in mM: [____]{$mg_final}
+3. State whether the buffer is 1x or not: [____]{$buffer_ok}
+
+Use the units shown in each step.
+Round to two decimals.
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken:
+1. First step
+Second paragraph without indent.
+Fix:
+    Second paragraph with four-space indent.
+</pre>
+
+<p>
+In lab-style questions, lists are not just formatting. They communicate order, expectations, and
+reporting structure to students. When you later revise a problem, changing list order often
+requires checking that the associated answer blanks still match the intended step.
 </p>
 
 <h2>Numbered lists</h2>
@@ -14,11 +44,6 @@ BEGIN_PGML
 2. Report the value with units.
 END_PGML
 </pre>
-<p>
-In lab-style questions, lists are not just formatting. They communicate order, expectations, and
-reporting structure to students. When you later revise a problem, changing list order often
-requires checking that the associated answer blanks still match the intended step.
-</p>
 
 <p>
 Start a numbered list item with a number, a period, and a space. PGML will renumber items in the
@@ -61,27 +86,16 @@ You are preparing a PCR reaction mix. Follow these steps:
 END_PGML
 </pre>
 
-<h2>List as rubric (with blanks)</h2>
-<pre>
-BEGIN_PGML
-1. Compute the final primer concentration in &mu;M: [____]{$c_final}
-2. Report the MgCl2 concentration in mM: [____]{$mg_final}
-3. State whether the buffer is 1x or not: [____]{$buffer_ok}
-END_PGML
-</pre>
-
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken:
-1. First step
-Second paragraph without indent.
-Fix:
-    Second paragraph with four-space indent.
-</pre>
-
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep each list item to one task.</li>
 	<li>When a task requires a unit or a format, state it inside the list item.</li>
 	<li>Use lists to make constraints visible (for example, "round to two decimals").</li>
+</ul>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need a single blank that grades correctly? Go to Section 3.2.</li>
+	<li>Need a data table students read from? Go to Section 3.4.</li>
+	<li>If grading is failing, go back to Section 3.2.</li>
 </ul>

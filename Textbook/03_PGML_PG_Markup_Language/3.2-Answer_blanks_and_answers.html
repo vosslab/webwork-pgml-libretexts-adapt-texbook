@@ -3,17 +3,32 @@ Answer blanks are the center of most WeBWorK problems. In PGML, blanks are writt
 <code>[_____]</code> and the correct answer can be attached immediately after the blank using
 braces.
 </p>
+
 <p>
 <strong>Use this when:</strong> you want the grading rule to be obvious and close to the prompt
 text students read.
 </p>
 
-<h2>Basic numeric blank</h2>
+<h2>Copy and edit</h2>
 <pre>
+$value = Real(12);
+$answer = Real(24);
+
 BEGIN_PGML
-The value is [______]{12}
+You measure a stock with [`c = [$value]`] mM.
+What is twice the concentration?
+
+Report your answer in mM:
+[`2c = `] [____]{$answer} mM
 END_PGML
 </pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: [`ATP = `] [_____]{$ans2}
+Fix: [`ATP = `] [_____]{"ATP"}
+</pre>
+
 <p>
 Many examples online define answers far away from the text that students see. That pattern works
 for short math problems but becomes fragile in biology-style prompts with multiple parts and
@@ -59,8 +74,9 @@ END_PGML
 	<li>It reduces the chance of mismatching answer order and prompt order.</li>
 </ul>
 
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken: [`ATP = `] [_____]{$ans2}
-Fix: [`ATP = `] [_____]{"ATP"}
-</pre>
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Writing a multi-step lab workflow? Go to Section 3.3.</li>
+	<li>Need a data table students read from? Go to Section 3.4.</li>
+	<li>If formatting is the only issue, try Section 3.5.</li>
+</ul>

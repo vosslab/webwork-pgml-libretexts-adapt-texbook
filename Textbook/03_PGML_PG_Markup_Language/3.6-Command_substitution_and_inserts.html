@@ -8,10 +8,32 @@ clarity problem. In most cases, PGML lists, tables, or explicit text are easier 
 easier to maintain. Use substitution only when the content genuinely depends on computed or
 conditional output.
 </p>
+
 <p>
 <strong>Use this when:</strong> you need to insert computed output or helper-generated markup that
 PGML cannot express directly.
 </p>
+
+<h2>Copy and edit</h2>
+<pre>
+$ct = Real(21.2);
+$rows = [
+	[ "Sample", "Ct (cycles)" ],
+	[ "Control", 18.2 ],
+	[ "Treatment", 21.2 ],
+];
+
+BEGIN_PGML
+[@ DataTable($rows, caption => "qPCR results") @]*
+The Ct for Treatment is [____]{$ct}.
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: [@ DataTable($rows) @]
+Fix: [@ DataTable($rows) @]*
+</pre>
 
 <h2>Syntax</h2>
 <pre>
@@ -71,12 +93,13 @@ this repository avoids HTML links because LibreTexts provides its own table of c
 in-platform navigation. Keep prompts self-contained and do not rely on linking out to other pages.
 </p>
 
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken: [@ DataTable($rows) @]
-Fix: [@ DataTable($rows) @]*
-</pre>
-
 <p>
 Treat this as an advanced escape hatch: keep substitutions small, readable, and easy to test.
 </p>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>If you only need a data table, go to Section 3.4.</li>
+	<li>If you need a blank that grades correctly, go to Section 3.2.</li>
+	<li>If you are writing a workflow prompt, go to Section 3.3.</li>
+</ul>

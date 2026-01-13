@@ -7,10 +7,31 @@ to replace older authoring styles that required long blocks of text and careful 
 In this book, PG is treated as minimal setup code, and PGML is where you spend most of your
 authoring time.
 </p>
+
 <p>
 <strong>Use this when:</strong> you want the prompt to read like a worksheet while keeping the
 grading logic close to the text students see.
 </p>
+
+<h2>Copy and edit (minimum viable PGML)</h2>
+<pre>
+$km = Real(2.5);
+$substrate = Real(12);
+$rate = Real(0.48);
+
+BEGIN_PGML
+For this enzyme, [`K_m = [$km]`] &mu;M and [`[S] = [$substrate]`] &mu;M.
+Report the rate [`v`] in &mu;M/s:
+
+[`v = `] [____]{$rate}
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: Km = 2.5 &mu;M
+Fix: [`K_m`] = 2.5 &mu;M
+</pre>
 
 <h2>What PGML is good at</h2>
 <ul>
@@ -19,6 +40,13 @@ grading logic close to the text students see.
 	<li>Answer blanks tied directly to answer checkers.</li>
 	<li>Structured formatting for science prompts (lists, tables, and short sections).</li>
 </ul>
+
+<p>
+Most instructors do not need to learn PGML exhaustively. In practice, a small set of patterns
+covers the majority of biology and life science questions: inline math, answer blanks, short
+lists, and simple tables. This chapter focuses on those patterns so you can write readable prompts
+without treating PGML as another programming language.
+</p>
 
 <h2>Math notation (TeX and calculator notation)</h2>
 <p>
@@ -77,21 +105,20 @@ copy-paste (for example, <code>[: Ct :]</code> or <code>[: C1*V1/V2 :]</code> fo
 	</tbody>
 </table>
 
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken: K_m = 2.5 &mu;M
-Fix: [`K_m`] = 2.5 &mu;M
-</pre>
-
 <h3>Science-friendly practice</h3>
 <ul>
 	<li>Use inline math for variable names and short expressions.</li>
 	<li>Use display math for longer equations or multi-step expressions.</li>
 	<li>Keep units outside the math expression unless you are explicitly typesetting them.</li>
 </ul>
+
 <p>
-Most instructors do not need to learn PGML exhaustively. In practice, a small set of patterns
-covers the majority of biology and life science questions: inline math, answer blanks, short
-lists, and simple tables. This chapter focuses on those patterns so you can write readable prompts
-without treating PGML as another programming language.
+If you are writing your first problem, go to Section 3.2 now.
 </p>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need a blank that grades correctly? See Section 3.2.</li>
+	<li>Building a multi-step workflow prompt? See Section 3.3.</li>
+	<li>Need a data table students read from? See Section 3.4.</li>
+</ul>

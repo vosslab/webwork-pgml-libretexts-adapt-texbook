@@ -2,9 +2,31 @@
 Science prompts often require structured data. Prefer table helpers that produce accessible tables
 in HTML output, and avoid using tables purely for layout.
 </p>
+
 <p>
 <strong>Use this when:</strong> students need to read values from a dataset before answering.
 </p>
+
+<h2>Copy and edit</h2>
+<pre>
+$ct_treat = Real(21.2);
+
+BEGIN_PGML
+[@ DataTable([
+	[ "Sample", "Ct (cycles)" ],
+	[ "Control", 18.2 ],
+	[ "Treatment", 21.2 ],
+], caption => "qPCR results") @]*
+
+The Ct for Treatment is [____]{$ct_treat}.
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: LayoutTable([["Sample","Ct"],["Control",18.2]])
+Fix: DataTable([["Sample","Ct"],["Control",18.2]])
+</pre>
 
 <h2>Two table roles</h2>
 <ul>
@@ -45,30 +67,16 @@ DataTable(
 );
 </pre>
 
-<h2>Reading task example (table first, then a blank)</h2>
-<pre>
-$ct_treat = Real(21.2);
-
-BEGIN_PGML
-[@ DataTable([
-	[ "Sample", "Ct (cycles)" ],
-	[ "Control", 18.2 ],
-	[ "Treatment", 21.2 ],
-], caption => "qPCR results") @]*
-
-The Ct for Treatment is [____]{$ct_treat}.
-END_PGML
-</pre>
-
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken: LayoutTable([["Sample","Ct"],["Control",18.2]])
-Fix: DataTable([["Sample","Ct"],["Control",18.2]])
-</pre>
-
 <h2>Authoring notes</h2>
 <ul>
 	<li>Use a data table whenever you want students to read values and compute from them.</li>
 	<li>Keep tables small and label columns clearly; avoid wide tables with many decimals.</li>
 	<li>Do not use a data table to position unrelated content; use <code>LayoutTable</code> for layout.</li>
+</ul>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need a multi-step workflow prompt? Go to Section 3.3.</li>
+	<li>Need computed inserts or helper output? Go to Section 3.6.</li>
+	<li>Need a single blank that grades correctly? Go to Section 3.2.</li>
 </ul>

@@ -37,7 +37,7 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: legacy PG, deprecated patterns, safe refactoring
   
 ## Chapter 3: PGML (PG Markup Language)
-- `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`: Introduces the PGML chapter as the core authoring layer for student-facing prompts. After finishing, you can identify which PGML topic you need next and keep your work PGML-first. Use it as the entry point before writing or revising any prompt text.
+- `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`: Introduces the PGML chapter as the core authoring layer for student-facing prompts and adds a task-first menu plus a quick patterns table. After finishing, you can identify which PGML topic you need next and keep your work PGML-first. Use it as the entry point before writing or revising any prompt text.
   SEO tags: PGML chapter index, prompt formatting, student-facing text
 - `Textbook/03_PGML_PG_Markup_Language/3.1-Introduction_to_PGML.html`: Defines PGML and summarizes the small set of math-notation patterns you will use constantly. After finishing, you can choose TeX versus calculator notation and use the correct delimiters reliably. Use it when onboarding a new author or standardizing prompt style in a course team.
   SEO tags: TeX delimiters, calculator notation, math formatting

@@ -28,6 +28,9 @@
   command substitution.
 - Added instructor-facing decision support and common failure guidance across Chapter 5 question
   type pages, plus sharper workflow testing advice on the QA page.
+- Reorganized Chapter 3 into a task-first menu with quick patterns on the index, standardized
+  top-of-page "Use this when / Copy and edit / Common failure and fix" blocks, and added
+  next-step guidance at the bottom of each PGML subsection.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
   including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
 

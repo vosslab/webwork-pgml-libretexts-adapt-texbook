@@ -4,6 +4,15 @@ problem. It is designed to replace older authoring patterns that required long b
 manual escaping.
 </p>
 
+<h2>Start here (task first)</h2>
+<ul>
+	<li>I need one blank that grades correctly -> Section 3.2 (Core).</li>
+	<li>I need a multi-step lab workflow prompt -> Section 3.3 (Core).</li>
+	<li>I need a small dataset table students read from -> Section 3.4 (Core).</li>
+	<li>My prompt is too long and hard to scan -> Section 3.5 (Optional).</li>
+	<li>I need to insert computed or helper-generated output -> Section 3.6 (Optional).</li>
+</ul>
+
 <p>
 This chapter is the core of the book: most science-friendly question writing can be done by
 combining a small PG setup with a clear PGML prompt.
@@ -17,10 +26,62 @@ combining a small PG setup with a clear PGML prompt.
 	<li>Simple structure tools (headings, lists, tables) that fit science prompts.</li>
 </ul>
 
+<h2>PGML quick patterns</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 40%;">
+		<col style="width: 36%;">
+		<col style="width: 24%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Use</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Task">One blank that grades correctly</td>
+			<td data-th="Use">Answer blanks attached to answers</td>
+			<td data-th="Page">3.2</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Multi-step lab workflow</td>
+			<td data-th="Use">Numbered lists</td>
+			<td data-th="Page">3.3</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Small dataset table</td>
+			<td data-th="Use">DataTable</td>
+			<td data-th="Page">3.4</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Long prompt cleanup</td>
+			<td data-th="Use">Headings and light emphasis</td>
+			<td data-th="Page">3.5</td>
+		</tr>
+		<tr>
+			<td data-th="Task">Computed or helper output</td>
+			<td data-th="Use">Command substitution</td>
+			<td data-th="Page">3.6</td>
+		</tr>
+		<tr>
+			<td data-th="Task">PGML basics and notation</td>
+			<td data-th="Use">Minimal PGML patterns</td>
+			<td data-th="Page">3.1 (Optional)</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>
 The subsections in this chapter cover the small set of PGML features you will use constantly:
 math notation, answer blanks, lists for workflows, tables for data, and a small "escape hatch" for
 advanced insertion when PGML alone is not enough.
+</p>
+<p>
+Core pages: 3.2 (Answer blanks) and 3.3 (Lists). Optional pages: 3.5 (Layout) and 3.6 (Command
+substitution). Use 3.1 as a quick primer if you want notation examples.
 </p>
 <p>
 If you are unsure which PGML pattern to use, start with the simplest option that clearly

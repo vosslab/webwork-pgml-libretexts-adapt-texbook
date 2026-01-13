@@ -3,10 +3,32 @@ Layout controls can improve readability for longer prompts, but fragile formatti
 fastest ways to create problems that render differently across systems. Prefer simple structure
 (headings, lists, and tables) and treat layout controls as an optional finishing touch.
 </p>
+
 <p>
 <strong>Use this when:</strong> a prompt needs clearer scanning after the grading is already
 stable.
 </p>
+
+<h2>Copy and edit (minimal structure recipe)</h2>
+<pre>
+BEGIN_PGML
+# Data
+Measured values are shown above.
+
+## Tasks
+1. Compute the rate in s^-1.
+2. Report the final value with units.
+
+### Report
+[`Rate = `] [____]{$rate} s^-1
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: *Measure* *_everything_* *carefully* and *report* *everything*.
+Fix: Report the value in *mM* to *two decimals*.
+</pre>
 
 <h2>Headings (structure)</h2>
 <p>
@@ -22,21 +44,6 @@ BEGIN_PGML
 END_PGML
 </pre>
 
-<h2>Minimal structure recipe</h2>
-<pre>
-BEGIN_PGML
-# Data
-Measured values are shown above.
-
-## Tasks
-1. Compute the rate in s^-1.
-2. Report the final value with units.
-
-### Report
-[`Rate = `] [____]{$rate} s^-1
-END_PGML
-</pre>
-
 <h2>Emphasis (bold and italic)</h2>
 <ul>
 	<li>Bold: <code>*bold*</code></li>
@@ -48,12 +55,6 @@ END_PGML
 Use emphasis to highlight the task being asked and the reporting expectations (units, rounding),
 not to decorate the story.
 </p>
-
-<p><strong>Common failure and fix</strong></p>
-<pre>
-Broken: *Measure* *_everything_* *carefully* and *report* *everything*.
-Fix: Report the value in *mM* to *two decimals*.
-</pre>
 
 <h2>Horizontal rules (sparingly)</h2>
 <p>
@@ -76,8 +77,16 @@ BEGIN_PGML
 >> centered <<
 END_PGML
 </pre>
+
 <p>
 Layout controls are best used sparingly. If a formatting change affects how answers are entered,
 checked, or interpreted, it is usually a sign that the structure should be simplified rather than
 refined. Clear structure matters more than visual polish.
 </p>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>If grading is failing, go back to Section 3.2.</li>
+	<li>Need a data table students read from? Go to Section 3.4.</li>
+	<li>Need computed inserts? Go to Section 3.6.</li>
+</ul>
