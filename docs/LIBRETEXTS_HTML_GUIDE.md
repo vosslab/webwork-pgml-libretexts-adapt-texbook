@@ -65,8 +65,7 @@ print(f"/@go/page/{page_id}")
 
 ### External link reminder
 
-LibreTexts explicitly discourages linking outside the library unless necessary ("link farming"),
-because outbound links create ongoing maintenance work when URLs rot.
+LibreTexts supports hyperlinks. Prefer linking within the LibreTexts library. Be conservative about linking outside the library, because outbound links create ongoing maintenance work when URLs rot ("link farming"). Use external links when they improve learning or verification, and prefer stable, authoritative sources (DOIs, PubMed, NCBI, UniProt, PDB, IUBMB, ExPASy, official docs).
 
 External links are allowed when they improve learning or verification, but keep them sparse and
 stable:
@@ -77,9 +76,6 @@ stable:
   one inline link where it matters and one entry in an "Additional Resources" block at the bottom.
 - Avoid fragile sources (personal pages, transient blogs, random PDFs) and avoid vague link text
   like "click here" or raw pasted URLs as visible text.
-
-Wikipedia can be a reasonable overview link (especially in "Additional Resources"), but for
-technical or factual claims prefer an authoritative source alongside it.
 
 ### Validation
 

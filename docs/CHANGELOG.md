@@ -5,8 +5,8 @@
   templates, titles, tables, images, and embedded media.
 - Moved and expanded the internal-link guidance in `docs/LIBRETEXTS_HTML_GUIDE.md` into a dedicated
   section after Core rules, including a repeatable page-id workflow and a small CSV lookup helper.
-- Refined the external-link guidance in `docs/LIBRETEXTS_HTML_GUIDE.md` to be conservative but
-  scholarship-friendly (sparse, stable sources, avoid repeated outbound links/"link farming").
+- Refined the external-link guidance in `docs/LIBRETEXTS_HTML_GUIDE.md` to emphasize in-library
+  links first and to allow sparse, stable scholarly outbound links while avoiding "link farming".
 - Updated `AGENTS.md` and the HTML lint checker so internal LibreTexts links are allowed while
   relative file links are still flagged as errors.
 - Added `docs/READING_JSON_MAP_FILE.md` and `tools/libretexts_map_json_to_page_id_csv.py` to
