@@ -1,52 +1,18 @@
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 18%;">
-		<col style="width: 12%;">
-		<col style="width: 35%;">
-		<col style="width: 35%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Section</th>
-			<th>Color</th>
-			<th>What it controls</th>
-			<th>What to check when debugging</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr style="background-color: #dbeafe;">
-			<td data-th="Section">Preamble</td>
-			<td data-th="Color">Blue</td>
-			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
-			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
-		</tr>
-		<tr style="background-color: #dcfce7;">
-			<td data-th="Section">Setup</td>
-			<td data-th="Color">Green</td>
-			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
-			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
-		</tr>
-		<tr style="background-color: #ffedd5;">
-			<td data-th="Section">Statement</td>
-			<td data-th="Color">Orange</td>
-			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
-			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
-		</tr>
-		<tr style="background-color: #fce7f3;">
-			<td data-th="Section">Solution</td>
-			<td data-th="Color">Pink</td>
-			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
-			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
-		</tr>
-	</tbody>
-</table>
-
+<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement</strong></p>
 <p>
-The Statement is the PGML prompt: readable text, structured data, and blanks tied to answers.
-This is where students live, so keep it clear and consistent.
+The Statement is the student-facing prompt written in PGML. It is where the story, data, and tasks
+become visible, and where each blank must be tied to one answer object from Setup.
 </p>
-
-<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement (orange)</strong></p>
+<p>
+Think of the Statement as a contract. The text and units you show here must match what the checker
+accepts, or students will feel the grading is arbitrary even when the math is right. Example:
+the prompt says &mu;M but the checker expects mM or unitless input.
+</p>
+<p>
+Choose the structure that reduces reading load: use short paragraphs for a single task, lists for
+steps, and tables for multi-value data. If a prompt feels hard to scan, structure is usually the
+fix, not more words.
+</p>
 <p>
 Why this exists: it is the student-facing prompt that ties the story to the answer blanks.
 </p>
@@ -79,6 +45,10 @@ Why this exists: it is the student-facing prompt that ties the story to the answ
 	</tbody>
 </table>
 
+<p>
+Fast test: render one seed, enter the expected answer, confirm grading, then change the seed and repeat.
+</p>
+
 <h2>Blanks map</h2>
 <table class="mt-responsive-table">
 	<colgroup>
@@ -104,6 +74,16 @@ Why this exists: it is the student-facing prompt that ties the story to the answ
 		</tr>
 	</tbody>
 </table>
+
+<p>
+Blank binding smell test: if a blank is visible but always marks wrong, confirm it is attached to
+an answer object defined in Setup.
+</p>
+
+<p>
+Use tables only when there is real data to scan or compare, not to simulate layout. Lists and
+short paragraphs are usually better for narrative prompts.
+</p>
 
 <h2>Structure patterns</h2>
 <table class="mt-responsive-table">
@@ -145,8 +125,8 @@ Why this exists: it is the student-facing prompt that ties the story to the answ
 
 <p>
 If you use choice-based inserts, load <code>PGchoicemacros.pl</code> and follow the OpenWeBWorK
-technique samples for multiple choice with popup and multiple choice with radio buttons, using
-those pages as the pattern directory.
+technique samples for multiple choice and related patterns, using those pages as the pattern
+directory.
 </p>
 
 <p>

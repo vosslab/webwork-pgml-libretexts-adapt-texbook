@@ -1,0 +1,108 @@
+<p>
+This page defines the short list of terms you will see repeatedly in this book. The goal is to
+make the later chapters easier to read without stopping to decode vocabulary.
+</p>
+
+<h2>Common terms used in this book</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 42%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Term</th>
+			<th>Meaning (in plain language)</th>
+			<th>Why you care while authoring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Term"><strong>WeBWorK authoring</strong></td>
+			<td data-th="Meaning (in plain language)"></td>
+			<td data-th="Why you care while authoring"></td>
+		</tr>
+		<tr>
+			<td data-th="Term">PG</td>
+			<td data-th="Meaning (in plain language)">The problem-file language that WeBWorK runs.</td>
+			<td data-th="Why you care while authoring">In this book, PG stays minimal and supports the PGML prompt.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">PGML</td>
+			<td data-th="Meaning (in plain language)">A markup layer inside PG for writing the student prompt.</td>
+			<td data-th="Why you care while authoring">Most text, structure, and blanks should live here.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Macros</td>
+			<td data-th="Meaning (in plain language)">Reusable code libraries loaded by a problem file.</td>
+			<td data-th="Why you care while authoring">Macros enable question types, answer checkers, and PGML features.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">MathObjects</td>
+			<td data-th="Meaning (in plain language)">Typed answer objects (numbers, formulas, lists) used for grading.</td>
+			<td data-th="Why you care while authoring">They make checking reliable and reduce string-matching errors.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Context</td>
+			<td data-th="Meaning (in plain language)">Rules that control what student input is allowed.</td>
+			<td data-th="Why you care while authoring">Wrong Context is a common cause of unexpected grading.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Answer checker</td>
+			<td data-th="Meaning (in plain language)">The rule used to decide whether an answer is correct.</td>
+			<td data-th="Why you care while authoring">Tolerances and formats usually live here.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Seed</td>
+			<td data-th="Meaning (in plain language)">A number that reproduces one randomized variant.</td>
+			<td data-th="Why you care while authoring">Seeds let you debug the exact failing version.</td>
+		</tr>
+		<tr>
+			<td data-th="Term"><strong>ADAPT and LibreTexts platform</strong></td>
+			<td data-th="Meaning (in plain language)"></td>
+			<td data-th="Why you care while authoring"></td>
+		</tr>
+		<tr>
+			<td data-th="Term">ADAPT</td>
+			<td data-th="Meaning (in plain language)">LibreTexts' assessment and adaptive learning system.</td>
+			<td data-th="Why you care while authoring">This is where you assign questions to students and manage delivery.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">WeBWorK</td>
+			<td data-th="Meaning (in plain language)">An open-source homework system used heavily in math and science.</td>
+			<td data-th="Why you care while authoring">This book focuses on WeBWorK problems that run inside ADAPT.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">H5P</td>
+			<td data-th="Meaning (in plain language)">A framework for interactive questions used in ADAPT.</td>
+			<td data-th="Why you care while authoring">Useful for some prompts, but less suited to algorithmic parsing.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Commons</td>
+			<td data-th="Meaning (in plain language)">LibreTexts' library of shared pages and resources.</td>
+			<td data-th="Why you care while authoring">Where course content and shared assets are often stored.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Insight</td>
+			<td data-th="Meaning (in plain language)">LibreTexts' knowledge base and documentation hub.</td>
+			<td data-th="Why you care while authoring">Where platform help and policies usually live.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Studio</td>
+			<td data-th="Meaning (in plain language)">LibreTexts' repository for H5P questions and media.</td>
+			<td data-th="Why you care while authoring">Often where non-WeBWorK items are stored and shared.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+For platform-wide definitions beyond this quick list, consult the LibreTexts glossary used by
+your campus.
+</p>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>When a term is unfamiliar, return here before you change macros or grading rules.</li>
+	<li>Use a fixed seed to reproduce any issue you need to debug.</li>
+</ul>

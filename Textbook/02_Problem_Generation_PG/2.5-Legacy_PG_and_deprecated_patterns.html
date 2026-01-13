@@ -1,0 +1,125 @@
+<p>
+This page helps you recognize legacy PG patterns that show up in older problem libraries and
+online examples. The goal is to translate the useful idea into a PGML-first structure without
+carrying forward fragile formatting or scattered grading logic.
+</p>
+
+<h2>Why legacy patterns appear</h2>
+<ul>
+	<li>Many public problem banks predate PGML and rely on text blocks and manual formatting.</li>
+	<li>Older examples often embed formatting controls directly in PG strings.</li>
+	<li>Some macros and helpers are still valid but are no longer the simplest choice.</li>
+</ul>
+
+<h2>Legacy patterns to recognize (and replace)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Legacy pattern</th>
+			<th>Why you see it</th>
+			<th>PGML-first replacement</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Legacy pattern">BEGIN_TEXT / END_TEXT blocks</td>
+			<td data-th="Why you see it">Pre-PGML format for the prompt text.</td>
+			<td data-th="PGML-first replacement">Use BEGIN_PGML / END_PGML for readable prompt text.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy pattern">$PAR, $BR, and manual line breaks</td>
+			<td data-th="Why you see it">Older formatting controls inside text blocks.</td>
+			<td data-th="PGML-first replacement">Use normal paragraphs, lists, or tables in PGML.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy pattern">String-built HTML ("<p>" . $x . "</p>")</td>
+			<td data-th="Why you see it">Manual HTML assembly in PG strings.</td>
+			<td data-th="PGML-first replacement">Use PGML with variable inserts for clean text.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy pattern">ans_rule() without nearby answer object</td>
+			<td data-th="Why you see it">Older blank creation with separate answer logic.</td>
+			<td data-th="PGML-first replacement">Attach answer objects directly to PGML blanks.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy pattern">Manual rounding inside strings</td>
+			<td data-th="Why you see it">Legacy formatting for display-only answers.</td>
+			<td data-th="PGML-first replacement">Use MathObjects and explicit tolerance rules.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Deprecated or fragile behaviors</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Pattern</th>
+			<th>Why it is fragile</th>
+			<th>Preferred approach</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Pattern">PopUp menus for choices</td>
+			<td data-th="Why it is fragile">Legacy UI pattern and inconsistent rendering.</td>
+			<td data-th="Preferred approach">Use DropDown or radio/checkbox patterns.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern">Hidden grading logic in text assembly</td>
+			<td data-th="Why it is fragile">Hard to debug and easy to mismatch with the prompt.</td>
+			<td data-th="Preferred approach">Compute answers in Setup and attach to blanks.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern">Multiple unrelated Context() changes</td>
+			<td data-th="Why it is fragile">Inconsistent parsing rules across blanks.</td>
+			<td data-th="Preferred approach">Set Context once and override only if necessary.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern">Old macro families loaded "just in case"</td>
+			<td data-th="Why it is fragile">Adds noise and can mask missing dependencies.</td>
+			<td data-th="Preferred approach">Load only the macros needed for the prompt.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>PGML-first rewrite path</h2>
+<ol>
+	<li>Identify the story text and move it into a PGML block.</li>
+	<li>Move all numbers, ranges, and answer objects into Setup.</li>
+	<li>Attach each answer object directly to the blank in PGML.</li>
+	<li>Remove unused macros and any leftover text-formatting codes.</li>
+	<li>Render a few seeds to confirm the prompt, units, and grading.</li>
+</ol>
+
+<h2>Before-and-after sketch (minimal example)</h2>
+<pre>
+# Legacy text block
+BEGIN_TEXT
+The stock concentration is $c_stock uM.$PAR
+Find the final concentration: \{ans_rule(10)\} uM
+END_TEXT
+
+# PGML-first rewrite
+BEGIN_PGML
+The stock concentration is [c_stock] &mu;M.
+
+Find the final concentration: [________]{$c_final} &mu;M
+END_PGML
+</pre>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>When you copy an older example, rewrite the text block into PGML first.</li>
+	<li>Keep the macro list short and focused on what the prompt actually uses.</li>
+	<li>Use seeds to reproduce any unexpected grading or formatting behavior.</li>
+</ul>

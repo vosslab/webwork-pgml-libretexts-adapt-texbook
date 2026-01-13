@@ -1,52 +1,18 @@
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 18%;">
-		<col style="width: 12%;">
-		<col style="width: 35%;">
-		<col style="width: 35%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Section</th>
-			<th>Color</th>
-			<th>What it controls</th>
-			<th>What to check when debugging</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr style="background-color: #dbeafe;">
-			<td data-th="Section">Preamble</td>
-			<td data-th="Color">Blue</td>
-			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
-			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
-		</tr>
-		<tr style="background-color: #dcfce7;">
-			<td data-th="Section">Setup</td>
-			<td data-th="Color">Green</td>
-			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
-			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
-		</tr>
-		<tr style="background-color: #ffedd5;">
-			<td data-th="Section">Statement</td>
-			<td data-th="Color">Orange</td>
-			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
-			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
-		</tr>
-		<tr style="background-color: #fce7f3;">
-			<td data-th="Section">Solution</td>
-			<td data-th="Color">Pink</td>
-			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
-			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
-		</tr>
-	</tbody>
-</table>
-
+<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup</strong></p>
 <p>
-Setup is small PG that supports PGML: it defines values, constraints, answers, and answer checkers.
-Keep it short, readable, and focused on what the prompt needs.
+Setup is where a general prompt becomes a specific, randomized instance. This is where you define
+values, choose realistic ranges, compute derived quantities, and create answer objects for the
+blanks in the Statement.
 </p>
-
-<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup (green)</strong></p>
+<p>
+In life-science prompts, realism is not cosmetic. The ranges and step sizes should reflect what a
+student could actually pipette, interpret, or report in a lab context.
+</p>
+<p>
+Debug loop: if a particular seed makes the problem nonsensical, fix the constraints here rather
+than rewriting the prompt. The fastest maintenance wins come from tightening the generator, not
+from adding more text.
+</p>
 <p>
 Why this exists: it turns a story into randomized values and answer objects that the PGML can use.
 </p>
@@ -78,6 +44,12 @@ Why this exists: it turns a story into randomized values and answer objects that
 		</tr>
 	</tbody>
 </table>
+
+<p>
+Try it now: change one range, render three seeds, and scan for unit drift or an impossible
+pipetting value. If you see a problem, tighten the constraint here rather than rewriting the
+prompt.
+</p>
 
 <h2>Variables and constraints</h2>
 <table class="mt-responsive-table">
@@ -116,6 +88,11 @@ Why this exists: it turns a story into randomized values and answer objects that
 		</tr>
 	</tbody>
 </table>
+
+<p>
+Computed targets are the glue between Setup and Statement: these are the answer objects that will
+be attached to blanks in the prompt.
+</p>
 
 <h2>Computed targets</h2>
 <table class="mt-responsive-table">

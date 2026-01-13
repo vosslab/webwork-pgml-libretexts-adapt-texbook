@@ -8,7 +8,7 @@ The guide is PGML-first: regular PG is treated as minimal scaffolding, and most 
 should go into clear, structured PGML prompts.
 
 ## Quick start
-- If you want a first win fast: start at `Textbook/01_Introduction/1.5-Quickstart_copy_edit_first_problem.html`.
+- If you want a first win fast: start at `Textbook/01_Introduction/1.6-Quickstart_copy_edit_first_problem.html`.
 - If you want the framing and workflow first: start at `Textbook/01_Introduction/1.0-Index.html`.
 - If you are editing chapter content: use `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` as the source of truth for what each
   page is intended to cover (align the HTML pages to match it).

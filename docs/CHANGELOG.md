@@ -1,7 +1,30 @@
 # Changelog
 
 ## 2026-01-12
-- Refined the Chapter 1.5 and Chapter 2.2 local-testing notes to explicitly use the ADAPT preview as the final check
+- Tightened Chapter 4 prose and tables by removing deprecated PopUp references, simplifying the
+  macro table, adding guided habit paragraphs, and eliminating section color cues inside tables.
+- Added narrative lead-ins across Chapter 4 pages to create a guided walkthrough before the
+  supporting tables and workflow checklists.
+- Removed explicit color labels from Chapter 4 section headers and tables while keeping the
+  visual cues for scanning.
+- Trimmed Chapter 4 section pages to remove repeated overview tables, tightened the workflow page,
+  and added canonical example references plus fast-check guidance for Statement and Solution pages.
+- Filled Chapter 2.5 with legacy-pattern guidance, replacement tables, and a PGML-first rewrite
+  path so the HTML lint passes.
+- Added a Chapter 1 index section map plus the PG vs PGML and "Where to start today" tables for
+  a more scannable quickstart path.
+- Filled `Textbook/01_Introduction/1.5-Common_terms_and_names.html` with a concise terms table and
+  an authoring-focused apply-it-today reminder.
+- Added a WeBWorK author workflow row to the Chapter 1.4 comparison table to call out local
+  rendering when ADAPT errors are opaque.
+- Updated Chapter 1 summaries and the README quickstart path to reflect the current numbering.
+- Rebuilt Chapter 4 pages to use the color-coded section map, compact scan tables, and
+  OpenWeBWorK-style Preamble/Setup/Statement/Solution framing across the index and subpages.
+- Filled Chapter 4 sections (Full file, Preamble, Setup, Statement, Solution, Put it together)
+  with table-driven guidance, official pattern references, and workflow checks.
+- Updated the Chapter 4 entries in `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to match the new layout
+  and workflow focus.
+- Refined the Chapter 1.6 and Chapter 2.2 local-testing notes to explicitly use the ADAPT preview as the final check
   and webwork-pg-renderer (Chapter 7) as the line-level debugging path.
 - Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to refer to the Chapter 7 health check without a leading slash.
 - Updated Chapter 1 and Chapter 2 pages to reference Chapter 7 local rendering at the points where authors most often

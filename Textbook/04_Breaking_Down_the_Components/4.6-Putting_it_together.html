@@ -1,50 +1,45 @@
+<p>
+Pick the change, edit the right section, render one seed to confirm grading, then sweep a few
+seeds to catch edge cases. Most failures trace to missing macros, bad ranges, unbound blanks, or a
+mismatch between prompt and checker.
+</p>
+
 <table class="mt-responsive-table">
 	<colgroup>
-		<col style="width: 18%;">
-		<col style="width: 12%;">
-		<col style="width: 35%;">
-		<col style="width: 35%;">
+		<col style="width: 20%;">
+		<col style="width: 40%;">
+		<col style="width: 40%;">
 	</colgroup>
 	<thead>
 		<tr>
 			<th>Section</th>
-			<th>Color</th>
 			<th>What it controls</th>
 			<th>What to check when debugging</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr style="background-color: #dbeafe;">
+		<tr>
 			<td data-th="Section">Preamble</td>
-			<td data-th="Color">Blue</td>
 			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
 			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
 		</tr>
-		<tr style="background-color: #dcfce7;">
+		<tr>
 			<td data-th="Section">Setup</td>
-			<td data-th="Color">Green</td>
 			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
 			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
 		</tr>
-		<tr style="background-color: #ffedd5;">
+		<tr>
 			<td data-th="Section">Statement</td>
-			<td data-th="Color">Orange</td>
 			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
 			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
 		</tr>
-		<tr style="background-color: #fce7f3;">
+		<tr>
 			<td data-th="Section">Solution</td>
-			<td data-th="Color">Pink</td>
 			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
 			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
 		</tr>
 	</tbody>
 </table>
-
-<p>
-This page turns the deep dive into a repeatable workflow: edit the right section first, then
-verify in a predictable loop.
-</p>
 
 <h2>Common edits (workflow map)</h2>
 <table class="mt-responsive-table">
@@ -91,6 +86,10 @@ verify in a predictable loop.
 </table>
 
 <h2>Preflight before ADAPT import</h2>
+<p>
+ADAPT errors are often generic, so local rendering is the first diagnostic step when something
+fails to preview.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 60%;">
@@ -122,96 +121,3 @@ verify in a predictable loop.
 When you want to swap interaction types, use the techniques list in the OpenWeBWorK PG samples as
 your menu of proven patterns.
 </p>
-
-<h2>Section cues (fast reminders)</h2>
-<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble (blue)</strong></p>
-<p>
-Why this exists: it unlocks the macros you need for the interaction you choose.
-</p>
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 50%;">
-		<col style="width: 50%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Common edits</th>
-			<th>Common failures</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-th="Common edits">Add or remove a macro.</td>
-			<td data-th="Common failures">Missing macro for a widget.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup (green)</strong></p>
-<p>
-Why this exists: it sets the values and answer objects that the prompt depends on.
-</p>
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 50%;">
-		<col style="width: 50%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Common edits</th>
-			<th>Common failures</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-th="Common edits">Adjust ranges or tolerance.</td>
-			<td data-th="Common failures">Impossible variant slips in.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement (orange)</strong></p>
-<p>
-Why this exists: it is the student-facing prompt and the location of the blanks.
-</p>
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 50%;">
-		<col style="width: 50%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Common edits</th>
-			<th>Common failures</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-th="Common edits">Rewrite text or add a table.</td>
-			<td data-th="Common failures">Blank not tied to an answer.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution (pink)</strong></p>
-<p>
-Why this exists: it keeps the grading target transparent and trustworthy.
-</p>
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 50%;">
-		<col style="width: 50%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Common edits</th>
-			<th>Common failures</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-th="Common edits">Clarify the final units.</td>
-			<td data-th="Common failures">Solution implies different rounding.</td>
-		</tr>
-	</tbody>
-</table>

@@ -1,52 +1,12 @@
-<table class="mt-responsive-table">
-	<colgroup>
-		<col style="width: 18%;">
-		<col style="width: 12%;">
-		<col style="width: 35%;">
-		<col style="width: 35%;">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>Section</th>
-			<th>Color</th>
-			<th>What it controls</th>
-			<th>What to check when debugging</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr style="background-color: #dbeafe;">
-			<td data-th="Section">Preamble</td>
-			<td data-th="Color">Blue</td>
-			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
-			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
-		</tr>
-		<tr style="background-color: #dcfce7;">
-			<td data-th="Section">Setup</td>
-			<td data-th="Color">Green</td>
-			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
-			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
-		</tr>
-		<tr style="background-color: #ffedd5;">
-			<td data-th="Section">Statement</td>
-			<td data-th="Color">Orange</td>
-			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
-			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
-		</tr>
-		<tr style="background-color: #fce7f3;">
-			<td data-th="Section">Solution</td>
-			<td data-th="Color">Pink</td>
-			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
-			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
-		</tr>
-	</tbody>
-</table>
-
+<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution</strong></p>
 <p>
-The Solution is for feedback and trust: it explains the grading target and the method without
-becoming a second textbook.
+The Solution is for trust and alignment, not grading. It shows students what the system expected
+and helps instructors confirm that the checker matches the stated method.
 </p>
-
-<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution (pink)</strong></p>
+<p>
+The solution must use the same conventions the checker uses. If the checker expects a numeric
+value in &mu;M to two decimals, the solution should show 0.50 &mu;M, not 0.5 mM.
+</p>
 <p>
 Why this exists: it clarifies the target, the method, and the reporting format that the grader
 expects.
@@ -124,6 +84,10 @@ expects.
 </table>
 
 <h2>Debugging alignment</h2>
+<p>
+Use this table as a quick alignment check: the solution should echo the same conventions the
+checker uses so students see the expected format.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 50%;">
@@ -131,22 +95,22 @@ expects.
 	</colgroup>
 	<thead>
 		<tr>
-			<th>If grading expects X</th>
-			<th>Solution must show X</th>
+			<th>Grading expectation</th>
+			<th>Solution alignment</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="If grading expects X">Absolute tolerance of 0.05</td>
-			<td data-th="Solution must show X">A rounded value that matches that window.</td>
+			<td data-th="Grading expectation">Absolute tolerance 0.05</td>
+			<td data-th="Solution alignment">Rounded value within that window.</td>
 		</tr>
 		<tr>
-			<td data-th="If grading expects X">Unitless numeric answer</td>
-			<td data-th="Solution must show X">Explicitly state the unit in text.</td>
+			<td data-th="Grading expectation">Unitless numeric answer</td>
+			<td data-th="Solution alignment">State the unit in the solution text.</td>
 		</tr>
 		<tr>
-			<td data-th="If grading expects X">Specific sig-fig rule</td>
-			<td data-th="Solution must show X">The same sig-fig convention in the final line.</td>
+			<td data-th="Grading expectation">Specific sig-fig rule</td>
+			<td data-th="Solution alignment">Match the sig-figs in the final line.</td>
 		</tr>
 	</tbody>
 </table>
@@ -167,6 +131,10 @@ expects.
 		<tr>
 			<td data-th="Hook">Short note about units</td>
 			<td data-th="Why it helps">Prevents the most common biology grading disputes.</td>
+		</tr>
+		<tr>
+			<td data-th="Hook">Unit reminder example</td>
+			<td data-th="Why it helps">\"Report in &mu;M, not mM.\" anchors the expected scale.</td>
 		</tr>
 		<tr>
 			<td data-th="Hook">One-line check</td>
