@@ -33,7 +33,7 @@ def parse_args() -> argparse.Namespace:
 		"--allow-links",
 		dest="allow_links",
 		action="store_true",
-		help="Allow all <a href='...'> links, including internal/relative links.",
+		help="Allow all <a href='...'> links, including relative file links.",
 	)
 	parser.add_argument(
 		"--allow-iframe",
@@ -151,10 +151,17 @@ def lint_tree(
 		if allow_links is True:
 			continue
 		href_lower = href.lower()
-		if href_lower.startswith("http://") or href_lower.startswith("https://"):
+		if (
+			href_lower.startswith("http://")
+			or href_lower.startswith("https://")
+			or href_lower.startswith("/")
+			or href_lower.startswith("#")
+			or href_lower.startswith("mailto:")
+			or href_lower.startswith("tel:")
+		):
 			continue
 		errors.append(
-			f"{file_path}:{line_text}: ERROR: internal links are not allowed (<a href='{href}'>)",
+			f"{file_path}:{line_text}: ERROR: relative file links are not allowed (<a href='{href}'>)",
 		)
 
 	return errors

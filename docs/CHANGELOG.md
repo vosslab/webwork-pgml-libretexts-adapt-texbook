@@ -1,6 +1,10 @@
 # Changelog
 
 ## 2026-01-13
+- Updated `docs/LIBRETEXTS_HTML_GUIDE.md` with Construction Guide-derived rules for headings, links,
+  templates, titles, tables, images, and embedded media.
+- Updated `AGENTS.md` and the HTML lint checker so internal LibreTexts links are allowed while
+  relative file links are still flagged as errors.
 - Switched the Chapter 4 worked example to a radio-button choice prompt, updating the full file
   reference and the Preamble/Setup/Statement/Solution walkthroughs to match the parserRadioButtons
   pattern.
