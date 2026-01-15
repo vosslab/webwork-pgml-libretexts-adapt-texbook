@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-01-15
+- Added `tools/pglint.py` to lint PG files by posting to the renderer HTTP API, with optional JSON
+  payload templates and pyflakes-style issue output.
+- Updated `tools/pglint.py` defaults to use `/render-api` with `_format: json` and adjusted error
+  handling so non-200 responses report a lint error instead of a protocol failure.
+- Expanded `tools/pglint.py` to detect renderer JSON warning fields, scan rendered HTML for warning
+  blocks, and optionally base64-encode `problemSource` to match the UI payload.
+- Simplified `tools/pglint.py` to a seed-and-host CLI, hardcoding the UI-style JSON payload and
+  writing all lint output to stdout for pyflakes-like behavior.
+- Added `tests/sample_pgml_problem.pg` as a minimal PGML problem for exercising `pglint.py`.
+- Updated `tools/pglint.py` to request JSON responses explicitly and to summarize non-JSON error
+  pages instead of printing raw HTML.
+- Updated `tools/pglint.py` to strip HTML error pages into readable text when JSON is unavailable.
+- Updated `tools/pglint.py` to retry with raw source when base64 JSON renders return 500, and to
+  extract `<pre>`/heading error text from HTML error pages.
+- Updated `tools/pglint.py` to omit `sourceFilePath` when `problemSource` is provided.
+- Updated `tools/pglint.py` to ignore non-alphanumeric HTML snippets and fall back to HTTP status
+  when an HTML error page has no readable message.
+- Updated `tools/pglint.py` to fall back to form-encoded requests and to treat clean HTML 200
+  responses with no warnings as a successful lint.
+- Updated `tools/pglint.py` to prefer multipart form-data (UI-style) when JSON renders fail.
+- Added a `--debug` flag to `tools/pglint.py` to print request and response details to stderr.
+- Added three PG lint fixtures in `tests/` covering missing PGML macros, missing MathObjects, and a
+  syntax error for pglint validation.
+- Added `tests/run_pglint_samples.sh` to exercise the renderer health check and run pglint against
+  the sample PG files.
+- Updated `tests/run_pglint_samples.sh` so expected-failure samples do not halt the script.
+
 ## 2026-01-14
 - Added `tools/webwork_simple_lint.py` for a lightweight static lint pass on .pg files (macro coverage, balanced markers, PGML blank assignment hints).
 - Added `tools/extract_textbook_pre_blocks.py` to extract `<pre>` blocks into .pg files and optionally run the simple lint pass.

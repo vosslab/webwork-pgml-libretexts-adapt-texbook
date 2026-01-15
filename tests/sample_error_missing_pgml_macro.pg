@@ -1,0 +1,15 @@
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+);
+TEXT(beginproblem());
+
+$value = random(2, 4, 1);
+$answer = Compute("$value + 1");
+
+BEGIN_PGML
+Add one: [`$value`] + 1 = [__]{$answer}
+END_PGML
+
+ENDDOCUMENT();

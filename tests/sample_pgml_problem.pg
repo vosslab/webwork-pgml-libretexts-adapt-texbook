@@ -1,0 +1,16 @@
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+);
+TEXT(beginproblem());
+
+$seed_value = random(2, 5, 1);
+$answer = Compute("$seed_value + 3");
+
+BEGIN_PGML
+Solve: [`$seed_value`] + 3 = [__]{$answer}
+END_PGML
+
+ENDDOCUMENT();
