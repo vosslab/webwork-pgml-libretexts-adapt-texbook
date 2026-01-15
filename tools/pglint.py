@@ -3,6 +3,7 @@
 # Standard Library
 import re
 import json
+import html
 import sys
 import time
 import base64
@@ -91,6 +92,7 @@ def build_payload(pg_source: str, seed: int, encode_source: bool) -> dict[str, o
 		"problemSeed": seed,
 		"_format": DEFAULT_RESPONSE_FORMAT,
 		"showComments": 1,
+		"isInstructor": 1,
 	}
 	return payload
 
@@ -131,7 +133,8 @@ def sanitize_message(message: str) -> str:
 	"""
 	Flatten message whitespace for single-line output.
 	"""
-	flat = " ".join(message.split())
+	unescaped = html.unescape(message)
+	flat = " ".join(unescaped.split())
 	return flat
 
 
@@ -142,17 +145,21 @@ def parse_line_column(message: str) -> tuple[int | None, int | None]:
 	"""
 	Extract line and column numbers from a message if present.
 	"""
-	match = re.search(
+	patterns = [
 		r"[Ll]ine\s+(\d+)(?:\D+column\s*(\d+))?",
-		message,
-	)
-	if not match:
-		return None, None
-	line_value = int(match.group(1))
-	column_value = None
-	if match.group(2):
-		column_value = int(match.group(2))
-	return line_value, column_value
+		r"at\s+[Ll]ine\s+(\d+)(?:\D+column\s*(\d+))?",
+		r"[Ll]ine\s+(\d+)\s+of",
+	]
+	for pattern in patterns:
+		match = re.search(pattern, message)
+		if not match:
+			continue
+		line_value = int(match.group(1))
+		column_value = None
+		if match.lastindex and match.lastindex >= 2 and match.group(2):
+			column_value = int(match.group(2))
+		return line_value, column_value
+	return None, None
 
 
 #============================================
@@ -286,9 +293,23 @@ def extract_html_warnings(rendered_html: str) -> list[str]:
 			text = sanitize_message(re.sub(r"<[^>]+>", " ", block))
 			if text:
 				warnings.append(f"{heading}: {text}")
-				continue
-		if heading.lower() in rendered_html.lower():
-			warnings.append(f"{heading} reported in renderedHTML")
+			continue
+	if warnings:
+		return warnings
+	pre_blocks = re.findall(
+		r"<pre[^>]*>(.*?)</pre>",
+		rendered_html,
+		flags=re.IGNORECASE | re.DOTALL,
+	)
+	for block in pre_blocks:
+		text = re.sub(r"<[^>]+>", " ", block)
+		lines = []
+		for raw_line in text.splitlines():
+			line = sanitize_message(raw_line)
+			if line and re.search(r"[A-Za-z0-9]", line):
+				lines.append(line)
+		for line in lines[:10]:
+			warnings.append(line)
 	return warnings
 
 
@@ -321,7 +342,7 @@ def extract_html_warning_message(rendered_html: str) -> str | None:
 #============================================
 
 
-def extract_renderer_issues(data: object | None) -> list[dict[str, object]]:
+def extract_renderer_issues(data: object | None, debug_enabled: bool) -> list[dict[str, object]]:
 	"""
 	Extract renderer-specific issues from JSON responses.
 	"""
@@ -333,20 +354,35 @@ def extract_renderer_issues(data: object | None) -> list[dict[str, object]]:
 		error_flag = flags.get("error_flag")
 		if error_flag not in (0, "0", None, False):
 			issues.append(build_issue_from_message("render error (flags.error_flag=1)"))
-	debug = data.get("debug")
-	if isinstance(debug, dict):
+	debug_block = data.get("debug")
+	if isinstance(debug_block, dict):
+		if debug_enabled is True:
+			pgcore = data.get("pgcore")
+			if isinstance(pgcore, dict):
+				source_lines = pgcore.get("source_lines")
+				if isinstance(source_lines, list):
+					for item in source_lines:
+						if not isinstance(item, str):
+							continue
+						trimmed = sanitize_message(item)
+						if trimmed:
+							issues.append(build_issue_from_message(f"source: {trimmed}"))
 		debug_map = {
 			"pg_warn": "PG warning",
 			"internal": "Renderer internal",
 			"debug": "Renderer debug",
 		}
 		for key, label in debug_map.items():
-			value = debug.get(key)
+			value = debug_block.get(key)
 			if isinstance(value, list):
 				for item in value:
 					if item:
+						if key in ("internal", "debug") and debug_enabled is False:
+							continue
 						issues.append(build_issue_from_message(f"{label}: {item}"))
 			elif isinstance(value, str) and value.strip():
+				if key in ("internal", "debug") and debug_enabled is False:
+					continue
 				issues.append(build_issue_from_message(f"{label}: {value}"))
 	rendered_html = data.get("renderedHTML")
 	if isinstance(rendered_html, str):
@@ -393,6 +429,47 @@ def merge_issues(
 		issues.append(issue)
 		seen.add(message)
 	return issues
+
+
+#============================================
+
+
+def filter_issues_for_display(
+	issues: list[dict[str, object]],
+	debug_enabled: bool,
+) -> list[dict[str, object]]:
+	"""
+	Filter issues for the default (non-debug) output.
+	"""
+	if debug_enabled:
+		return issues
+	generic_prefixes = (
+		"render error (flags.error_flag=1)",
+		"Renderer internal:",
+		"source:",
+		"Translator errors reported in renderedHTML",
+	)
+	header_prefixes = (
+		"ERRORS from evaluating PG file:",
+	)
+	filtered = []
+	for issue in issues:
+		message = str(issue.get("message", ""))
+		if re.match(r"^\d+:\s*$", message):
+			continue
+		if re.match(r"^\d+:\s", message):
+			continue
+		if message.startswith(generic_prefixes):
+			continue
+		if message.startswith(header_prefixes):
+			continue
+		if message.startswith("Warning messages:"):
+			if "line" not in message.lower() and int(issue.get("line", 1)) == 1:
+				continue
+		filtered.append(issue)
+	if filtered:
+		return filtered
+	return issues[:1]
 
 
 #============================================
@@ -566,8 +643,9 @@ def lint_file(pg_file: Path, args: argparse.Namespace) -> int:
 		)
 		debug_log(args, f"json parsed: {data is not None}")
 	issues = extract_issues(data, DEFAULT_ERROR_KEYS, DEFAULT_MESSAGE_KEYS)
-	renderer_issues = extract_renderer_issues(data)
+	renderer_issues = extract_renderer_issues(data, args.debug)
 	issues = merge_issues(issues, renderer_issues)
+	issues = filter_issues_for_display(issues, args.debug)
 	if response.status_code != 200:
 		if issues:
 			for issue in issues:

@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import re
 import subprocess
 import sys
 
@@ -31,12 +32,12 @@ def parse_args() -> argparse.Namespace:
 		help="Directory to write extracted .pg files (default: output/textbook_pre_blocks).",
 	)
 	parser.add_argument(
-		"--lint",
-		dest="run_lint",
-		action="store_true",
-		help="Run webwork_simple_lint on the extracted files.",
+		"--mode",
+		dest="mode",
+		default="simple",
+		choices=("simple", "pglint"),
+		help="Lint mode: simple (all blocks) or pglint (full problems only).",
 	)
-	parser.set_defaults(run_lint=False)
 	return parser.parse_args()
 
 
@@ -99,6 +100,20 @@ def sanitize_filename(value: str) -> str:
 #============================================
 
 
+def is_full_problem(text: str) -> bool:
+	"""
+	Decide whether a block looks like a full PG problem file.
+	"""
+	if re.search(r"\bDOCUMENT\s*\(\s*\)", text) is None:
+		return False
+	if re.search(r"\bENDDOCUMENT\s*\(\s*\)", text) is None:
+		return False
+	return True
+
+
+#============================================
+
+
 def write_block(
 	output_dir: str,
 	rel_path: str,
@@ -127,11 +142,11 @@ def write_block(
 #============================================
 
 
-def extract_blocks(input_dir: str, output_dir: str) -> list[str]:
+def extract_blocks(input_dir: str, output_dir: str) -> list[tuple[str, bool]]:
 	"""
 	Extract <pre> blocks from HTML files and return written file paths.
 	"""
-	written_files: list[str] = []
+	written_files: list[tuple[str, bool]] = []
 	html_files = find_html_files(input_dir)
 	os.makedirs(output_dir, exist_ok=True)
 	for file_path in html_files:
@@ -144,6 +159,7 @@ def extract_blocks(input_dir: str, output_dir: str) -> list[str]:
 		rel_path = os.path.relpath(file_path, start=input_dir)
 		for index, pre in enumerate(pre_blocks, start=1):
 			text = pre.text_content()
+			full_problem = is_full_problem(text)
 			line = getattr(pre, "sourceline", None)
 			output_path = write_block(
 				output_dir=output_dir,
@@ -152,7 +168,7 @@ def extract_blocks(input_dir: str, output_dir: str) -> list[str]:
 				line=str(line) if line is not None else None,
 				text=text,
 			)
-			written_files.append(output_path)
+			written_files.append((output_path, full_problem))
 	return written_files
 
 
@@ -173,15 +189,46 @@ def run_lint(output_dir: str) -> int:
 #============================================
 
 
+def run_pglint(file_paths: list[str]) -> int:
+	"""
+	Run pglint on a list of extracted files.
+	"""
+	if not file_paths:
+		print("No extracted blocks selected for pglint.")
+		return 0
+	tools_dir = os.path.dirname(os.path.abspath(__file__))
+	pglint_script = os.path.join(tools_dir, "pglint.py")
+	exit_code = 0
+	for path in file_paths:
+		command = [sys.executable, pglint_script, path]
+		result = subprocess.run(command, check=False)
+		if result.returncode > exit_code:
+			exit_code = result.returncode
+	return exit_code
+
+
+#============================================
+
+
 def main() -> None:
 	"""
 	Extract <pre> blocks and optionally lint them.
 	"""
 	args = parse_args()
-	written_files = extract_blocks(args.input_dir, args.output_dir)
-	print(f"Wrote {len(written_files)} extracted blocks to {args.output_dir}")
-	if args.run_lint is True:
-		sys.exit(run_lint(args.output_dir))
+	written_blocks = extract_blocks(args.input_dir, args.output_dir)
+	print(f"Wrote {len(written_blocks)} extracted blocks to {args.output_dir}")
+	exit_code = 0
+	if args.mode == "simple":
+		exit_code = max(exit_code, run_lint(args.output_dir))
+	if args.mode == "pglint":
+		selected = []
+		for path, is_full in written_blocks:
+			if not is_full:
+				continue
+			selected.append(path)
+		exit_code = max(exit_code, run_pglint(selected))
+	if exit_code != 0:
+		sys.exit(exit_code)
 
 
 if __name__ == "__main__":

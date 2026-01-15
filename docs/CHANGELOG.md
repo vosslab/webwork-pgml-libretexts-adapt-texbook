@@ -22,11 +22,30 @@
   responses with no warnings as a successful lint.
 - Updated `tools/pglint.py` to prefer multipart form-data (UI-style) when JSON renders fail.
 - Added a `--debug` flag to `tools/pglint.py` to print request and response details to stderr.
-- Added three PG lint fixtures in `tests/` covering missing PGML macros, missing MathObjects, and a
-  syntax error for pglint validation.
+- Added three PG lint fixtures in `tests/` covering missing PGML macros, missing choice macros, and
+  a syntax error for pglint validation.
 - Added `tests/run_pglint_samples.sh` to exercise the renderer health check and run pglint against
   the sample PG files.
 - Updated `tests/run_pglint_samples.sh` so expected-failure samples do not halt the script.
+- Updated `tests/run_pglint_samples.sh` to echo the expected error before each failing sample.
+- Updated `tools/extract_textbook_pre_blocks.py` to support both simple lint and pglint runs, with
+  a full-problem-only option for pglint.
+- Updated `tools/pglint.py` to extract line numbers from more warning patterns and to surface
+  warning text from HTML <pre> blocks instead of generic placeholders.
+- Updated `tools/pglint.py` to request instructor fields and surface `pgcore` source lines when
+  available, improving line-level diagnostics.
+- Updated `tests/run_pglint_samples.sh` to add spacing and headers for readability.
+- Updated `tools/pglint.py` to keep non-debug output concise by filtering generic render lines.
+- Updated `tools/pglint.py` to suppress source-line dumps and low-signal warning fragments in
+  non-debug output.
+- Updated `tools/pglint.py` to suppress empty source-line markers and trimmed debug output from
+  the sample runner.
+- Updated `tools/pglint.py` to unescape HTML entities in error messages for cleaner debug output.
+- Updated `tests/run_pglint_samples.sh` to accept an optional `--debug` flag and pass it through to
+  pglint.
+- Updated `tools/extract_textbook_pre_blocks.py` to use a single `--mode` switch that runs simple
+  lint on all blocks or pglint on full problems only.
+- Updated `tests/run_pglint_samples.sh` to report and exit when the renderer health check fails.
 
 ## 2026-01-14
 - Added `tools/webwork_simple_lint.py` for a lightweight static lint pass on .pg files (macro coverage, balanced markers, PGML blank assignment hints).

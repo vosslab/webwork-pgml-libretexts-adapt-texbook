@@ -5,11 +5,13 @@ loadMacros(
 );
 TEXT(beginproblem());
 
-$value = random(2, 4, 1);
-$answer = Compute("$value + 1");
+$choices = RadioButtons(
+	["A", "B", "C"],
+	"B",
+);
 
 BEGIN_PGML
-Add one: [`$value`] + 1 = [__]{$answer}
+Select B: [@ $choices->buttons() @]
 END_PGML
 
 ENDDOCUMENT();
