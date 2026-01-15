@@ -35,7 +35,7 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: loadMacros, parser macros, contextUnits
 - `Textbook/02_Problem_Generation_PG/2.5-Legacy_PG_and_deprecated_patterns.html`: Shows how to recognize legacy PG patterns and deprecated approaches that are common in online examples and older problem libraries, with a fast PGML-first rewrite recipe and a PopUp warning. After finishing, you can triage a copied problem quickly, identify what is safe to reuse, and translate the core idea into a PGML-first structure without importing fragile formatting or scattered grading logic. Use it before copy-pasting random examples, especially when a problem relies on long `BEGIN_TEXT/END_TEXT` blocks, heavy Perl string assembly, or macros you do not recognize.
   SEO tags: legacy PG, deprecated patterns, safe refactoring
-  
+
 ## Chapter 3: PGML (PG Markup Language)
 - `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`: Introduces the PGML chapter as the core authoring layer for student-facing prompts and adds a task-first menu plus a quick patterns table. After finishing, you can identify which PGML topic you need next and keep your work PGML-first. Use it as the entry point before writing or revising any prompt text.
   SEO tags: PGML chapter index, prompt formatting, student-facing text
