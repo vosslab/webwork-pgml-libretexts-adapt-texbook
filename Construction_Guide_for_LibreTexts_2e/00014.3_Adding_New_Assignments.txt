@@ -8,7 +8,7 @@ Assignments in Adapt normally consist of one or more assessments (questions). Yo
 (coming soon). To create a new assignment:
 
 1. Log in to your instructors account and select the course that you want to add a new assignment to.
-2. Click “New Assignment”
+2. Click "New Assignment"
 
 General Chemistry Assignments
 
@@ -16,26 +16,26 @@ All assignment groups ¢ Gradebook
 
 Available Points per
 Assignment Name Shown Group On Due Status Question Scores Solutions Statistics Actions
-= test Quiz 9211/16/21 coed CED CGD GD Aim -«s
+= test Quiz 9211/16/21 coed CED CGD GD Aim -"s
 2:39AM 2:39AM 2) w
 = 2. Audio Test la 1/19/21 4/5/23 on CED GD Gz az -s
 9:00AM 9:00 AM 2) @
-= Clicker TE btra | 1igz1 5/21/21 Oe EE ECD az az -«
+= Clicker TE btra | 1igz1 5/21/21 Oe EE ECD az az -"
 Credit 9:00AM 9:00 AM 2) wo
 
 Figure 14.3.1: To add a new assignment click "New Assignment" button at the top
 
-3. In the opened overlay window fill out assignment properties. Click “Submit” to save the assignment.
+3. In the opened overlay window fill out assignment properties. Click "Submit" to save the assignment.
 
 e Name - The name of the assignment that will be displayed for instructors and students
 e Assignment group - You can choose an existing group or create a new group for this assignment.
 
-Note: you can assign Group score weights in Course Properties — Assignment Group Weights
+Note: you can assign Group score weights in Course Properties - Assignment Group Weights
 
 e Source
 
-o Select “Internal” if you are using LibreTexts database or Query Library.
-o Select “External” if you are planning on adding/importing scores from another source manually.
+o Select "Internal" if you are using LibreTexts database or Query Library.
+o Select "External" if you are planning on adding/importing scores from another source manually.
 
 e Scoring Type
 o Performance - students get credit for correct answers. Partial credit is possible with delayed grading.
@@ -50,7 +50,7 @@ e Assessment type
 
 o Real Time - works best for auto-graded questions, students are provided with the feedback immediately after submitting
 their answer. Scores are also released at the time of submission.
-o Delayed Graded Assessments: this type will require manual grading. Students won’t get their scores and feedback until the
+o Delayed Graded Assessments: this type will require manual grading. Students won't get their scores and feedback until the
 scores are released.
 o Learming Tree Assessments: this type is only appropriate for learning trees.
 o Clicker Assessments: this type is only appropriate for clicker questions.
@@ -70,7 +70,7 @@ o Oo 90 0
 
 Oibretexts:
 
-o None - students won’t have any additional field for submission. Works well for auto-graded questions (H5P, WeBWork,
+o None - students won't have any additional field for submission. Works well for auto-graded questions (H5P, WeBWork,
 etc.)
 
 e Late Policy
@@ -90,14 +90,14 @@ o Do not include the assignment in computing a final weighted score - the score 
 e Instructions (Optional) - these instructions will be shown to students before they see the first question of the assignment.
 e Randomization
 No - show all questions added to the assignment to students
-o Yes - only show a specific number of questions out of all questions you’ve added to this assignment. You will need to
+o Yes - only show a specific number of questions out of all questions you've added to this assignment. You will need to
 indicate the number of randomized assessments. The bigger the pool of questions, the greater the chance that all students
 will get a different set of randomized questions.
-e Notifications - if students opted-in to receive notifications they will be notified if you select “Yes”
+e Notifications - if students opted-in to receive notifications they will be notified if you select "Yes"
 e Assign to - select one or several students, specific section or all students enrolled in this course
 e Available on - date when the assignment will be first available to students
 e Due Date - Deadline for the assignment
-e Final submission Deadline - If you select “Accept but mark late” or “Accept late with a deduction” you will be asked to
+e Final submission Deadline - If you select "Accept but mark late" or "Accept late with a deduction" you will be asked to
 provide this deadline after which the submissions will not be accepted anymore.
 e Add Assign to - use this option to assign special deadlines for a specific student/section
 
@@ -112,11 +112,11 @@ All assignment groups + New Assignment
 
 Available Points per
 Assignment Name Shown Group On Due Status Question Scores Solutions Statistics Actions
-= test TH we yt 16/21 coed CED CGD Gi Aim -«
+= test TH we yt 16/21 coed CED CGD Gi Aim -"
 2:39AM 2:39 AM 2) w
-= 2. Audio Test TO wb oie = 4/5/23 Open CURZED az=> AID -«
+= 2. Audio Test TO wb oie = 4/5/23 Open CURZED az=> AID -"
 9:00AM 9:00 AM ea
-= Clicker TH tr i212 Open GED az» Gz -«
+= Clicker TH tr i212 Open GED az" Gz -"
 Credit 9:00AM 9:00AM 2) W
 
 Figure 14.3.2: Click "Import Assignment" to clone properties or properties and questions from another assignment

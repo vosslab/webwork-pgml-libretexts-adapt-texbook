@@ -59,7 +59,7 @@ HTTP request sent, awaiting response... 200 OK
 
 Length: 30286 (30K) [application/octet-stream]
 
-Saving to: ‘auto-mpg.data.1’
+Saving to: 'auto-mpg.data.1'
 
 pee de 1.90% [===================> ] 29.58K --, -KB/sS in
 PYTHON SESSION: NOT STARTED
@@ -71,7 +71,7 @@ https ://chem.libretexts .org/@go/page/483748
 
 Oibretexts:
 
-2020-05-18 01:28:43 (708 KB/s) - ‘auto-mpg.data.1’ saved [30286/30286]
+2020-05-18 01:28:43 (708 KB/s) - 'auto-mpg.data.1' saved [30286/30286]
 
 Once the data file has been loaded, use Python code that you may normally use to read out the lines in the data file. An example
 code block has been provided below.
@@ -103,7 +103,7 @@ import codecs
 
 url = "https://chem. libretexts.org/@api/deki/files/265970/auto-mpg.data"
 ftpstream = urllib.request.urlopen(url)
-csvfile = csv.reader(codecs.iterdecode(ftpstream, ‘utf-8'))
+csvfile = csv.reader(codecs.iterdecode(ftpstream, 'utf-8'))
 for line in csvfile:
 print(line)
 

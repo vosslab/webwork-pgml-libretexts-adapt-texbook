@@ -15,7 +15,7 @@ Project Title *
 Econ 1020: Principles of Macroeconomics
 
 Status Classification Visibility
-Open/In Progress ~ - Private (only collaborators) ’
+Open/In Progress ~ - Private (only collaborators) '
 Private (only collaborators)
 Clear... Harvesting
 Public (within Conductor)
@@ -125,7 +125,7 @@ Default Additional Author(s)
 7
 -
 -
-’
+'
 
 https ://chem.libretexts .org/@go/page/483703
 

@@ -95,7 +95,7 @@ Gradebook
 
 Figure 14.1.2: Select "Graders" in the menu on the left and then click "Invite Grader"
 
-4. Enter Grader’s email address
+4. Enter Grader's email address
 5. Choose sections to give Grader access to or click "select all" to give access to all sections
 6. Click "Submit". Invited Grader will receive an email with the access code to join.
 
@@ -103,8 +103,8 @@ Graders Instructions
 
 1. Open your invitation sent via email and copy access code
 
-Q, ~ OB +» i
-e——
+Q, ~ OB +" i
+e--
 
 ¢ 8 @8 82 O08 G&G BB B : + Boomerang GF 30
 ADAPT
@@ -117,7 +117,7 @@ Bob Belford has just invited you to be a grader for Chem1300 - Main
 
 Please sign up below by using the access codq@a2f?.
 
-Note: if you already have an account with us, then you can just Log In and then “Add
+Note: if you already have an account with us, then you can just Log In and then "Add
 
 Course"
 SIGN UP
@@ -159,7 +159,7 @@ Oibretexts:
 Grader Permissions
 
 After the grader has made their account and registered, you can set permissions for which assignments they can access.
-Under Course Properties select “Grader Permissions”. You can give grading access to individual assignments and graders, or you
+Under Course Properties select "Grader Permissions". You can give grading access to individual assignments and graders, or you
 can select "give all graders access" to give all graders access to all assignments
 
 Course Properties Grader Permissions

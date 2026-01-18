@@ -11,7 +11,7 @@ for students and communities worldwide.
 Most, but not all, pages in the library have licenses that may allow individuals to make changes, save,
 and print this book. Carefully consult the applicable license(s) before pursuing such effects. Instructors
 can adopt existing LibreTexts texts or Remix them to quickly build course-specific resources to meet the
-needs of their students. Unlike traditional textbooks, LibreTexts’ web based origins allow powerful
+needs of their students. Unlike traditional textbooks, LibreTexts' web based origins allow powerful
 integration of advanced features and new technologies to support learning.
 
 ©) LibreTexts

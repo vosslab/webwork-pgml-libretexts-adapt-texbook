@@ -2,9 +2,9 @@ Oibretexts:
 
 6.1: Applying for an Instructor's Account
 
-Let’s start by walking through the process of registering for an instructor’s account and creating a new book. Start at
+Let's start by walking through the process of registering for an instructor's account and creating a new book. Start at
 https://one.libretexts.org. If you have an account you can go directly to signing on, if not you will have to register. To register you
-will have to provide an Email account and a password. We strongly prefer that those registering for an instructor’s account use an
+will have to provide an Email account and a password. We strongly prefer that those registering for an instructor's account use an
 institutional email (for example .edu or .org in the US).
 
 Oibretexts:
@@ -20,13 +20,13 @@ EliRabett@gmail.com G Continue with Google
 Password an . cae
 
 nn Continue with Microsoft
-—— Good
+-- Good
 
 Create account
 
 By registering with LibreTexts, you agree to our Privacy Policy and Terms of Service.
 
-Already have an account? Sign in » Forgot your password? Reset password
+Already have an account? Sign in " Forgot your password? Reset password
 
 Figure 6.1.1: Form for registering for a LibreTexts Instructor's Account
 
@@ -142,7 +142,7 @@ Figure 6.1.6
 LibreTexts provides free instructor accounts to any secondary or higher education instructor that applies. The most important thing
 for you to provide is a URL where it is clearly shown that you are an instructor.
 
-Don’t provide:
+Don't provide:
 
 https ://chem.libretexts .org/@go/page/483945
 
@@ -166,7 +166,7 @@ Your Instructor Profile
 
 Verified instructors can edit and contribute to the LibreTexts libraries.
 
-Bio URL”
+Bio URL"
 
 To verify instructor status yo
 

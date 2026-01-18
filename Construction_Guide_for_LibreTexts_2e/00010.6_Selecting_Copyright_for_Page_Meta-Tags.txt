@@ -5,9 +5,9 @@ Oibretexts:
 Each page should be marked with a copyright. This can be selected via the "Licensing" meta-tag in the collapsible "Page setting"
 panel on each page (see below).
 
-25 Contents| fp Home » [ff CampusCourses » [jf Remixer University » [f\ ConstructionGuide » a 2: Basic Editing
+25 Contents| fp Home " [ff CampusCourses " [jf Remixer University " [f\ ConstructionGuide " a 2: Basic Editing
 
-— Page settings C2)
+- Page settings C2)
 Summary:
 Add page summary
 Article type: Stage: Author: Embed Hypothes.is?:
@@ -27,8 +27,8 @@ This page has no custom tags. CC BY-ND
 CC BY-NC-ND
 GNU GPL
 2.9: Selecting Copyright fa ai rignts Reserved
-oo —] CC BY-NC
-Last updated: May 22, 2019, 8:58 AM by admin | GNU FDL 4 2.8: Transcluding (Reusing) a Page | 3: Advanced Editing »
+oo -] CC BY-NC
+Last updated: May 22, 2019, 8:58 AM by admin | GNU FDL 4 2.8: Transcluding (Reusing) a Page | 3: Advanced Editing "
 
 Figure 10.6.1: Full page settings for Chemistry library. Each library has a different set of meta-tags. The licensing options for pages
 are selected via a pull down menu.
@@ -125,7 +125,7 @@ https ://chem.libretexts .org/@go/page/483725
 --- Page Break ---
 
 Oibretexts:
-‘Yes ‘Yes ‘Yes ‘Yes No
+'Yes 'Yes 'Yes 'Yes No
 BY
 
 @) ©) Yes Yes Yes No No

@@ -55,7 +55,7 @@ previous step.
 
 You should get an object that looks like the following:
 
-Lp) — Content Reuse —
+Lp) - Content Reuse -
 Learning_Objects/CalcPlot3D_Interactive_Figures/Guichard_Calculus_Figures/Figure_16.7.1_Moebius_Strip
 
 Figure 11.8.4 Content reuse placeholder for a CalcPlot3D dynamic figure when in Edit mode
@@ -76,7 +76,7 @@ will generate the following placeholder:
 
 Right-click and select Edit content reuse to edit which CalcPlot3D figure to display.
 
-— Content Reuse —
+- Content Reuse -
 
 Learning_Objects/CalcPlot3D_Interactive_Figures/OpenStax_Calculus_Dynamic_Figures/FIGURE_12.5.1
 
@@ -111,13 +111,13 @@ Last updated: Nov 12, 2019, 11:50 PM by Paul Seeburger Page restriction: ries 0:
 
 Revolve the washers/shells
 
-o—
+o-
 
 C show representative rectangle
 
 (show n washers/shells
 
-n= o——
+n= o--
 
 Ottide region in xy-plane Figure 11.8.6 Static image of a CalcPlot3D dynamic
 figure from the LibreTexts Math Library, with its Page ID circled in red.
@@ -449,8 +449,8 @@ are even a few commands listed in the last bullet below that can be used for Cal
 
 2
 
-e Youcan adda name attribute and/ora noanimate attribute to any sliders. For example, “noanimate=true;name=n_x”.
-Note that each object, including the sliders, starts with “type=” in the query string. To clarify, these attributes must be set in the
+e Youcan adda name attribute and/ora noanimate attribute to any sliders. For example, "noanimate=true;name=n_x".
+Note that each object, including the sliders, starts with "type=" in the query string. To clarify, these attributes must be set in the
 definition of the relevant slider object.
 
 See:
@@ -463,7 +463,7 @@ means you can use LaTeX in the name.
 The noanimate attribute allows you to hide the Animate button on the slider control, if you wish.
 
 e For figures showing the trace plane (currently those with contour plots), you can add one or more of the following attributes to
-the window element at the very end of the query string: “hidexysliders=true; hidetracevalue=true;hidetrancepoint=true;”
+the window element at the very end of the query string: "hidexysliders=true; hidetracevalue=true;hidetrancepoint=true;"
 
 See:
 

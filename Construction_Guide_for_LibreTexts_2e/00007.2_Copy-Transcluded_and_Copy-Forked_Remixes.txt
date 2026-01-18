@@ -23,7 +23,7 @@ Last updated: Nov 24, 2018, 6:39 PM by Delmar Larsen Page restriction: Public Pa
 Edit View Format Style Elements Help Words: 5, Chars: 153
 PP) save X cancel | |Heagng- |B J YU A- O-|LIEE|S-|B- |e Q </> HTML
 
-Ip) — Content Reuse — x
+Ip) - Content Reuse - x
 
 Double click on the "Content Reuse" box so this box pops up:
 
@@ -78,7 +78,7 @@ Oibretexts:
 6.2: Naming lonic Compounds ¥
 Last updated: Nov 24, 2018, 6:39 PM by Delmar Larsen i restriction: Public Page ID: 118806
 
-He <6: \iineFormulstorionteconpounts| 7-covten tones » KRIIED. exch TEES
+He <6: \iineFormulstorionteconpounts| 7-covten tones " KRIIED. exch TEES
 
 SKILLS TO DEVELOP
 
@@ -95,6 +95,6 @@ This page titled 7.2: Copy-Transcluded and Copy-Forked Remixes is shared under a
 
 curated by Delmar Larsen.
 
-« 7.4: Copy-Transcluded and Copy-Forked Remixes by Delmar Larsen is licensed CC BY 1.3.
+" 7.4: Copy-Transcluded and Copy-Forked Remixes by Delmar Larsen is licensed CC BY 1.3.
 
 https ://chem.libretexts .org/@go/page/483714

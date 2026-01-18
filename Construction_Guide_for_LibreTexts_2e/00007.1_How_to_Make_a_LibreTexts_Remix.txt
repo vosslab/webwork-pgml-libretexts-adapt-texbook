@@ -13,7 +13,7 @@ Map to guide you in building your remixed text and this tutorial assumes that yo
 It can be useful to think of the remixer as email and imap/POP3 application on a personal computer.
 
 email Remixer
-‘Your emails are on an email server somewhere Your texts are on the LibreTexts server
+'Your emails are on an email server somewhere Your texts are on the LibreTexts server
 
 You download the email to your personal computer when you You download an image of your text to your personal computer
 
@@ -43,7 +43,7 @@ VISIBILITY: Private
 LIBRARY: Geosciences
 
 IMPORTANT ACTIONS:
-‘Open Project Link [7 Open OER Remixer [7
+'Open Project Link [7 Open OER Remixer [7
 
 IMPORTANT TOOLS:
 
@@ -144,13 +144,13 @@ https ://chem.libretexts .org/@go/page/483713
 
 Gibretexts-
 
-CS LibreTexts” Enter peor Mode
+CS LibreTexts" Enter peor Mode
 
 HUMANITIES
 
 P = Q How can we help you? | Sign in
 
-£5 Contents | #% Home » Under Construction » Development Details » OER Remixer
+£5 Contents | #% Home " Under Construction " Development Details " OER Remixer
 
 OER Remixer
 
@@ -184,7 +184,7 @@ Oibretexts:
 N <
 Q Options SX Site tools 2 TestBox
 n &
-= Contents | th Home » Under Construction » E Development Details » |) OER Remixer
+= Contents | th Home " Under Construction " E Development Details " |) OER Remixer
 D
 OER Remixer
 
@@ -208,7 +208,7 @@ Your Remix will be saved to your personal sandbox AUTONUMBER OPTIONS Step 3
 SAVE MAP LOAD MAP
 
 Library Panel Remix Panel
-stats v — iN New Untitled Remix
+stats v - iN New Untitled Remix
 -++©* Campus Bookshelves = YT] Front Matter
 -+© Bookshelves A 01:_TitlePage
 -+-© Learning Objects # EJ 02:_InfoPage
@@ -255,25 +255,25 @@ Admin Mode @ io PUBLISH #
 
 Library Panel Remix Panel
 Chemistry "| == i Book: Organic Chemistry with a Biological Emphasis (Soderberg)
-—iiN = Organic Chemistry # + 1: Introduction to Organic Structure and Bonding I
+-iiN = Organic Chemistry # + 1: Introduction to Organic Structure and Bonding I
 
-+i. Supplemental Modules (Organic Chemistry) & — @Q)_ 2: Introduction to Organic Structure and Bonding II
++i. Supplemental Modules (Organic Chemistry) & - @Q)_ 2: Introduction to Organic Structure and Bonding II
 
-“FINS Exercises: Organic Chemistry # ) 2.1: Prelude to Organic Structure and Bonding II
+"FINS Exercises: Organic Chemistry # ) 2.1: Prelude to Organic Structure and Bonding II
 
-“Fill\ Book: Organic Chemistry Lab Techniques (Nichols) 2 E)_ 2.2: valence Bond Theory
+"Fill\ Book: Organic Chemistry Lab Techniques (Nichols) 2 E)_ 2.2: valence Bond Theory
 
-“Fil. Book: How to be a Successful Organic Chemist (Sandtorv) 1B] 2.3: Molecular orbital theory- conjugation and aromaticity
+"Fil. Book: How to be a Successful Organic Chemist (Sandtorv) 1B] 2.3: Molecular orbital theory- conjugation and aromaticity
 
 =F ill\ Book: Organic Chemistry with a Biological Emphasis (Soderberg) & c> EI} 2.4: Resonance
 
 =F ill\ Book: Basic Principles of Organic Chemistry (Roberts and Caserio) & 8 2.5: Non-covalent interactions
 
-“FA Map: Organic Chemistry (McMurry) iB} 2.6: Physical properties of organic compounds
+"FA Map: Organic Chemistry (McMurry) iB} 2.6: Physical properties of organic compounds
 
-“FA Map: Organic Chemistry (Wade) 2 iB} 2.7: Solutions to Chapter 2 exercises
+"FA Map: Organic Chemistry (Wade) 2 iB} 2.7: Solutions to Chapter 2 exercises
 
-“FA Map: Organic Chemistry (Vollhardt and Schore) +E] 2: Problems for Chapter 2
+"FA Map: Organic Chemistry (Vollhardt and Schore) +E] 2: Problems for Chapter 2
 
 +- Book: Virtual Textbook of OChem (Reusch) 2 ++ @_ 3: conformations and Stereochemistry
 
@@ -297,11 +297,11 @@ At the top of the Library Panel you will find the library selector, you can sele
 Admin Mode @
 
 Library Panel
-l 4 ~»
-Chemistry iS bd — iN Book: oO
+l 4 ~"
+Chemistry iS bd - iN Book: oO
 Biology A
-Business + w ‘Sure
-—@ 2:
+Business + w 'Sure
+-@ 2:
 Engineering
 Espanol A 21
 Geology j
@@ -372,7 +372,7 @@ Source URL (optional
 https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Orgal
 
 & Visit https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Orga.
-— ¥ Override Copy Mode .
+- ¥ Override Copy Mode .
 Topi
 t Te This will override the Default Copy Mode
 Author tag:So... 3 authorname:s... authorname:s... €9
@@ -401,7 +401,7 @@ panel.
 
 PUBLISH SUMMARY _LIBRETEXT PREVIEW Publish In Progress (11.5%) Time Elapsed: 19 seconds
 21 / 182 Time Remaining: 2 minutes
-20 Transcluded 2.7: Solutions to Chapter 2 exercises “
+20 Transcluded 2.7: Solutions to Chapter 2 exercises "
 BO pages will be blank pages v 19 Transcluded 2.6: Physical properties of organic compounds
 
 18 Transcluded 2.5: Non-covalent interactions
@@ -425,7 +425,7 @@ B . \ 8 Transcluded 1.4.3: Introduction to lipid structure
 4 Transcluded 1.3: Functional groups and organic nomenclature
 
 3 Transcluded 1.2: Drawing organic structures ~.
-4 »
+4 "
 
 B® Overwrite existing pages A
 
@@ -480,20 +480,20 @@ Library Panel Remix Panel
 Chemistry *| == RN OFT: CHE 332 -- Organic Chemistry II (Lund) :
 aad a 1: Fall term review chapters & ° -- a 1: Fall term review chapters
 +-Q) 7: Acid-base Reactions # + @) 2: Acid-base Reactions
-+ ) 8: Nucleophilic Substitution Reactions —S 1] 3: Nucleophilic Substitution Reactions
++ ) 8: Nucleophilic Substitution Reactions -S 1] 3: Nucleophilic Substitution Reactions
 
 + ) 9: Phosphate Transfer Reactions & 3.1: Prelude to Nucleophilic Substitution Reactions
 
 + a 10: Nucleophilic Carbonyl Addition Reactions
 + a 11: Nucleophilic Acyl Substitution Reactions #
 ++) 12: Reactions at the a-Carbon, Part I ¥
-“Fil OMT: CHE 333 - Organic Chemistry III (sample) &
-“Fil. OMT: CHE 333 - Organic Chemistry III (Lund) &
+"Fil OMT: CHE 333 - Organic Chemistry III (sample) &
+"Fil. OMT: CHE 333 - Organic Chemistry III (Lund) &
 HN Otterbein University &
 +i. Palomar College &
 if. Pasadena City College
 +H Portland Community College #
-“Fil. Prince Georges Community College #
+"Fil. Prince Georges Community College #
 
 3.2: New Page
 
@@ -512,7 +512,7 @@ if. Pasadena City College
 
 6 0 a
 
-QAM» Muclannhilic Cubetititinn Dasctiane [Cummans\
+QAM" Muclannhilic Cubetititinn Dasctiane [Cummans\
 
 Figure 7.1.13: Edited remix showing deleted pages in red, new page (in green) and modified pages (in orange). These changes only
 take effect once the remix is "published"

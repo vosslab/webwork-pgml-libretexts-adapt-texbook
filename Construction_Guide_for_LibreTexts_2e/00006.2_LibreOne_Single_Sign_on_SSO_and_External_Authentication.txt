@@ -30,7 +30,7 @@ Don't have an account yet? Register with LibreOne - Forgot your password? Reset 
 
 If you have forgotten your password you can Reset it here. Email will be sent to you with further instructions
 
-©Cibretexts”
+©Cibretexts"
 
 @ Back to signin Back to sign in
 Forgot your password?
@@ -93,7 +93,7 @@ The SSO system is coupled to accept both google and microsoft authenticated netw
 you can use your campus account to sign in. However, Microsoft provide additional freedoms to campuses to verify vendors
 (like LibreTexts) to access campus authentication.
 
-Below is what it looks like for an admin to “Consent on behalf of your organization”.
+Below is what it looks like for an admin to "Consent on behalf of your organization".
 
 B= Microsoft
 hagnew@libretexts.org
@@ -101,7 +101,7 @@ hagnew@libretexts.org
 Permissions requested
 
 LibreTexts SSO
-—* LibreTexts, Inc. @
+-* LibreTexts, Inc. @
 
 This app would like to:
 

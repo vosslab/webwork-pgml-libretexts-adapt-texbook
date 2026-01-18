@@ -85,10 +85,10 @@ Oibretexts:
 
 + Home
 
-“+ Campus Bookshelves
+"+ Campus Bookshelves
 
 Article to reuse:
-‘Courses/Monroe_Community_College/LivreTexts_Training_Materiats/LitreText_Training_Tutonials/Adding_GeoGebra_Explorations_te_Librelt
+'Courses/Monroe_Community_College/LivreTexts_Training_Materiats/LitreText_Training_Tutonials/Adding_GeoGebra_Explorations_te_Librelt
 
 Reuse section:
 
@@ -102,10 +102,10 @@ Figure 11.9.2 The Content reuse dialog
 
 To navigate to the Learning Objects folder, click on the plus symbol in front of the word Home. The list of folders should now appear like Figure 11.9.3 below.
 
-— Home
+- Home
 
 - Campus Bookshelves
-“+ Bookshelves
+"+ Bookshelves
 
 + Learning Objects
 
@@ -117,7 +117,7 @@ Figure 11.9.3 List of folders shown when we click the plus symbol in front of Ho
 
 Now click on the plus symbol in front of Learning Objects should display a list similar to that shown below in Figure 11.9.4
 
-— Learning Objects
+- Learning Objects
 ++ CalcPlot3D Interactive Figures
 + GeoGebra Simulations
 F Inty GeoGebra Simulations tivities
@@ -187,7 +187,7 @@ appear.
 Finally, once you are ready to insert the exploration into your page, click the Insert button in the lower-right corner of the dialog. A content reuse placeholder like
 the following will appear in the page editing window. To see your inserted GeoGebra exploration in action, save the page.
 
-LP) — Content Reuse —
+LP) - Content Reuse -
 Learning_Objects/GeoGebra_Simulations/Frenet_Frame
 
 Figure 11.9.% Placeholder for the content reuse of the Frenet Frame GeoGebra exploration
@@ -197,23 +197,23 @@ If you decide you'd like to insert a GeoGebra exploration from a LibreTexts libr
 accomplished using a Cross-Library Reference, the library subject area, and the Page ID number for the GeoGebra exploration you have selected.
 
 Say we wish to insert the following GeoGebra exploration from the LibreTexts Math Library on a page in another LibreTexts library (say Chemistry or Physics).
-Damped, Undamped, and-or Forced Spring Motion Coes ol ‘
+Damped, Undamped, and-or Forced Spring Motion Coes ol '
 
 G]O 12 updated: ul 19, 2022, 12:59 AM by Paul Seeburger Page restriction: Pubic Page 1D: 108169 x
 3 < Damped Spring Motion | Differentiation: Derivatives and Graph Tran... > Hi Readability &
 @ Paul Seeburger
 Monroe Community College
-Spring Equation: u(t) = —3.05cos(1.73t) + 3.05 cos(1.3t)
+Spring Equation: u(t) = -3.05cos(1.73t) + 3.05 cos(1.3t)
 
 10] Undamped Forced Motion
 
 t=0 Speed = 0.5
-0 Ko> e————— -—
-Differential Equation: 0.5u” + Ou’ + 1.5u = [2 Jeos( {13 Jo
+0 Ko> e----- --
+Differential Equation: 0.5u" + Ou' + 1.5u = [2 Jeos( {13 Jo
 u(0) = fo | [V) Positive direction is downward
 
 [V] Show Force Vector
-w(0) = fo | [V] Use a Forcing Function ‘Show Forcing Function in Plot
+w(0) = fo | [V] Use a Forcing Function 'Show Forcing Function in Plot
 
 (©) 2022 Paul Seeburgr. Orgnaly designed for use alongece Elamentary Dierentil Equations, 1th ed, by Boyes, Prima, and Meade
 
@@ -267,7 +267,7 @@ just have to edit the code as shown below.
 The first time (to get started), I recommend that you copy one of the following GeoGebra explorations from the repository into a page of your own.
 Accumulation Function Curve Sketching Example 1 or Accumulation Function Exploration Tool
 
-‘You can use the Remixer to do this or you can create a new page using the New button and use Content reuse (as described above) to insert just this exploration
+'You can use the Remixer to do this or you can create a new page using the New button and use Content reuse (as described above) to insert just this exploration
 into the page.
 
 *# Note: Using the New Button to Create a New Page

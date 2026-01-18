@@ -95,7 +95,7 @@ Gibretexts-
 
 € C  @ chemlibretexts.org/Courses/Remixer_University/LibreTexts_Construction_Guide/04%3A_Advanced_Editing/4.01%3A_Transcluding_(Reusing)_a_Page#
 .
-LibreTexts”
+LibreTexts"
 
 Choose Language v
 
@@ -105,14 +105,14 @@ Contents
 = ® si
 Fa N Site tools
 3
-2 ?= Contents | fe Home » if Campus Bookshelves » fjf\ Remixer University » jf\ LibreTexts Construction Gu #2) Revision history diting
+2 ?= Contents | fe Home " if Campus Bookshelves " fjf\ Remixer University " jf\ LibreTexts Construction Gu #2) Revision history diting
 @ Restrict access
 + Page settings
-3 =» Move
+3 =" Move
 sy 4.1: Transcluding (Reusing) a Page
 & ©® Last updated: Aug 16, 2020, 1:46 PM by Delmar Larsen Page restriction: Public Page ID: 151328 Cy Copy
 Y Fork
-+ <4 4: Advanced Editi a” Tuoed > EE
++ <4 4: Advanced Editi a" Tuoed > EE
 2 Propagate
 2 Our transcluding video tutorial on YouTube: youtu.be/EfSHjZ60gGc €) Propagate
 oO

@@ -7,42 +7,42 @@ taken from the ipycytoscape repository and is licensed under the BSD 3-Clause Li
 
 import ipycytoscape
 data = {
-‘nodes': [
-{ ‘data’: ‘id': 'desktop', 'name': 'Cytoscape', ‘href': 'http://cytoscape.org
+'nodes': [
+{ 'data': 'id': 'desktop', 'name': 'Cytoscape', 'href': 'http://cytoscape.org
 
-‘data’: ‘id': ‘'a', 'name': '‘Grid', ‘href': 'http://cytoscape.org' } },
-‘data’: ‘id': 'b', 'name': ‘Cola', ‘href': 'http://cytoscape.org' } },
-‘data’: ‘id': 'c', 'name': 'Popper', ‘href': 'http://cytoscape.org' } },
-‘data’: ‘id': 'js', 'name': 'Cytoscape.js', ‘href': ‘'http://js.cytoscape.or
+'data': 'id': ''a', 'name': ''Grid', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'b', 'name': 'Cola', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'c', 'name': 'Popper', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'js', 'name': 'Cytoscape.js', 'href': ''http://js.cytoscape.or
 
-‘source': ‘desktop', ‘target': 'js' }},
-‘source': ‘a', ‘target': 'b' }},
-‘source': ‘a', ‘target': ‘c' }},
-‘source': 'b', ‘target': ‘c' }},
-‘source': ‘js', ‘target': 'b' }}
+'source': 'desktop', 'target': 'js' }},
+'source': 'a', 'target': 'b' }},
+'source': 'a', 'target': 'c' }},
+'source': 'b', 'target': 'c' }},
+'source': 'js', 'target': 'b' }}
 ]
 }
 cytoscapeobj = ipycytoscape.CytoscapeWidget ()
 cytoscapeobj.graph.add_ graph from _json(data)
 cytoscapeobj.set_style([{
-‘selector’: ‘node’,
-‘css': {
-‘content': ‘data(name)',
-‘text-valign': ‘center',
-‘color': ‘white',
-‘'text-outline-width': 2,
-‘text-outline-color': ‘green',
-‘background-color': ‘green'
+'selector': 'node',
+'css': {
+'content': 'data(name)',
+'text-valign': 'center',
+'color': 'white',
+''text-outline-width': 2,
+'text-outline-color': 'green',
+'background-color': 'green'
 }
 },
 {
-‘selector’: ':selected',
-‘css': {
-‘background-color’: ‘black’,
+'selector': ':selected',
+'css': {
+'background-color': 'black',
 'Line-color': 'black',
-‘target-arrow-color': ‘black',
-‘source-arrow-color': ‘black',
-'text-outline-color': ‘black’
+'target-arrow-color': 'black',
+'source-arrow-color': 'black',
+'text-outline-color': 'black'
 }}
 })
 

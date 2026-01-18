@@ -38,7 +38,7 @@ Step 2: Instructors Account
 Anyone can view all content available on LibreTexts, you only need an account if you want to publish your own customized
 course. You single LibreOne login will work on all of the libraries, but you should ensure you are logged in to the library where
 you want to store your text, although you can reuse content across all libraries in your remix. Request an instructor's account here.
-To register you will have to provide an Email account and a password. We greatly prefer that those registering for an instructor’s
+To register you will have to provide an Email account and a password. We greatly prefer that those registering for an instructor's
 
 account use an institutional email (for example .edu or .org in the US). We will also ask for a URL where it is clearly shown that
 

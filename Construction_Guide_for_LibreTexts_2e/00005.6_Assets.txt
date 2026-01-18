@@ -8,7 +8,7 @@ folders with files inside them. Files with public access will be visible on the 
 
 Assets Hide
 
-If your project has supporting files, use this tool to upload and organize them. Files with ‘public’ access will be visible to the public on
+If your project has supporting files, use this tool to upload and organize them. Files with 'public' access will be visible to the public on
 Commons via the resource's catalog entry.
 
 & Upload * New Folder

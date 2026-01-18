@@ -39,15 +39,15 @@ plt.show()
 run | restart | restart & run all
 
 Once the widget is enabled, that change will persist throughout the whole page until the kernel is restarted (either by explicitly
-pressing the ‘restart’ button or by refreshing the page). If you go back and rerun the first cell after the one directly above, you will
+pressing the 'restart' button or by refreshing the page). If you go back and rerun the first cell after the one directly above, you will
 notice that it also has interactive features enabled. Whichever widget you have most recently enabled within a kernel session is the
-one that will be activated for the entire webpage. To return to the static plotting images, use “atplotlib inline . This
+one that will be activated for the entire webpage. To return to the static plotting images, use "atplotlib inline . This
 allows you to include both static and interactive plots on your Libretexts page; just call the relevant °matplotlib magic
 command and you can switch between the two styles.
 
 smatplotlib inline
 
-fig — nit finiural\
+fig - nit finiural\
 ax PYTHON SESSION: NOT STARTED rojection='3d')
 
 X, Y, Z = axes3d.get_ test data(0.05)

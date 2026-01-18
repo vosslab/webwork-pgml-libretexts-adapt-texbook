@@ -8,9 +8,9 @@ the ShowOrg template discussed in Section: Adding Automatic Organizations (The r
 8 _
 .
 
-LibreTexts” Catch us June 16 - 21 at the GRC - Chemistry Education Research and Practice
+LibreTexts" Catch us June 16 - 21 at the GRC - Chemistry Education Research and Practice
 
-& $ a § istt ; & is «
+& $ a § istt ; & is "
 
 Biology Business Chemistry Engineering Espafiol Geosciences Humanities | Mathematics Medicine Physics Social Sciences Statistics Workforce
 Periodic Table of the Elements Reference Tables Physical Constants Units and Conversions Organic Chemistry Glossary
@@ -22,7 +22,7 @@ Welco e Chemi Library
 
 Texts pi ich is a multi-institutional collaborative re to develop the next generation of oj texts to improve
 
-levels learning. The Texts approach is highly collaborative wh—r@ an Open Access textbook environment is constant revision by
+levels learning. The Texts approach is highly collaborative wh-r@ an Open Access textbook environment is constant revision by
 
 conventioi -based books.
 
@@ -36,7 +36,7 @@ e Step 0: Log in as an Instructor and go to the Book or Chapter you want to add/
 e Step 1: The page must be classified as "Book/Unit" or "Chapter" not "Section/Page" (refresh page if you switch it)
 e Step 2: The "page setting" grey bar just above the page title will need to be clicked if you don't see all the choices
 
-— Page settings
+- Page settings
 
 CS LibreTexts~ Thun summary
 
@@ -49,7 +49,7 @@ provides an importan
 
 and to the world arot
 
-2=Contents| Home » [jf\ Bookshelves » [jf University Physics »
+2=Contents| Home " [jf\ Bookshelves " [jf University Physics "
 
 Category listing display :
 Simple [2] Detailed
@@ -64,7 +64,7 @@ e Step 3: The box at the upper left in the should say "Thumbnail" and if you hov
 upper right hand corner. Click that.
 e Step 4: Now click "Browse" to select the image file from your file system.
 
-— Page settings
+- Page settings
 
 Thumbnail Summary
 

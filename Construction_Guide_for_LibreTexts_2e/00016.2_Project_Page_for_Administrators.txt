@@ -24,11 +24,11 @@ Manage Project Team x
 
 Add Team Member
 
-Elfi Hoskins Team Lead ’
+Elfi Hoskins Team Lead '
 
-Heather Burns Team Member ’ | o.
+Heather Burns Team Member ' | o.
 
-2 Joshua Halpern Project Liaison ’
+2 Joshua Halpern Project Liaison '
 
 Admins can remove team members and designate their roles. At least one LibreTexts Admin should be the Project Liason. You can
 add members to the team by starting to type their names in the Add Team Member box at which point a list of people with that

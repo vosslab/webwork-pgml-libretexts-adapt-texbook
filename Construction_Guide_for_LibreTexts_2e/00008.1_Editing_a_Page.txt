@@ -65,7 +65,7 @@ Justification (alignment)
 
 USEFULL MOST TIMES Add Table Toggle between
 
-“visual mode”
+"visual mode"
 
 Find & Replace
 Text Color (do not use) P And HTML code
@@ -78,7 +78,7 @@ Cancel Bold Bulleted Add Image Add Script
 Editing Redo ; Erase All Lists dd
 Save Italic Formatting Add Boxes
 Auto Check
-Page Undo Headings Hyperlink to “Notes on
+Page Undo Headings Hyperlink to "Notes on
 g . yp 7 Accessibility
 Underline Numbered Another Page Examples
 (do not use Lists -Figures
@@ -104,7 +104,7 @@ The Edit menu contains the basic actions your authors can use within the editor.
 e Undo
 e Paste: Paste cut or copied content from your operating system clipboard.
 o Modern browsers to not allow Paste as Plain Text or Paste from Word options. Paste
-e Find “es
+e Find "es
 © Replace
 e Replace
 @ Select all
@@ -113,9 +113,9 @@ View Menu
 
 The View menu allows authors different ways to see the content they'll be editing. Edt | View | Format Style Elements Help
 
-e Source - View and edit the HTML source for the page E1es} <> sone ——v et
+e Source - View and edit the HTML source for the page E1es} <> sone --v et
 
-e Show blocks - See the content blocks in WYSIWYG mode in order to better identify the —
+e Show blocks - See the content blocks in WYSIWYG mode in order to better identify the -
 HTML structure and format of your content
 
 Format Menu

@@ -53,14 +53,14 @@ https ://chem.libretexts .org/@go/page/483929
 
 Oibretexts:
 
-@ Edit Properties 8: Manage Team CS LibreTexts”
+@ Edit Properties 8: Manage Team CS LibreTexts"
 CHEMISTRY
 
 ABAB*K.Z
 
 Project Properties
 
-= f Home » BN Workbench » §ii¥ Testi
+= f Home " BN Workbench " §ii¥ Testi
 STATUS: Open
 
 VISIBILITY: Private + Page settings
@@ -95,9 +95,9 @@ Info Page Sur el UGiCe VETS (p
 
 Licensing { {template. DynamicLicensing()}}
 
-Index template(‘DynamicIndex’)
+Index template('DynamicIndex')
 
-Glossary template(‘DynamicGlossary/Activate')
+Glossary template('DynamicGlossary/Activate')
 
 Detailed Licensing { {template. DynamicDetailedLicensing()}}
 

@@ -5,7 +5,7 @@ CHAPTER OVERVIEW
 
 The goal of the LibreTexts project is to establish a vetted, comprehensive, and widely-used platform for the dissemination and
 implementation of customized course materials for post-secondary courses, while significantly reducing existing textbook costs for
-students. The LibreTexts project consists of 13 independently operating and interconnected “libraries” that focus on augmenting
+students. The LibreTexts project consists of 13 independently operating and interconnected "libraries" that focus on augmenting
 education in separate fields via a series of open-access online textbook environments that includes complementary ancillaries that
 advance diverse pedagogical methods and support multiple student learning styles. The LibreTexts libraries currently benefits over
 100 million students per year and is arguably the most visited chemistry website in the world.

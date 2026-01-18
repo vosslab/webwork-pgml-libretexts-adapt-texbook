@@ -86,23 +86,23 @@ Figure 1.1.1: General overview of the LibreVerse
 
 Supporting the libraries are a number of components (most require instructor accounts to access and are unlinked below)
 
-e ADAPT - LibreTexts’ new homework system with integrated problem sets.
+e ADAPT - LibreTexts' new homework system with integrated problem sets.
 
-e Analytics - Linked to the Adapt homework system, LibreTexts’ Analytics have been designed by instructors for their students.
+e Analytics - Linked to the Adapt homework system, LibreTexts' Analytics have been designed by instructors for their students.
 
-e Studio — LibreTexts’ H5P app for building questions that can be inserted into your LibreTexts.
+e Studio - LibreTexts' H5P app for building questions that can be inserted into your LibreTexts.
 
-e Nova - Drupal based FOSS tech allows local hosting of LibreTexts’ with native H5P, QTI and other courseware features.
+e Nova - Drupal based FOSS tech allows local hosting of LibreTexts' with native H5P, QTI and other courseware features.
 
-e Commons — LibreTexts’ window on the world, access to Catalog, Libraries and Collections. Every LibreNet member has their
+e Commons - LibreTexts' window on the world, access to Catalog, Libraries and Collections. Every LibreNet member has their
 own branded Campus Commons.
 
-e Conductor — LibreTexts’ team oriented project management software coordinates book construction and curation.
+e Conductor - LibreTexts' team oriented project management software coordinates book construction and curation.
 
-e Composer — LibreTexts’ drag and drop remixer for books. LibreTexts’ editor provides paragraph level attribution, automatic
+e Composer - LibreTexts' drag and drop remixer for books. LibreTexts' editor provides paragraph level attribution, automatic
 numbering of equations and more.
 
-e Curator — LibreTexts’ format allows centralized, automatic curation flagging common problems including lack of alt text,
+e Curator - LibreTexts' format allows centralized, automatic curation flagging common problems including lack of alt text,
 linkrot and more.
 
 e JupyterHub - provides an environment where you can create interactive notebooks with code, visualizations, and more.

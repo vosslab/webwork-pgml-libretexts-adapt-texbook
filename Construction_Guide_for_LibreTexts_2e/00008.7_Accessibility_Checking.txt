@@ -25,9 +25,9 @@ J 4, Tables
 
 J 5. Links
 
-‘J 6. Color Contrast
+'J 6. Color Contrast
 
-‘J 7, Labels
+'J 7, Labels
 
 8. Abbreviations (excluded by default)
 
@@ -97,7 +97,7 @@ Caption:
 Contact ckelibretext@ucdavis.edu for bug reporting.
 If the quick fix button doesn't show up, please refresh the page. §
 
-nome cosascascscaccsca»ygcess
+nome cosascascscaccsca"ygcess
 
 Answer: 137.368 amu
 
@@ -107,7 +107,7 @@ Atomic mass, and molecular mass have the same units: atomic mass units.
 
 This page titled 8.7: Accessibility Checking is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
 
-« 3.8: Accessibility Checking by Delmar Larsen is licensed CC BY 1.3.
+" 3.8: Accessibility Checking by Delmar Larsen is licensed CC BY 1.3.
 
 https ://chem.libretexts .org/@go/page/483724
 

@@ -21,9 +21,9 @@ e Drag and drop the image from your desktop to your page (while editing).
 @ https://chem.libretexts.org/Workshops/Work
 + Pagesettings
 Workshop Skills
-4 Workshop University | BCCE (2018) »
+4 Workshop University | BCCE (2018) "
 
-Edit View Format Style Elements ~—Help Words: 144, Chars: 1158
+Edit View Format Style Elements ~-Help Words: 144, Chars: 1158
 BP) save XX Cancel Headng~ |B J Ul\A-~ Q- |RIE E/E |e? B/Q </> HTML
 While the basic principles of editing and creating content on the LibreTexts site are limited, there are several skills need to Master to use the
 LibreTexts before creating and curating content. The Construction Guide and Forum are great resources to consult in building these skills:
@@ -65,7 +65,7 @@ module itself. DO NOT HOTLINK images. Hotlinks in general are prone to vaporizat
 The Medium Way - Copy and Paste Screenshots
 
 Often when integrating content from dead libraries like PDF or scanned images, the Print Screen option can be used. On PC, there
-is a "Print Screen” button on the upper right corner of the keyboard that will take a screen shot of the screen and store it in the
+is a "Print Screen" button on the upper right corner of the keyboard that will take a screen shot of the screen and store it in the
 computer clipboard. This can then be "pasted" directly via the control-v combination directly into the LibreTexts Editor. The
 
 (cc) (#) https ://chem.libretexts .org/@go/page/483719
@@ -129,7 +129,7 @@ https ://chem.libretexts .org/@go/page/483719
 
 Oibretexts:
 
-Edit View Format = Style. = Elements ~—-Help Words: 514, Chars
+Edit View Format = Style. = Elements ~--Help Words: 514, Chars
 
 [) save Xcancet | <> Heading -~ |B J UlA-~- O-|ZIEE! =-|P BH-/Q </> HTML
 Double check that image URL starts like thi Align left tries

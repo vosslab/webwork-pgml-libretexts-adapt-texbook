@@ -22,7 +22,7 @@ Notify specific people...
 Assets
 Notify LibreTexts Support
 
-If your project has supporting files, use this tool to upload and organize them. Files with ‘public’ access will be visible
+If your project has supporting files, use this tool to upload and organize them. Files with 'public' access will be visible
 
 Don't notify anyone
 

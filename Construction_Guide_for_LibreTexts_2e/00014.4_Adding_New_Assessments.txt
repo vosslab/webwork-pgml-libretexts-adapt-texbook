@@ -11,7 +11,7 @@ The Assignment Remixer is modeled after the OER Remixer on the LibreTexts librar
 assessments in an existing assignment.
 
 1. Open the Assignment.
-2. Click “Add Assessment”
+2. Click "Add Assessment"
 
 Assignment Information
 This assignment doesn't have any questions.
@@ -29,7 +29,7 @@ Course Gradebook
 
 Figure 14.4.1: Add new assessments to the assignment by clicking on "Add Assessments" button
 
-3. Open “Assignment Remixer” Tab
+3. Open "Assignment Remixer" Tab
 4. You can filter courses by School, Instructor's name, course name or all three
 
 5. Select the assignment
@@ -55,7 +55,7 @@ left to add them to your assignment
 
 7. You can preview any question by clicking on its name.
 
-8. Click “Add all questions” if you want to add all listed questions
+8. Click "Add all questions" if you want to add all listed questions
 
 9. You can delete chosen questions by clicking on the Recycle Bin icon next to it
 
@@ -75,7 +75,7 @@ Order Title Submission
 
 Figure 14.4.3: Delete questions by clicking on the Recycle Bin icon
 
-10. You don’t have to save your selection. Once you leave this page, all of the questions that you’ve selected will be added to your
+10. You don't have to save your selection. Once you leave this page, all of the questions that you've selected will be added to your
 assignment.
 
 Adding Assessments by Tag
@@ -108,7 +108,7 @@ Figure 14.4.4: Start typing the tag to see all matching tags
 right. You can delete the tag by clicking on the recycle bin icon next to it
 6. All questions that are currently in the Query that have that tag assigned to them will be shown below. You can go through all of
 
-them by clicking at the numbers and select the questions that you want. To add an assessment click “Add Question”. If the
+them by clicking at the numbers and select the questions that you want. To add an assessment click "Add Question". If the
 question was added successfully you will see a confirmation message
 
 In a large manufacturing plant. a pump is used to move a liquid fuel from a below-ground tank to a raised furnace. The total elevation change that the
@@ -193,6 +193,6 @@ comas and click "Import Questions".
 This page titled 14.4: Adding New Assessments is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar
 Larsen.
 
-« 9.4: Adding New Assessments by Delmar Larsen is licensed CC BY 1.3.
+" 9.4: Adding New Assessments by Delmar Larsen is licensed CC BY 1.3.
 
 (cc) (#) 14.4.3 https ://chem.libretexts .org/@go/page/483787

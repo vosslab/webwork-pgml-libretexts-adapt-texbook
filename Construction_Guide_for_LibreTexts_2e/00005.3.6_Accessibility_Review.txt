@@ -9,7 +9,7 @@ If you select Accessibility Check in the Project Ribbon
 
 # Accessibility Button
 
-Projects >» Completed Projects >» CHM 2000 General Chemistry for Engineering ID: WSLOTRQSXL z Unpin Project
+Projects >" Completed Projects >" CHM 2000 General Chemistry for Engineering ID: WSLOTRQSXL z Unpin Project
 
 (# Edit Properties © Timeline & Peer Review @ Accessibility More Tools ~
 
@@ -70,7 +70,7 @@ height at least 1.5 times following par.
 eC:
 Ze.
 
-Alter text size? Keep line Alter text size? Spacing _— Alter text size? Letter Alter text size? Word
+Alter text size? Keep line Alter text size? Spacing _- Alter text size? Letter Alter text size? Word
 agraphs is Alterte is 0.12 times the Alterte is 0.16 times the
 )
 
@@ -124,7 +124,7 @@ Is the document accessible?
 
 . . Does the video have audio
 
-If no transcript, does the audio — .
+If no transcript, does the audio - .
 . descriptions or a media
 
 have a transcript? oo

@@ -7,7 +7,7 @@ How to Login to a Library
 Sometimes you may need to login through a library. It you are in a library and the top line is gray you are not logged in. This will
 take you to the Login page
 
-CS LibreTexts” Enter Reader Mode
+CS LibreTexts" Enter Reader Mode
 
 CHEMISTRY
 
@@ -21,7 +21,7 @@ see some options. My contributions provides a list of all pages you have edited.
 account information. My subscriptions provides a list of pages you are monitoring for changes. You can navigate to a book, chapter
 or pages you want to view using the tab at the left of the page at the top of the blue bar.
 
-S LibreTexts”
+S LibreTexts"
 
 HUMANITIES
 
@@ -39,7 +39,7 @@ collaborative where an Open Access textbook environment is under constant revisi
 paper-based books.
 
 %& My preferences
-«@ My subscriptions
+"@ My subscriptions
 
 WB Sign out
 

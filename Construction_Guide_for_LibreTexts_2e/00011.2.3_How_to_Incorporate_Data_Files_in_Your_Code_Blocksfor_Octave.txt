@@ -65,12 +65,12 @@ Connecting to files.mtstatic.com
 
 HTTP request sent, awaiting response... 200 OK
 Length: 30286 (30K) [application/octet-stream]
-Saving to: ‘auto-mpg.data’
+Saving to: 'auto-mpg.data'
 
 auto-mpg.data 29.58K --.-KB/s
 0.01s
 
-2020-05-18 19:05:11 (2.18 MB/s) - ‘auto-mpg.data’ saved [30286/30286]
+2020-05-18 19:05:11 (2.18 MB/s) - 'auto-mpg.data' saved [30286/30286]
 
 Once the data file has been loaded, use Octave code that you may normally use to read out the lines in the data file.
 

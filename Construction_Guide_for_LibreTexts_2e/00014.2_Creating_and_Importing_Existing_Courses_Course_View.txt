@@ -76,7 +76,7 @@ Larsen
 Chem 2C: General Chemistry II! Import --- Bob Belford
 
 Figure 14.2.4: Choose the course that you want to import
-4. Click “Yes, import course”
+4. Click "Yes, import course"
 
 Note: Imported Courses are automatically set to Private. To allow other instructors to have access to the assignments of your newly
 important course, you have to select Public on the course properties page. Student information is never sharable.

@@ -20,7 +20,7 @@ url = "https://chem. lLibretexts.org/@api/deki/files/265970/auto-mpg.data"
 
 request = urllib2.Request (url)
 response = urllib2.urlopen(request, context=ssl. create unverified context())
-csvfile = csv.reader(codecs.iterdecode(response, ‘utf-8'))
+csvfile = csv.reader(codecs.iterdecode(response, 'utf-8'))
 for line in csvfile:
 print(line)
 

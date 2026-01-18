@@ -8,9 +8,9 @@ To ensure effective coupling of pages within the LibreTexts, content on pages ca
 process:
 
 e Mark the word you want to be the hyperlink, then click the hyperlink button with the "chain link" icon.
-e If you want to link to an outside page, place the address in the “link to” box and click “update link”.
+e If you want to link to an outside page, place the address in the "link to" box and click "update link".
 
-e If you want to link to an internal LibreTexts module, you can use the “browse” option to find the page. You can also use the
+e If you want to link to an internal LibreTexts module, you can use the "browse" option to find the page. You can also use the
 search function to look for key words (make sure you check that the page is a relevant link though).
 2.6: Hyperlinking
 
@@ -52,7 +52,7 @@ l Browse | Search
 ++ Textbook of Plastic and Reconstructive Surgery
 ++ 1: GENERAL
 +14: Principles of Plastic Surgery, Wound Healing, Skin Grafts and Flaps
-— 1.1.4: WOUND MANAGEMENT
+- 1.1.4: WOUND MANAGEMENT
 
 mindtouch.page#thumbnail
 

@@ -71,16 +71,16 @@ The text comes from the summary in the Page Settings
 
 Oibretexts:
 
-S LibreTexts” FE] Enter Reader Mode
+S LibreTexts" FE] Enter Reader Mode
 CHEMISTRY
 Edit New Options KR Site tools L£ Joshua Halpern
 
 Contents
 
-#5 Contents | % Home » fii Workbench » jf} Construction Guide for LibreTexts » a 9: Advanced Editing
+#5 Contents | % Home " fii Workbench " jf} Construction Guide for LibreTexts " a 9: Advanced Editing
 
 >
-3 — Page settings e
+3 - Page settings e
 8 Thumbnail Summary
 The pages below outlines several of the advanced skills often required for content construction and curation.
 oO
@@ -136,12 +136,12 @@ https ://chem.libretexts .org/@go/page/483735
 
 Gibretexts-
 
-€ Cc @ https://chem.libretexts.org/Courses/University_of_Arkansas_Little_Rock/Chem_1402%3A_General_Chemistry_1_(Belford)/Text/2%... wv oOo a Ba @ Co th] A [=] “a [e)
+€ Cc @ https://chem.libretexts.org/Courses/University_of_Arkansas_Little_Rock/Chem_1402%3A_General_Chemistry_1_(Belford)/Text/2%... wv oOo a Ba @ Co th] A [=] "a [e)
 E9cHEMIsTRY
 1 |U Pa c o
 .
-LibreTexts” Catch us at the IUPAC World Chemistry Congress in Paris - July 5-12 =
-A $ 4 g istt » € x + B iss <
+LibreTexts" Catch us at the IUPAC World Chemistry Congress in Paris - July 5-12 =
+A $ 4 g istt " € x + B iss <
 
 Biology Business Chemistry Engineering Espafiol Geosciences Humanities Mathematics Medicine Physics Social Sciences Statistics | Workforce
 
@@ -149,7 +149,7 @@ Periodic Table of the Elements Reference Tables Physical Constants Units and Con
 
 Edit New hp Remixer ey Downloads Options S Site tools LZ Delmar Larsen
 
-a | ff Home » GW Course Shells » §f\ University of Arkansas Little Rock » §f¥\ Chem 1402: General Chemistry 1 (Belford) » i Text
+a | ff Home " GW Course Shells " §f\ University of Arkansas Little Rock " §f¥\ Chem 1402: General Chemistry 1 (Belford) " i Text
 
 + Page settings
 
@@ -157,7 +157,7 @@ a | ff Home » GW Course Shells » §f\ University of Arkansas Little Rock » §
 
 M by Delmar Larsen Page restriction: Public Page ID: 50425
 
-* 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure » Ho Batch PTOC| Ls | Donte
+* 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure " Ho Batch PTOC| Ls | Donte
 a Contributed by Robert Belford
 
 Professor (Chemistry) at University of Arkansas at Little Rock
@@ -172,7 +172,7 @@ of effort to be shown in the correct (numerical) order. This is because the titl
 
 Composition and Structure".
 
-kg << 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure » BoE Batch [TOC] Ls | Donate
+kg << 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure " BoE Batch [TOC] Ls | Donate
 a Contributed by Robert Belford
 
 Professor (Chemistry) at University of Arkansas at Little Rock
@@ -288,7 +288,7 @@ Oibretexts:
 2: Atoms, Molecules, and Ions
 Last updated: Jun 23, 2019, 8:46 AM by Delmar Larsen Page restriction: Public Page ID: 50425
 
-+x << 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure » HOE) Batch [TOC| ws | oonate |
++x << 1B.5: Graphs and Graphing | 2.1: Atoms: Their Composition and Structure " HOE) Batch [TOC| ws | oonate |
 
 Contributed by Robert Belford
 Professor (Chemistry) at University of Arkansas at Little Rock

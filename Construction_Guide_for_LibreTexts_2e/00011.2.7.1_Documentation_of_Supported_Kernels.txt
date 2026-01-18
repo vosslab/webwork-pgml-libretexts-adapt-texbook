@@ -7,7 +7,7 @@ supports Python 3, Julia, R, Octave, SageMath, and C++. There are various kernel
 code that you type and display the results. Each of these kernels support and execute a specific programming language and version.
 When you select a language, the associated kernel is automatically launched, performs the computation, and produces the results.
 For example, the ipython kernel executes python code. A full list of all the Jupyter Kernels is available here. It includes all the
-information on each of the kernel’s documentation, its installation process, supported languages and versions, and 3rd party
+information on each of the kernel's documentation, its installation process, supported languages and versions, and 3rd party
 dependencies. However, if you are only interested in knowing how to use the supported kemels, refer to the following
 documentations or examples:
 

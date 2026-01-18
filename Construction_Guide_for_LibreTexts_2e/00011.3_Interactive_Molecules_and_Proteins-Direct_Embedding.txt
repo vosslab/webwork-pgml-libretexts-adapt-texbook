@@ -7,7 +7,7 @@ An interactive protein/chemical can be embedded into pages via the following ste
 discussed elsewhere.
 
 Step 1: Identify the page you want to edit
-For example, let’s say we want to edit this page:
+For example, let's say we want to edit this page:
 
 https://bio.libretexts.org/TextMaps/Map%3A_Biochemistry_Free_and_Easy_(Ahern)/03%3A_Structure_and_Function/3.2%3A_Pr
 oteins
@@ -16,7 +16,7 @@ and swap out the collagen image for an interactive image
 
 Fibrous Proteins
 
-Not all proteins have significant amounts of tertiary or quaternary structure. (As we shall see, these last two levels of structure arise from ‘bends’ in polypeptide chains and interactions
+Not all proteins have significant amounts of tertiary or quaternary structure. (As we shall see, these last two levels of structure arise from 'bends' in polypeptide chains and interactions
 between separate polypeptide chains, respectively.)
 
 Alpha keratin, for example, is what we refer to as a fibrous protein (also called scleroprotein). Alpha keratin has primary structure and secondary structure, but little tertiary or
@@ -24,12 +24,12 @@ quaternary structure.
 
 Consequently, alpha keratin exists mostly as long fibers, such as are found in hair. Beta-keratin is a harder fibrous protein found in nails, scales, and claws. It is made up mostly of beta
 sheets. Proline, which is the least flexible amino acid, due to attachment of the side chain to the alpha-amino grip, is less likely to be found in alpha helices, but curiously it is found
-abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us together. How does
+abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the 'glue' that literally sticks us together. How does
 the inflexibility of proline permit it to be in a helix? The answer is probably the parallel abundance in collagen of glycine, which contains the smallest side group and therefore has the
 greatest flexibility.
 
-As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such ‘post-
-translational modifications’ are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are hydroxylated post-
+As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such 'post-
+translational modifications' are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are hydroxylated post-
 translationally. The hydroxylated prolines and lysines play a role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the assembly of collagen fibrils.
 These bonds provide structural integrity to the collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for their activity. Lack of vitamin C leads
 to the production of weakened collagen fibrils, resulting in a condition called scurvy.
@@ -57,7 +57,7 @@ Gibretexts-
 
 \, & Template imbedGimo! x \& TempinetimbeddOmo! x \ bh Howe: Molecute Retere x \ BB POR- 101: Cottage 2) > RCSB POR - 1BKV: COLL: x
 
-New Tab [Ei] tustrative Mathers: CQ) Create tooltips for” GQ) aLIBIApat <> thermodynamics- QD (671) Pinterest Apple Fruk-Weslth | ge Skele(BETA)-AJd a gi Free Medical Stuft-| [BJ Periodic tends
+New Tab [Ei] tustrative Mathers: CQ) Create tooltips for" GQ) aLIBIApat <> thermodynamics- QD (671) Pinterest Apple Fruk-Weslth | ge Skele(BETA)-AJd a gi Free Medical Stuft-| [BJ Periodic tends
 
 RCSB PDB
 
@@ -85,7 +85,7 @@ Method: X-RAY DIFFRACTION Metric Percentile Ranks Valve
 Resolution: 2A nree ee orn
 Revalue Free: 0.277 Cavaco SG = Seltl
 
-R-Value Work: 0.228 rw oe _—
+R-Value Work: 0.228 rw oe _-
 
 Secchan cers Sg ir
 
@@ -110,7 +110,7 @@ P) save X Cancel Hedging |B J YU\/A- O- | T ES) =- $$ BHB-'Q | <p ar
 
 Fibrous Proteins
 
-Not all proteins have significant amounts of tertiary or quaternary structure. (As we shall see, these last two levels of structure arise from ‘bends’ in polypeptide chains and
+Not all proteins have significant amounts of tertiary or quaternary structure. (As we shall see, these last two levels of structure arise from 'bends' in polypeptide chains and
 interactions between separate polypeptide chains, respectively.)
 
 Alpha keratin, for example, is what we refer to as a fibrous protein (also called scleroprotein). Alpha keratin has primary structure and secondary structure, but little tertiary or
@@ -118,12 +118,12 @@ quaternary structure
 
 Consequently, alpha keratin exists mostly as long fibers, such as are found in hair. Beta-keratin is a harder fibrous protein found in nails, scales, and claws. It is made up mostly
 of beta sheets. Proline, which is the least flexible amino acid, due to attachment of the side chain to the alpha-amino grip, is less likely to be found in alpha helices, but curiously
-it is found abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us
+it is found abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the 'glue' that literally sticks us
 together. How does the inflexibility of proline permit it to be in a helix? The answer is probably the parallel abundance in collagen of glycine, which contains the smallest side
 group and therefore has the greatest flexibility.
 
-As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such ‘post-
-translational modifications’ are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
+As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such 'post-
+translational modifications' are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
 hydroxylated post-transiationally. The hydroxylated prolines and lysines play a role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the
 assembly of collagen fibrils. These bonds provide structural integrity to the collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
 their activity. Lack of vitamin C leads to the production of weakened collagen fibrils, resulting in a condition called scurvy.
@@ -151,24 +151,24 @@ rg/@go/page/483763
 Gibretexts-
 
 Egit View Format Style | Elements | Help Weeds: 420. Chars: 2714
-P) save Xcancet | >) | Mead $5 InservRemove bulletediist. —Cui-snimeg | FE =i=- \¢ &-/Q| <)> HTML
+P) save Xcancet | >) | Mead $5 InservRemove bulletediist. -Cui-snimeg | FE =i=- \¢ &-/Q| <)> HTML
 j= InservRemove numbered ist Ciri*Shift+7
-Fibrous Proteins = o»ioons: Coresnines
-Not all proteins have significant ¢ = ("set horzontal line p. (As we shall see, these last two levels of structure arise from ‘bends’ in polypeptide chains and
+Fibrous Proteins = o"ioons: Coresnines
+Not all proteins have significant ¢ = ("set horzontal line p. (As we shall see, these last two levels of structure arise from 'bends' in polypeptide chains and
 interactions between separate pol 4. page preak
 Alpha keratin, for example, is wht () Insert special character iled scleroprotein). Alpha keratin has primary structure and secondary structure, but little tertiary or
 quaternary structure.
 {©} Content reuse
 Consequently, alpha keratin exists eS tmeert po in hair. Beta-keratin is a harder fibrous protein found in nails, scales, and claws. It is made up mostly
 of beta sheets. Proline, which is th pent he side chain to the alpha-amino grip, is less likely to be found in alpha helices, but curiously
-itis found abundantly in the fibrou © video ious page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us
+itis found abundantly in the fibrou © video ious page) is the most abundant protein in the human body and is the 'glue' that literally sticks us
 together. How does the etext Ea Tempiates answer is probably the parallel abundance in collagen of glycine, which contains the smallest side
 group and therefore has the gr
-‘Link CtreK
-As an interesting sidelight of the p ¢ modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such ‘post-
-translational modifications’ are q BD Anchor rosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
+'Link CtreK
+As an interesting sidelight of the p ¢ modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such 'post-
+translational modifications' are q BD Anchor rosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
 hydroxylated post-transiationally. | Gy image a role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the
-assembly of collagen fibrils. Thes! ‘collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
+assembly of collagen fibrils. Thes! 'collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
 their activity. Lack of vitamin C lea EB Tabie * 1 fibrils, resulting in a condition called scurvy.
 
 The carbonyl oxygen of the peptide bond can exist in resonance with the C-N bond, giving the peptide bond characteristics of a double bond and imposing limitations for
@@ -185,24 +185,24 @@ oe etl ee nmnmnm@>S$S9$$$S$S$Pm rr ipa sci incase |
 Step 5: Press Templates on toolbar
 
 Edit View Format Style | Elements | Help Weeds: 420, Chars: 2714
-BP) save Xcancet | >) | Head FE inservRemove butletedist —CieShines § FE _iz- |? @ B-/Q) </> HTML
+BP) save Xcancet | >) | Head FE inservRemove butletedist -CieShines § FE _iz- |? @ B-/Q) </> HTML
 {= InserRemove numbered list CirirShift+7
 Fibrous Proteins | = cmon Cutesninws
-Not all proteins have significant ¢ = "set nerzontal ine B. (As we shall see, these last two levels of structure arise from ‘bends’ in polypeptide chains and
+Not all proteins have significant ¢ = "set nerzontal ine B. (As we shall see, these last two levels of structure arise from 'bends' in polypeptide chains and
 interactions between separate pol 4. page break
-Alpha keratin, for example, is whé ()_ Insert special character Alled scleroprotein). Alpha keratin has primary structure and secondary structure, but little tertiary or
+Alpha keratin, for example, is whe ()_ Insert special character Alled scleroprotein). Alpha keratin has primary structure and secondary structure, but little tertiary or
 quaternary structure.
 {©} Content reuse
 Consequently, alpha keratin exists eS eet pets in hair. Beta-keratin is a harder fibrous protein found in nails, scales, and claws. It is made up mostly
 of beta sheets. Proline, which is th of the side chain to the alpha-amino grip, is less likely to be found in alpha helices, but curiously
-itis found abundantly in the fibrou £8 video ious page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us
+itis found abundantly in the fibrou £8 video ious page) is the most abundant protein in the human body and is the 'glue' that literally sticks us
 together. How does the inflexibili £3 Templates answer is probably the parallel abundance in collagen of glycine, which contains the smallest side
 group and therefore has the ai
-‘Link CtrieK
-As an interesting sidelight of the ¢ modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such ‘post-
-translational modifications’ are n 2 Anchor rosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
+'Link CtrieK
+As an interesting sidelight of the ¢ modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such 'post-
+translational modifications' are n 2 Anchor rosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
 hydroxylated post-transiationally.| 3 image @ role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the
-assembly of collagen fibrils. Thes! ‘collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
+assembly of collagen fibrils. Thes! 'collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
 their activity. Lack of vitamin C leq EB Tabe > h fibrils, resulting in a condition called scurvy.
 
 The carbonyl oxygen of the peptide bond can exist in resonance with the C-N bond, giving the peptide bond characteristics of a double bond and imposing limitations for
@@ -214,9 +214,9 @@ PRAPRARR,,
 
 Figure 3.2.5: Collagen.
 
-> eeeem—””' ro eee ain ssie issues |
+> eeeem-""' ro eee ain ssie issues |
 
-Step 6: Press “EmbedGLMol” and when queried press “Insert template”
+Step 6: Press "EmbedGLMol" and when queried press "Insert template"
 
 https ://chem.libretexts .org/@go/page/483763
 
@@ -244,13 +244,13 @@ _Template:TypeSkills
 Step 7: Edit Code
 
 The above steps insert this red box with code. You can edit the second line (<script type...) accordingly. The simple thing is to
-change the code “=1a3n” to the PDB code you desire, in this case “=1bkv” and save
+change the code "=1a3n" to the PDB code you desire, in this case "=1bkv" and save
 
 le x
 
-» | https://bio.libretexts.org/TextMaps/Map%3A_Biochemistry_Free_and_Easy_(Ahern)/03%3A_Structure_and_Function/3.2%3A_Proteins
+" | https://bio.libretexts.org/TextMaps/Map%3A_Biochemistry_Free_and_Easy_(Ahern)/03%3A_Structure_and_Function/3.2%3A_Proteins
 
-dio New Tab [BJ illustrative Mathems' GQ) Create tooltips for py all_1314pdf <> thermodynamics- @) (671) Pinterest £2 Apple Fruit-Health’ gy Skele(BETA)-A3da: gp Free Medical Stuff-( J Periodic trends
+dio New Tab [BJ illustrative Mathems' GQ) Create tooltips for py all_1314pdf <> thermodynamics- @) (671) Pinterest £2 Apple Fruit-Health' gy Skele(BETA)-A3da: gp Free Medical Stuff-( J Periodic trends
 Eait View Format Style Elements Help Words: 427, Chars: 2012
 EB) seve Xcancet | | Heng |B YJ Y|A- O-| TE || B- |e BB B-/Q)
 
@@ -261,12 +261,12 @@ quaternary structure.
 
 Consequently, alpha keratin exists mostly as long fibers, such as are found in hair. Beta-keratin is a harder fibrous protein found in nails, scales, and claws. It is made up mostly
 of beta sheets. Proline, which is the least flexible amino acid, due to attachment of the side chain to the alpha-amino grip, is less likely to be found in alpha helices, but curiously
-it is found abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us
+it is found abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the 'glue' that literally sticks us
 together. How does the inflexibility of proline permit it to be in a helix? The answer is probably the parallel abundance in collagen of glycine, which contains the smallest side
 group and therefore has the greatest flexibility.
 
-As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such ‘post-
-translational modifications’ are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
+As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxy! groups, after the protein is made. Such 'post-
+translational modifications' are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxyl side-chains phosphorylated. Lysines in collagen too are
 hydroxylated post-translationally. The hydroxylated prolines and lysines play a role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the
 assembly of collagen fibrils. These bonds provide structural integrity to the collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for
 their activity. Lack of vitamin C leads to the production of weakened collagen fibrils, resulting in a condition called scurvy.
@@ -276,9 +276,9 @@ rotation around it. If we trat the peptide bond as a double bond, then the arran
 configurations. In proteins, not surprisingly, the preferred arrangement of these groups is strongly trans (1000/1). Of the 20 amino acids, the one that favors peptide bonds in the
 cis configuration most commonly is proline, but even for proline, the trans isomer is strongly preferred.
 
-— dekiscript —
+- dekiscript -
 wiki.page("Media_Repo/EmbeddedViewing/EmbedGLmolJS") ;
-<script type="text/javascript” src=(GlmolPath) ('data-id')="=1a3n" (‘data-spin')="true" (‘data-width')="100%" (‘data-multiple' )="true"></scri
+<script type="text/javascript" src=(GlmolPath) ('data-id')="=1a3n" ('data-spin')="true" ('data-width')="100%" ('data-multiple' )="true"></scri
 
 POEPROROR,
 
@@ -300,12 +300,12 @@ them out, but you can see them in the Molecular Generator:
 https://chem. libretexts.org/Visualiz...cule_Reference
 
 least flexible amino acid, due to attachmen
-abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the ‘glue’ that literally sticks us together. How
+abundantly in the fibrous protein known as collagen. Collagen (previous page) is the most abundant protein in the human body and is the 'glue' that literally sticks us together. How
 the inflexibility of proline permit it to be in a helix? The answer is probably the parallel abundance in collagen of glycine, which contains the smallest side group and therefore ha
 greatest flexibility.
 
-As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such ‘
-translational modifications’ are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxy! side-chains phosphorylated. Lysines in collagen too are hydroxylated |
+As an interesting sidelight of the presence of proline in collagen is the chemical modification of prolines, by the addition of hydroxyl groups, after the protein is made. Such '
+translational modifications' are not uncommon. Threonine, serine, and tyrosine frequently have their hydroxy! side-chains phosphorylated. Lysines in collagen too are hydroxylated |
 translationally. The hydroxylated prolines and lysines play a role in the formation of interchain hydrogen bonds and crosslinking of triple helices during the assembly of collagen fi
 These bonds provide structural integrity to the collagen. The enzymes that add hydroxyls to proline and lysine require vitamin C (ascorbic acid) for their activity. Lack of vitamin C |
 to the production of weakened collagen fibrils, resulting in a condition called scurvy.

@@ -34,7 +34,7 @@ Molecule Generator
 For molecules enter its common or IUPAC name.
 If it does not show up try to find it at https://pubchem.ncbi.nim.nih.gov/ or for proteins at https://www.rcsb.org/ to find a molecule ID number.
 
-common or IUPAC molecule name ’ ae
+common or IUPAC molecule name ' ae
 
 ex. caffeine or 2-propanol
 
@@ -102,7 +102,7 @@ Edit View Format | Style Elements Help Words: 1737, Chars: 11804
 P) save X Cancel | Dy None Lilie Ele l2-le we e-lQ | <>
 <> <pre> Format
 OBJECTIVES
-———— _ 99 Blockquote
+---- _ 99 Blockquote
 After completing this S¢ @ comment Ctrl-Altem
 1. describe the nature | @ conditional text (anonymous oniy)
 2. describe the feature! 2
@@ -110,7 +110,7 @@ After completing this S¢ @ comment Ctrl-Altem
 3. calculate the specific vant experimental data.
 2 Conditional text (pro member only)
 KEY TERMS <> oeuscre coteates <a
-Make certain that youc “” “#v@Seret JEM) rms below.
+Make certain that youc "" "#v@Seret JEM) rms below.
 <> css
 ¢ analyzer
 * dextrorotatory
@@ -134,7 +134,7 @@ Identifying and distinguishing enantiomers is inherently difficult, since their 
 discovery by the French physicist Jean-Baptiste Biot has made this task much easier. This discovery disclosed that the right- and left-handed enantiomers of a chiral compound
 perturb plane-polarized light in opposite ways. This perturbation is unique to chiral molecules, and has been termed optical activity
 
-- — DekiScript —
+- - DekiScript -
 
 Enter DekiScript
 
@@ -174,13 +174,13 @@ Step 6 (save and tag): Save the page, and under page settings (it may be expande
 Summary:
 Add page summary
 Article type: Stage: Author: Embed Hypothes.is?:
-v ’ Y ~
+v ' Y ~
 Embebbed CalcPlot3D?: Embebbed Vlab?: Embed GLmol: Embed JSmol:
 v . Y ~
 Embed 3Dmol: Embed Jupyter: Show TOC: hidetop:
-t v ’ ’ +
+t v ' ' +
 Cover Page: License:
-tset v t se ’
+tset v t se '
 Tags:
 + Add new tag here
 

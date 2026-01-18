@@ -45,7 +45,7 @@ heat.blur = 50
 
 heat.max = 0.5
 
-heat.gradient = {0.4: 'red', 0.6: ‘yellow', 0.7: ‘lime', 0.8: 'cyan', 1.0: ‘blue'}
+heat.gradient = {0.4: 'red', 0.6: 'yellow', 0.7: 'lime', 0.8: 'cyan', 1.0: 'blue'}
 heat. locations = [[uniform(-80, 80), uniform(-180, 180), uniform(0, 1000)] for i in re
 
 restart restart & run all

@@ -17,11 +17,11 @@ Authors have the option to add code to a new page.
 
 Oibretexts- eck out the ne Boaline Render on UsaTosts:Paking Ondine nding Mach Ea
 $ Ss * w# © € 5 + @ a oP ae
-Ede IE} New fo) Options “x site tools L jupyterteam@ud|
+Ede IE} New fo) Options "x site tools L jupyterteam@ud|
 
 Development
 
-‘On the bar above, click the New button to create a new page. In the popup dialog, click the Create button to create a new page. Feel free to make as many
+'On the bar above, click the New button to create a new page. In the popup dialog, click the Create button to create a new page. Feel free to make as many
 you want!
 
 Editing an existing page
@@ -46,7 +46,7 @@ Locating the Plugin and Adding Code
 The Binder Logo is the last button on the navigation bar of the text editor. Binder is an external resource that lets you build and run
 kernels which contain the necessary packages for executing any given code language.
 
-E @- #@m- a «€
+E @- #@m- a "€
 
 Add Code
 
@@ -93,7 +93,7 @@ Oibretexts:
 Attachments
 Search file names and descriptions:
 Attach a file ,
-File « Last modified ¢ Size + Added by *
+File " Last modified ¢ Size + Added by *
 [as] addCode.gif Apr 6, 2020, 1:54 AM 243 KiB Jupyter Team
 (no description)
 [D) auto-mpg.data Apr 12, 2020, 8:30 PM 30 KiB Jupyter Team
@@ -113,7 +113,7 @@ Select the file you want to upload from your local computer, and attach file.
 
 Attachments
 Search file names and descriptions:
-File « Last modified * Size ¢ Added by *
+File " Last modified * Size ¢ Added by *
 [ae] addCode.gif Apr 6, 2020, 1:54 AM 243 KiB Jupyter Team
 
 (no description)
@@ -135,11 +135,11 @@ Right click and get link address of file you have uploaded.
 
 Attach a file
 
-File « Last modified * Size ¢ Added by ¢
+File " Last modified * Size ¢ Added by ¢
 [As] attach_file.png May 13, 2020, 3:02 PM 51 KiB Jupyter Team
 (no description)
 D > && GF Apri2, 2020, 8:30 PM 30 KiB Jupyter Team
-| ‘Open linkin new tab
+| 'Open linkin new tab
 (no de
 
 (Open link in new window

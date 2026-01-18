@@ -12,9 +12,9 @@ typing the name of the author and auto completion will bring you to the complete
 
 [A eat New ih Remixer et Downloads Options KS Site tools z admin
 
-= Contents| ff Home » [ff¥\ CampusCourses » §f\ Remixer University » fff ConstructionGuide » a 2: Basic Editing
+= Contents| ff Home " [ff¥\ CampusCourses " §f\ Remixer University " fff ConstructionGuide " a 2: Basic Editing
 
-— Page settings (2)
+- Page settings (2)
 
 Summary:
 

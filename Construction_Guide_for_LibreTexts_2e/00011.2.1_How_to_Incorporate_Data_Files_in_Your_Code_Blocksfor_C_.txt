@@ -59,7 +59,7 @@ HTTP request sent, awaiting response... 200 OK
 
 Length: 30286 (30K) [application/octet-stream]
 
-Saving to: ‘auto-mpg.data’
+Saving to: 'auto-mpg.data'
 
 Ole vee eee 100%
 TEXT/X-C++SRC SESSION: NOT STARTED
@@ -71,7 +71,7 @@ https ://chem.libretexts .org/@go/page/483745
 
 Oibretexts:
 
-2020-05-18 04:16:31 (11.2 MB/s) - ‘auto-mpg.data’ saved [30286/30286]
+2020-05-18 04:16:31 (11.2 MB/s) - 'auto-mpg.data' saved [30286/30286]
 
 Once the data file has been loaded, use C++ code that you may normally use to read out the lines in the data file
 

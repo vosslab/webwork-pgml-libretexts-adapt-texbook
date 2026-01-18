@@ -6,7 +6,7 @@ In the Page Settings of each LibreTexts page is a summary block that will accept
 Think of the summary as a tweet (like on Twitter) on the subject of the page. It is almost the same length as a tweet and has a
 similar impact.
 
-— Page settings 8
+- Page settings 8
 
 Summary:
 
@@ -36,7 +36,7 @@ thumbnails of a textbook.
 
 © ® Last updated: Dec 4, 2019, 2:20 AM by Delmar Larsen Page restriction: Public Page ID: 148792
 
-yy «26: Bibliography | 3.1: Successfully Logging In > OE] Batch | ii Readability
+yy "26: Bibliography | 3.1: Successfully Logging In > OE] Batch | ii Readability
 
 The LibreTexts libraries are powered by the Mindtouch system. An exhaustive set of references for the tools on this powerful system can be found online at
 attps://success.mindtouch.com/Author/Editor. The pages below summarize a subset of these tools that are useful in day-to-day use of the LibreTexts project.
@@ -45,11 +45,11 @@ AN INSTRUCTOR'S ACCOUNTS ALLOWS EDITING CAPABILITY ON ESSENTIALLY ALL PAGES ON T
 
 e The wiki infrastructure of the Libretexts makes it difficult to break anything. So feel free to experiment, play around, test things out.
 
-e All edits are saved as revisions. You can always revert to any older revision via the “Revision history” button under “Options”
+e All edits are saved as revisions. You can always revert to any older revision via the "Revision history" button under "Options"
 
 e All edits get sent to the LibreTexts development team for eventual review (not approval).
 
-e You can sign up with your personal account to “Watch” page(s) if any edits occur (using the little star next to forward/back right below page title).
+e You can sign up with your personal account to "Watch" page(s) if any edits occur (using the little star next to forward/back right below page title).
 
 3.1: Successfully Logging In (2) 3.2: Creating a New Page
 

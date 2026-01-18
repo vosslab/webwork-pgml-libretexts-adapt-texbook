@@ -3,16 +3,16 @@ Oibretexts:
 9.7: Accessibility Checker in the Editor
 
 Are you an instructor charged with putting together a textbook? You have resources available to help, especially with the
-LibreTexts remixer, but you’re reminded that it has to be accessible. You may not be familiar with accessibility integrations and
-inquire “What resources are available within LibreTexts to help with accessibility?”
+LibreTexts remixer, but you're reminded that it has to be accessible. You may not be familiar with accessibility integrations and
+inquire "What resources are available within LibreTexts to help with accessibility?"
 
-That’s where the LibreTexts Accessibility Checker comes to help! The Accessibility Checker is available to authors while editing
+That's where the LibreTexts Accessibility Checker comes to help! The Accessibility Checker is available to authors while editing
 or remixing textbooks. Select the tool from within the toolbar to fix issues that it finds.
 
 The LibreTexts libraries are housed within the Nice CXOne platform, a CMS, and uses CKEditor 4 to import or create content.
 Within the editor, we have made a Davinci Vitruvian man available as the Accessibility Checker icon. This feature has both
 automated and manual fixes which authors interact with. Many of the automation features have manual overrides available so
-author’s have more control of how content is presented.
+author's have more control of how content is presented.
 
 Edit View Format Style Elements Help
 
@@ -53,7 +53,7 @@ Heading fixes
 
 The tool will locate bold and italic content and suggest heading levels based on the page layout. H1 is always available at the top of
 the page, so LibreTexts may suggest H2, H3, and H4 to layout their textbooks. Containers (i.e. Learning Objectives, Examples,
-etc.) start with HS and have H6, and H7 to help users navigate using headings. We’re using ARIA labels to create headings with a
+etc.) start with HS and have H6, and H7 to help users navigate using headings. We're using ARIA labels to create headings with a
 level of 7.
 
 | * > conngurauon a
@@ -150,14 +150,14 @@ If the quick fix button doesn't show up, please refresh the page.
 
 =e 1 =
 
-The Accessibility Checker recognizes bold text and suggests a heading of 6 since it’s within a container which starts with a heading
-5, but has a drop down option to select a different heading if the suggestion isn’t correct.
+The Accessibility Checker recognizes bold text and suggests a heading of 6 since it's within a container which starts with a heading
+5, but has a drop down option to select a different heading if the suggestion isn't correct.
 
 ee oe
 
-In the following screenshot, the Accessibility Checker identified bold text from a caption and suggested a heading 2. In the “Issue”
+In the following screenshot, the Accessibility Checker identified bold text from a caption and suggested a heading 2. In the "Issue"
 notification of the checker, which shows the author is on 4 out of 9 issues, there are left and right buttons to allow authors to ignore
-suggested fixes. Once the “Quick fix” has been submitted, the issue will disappear from the list of issues.
+suggested fixes. Once the "Quick fix" has been submitted, the issue will disappear from the list of issues.
 
 rere
 Now take your molecular model and orientate it to match the molecule in question. Remember in the dash/wedge representation, two! Accessibility Checker
@@ -177,7 +177,7 @@ Navigate the structure of the page. Formatting a paragraph to
 just be big or bold, while it might visually look like a header,
 does not make it a header.
 
-» In this structure, the bromine is going away from you, the hydrogen is coming toward you and the hydroxide and ny
+" In this structure, the bromine is going away from you, the hydrogen is coming toward you and the hydroxide and ny
 1
 
 page. '
@@ -186,7 +186,7 @@ ee ee a
 1
 Then based on the position, assign each substituent on the chiral carbon a colored ball on your molecular model. In this case, broming
 
-ball. The hydrogen is coming toward you so it is assigned the blue ball. The last two substituents are in the plane of the page, howevé Contact ckelibretext@ucdavis.edu for bug reporting
+ball. The hydrogen is coming toward you so it is assigned the blue ball. The last two substituents are in the plane of the page, howeve Contact ckelibretext@ucdavis.edu for bug reporting
 , 5 i - IIIf the quick ffx button doesn't show up, please refresh the page.
 assigned the red ball which leaves OH being assigned the black ball. bee eee eee
 
@@ -201,8 +201,8 @@ e Non-decorative
 e Decorative (select if image is already discussed on page)
 e Change alt text to caption
 
-“Non-decorative” will require text within the Alternative text field. “Decorative” will make an empty alt tag to mark it as
-decorative to screenreaders. “Change alt text to caption” will convert alt text with 150 characters and suggest changing to a caption
+"Non-decorative" will require text within the Alternative text field. "Decorative" will make an empty alt tag to mark it as
+decorative to screenreaders. "Change alt text to caption" will convert alt text with 150 characters and suggest changing to a caption
 so learning disabled students benefit. The quick fix button will implement the accessibility fix on the users behalf.
 
 ant directly attached to chiral carbon, proceed along the substituent chains until a point.of difference. is found, = A ee eee &e,
@@ -210,14 +210,14 @@ n with the highest priority (the highest atomic number). That chain has the high
 1
 
 1
-‘ubstituent. At the connectivity of the stereocenter, both have a carbon atom, which ar 4
+'ubstituent. At the connectivity of the stereocenter, both have a carbon atom, which ar 4
 j to it, whereas the ethyl has two hydrogen atoms and a carbon atom. The carbon ator; !Ss¥e 1 of 13 (error) a)
 jrogen; therefore the ethyl takes priority over the methyl. ;
 Presse eee eee eee I
 g lower higher 1 Image alternative text is too long ;
 : H SH as Image alternative text should be clear and concise.
 1 | woe 1
-1 H-c—3 vs. H-—C— oat Alternative text longer than 150 characters should be r]
+1 H-c-3 vs. H--C- oat Alternative text longer than 150 characters should be r]
 P| | | ! i reviewed to see if it can be shortened. t
 H HH a
 
@@ -230,17 +230,17 @@ Change alt text to caption
 
 T
 | i i i
-+c-o-H +¢-0-H +c—ar 1
++c-o-H +¢-0-H +c-ar 1
 AF AF AF Contact ckelibretext@ucdavis.edu for bug reporting. i
 
-I If the quick fix button doesn't show up, please refresh the page. —
+I If the quick fix button doesn't show up, please refresh the page. -
 
 a
 
 higher, | lower higher i beeeeeee sees geese
 
 The Accessibility Checker appears as a blue dotted popup with 3 options: Non-Decorative (requires user input), Decorative (select
-if image is already discussed on page), or Change alt text to caption if it’s over 150 words.
+if image is already discussed on page), or Change alt text to caption if it's over 150 words.
 
 The tool will also check if the filename is used as alt text and request the author to submit text to replace the filename with an
 accessible description.
@@ -293,12 +293,12 @@ The Accessibility Checker reports an empty alt for an image and requests user in
 
 Table fixes
 
-Table accessibility is addressed by the Accessibility Checker and only requires user input for captions and summaries. You don’t
-need to know code for column or row headers, or simplified groups of column or row headers. It’s all automagically fixed in the
-background. Note, there may be complex table(s) which the tool doesn’t properly fix.
+Table accessibility is addressed by the Accessibility Checker and only requires user input for captions and summaries. You don't
+need to know code for column or row headers, or simplified groups of column or row headers. It's all automagically fixed in the
+background. Note, there may be complex table(s) which the tool doesn't properly fix.
 
 Complex tables which combine multiple tables into one may need to be separated into multiple tables. While it may be visually
-appealing to combine the tables, it’s impossible to create accessible headings for content after heading columns or rows have been
+appealing to combine the tables, it's impossible to create accessible headings for content after heading columns or rows have been
 
 established.
 
@@ -310,7 +310,7 @@ Percent by Level
 
 Issue 1 of 4 (error) 4 [>]
 
-Data tables should contain a “caption” element if
+Data tables should contain a "caption" element if
 not described elsewhere
 
 Unless otherwise described in the document, tables should
@@ -357,7 +357,7 @@ Usable with Workarounds The activity requires significant 25 J Accessibility Che
 Requires Alternative Activity The activity is not usable by some 17 1 Complex tables should have a summary 1
 
 (labeled in red) users {tf table is complex (for example, has some cells with :
-| “colspan” attributes, the table should have a summary. 1
+| "colspan" attributes, the table should have a summary. 1
 1 1
 
 The activity type was not evaluated : Summary: i
@@ -375,11 +375,11 @@ In the same table, the Accessibility Checker has identified a missing summary wh
 
 tables.
 
-Links and URL’s
+Links and URL's
 
-To address the inaccessibility of links and URL’s, the team worked on a number of updates. Non-unique links (click here, more,
+To address the inaccessibility of links and URL's, the team worked on a number of updates. Non-unique links (click here, more,
 
-etc.) and URL’s can be difficult for screenreaders or magnifiers to interact with.
+etc.) and URL's can be difficult for screenreaders or magnifiers to interact with.
 
 https ://chem.libretexts .org/@go/page/483741
 
@@ -388,8 +388,8 @@ https ://chem.libretexts .org/@go/page/483741
 
 Oibretexts:
 
-The tool locates non-unique links or posted URL’s and request user interaction to enter in text and replace the URL. Once entered,
-the tool will then detect if it’s a LibreTexts link or if it links to another site. If it’s a LibreTexts link, nothing else is done. If it’s a
+The tool locates non-unique links or posted URL's and request user interaction to enter in text and replace the URL. Once entered,
+the tool will then detect if it's a LibreTexts link or if it links to another site. If it's a LibreTexts link, nothing else is done. If it's a
 link outside of LibreTexts, the tool will wrap the base of the site in brackets and place it after the link.
 
 Pee e eee eee eee
@@ -402,7 +402,7 @@ given specific access to, and to curators of LibreTexts. Issue 5 of 11 (error) 4
 There exists a link text that contains or starts
 
 You can start by using the remixer to set up the structure of the book you will build. Ty with http(s)
-you can use the “new” button on the black toolbar which appears when you login. Sea URL's are inaccessible to screenreaders due to the long text
+you can use the "new" button on the black toolbar which appears when you login. Sea URL's are inaccessible to screenreaders due to the long text
 1
 
 . . . link, shorten to a link description for accessibility purposes. If
@@ -417,12 +417,12 @@ Link:
 was customized for the instructor for whom the course shell was made. Here are some
 
 Contact ckelibretext@ucdavis.edu for bug reporting.
-If the quick fix button doesn’t show up, please refresh the page. I
+If the quick fix button doesn't show up, please refresh the page. I
 bee ee eee eee eee eee eee
 
-« Search [google.com]
+" Search [google.com]
 
-» Fiche rete org Corsea]sacaren iy. ColgpSORIR Grams
+" Fiche rete org Corsea]sacaren iy. ColgpSORIR Grams
 L.Seneral62C Organic and, Biochemistry (Bennet)
 
 ro
@@ -435,7 +435,7 @@ Accessibility Checker found and fixed a Search link, with Google in brackets, wh
 inaccessible link.
 
 The tool will also locate emails within content and request user interaction for typing in the name. The tool will automatically place
-“eMail:” before the name to make it clear what it’s linking to.
+"eMail:" before the name to make it clear what it's linking to.
 
 Hub so your : students can access it. Until we get
 
@@ -450,7 +450,7 @@ Issue 11 of 11 (error) 4 [>]
 There exists a link displaying the whole email
 address
 
-A’mail-to’ link must not contain the whole email address as
+A'mail-to' link must not contain the whole email address as
 its text as it already links to it. Please input name only, email
 will be placed before the name.
 
@@ -465,13 +465,13 @@ eee ee ee
 Color Contrast
 
 This portion of the tool is still being worked on and is not currently active in the Accessibility Checker. The color contrast will
-address contrast issues of text content, to ensure all text is accessible and authors aren’t use contrasting colors. This is turned off at
+address contrast issues of text content, to ensure all text is accessible and authors aren't use contrasting colors. This is turned off at
 the moment due to interfering with links.
 
 Labels
 
 The labels section is also still being worked on and is not currently active in the Accessibility Checker. This section will fix form
-fields and links to ensure they’re properly labeled and interact with assistive technologies. This is turned off at the moment as we
+fields and links to ensure they're properly labeled and interact with assistive technologies. This is turned off at the moment as we
 work on some reported issues.
 
 Abbreviations and Acronyms
@@ -516,7 +516,7 @@ This page contains at least one acronym that
 should be given a definition
 
 Reported Accessibility Barriers Acronyms should be given a definition at its first appearance
-on the page. Input “N/A" if his is not an acronym and should
+on the page. Input "N/A" if his is not an acronym and should
 ASCCC identified accessibility barriers with HSP activities in April 2020 and provided detailed feedback to HSP developers. For examplt be tanores: Te chemical notation, Iino input appears, press
 failures with the Mark the Words activity type. In response, H5P updated the Content types recommendations page to include the aq
 
@@ -527,27 +527,27 @@ Fix: Label Acronym v
 Definition of "ASCCC":
 
 Contact ckelibretext@ucdavis.edu for bug reporting,
-If the quick fix button doesn’t show up, please refresh the page.
+If the quick fix button doesn't show up, please refresh the page.
 
-« Drag the Words, not recommended
-« Fill in the Blanks, recommended with workarounds
-« Mark the Words, not recommended
+" Drag the Words, not recommended
+" Fill in the Blanks, recommended with workarounds
+" Mark the Words, not recommended
 + Multinle Choice. recommended with workarounds.
 
 ASCCC is highlighted in red dashes with the Accessibility Checker requiring a definition entered for ASCCC and a Quick fix
 button.
 
-Choosing “Label acronym” will allow the user to enter a definition to be added which are accessible to mouse and keyboard as a
+Choosing "Label acronym" will allow the user to enter a definition to be added which are accessible to mouse and keyboard as a
 tooltip. We have altered tooltips to be accessible to keyboard users, which allows users to select and enlarge fonts.
 
 This will add a tooltip to all acronyms which users can use their mouse or keyboard to review the acronym definition. Previously
 this was presented as small, inaccessible, text.
 
-Choosing “Reformat text to lowercase” will alter the text so that it’s no longer ALL CAP, which will force the tool to ignore it.
-Choosing “Ignore text” will keep the text in ALL CAP and ignore additional attempts to update it.
+Choosing "Reformat text to lowercase" will alter the text so that it's no longer ALL CAP, which will force the tool to ignore it.
+Choosing "Ignore text" will keep the text in ALL CAP and ignore additional attempts to update it.
 
 Because of these labels, a tooltip will be made available to inform users of the meaning. Tooltips were already accessible to
-screenreaders, but we’ve worked to make it more accessible to mouse and keyboard users! Users can now enlarge and select the
+screenreaders, but we've worked to make it more accessible to mouse and keyboard users! Users can now enlarge and select the
 text within tooltips!
 
 Every once in a while, form fields the user interacts with will not display in the tool. Please refresh the page to fix this issue. If you
@@ -556,6 +556,6 @@ run into further issues, please contact our Support Center with the link of the 
 This page titled 9.7: Accessibility Checker in the Editor is shared under a CC BY license and was authored, remixed, and/or curated by Joshua
 Hori.
 
-« 4.9: Accessibility Checker in the Editor by Joshua Hori is licensed CC BY 4.0.
+" 4.9: Accessibility Checker in the Editor by Joshua Hori is licensed CC BY 4.0.
 
 https ://chem.libretexts .org/@go/page/483741

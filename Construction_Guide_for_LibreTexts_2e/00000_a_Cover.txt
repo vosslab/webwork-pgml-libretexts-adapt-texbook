@@ -4,5 +4,5 @@ LIBRETEXTS 26
 
 LibreTexts
 
-LibreTexts”
+LibreTexts"
 

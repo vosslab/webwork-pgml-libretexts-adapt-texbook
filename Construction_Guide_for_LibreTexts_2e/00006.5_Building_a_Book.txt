@@ -42,7 +42,7 @@ Figure 6.5.2: Book creation menu.
 and after the book has been created the Project Page looks like the image on the left and if you invoke the Textbook link you will
 be taken to the book that you have created.
 
-LibreTexts”
+LibreTexts"
 CHEMISTRY
 
 ( Edit Properties
@@ -56,7 +56,7 @@ ABAB*K.Z
 
 Project Properties
 
-= f Home » BN Workbench » §ii¥ Testi
+= f Home " BN Workbench " §ii¥ Testi
 STATUS: Open
 
 VISIBILITY: Private + Page settings

@@ -9,7 +9,7 @@ author metatag should have been carried forward and the acknowledgement at the b
 some reason, you need to add new/additional authors you use the method set forth in Section 10.5 or you can use the
 metatag author@ Your Name and Institution.
 
-— Page settings (2)
+- Page settings (2)
 
 Summary:
 La

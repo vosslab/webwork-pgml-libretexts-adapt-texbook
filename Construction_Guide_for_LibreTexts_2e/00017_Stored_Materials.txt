@@ -37,7 +37,7 @@ collaborative where an Open Access textbook environment is under constant revisi
 paper-based books.
 
 My preferences
-«@ My subscriptions
+"@ My subscriptions
 
 & Sign out
 
@@ -136,11 +136,11 @@ function and include both simple operations (like basic text styling or formatti
 
 Toggle between
 
-“visual”
-Justification (alignment) visual” mode
+"visual"
+Justification (alignment) visual" mode
 
-“ ”
-(USE FULL MOST TIMES) and “HTML
+" "
+(USE FULL MOST TIMES) and "HTML
 Text Color (do not use) source.
 Pull Down Menus with
 ighli . Add Table
@@ -156,7 +156,7 @@ Bi save X Cancet Heading |B JY A- O- | TIE =-|E- |? BB |\Q </> HTML,
 
 Save Cancel Headings Erase all Hyperlink to a Add |
 nc : image
-Page Editing Formatting Number Bulleted different page (slow way — just drag
+Page Editing Formatting Number Bulleted different page (slow way - just drag
 i :
 Undo Bold List and drop)
 
@@ -178,7 +178,7 @@ e Drag and drop the image from your desktop to your page (while editing).
 
 # Additional factors to pay attention to regarding figures
 
-« NO BMP figures are allowed to be imported. Use PNG, JPG, or GIF figures instead.
+" NO BMP figures are allowed to be imported. Use PNG, JPG, or GIF figures instead.
 
 e Please CROP your figures to remove superfluous white space that makes reading your module awkward. The Microsoft Office Picture Editor or Paint will crop images and is free on MS
 operating systems.
@@ -231,15 +231,15 @@ To ensure effective coupling of pages within the LibreTexts, content on pages ca
 
 e Mark the word you want to be the hyperlink, then click the hyperlink button with the "chain link" icon.
 
-¢ If you want to link to an outside page place the address in the “link to” box and click “update link”.
+¢ If you want to link to an outside page place the address in the "link to" box and click "update link".
 
-e If you want to link to an internal LibreTexts module you can use the “browse” option to find the page. You can also use the search function to look for key words (make sure you check that the
+e If you want to link to an internal LibreTexts module you can use the "browse" option to find the page. You can also use the search function to look for key words (make sure you check that the
 page is a relevant link though).
 
 2.6: Hyperlinking
 
 © ® Last updated: May 20, 2019, 1:28 PMbyadmin Pagerestriction: Public Page ID: 148799 <4.2.5:Adding Tables | 2.7: Adding Predefined Template Code >
-Edit View Format Style Elements ~—- Help Words: 98, Chars: 517
+Edit View Format Style Elements ~-- Help Words: 98, Chars: 517
 By save Xcancet_| | Heading |B J UlA- O- |Z} ||? @ -/Q)] but
 
 ¥ Link Farming: DO NOT HYPERLINK OUTSIDE OF THE LIBRARY UNLESS NECESSARY
@@ -258,18 +258,18 @@ EmbedJupyterConfiguration .
 
 Template:AddDefinitionList snippets that are designed for adding standard code to your page.
 
-‘Template:BoxDefinition
+'Template:BoxDefinition
 
 Template:BoxExample Some of these templates are for general use and other are more specific. The six BOX templates add
 L TenvateborNote J the text for a container around special text (see below). The Embed templates are for special HTML5S
 
-‘Template:BoxSkills interactive code like Jupyer executable code or interactive molecules. The other templates will be
+'Template:BoxSkills interactive code like Jupyer executable code or interactive molecules. The other templates will be
 
-‘Template:BoxTheorem . . . . .
+'Template:BoxTheorem . . . . .
 
 Template:Embed ChemWriter discussed in a different section. Feel free to add any of them to a test page to see what it does.
 
-‘Template:Embed Query
+'Template:Embed Query
 Template:Embed3Dmol
 Template:EmbedGLmol
 Template:EmbedJSmol
@@ -324,7 +324,7 @@ Options ate Site tools 2 TestBox
 
 b
 
-Contents| # Home » ib Sand
+Contents| # Home " ib Sand
 
 Sandboxes
 Last updated: Feb 23, 2020, 12:18 AM by Delmar Larsen Page restriction: Semi-Private Page ID: 27631 od HR bility | Donate|
@@ -343,7 +343,7 @@ Candhavee ie charad tindar a nat declared liranca and wise aitharad ramivad andl
 
 When you have signed in to a library, either directly or through the Condutor, the black bar will have Edit, New and Options buttons.
 
-Choose Language »
+Choose Language "
 
 ptions SL Site tots
 
@@ -442,12 +442,12 @@ function and include both simple operations (like basic text styling or formatti
 
 Toggle between
 
-“visual”
-Justification (alignment) visual” mode
+"visual"
+Justification (alignment) visual" mode
 
-“ ”
+" "
 
-(USE FULL MOST TIMES) and “HTML
+(USE FULL MOST TIMES) and "HTML
 
 Text Color (do not use) source.
 Pull Down Menus with
@@ -464,8 +464,8 @@ Save Cancel Headings Xn
 Bold
 
 wae . Hyperlink to a Add Ima
-Page — Editin, Formattin; ge
-8 8 8 Number Bulleted different page (slow way — just drag
+Page - Editin, Formattin; ge
+8 8 8 Number Bulleted different page (slow way - just drag
 ! List
 
 Undo and drop)
@@ -538,15 +538,15 @@ To ensure effective coupling of pages within the LibreTexts, content on pages ca
 
 e Mark the word you want to be the hyperlink, then click the hyperlink button with the "chain link" icon.
 
-¢ If you want to link to an outside page place the address in the “link to” box and click “update link”.
+¢ If you want to link to an outside page place the address in the "link to" box and click "update link".
 
-e If you want to link to an internal LibreTexts module you can use the “browse” option to find the page. You can also use the search function to look for key words (make sure you check that the
+e If you want to link to an internal LibreTexts module you can use the "browse" option to find the page. You can also use the search function to look for key words (make sure you check that the
 page is a relevant link though).
 
 2.6: Hyperlinking
 
 © ® Last updated: May 20, 2019, 1:28 PMbyadmin Pagerestriction: Public Page ID: 148799 <4.2.5:Adding Tables | 2.7: Adding Predefined Template Code >
-Edit View Format Style Elements ~—- Help Words: 98, Chars: 517
+Edit View Format Style Elements ~-- Help Words: 98, Chars: 517
 By save X cancel | | Heng |B 7 UlA-~ O-| Zi @ &-|Q| gear
 
 Link Farming: DO NOT HYPERLINK OUTSIDE OF THE LIBRARY UNLESS NECESSARY. WHILE CURATING IS KEY TO THE LIBRETEXTS PLATFORM, LINK FARMING (NEEDING
@@ -573,7 +573,7 @@ Template:AddFigureSingle Under Elements of the editing toolbar, there is an opti
 Template: AddHiddenText designed for adding standard code to your page.
 
 | Template:AddMultiFigureMultiCaption Some of these templates are for general use and other are more specific. The six BC
-_— . . around special text (see below). The Embed templates are for special HTMLS interac
+_- . . around special text (see below). The Embed templates are for special HTMLS interac
 
 Template:AddMultiFigureSingleCaption interactive molecules. The other templates will be discussed in a different section. Fi
 

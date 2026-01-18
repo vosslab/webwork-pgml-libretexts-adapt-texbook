@@ -12,12 +12,12 @@ that are useful in day-to-day use of the LibreTexts project.
 e The wiki infrastructure of the LibreTexts makes it difficult to break anything. So feel free to experiment, play around, and
 test things out.
 
-e All edits are saved as revisions. You can always revert to any older revision via the “Revision history” button under
-“Options”
+e All edits are saved as revisions. You can always revert to any older revision via the "Revision history" button under
+"Options"
 
 e All edits get sent to the LibreTexts development team for eventual review (not approval).
 
-e You can sign up with your personal account to “Watch” page(s) if any edits occur (using the little star next to forward/back
+e You can sign up with your personal account to "Watch" page(s) if any edits occur (using the little star next to forward/back
 right below the page title).
 
 8.1: Editing a Page

@@ -52,7 +52,7 @@ WordPress 5.4 is available! Please update now.
 Home
 
 Dashboard
-Posts At a Glance «
+Posts At a Glance "
 J Media > 1 Post IB 1 Page
 Pages ® 1 comment
 Comments WordPress 5.3.2 running Twenty Nineteen theme.
@@ -122,7 +122,7 @@ Add New Details
 Create vertically stacked expandable items
 
 Arithmetic Quiz
-—— . - Details
+-- . - Details
 Create time-based arithmetic quizzes
 
 Chart
@@ -157,7 +157,7 @@ WordPress 5.4 is available! Please update now.
 Posts
 
 Media All H5P Content| Add new
-— | Search
+- | Search
 Comments Title Content type Author Tags Last modified + ID
 LL: Vocabulario: La hora 1 Fill in the Blanks Cristina Moon Libro Libre, Vocabulario, La hora 3 hours ago 489 Results Edit
 Appearance 5
@@ -168,11 +168,11 @@ Tools LL: Vocabulario: El tiempo 4 Mark the Words Cristina Moon Libro Libre, Voc
 tiempo 4
 Settings
 LL: Vocabulario: El tiempo 3 Drag Text Cristina Moon Libro Libre, Vocabulario, El 3 hours ago 483 Results. Edit
-‘WP Mail SMTP tiempo 3
+'WP Mail SMTP tiempo 3
 LL: Vocabulario: El tiempo 2 Fill in the Blanks Cristina Moon Libro Libre, Vocabulario, El 3 hours ago. 482 Results Edit
 iw? ~HSP Content
 tiempo 2
-‘All H5P Content LL: Vocabulario: Los dias de la Fill in the Blanks Cristina Moon Libro Libre, Vocabulario, Los dias 3 hours ago 4m Results Edit
+'All H5P Content LL: Vocabulario: Los dias de la Fill in the Blanks Cristina Moon Libro Libre, Vocabulario, Los dias 3 hours ago 4m Results Edit
 semana 3 de la semana 3
 LL: Vocabulario: Las Mark the Words Cristina Moon Libro Libre, Vocabulario, Las 4 hours ago 465 Results Edit
 presentaciones 1 presentaciones 1
@@ -195,7 +195,7 @@ Last updated: Dec 16,
 
 019, 10:49 AM by Cristina Moon Page restriction: Public Page ID: 41718
 
-kg < Pluscuamperfecto del indicativo actividad 2: fill in the .... | Pluscuamperfecto del indicativo actividad 4: fill in the... » no ‘a Wi Readability
+kg < Pluscuamperfecto del indicativo actividad 2: fill in the .... | Pluscuamperfecto del indicativo actividad 4: fill in the... " no 'a Wi Readability
 
 8.2 Actividad # 3
 Instrucciones: Conjugue los siguientes verbos en el pluscuamperfecto del indicativo. [Consultar tema] [Diccionario]
@@ -205,11 +205,11 @@ Una aventura en el extranjero
 Mi amiga Carla nunca | (viajar) en avion al extranjero. Los viajes que ella | (hacer) siempre | (ser) dentro del pais y con su familia. Pero esta
 vez, ella viajaria sola a Espafia a estudiar en la Universidad de Salamanca por un afio. Carla ya | (investigar) todo lo necesario para su viaje
 
-Su hermana Paola le (ayudar) con el itinerario de los vuelos y también le (conseguir) el transporte del aeropuerto a la universidad. Paola y Carla
+Su hermana Paola le (ayudar) con el itinerario de los vuelos y tambien le (conseguir) el transporte del aeropuerto a la universidad. Paola y Carla
 
 | (ver) fotos de Salamanca y| (estar) haciendo los preparativos para este viaje por casi 6 meses.
 
-Yo también | (hacer) planes para ir con Carla a Salamanca, pero decidi que me gustaba mas la Universidad de Malaga. Mi familia y yo ya | (vivir) en
+Yo tambien | (hacer) planes para ir con Carla a Salamanca, pero decidi que me gustaba mas la Universidad de Malaga. Mi familia y yo ya | (vivir) en
 Malaga y la ciudad me | (impresionar) mucho por la diversidad del ambiente y la comida
 
 Carla y yo tendremos un afio increible en Espafia.
@@ -240,7 +240,7 @@ FP) save X Cancel | Heading ~ |B J U|A-~ Q-| Z|
 
 </> HTML
 
-— (0) — DekiScript —
+- (0) - DekiScript -
 
 tion: Pluscuamperfecto del indicativo actividad 3: fill in the blanks
 

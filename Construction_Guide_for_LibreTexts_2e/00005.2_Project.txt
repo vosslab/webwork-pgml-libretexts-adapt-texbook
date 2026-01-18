@@ -20,14 +20,14 @@ You will go to a page where all your projects are listed and you can go directly
 
 '& Available Projects Y Completed Projects © Flagged Projects
 
-Q ‘+ Create a Project
+Q '+ Create a Project
 TITLE PROGRESS (C/PR/A11Y) CLASSIFICATION VISIBILITY LEAD LAST UPDATED
-AMS Demo 0% / 0% / 0% — Unclassified Private Demo Account 02/05/24 at 12:36 AM
+AMS Demo 0% / 0% / 0% - Unclassified Private Demo Account 02/05/24 at 12:36 AM
 Buds, Branches and Bark: A Guide to Winter ID in the Pacific
 
-0% / 0% / 0% — Harvesting Public Demo Account 02/05/24 at 12:33 AM
+0% / 0% / 0% - Harvesting Public Demo Account 02/05/24 at 12:33 AM
 Northwest 2e
-CalculusChaptert 0% / 0% / 0% — Unclassified Private Demo Account 02/05/24 at 12:35 AM
+CalculusChaptert 0% / 0% / 0% - Unclassified Private Demo Account 02/05/24 at 12:35 AM
 
 Figure 5.2.2: Conductor Projects listing
 
@@ -76,7 +76,7 @@ STATUS: Open
 VISIBILITY: Private
 
 IMPORTANT LINKS:
-Project/Textbook Link [7 ‘Commons Page
+Project/Textbook Link [7 'Commons Page
 Team
 
 0) Demo Account (Lead)

@@ -9,7 +9,7 @@ e Hypertexts, like the LibreTexts, provide non-linearity and interactivity.
 e How students use online materials is inherently different than a book read cover-to-cover; hypertext can provide the context
 that a narrative could provide.
 
-Scaffolding complexes provide a beneficial structure that aids in the learner’s ability to learn new information, as well as
+Scaffolding complexes provide a beneficial structure that aids in the learner's ability to learn new information, as well as
 accomplish more difficult tasks by giving directionality to learning.
 
 As you implement new scaffolding techniques inside LibreTexts, here are some things you may want to consider:
@@ -33,7 +33,7 @@ Take some aluminum foil. Cut it in half. Now there are two smaller pieces of alu
 of those smaller pieces in half again. Continue cutting, making smaller and smaller pieces of aluminum foil. It should be obvious that
 the pieces are still aluminum foil; they are just becoming smaller and smaller. But how far can this exercise be taken, at least in theory?
 Can one continue cutting the aluminum foil into halves forever, making smaller and smaller pieces? Or is there some limit, some
-absolute smallest piece of aluminum foil? Thought experiments like this—and the conclusions based on them—were debated as far
+absolute smallest piece of aluminum foil? Thought experiments like this-and the conclusions based on them-were debated as far
 back as the fifth century BC.
 John Dalton (1766-1844) is the scientist credited for proposing the atomic theory. The theory explains several concepts that are relevant
 in the observable world: the composition of a pure gold necklace, what makes the pure gold necklace different than a pure silver
@@ -58,9 +58,9 @@ fission can convert a small part of the mass into energy.
 
 The law of conservation of mass states that the total mass present before a chemical reaction is the same as the total mass present after
 the chemical reaction; in other words, mass is conserved. The law of conservation of mass was formulated by Lavoisier as a result of
-his combustion experiment, in which he observed that the mass of his original substance—a glass vessel, tin, and air—was equal to the
+his combustion experiment, in which he observed that the mass of his original substance-a glass vessel, tin, and air-was equal to the
 
-mass of the produced substance—the glass vessel, “tin calx”, and the remaining air.
+mass of the produced substance-the glass vessel, "tin calx", and the remaining air.
 
 https ://chem.libretexts .org/@go/page/483693
 
@@ -76,19 +76,19 @@ An example of scaffolding
 
 Mass of Wood | Mass of Ashes, Carbon Dioxide, and Water
 
-—_—-
+-_--
 
 Figure 2.1.1: Image of the wood courtesy of Ehamberg and Stannered on Wikimedia Commons, available under Creative Commons
 Attribution 2.5 Generic license. Image of ashes courtesy of Walter Siegmund. Image as a whole constructed by Jessica Thornton
 (UCD).
 
-4. Create an agenda page to organize complex material. Dr. Zsofia Vérés et al. (2011) found that it is important to provide high-
+4. Create an agenda page to organize complex material. Dr. Zsofia Veres et al. (2011) found that it is important to provide high-
 level content organizers that help guide the learner through the various hypertexts. This takes shape in the form of the agenda page,
 pictured below. This supplements the scaffolding, as it helps guide the learner through the material in an effective manner.
 
 Agenda for a class
 
-Agenda for today’s class (80 minutes)
+Agenda for today's class (80 minutes)
 1. (20 minutes) Review Pre-class assignment
 2. (30 minutes) Matrix Representation of Vector Spaces
 3. (30 minutes) Practice Example
@@ -114,7 +114,7 @@ e A.4 Create a hypothesis or prediction based on given experimental data.
 
 e A.5 Design an experiment with proper controls based on background material provided.
 
-e A.6 Use the principles of the “design challenge” to dissect a complex problems into small manageable questions that can be
+e A.6 Use the principles of the "design challenge" to dissect a complex problems into small manageable questions that can be
 addressed.
 
 e A.7 Create a conceptual drawing of a cell that reflects your current mental model for how several requirements for life are
@@ -170,7 +170,7 @@ e Bacterial and Archaeal Diversity*
 e Eukaryotic Cell: Structure and Function*
 e Electronegativity
 
-e Bond Types—Ionic and Covalent
+e Bond Types-Ionic and Covalent
 
 e Hydrogen Bonds
 

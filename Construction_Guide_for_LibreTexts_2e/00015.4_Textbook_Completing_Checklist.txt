@@ -76,9 +76,9 @@ limited amount of text (about three lines) that is about the size of a tweet (28
 for books, also is used for the Commons catalog entry for the text after being compiled and it also shows up on the back of physical
 copies of the text.
 
-#= Contents | f% Home » Gi Bookshelves » ff General Chemistry » §f\ Chemistry 2e (OpenSTAX)
+#= Contents | f% Home " Gi Bookshelves " ff General Chemistry " §f\ Chemistry 2e (OpenSTAX)
 
-| — Page settings (2)
+| - Page settings (2)
 
 Thumbnail Summary
 
@@ -104,7 +104,7 @@ ts
 C Compile Book
 
 and minors. Principles
-‘ested in a major or
+'ested in a major or
 erse, and realistic
 
 Find the pages that are labeled as "undeclared" and change those pages to the appropriate license (in the page settings).
@@ -130,7 +130,7 @@ All licenses found:
 
 By Page
 * Chemistry 2e (OpenSTAX) - CC BY 4.0 = 13.3: Equilibrium Constants - CC BY 4.0
-© Front Matter - Undeclared = 13.4: Shifting Equilibria - Le Chatelier’s Principle - CC BY 4.0
+© Front Matter - Undeclared = 13.4: Shifting Equilibria - Le Chatelier's Principle - CC BY 4.0
 = TitlePage - Undeclared = 13.5: Equilibrium Calculations - CC BY 4.0
 = InfoPage - Undeclared = 13.6: Key Terms - Undeclared
 = Table of Contents - Undeclared = 13.7: Key Equations - Undeclared

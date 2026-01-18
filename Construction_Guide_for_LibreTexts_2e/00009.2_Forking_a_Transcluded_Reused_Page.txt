@@ -17,7 +17,7 @@ If the transcluded page is tagged properly, there will a "forker" icon next to i
 
 OO} lastupdated: Apr 27, 2019, 14:52 AM by Delmar Larsen Page restriction: Public Page ID: 2595 4 1.5: Exponential and Logarithmic Functions | 2: Limits >
 
-Contributed by Gilbert Strang & Edwin “Jed” Herman
+Contributed by Gilbert Strang & Edwin "Jed" Herman
 Professor (Mathematics) at Massachusetts Institute of Technology (Strang) & University of Wisconsin-Stevens Point (Herman)
 
 Sourced from OpenStax CNX
@@ -26,7 +26,7 @@ Edit View Format Style Elements Help Words: 5, Chars: 120
 
 BP) save X Cancel | | Heaang- |B J YU|A~ O-|ZIiEE
 
-[Py — Content Reuse — x
+[Py - Content Reuse - x
 
 </> HTML
 
@@ -38,23 +38,23 @@ customizable/editable page.
 MATHEMATICS math.libretexts.org says
 Fork this page? COLORADO
 . This will transform all content-reuse pages into editable content OER CONFERENCE
-LibreTexts” You can use the revision history to undo this action. | at the Colorado OER Conference May 31st in Denver
+LibreTexts" You can use the revision history to undo this action. | at the Colorado OER Conference May 31st in Denver
 
-es $s 6 ist — xn | s ist “
+es $s 6 ist - xn | s ist "
 Physics  SocialSciences Statistics © Workforce
 
 Biology Business Chemistry Engineering _ Espajiol
 Edit New sh Remixer eB Domnloads [o,) Options A Site tools Delmar Larsen
 
-] | f& Home » GIN Bookshelves » ff Calculus » fff¥ Book: Calculus(OpenStax) » §@) 1:Functions and Graphs
+] | f& Home " GIN Bookshelves " ff Calculus " fff¥ Book: Calculus(OpenStax) " §@) 1:Functions and Graphs
 
 + Page settings
 
-1.E: Functions and Graphs (Exercises) ” S
+1.E: Functions and Graphs (Exercises) " S
 (OO) Last updated: May 25, 2019, 9:32 AM by Delmar Larsen Page restriction: Public Page ID: 3595
 3% < 1.5: Exponential and Logarithmic Functions | 2: Limits > HEI Batch |fretes
 
-Contributed by Gilbert Strang & Edwin “Jed” Herman
+Contributed by Gilbert Strang & Edwin "Jed" Herman
 Professor (Mathematics) at Massachusetts Institute of Technology (Strang) & University of Wisconsin-Stevens Point (Herman)
 Sourced from OpenStax CNX
 
@@ -87,28 +87,28 @@ math.libretexts.org says
 
 Fork this page?
 . This will transform all content-reuse pages into editable content. OER CONFERENCE
-Li breTexts” You can use the revision history to undo this action. Is at the Colorado OER Conference May 31st in Denver
+Li breTexts" You can use the revision history to undo this action. Is at the Colorado OER Conference May 31st in Denver
 es $s 6 qt > Es - | iat e %
 Business Chemistry Engineering _Espajiol Physics  SocialSciences Statistics / Workforce
 
 Biology
 lew hp Remixer & Downloads Options we Site tools £ Deim
 
-f% Home » GIN Bookshelves » JR Calculus » l\ Book: Calculus(OpenStax) » Q@] 1:FunctionsandGrap 4 Revision history
+f% Home " GIN Bookshelves " JR Calculus " l\ Book: Calculus(OpenStax) " Q@] 1:FunctionsandGrap 4 Revision history
 
 &
 
 @ Restric
 + Page settings
-» Move
-1.E: Functions and Graphs (Exercises) —
+" Move
+1.E: Functions and Graphs (Exercises) -
 
 DOO) Last updated: May 25, 2019, 9:32 AM by Delmar Larsen Page restriction: Public Page ID: 3595
 
 B Forker
 $415: Exponential and Logartnnfrunciog> 4 fem ToC] -s|
 
-) Contributed by Gilbert Strang & Edwin “Jed” Herman
+) Contributed by Gilbert Strang & Edwin "Jed" Herman
 
 Professor (Mathematics) at Massachusetts Institute of Technology (Strang) & University of Wisconsin-Stevens Point (Herman) © Delet
 Sourced from OpenStax CNX Ss

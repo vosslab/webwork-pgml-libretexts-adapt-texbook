@@ -40,7 +40,7 @@ Sourced from TU Delft Open
 We also add author names to the textbook URL and textbook title
 @ phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Mechanics_and_Relativity_(Idema)
 
-:= Contents| fe Home » BW Bookshelves » ¥ University Physics
+:= Contents| fe Home " BW Bookshelves " ¥ University Physics
 
 Book: Mechanics and Relativity (Idema)
 
@@ -106,7 +106,7 @@ video (e.g., as MP4). We have had discussions of moving into streaming to avoid 
 
 Long-term Viability
 
-Major books in Classical mechanics, such as Goldstein’s book, published in 1950, remain available in libraries and from book
+Major books in Classical mechanics, such as Goldstein's book, published in 1950, remain available in libraries and from book
 publishers, providing valuable long-term access. Such long-term availability of textbooks is important in science. LibreTexts is
 based on the proprietary closed platform maintained by Mindtouch. If that company goes out of business, will LibreTexts have the
 resources to migrate to an open platform to provide a viable long-term repository?

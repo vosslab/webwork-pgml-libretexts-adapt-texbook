@@ -33,7 +33,7 @@ e Spaces should be included between numbers and units. For example, 273 K is pre
 
 e Use the degree symbol when describing degrees Celsius. For example, 25 °C is preferred to 25 C.
 
-e Where ‘sec’ is used, change to ‘s’.
+e Where 'sec' is used, change to 's'.
 
 Figure Coding (ADVANCED)
 
@@ -44,7 +44,7 @@ Insert template x
 
 Templates:
 
-CrossTransclude ’
+CrossTransclude '
 
 CrossTransclude
 EmbedJupyterConfiguration
@@ -52,7 +52,7 @@ Template:AddFigure lSnterRight
 Template:AddHiddenText
 Template:BoxDefinition
 
-~— Template:BoxExample lame
+~- Template:BoxExample lame
 Template: BoxExercise
 Template:BoxNote
 

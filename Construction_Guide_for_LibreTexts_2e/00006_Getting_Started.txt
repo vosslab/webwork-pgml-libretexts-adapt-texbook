@@ -5,7 +5,7 @@ CHAPTER OVERVIEW
 
 The goal of the LibreTexts project is to establish a vetted, comprehensive, and widely used platform for the dissemination and
 implementation of customized materials for post-secondary courses, while significantly reducing textbook costs for students. The
-LibreTexts project consists of 13 independently operating and interconnected “libraries” that focus on augmenting education in
+LibreTexts project consists of 13 independently operating and interconnected "libraries" that focus on augmenting education in
 separate fields via a series of open-access online textbook environments that includes complementary ancillaries that advance
 diverse pedagogical methods and support multiple student learning styles.
 
@@ -14,7 +14,7 @@ Workshops
 Campus Bookshelves
 
 Bookshelves
-The Course area holds campus- and »»
+The Course area holds campus- and ""
 
 Bookshelves in a LibreTexts Library holds
 
@@ -33,13 +33,13 @@ Development team and can be used either
 directly or to create customized remixes
 
 contains text remixes (i-e., texts generated : was
-— ; (ie., texts generated from existing content
+- ; (ie., texts generated from existing content
 
 from existing content often with . us
 Coane often with editing and/or content
 
 customized editing and/or content a= Community = . .
-interspersed) that students and faculty can MSU fot Achiovnginedeom- ~—-s AMterspersed) for use in campus Course
+interspersed) that students and faculty can MSU fot Achiovnginedeom- ~--s AMterspersed) for use in campus Course
 
 bean 220 Shells.
 

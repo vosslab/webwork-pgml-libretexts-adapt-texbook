@@ -12,13 +12,13 @@ e Step 2-Click on Time & Language.
 e Step 3-Click on Language from the left menu.
 
 e Step 4-Click on English (United states) to expand and then click on Options.
-e Step 5 — Scroll down and then click on + Sign beside Add a language.
+e Step 5 - Scroll down and then click on + Sign beside Add a language.
 
-e Step 6— Select United states — International from the list.
+e Step 6- Select United states - International from the list.
 
-e Step 7 — Now, in the Taskbar , click on your language .
+e Step 7 - Now, in the Taskbar , click on your language .
 
-e Step 8 — Now, select United states — International from the list.
+e Step 8 - Now, select United states - International from the list.
 
 For step by step instruction please see the following article.
 
@@ -33,6 +33,6 @@ https://support.apple.com/guide/mac-help/enter-characters-with-accent-marks-on-m
 
 This page titled 15.2: FAQ is shared under a CC BY license and was authored, remixed, and/or curated by Delmar Larsen.
 
-e« FAQ by Delmar Larsen is licensed CC BY 4.0.
+e" FAQ by Delmar Larsen is licensed CC BY 4.0.
 
 (cc) (#) 15.2.1 https ://chem.libretexts .org/@go/page/483794

@@ -24,19 +24,19 @@ Book Structure
 
 It is best to have a flat structure
 
-—|m Stats 102: Book
+-|m Stats 102: Book
 + @ Front Matter
 = YT} 1: First Chapter
 
-—lmy Stats 102: Book f=] 1.1: New Page
+-lmy Stats 102: Book f=] 1.1: New Page
 + a Front Matter 2] 1.2: New Page
 = a 2: Second Chapter
 a 1: First Chapter
 Bl 2.1: New Page
 a 2: Second Chapter ] 2.2: New Page
-a 3: Third Chapter — QQ 3: Third Chapter
+a 3: Third Chapter - QQ 3: Third Chapter
 a 4: New Page | 3.1: New Page
-— 4: New P
+- 4: New P
 + ] Back Matter v ew rage
 
 I] 4.1: New Page
@@ -56,11 +56,11 @@ https ://chem.libretexts .org/@go/page/483712
 
 Gibretexts-
 
-—(|m Stats 102: Book
+-(|m Stats 102: Book
 +8
-—-§
+--§
 
-—-8
+--8
 
 -8
 -@
@@ -137,7 +137,7 @@ Gibretexts-
 Introductory Chemistry CHE1305 Lubbock Christian University
 
 RS RS
-sé sé
+se se
 PAE Ox
 G = < G Ga
 

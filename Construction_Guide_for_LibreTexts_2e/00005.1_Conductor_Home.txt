@@ -15,12 +15,12 @@ Your LibreVerse
 Access all of your LibreTexts applications from one place. Applications with a tool icon have not yet been integrated with LibreOne sign-on.
 
 x
-Quivcg: — Quirsess
+Quivcg: - Quirsess
 ADAPT Commons
 Libraries
 
 bal COMING 2024
-LibreTexts” i - iS) i ;
+LibreTexts" i - iS) i ;
 CONDUCTOR Oibrefexts LibreTexts
 Conductor JupyterHub Nova
 
@@ -114,16 +114,16 @@ Last updated 02/05/24 at 12:35 AM
 © Recently Edited Projects °
 Test Book 1 KBOR Text rz)
 Last updated 04/25/24 at 6:16 PM Lost updated 02/20/24 at 427 PM
-‘AMS Demo CalculusChapter1 x)
+'AMS Demo CalculusChapter1 x)
 Lost updated 02/05/24 at 12:36 ast updated 02/05/24 at 12:35
 aM AM
 
-B ‘ Support Center
+B ' Support Center
 
 = Commons
 
 Announcements
-re) ‘One Week Until LibreFest Kicks Off
+re) 'One Week Until LibreFest Kicks Off
 Today marks one week until our 3rd annual LibreFest
 
 kicks off! There is still time to register:

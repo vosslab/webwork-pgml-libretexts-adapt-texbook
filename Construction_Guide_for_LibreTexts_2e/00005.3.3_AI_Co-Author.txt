@@ -55,7 +55,7 @@ https ://chem.libretexts .org/@go/page/513514
 
 --- Page Break ---
 
-LibreTexts”
+LibreTexts"
 
 Edit Page Metadata: Chapter 1.4: A Brief History of Chemistry
 
@@ -65,7 +65,7 @@ Enter a summary for this page
 
 Characters remaining: 500
 
-The page discusses the historical development of the atomic theory, highlighting key figures and concepts. Starting with the ancient Greeks’ idea that matter
+The page discusses the historical development of the atomic theory, highlighting key figures and concepts. Starting with the ancient Greeks' idea that matter
 consists of indivisible atoms, it outlines the contributions of alchemists and significant advancements in modern chemistry by Robert Boyle, Joseph Priestley,
 Antoine Lavoisier, and John Dalton.
 
@@ -83,7 +83,7 @@ Cancel @ Save
 You can accept all or individual tags After accepting you can later delete them. When you save, the tags and summary will be
 copied to the Page Settings of the Page in your LibreTexts
 
-— Page settings (2)
+- Page settings (2)
 Summary
 This page outlines a general chemistry course focusing on atomic theory, molecular structure, stoichiometry, thermochemistry, states of matter, kinetics, equilibria, and
 

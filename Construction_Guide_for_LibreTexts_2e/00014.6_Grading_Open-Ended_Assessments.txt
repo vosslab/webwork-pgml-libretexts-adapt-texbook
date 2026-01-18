@@ -100,7 +100,7 @@ Audio submission
 
 Submission
 
-> —
+> -
 
 PDF submission
 
@@ -291,7 +291,7 @@ can be updated or left the same, new feedback can also be added if needed
 sy Elen Fox via adapt .libretexts.org 2:25PM (2minutesago) ye &
 tome +
 
-Elen Fox has a grading concern for "1.1: First Assignment, Question #2”
+Elen Fox has a grading concern for "1.1: First Assignment, Question #2"
 Can you tell me what did | do wrong? Thanks
 
 Assuming that you're logged into Adapt, you can view the submission by visiting https://adapt libretexts org/assignments/759/grading/101257/100. In addition, you can reply directly to the student via this email.

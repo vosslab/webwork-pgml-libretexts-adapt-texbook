@@ -8,10 +8,10 @@ files are under construction. System status lets you know if problems are due to
 
 Contact Support
 
-‘Submit a support ticket to get help from our team.
+'Submit a support ticket to get help from our team.
 
 Request Info
-Subject”
+Subject"
 
 Support button Support Center
 
@@ -24,7 +24,7 @@ Search Insight for help with all of your LibreTexts apps & services.
 Contact Support
 
 SS es eS
-Search the Insight Knowledge — ; :
+Search the Insight Knowledge - ; :
 
 Base
 

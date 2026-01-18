@@ -90,13 +90,13 @@ Figures 11.10.2and 11.10.3below.
 Figure11.10.2 New QueryWeBWorkK template
 
 Query \(\PageIndex{1}\)
-+ — DekiScript —
++ - DekiScript -
 
 Figure11.10.3 QueryWeBWorK template opened
 
 Query \(\Pagelndex{1}\)
 
-= fa —beksarpt—
+= fa -beksarpt-
 
 Direct Add of WebWork Assessment from Server (i.e., bypass Query library)
 
@@ -140,7 +140,7 @@ Determine the bifurcation value(s) for the one-parameter family y y y
 
 dy A
 
-—=y tk.
+-=y tk.
 
 dt y '
 
@@ -153,7 +153,7 @@ correct. A B C
 2 v 1.k equal to the bifurcation value
 ? ~ 2.k smaller than the bifurcation value
 
-2 » 3.k larger than the bifurcation value
+2 " 3.k larger than the bifurcation value
 
 Preview My Answers Submit Answers
 
@@ -176,7 +176,7 @@ Template:BoxCode
 Template:BoxDefinition
 Template:BoxExample
 Tomplate:BoxExercise
-‘Template:Boxinteractive
+'Template:Boxinteractive
 Template:BoxNote
 Template:BoxObjectives:
 Template:BoxQuery
@@ -198,7 +198,7 @@ Figurel 1.10.7 New BoxQuery template Figure11.10.8
 Query \(\PageIndex{1}\)
 
 Query \(\PageIndex{1}\)
-kiScript —
+kiScript -
 
 * an : BoxQuery template opened [~@-™
 e with the Page ID for the WeBWorK prob iggggestormectnetines@ ucry database (21088)
@@ -208,7 +208,7 @@ above gives us:
 
 Query \(\PageIndex{1}\)
 
-- — DekiScript —
+- - DekiScript -
 
 Description: Embed QUERY Assessment
 
@@ -273,8 +273,8 @@ This code will generate the following WeBWork problem, served up from an externa
 custom problem, it could be.
 
 Note that you can specify your desired WeBWorkK server and the path to the problem inside the course you set up for serving these
-problems. The courseID is the course name, and you need to create a user named “daemon” with password “daemon” and
-permission set to “login proctor” in that course. Alternatively, you could use "anonymous" instead of "daemon". Just be
+problems. The courseID is the course name, and you need to create a user named "daemon" with password "daemon" and
+permission set to "login proctor" in that course. Alternatively, you could use "anonymous" instead of "daemon". Just be
 consistent.
 
 The path can be a Library problem too, although we recommend you use the QueryWebWork template described above unless you
