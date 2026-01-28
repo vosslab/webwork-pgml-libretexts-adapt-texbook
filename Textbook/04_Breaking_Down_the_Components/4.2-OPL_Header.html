@@ -67,15 +67,141 @@ problem before publishing.
 	</tbody>
 </table>
 
+<h2>How this header fits into the problem structure</h2>
+<p>
+The OPL header is "section zero" — it comes before <code>DOCUMENT()</code> and exists outside the
+traditional four-section structure (Preamble, Setup, Statement, Solution). Think of it as the
+problem's passport: it makes the problem searchable, classifiable, and reusable in problem banks.
+</p>
+
+<h3>Five-section reality</h3>
+<ol>
+	<li><strong>Section 0: OPL Header</strong> (metadata comments, before DOCUMENT)</li>
+	<li><strong>Section 1: Preamble</strong> (DOCUMENT through loadMacros)</li>
+	<li><strong>Section 2: Setup</strong> (Perl code before PGML)</li>
+	<li><strong>Section 3: Statement</strong> (BEGIN_PGML / END_PGML)</li>
+	<li><strong>Section 4: Solution</strong> (optional BEGIN_PGML_SOLUTION / END_PGML_SOLUTION)</li>
+</ol>
+
+<p>
+Traditional PG documentation only lists four sections because it omits the OPL header. However,
+for long-term reuse and problem bank classification, the header is essential.
+</p>
+
 <h2>Choosing biology classifications</h2>
+<p>
+The worked example uses <code>DBsubject('Biochemistry')</code> because the problem context is
+lab-focused. Here's how to choose classifications for other biology problems.
+</p>
+
+<h3>Classification decision guide</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 35%;">
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Problem type</th>
+			<th>DBsubject</th>
+			<th>DBchapter suggestion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Problem type">Dilution calculations, spectrophotometry, gel analysis</td>
+			<td data-th="DBsubject">Laboratory Techniques</td>
+			<td data-th="DBchapter suggestion">Solution preparation, Protein analysis, DNA analysis</td>
+		</tr>
+		<tr>
+			<td data-th="Problem type">Enzyme kinetics, buffer pH, protein structure</td>
+			<td data-th="DBsubject">Biochemistry</td>
+			<td data-th="DBchapter suggestion">Enzymes, Acids and bases, Proteins</td>
+		</tr>
+		<tr>
+			<td data-th="Problem type">Punnett squares, pedigrees, linkage</td>
+			<td data-th="DBsubject">Genetics</td>
+			<td data-th="DBchapter suggestion">Mendelian inheritance, Pedigree analysis, Linkage</td>
+		</tr>
+		<tr>
+			<td data-th="Problem type">Cell signaling, membrane transport, organelles</td>
+			<td data-th="DBsubject">Cell Biology</td>
+			<td data-th="DBchapter suggestion">Signal transduction, Membranes, Organelles</td>
+		</tr>
+		<tr>
+			<td data-th="Problem type">DNA replication, transcription, translation</td>
+			<td data-th="DBsubject">Biology - molecular</td>
+			<td data-th="DBchapter suggestion">DNA replication, Gene expression, Translation</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Classification guidelines</h3>
 <ul>
-	<li>Pick the most specific DBsubject that matches the course (Cell Biology, Biochemistry, etc.).</li>
-	<li>Use DBchapter and DBsection that describe the technique or concept ("Lab techniques").</li>
-	<li>Keep capitalization and wording consistent with existing tags in your repository.</li>
+	<li><strong>Start with course context:</strong> If the problem is for a Biochemistry course, use <code>DBsubject('Biochemistry')</code> even if it involves lab techniques.</li>
+	<li><strong>Use existing tags:</strong> Search your repository for similar problems and copy the exact classification strings to maintain consistency.</li>
+	<li><strong>Be specific in DBsection:</strong> Instead of "General concepts", use "Michaelis-Menten kinetics" or "Serial dilutions".</li>
+	<li><strong>Avoid empty strings:</strong> Never leave DBsubject, DBchapter, or DBsection blank. Choose the closest existing label and revise later if needed.</li>
+</ul>
+
+<h2>Quick reference: Header fields explained</h2>
+
+<h3>TITLE field</h3>
+<p>
+Student-facing title that appears in problem listings. Keep it under 80 characters and focus on the
+task, not the story wrapper. For detailed guidance and good/bad examples, see Chapter 2.2.
+</p>
+<p>
+<strong>Example for worked problem:</strong> <code>TITLE('Color choice using radio buttons')</code>
+</p>
+
+<h3>DESCRIPTION block</h3>
+<p>
+Instructor-facing summary (2-3 sentences) that describes the task, constraints (units, rounding),
+and provenance if adapted from another source. For templates and biology examples, see Chapter 2.2.
+</p>
+<p>
+<strong>Example for worked problem:</strong> The description mentions "radio button formats" and
+"choice labels" to clarify what students will interact with.
+</p>
+
+<h3>KEYWORDS field</h3>
+<p>
+3-5 technique or concept keywords that make the problem searchable. Avoid story nouns and generic
+terms. For keyword selection process and biology examples, see Chapter 2.2.
+</p>
+<p>
+<strong>Example for worked problem:</strong> <code>KEYWORDS('radio buttons','choice list','PGML prompt')</code>
+focuses on interaction type and PGML features, not biology content (since this is a demonstration problem).
+</p>
+
+<h3>Attribution fields</h3>
+<p>
+Date, Author, and Institution provide credit and help track provenance for long-term reuse. Always
+include these fields, even for internal problems.
+</p>
+
+<h2>Cross-references for detailed guidance</h2>
+<ul>
+	<li><strong>Chapter 2.2:</strong> Comprehensive OPL header guidance with biology examples, decision trees, and good/bad comparisons.</li>
+	<li><strong>Appendix 90.1:</strong> Complete problem templates with pre-filled OPL headers you can copy and adapt.</li>
+	<li><strong>Next sections in Chapter 4:</strong> After the header, see 4.3 Preamble, 4.4 Setup, 4.5 Statement for how each section builds on the metadata.</li>
+</ul>
+
+<h2>Common mistakes in problem context</h2>
+<ul>
+	<li><strong>Forgetting to update the header after modifying the problem:</strong> If you change a dilution problem to a genetics problem, update DBsubject, DBchapter, KEYWORDS, and DESCRIPTION.</li>
+	<li><strong>Copying header from unrelated problem:</strong> Always customize TITLE, DESCRIPTION, and classification tags to match the new problem's actual content.</li>
+	<li><strong>Smart quotes in header:</strong> Use plain ASCII quotes (<code>'</code>), not curly quotes (<code>'</code> or <code>'</code>). Smart quotes break OPL parsing tools.</li>
+	<li><strong>Empty classification fields:</strong> Never leave DBsubject, DBchapter, or DBsection empty. Pick the closest existing tag and revise later if needed.</li>
 </ul>
 
 <h2>Apply it today</h2>
 <ul>
 	<li>Check that every problem has TITLE and DESCRIPTION before you edit the prompt.</li>
 	<li>Update the DBsubject tags whenever the scientific context changes.</li>
+	<li>Use existing classification strings from your repository to maintain consistency.</li>
+	<li>Cross-reference Chapter 2.2 for detailed field guidance and biology examples.</li>
+	<li>Use templates from Appendix 90.1 for pre-filled OPL headers.</li>
 </ul>

@@ -71,13 +71,286 @@ Use the templates in Appendix 90.1 as your starting point so you do not forget r
 ## Institution('Institution name')
 </pre>
 
-<h2>Field guidance (short)</h2>
+<h2>TITLE field guidance</h2>
+<p>
+The TITLE is the student-facing name that appears in problem listings and search results. Keep it
+short (under 80 characters), descriptive, and focused on the task rather than the story wrapper.
+</p>
+
+<h3>Good vs bad titles</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 45%;">
+		<col style="width: 45%;">
+		<col style="width: 10%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Good title</th>
+			<th>Bad title</th>
+			<th>Why</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Good title"><code>Compute dilution factor from stock and final concentration</code></td>
+			<td data-th="Bad title"><code>This is a problem about dilutions in the lab</code></td>
+			<td data-th="Why">Bad: filler words, says "problem", not task-focused</td>
+		</tr>
+		<tr>
+			<td data-th="Good title"><code>X-linked inheritance from fly offspring counts</code></td>
+			<td data-th="Bad title"><code>Genetics practice</code></td>
+			<td data-th="Why">Bad: vague, no detail, "practice" is filler</td>
+		</tr>
+		<tr>
+			<td data-th="Good title"><code>Enzyme kinetics: calculate Km from Lineweaver-Burk</code></td>
+			<td data-th="Bad title"><code>Calculate Michaelis constant using the reciprocal transformation approach</code></td>
+			<td data-th="Why">Bad: too long (> 80 chars)</td>
+		</tr>
+		<tr>
+			<td data-th="Good title"><code>Determine qPCR fold change from Ct values</code></td>
+			<td data-th="Bad title"><code>qPCR</code></td>
+			<td data-th="Why">Bad: too terse, doesn't describe the task</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>DESCRIPTION block guidance</h2>
+<p>
+The DESCRIPTION block is a 2-3 sentence instructor-facing summary that explains the task, any
+constraints that affect adoption (unit requirements, rounding, domain restrictions), and provenance
+if adapted from another source.
+</p>
+
+<h3>Template with placeholders</h3>
+<pre>
+## DESCRIPTION
+## [Task in one sentence]. [Constraints or special requirements]. [Optional: Adapted from ...]
+## ENDDESCRIPTION
+</pre>
+
+<h3>Biology examples of complete DESCRIPTION blocks</h3>
+
+<p><strong>Enzyme kinetics problem:</strong></p>
+<pre>
+## DESCRIPTION
+## Students calculate the Michaelis constant (Km) from enzyme kinetics data using a
+## Lineweaver-Burk plot. Answers require two significant figures and appropriate units (mM).
+## ENDDESCRIPTION
+</pre>
+
+<p><strong>Genetics cross problem:</strong></p>
+<pre>
+## DESCRIPTION
+## Students determine the probability of offspring genotypes from a dihybrid cross using
+## Punnett square logic. Answers are fractions in lowest terms (e.g., 9/16).
+## ENDDESCRIPTION
+</pre>
+
+<p><strong>Dilution series problem:</strong></p>
+<pre>
+## DESCRIPTION
+## Students calculate final concentrations in a serial dilution series given a stock
+## concentration and dilution factors. Answers must include units (μM or mM) and use
+## scientific notation for very small values.
+## ENDDESCRIPTION
+</pre>
+
+<h3>What NOT to include in DESCRIPTION</h3>
 <ul>
-	<li>Keep titles short and descriptive. Avoid filler words like "practice".</li>
-	<li>Descriptions should summarize the task and mention grading constraints (units, rounding).</li>
-	<li>Use 3 to 5 keywords that describe techniques or concepts, not story nouns.</li>
-	<li>Choose DBsubject values that fit life science courses (Cell Biology, Biochemistry, etc.).</li>
-	<li>Include attribution fields for long-term reuse and credit.</li>
+	<li>Do not paste full solutions or step-by-step instructions.</li>
+	<li>Do not include long pedagogical essays or teaching philosophy.</li>
+	<li>Do not include code or implementation details.</li>
+	<li>Do not describe the story wrapper (e.g., "students imagine they are in a lab").</li>
+</ul>
+
+<h2>KEYWORDS guidance</h2>
+<p>
+Use 3 to 5 keywords (prefer 3-4 when possible) that describe techniques, concepts, or methods.
+Avoid character names, story nouns, or terms already implied by DBsubject.
+</p>
+
+<h3>Keyword selection process for biology problems</h3>
+
+<p><strong>Example 1: Dilution problem</strong></p>
+<ul>
+	<li>Good keywords: <code>'serial dilution', 'concentration', 'stock solution'</code></li>
+	<li>Bad keywords: <code>'biology', 'lab', 'science', 'tube'</code></li>
+	<li>Why: Good keywords are searchable techniques. Bad keywords are too generic or story nouns.</li>
+</ul>
+
+<p><strong>Example 2: Enzyme kinetics problem</strong></p>
+<ul>
+	<li>Good keywords: <code>'Michaelis-Menten', 'Lineweaver-Burk', 'enzyme kinetics', 'Km'</code></li>
+	<li>Bad keywords: <code>'biochemistry', 'enzyme', 'calculation'</code></li>
+	<li>Why: Good keywords name specific methods. Bad keywords duplicate DBsubject or are too broad.</li>
+</ul>
+
+<p><strong>Example 3: qPCR problem</strong></p>
+<ul>
+	<li>Good keywords: <code>'qPCR', 'fold change', 'Ct value', 'delta-delta Ct'</code></li>
+	<li>Bad keywords: <code>'gene expression', 'RNA', 'technique'</code></li>
+	<li>Why: Good keywords are technique-specific. Bad keywords are outcome terms, not methods.</li>
+</ul>
+
+<h3>How to avoid duplicating DBsubject terms</h3>
+<p>
+If DBsubject is <code>Biochemistry</code>, do not use <code>'biochemistry'</code> as a keyword.
+Instead, use technique names like <code>'enzyme kinetics'</code>, <code>'Henderson-Hasselbalch'</code>,
+or <code>'buffer capacity'</code>. Keywords should narrow the search within the subject area.
+</p>
+
+<h2>DBsubject, DBchapter, and DBsection guidance</h2>
+<p>
+These three fields form the primary classification taxonomy for the Open Problem Library. Choose
+values that fit life science courses and match existing usage in your repository for consistency.
+</p>
+
+<h3>Biology-appropriate DBsubject values</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 40%;">
+		<col style="width: 60%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>DBsubject value</th>
+			<th>When to use</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="DBsubject value"><code>Biology - molecular</code></td>
+			<td data-th="When to use">DNA, RNA, transcription, translation, replication</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biology - introductory</code></td>
+			<td data-th="When to use">General biology concepts, cell structure, basic processes</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biochemistry</code></td>
+			<td data-th="When to use">Enzyme kinetics, metabolism, protein structure, buffers</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Genetics</code></td>
+			<td data-th="When to use">Inheritance patterns, Punnett squares, linkage, pedigrees</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Laboratory Techniques</code></td>
+			<td data-th="When to use">Dilutions, spectrophotometry, gel electrophoresis, qPCR</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Cell Biology</code></td>
+			<td data-th="When to use">Organelles, transport, signaling, cell cycle</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biostatistics</code></td>
+			<td data-th="When to use">Statistical tests, experimental design, data analysis</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Decision tree: choosing the right DBsubject</h3>
+<ol>
+	<li><strong>What is the primary discipline?</strong> Start with the course context (Biochemistry, Genetics, etc.)</li>
+	<li><strong>Is it a technique or concept?</strong> If purely technique-focused (dilutions, PCR), use Laboratory Techniques.</li>
+	<li><strong>Is it broad or specific?</strong> If the problem spans multiple sub-disciplines, use the most specific subject that still fits typical course organization.</li>
+	<li><strong>Does it match existing usage?</strong> Search your repository for similar problems and copy the exact DBsubject string to maintain consistency.</li>
+</ol>
+
+<h3>Complete classification examples</h3>
+
+<p><strong>Example 1: Dilution problem</strong></p>
+<pre>
+## DBsubject('Laboratory Techniques')
+## DBchapter('Solution preparation')
+## DBsection('Serial dilutions')
+</pre>
+
+<p><strong>Example 2: Enzyme kinetics problem</strong></p>
+<pre>
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics basics')
+</pre>
+
+<p><strong>Example 3: Genetics cross problem</strong></p>
+<pre>
+## DBsubject('Genetics')
+## DBchapter('Mendelian inheritance')
+## DBsection('Dihybrid crosses')
+</pre>
+
+<h2>Complete worked examples</h2>
+<p>
+These examples show full OPL headers for different problem types. Copy and adapt for your own
+problems. For more templates, see Appendix 90.1.
+</p>
+
+<h3>Full header for a dilution problem</h3>
+<pre>
+## TITLE('Serial dilution: calculate final concentrations')
+## DESCRIPTION
+## Students calculate final concentrations in a serial dilution series given a stock
+## concentration and dilution factors. Answers must include units (μM or mM) and use
+## scientific notation for very small values.
+## ENDDESCRIPTION
+## KEYWORDS('serial dilution','concentration','stock solution')
+## DBsubject('Laboratory Techniques')
+## DBchapter('Solution preparation')
+## DBsection('Serial dilutions')
+## Level(3)
+## Date('2026-01-28')
+## Author('Dr. Neil R. Voss')
+## Institution('Roosevelt University')
+## Language(en)
+</pre>
+
+<h3>Full header for a genetics problem</h3>
+<pre>
+## TITLE('Dihybrid cross: predict offspring ratios')
+## DESCRIPTION
+## Students determine the probability of offspring genotypes from a dihybrid cross using
+## Punnett square logic. Answers are fractions in lowest terms (e.g., 9/16).
+## ENDDESCRIPTION
+## KEYWORDS('dihybrid cross','Punnett square','Mendelian inheritance','independent assortment')
+## DBsubject('Genetics')
+## DBchapter('Mendelian inheritance')
+## DBsection('Dihybrid crosses')
+## Level(3)
+## Date('2026-01-28')
+## Author('Dr. Neil R. Voss')
+## Institution('Roosevelt University')
+## Language(en)
+</pre>
+
+<h3>Full header for a pathway problem</h3>
+<pre>
+## TITLE('Glycolysis: identify rate-limiting enzymes')
+## DESCRIPTION
+## Students identify which enzymes in the glycolytic pathway are subject to allosteric
+## regulation and explain their physiological significance. Free-response answers are
+## graded for keyword matches.
+## ENDDESCRIPTION
+## KEYWORDS('glycolysis','allosteric regulation','rate-limiting enzyme','metabolism')
+## DBsubject('Biochemistry')
+## DBchapter('Metabolism')
+## DBsection('Glycolysis')
+## Level(4)
+## Date('2026-01-28')
+## Author('Dr. Neil R. Voss')
+## Institution('Roosevelt University')
+## Language(en)
+</pre>
+
+<h2>Common mistakes and how to avoid them</h2>
+<ul>
+	<li><strong>Empty DBsubject string:</strong> Never leave DBsubject, DBchapter, or DBsection empty. Choose the closest existing label and revise later if needed.</li>
+	<li><strong>Smart quotes in header:</strong> Use plain ASCII quotes (<code>'</code>), not curly quotes (<code>'</code> or <code>'</code>). Smart quotes break OPL parsing tools.</li>
+	<li><strong>Missing ENDDESCRIPTION tag:</strong> Always close the DESCRIPTION block with <code>## ENDDESCRIPTION</code>. Without it, parsers may read subsequent code as part of the description.</li>
+	<li><strong>Too many keywords:</strong> More than 5 keywords dilutes search effectiveness. Stick to 3-5, preferring the most distinctive terms.</li>
+	<li><strong>Using "practice" or "problem" in title:</strong> Titles should describe the task, not announce that it's a practice problem. Replace "Practice computing dilutions" with "Compute dilution factor from concentrations".</li>
+	<li><strong>Pasting code into DESCRIPTION:</strong> The description is for humans, not parsers. Keep it plain English and code-free.</li>
 </ul>
 
 <h2>Apply it today</h2>

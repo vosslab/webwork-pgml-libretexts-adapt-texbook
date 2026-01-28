@@ -163,6 +163,207 @@ compute numeric values, it can be omitted.
 	</tbody>
 </table>
 
+<h2>What macro availability means for you</h2>
+<p>
+The ADAPT/renderer subset is based on PG 2.17 but uses a flattened macro tree with some files
+removed. This affects what widgets and helpers you can use in problems.
+</p>
+
+<h3>Parser widgets: Key differences</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 18%;">
+		<col style="width: 18%;">
+		<col style="width: 36%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Widget</th>
+			<th>ADAPT/renderer</th>
+			<th>Full PG 2.17+</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Widget">PopUp</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Use for matching dropdowns (see Chapter 6.3)</td>
+		</tr>
+		<tr>
+			<td data-th="Widget">RadioButtons</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Use for single-choice questions and per-statement True/False</td>
+		</tr>
+		<tr>
+			<td data-th="Widget">CheckboxList</td>
+			<td data-th="ADAPT/renderer">✗ No</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Not available. Use RadioButtons per statement instead (Chapter 6.4)</td>
+		</tr>
+		<tr>
+			<td data-th="Widget">DropDown</td>
+			<td data-th="ADAPT/renderer">✗ No</td>
+			<td data-th="Full PG 2.17+">✗ No</td>
+			<td data-th="Notes">PG 2.18+ only. Use PopUp in ADAPT/renderer</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Core macros: All available</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 18%;">
+		<col style="width: 18%;">
+		<col style="width: 36%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>ADAPT/renderer</th>
+			<th>Full PG 2.17+</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGML.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Always load this for PGML blocks</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGstandard.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Core PG functions</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">MathObjects.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Required for Real(), Compute(), Formula()</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">niceTables.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">The only supported way to create tables (see Chapter 6.2)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Context macros: Most available, some missing</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 18%;">
+		<col style="width: 18%;">
+		<col style="width: 36%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>ADAPT/renderer</th>
+			<th>Full PG 2.17+</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">contextUnits.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Unit-aware parsing for science problems</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">contextReaction.pl</td>
+			<td data-th="ADAPT/renderer">✓ Yes</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Chemical reaction input validation</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">VectorListCheckers.pl</td>
+			<td data-th="ADAPT/renderer">✗ No</td>
+			<td data-th="Full PG 2.17+">✓ Yes</td>
+			<td data-th="Notes">Vector list validation not available in subset</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>What this means for problem authors</h3>
+<ul>
+	<li><strong>Use PopUp and RadioButtons:</strong> These work reliably across all PG versions and are available in the ADAPT/renderer subset.</li>
+	<li><strong>Avoid CheckboxList:</strong> It's not in the PG 2.17 subset. Use RadioButtons per statement instead (see Chapter 6.4 for the pattern).</li>
+	<li><strong>Check the allowlist before copying:</strong> Online examples may use macros that aren't in the subset. Always verify against the allowlist in <code>docs/PG_2_17_RENDERER_MACROS.md</code>.</li>
+	<li><strong>Use niceTables.pl for all tables:</strong> HTML table tags (<code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>) are blocked. niceTables.pl is the only supported way to create tables.</li>
+	<li><strong>Test locally:</strong> Use the local renderer (Chapter 7) to catch missing macros before deploying to ADAPT.</li>
+</ul>
+
+<h2>When a macro is missing</h2>
+<p>
+If you try to load a macro that's not in the ADAPT/renderer subset, you'll see an error. Here's how
+to diagnose and fix it.
+</p>
+
+<h3>Symptoms of a missing macro</h3>
+<ul>
+	<li><strong>"Can't locate [MacroFile].pl" error:</strong> The macro file doesn't exist in the renderer's macro search path.</li>
+	<li><strong>"Undefined subroutine" error:</strong> A function from a missing macro was called (e.g., <code>CheckboxList()</code> without <code>parserCheckboxList.pl</code>).</li>
+	<li><strong>Widget doesn't appear:</strong> The problem renders but the expected checkbox list, dropdown, or other widget is missing.</li>
+</ul>
+
+<h3>How to diagnose</h3>
+<ol>
+	<li><strong>Check the allowlist:</strong> Open <code>docs/PG_2_17_RENDERER_MACROS.md</code> and search for the macro file name. If it's not listed, it's not available.</li>
+	<li><strong>Test locally with renderer:</strong> Run the problem through the local renderer (Chapter 7.1). The error message will tell you which macro failed to load and where it was called.</li>
+	<li><strong>Search for alternatives:</strong> Look for similar functionality in macros that ARE in the allowlist. For example, use <code>PopUp</code> instead of <code>DropDown</code>.</li>
+</ol>
+
+<h3>Common workarounds</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Missing macro</th>
+			<th>What it provided</th>
+			<th>Workaround</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Missing macro">parserCheckboxList.pl</td>
+			<td data-th="What it provided">Checkbox lists for multiple correct answers</td>
+			<td data-th="Workaround">Use RadioButtons per statement (True/False), see Chapter 6.4</td>
+		</tr>
+		<tr>
+			<td data-th="Missing macro">DropDown (PG 2.18+)</td>
+			<td data-th="What it provided">Modern dropdown widget</td>
+			<td data-th="Workaround">Use PopUp from parserPopUp.pl (same functionality)</td>
+		</tr>
+		<tr>
+			<td data-th="Missing macro">VectorListCheckers.pl</td>
+			<td data-th="What it provided">Vector list validation helpers</td>
+			<td data-th="Workaround">Use MathObjects Vector context directly or simplify to scalar answers</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Prevention</h3>
+<ul>
+	<li>Before copying code from online examples, check the macro list against the allowlist.</li>
+	<li>Use templates from Appendix 90.1, which are verified to work with the PG 2.17 subset.</li>
+	<li>Test problems locally (Chapter 7.1) before deploying to ADAPT.</li>
+</ul>
+
 <h2>Science-native contexts and grading helpers</h2>
 <table class="mt-responsive-table">
 	<colgroup>

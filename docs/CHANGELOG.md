@@ -1,6 +1,32 @@
 # Changelog
 
 ## 2026-01-28
+
+### Content expansion (high-priority pages)
+- Expanded Chapter 2.2 OPL header from 88 to 360 lines with comprehensive TITLE/DESCRIPTION/KEYWORDS guidance,
+  biology-appropriate DBsubject classification table and decision tree, good vs bad examples for each field,
+  three complete worked headers (dilution, genetics, pathway), and common mistakes section.
+- Expanded Chapter 6.3 Matching from 62 to 483 lines with detailed PopUp widget usage, three MODES layout patterns
+  (preferred direct-in-PGML, eval-block wrapper, inline segments), shuffle array explanation, CSS flexbox styling,
+  colored label `[$var]*` pattern, three biology examples (chemical bonds, pathway enzymes, genetics terms), and
+  five common failures with symptoms/causes/fixes/prevention.
+- Expanded Chapter 2.5 Common PG Macros from 296 to 497 lines with macro version comparison tables (parser widgets,
+  core macros, context macros) showing ADAPT/renderer PG 2.17 subset vs full PG 2.17+ vs PG 2.20, "What this means
+  for problem authors" section explaining CheckboxList unavailability and RadioButtons-per-statement workaround,
+  "When a macro is missing" section with symptoms/diagnosis/workarounds, and prevention tips.
+- Expanded Chapter 4.2 OPL Header from 82 to 207 lines with five-section structure explanation (acknowledging OPL
+  header as "section zero"), classification decision guide table for different biology problem types (dilution,
+  enzyme kinetics, genetics, cell biology, molecular biology), quick reference for each header field with
+  cross-references to Chapter 2.2 for detailed guidance, and common mistakes in problem context.
+- Expanded Chapter 7.2 API usage from 84 to 448 lines with complete endpoint documentation (POST /, POST /render-api,
+  GET /health), detailed parameter precedence (problemSourceURL > problemSource > sourceFilePath), four curl examples
+  (form-encoded, JSON, HTML output, instructor mode), Python batch rendering example with requests library, lint
+  workflow for checking multiple files in CI/CD, response format documentation with field table, three common use
+  cases (lint checks, preview generation, regression testing), and cross-references.
+- Total content expansion: Added approximately 1,300 lines across five high-priority pages with biology examples,
+  failure modes, decision trees, and comprehensive cross-referencing.
+
+### Structural changes
 - Added Chapter 2 OPL header page (2.2), renumbered Chapter 2 files, and updated the PG skeleton,
   section map, and macro guidance to reflect five sections and the PG 2.17 subset.
 - Added Chapter 4 OPL header page (4.2), renumbered the remaining Chapter 4 sections, and updated

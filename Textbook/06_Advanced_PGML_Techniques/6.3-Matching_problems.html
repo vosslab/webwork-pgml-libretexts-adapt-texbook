@@ -9,53 +9,475 @@ emitted from inside Perl eval blocks that build dynamic HTML with <code>join()</
 and randomized ordering.
 </p>
 
-<h2>Preferred layout pattern (PGML wrapper)</h2>
+<h2>When to use matching vs other question types</h2>
 <p>
-If you can write the wrapper tags directly in PGML, do that. This avoids MODES entirely.
+Matching problems work best for:
+</p>
+<ul>
+	<li><strong>Definitions:</strong> Match terms with their meanings (e.g., genotype vs phenotype)</li>
+	<li><strong>Associations:</strong> Connect related concepts (e.g., enzyme names with their substrates)</li>
+	<li><strong>Component identification:</strong> Link structures to functions (e.g., organelles to their roles)</li>
+	<li><strong>Classification:</strong> Match examples to categories (e.g., bond types to molecular scenarios)</li>
+</ul>
+
+<p>
+<strong>Not ideal for:</strong>
+</p>
+<ul>
+	<li>Pure memorization with no conceptual pairing</li>
+	<li>Sequence ordering (use drag-and-drop or ordered list instead)</li>
+	<li>True/false evaluation of statements (use RadioButtons per statement, see Chapter 6.4)</li>
+</ul>
+
+<p>
+<strong>Typical problem sizes:</strong> 4-8 pairs work well. Fewer than 4 is too easy; more than 8
+becomes cognitively overwhelming and increases guessing.
+</p>
+
+<h2>PopUp widgets for matching</h2>
+<p>
+Use <code>PopUp</code> widgets from <code>parserPopUp.pl</code> to create dropdown menus in the left
+column. Note that <code>DropDown</code> is a PG 2.18+ macro and is not available in the PG 2.17
+subset used by ADAPT/renderer.
+</p>
+
+<h3>Widget creation pattern</h3>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl",
+);
+
+# Define choices (labels A, B, C, D for 4 answers)
+my @choices = ('A', 'B', 'C', 'D');
+
+# Define correct answers (mapped to choices)
+my @correct_answers = ('B', 'D', 'A', 'C');  # Correct letter for each question
+
+# Create PopUp widgets
+my @answer_dropdowns = map { PopUp(\@choices, $correct_answers[$_]) } 0 .. $#correct_answers;
+</pre>
+
+<h3>How shuffle arrays work</h3>
+<p>
+Use the <code>shuffle()</code> function to randomize the order of right-column answers while
+maintaining correct left-right mapping:
+</p>
+<pre>
+my @questions = (
+  'Two oxygen atoms share electrons equally',
+  'Sodium transfers an electron to chlorine',
+  'Partial charges on C-O bond',
+  'O-H bond attracted to nearby C=O',
+);
+
+my @answers = (
+  'non-polar covalent bond',
+  'ionic bond',
+  'polar covalent bond',
+  'hydrogen bond',
+);
+
+# Shuffle the right column
+my @shuffle = shuffle(scalar(@answers));  # Returns a permutation [0..3]
+
+# Now answers appear in shuffled order, but @shuffle maps them back to originals
+</pre>
+
+<h3>Answer evaluation in PGML</h3>
+<p>
+In the left column, use <code>[_]{$answer_dropdowns[$i]}</code> to insert each PopUp widget. The
+student selects a letter from the dropdown, and WeBWorK checks it against the correct answer stored
+in the widget.
+</p>
+
+<h2>Two layout patterns: When MODES is needed</h2>
+<p>
+There are two ways to build matching layouts: with wrapper tags directly in PGML (preferred), or
+with <code>MODES</code> when wrapper HTML must be emitted from inside Perl eval blocks.
+</p>
+
+<h3>Pattern 1: Wrapper tags directly in PGML (preferred)</h3>
+<p>
+If you can write the wrapper <code>&lt;div&gt;</code> tags directly in PGML, do that. This avoids
+<code>MODES</code> entirely and is easier to read and maintain.
 </p>
 <pre>
 BEGIN_PGML
-<div class="match-grid">
-[@ join("\n\n", @left_items) @]*
+Match each molecular scenario with its bond type.
 
-[@ join("\n\n", @right_items) @]*
-</div>
+&lt;div class="two-column"&gt;
+&lt;div&gt;
+[@ join("\n\n", map {
+  '[_]{$answer_dropdowns[' . $_ . ']} '
+    . '*' . ($_ + 1) . '.* '
+    . $questions[$_]
+} 0 .. $#questions) @]**
+&lt;/div&gt;
+
+&lt;div&gt;
+[@ join("\n\n", map {
+  '*' . chr(65 + $_) . '.* '
+    . $answers[$shuffle[$_]]
+} 0 .. $#answers) @]**
+&lt;/div&gt;
+&lt;/div&gt;
 END_PGML
 </pre>
+<p>
+In this pattern, the <code>&lt;div class="two-column"&gt;</code> wrapper is written directly in PGML.
+The <code>join()</code> expressions build the content for each column, and PGML processes everything
+correctly without needing <code>MODES</code>.
+</p>
 
-<h2>When MODES is required</h2>
+<h3>Pattern 2: MODES when wrapper must be in eval block (required in specific cases)</h3>
 <p>
 Use <code>MODES(HTML =&gt; ...)</code> only when the wrapper tags must be built inside a Perl eval
-block, such as when the wrapper and content are created together with <code>join()</code>. Without
-MODES, the wrapper HTML is escaped and the layout collapses to a single column.
+block, such as when the wrapper and content are created together in a single Perl variable. Without
+<code>MODES</code>, the wrapper HTML gets escaped by PGML and the layout collapses to a single column.
 </p>
 <pre>
-$left_html = join("\n\n", @left_items);
-$right_html = join("\n\n", @right_items);
+# Build left column HTML
+my $left_html = join("\n\n", map {
+  '[_]{$answer_dropdowns[' . $_ . ']} '
+    . '*' . ($_ + 1) . '.* '
+    . $questions[$_]
+} 0 .. $#questions);
 
-$columns = MODES(HTML =&gt; "<div class='match-grid'>\n$left_html\n\n$right_html\n</div>");
+# Build right column HTML
+my $right_html = join("\n\n", map {
+  '*' . chr(65 + $_) . '.* '
+    . $answers[$shuffle[$_]]
+} 0 .. $#answers);
+
+# Wrap with MODES because wrapper tags are in eval block
+my $columns = MODES(HTML =&gt; "&lt;div class='two-column'&gt;&lt;div&gt;\n$left_html\n&lt;/div&gt;&lt;div&gt;\n$right_html\n&lt;/div&gt;&lt;/div&gt;");
 
 BEGIN_PGML
 [$columns]*
 END_PGML
 </pre>
+<p>
+In this pattern, the wrapper <code>&lt;div&gt;</code> tags are built inside the Perl variable
+<code>$columns</code>, so <code>MODES</code> is required to prevent PGML from escaping them.
+</p>
 
-<h2>PopUp widgets and label styling</h2>
+<h3>Pattern 3: Inline MODES for wrapper segments (alternative)</h3>
+<p>
+You can also emit wrapper HTML segments using inline <code>MODES</code> calls between
+<code>join()</code> expressions:
+</p>
+<pre>
+BEGIN_PGML
+Match each molecular scenario with its bond type.
+
+[@ MODES(HTML =&gt; '&lt;div class="two-column"&gt;&lt;div&gt;') @]*
+[@ join("\n\n", map { ... } 0 .. $#questions) @]**
+[@ MODES(HTML =&gt; '&lt;/div&gt;&lt;div&gt;') @]*
+[@ join("\n\n", map { ... } 0 .. $#answers) @]**
+[@ MODES(HTML =&gt; '&lt;/div&gt;&lt;/div&gt;') @]*
+END_PGML
+</pre>
+<p>
+This is a middle-ground approach. Use it when you want the wrapper segments close to the content but
+cannot write them directly as plain HTML in PGML.
+</p>
+
+<h3>Why MODES is needed (technical explanation)</h3>
+<p>
+PGML parses content once and escapes HTML tags for safety. When wrapper <code>&lt;div&gt;</code> tags
+are inside Perl variables or eval blocks, PGML sees them as data to be escaped, not markup. Using
+<code>MODES(HTML =&gt; ...)</code> tells PG to emit the HTML directly without escaping, but only in HTML
+output mode (not TeX/PDF mode).
+</p>
+
+<p>
+<strong>What happens if you forget MODES:</strong> The wrapper <code>&lt;div&gt;</code> tags appear
+as literal text in the rendered problem (e.g., <code>&amp;lt;div class="two-column"&amp;gt;</code>)
+or are stripped entirely, causing the layout to collapse to a single column.
+</p>
+
+<h2>CSS styling for two-column layout</h2>
+<p>
+Use <code>HEADER_TEXT</code> with flexbox CSS to create a responsive two-column layout. This style
+works across devices and wraps to a single column on narrow screens.
+</p>
+
+<h3>Recommended flexbox style</h3>
+<pre>
+HEADER_TEXT(MODES(HTML =&gt; &lt;&lt;'END_STYLE'));
+&lt;style&gt;
+.two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.two-column &gt; div {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+&lt;/style&gt;
+END_STYLE
+</pre>
+
+<h3>CSS property explanations</h3>
 <ul>
-	<li>Use <code>PopUp</code> widgets for the left column prompts.</li>
-	<li>Keep a fixed label-to-meaning mapping when using replacement-rule colors.</li>
-	<li>Use <code>[$label_html]*</code> for colored labels stored in Perl variables.</li>
+	<li><code>display: flex;</code> - Creates a flexible container for the two columns</li>
+	<li><code>flex-wrap: wrap;</code> - Allows columns to wrap on narrow screens (mobile-friendly)</li>
+	<li><code>gap: 2rem;</code> - Adds spacing between columns</li>
+	<li><code>align-items: flex-start;</code> - Aligns columns to the top (not vertically centered)</li>
+	<li><code>justify-content: space-evenly;</code> - Distributes horizontal space evenly</li>
+	<li><code>flex: 1 1 40%;</code> - Each column takes ~40% width, can grow or shrink</li>
+	<li><code>min-width: 250px;</code> - Prevents columns from becoming too narrow</li>
 </ul>
 
-<h2>Biology examples to model</h2>
+<h3>Alternative alignment options</h3>
 <ul>
-	<li>Chemical bond types matched to descriptions.</li>
-	<li>Pathway components matched to their roles.</li>
-	<li>Genetics terminology matched to definitions.</li>
+	<li><code>align-items: center;</code> - Vertically center columns (use if heights differ significantly)</li>
+	<li><code>justify-content: space-between;</code> - Push columns to edges with space between</li>
+	<li><code>gap: 1rem;</code> - Reduce spacing for compact layouts</li>
 </ul>
+
+<h2>Colored labels for fixed label-to-meaning mapping</h2>
+<p>
+When answer labels need fixed colors by meaning (not by position), build an HTML mapping in Perl
+and emit the labels with the <code>[$var]*</code> pattern (trailing asterisk required) so PGML does
+not escape the <code>&lt;span&gt;</code> tags.
+</p>
+
+<h3>Building the color mapping</h3>
+<pre>
+# Label -&gt; HTML mapping (fixed colors by meaning)
+my %answer_html = (
+  'polar covalent bond' =&gt; '&lt;span style="color:#00b3b3; font-weight:700;"&gt;polar covalent bond&lt;/span&gt;',
+  'non-polar covalent bond' =&gt; '&lt;span style="color:#b3b300; font-weight:700;"&gt;non-polar covalent bond&lt;/span&gt;',
+  'ionic bond' =&gt; '&lt;span style="color:#009900; font-weight:700;"&gt;ionic bond&lt;/span&gt;',
+  'hydrogen bond' =&gt; '&lt;span style="color:#e60000; font-weight:700;"&gt;hydrogen bond&lt;/span&gt;',
+);
+
+# Build colored HTML labels array
+my @answers_html = map { $answer_html{$_} } @answers;
+</pre>
+
+<h3>Emitting colored labels in PGML</h3>
+<p>
+In the right-column <code>join()</code> expression, use <code>[$answers_html[$shuffle[$_]]]*</code>
+with the trailing asterisk to pass through the HTML without escaping:
+</p>
+<pre>
+[@ join(
+  "\n\n",
+  map {
+    '*' . chr(65 + $_) . '.* '
+      . '[$answers_html[$shuffle[' . $_ . ']]]*'
+  } 0 .. $#answers
+) @]**
+</pre>
+
+<h3>Why the trailing asterisk is required</h3>
+<p>
+Without the trailing <code>*</code>, PGML escapes HTML tags for safety. Using <code>[$var]*</code>
+tells PGML to pass through the variable's content as raw HTML. This keeps colors tied to label
+meaning even when the order is randomized. For more on this pattern, see Chapter 6.1.
+</p>
+
+<h2>Biology examples</h2>
+
+<h3>Example 1: Chemical bond types</h3>
+<p>
+<strong>Scenario:</strong> Match molecular interactions with the correct bond type. Use colored
+labels to distinguish bond types visually.
+</p>
+<pre>
+my @questions = (
+  'Two oxygen atoms share electrons equally',
+  'Sodium transfers an electron to chlorine',
+  'Partial charges on C-O bond',
+  'O-H bond attracted to nearby C=O',
+);
+
+my @answers = (
+  'non-polar covalent bond',
+  'ionic bond',
+  'polar covalent bond',
+  'hydrogen bond',
+);
+
+my @shuffle = shuffle(scalar(@answers));
+
+my %answer_html = (
+  'non-polar covalent bond' =&gt; '&lt;span style="color:#b3b300; font-weight:700;"&gt;non-polar covalent bond&lt;/span&gt;',
+  'ionic bond' =&gt; '&lt;span style="color:#009900; font-weight:700;"&gt;ionic bond&lt;/span&gt;',
+  'polar covalent bond' =&gt; '&lt;span style="color:#00b3b3; font-weight:700;"&gt;polar covalent bond&lt;/span&gt;',
+  'hydrogen bond' =&gt; '&lt;span style="color:#e60000; font-weight:700;"&gt;hydrogen bond&lt;/span&gt;',
+);
+my @answers_html = map { $answer_html{$_} } @answers;
+</pre>
+<p>
+<strong>Note:</strong> Fixed colors ensure that "hydrogen bond" is always red, regardless of
+randomization, helping students build consistent mental associations.
+</p>
+
+<h3>Example 2: Pathway components matched to functions</h3>
+<p>
+<strong>Scenario:</strong> Match glycolytic enzymes with their specific reactions in the pathway.
+</p>
+<pre>
+my @questions = (
+  'Converts glucose-6-phosphate to fructose-6-phosphate',
+  'Phosphorylates fructose-6-phosphate (rate-limiting step)',
+  'Splits fructose-1,6-bisphosphate into two 3-carbon sugars',
+  'Converts phosphoenolpyruvate to pyruvate (ATP-generating step)',
+);
+
+my @answers = (
+  'phosphoglucose isomerase',
+  'phosphofructokinase-1',
+  'aldolase',
+  'pyruvate kinase',
+);
+
+my @choices = ('A', 'B', 'C', 'D');
+my @shuffle = shuffle(scalar(@answers));
+
+my @correct_answers = map { $choices[$shuffle[$_]] } 0 .. $#questions;
+my @answer_dropdowns = map { PopUp(\@choices, $correct_answers[$_]) } 0 .. $#questions;
+</pre>
+<p>
+<strong>Note:</strong> This example demonstrates function-to-enzyme matching without colors, focusing
+on conceptual pairing for pathway memorization.
+</p>
+
+<h3>Example 3: Genetics terminology matched to definitions</h3>
+<p>
+<strong>Scenario:</strong> Match genetics terms with their formal definitions.
+</p>
+<pre>
+my @questions = (
+  'Observable physical characteristic',
+  'Genetic makeup at a locus',
+  'Alternative form of a gene',
+  'Physical location of a gene on a chromosome',
+);
+
+my @answers = (
+  'phenotype',
+  'genotype',
+  'allele',
+  'locus',
+);
+
+my @choices = ('A', 'B', 'C', 'D');
+my @shuffle = shuffle(scalar(@answers));
+
+my @correct_answers = map { $choices[$shuffle[$_]] } 0 .. $#questions;
+my @answer_dropdowns = map { PopUp(\@choices, $correct_answers[$_]) } 0 .. $#questions;
+</pre>
+<p>
+<strong>Note:</strong> This is a pure definition-matching problem, ideal for introducing formal
+terminology early in a genetics unit.
+</p>
+
+<h2>Common failures and fixes</h2>
+
+<h3>Failure 1: Forgot trailing asterisk on colored labels</h3>
+<p>
+<strong>Symptom:</strong> Raw <code>&lt;span&gt;</code> tags appear in the rendered problem instead
+of colored text.
+</p>
+<p>
+<strong>Cause:</strong> Used <code>[$var]</code> instead of <code>[$var]*</code>, so PGML escaped
+the HTML for safety.
+</p>
+<p>
+<strong>Fix:</strong> Always use <code>[$answers_html[$shuffle[$_]]]*</code> with the trailing
+asterisk to pass through HTML.
+</p>
+<p>
+<strong>Prevention:</strong> Check all variable interpolations that contain HTML. The rule is:
+<code>[$var]*</code> for HTML, <code>[$var]</code> for plain text.
+</p>
+
+<h3>Failure 2: Used MODES for everything</h3>
+<p>
+<strong>Symptom:</strong> Code works but is unnecessarily complex and harder to maintain.
+</p>
+<p>
+<strong>Cause:</strong> Wrapped every HTML snippet in <code>MODES</code>, including cases where
+wrapper tags could be written directly in PGML.
+</p>
+<p>
+<strong>Fix:</strong> Use Pattern 1 (wrapper tags directly in PGML) whenever possible. Only use
+<code>MODES</code> when the wrapper HTML is inside Perl eval blocks.
+</p>
+<p>
+<strong>Prevention:</strong> Ask: "Can I write these <code>&lt;div&gt;</code> tags directly in PGML?"
+If yes, do that.
+</p>
+
+<h3>Failure 3: Shuffle array index mismatch</h3>
+<p>
+<strong>Symptom:</strong> Wrong answers are marked correct. Dropdown selections don't map to the
+displayed right-column labels.
+</p>
+<p>
+<strong>Cause:</strong> Used <code>$shuffle[$_]</code> incorrectly in left column or right column,
+breaking the mapping.
+</p>
+<p>
+<strong>Fix:</strong> Verify that left column uses <code>$answer_dropdowns[$_]</code> (no shuffle)
+and right column uses <code>$answers[$shuffle[$_]]</code> (with shuffle).
+</p>
+<p>
+<strong>Prevention:</strong> Test with <code>problemSeed</code> values that produce different
+shuffle orders. Check that correct answers remain correct.
+</p>
+
+<h3>Failure 4: PopUp choices don't match answer labels</h3>
+<p>
+<strong>Symptom:</strong> Dropdown shows letters that don't appear in the right column, or vice versa.
+</p>
+<p>
+<strong>Cause:</strong> Used different <code>@choices</code> arrays for PopUp creation and
+right-column labels.
+</p>
+<p>
+<strong>Fix:</strong> Use the same <code>@choices</code> array (e.g., <code>('A', 'B', 'C', 'D')</code>)
+for both PopUp widget creation and right-column label generation.
+</p>
+<p>
+<strong>Prevention:</strong> Define <code>@choices</code> once at the top of setup and reference it
+everywhere.
+</p>
+
+<h3>Failure 5: Layout collapses to single column</h3>
+<p>
+<strong>Symptom:</strong> Both columns stack vertically instead of appearing side-by-side.
+</p>
+<p>
+<strong>Cause:</strong> Wrapper <code>&lt;div&gt;</code> tags were built in Perl without
+<code>MODES</code>, so PGML escaped them.
+</p>
+<p>
+<strong>Fix:</strong> Either move wrapper tags directly into PGML (Pattern 1) or wrap them with
+<code>MODES(HTML =&gt; ...)</code> (Pattern 2).
+</p>
+<p>
+<strong>Prevention:</strong> If wrapper HTML is inside a Perl variable, use <code>MODES</code>. If
+it's directly in PGML, no <code>MODES</code> needed.
+</p>
 
 <h2>Apply it today</h2>
 <ul>
-	<li>Write wrapper <code>&lt;div&gt;</code> tags directly in PGML whenever possible.</li>
-	<li>Use <code>MODES(HTML =&gt; ...)</code> only for wrapper HTML built inside eval blocks.</li>
+	<li>Write wrapper <code>&lt;div&gt;</code> tags directly in PGML whenever possible (Pattern 1).</li>
+	<li>Use <code>MODES(HTML =&gt; ...)</code> only for wrapper HTML built inside eval blocks (Pattern 2).</li>
+	<li>Always use <code>[$var]*</code> (trailing asterisk) for HTML variables to prevent escaping.</li>
+	<li>Define <code>@choices</code> once and use it for both PopUp widgets and right-column labels.</li>
+	<li>Test with multiple <code>problemSeed</code> values to verify shuffle mapping works correctly.</li>
+	<li>Use 4-8 pairs for optimal cognitive load and assessment effectiveness.</li>
+	<li>For more on colored emphasis, see Chapter 6.1. For statement-based questions, see Chapter 6.4.</li>
 </ul>
