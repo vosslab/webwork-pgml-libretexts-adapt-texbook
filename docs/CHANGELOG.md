@@ -1,5 +1,51 @@
 # Changelog
 
+## 2026-01-28
+- Restructured Chapter 6 from "Subject-Specific Applications" to "Advanced PGML Techniques" to focus on
+  MODES wrappers, CSS-based text coloring, niceTables.pl for structured data, comprehensive matching problem
+  patterns with PopUp widgets and flexbox layouts, multiple choice statements using RadioButtons per statement,
+  and advanced randomization patterns.
+- Reordered Chapter 6 sections to put MODES first (6.1) as the foundational method before coloring text (6.2),
+  since MODES is the recommended approach for HTML-only output that other techniques build upon.
+- Integrated biology-specific examples directly into Chapter 6 sections (dilution tables in 6.3, pathway
+  matching in 6.4, qPCR randomization in 6.6) rather than maintaining a separate appendix for worked examples.
+- Minimized appendices to quick-reference material only: 90.1 Minimal templates, 90.2 Glossary, 90.3
+  Troubleshooting checklist (removed separate worked examples section 90.6).
+- Added OPL header coverage throughout the textbook acknowledging the five-section reality (OPL Header,
+  Preamble, Setup, Statement, Solution) versus the traditional four-section model, with new section 2.2 OPL
+  header and metadata covering TITLE, DESCRIPTION, KEYWORDS, DBsubject/DBchapter/DBsection, and attribution
+  fields.
+- Renumbered Chapter 2 sections to accommodate OPL header: 2.2 OPL header (new), 2.3 PG Problem Files
+  (was 2.2), 2.4 Sections within a PG question (was 2.3), 2.5 Common PG Macros (was 2.4), 2.6 Legacy PG
+  (was 2.5).
+- Updated Chapter 4 to show five-section structure including new 4.2 OPL Header section for the worked
+  example, renumbering subsequent sections: 4.3 Preamble (was 4.2), 4.4 Setup (was 4.3), 4.5 Statement
+  (was 4.4), 4.6 Solution (was 4.5), 4.7 Putting it together (was 4.6).
+- Updated Appendix 90.1 templates to include complete OPL headers with placeholder metadata values.
+- Updated Chapter 7 to reflect webwork-pg-renderer changes: added GET /health endpoint coverage, POST / as
+  primary endpoint with POST /render-api compatibility, private/ folder workflow, and new 7.2 API usage
+  section for programmatic rendering with parameter precedence guidance, renumbering 7.3 Testing habits
+  (was 7.2).
+- Added PG 2.17 subset scope notes throughout the textbook (Chapters 1.0, 1.1, 2.5, 6.0, 7.0) documenting that
+  this guide is based on the flattened PG macro tree in ADAPT and webwork-pg-renderer with some macros
+  unavailable (parserCheckboxList.pl, VectorListCheckers.pl), and referencing Chapter 2.5 as the macro
+  allowlist.
+- Added macro version comparison documentation in `docs/PG_MACRO_VERSION_COMPARISON.md` showing macro
+  availability across ADAPT/renderer subset, full PG 2.17+, and PG 2.20, with notes on commonly missing
+  macros (parserCheckboxList.pl, VectorListCheckers.pl) and workarounds.
+- Updated Chapter 2.5 (Common PG Macros) to include version comparison table reference.
+- Created `docs/TEXTBOOK_MIGRATION_GUIDE.md` documenting all file renames, new files, and content migration
+  needed to implement the restructured textbook plan.
+- Created `docs/AI_AGENT_READING_LIST.md` providing a prioritized reading list for AI agents implementing
+  the textbook updates, organized by essential files, source content by chapter, implementation phases, and
+  quality checks.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to reflect all structural changes: new Chapter 6 structure,
+  minimized appendices, OPL header section, renumbered Chapter 2/4/7 sections, updated Chapter 7 for renderer
+  changes, macro version comparison, and added PG 2.17 subset notes.
+- Documented that niceTables.pl is the only supported way to create tables since HTML table tags (table, tr,
+  td, th) are blocked in this install, and that TeX color commands do not work reliably so CSS-based styling
+  via MODES wrappers is required.
+
 ## 2026-01-15
 - Added `tools/pglint.py` to lint PG files by posting to the renderer HTTP API, with optional JSON
   payload templates and pyflakes-style issue output.
