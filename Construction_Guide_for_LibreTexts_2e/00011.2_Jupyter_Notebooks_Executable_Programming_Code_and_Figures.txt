@@ -16,7 +16,7 @@ Creating a new page
 Authors have the option to add code to a new page.
 
 Oibretexts- eck out the ne Boaline Render on UsaTosts:Paking Ondine nding Mach Ea
-$ Ss * w# © € 5 + @ a oP ae
+$ Ss * w# © &euro; 5 + @ a oP ae
 Ede IE} New fo) Options "x site tools L jupyterteam@ud|
 
 Development
@@ -46,7 +46,7 @@ Locating the Plugin and Adding Code
 The Binder Logo is the last button on the navigation bar of the text editor. Binder is an external resource that lets you build and run
 kernels which contain the necessary packages for executing any given code language.
 
-E @- #@m- a "€
+E @- #@m- a "&euro;
 
 Add Code
 

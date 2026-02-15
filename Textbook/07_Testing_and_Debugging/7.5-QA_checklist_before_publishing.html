@@ -1,0 +1,203 @@
+<p>
+Use this section when your problem is working and you want to make sure it is ready for students.
+This is the final check before publishing. The two checklists below cover code-level issues (things
+the computer cares about) and author-level issues (things that affect students). Run both before
+you ship.
+</p>
+
+<p>
+These checklists are distilled from the most common problems found in real WeBWorK files. Each item
+links back to the section where you can find a full explanation and fix. If you are not sure what an
+item means, follow the section reference first.
+</p>
+
+<h2>Prevention checklist: code-level checks</h2>
+<p>
+Walk through this table before you render for the last time. Each row is one thing that can silently
+break your problem without producing an obvious error message. Most of these issues will not show a
+helpful error -- the problem will simply render wrong or grade incorrectly.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Check</th>
+			<th>What to verify</th>
+			<th>Section reference</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Check">Variables defined before use</td>
+			<td data-th="What to verify">All variables are assigned values before they are referenced in arrays, shuffles, or PGML</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No <code>my</code> on PGML-visible variables</td>
+			<td data-th="What to verify">Variables referenced in PGML (<code>$rb</code>, <code>$popup</code>, display variables) do not use <code>my</code></td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No <code>\@</code> or <code>\%</code> backslash references</td>
+			<td data-th="What to verify">Use <code>[@array]</code> or <code>~~@array</code> instead of <code>\@array</code></td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No <code>use</code> statements</td>
+			<td data-th="What to verify">Use <code>loadMacros()</code> for PG macros, not Perl <code>use</code></td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No <code>*</code> or <code>**</code> immediately around <code>[$variables]</code> in PGML</td>
+			<td data-th="What to verify">Asterisks near variables cause parse errors such as "* was not closed before paragraph ends"</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">HTML variables use <code>[$var]*</code> syntax</td>
+			<td data-th="What to verify">Variables containing HTML tags have the trailing asterisk so tags render instead of showing as literal text</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No Perl loops inside <code>BEGIN_TEXT...END_TEXT</code> blocks</td>
+			<td data-th="What to verify">Build strings before the block, then insert them with a variable reference</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Hash keys sorted before random selection</td>
+			<td data-th="What to verify">Use <code>sort keys %hash</code> before <code>list_random()</code> so a fixed seed gives stable results</td>
+			<td data-th="Section reference">Section 7.4</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Shuffling happens after all items are defined</td>
+			<td data-th="What to verify">Define all items first, create the array, then shuffle</td>
+			<td data-th="Section reference">Section 7.4</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No blocked HTML tags</td>
+			<td data-th="What to verify">No <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code> in PGML output (use <code>niceTables.pl</code> instead)</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Required macros loaded</td>
+			<td data-th="What to verify">Every widget and feature has its macro in the <code>loadMacros()</code> call</td>
+			<td data-th="Section reference">Section 7.2</td>
+		</tr>
+		<tr>
+			<td data-th="Check"><code>DOCUMENT()</code> and <code>ENDDOCUMENT()</code> present</td>
+			<td data-th="What to verify">File starts with <code>DOCUMENT()</code> and ends with <code>ENDDOCUMENT()</code></td>
+			<td data-th="Section reference">Section 7.3</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Author checklist: student-facing checks</h2>
+<p>
+This checklist catches problems that render without errors but still confuse or frustrate students.
+These are things only a human can verify by reading the problem as a student would.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Check</th>
+			<th>What to verify</th>
+			<th>How to test</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Check">Render multiple variants</td>
+			<td data-th="What to verify">The problem works correctly with different seeds</td>
+			<td data-th="How to test">Change seeds in the editor and render at least five variants (Section 7.4)</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Displayed question matches grader</td>
+			<td data-th="What to verify">The story and the expected answer agree</td>
+			<td data-th="How to test">Read the question and check that the correct answer matches the prompt</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Correct answers accepted</td>
+			<td data-th="What to verify">The right answer is marked correct</td>
+			<td data-th="How to test">Enter the correct answer and submit</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Common wrong answers rejected</td>
+			<td data-th="What to verify">Plausible wrong answers are marked incorrect</td>
+			<td data-th="How to test">Enter a few wrong answers (off-by-one, wrong units, sign errors) and check</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Edge cases checked</td>
+			<td data-th="What to verify">Boundary values and extreme random ranges work</td>
+			<td data-th="How to test">Test with seeds that produce small or large values (Section 7.4)</td>
+		</tr>
+		<tr>
+			<td data-th="Check">No course-local dependencies</td>
+			<td data-th="What to verify">The problem runs without files from your specific course</td>
+			<td data-th="How to test">Test in the local renderer, not in ADAPT</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Every blank has an inline evaluator</td>
+			<td data-th="What to verify">Each answer blank in PGML has a grader attached</td>
+			<td data-th="How to test">Check that every blank has content in curly braces: <code>[_]{$ans}</code> or <code>[__]{$ans}</code></td>
+		</tr>
+		<tr>
+			<td data-th="Check">Solution block included</td>
+			<td data-th="What to verify">A <code>BEGIN_PGML_SOLUTION...END_PGML_SOLUTION</code> block exists</td>
+			<td data-th="How to test">Search for SOLUTION in the file</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Units and rounding stated</td>
+			<td data-th="What to verify">The prompt tells students what units and precision to use</td>
+			<td data-th="How to test">Read the question as a student and check that units and rounding are explicit</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Minimal debugging note template</h2>
+<p>
+When you find a problem during your QA pass, fill in this template and save it. Having these details
+written down before you start fixing anything will save you time and prevent you from losing track
+of the original failure.
+</p>
+<pre>
+File:
+Seed:
+Symptom:
+Error message (if any):
+What I changed last:
+Expected behavior:
+</pre>
+<p>
+Copy this block into a text file or comment in your code. When you report an issue to a colleague or
+come back to a problem days later, this note tells you exactly where to start.
+</p>
+
+<h2>What "ready to publish" looks like</h2>
+<p>
+A problem is ready to publish when all of the following are true:
+</p>
+<ul>
+	<li>Both checklists above are satisfied with no remaining failures.</li>
+	<li>The problem renders cleanly with at least five different seeds.</li>
+	<li>The question reads clearly as a student-facing prompt, with no ambiguous wording or missing context.</li>
+	<li>Every answer blank is visible and in the right location on the page.</li>
+	<li>The solution block explains the expected method and shows the correct answer.</li>
+	<li>No warnings or errors appear from the renderer in either HTML or JSON output.</li>
+</ul>
+<p>
+If any of these conditions are not met, fix the issue before importing the problem to ADAPT. A
+problem that passes all checks here should work correctly the first time a student sees it.
+</p>
+
+<h3>Quick sanity test</h3>
+<p>
+If you only have time for one test, do this: render the problem with five different seeds, enter the
+correct answer for each, and submit. If all five accept the correct answer and the question text
+makes sense for each variant, the problem is probably ready. If any variant looks wrong, go back to
+the checklists.
+</p>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Pick one problem you are about to publish. Run both checklists above, row by row.</li>
+	<li>If anything fails, fix it before importing to ADAPT. Use the section references in the code-level checklist to find the explanation and fix.</li>
+	<li>Save the debugging note template somewhere you can find it quickly the next time something breaks.</li>
+</ul>

@@ -25,7 +25,7 @@ examples, failure modes, and step-by-step guidance.
 ### 1. Target length and structure
 - **Skeletal pages (< 100 lines)**: Expand to 150-300 lines
 - **Adequate pages (> 150 lines)**: Review and enhance examples
-- **Structure**: Intro paragraph → Use this when → Main content sections → Biology examples → Apply it today
+- **Structure**: Intro paragraph -> Use this when -> Main content sections -> Biology examples -> Apply it today
 
 ### 2. Biology-first examples
 Every advanced technique page should include **3-5 short biology examples** (5-15 lines of PG code each):
@@ -51,20 +51,20 @@ Every technique section should include:
 ### Phase 1: High-priority pages (expand first)
 These pages are referenced frequently and need comprehensive content:
 
-1. **Chapter 2.2 OPL header** (currently 87 lines → target 200 lines)
-2. **Chapter 6.3 Matching** (currently 61 lines → target 250 lines)
-3. **Chapter 2.5 Common PG Macros** (currently 296 lines → enhance with comparison table)
-4. **Chapter 4.2 OPL Header** (currently 81 lines → target 150 lines)
-5. **Chapter 7.2 API usage** (currently 83 lines → target 200 lines)
+1. **Chapter 2.2 OPL header** (currently 87 lines -> target 200 lines)
+2. **Chapter 6.3 Matching** (currently 61 lines -> target 250 lines)
+3. **Chapter 2.5 Common PG Macros** (currently 296 lines -> enhance with comparison table)
+4. **Chapter 4.2 OPL Header** (currently 81 lines -> target 150 lines)
+5. **Chapter 7.2 API usage** (currently 83 lines -> target 200 lines)
 
 ### Phase 2: Medium-priority pages
 Foundation pages that need biology examples and failure modes:
 
-6. **Chapter 6.1 Coloring** (currently 46 lines → target 150 lines)
-7. **Chapter 6.2 Tables** (currently 88 lines → target 200 lines)
-8. **Chapter 6.4 MC Statements** (currently 48 lines → target 150 lines)
-9. **Chapter 6.5 Randomization** (currently 48 lines → target 180 lines)
-10. **Appendix 90.1 Templates** (currently 147 lines → enhance examples)
+6. **Chapter 6.1 Coloring** (currently 46 lines -> target 150 lines)
+7. **Chapter 6.2 Tables** (currently 88 lines -> target 200 lines)
+8. **Chapter 6.4 MC Statements** (currently 48 lines -> target 150 lines)
+9. **Chapter 6.5 Randomization** (currently 48 lines -> target 180 lines)
+10. **Appendix 90.1 Templates** (currently 147 lines -> enhance examples)
 
 ### Phase 3: Enhancement phase
 Pages that are adequate but could use refinement:
@@ -276,10 +276,10 @@ Secondary: `OTHER_REPOS-do_not_commit/biology-problems/docs/webwork/PG_2_17_REND
    - New heading: "## Macro availability across PG versions"
    - Intro paragraph: Explain that ADAPT/renderer uses a PG 2.17 subset
    - Table comparing key macros (copy from PG_MACRO_VERSION_COMPARISON.md):
-     - Parser widgets row (PopUp ✓, RadioButtons ✓, CheckboxList ✗)
-     - Core macros row (all ✓)
-     - Table macros row (niceTables ✓)
-     - Context macros row (most ✓, some ✗)
+     - Parser widgets row (PopUp, RadioButtons, CheckboxList)
+     - Core macros row (all)
+     - Table macros row (niceTables)
+     - Context macros row (most, some)
    - After table: "What this means for you" section
      - Use PopUp/RadioButtons, not CheckboxList
      - For statement-based questions, use RadioButtons per statement (Chapter 6.4)
@@ -294,7 +294,7 @@ Secondary: `OTHER_REPOS-do_not_commit/biology-problems/docs/webwork/PG_2_17_REND
      - Test locally with Chapter 7 renderer
    - Workarounds:
      - Find alternative macro from allowlist
-     - Rewrite pattern (e.g., checkboxes → RadioButtons per statement)
+     - Rewrite pattern (e.g., checkboxes -> RadioButtons per statement)
 
 ### Cross-references to add
 - Forward: "See Chapter 6.4 for RadioButtons-per-statement pattern (CheckboxList alternative)"
@@ -389,19 +389,19 @@ Secondary: niceTables.pl documentation (if available in renderer)
 
 1. **Expand DataTable vs LayoutTable decision** (add 30 lines):
    - Decision tree graphic (as text):
-     - Does the table have column headers or caption? → DataTable
-     - Is it semantic data (measurements, observations)? → DataTable
-     - Is it pure visual layout (two-column list, widget grid)? → LayoutTable
+     - Does the table have column headers or caption? -> DataTable
+     - Is it semantic data (measurements, observations)? -> DataTable
+     - Is it pure visual layout (two-column list, widget grid)? -> LayoutTable
    - 3 examples showing decision:
-     - Enzyme kinetics data with [S] and V₀ columns → DataTable
-     - Serial dilution results → DataTable
-     - Two-column choice layout → LayoutTable
+     - Enzyme kinetics data with [S] and V&#x2080; columns -> DataTable
+     - Serial dilution results -> DataTable
+     - Two-column choice layout -> LayoutTable
 
 2. **Add complete DataTable example** (add 40 lines):
    - Build 2D array in Perl:
      ```perl
      my @data = (
-       ['[Substrate] (mM)', 'Velocity (μmol/min)'],
+       ['[Substrate] (mM)', 'Velocity (&micro;mol/min)'],
        ['0.5', '1.2'],
        ['1.0', '2.1'],
        ['2.0', '3.5'],
@@ -438,7 +438,7 @@ Secondary: niceTables.pl documentation (if available in renderer)
      - Table with tube number, dilution factor, final concentration
      - Show how to build with randomized starting concentration
    - **Example 2: Enzyme kinetics measurements** (20 lines)
-     - Table with [S], V₀, 1/[S], 1/V₀ for Lineweaver-Burk
+     - Table with [S], V&#x2080;, 1/[S], 1/V&#x2080; for Lineweaver-Burk
      - Show LaTeX in cells for units: `[@ '[$[S]$]* (mM)' @]*`
    - **Example 3: Gel band interpretation** (20 lines)
      - Table with lane, sample, band sizes
@@ -583,7 +583,7 @@ Secondary: `WEBWORK_PROBLEM_AUTHOR_GUIDE.md` (randomization sections)
 
 2. **Expand deterministic seeding** (add 30 lines):
    - Use built-in problemSeed: `$envir{problemSeed}` or `$problemSeed`
-   - Why deterministic matters: Same seed → same problem → reproducible debugging
+   - Why deterministic matters: Same seed -> same problem -> reproducible debugging
    - For local PGrandom instance:
      ```perl
      my $rng = PGrandom->new();

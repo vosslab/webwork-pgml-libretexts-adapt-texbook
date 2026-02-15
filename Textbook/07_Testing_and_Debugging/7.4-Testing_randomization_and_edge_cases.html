@@ -1,0 +1,183 @@
+<p>
+Use this section when your problem works for one seed but you need to make sure it works for many
+seeds. Randomization is what makes WeBWorK problems reusable: each student gets different numbers.
+But different numbers can produce impossible biology, division by zero, or answers that do not make
+sense. Testing multiple seeds catches these problems before students encounter them.
+</p>
+
+<p>
+Think of each seed as a different student sitting down with your question. You wrote the problem
+with one set of numbers in your head, but the randomization engine will generate hundreds of
+variants. Your job is to make sure every variant tells a coherent story with plausible numbers and
+a correct answer that makes sense.
+</p>
+
+<h2>Why randomization testing matters</h2>
+<ul>
+	<li>Same problem, different seed, different failure. A problem that works perfectly with seed 1234 might produce a negative concentration with seed 5678.</li>
+	<li>Students will see many different variants. You only tested a few. The variant you did not test is the one that will confuse a student at midnight before the deadline.</li>
+	<li>Guard patterns (described below) prevent bad values at the source, so you do not have to test every possible seed by hand.</li>
+</ul>
+
+<h2>How to sweep variants</h2>
+<p>
+In the browser editor, change the seed field and re-render. Try at least five to ten different seeds
+for any problem that uses randomization. For each variant, check the following:
+</p>
+<ul>
+	<li>Does the story still make sense with these numbers?</li>
+	<li>Are all numbers plausible for the biology? (No negative concentrations, no probabilities above 1, no impossible rates.)</li>
+	<li>Does the rounding produce readable numbers? (Watch for long repeating decimals like 0.333333 that should be rounded.)</li>
+	<li>Is the correct answer reasonable? (If the answer is 0, or negative, or astronomically large, something is wrong.)</li>
+</ul>
+<p>
+If you are using the command-line lint script, you can render with a specific seed using the
+<code>-s</code> flag:
+</p>
+<pre>
+python3 lint_pg_via_renderer_api.py -i private/myproblem.pg -s 5678 -r > /tmp/pg_render.html
+</pre>
+
+<h2>Guard patterns: preventing bad values</h2>
+<p>
+Guard patterns are short code snippets that prevent randomization from producing values that would
+break the problem. Add them in the setup section of your PG file, before the PGML block.
+</p>
+
+<h3>Avoid zero denominators</h3>
+<p>
+If a random variable might be zero and you later divide by it, the problem will crash for some
+students. Prevent this with a do/while loop or the <code>non_zero_random</code> function.
+</p>
+<pre>
+# Option 1: do/while loop
+do { $b = random(-5, 5, 1); } while ($b == 0);
+
+# Option 2: non_zero_random (simpler)
+$b = non_zero_random(-5, 5, 1);
+</pre>
+
+<h3>Avoid repeated values</h3>
+<p>
+When two variables should have different values (for example, two different enzyme concentrations
+to compare), use a do/while loop to ensure they are not equal.
+</p>
+<pre>
+$a = random(2, 9, 1);
+do { $b = random(2, 9, 1); } while ($b == $a);
+</pre>
+
+<h3>Avoid invalid domains</h3>
+<p>
+Some mathematical operations are undefined for certain inputs. If your problem takes the logarithm
+or square root of a random value, make sure that value cannot be zero or negative.
+</p>
+<pre>
+# Ensure $x is positive before using log($x)
+do { $x = random(-5, 5, 1); } while ($x <= 0);
+</pre>
+
+<h3>Sort hash keys before random selection</h3>
+<p>
+Perl hash key order is not deterministic. If you select a random key from a hash, the same seed can
+produce different results on different runs unless you sort the keys first.
+</p>
+<pre>
+@sorted_keys = sort keys %items;
+$selected = list_random(@sorted_keys);
+</pre>
+
+<h3>Shuffle after all items are defined</h3>
+<p>
+A common mistake is to shuffle an array before all of its elements are assigned. This produces empty
+or missing items in the shuffled result. Always follow this three-step pattern:
+</p>
+<pre>
+# Step 1: Define all items first
+$item1 = "Adenine";
+$item2 = "Thymine";
+$item3 = "Guanine";
+
+# Step 2: Create the array
+@all_items = ($item1, $item2, $item3);
+
+# Step 3: Shuffle (only after all items are in the array)
+@temp = @all_items;
+@shuffled = ();
+while (@temp) {
+    $index = random(0, $#temp, 1);
+    push @shuffled, splice(@temp, $index, 1);
+}
+</pre>
+
+<h2>Boundary value testing</h2>
+<p>
+Beyond sweeping random seeds, test specific values near the boundaries of expected ranges. These
+are the values most likely to cause problems.
+</p>
+<ul>
+	<li>Test values near zero, one, and other natural breakpoints in your problem.</li>
+	<li>Test the smallest and largest values in your random range.</li>
+	<li>Test values that produce simple fractions or exact answers to confirm rounding behaves as expected.</li>
+</ul>
+<p>
+For biology problems, pay special attention to domain-specific constraints:
+</p>
+<ul>
+	<li><strong>Concentrations:</strong> Never negative. Usually between 0 and a realistic maximum for the context (millimolar, micromolar, etc.).</li>
+	<li><strong>Probabilities:</strong> Always between 0 and 1. Never above 1, never below 0.</li>
+	<li><strong>pH values:</strong> Between 0 and 14.</li>
+	<li><strong>Rates:</strong> Non-negative and of a reasonable magnitude for the biological process.</li>
+	<li><strong>Percentages:</strong> Between 0 and 100.</li>
+</ul>
+
+<h2>What to watch for: a checklist</h2>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Check</th>
+			<th>What could go wrong</th>
+			<th>How to test</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Check">Negative concentrations</td>
+			<td data-th="What could go wrong">Random subtraction goes below zero</td>
+			<td data-th="How to test">Try seeds that produce small values near the lower end of the range</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Impossible probabilities</td>
+			<td data-th="What could go wrong">Probability exceeds 1 or goes below 0</td>
+			<td data-th="How to test">Check boundary cases where the computed probability approaches 0 or 1</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Awkward rounding</td>
+			<td data-th="What could go wrong">Values like 0.333333... displayed without rounding</td>
+			<td data-th="How to test">Set explicit rounding in the problem and verify the display</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Repeated answer choices</td>
+			<td data-th="What could go wrong">Two random choices get the same value</td>
+			<td data-th="How to test">Use a do/while guard to ensure uniqueness</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Division by zero</td>
+			<td data-th="What could go wrong">Random denominator is zero</td>
+			<td data-th="How to test">Use <code>non_zero_random</code> or a do/while guard</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Story does not match numbers</td>
+			<td data-th="What could go wrong">Random values make the scenario implausible</td>
+			<td data-th="How to test">Read each variant as a student would and ask whether the story makes sense</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Apply it today</h2>
+<p>
+Pick one problem with randomization. Render it with five different seeds. For each variant, ask
+yourself: "Would this make sense to a student?" If any variant produces impossible numbers or a
+confusing story, add a guard pattern to prevent it. A few minutes of seed-sweeping now saves a
+confused email from a student later.
+</p>

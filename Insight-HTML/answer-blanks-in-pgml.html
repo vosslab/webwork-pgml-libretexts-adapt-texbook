@@ -24,19 +24,19 @@
 </pre><p>Note that, as in this example, you can use a mathematical expression, or you could use a constant, or a variable. Here, you don't need to enclose the variable in brackets, as this is a perl expression, not PGML text.</p><p>If your answer is a formula, enclose it in quotation marks</p><pre class="ql-syntax" spellcheck="false"> The parabola that opens upward and passes through [`x = 1`] and [`x = -1`]
  is [` y = `] [_______________________]{"x^2-1"}
 </pre><p>or use a Formula MathObject:</p><pre class="ql-syntax" spellcheck="false"> $f = Compute("x^2-1");
- 
+
  BEGIN_PGML
  The parabola that opens upward and passes through [`x = 1`] and [`x = -1`]
  is [` y = `] [_______________________]{$f}
  END_PGML
 </pre><p>If your expression has random parameter, you insert them as you would in a call to the MathObject&nbsp;<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">Compute()</code>&nbsp;command:</p><pre class="ql-syntax" spellcheck="false"> $a = random(2,5,1);
- 
+
  BEGIN_PGML
  The parabola that opens upward and passes through [`x = [$a]`] and [`x = 0`]
  is [` y = `] [_______________________]{"x(x-$a)"}
  END_PGML
 </pre><p>(Again, no brackets are needed in the answer string).</p><p>If you want to pass parameters to a MathObject answer checker, you can:</p><pre class="ql-syntax" spellcheck="false"> $f = Compute("sqrt(x^2-10)");
- 
+
  BEGIN_PGML
  The answer is [_________________]{$f-&gt;cmp(limits=&gt;[4,6])}
  END_PGML

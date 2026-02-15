@@ -42,7 +42,7 @@ login.php. After logging in, click on the "H5P Content" at the bottom of the lef
 
 Gibretexts-
 
-€ Cc @ h5Sp.libretexts.org/wp-admin/
+&euro; Cc @ h5Sp.libretexts.org/wp-admin/
 
 @ hp O5 B®
 
@@ -81,7 +81,7 @@ Figure 11.7.2: Select HSP Content. Do not edit anything else.
 
 You can click on "All H5P Content" to pursue the existing exercises or you can click on "Add New" to add a new exercise.
 
-€ CG @ Notsecure | hSp.libretexts.org/wp-admin/admin.php?page=hSp_new Ww
+&euro; CG @ Notsecure | hSp.libretexts.org/wp-admin/admin.php?page=hSp_new Ww
 
 @& hsp ©
 
@@ -246,7 +246,7 @@ tion: Pluscuamperfecto del indicativo actividad 3: fill in the blanks
 
 Enter DekiScript
 
-2.Who is editing: nobody else is currently editing €3
+2.Who is editing: nobody else is currently editing &euro;3
 
 Edit summary:
 Figure 11.7.6: H5P assessment that is embedded in a LibreTexts page in edit mode

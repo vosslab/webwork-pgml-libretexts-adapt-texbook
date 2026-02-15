@@ -20,7 +20,7 @@
 	<div class="meta">Last updated at 07/07/2024 03:07 AM by Delmar Larsen</div>
 <p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/SampleProblem4</span></p>
 <div class="prose !max-w-full"><p>As usual a standard WeBWorK PG file has five sections:</p><ol><li>A&nbsp;<em>tagging and description section</em>, that describes the problem for future users and authors,</li><li>An&nbsp;<em>initialization section</em>, that loads required macros for the problem,</li><li>A&nbsp;<em>problem set-up section</em>&nbsp;that sets variables specific to the problem,</li><li>A&nbsp;<em>text section</em>, that gives the text that is shown to the student, and</li><li>OPTIONAL --An&nbsp;<em>answer&nbsp;</em>, that specifies how the answer(s) to the problem is(are) marked for correctness, and gives a solution that may be shown to the student after the problem set is complete. As you will see this section can be used but are not necessary when using PGML commands.</li><li>A solution section</li></ol><p>The sample file attached to this page shows this; below the file is shown to the left, with a second column on its right that explains the different parts of the problem that are indicated above.</p><pre class="ql-syntax" spellcheck="false">PG problem fileExplanation# DESCRIPTION
-# A simple sample problem that asks students to 
+# A simple sample problem that asks students to
 # enter a bunch of different types of answers
 # WeBWorK problem written by Gavin LaRose
 # &lt;glarose(at)umich(dot)edu&gt;
@@ -51,10 +51,10 @@ $showPartialCorrectAnswers = 1;
 $f = Formula("cos^2(x)+sin^2(x)");
 </pre><p>This is the&nbsp;<strong>problem set-up section</strong>&nbsp;of the problem.</p><p><code style="background-color: rgb(248, 249, 250); color: rgb(0, 0, 0);">Context("Numeric");</code>&nbsp;sets the "context", which determines how variables are interpreted. Contexts and context explanations are given on&nbsp;<a href="https://webwork.maa.org/wiki/ContextList" rel="noopener noreferrer" style="color: rgb(6, 69, 173);" target="_blank">this help page</a>.</p><p>Setting&nbsp;<code style="background-color: rgb(248, 249, 250); color: rgb(0, 0, 0);">showpartialCorrectAnswers</code>&nbsp;to 1 means that feedback as to which sub-questions have been correctly answered in the problem will be given, otherwise the feedback indicates that there is a wrong answer somewhere. (Use the latter mode for multiple choice or true/false questions.)</p><p>The bulk of the set-up section defines variables that we use in the rest of the problem. All&nbsp;<em>scalar variables</em>&nbsp;are prefaced with a dollar sign: thus&nbsp;<code style="background-color: rgb(248, 249, 250); color: rgb(0, 0, 0);">$a</code>&nbsp;is a variable that has a (non-array, non-associative-array) value.</p><pre class="ql-syntax" spellcheck="false">TEXT(beginproblem());
 BEGIN_PGML
-The number twelve is [_______]{12}  
+The number twelve is [_______]{12}
 Type the  formula [`1+\frac{x}{2}`] [__________]{"1+x/2"}
 
-Twelve is [______]{Real(12)}  
+Twelve is [______]{Real(12)}
 2 mod 10 is [______]{Real(2)-&gt;with(period=&gt;10)}
 [`[$f]`] is equal to [_______]{Real(1)}
 Twelve is [______]{num_cmp(12)}

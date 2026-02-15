@@ -12,9 +12,9 @@ Step 1
 Identify the URL of the video you want. This is typically done by finding the video and copying the URL from the web browser
 URL line. For the video below, the URL is "www.youtube.com/watch?v=sxLmeHMgvTg&t=8s"
 
-& Workshop Skills - Chemistry Libr x | J Home-Chemistry LibreTexts  €% GMT20190307 193203 LibreText x =
+& Workshop Skills - Chemistry Libr x | J Home-Chemistry LibreTexts  &euro;% GMT20190307 193203 LibreText x =
 
-<€ C  s@@ https://www.youtube.com/watch?v=sxLmeHMgvTc
+<&euro; C  s@@ https://www.youtube.com/watch?v=sxLmeHMgvTc
 
 = Woulube Search Q
 
@@ -95,9 +95,9 @@ https ://chem.libretexts .org/@go/page/483720
 
 Oibretexts:
 
-& Workshop Skills - Chemistry Liby x J Home-Chemistry LibreTexts x | €§ GM120190307 193203 LibreText: x | ++
+& Workshop Skills - Chemistry Liby x J Home-Chemistry LibreTexts x | &euro;§ GM120190307 193203 LibreText: x | ++
 
-€ C sa https://chem.libretexts.org/Workshops/Works|
+&euro; C sa https://chem.libretexts.org/Workshops/Works|
 
 p_Skills#widget-files x & eGo Ao @
 

@@ -1,0 +1,182 @@
+<p>
+Use this section when you want to catch mistakes before students see them. Linting means checking
+your problem file for common errors, either by reading through it yourself (static checks) or by
+running it through the renderer and inspecting the output. Both approaches catch different kinds of
+issues, so use them together.
+</p>
+
+<p>
+Think of linting like proofreading a lab protocol. Some errors you can catch by reading the text
+carefully. Others only show up when you actually run the protocol and watch what happens. A good QA
+pass uses both strategies: read the code for known pitfalls, then render the problem and inspect the
+result in a browser.
+</p>
+
+<h2>What linting catches that reading misses</h2>
+<ul>
+	<li>Variables that look correct in source but render wrong because of escaping or parsing rules</li>
+	<li>HTML that gets escaped when you wanted it to render as formatted content</li>
+	<li>PGML syntax that parses differently than you expected (list markers, bold, eval blocks)</li>
+	<li>Missing macros that only fail at render time, not while reading the code</li>
+	<li>Layout issues that only appear in a browser (spacing, alignment, missing blanks)</li>
+</ul>
+
+<h2>Static checks you can do by eye</h2>
+<p>
+These are patterns you can search for in your source file before rendering. Each one causes a
+specific failure that is easy to miss in the code but obvious in the rendered output.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>What to look for</th>
+			<th>Why it matters</th>
+			<th>What to do</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="What to look for">PGML tag wrappers inside Perl variables (<code>"[&lt;"</code> or <code>"]{["</code> in string assignments)</td>
+			<td data-th="Why it matters">PGML parses once. Tags in variables are not re-parsed.</td>
+			<td data-th="What to do">Move PGML syntax out of variables and into the PGML block directly.</td>
+		</tr>
+		<tr>
+			<td data-th="What to look for">HTML in variables without <code>*</code> (variable contains <code>&lt;span</code>, <code>&lt;div</code>, etc. but is output as <code>[$var]</code> without trailing <code>*</code>)</td>
+			<td data-th="Why it matters">PGML escapes the HTML. You see literal tags instead of formatted text.</td>
+			<td data-th="What to do">Add <code>*</code> after the bracket: <code>[$var]*</code></td>
+		</tr>
+		<tr>
+			<td data-th="What to look for"><code>MODES(</code> inside <code>[@ ... @]</code> eval blocks</td>
+			<td data-th="Why it matters">MODES returns <code>1</code> in eval context, not the HTML string.</td>
+			<td data-th="What to do">Use <code>[@ ... @]*</code> with MODES only for wrapper divs. For simple HTML, use <code>[$var]*</code> instead.</td>
+		</tr>
+		<tr>
+			<td data-th="What to look for">TeX color macros (<code>\color{</code> or <code>\textcolor{</code>) in PGML</td>
+			<td data-th="Why it matters">MathJax does not render these in this install.</td>
+			<td data-th="What to do">Use HTML <code>&lt;span&gt;</code> styles for color instead.</td>
+		</tr>
+		<tr>
+			<td data-th="What to look for">Blocked HTML tags: <code>&lt;table</code>, <code>&lt;tr</code>, <code>&lt;td</code>, <code>&lt;th</code></td>
+			<td data-th="Why it matters">These tags are stripped by the HTML whitelist.</td>
+			<td data-th="What to do">Use <code>niceTables.pl</code> (DataTable or LayoutTable) for any tables.</td>
+		</tr>
+		<tr>
+			<td data-th="What to look for">Ordered list label patterns: <code>A.</code> or <code>B.</code> at the start of a line in PGML</td>
+			<td data-th="Why it matters">PGML may parse these as list markup instead of plain text.</td>
+			<td data-th="What to do">Use <code>*A.*</code> (bold) or escape the dot: <code>A\.</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Structural checks</h2>
+<p>
+These checks confirm that the required scaffolding of a PG file is in place. Missing any of these
+causes the renderer to fail or produce partial output.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Check</th>
+			<th>What to look for</th>
+			<th>Symptom if missing</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Check">Missing <code>DOCUMENT();</code></td>
+			<td data-th="What to look for">File does not start with <code>DOCUMENT()</code> after <code>loadMacros</code></td>
+			<td data-th="Symptom if missing">Render fails with a cryptic error</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Missing <code>ENDDOCUMENT();</code></td>
+			<td data-th="What to look for">File does not end with <code>ENDDOCUMENT()</code></td>
+			<td data-th="Symptom if missing">Render fails or produces partial output</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Unmatched <code>BEGIN_PGML</code> / <code>END_PGML</code></td>
+			<td data-th="What to look for">One is present without the other</td>
+			<td data-th="Symptom if missing">Parse error, content not rendered</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Nested <code>BEGIN_PGML</code> without closing</td>
+			<td data-th="What to look for">Two <code>BEGIN_PGML</code> in a row without an <code>END_PGML</code> between them</td>
+			<td data-th="Symptom if missing">Parse error</td>
+		</tr>
+		<tr>
+			<td data-th="Check">Unbalanced <code>[@ ... @]</code> eval blocks</td>
+			<td data-th="What to look for">Opening <code>[@</code> without closing <code>@]</code> or vice versa</td>
+			<td data-th="Symptom if missing">PGML parse failure</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Renderer-based lint</h2>
+<p>
+Static checks catch many issues, but some problems only surface when the renderer actually processes
+the file. Renderer-based lint sends your file through the same pipeline students will use and
+reports errors, warnings, and the final HTML output.
+</p>
+
+<h3>HTML render is the primary test</h3>
+<p>
+WeBWorK questions are designed for browsers, so the rendered HTML is the most important check.
+Render your problem, save the output as an HTML file, and open it in a browser. Check: Does the
+question text read clearly? Are all blanks visible? Does the layout look right? Are interactive
+widgets (radio buttons, dropdowns) displaying correctly instead of plain text boxes?
+</p>
+
+<h3>Using the lint script</h3>
+<p>
+The helper script <code>lint_pg_via_renderer_api.py</code> wraps the renderer API for a local file.
+It sends your PG source to the renderer, collects any lint messages, and optionally saves the
+rendered HTML.
+</p>
+<p>
+To get lint messages only (no HTML output), omit the <code>-r</code> flag:
+</p>
+<pre>
+python3 lint_pg_via_renderer_api.py -i private/myproblem.pg
+</pre>
+<p>
+To generate full HTML output for visual inspection, include the <code>-r</code> flag and redirect
+the output to a file:
+</p>
+<pre>
+python3 lint_pg_via_renderer_api.py -i private/myproblem.pg -r > /tmp/pg_render.html
+</pre>
+<p>
+The script prints the seed it uses. You can set a specific seed with <code>-s</code>:
+</p>
+<pre>
+python3 lint_pg_via_renderer_api.py -i private/myproblem.pg -s 1234 -r > /tmp/pg_render.html
+</pre>
+
+<h3>What to check in the output</h3>
+<ul>
+	<li><strong>Render errors:</strong> The renderer reports line numbers and error messages. Fix these first, since they usually mean the problem will not display at all.</li>
+	<li><strong>Warnings:</strong> Check for PGML parse warnings. These may not prevent rendering but can cause unexpected behavior for some students or certain seeds.</li>
+	<li><strong>Visual inspection:</strong> Open the HTML in a browser and read it like a student. Check that text is formatted correctly, blanks appear where expected, and no raw markup is visible.</li>
+	<li><strong>Widget behavior:</strong> Confirm that interactive widgets (radio buttons, dropdowns, checkboxes) display as the correct widget type, not as a plain text input box.</li>
+</ul>
+
+<h2>A simple lint workflow</h2>
+<p>
+Follow these steps in order each time you finish editing a problem. The whole process takes less than
+a minute once you are familiar with it.
+</p>
+<ol>
+	<li>Save your <code>.pg</code> file.</li>
+	<li>Run the lint script without <code>-r</code> to check for errors.</li>
+	<li>Fix any reported issues.</li>
+	<li>Run the lint script with <code>-r</code> to generate HTML.</li>
+	<li>Open the HTML file in your browser.</li>
+	<li>Read the question as a student would.</li>
+	<li>Check that every answer blank appears and is in the right place.</li>
+</ol>
+
+<h2>Apply it today</h2>
+<p>
+Run a lint check on one problem file today. Fix any issues it reports, then open the HTML in your
+browser and read the question as if you were a student seeing it for the first time. If the text is
+clear, the blanks are visible, and the layout looks right, your problem is ready for further testing.
+</p>

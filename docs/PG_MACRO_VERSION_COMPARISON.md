@@ -14,51 +14,51 @@ This document compares macro availability across different PG versions to help a
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `parserPopUp.pl` | ✓ Available | ✓ | ✓ | Use for matching, dropdowns |
-| `parserRadioButtons.pl` | ✓ Available | ✓ | ✓ | Use for multiple choice |
-| `parserCheckboxList.pl` | ✗ Missing | ✓ | ✓ | **Use RadioButtons per statement instead** |
-| `parserMultiAnswer.pl` | ✓ Available | ✓ | ✓ | Multi-part grading |
-| `parserWordCompletion.pl` | ✓ Available | ✓ | ✓ | Autocomplete text entry |
+| `parserPopUp.pl` | Available | | | Use for matching, dropdowns |
+| `parserRadioButtons.pl` | Available | | | Use for multiple choice |
+| `parserCheckboxList.pl` | Missing | | | **Use RadioButtons per statement instead** |
+| `parserMultiAnswer.pl` | Available | | | Multi-part grading |
+| `parserWordCompletion.pl` | Available | | | Autocomplete text entry |
 
 ### Core Macros (Always Available)
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `PGstandard.pl` | ✓ Available | ✓ | ✓ | Required |
-| `MathObjects.pl` | ✓ Available | ✓ | ✓ | Strongly recommended |
-| `PGML.pl` | ✓ Available | ✓ | ✓ | Required for PGML authoring |
-| `PGcourse.pl` | ✓ Available | ✓ | ✓ | Commonly expected |
+| `PGstandard.pl` | Available | | | Required |
+| `MathObjects.pl` | Available | | | Strongly recommended |
+| `PGML.pl` | Available | | | Required for PGML authoring |
+| `PGcourse.pl` | Available | | | Commonly expected |
 
 ### Table and Layout Macros
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `niceTables.pl` | ✓ Available | ✓ | ✓ | **Only supported way to create tables** |
-| `unionTables.pl` | ✓ Available | ✓ | ✓ | Legacy table approach |
+| `niceTables.pl` | Available | | | **Only supported way to create tables** |
+| `unionTables.pl` | Available | | | Legacy table approach |
 
 ### Context Macros (Science/Units)
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `contextReaction.pl` | ✓ Available | ✓ | ✓ | Chemical equations |
-| `contextCurrency.pl` | ✓ Available | ✓ | ✓ | Money values |
-| `contextScientificNotation.pl` | ✓ Available | ✓ | ✓ | Scientific notation |
-| `parserNumberWithUnits.pl` | ✓ Available | ✓ | ✓ | Numeric with units |
-| `parserFormulaWithUnits.pl` | ✓ Available | ✓ | ✓ | Formula with units |
+| `contextReaction.pl` | Available | | | Chemical equations |
+| `contextCurrency.pl` | Available | | | Money values |
+| `contextScientificNotation.pl` | Available | | | Scientific notation |
+| `parserNumberWithUnits.pl` | Available | | | Numeric with units |
+| `parserFormulaWithUnits.pl` | Available | | | Formula with units |
 
 ### Vector and Matrix Macros
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `parserVectorUtils.pl` | ✓ Available | ✓ | ✓ | Vector operations |
-| `MatrixCheckers.pl` | ✓ Available | ✓ | ✓ | Matrix answer checking |
-| `VectorListCheckers.pl` | ✗ Missing | ✓ | ✓ | List of vectors checking |
+| `parserVectorUtils.pl` | Available | | | Vector operations |
+| `MatrixCheckers.pl` | Available | | | Matrix answer checking |
+| `VectorListCheckers.pl` | Missing | | | List of vectors checking |
 
 ### Legacy Choice Macros
 
 | Macro File | ADAPT/Renderer | PG 2.17+ | PG 2.20 | Notes |
 |------------|----------------|----------|---------|-------|
-| `PGchoicemacros.pl` | ✓ Available | ✓ | ✓ | **Legacy - use parser macros instead** |
+| `PGchoicemacros.pl` | Available | | | **Legacy - use parser macros instead** |
 
 ## Commonly Missing Macros in ADAPT/Renderer
 

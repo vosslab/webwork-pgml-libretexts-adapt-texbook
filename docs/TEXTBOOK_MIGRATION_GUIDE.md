@@ -8,10 +8,10 @@ This document tracks all file renames, new files, and section changes needed to 
 - `Textbook/02_Problem_Generation_PG/2.2-OPL_header_and_metadata.html` (NEW)
 
 ### Files to Rename
-- `Textbook/02_Problem_Generation_PG/2.2-PG_Problem_Files_with_a_pg_file_extension.html` → `2.3-PG_Problem_Files_with_a_pg_file_extension.html`
-- `Textbook/02_Problem_Generation_PG/2.3-Sections_within_a_PG_question.html` → `2.4-Sections_within_a_PG_question.html`
-- `Textbook/02_Problem_Generation_PG/2.4-Common_PG_Macros.html` → `2.5-Common_PG_Macros.html`
-- `Textbook/02_Problem_Generation_PG/2.5-Legacy_PG_and_deprecated_patterns.html` → `2.6-Legacy_PG_and_deprecated_patterns.html`
+- `Textbook/02_Problem_Generation_PG/2.2-PG_Problem_Files_with_a_pg_file_extension.html` -> `2.3-PG_Problem_Files_with_a_pg_file_extension.html`
+- `Textbook/02_Problem_Generation_PG/2.3-Sections_within_a_PG_question.html` -> `2.4-Sections_within_a_PG_question.html`
+- `Textbook/02_Problem_Generation_PG/2.4-Common_PG_Macros.html` -> `2.5-Common_PG_Macros.html`
+- `Textbook/02_Problem_Generation_PG/2.5-Legacy_PG_and_deprecated_patterns.html` -> `2.6-Legacy_PG_and_deprecated_patterns.html`
 
 ### Files to Update
 - `Textbook/02_Problem_Generation_PG/2.0-Index.html` - Update to acknowledge five-section structure
@@ -23,20 +23,20 @@ This document tracks all file renames, new files, and section changes needed to 
 - `Textbook/04_Breaking_Down_the_Components/4.2-OPL_Header.html` (NEW)
 
 ### Files to Rename
-- `Textbook/04_Breaking_Down_the_Components/4.2-Preamble.html` → `4.3-Preamble.html`
-- `Textbook/04_Breaking_Down_the_Components/4.3-Setup.html` → `4.4-Setup.html`
-- `Textbook/04_Breaking_Down_the_Components/4.4-Statement.html` → `4.5-Statement.html`
-- `Textbook/04_Breaking_Down_the_Components/4.5-Solution.html` → `4.6-Solution.html`
-- `Textbook/04_Breaking_Down_the_Components/4.6-Putting_it_together.html` → `4.7-Putting_it_together.html`
+- `Textbook/04_Breaking_Down_the_Components/4.2-Preamble.html` -> `4.3-Preamble.html`
+- `Textbook/04_Breaking_Down_the_Components/4.3-Setup.html` -> `4.4-Setup.html`
+- `Textbook/04_Breaking_Down_the_Components/4.4-Statement.html` -> `4.5-Statement.html`
+- `Textbook/04_Breaking_Down_the_Components/4.5-Solution.html` -> `4.6-Solution.html`
+- `Textbook/04_Breaking_Down_the_Components/4.6-Putting_it_together.html` -> `4.7-Putting_it_together.html`
 
 ### Files to Update
 - `Textbook/04_Breaking_Down_the_Components/4.0-Index.html` - Update to show five-section structure
 - `Textbook/04_Breaking_Down_the_Components/4.1-Full_file.html` - Add OPL header to example
 
-## Chapter 6: Subject-Specific → Advanced PGML Techniques - Complete Restructure
+## Chapter 6: Subject-Specific -> Advanced PGML Techniques - Complete Restructure
 
 ### Directory to Rename
-- `Textbook/06_Subject-Specific_Applications/` → `Textbook/06_Advanced_PGML_Techniques/`
+- `Textbook/06_Subject-Specific_Applications/` -> `Textbook/06_Advanced_PGML_Techniques/`
 
 ### New Files to Create (All in `Textbook/06_Advanced_PGML_Techniques/`)
 - `6.0-Index.html` (update existing)
@@ -62,7 +62,7 @@ This document tracks all file renames, new files, and section changes needed to 
 - `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.2-API_usage_for_scripts.html` (NEW)
 
 ### Files to Rename
-- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.2-Testing_habits_and_troubleshooting.html` → `7.3-Testing_habits_and_troubleshooting.html`
+- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.2-Testing_habits_and_troubleshooting.html` -> `7.3-Testing_habits_and_troubleshooting.html`
 
 ### Files to Update
 - `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.0-Index.html` - Add /health endpoint, PG 2.17 subset note
@@ -85,10 +85,10 @@ This document tracks all file renames, new files, and section changes needed to 
 ## Cross-References to Update
 
 ### Throughout the textbook, update references to:
-1. **Chapter 2.4 macros** → now **Chapter 2.5 macros**
-2. **Chapter 6 subject-specific examples** → now **Chapter 6 advanced techniques with integrated examples**
-3. **Chapter 7.2 troubleshooting** → now **Chapter 7.3 troubleshooting**
-4. **"Four sections"** → **"Five sections"** (OPL Header + four traditional)
+1. **Chapter 2.4 macros** -> now **Chapter 2.5 macros**
+2. **Chapter 6 subject-specific examples** -> now **Chapter 6 advanced techniques with integrated examples**
+3. **Chapter 7.2 troubleshooting** -> now **Chapter 7.3 troubleshooting**
+4. **"Four sections"** -> **"Five sections"** (OPL Header + four traditional)
 
 ## Content Migration Notes
 
@@ -116,12 +116,12 @@ This document tracks all file renames, new files, and section changes needed to 
 
 ## Implementation Checklist
 
-- [ ] Rename Chapter 2 files (2.2→2.3, 2.3→2.4, 2.4→2.5, 2.5→2.6)
+- [ ] Rename Chapter 2 files (2.2->2.3, 2.3->2.4, 2.4->2.5, 2.5->2.6)
 - [ ] Create Chapter 2.2 OPL header section
-- [ ] Rename Chapter 4 files (4.2→4.3, 4.3→4.4, 4.4→4.5, 4.5→4.6, 4.6→4.7)
+- [ ] Rename Chapter 4 files (4.2->4.3, 4.3->4.4, 4.4->4.5, 4.5->4.6, 4.6->4.7)
 - [ ] Create Chapter 4.2 OPL Header section
 - [ ] Update Chapter 4.1 Full file with OPL header
-- [ ] Rename Chapter 6 directory (06_Subject-Specific_Applications → 06_Advanced_PGML_Techniques)
+- [ ] Rename Chapter 6 directory (06_Subject-Specific_Applications -> 06_Advanced_PGML_Techniques)
 - [ ] Create all new Chapter 6 sections (6.1-6.6)
 - [ ] Archive old Chapter 6 sections, extracting examples to integrate
 - [ ] Rename Chapter 7.2 to 7.3

@@ -93,7 +93,7 @@ https ://chem.libretexts .org/@go/page/483732
 
 Gibretexts-
 
-€ C  @ chemlibretexts.org/Courses/Remixer_University/LibreTexts_Construction_Guide/04%3A_Advanced_Editing/4.01%3A_Transcluding_(Reusing)_a_Page#
+&euro; C  @ chemlibretexts.org/Courses/Remixer_University/LibreTexts_Construction_Guide/04%3A_Advanced_Editing/4.01%3A_Transcluding_(Reusing)_a_Page#
 .
 LibreTexts"
 
@@ -114,7 +114,7 @@ sy 4.1: Transcluding (Reusing) a Page
 Y Fork
 + <4 4: Advanced Editi a" Tuoed > EE
 2 Propagate
-2 Our transcluding video tutorial on YouTube: youtu.be/EfSHjZ60gGc €) Propagate
+2 Our transcluding video tutorial on YouTube: youtu.be/EfSHjZ60gGc &euro;) Propagate
 oO
 2 One of the powers of the LibreTexts Bookshelves/Course Shell system is to share content without having t' jg Delete ded to
 new pages in two ways: copying (also called "forking") and transcluding (also called "reusing"). The forme te

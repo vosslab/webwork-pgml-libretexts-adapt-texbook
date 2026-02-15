@@ -1,0 +1,618 @@
+<p>
+Use this section when something is wrong with your WeBWorK problem and you need to find and fix
+it. The mistakes below are organized by what you see (the symptom), what caused it, and exactly
+how to fix it. Every fix includes code you can copy and paste.
+</p>
+<p>
+These are the most common mistakes made by problem authors, collected from real debugging
+sessions. If your problem is not working, there is a good chance the answer is on this page.
+</p>
+
+<h2>PGML parsing errors</h2>
+<p>
+PGML uses asterisks and other punctuation as formatting markers. When these markers appear near
+variables, the parser can misinterpret them and produce confusing errors.
+</p>
+
+<h3>Asterisks around variables</h3>
+<p>
+<strong>Symptom:</strong> <code>'*' was not closed before paragraph ends</code>
+</p>
+<p>
+<strong>Cause:</strong> PGML interprets <code>*</code> as the start of italic text. When you wrap
+a variable in single asterisks, PGML tries to treat everything between them as italic content. If
+the variable expands to something unexpected, the italic block never closes.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_PGML
+The answer is *[$variable]*.
+END_PGML
+</pre>
+<p><strong>Right (option 1 -- use bold instead of italic):</strong></p>
+<pre>
+BEGIN_PGML
+The answer is **[$variable]**.
+END_PGML
+</pre>
+<p><strong>Right (option 2 -- remove the emphasis):</strong></p>
+<pre>
+BEGIN_PGML
+The answer is [$variable].
+END_PGML
+</pre>
+<p><strong>Right (option 3 -- build emphasis in a variable):</strong></p>
+<pre>
+$answer_emph = "&lt;em&gt;$variable&lt;/em&gt;";
+
+BEGIN_PGML
+The answer is [$answer_emph]*.
+END_PGML
+</pre>
+<p>
+Option 3 moves the emphasis into an HTML variable and uses <code>[$var]*</code> to pass the HTML
+through without escaping.
+</p>
+
+<h3>Bold markers around variables</h3>
+<p>
+<strong>Symptom:</strong> <code>'**' was not closed before paragraph ends</code>
+</p>
+<p>
+<strong>Cause:</strong> Bold markers (<code>**</code>) break when the variable content contains
+characters that PGML interprets as additional formatting.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_PGML
+At pH [$selected_ph], histidine exists in **[$correct_label]**.
+END_PGML
+</pre>
+<p><strong>Right (remove the bold):</strong></p>
+<pre>
+BEGIN_PGML
+At pH [$selected_ph], histidine exists in [$correct_label].
+END_PGML
+</pre>
+<p><strong>Right (build emphasis in a variable):</strong></p>
+<pre>
+$label_bold = "&lt;strong&gt;$correct_label&lt;/strong&gt;";
+
+BEGIN_PGML
+At pH [$selected_ph], histidine exists in [$label_bold]*.
+END_PGML
+</pre>
+
+<h3>Using * for bullets when you also have italic content</h3>
+<p>
+<strong>Symptom:</strong> Confusing PGML parse behavior. Lines that begin with <code>*</code> and
+also contain <code>*italic*</code> markers cause the parser to misread which asterisks are bullets
+and which are emphasis.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_PGML
+* *State 1* (pH &lt; 1.82): Description
+* *State 2* (pH &gt; 1.82): Description
+END_PGML
+</pre>
+<p><strong>Right (use dashes for bullets):</strong></p>
+<pre>
+BEGIN_PGML
+- **State 1** (pH &lt; 1.82): Description
+- **State 2** (pH &gt; 1.82): Description
+END_PGML
+</pre>
+
+<h2>Variable scoping: the number one surprise</h2>
+<p>
+This is the single most confusing issue for new PG authors. It looks like you did everything
+right, but the widget does not appear.
+</p>
+
+<h3>The <code>my</code> keyword makes variables invisible to PGML</h3>
+<p>
+<strong>Symptom:</strong> RadioButtons renders as a plain text input box instead of radio buttons.
+Grading fails with <code>Answer evaluator was not executed due to errors</code>.
+</p>
+<p>
+<strong>Cause:</strong> Writing <code>my $radio = RadioButtons(...)</code> creates a lexical
+variable that PGML cannot see. Think of it this way: PGML looks up variables in a shared
+directory (the package symbol table). The <code>my</code> keyword puts the variable in a private
+closet that PGML cannot open. When PGML encounters <code>[_]{$radio}</code>, it checks the shared
+directory, finds nothing, and falls back to a generic text input.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+my $radio = RadioButtons(['Alpha', 'Beta'], 'Alpha');
+
+BEGIN_PGML
+[_]{$radio}
+END_PGML
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+$radio = RadioButtons(['Alpha', 'Beta'], 'Alpha');
+
+BEGIN_PGML
+[_]{$radio}
+END_PGML
+</pre>
+<p>
+<strong>The rule:</strong> Any variable referenced inside <code>BEGIN_PGML</code> (via
+<code>[$var]</code>, <code>[_]{$var}</code>, or <code>[$var]*</code>) must NOT use
+<code>my</code>. Using <code>my</code> for loop counters and temporary helpers is fine, as long
+as those variables never appear inside a PGML block.
+</p>
+<pre>
+# OK -- my for intermediates, bare for PGML-visible results
+my $idx = random(0, 3, 1);
+$rb = RadioButtons([@choices], $choices[$idx]);
+</pre>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Keyword</th>
+			<th>PGML visible?</th>
+			<th>Use for</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Keyword"><code>$var = ...</code> (bare)</td>
+			<td data-th="PGML visible?">Yes</td>
+			<td data-th="Use for">Variables displayed or graded in PGML</td>
+		</tr>
+		<tr>
+			<td data-th="Keyword"><code>my $var = ...</code></td>
+			<td data-th="PGML visible?">No</td>
+			<td data-th="Use for">Helper variables, loop counters, temporary computation</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>HTML escaping: the <code>[$var]*</code> rule</h2>
+<p>
+<strong>Symptom:</strong> HTML tags show as literal text on screen. Instead of colored or bold
+text, the student sees raw markup like
+<code>&lt;span style="color:red;"&gt;Important&lt;/span&gt;</code>.
+</p>
+<p>
+<strong>Cause:</strong> PGML escapes HTML by default for safety. Every <code>&lt;</code> becomes
+<code>&amp;lt;</code> so the browser displays tags as text instead of rendering them.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+$html_content = '&lt;span style="color:red;"&gt;Important&lt;/span&gt;';
+
+BEGIN_PGML
+This is [$html_content] text.
+END_PGML
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+$html_content = '&lt;span style="color:red;"&gt;Important&lt;/span&gt;';
+
+BEGIN_PGML
+This is [$html_content]* text.
+END_PGML
+</pre>
+<p>
+<strong>The rule:</strong> If a variable contains any HTML tags (<code>&lt;span&gt;</code>,
+<code>&lt;div&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;sub&gt;</code>, etc.), always
+add <code>*</code> after the closing bracket. The asterisk tells PGML to pass the content
+through without escaping.
+</p>
+
+<h2>Missing or wrong macros</h2>
+<p>
+PG widgets like RadioButtons and DropDown live in separate macro files. If you forget the macro,
+the widget function is undefined and the renderer crashes.
+</p>
+
+<h3>Symptom table: missing macro errors</h3>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Widget or feature</th>
+			<th>Required macro</th>
+			<th>What happens without it</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Widget or feature">DropDown / PopUp</td>
+			<td data-th="Required macro"><code>parserPopUp.pl</code></td>
+			<td data-th="What happens without it">Undefined subroutine error</td>
+		</tr>
+		<tr>
+			<td data-th="Widget or feature">RadioButtons</td>
+			<td data-th="Required macro"><code>parserRadioButtons.pl</code></td>
+			<td data-th="What happens without it">Undefined subroutine error</td>
+		</tr>
+		<tr>
+			<td data-th="Widget or feature">DataTable / LayoutTable</td>
+			<td data-th="Required macro"><code>niceTables.pl</code></td>
+			<td data-th="What happens without it">Undefined subroutine error</td>
+		</tr>
+		<tr>
+			<td data-th="Widget or feature">NchooseK</td>
+			<td data-th="Required macro"><code>PGchoicemacros.pl</code></td>
+			<td data-th="What happens without it">Undefined subroutine error</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>How to fix</h3>
+<p>
+Check your <code>loadMacros()</code> block near the top of the file and add the missing macro.
+A correct block that covers common widgets:
+</p>
+<pre>
+loadMacros(
+  'PGstandard.pl',
+  'PGML.pl',
+  'parserRadioButtons.pl',
+  'parserPopUp.pl',
+  'niceTables.pl',
+  'PGcourse.pl',
+);
+</pre>
+
+<h3><code>use</code> statements are trapped</h3>
+<p>
+<strong>Symptom:</strong> <code>'require' trapped by operation mask</code>
+</p>
+<p>
+<strong>Cause:</strong> Perl's <code>use</code> statement calls <code>require</code> internally,
+and the PG sandbox blocks it for security. PG problems run on shared servers and cannot load
+arbitrary Perl modules.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+use POSIX qw(floor);
+use List::Util qw(shuffle);
+</pre>
+<p>
+<strong>Right:</strong> Use <code>loadMacros()</code> for PG macros and built-in alternatives for
+standard functions.
+</p>
+<pre>
+# For truncation (instead of POSIX floor)
+$val = int(3.7);              # returns 3
+
+# For rounding (instead of POSIX round)
+$val = sprintf("%.0f", 3.7);  # returns 4
+</pre>
+<p>
+Other trapped operations include <code>eval "string"</code>, <code>open()</code>,
+<code>system()</code>, and backtick execution.
+</p>
+
+<h2>Blocked HTML tags</h2>
+<p>
+<strong>Symptom:</strong> Table content disappears or renders as broken text.
+</p>
+<p>
+<strong>Cause:</strong> The tags <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
+<code>&lt;td&gt;</code>, and <code>&lt;th&gt;</code> are blocked by the HTML whitelist. The
+renderer strips them out silently.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_PGML
+&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+END_PGML
+</pre>
+<p>
+<strong>Right:</strong> Use <code>niceTables.pl</code> with <code>DataTable</code> or
+<code>LayoutTable</code>.
+</p>
+<pre>
+loadMacros('niceTables.pl');
+
+$table = DataTable(
+  [['Header 1', 'Header 2'],
+   ['Cell 1',   'Cell 2']],
+);
+
+BEGIN_PGML
+[$table]*
+END_PGML
+</pre>
+<p>
+Note the <code>*</code> after <code>[$table]</code> because the variable contains HTML.
+<code>niceTables.pl</code> is the only supported way to create tables in PG problems.
+</p>
+
+<h2>MODES misuse</h2>
+<p>
+<strong>Symptom:</strong> The number <code>1</code> appears on screen where you expected HTML
+content.
+</p>
+<p>
+<strong>Cause:</strong> <code>MODES(...)</code> returns <code>1</code> in eval context instead
+of the HTML string. This happens when <code>MODES()</code> is called inside a
+<code>[@ ... @]</code> eval block in PGML.
+</p>
+<p>
+<strong>When MODES is needed:</strong> Only when wrapper HTML must be emitted from inside Perl
+eval blocks, typically for layout structures like two-column matching.
+</p>
+<p>
+<strong>When MODES is NOT needed:</strong> Inline HTML like <code>&lt;span&gt;</code>,
+<code>&lt;sub&gt;</code>, and <code>&lt;sup&gt;</code> renders directly without
+<code>MODES()</code>. Store the HTML in a variable and use <code>[$var]*</code> instead.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_PGML
+[@ MODES(HTML =&gt; '&lt;div&gt;content&lt;/div&gt;') @]*
+END_PGML
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+$content = '&lt;div&gt;content&lt;/div&gt;';
+
+BEGIN_PGML
+[$content]*
+END_PGML
+</pre>
+<p>
+<strong>TeX color macros do not work.</strong> Commands like <code>\color{}</code> and
+<code>\textcolor{}</code> do not render in this environment. Use HTML
+<code>&lt;span&gt;</code> elements with inline CSS for colored text instead.
+</p>
+
+<h2>Order of operations</h2>
+<p>
+PG runs your code from top to bottom. If you reference a variable before it is assigned, it
+silently becomes an empty string with no warning.
+</p>
+
+<h3>Using variables before they are defined</h3>
+<p>
+<strong>Symptom:</strong> Empty output, missing content, or blank areas in the rendered problem.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+@all_cards = ($card1, $card2, $card3);
+# ... 50 lines later ...
+$card1 = '&lt;div&gt;content 1&lt;/div&gt;';
+$card2 = '&lt;div&gt;content 2&lt;/div&gt;';
+$card3 = '&lt;div&gt;content 3&lt;/div&gt;';
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+$card1 = '&lt;div&gt;content 1&lt;/div&gt;';
+$card2 = '&lt;div&gt;content 2&lt;/div&gt;';
+$card3 = '&lt;div&gt;content 3&lt;/div&gt;';
+# ... then use them ...
+@all_cards = ($card1, $card2, $card3);
+</pre>
+
+<h3>Shuffle timing</h3>
+<p>
+The correct pattern: (1) define all items, (2) create the array, (3) shuffle. Never shuffle
+before the items exist.
+</p>
+<pre>
+# 1. Define all items first
+$item1 = "content 1";
+$item2 = "content 2";
+$item3 = "content 3";
+
+# 2. Create array
+@all_items = ($item1, $item2, $item3);
+
+# 3. Shuffle
+@shuffled = ();
+@temp = @all_items;
+while (@temp) {
+  my $i = random(0, $#temp, 1);
+  push @shuffled, splice(@temp, $i, 1);
+}
+</pre>
+
+<h3>Hash key order is not deterministic</h3>
+<p>
+<strong>Symptom:</strong> Random order changes between runs even with the same seed.
+</p>
+<p>
+<strong>Cause:</strong> Perl hash key iteration order is not guaranteed. Each run can return keys
+in a different order, making randomization unreproducible.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+%items = (a =&gt; 'Apple', b =&gt; 'Banana', c =&gt; 'Cherry');
+@choices = values %items;  # Random order!
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+%items = (a =&gt; 'Apple', b =&gt; 'Banana', c =&gt; 'Cherry');
+@sorted_keys = sort keys %items;
+$selected = list_random(@sorted_keys);
+</pre>
+
+<h2>Perl-in-PG gotchas</h2>
+<p>
+PG is Perl, but it runs inside a security sandbox (the Safe compartment). Several standard Perl
+operations are blocked or behave differently.
+</p>
+
+<h3>Backslash references are broken (<code>\@</code> and <code>\%</code>)</h3>
+<p>
+<strong>Symptom:</strong> <code>Not an ARRAY reference</code> or
+<code>Not a HASH reference</code>
+</p>
+<p>
+<strong>Cause:</strong> The PG sandbox blocks the backslash (<code>\</code>) operator for
+creating references. Writing <code>\@array</code> does not produce a usable array reference.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+@choices = ('Alpha', 'Beta', 'Gamma');
+$rb = RadioButtons(\@choices, 'Alpha');
+</pre>
+<p><strong>Right (option 1 -- anonymous copy, preferred):</strong></p>
+<pre>
+@choices = ('Alpha', 'Beta', 'Gamma');
+$rb = RadioButtons([@choices], 'Alpha');
+</pre>
+<p><strong>Right (option 2 -- PG double-tilde operator):</strong></p>
+<pre>
+@choices = ('Alpha', 'Beta', 'Gamma');
+$rb = RadioButtons(~~@choices, 'Alpha');
+</pre>
+<p>
+The same rule applies to hash references:
+</p>
+<pre>
+# Wrong:  $href = \%data;
+# Right:  $href = {%data};
+# Right:  $href = ~~%data;
+</pre>
+
+<h3>Loops do not work inside BEGIN_TEXT</h3>
+<p>
+<strong>Symptom:</strong> No output, empty section where the loop content should appear.
+</p>
+<p>
+<strong>Cause:</strong> <code>BEGIN_TEXT...END_TEXT</code> is a string construction block, not
+Perl code execution. A <code>foreach</code> loop inside it becomes part of the string rather
+than running as code.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+BEGIN_TEXT
+foreach my $item (@items) {
+  \{ $item \}
+}
+END_TEXT
+</pre>
+<p><strong>Right (build the string before BEGIN_TEXT):</strong></p>
+<pre>
+$all_items_html = '';
+foreach my $item (@items) {
+  $all_items_html .= $item;
+}
+
+BEGIN_TEXT
+\{ $all_items_html \}
+END_TEXT
+</pre>
+
+<h2>Quick reference: error message table</h2>
+<p>
+Use this table to look up the error or symptom you are seeing. Find your row and follow the fix
+in the right column.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Error message or symptom</th>
+			<th>Likely cause</th>
+			<th>Fix</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Error message or symptom"><code>'*' was not closed</code></td>
+			<td data-th="Likely cause">Asterisks around variable in PGML</td>
+			<td data-th="Fix">Remove <code>*</code> or use <code>**</code> (bold)</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>'**' was not closed</code></td>
+			<td data-th="Likely cause">Bold markers around variable</td>
+			<td data-th="Fix">Remove bold or build emphasis in a variable</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Empty output / no content</td>
+			<td data-th="Likely cause">Variable used before defined</td>
+			<td data-th="Fix">Move definition before usage</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">HTML shown literally</td>
+			<td data-th="Likely cause">Missing <code>*</code> in <code>[$var]*</code></td>
+			<td data-th="Fix">Add asterisk: <code>[$var]*</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Answer always wrong</td>
+			<td data-th="Likely cause">Answer field name mismatch</td>
+			<td data-th="Fix">Use <code>ans_rule()</code> before <code>ANS()</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">RadioButtons renders as text input</td>
+			<td data-th="Likely cause"><code>my $rb = RadioButtons(...)</code></td>
+			<td data-th="Fix">Remove <code>my</code>: <code>$rb = RadioButtons(...)</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>Not an ARRAY reference</code></td>
+			<td data-th="Likely cause"><code>\@array</code> backslash ref</td>
+			<td data-th="Fix">Use <code>[@array]</code> or <code>~~@array</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>Not a HASH reference</code></td>
+			<td data-th="Likely cause"><code>\%hash</code> backslash ref</td>
+			<td data-th="Fix">Use <code>{%hash}</code> or <code>~~%hash</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>'require' trapped by operation mask</code></td>
+			<td data-th="Likely cause"><code>use Module</code> in PG</td>
+			<td data-th="Fix">Use <code>loadMacros()</code> or built-ins</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>'eval "string"' trapped</code></td>
+			<td data-th="Likely cause"><code>eval $code</code> in PG</td>
+			<td data-th="Fix">Restructure to avoid string eval</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Variable shows empty in PGML</td>
+			<td data-th="Likely cause"><code>my $var</code> instead of <code>$var</code></td>
+			<td data-th="Fix">Remove <code>my</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Random order changes between runs</td>
+			<td data-th="Likely cause">Hash keys not sorted</td>
+			<td data-th="Fix">Sort keys before selection</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Table content disappears</td>
+			<td data-th="Likely cause"><code>&lt;table&gt;</code> tags blocked</td>
+			<td data-th="Fix">Use <code>niceTables.pl</code></td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom">Number <code>1</code> appears instead of HTML</td>
+			<td data-th="Likely cause">MODES in eval context</td>
+			<td data-th="Fix">Check MODES usage; use <code>[$var]*</code> instead</td>
+		</tr>
+		<tr>
+			<td data-th="Error message or symptom"><code>A.</code> parsed as a list item</td>
+			<td data-th="Likely cause">Ordered list auto-parsing</td>
+			<td data-th="Fix">Use <code>*A.*</code> or <code>A\.</code> to escape</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Apply it today</h2>
+<p>
+When something breaks, come back to this page and look up the symptom. Most issues fall into one
+of these categories:
+</p>
+<ul>
+	<li>A PGML parsing error caused by asterisks near variables (remove or change the markers).</li>
+	<li>A variable that PGML cannot see because of <code>my</code> (remove <code>my</code>).</li>
+	<li>HTML showing as literal text (add <code>*</code> after the bracket).</li>
+	<li>A missing macro (add it to <code>loadMacros()</code>).</li>
+	<li>A blocked HTML tag (switch to <code>niceTables.pl</code>).</li>
+	<li>Variables used before they are defined (move the definition earlier).</li>
+	<li>A backslash reference that does not work in the sandbox (use <code>[@array]</code>).</li>
+</ul>
+<p>
+Start with the quick reference table above. Match your error message to the row, read the fix,
+and apply it. If your problem is still not working, use the debugging strategies in Section 7.1
+to isolate the issue: render with a fixed seed, change one thing at a time, and compare before
+and after.
+</p>

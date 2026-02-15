@@ -1,0 +1,115 @@
+<p>
+This chapter helps you find and fix problems in your WeBWorK questions. Whether you are setting up
+local rendering for the first time, debugging a broken problem, or doing a final check before
+publishing, start here to find the right section.
+</p>
+
+<p>
+Debugging WeBWorK problems is not fundamentally different from troubleshooting a lab protocol. You
+isolate the variable that changed, reproduce the failure under controlled conditions, and fix one
+thing at a time. The tools in this chapter give you a fast feedback loop so you spend less time
+guessing and more time writing good questions.
+</p>
+
+<h2>What just went wrong?</h2>
+<p>
+Use this table to jump straight to the section that matches your symptom. If you are not sure what
+went wrong, start at the top and work down.
+</p>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>What you see</th>
+			<th>Go to</th>
+			<th>What you will find</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="What you see">Render fails with an error message</td>
+			<td data-th="Go to">Section 7.2</td>
+			<td data-th="What you will find">Common mistakes organized by symptom with copy-paste fixes</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">Widget shows as a plain text box instead of radio buttons or dropdown</td>
+			<td data-th="Go to">Section 7.2</td>
+			<td data-th="What you will find">Variable scoping rules (the <code>my</code> keyword trap)</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">HTML tags appear as literal text in the output</td>
+			<td data-th="Go to">Section 7.2</td>
+			<td data-th="What you will find">The <code>[$var]*</code> rule for HTML variables</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">Problem works for one seed but breaks on others</td>
+			<td data-th="Go to">Section 7.4</td>
+			<td data-th="What you will find">Randomization testing and guard patterns</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">Everything looks fine but want a final checklist</td>
+			<td data-th="Go to">Section 7.5</td>
+			<td data-th="What you will find">QA checklist before publishing</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">Need to lint or test many files at once</td>
+			<td data-th="Go to">Section 7.6</td>
+			<td data-th="What you will find">Scripting and batch automation</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">Setting up local rendering for the first time</td>
+			<td data-th="Go to">Section 7.1</td>
+			<td data-th="What you will find">Install, start, and first render walkthrough</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Section map</h2>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>What it covers</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Section">7.1 Setting up and first render</td>
+			<td data-th="What it covers">Install the renderer and confirm it works with your first problem file.</td>
+		</tr>
+		<tr>
+			<td data-th="Section">7.2 Common mistakes and how to fix them</td>
+			<td data-th="What it covers">The big reference. Symptom-based lookup for PGML parsing, variable scoping, HTML escaping, macros, and more.</td>
+		</tr>
+		<tr>
+			<td data-th="Section">7.3 Linting your problems</td>
+			<td data-th="What it covers">Static checks you can eyeball and renderer-based lint that catches issues before students see them.</td>
+		</tr>
+		<tr>
+			<td data-th="Section">7.4 Testing randomization and edge cases</td>
+			<td data-th="What it covers">Sweep seeds to find broken variants, guard against impossible values.</td>
+		</tr>
+		<tr>
+			<td data-th="Section">7.5 QA checklist before publishing</td>
+			<td data-th="What it covers">A prevention checklist and author checklist to run before you ship.</td>
+		</tr>
+		<tr>
+			<td data-th="Section">7.6 Scripting and automation</td>
+			<td data-th="What it covers">API endpoints, Python examples, and batch linting for advanced workflows.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Start here</h2>
+<ul>
+	<li>If you are new to local rendering, start with Section 7.1. It walks you through installing the renderer and confirming your first problem file works.</li>
+	<li>If something just broke, go to Section 7.2. It is organized by symptom so you can look up what you see and find a fix without reading everything else first.</li>
+	<li>If you are about to publish, go to Section 7.5. The QA checklist catches the problems that look fine in author view but fail when students encounter them.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use the decision table above to jump directly to the section that matches your current situation instead of reading the chapter front to back.</li>
+	<li>Keep the QA checklist from Section 7.5 open as a tab while you finalize problems for a new assignment.</li>
+</ul>
+
+<p>{{template.ShowOrg()}}</p>

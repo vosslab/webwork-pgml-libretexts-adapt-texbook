@@ -1,0 +1,167 @@
+<p>
+Use this section when you are setting up local rendering for the first time or returning after a
+break. The goal is to get one problem rendering in your browser so you have a fast feedback loop
+for editing and debugging.
+</p>
+
+<p>
+Think of local rendering like setting up a bench assay. Before you run a full experiment, you
+confirm that your reagents work, your equipment reads correctly, and you can reproduce a known
+result. Here, the reagent is your <code>.pg</code> file, the equipment is the renderer container,
+and the known result is a cleanly rendered problem with visible answer blanks. Once this baseline
+works, every edit you make is a single-variable change from a known-good state.
+</p>
+
+<h2>What you need</h2>
+<ul>
+	<li>Podman or Docker installed on your machine</li>
+	<li>A folder containing your <code>.pg</code> files</li>
+	<li>A terminal (command prompt) for running commands</li>
+	<li>A web browser for viewing rendered problems</li>
+</ul>
+
+<h2>Start the renderer</h2>
+<p>
+The renderer runs inside a container. Start it from your terminal with one of these commands,
+depending on which container tool you have installed.
+</p>
+<ol>
+	<li>Start the container:
+		<pre>podman compose up -d</pre>
+		or
+		<pre>docker compose up -d</pre>
+	</li>
+	<li>Check that it is running. Open a terminal and run:
+		<pre>curl http://localhost:3000/health</pre>
+		You should see <code>{"status":"ok"}</code> in the output.
+	</li>
+	<li>If you see "connection refused", the container is not running yet. Wait a few seconds and try again. The renderer can take 10 to 30 seconds to finish starting up.</li>
+</ol>
+
+<h2>What working looks like vs what broken looks like</h2>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>What you see</th>
+			<th>What it means</th>
+			<th>What to do</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="What you see">The <code>/health</code> endpoint returns <code>{"status":"ok"}</code></td>
+			<td data-th="What it means">The renderer is running and ready.</td>
+			<td data-th="What to do">Proceed to the browser editor.</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">The browser editor at <code>http://localhost:3000</code> loads and rendering a simple problem shows formatted text with answer blanks</td>
+			<td data-th="What it means">Everything is working end to end.</td>
+			<td data-th="What to do">You are ready to start editing problems.</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">"Connection refused" in the terminal</td>
+			<td data-th="What it means">The container is not running.</td>
+			<td data-th="What to do">Wait a few seconds and try the health check again. If it still fails, check that the container started without errors.</td>
+		</tr>
+		<tr>
+			<td data-th="What you see">A blank page or error page in the browser</td>
+			<td data-th="What it means">The renderer started but something else is wrong.</td>
+			<td data-th="What to do">Check the container logs for error messages.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Open the browser editor</h2>
+<ol>
+	<li>Open <code>http://localhost:3000</code> in your browser.</li>
+	<li>Load a <code>.pg</code> file from the <code>private/</code> folder.</li>
+	<li>Set a seed number. Start with something simple like <code>1234</code>.</li>
+	<li>Click Render.</li>
+</ol>
+<p>
+The rendered output should show formatted text, any math expressions, and answer blanks where
+students would type or select their answers. If you see raw PGML markup or error text instead,
+something needs to be fixed. Section 7.2 covers the most common causes.
+</p>
+
+<h2>Private folder workflow</h2>
+<p>
+Place your <code>.pg</code> files inside the <code>private/</code> folder that is mounted into the
+renderer container. The web editor can then load files directly using the path
+<code>private/yourfile.pg</code>.
+</p>
+<p>
+Changes you save to files on your computer appear in the container automatically. There is no
+separate upload or sync step. Edit the file in your text editor, save it, then click Render in the
+browser to see the updated output.
+</p>
+
+<h2>The one rule that saves hours</h2>
+<p>
+When debugging, write down (1) the file path and (2) the seed. Do not change either until the
+failure is fixed. Change one thing at a time.
+</p>
+<p>
+This is the same principle as a controlled experiment. If you change the seed and the code at the
+same time, you cannot tell which change caused the new behavior. Lock the seed, fix the code, and
+only move on to testing other seeds after the current one renders correctly.
+</p>
+
+<h2>What to record while you work</h2>
+<table class="mt-responsive-table">
+	<thead>
+		<tr>
+			<th>Record</th>
+			<th>Example</th>
+			<th>Why it matters</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Record">File path</td>
+			<td data-th="Example"><code>private/enzyme_kinetics.pg</code></td>
+			<td data-th="Why it matters">Keeps your failing case tied to one file.</td>
+		</tr>
+		<tr>
+			<td data-th="Record">Seed</td>
+			<td data-th="Example"><code>1234</code></td>
+			<td data-th="Why it matters">Locks the random variant for reproducibility.</td>
+		</tr>
+		<tr>
+			<td data-th="Record">What you changed</td>
+			<td data-th="Example">"Changed units from mM to micromolar"</td>
+			<td data-th="Why it matters">Makes debugging traceable when you need to undo a change.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Your first render checklist</h2>
+<ol>
+	<li>Start the renderer container.</li>
+	<li>Check <code>/health</code> returns <code>{"status":"ok"}</code>.</li>
+	<li>Open your browser to <code>http://localhost:3000</code>.</li>
+	<li>Load a <code>.pg</code> file from <code>private/</code>.</li>
+	<li>Set the seed to <code>1234</code>.</li>
+	<li>Click Render.</li>
+	<li>Read the output like a student would.</li>
+	<li>Confirm answer blanks appear where expected.</li>
+</ol>
+
+<h2>HTML render is the primary test</h2>
+<p>
+WeBWorK questions are designed for browsers. The rendered HTML page is the most important test of
+whether your problem works correctly. Open it in a browser and check that the question looks right
+visually: text is formatted, math displays properly, answer blanks are in the right places, and
+interactive widgets (radio buttons, dropdowns) appear as expected instead of plain text boxes.
+</p>
+<p>
+Static linting and code review are useful supporting checks, but they cannot replace the rendered
+output. A problem that passes every lint check can still display poorly or confuse students. Always
+finish by reading the rendered page as a student would read it.
+</p>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use local rendering for the tight edit-preview loop: edit your file, save, click Render, and check the output. This cycle should take seconds, not minutes.</li>
+	<li>Once the local render looks right, use ADAPT for the final publish workflow. Local rendering confirms the code works; ADAPT confirms the assignment context and student view.</li>
+</ul>

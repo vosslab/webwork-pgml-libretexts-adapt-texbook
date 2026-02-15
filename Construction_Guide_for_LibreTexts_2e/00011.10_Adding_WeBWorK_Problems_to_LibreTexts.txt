@@ -200,7 +200,7 @@ Query \(\PageIndex{1}\)
 Query \(\PageIndex{1}\)
 kiScript -
 
-* an : BoxQuery template opened [~@-™
+* an : BoxQuery template opened [~@-&trade;
 e with the Page ID for the WeBWorK prob iggggestormectnetines@ ucry database (21088)
 
 Replacing

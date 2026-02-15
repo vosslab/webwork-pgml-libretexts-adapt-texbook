@@ -81,7 +81,7 @@ NAlAl an wan ba bn Cl na wnintens I ihe, Thin Picinn Dibens Te an min inn biel A
 
 Figure 7.1.2: Primary toolbar for a library shown if a user has not logged in with an instructor's account.
 
-€ Cs ft stats.libretexts.org Qaexr #ao@:
+&euro; Cs ft stats.libretexts.org Qaexr #ao@:
 
 Contents
 
@@ -375,9 +375,9 @@ https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Orgal
 - ¥ Override Copy Mode .
 Topi
 t Te This will override the Default Copy Mode
-Author tag:So... 3 authorname:s... authorname:s... €9
-license:ccbyn... €9 Lower Division € Organic
-showtoc:no €} (+ AddTag )
+Author tag:So... 3 authorname:s... authorname:s... &euro;9
+license:ccbyn... &euro;9 Lower Division &euro; Organic
+showtoc:no &euro;} (+ AddTag )
 
 CANCEL SAVEEDITS
 

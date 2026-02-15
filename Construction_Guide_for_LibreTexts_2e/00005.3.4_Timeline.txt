@@ -4,7 +4,7 @@ LibreTexts"
 
 The Timeline displays a roadmap for construction as well as the timeline built in the Tasks menu at the bottom of the Project Page.
 
-g S LibreTexts™
+g S LibreTexts&trade;
 
 CONDUCTOR
 

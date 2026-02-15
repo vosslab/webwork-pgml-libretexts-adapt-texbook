@@ -1,5 +1,70 @@
 # Changelog
 
+## 2026-02-14
+
+### Chapter 7 rewrites
+- Rewrote Chapter 7.0 Index (116 lines) with a symptom-based "What just went wrong?" decision
+  table mapping common failure symptoms to sections, a section map table with one-line descriptions
+  of all six subsections (7.1 through 7.6), and a "Start here" guide directing new users to 7.1,
+  broken-problem users to 7.2, and pre-publish users to 7.5.
+- Rewrote Chapter 7.1 Setting up and first render (167 lines) as a beginner-friendly setup
+  quickstart with a lab-workflow analogy, container startup steps (Podman/Docker), health check
+  verification, working-vs-broken diagnostic table, browser editor walkthrough, private folder
+  workflow, debugging discipline ("the one rule that saves hours"), a "what to record" table for
+  reproducibility, an eight-step first render checklist, and guidance that HTML render is the
+  primary test.
+- Rewrote Chapter 7.2 Common mistakes and how to fix them (618 lines) as the centerpiece
+  debugging reference. Covers PGML parsing errors (asterisks/bold around variables, bullet
+  ambiguity), variable scoping (my keyword invisibility with symbol table explanation), HTML
+  escaping ([$var]* rule), missing macros (symptom table for DropDown/RadioButtons/DataTable/
+  NchooseK), use statement trapping, blocked HTML tags (niceTables.pl alternative), MODES
+  misuse (returns 1 in eval context), order of operations (define-before-use, shuffle timing,
+  hash key determinism), Perl-in-PG gotchas (backslash references broken, loops in BEGIN_TEXT),
+  and a 15-row quick reference error message lookup table. Content sourced from
+  PG_COMMON_PITFALLS.md and PGML_LINTER_EXPECTATIONS.md.
+- Rewrote Chapter 7.3 Linting your problems (182 lines) with static checks table (PGML tag
+  wrappers in variables, HTML without *, MODES in eval blocks, TeX color macros, blocked HTML
+  tags, ordered list label patterns), structural checks table (DOCUMENT/ENDDOCUMENT, BEGIN/END
+  PGML matching, eval block balance), renderer-based lint workflow using lint_pg_via_renderer_api.py
+  with -r and -s flags, and a seven-step lint workflow. Content sourced from
+  PGML_LINTER_EXPECTATIONS.md and HOW_TO_LINT.md.
+- Wrote Chapter 7.4 Testing randomization and edge cases (183 lines) covering seed-sweep
+  methodology, five guard patterns (zero denominators with non_zero_random, repeated values,
+  invalid domains, sorted hash keys, shuffle-after-define), boundary value testing for biology
+  domains (concentrations, probabilities, pH, rates, percentages), and a six-row checklist table
+  of common randomization failures. Content sourced from RANDOMIZATION_REFERENCE.md and
+  PG_COMMON_PITFALLS.md.
+- Wrote Chapter 7.5 QA checklist before publishing (203 lines) with two checklists adapted from
+  PG_COMMON_PITFALLS.md and WEBWORK_PROBLEM_AUTHOR_GUIDE.md. Prevention checklist table (12 rows)
+  covers code-level checks (variable definition order, my keyword on PGML variables, backslash
+  references, use statements, asterisk parsing, HTML variable syntax, loops in BEGIN_TEXT, hash key
+  sorting, shuffle timing, blocked HTML tags, required macros, DOCUMENT/ENDDOCUMENT). Author
+  checklist table (9 rows) covers student-facing checks (multiple variants, question-grader
+  agreement, correct/wrong answer testing, edge cases, course-local dependencies, inline
+  evaluators, solution block, units/rounding). Includes debugging note template, "ready to
+  publish" criteria, and quick sanity test.
+- Wrote Chapter 7.6 Scripting and automation (220 lines) condensed from the old Chapter 7.2 API
+  documentation. Covers API endpoints table (/, /render-api, /health), parameter precedence with
+  table (problemSourceURL > problemSource > sourceFilePath), curl example with form-encoded POST,
+  Python render function with error/warning reporting, batch linting pattern using os.walk,
+  response format table (renderedHTML, flags.error_flag, debug.pg_warn, answers), and success
+  checking code pattern. Written for advanced users comfortable with command-line tools.
+
+### Structural changes
+- Renamed Chapter 7 folder from `07_Local_Testing_with_webwork_pg_renderer` to
+  `07_Testing_and_Debugging` to reflect the broader scope of the rewritten chapter.
+- Renamed `7.1-Quickstart_and_editor_workflow.html` to `7.1-Setting_up_and_first_render.html`,
+  `7.2-API_usage_for_scripts.html` to `7.2-Common_mistakes_and_how_to_fix_them.html`, and
+  `7.3-Testing_habits_and_troubleshooting.html` to `7.3-Linting_your_problems.html`.
+- Added three new files: `7.4-Testing_randomization_and_edge_cases.html`,
+  `7.5-QA_checklist_before_publishing.html`, and `7.6-Scripting_and_automation.html`.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` with new Chapter 7 section covering all seven
+  pages (7.0 through 7.6) with updated folder paths, file names, and three-sentence summaries.
+- Total chapter size grew from approximately 640 lines (4 pages) to approximately 1,690 lines
+  (7 pages), with content sourced from PG_COMMON_PITFALLS.md, PGML_LINTER_EXPECTATIONS.md,
+  RANDOMIZATION_REFERENCE.md, WEBWORK_PROBLEM_AUTHOR_GUIDE.md, PG_2_17_RENDERER_MACROS.md,
+  and HOW_TO_LINT.md.
+
 ## 2026-01-28
 
 ### Content expansion (high-priority pages)
