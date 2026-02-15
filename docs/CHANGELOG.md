@@ -2,6 +2,49 @@
 
 ## 2026-02-15
 
+### Summary refresh for TEXTBOOK_PAGE_SUMMARIES.md
+- Polished 14 of 63 page summaries in `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` after comparing
+  existing text against fresh summaries generated independently from the HTML source files.
+- Chapter 1 (6 updates): added specific content types (concentrations, dilutions, fold-change),
+  named comparison targets (H5P, LMS-native), expanded platform terms (OPL, Commons, Insight,
+  Studio), added OPL life-science content caveat, and more specific copy-edit guidance.
+- Chapter 5 (7 updates): added widget and implementation details previously missing from
+  summaries (RadioButtons, PopUp widgets, DraggableProof with legacy Print/ANS, string Context,
+  Compute tolerance, named variables for inline blanks, RadioButtons fallback for checkbox
+  unavailability in PG 2.17).
+- Chapter 6 (1 update): added YAML statement banks and conflict groups to 6.6 summary.
+- Improved SEO tags across updated entries to be more specific and unique per page.
+- No changes to Chapters 2, 3, 4, 7, 8, or 90 (existing summaries already matched HTML content).
+
+### Textbook PDF build tooling
+- Added `tools/textbook_html_to_pdf.py` to render all `Textbook/*/*.html` pages to per-page PDFs
+  with headless `weasyprint`, then merge them in order with `cpdf` into one compiled textbook PDF.
+- Simplified the script to minimal argparse: only `-o/--output` remains; default output is
+  `./<cwd_name>.pdf` (for this repo, `webwork-pgml-libretexts-adapt-texbook.pdf`).
+- Switched input detection to auto-resolve repo root using `tests/git_file_utils.py`
+  (`get_repo_root()`), then read from `<repo_root>/Textbook`.
+- Switched temporary build storage to the system temp directory via `tempfile.TemporaryDirectory`
+  (no persistent build cache folder in repo).
+- Kept source HTML untouched while using temporary rewritten HTML (base tag insertion and stripped
+  relative links) for PDF rendering compatibility.
+- Added an explicit per-page header in temporary HTML (`chapter/file.html`) so the first page of
+  each rendered section is clearly labeled in the merged PDF.
+- Set default temporary render CSS to `body { font-size: 12pt; }` so compiled PDF body text uses
+  a consistent 12pt baseline.
+- Updated default render font to Times-style serif while keeping 12pt baseline so print sizing
+  looks more natural.
+- Added syntax highlighting for temporary `<pre>` code blocks using Pygments and set code block
+  font sizing to 11pt monospace in the compiled PDF.
+- Set code-block syntax highlighting to default Perl lexer (no auto-guessing) to keep PG/PGML
+  variable coloring stable (for example `$a`, `$b`, `$ans`).
+- Strengthened default CSS precedence by injecting render styles at the end of `<head>` and
+  applying `!important` rules for 12pt body text and 11pt code blocks.
+- Further tightened code-block sizing by forcing 11pt on all nested syntax-token spans (`pre *`,
+  `code *`) and switching to a visually smaller Courier-style monospace stack.
+- Produced `webwork-pgml-libretexts-adapt-texbook.pdf` (205 pages via WeasyPrint).
+- Auto-fixed a pre-existing whitespace issue by adding a final newline to
+  `Textbook/The_ADAPT_WeBWorK_Handbook.reremix.json` (triggered by `tests/test_whitespace.py`).
+
 ### Cross-references and CSV page map
 - Updated `Textbook/Using_WeBWork_in_ADAPT-Map.csv` with corrected section numbers (shifted Ch 2
   and Ch 4 to reflect inserted 2.2 and 4.2 sections), updated "New Page" titles across Chapters
@@ -111,6 +154,52 @@
 - Verified chapter filename coverage against `Textbook/The_ADAPT_WeBWorK_Handbook.reremix.csv`
   for Chapters 6 through 8 (no missing or extra files).
 - Re-ran HTML lint after all renames and placeholder creation (`OK: linted 63 HTML files`).
+
+### Index tooling
+- Added `tools/extract_textbook_yake_keywords.py` to run YAKE keyword extraction across
+  `Textbook/**/*.html` and write two CSV outputs:
+  `output/yake_keywords_by_page.csv` (per-reference terms) and
+  `output/yake_index_candidates.csv` (aggregated index candidates filtered by paragraph-reference count).
+- Simplified argparse to the frequently changed options only (input/output paths, top-k, and min/max references),
+  and removed the page/paragraph switch so paragraph is the fixed reference unit.
+- Updated aggregate counting to use raw paragraph-hit counts per candidate term (algorithmic filtering), so
+  ubiquitous title-level terms are excluded by the min/max reference window without a hard-coded exclude list.
+- Updated YAKE missing-dependency guidance in the script to use the repo workflow:
+  `source source_me.sh && python -m pip install yake`.
+- Improved candidate quality with algorithmic post-processing:
+  canonical singular/plural grouping, corpus-based low-information filtering, and
+  subphrase deduplication when two terms point to identical references.
+- Updated single-word candidate handling to keep only technical/code-like tokens
+  (for example mixed-case identifiers), reducing generic one-word noise without a
+  manual project-specific exclude list.
+- Excluded chapter index pages (`*-Index.html`) from extraction so repeated
+  navigation boilerplate does not dominate index candidates.
+- Added a minimum paragraph length gate (8+ words) so short boilerplate/list
+  fragments are not treated as index references.
+- Tightened default aggregate candidate thresholds for manual review:
+  `--min-docs` now defaults to 3 and candidates must appear on at least
+  2 distinct pages.
+- Changed aggregate ranking from frequency-first to an index-worthiness score
+  that balances reference-count range, term specificity, and term shape.
+- Added `tier` (`A`, `B`, `C`) and `index_score` columns in aggregate output to
+  support faster manual curation.
+- Added automatic shortlist output:
+  `output/yake_index_shortlist.csv` (top `A`/`B` candidates by score).
+- Added an editorial/meta penalty model and placeholder-term suppression so
+  non-index boilerplate phrases are deprioritized or removed from shortlist.
+- Updated aggregate sorting priority to tier and index-worthiness score,
+  then reference/page coverage and YAKE score.
+
+### Python command policy update
+- Updated `AGENTS.md` environment guidance to explicitly require the bootstrap pattern
+  `source source_me.sh && python ...` for repo Python commands and to avoid hard-coded
+  `/opt/homebrew/opt/python@3.12/bin/python3.12` in routine run commands.
+- Updated `docs/PYTHON_STYLE.md` Python execution examples to use
+  `source source_me.sh && python ...`.
+- Updated `docs/REPO_STYLE.md` scripts section to codify the same bootstrap command pattern for
+  repo-local Python usage.
+- Updated `source_me.sh` to check for `BASH_VERSION`, print `use bash for your shell`, and exit
+  early for all non-bash shells before sourcing `.bashrc`.
 
 ## 2026-02-14
 

@@ -31,5 +31,7 @@ Run the local HTML lint checker when editing textbook HTML:
 - `tests/run_html_lint.sh`
 
 ## Environment
-Codex must run Python using `/opt/homebrew/opt/python@3.12/bin/python3.12` (use Python 3.12 only).
+Codex must run Python 3.12 using the repo bootstrap command pattern:
+- `source source_me.sh && python ...`
+Do not hard-code `/opt/homebrew/opt/python@3.12/bin/python3.12` in routine run commands.
 On this user's macOS (Homebrew Python 3.12), Python modules are installed to `/opt/homebrew/lib/python3.12/site-packages/`.

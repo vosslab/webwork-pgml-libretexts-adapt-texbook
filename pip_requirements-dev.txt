@@ -7,3 +7,5 @@ playwright
 pyflakes  # static analysis lint checks
 pytest  # automated test runner
 rich  # formatted terminal output in developer tools
+WeasyPrint
+yake
