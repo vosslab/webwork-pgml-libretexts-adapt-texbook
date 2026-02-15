@@ -87,6 +87,31 @@
   with content sourced from 15 documentation files in biology-problems/docs/webwork/ and
   biology-problems/problems/.
 
+### Reremix rename alignment
+- Added `tools/rename_textbook_reremix_filenames.sh` with explicit `git mv` commands to align
+  local textbook filenames with the new reremix section titles and ordering from
+  `Textbook/The_ADAPT_WeBWorK_Handbook.reremix.csv`.
+- Added `tools/rename_textbook_reremix_titlecase_filenames.sh` with explicit `git mv` commands
+  to normalize case and match reremix title casing exactly in filenames.
+- Renamed Chapter 6 files to full title-based filenames and updated section numbering order:
+  6.3 (Making Graphs), 6.4 (Advanced Randomization Techinques), 6.5 (Randomized Matching
+  Problems), and 6.6 (Randomized MC True/False Statements).
+- Renamed Chapter 7 files to full title-based filenames and updated section numbering order:
+  7.1 (Simple Syntax Checking/Linting), 7.2 (Setting Up the PG Renderer), 7.3 (Scripting and
+  Automation of the PG Renderer), 7.4 (Common Mistakes), 7.5 (Testing Randomization), and
+  7.6 (QA Checklist).
+- Added new Chapter 8 placeholder files under
+  `Textbook/08_Using_AI_Agents_to_Write_WeBWorK/` for sections 8.0 through 8.4.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to match renamed Chapter 6 and Chapter 7 paths,
+  and added Chapter 8 summary entries for the new placeholders.
+- Updated `README.md` chapter entry points and chapter map to include the current Chapter 6, Chapter 7,
+  and new Chapter 8 locations.
+- Updated `docs/FILE_STRUCTURE.md` chapter directory map to replace obsolete Chapter 6 and add
+  Chapters 7 and 8.
+- Verified chapter filename coverage against `Textbook/The_ADAPT_WeBWorK_Handbook.reremix.csv`
+  for Chapters 6 through 8 (no missing or extra files).
+- Re-ran HTML lint after all renames and placeholder creation (`OK: linted 63 HTML files`).
+
 ## 2026-02-14
 
 ### Chapter 7 enrichments

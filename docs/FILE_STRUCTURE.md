@@ -21,7 +21,9 @@
   - `03_PGML_PG_Markup_Language/`: Chapter 3 pages (PGML authoring patterns).
   - `04_Breaking_Down_the_Components/`: Chapter 4 index page.
   - `05_Different_Question_Types/`: Chapter 5 pages (question types plus ADAPT workflow and QA).
-  - `06_Subject-Specific_Applications/`: Chapter 6 pages (biology-first subject patterns).
+  - `06_Advanced_PGML_Techniques/`: Chapter 6 pages (advanced PGML techniques).
+  - `07_Testing_and_Debugging/`: Chapter 7 pages (linting, renderer setup, scripting, and QA).
+  - `08_Using_AI_Agents_to_Write_WeBWorK/`: Chapter 8 pages (AI-agent workflow content).
   - `90_Appendices/`: appendices (templates, cheat sheet, glossary, troubleshooting).
   - `TEXTBOOK_PAGE_SUMMARIES.md`: one-entry-per-page summaries used for planning and navigation support.
 - `docs/`

@@ -52,8 +52,9 @@ references live here (and in `Links/`).
 - `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`
 - `Textbook/04_Breaking_Down_the_Components/4.0-Index.html`
 - `Textbook/05_Different_Question_Types/5.0-Index.html`
-- `Textbook/06_Subject-Specific_Applications/6.0-Index.html`
-- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.0-Index.html`
+- `Textbook/06_Advanced_PGML_Techniques/6.0-Index.html`
+- `Textbook/07_Testing_and_Debugging/7.0-Index.html`
+- `Textbook/08_Using_AI_Agents_to_Write_WeBWorK/8.0-Index.html`
 - `Textbook/90_Appendices/90.0-Index.html`
 
 ## Chapter map (current)
@@ -62,8 +63,9 @@ references live here (and in `Links/`).
 - 03 PGML: the core authoring layer (blanks, lists, tables, and a small "escape hatch").
 - 04 Worked example: a complete copy-and-edit PGML-first life-science problem.
 - 05 ADAPT workflow and question types: interaction patterns plus workflow habits and QA checks.
-- 06 Different subjects: biology-first pattern catalog and subject adaptations.
-- 07 Local testing: preview and debug PG/PGML problems with a tight edit-preview loop.
+- 06 Advanced PGML techniques: richer patterns including emphasis, tables, graphs, randomization, and structure rendering.
+- 07 Testing and debugging: linting, renderer setup, scripting, edge-case checks, and QA checklists.
+- 08 Using AI agents to write WeBWorK: chapter scaffold for AI-assisted authoring workflows.
 - 90 Appendices: templates, cheat sheets, glossary, troubleshooting, and "further techniques".
 
 ## LibreTexts authoring rules (high importance)
