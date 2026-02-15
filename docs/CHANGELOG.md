@@ -2,6 +2,38 @@
 
 ## 2026-02-15
 
+### Sibling repo content mining
+- Created `output/repo_mining/` with 9 structured reports (2,946 lines, 193KB total) mining all 8
+  sibling repos for textbook-relevant content.
+- Individual reports: `biology_problems.md`, `webwork_pgml_opl_training_set.md`, `pg_v2_17.md`,
+  `webwork_pgml_linter.md`, `webwork_pg_renderer.md`, `webwork_open_problem_library.md`,
+  `biology_problems_website.md`, `qti_package_maker.md`.
+- Consolidated `SYNTHESIS.md` with per-chapter findings, 20 priority actions, 10 content gaps,
+  per-repo value summaries, and cross-repo synergy analysis.
+
+### New Section 2.7: Future PG Version Features
+- Created `Textbook/02_Problem_Generation_PG/2.7-Future_PG_Version_Features.html` documenting PG
+  features from versions 2.18, 2.19, and 2.20 that are not yet available in ADAPT.
+- Content sourced from `biology-problems/docs/webwork/PG_2.19_to_2.16_features.txt` (OpenWeBWorK
+  wiki release notes for WW 2.16–2.19).
+- Includes workaround-to-replacement mapping table showing what changes when ADAPT upgrades
+  (CheckboxList replaces RadioButtons fallback, DropDown replaces PopUp, PGML div/span syntax
+  replaces MODES wrappers, native PGML images, plotly3D, TikZ).
+- PG 2.20 section populated with plots.pl, contextUnits.pl, contextExtensions.pl, GraphTool
+  improvements, contextReaction.pl updates, HTML in DropDown items, and breaking changes
+  (custom_problem_grader_0_60_100 removed).
+- Added PG 2.19 breaking changes (PopUp integer handling) and deprecations (compoundProblem.pl).
+- Updated Ch2 index (2.0) with new task-first entry for Section 2.7.
+- Updated `TEXTBOOK_PAGE_SUMMARIES.md` with summary and SEO tags for Section 2.7.
+
+### Internal link fixes
+- Converted ~30 bare "Section X.X" text references to proper `/@go/page/` hyperlinks across
+  8 files (2.0, 2.1, 2.4, 4.0, 4.2, 5.9, 6.4, 7.0, 7.6).
+- Fixed page IDs in Section 2.7 cross-references to match textbook display numbering convention.
+- Confirmed zero TBD links remain in the textbook.
+- Audit found Ch6 has the same display-vs-file numbering discrepancy as Ch7 (sections 6.3-6.6
+  are reordered in the textbook display order vs LibreTexts file paths).
+
 ### Summary refresh for TEXTBOOK_PAGE_SUMMARIES.md
 - Polished 14 of 63 page summaries in `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` after comparing
   existing text against fresh summaries generated independently from the HTML source files.
