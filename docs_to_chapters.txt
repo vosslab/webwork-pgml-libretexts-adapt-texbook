@@ -1,0 +1,90 @@
+
+read /Users/vosslab/nsh/PROBLEMS/webwork-pgml-libretexts-adapt-texbook/docs_to_chapters.txt
+
+I want to make the book feel more complete and accessible to instructors with minor coding experience. We will
+need a strategy to add images and screenshots. So use the content in
+/Users/vosslab/nsh/PROBLEMS/webwork-pgml-libretexts-adapt-texbook/docs_to_chapters.txt to expand the book
+
+many of the docs in /Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/ contribute to specific subchapters, I listed them below. /webwork-writer /read-repo-rules /manager-make-new-plan /parallel-plan
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/WEBWORK_PROBLEM_AUTHOR_GUIDE.md
+->
+Textbook/02_Problem_Generation_PG/2.1-Introduction_to_PG_Language.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/WEBWORK_HEADER_STYLE.md
+goes to ->
+Textbook/02_Problem_Generation_PG/2.2-OPL_header_and_metadata.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/PG_2_17_RENDERER_MACROS.md
+goes to ->
+Textbook/02_Problem_Generation_PG/2.5-Common_PG_Macros.html
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/PGML_LINTER_EXPECTATIONS.md
+goes to ->
+Chapter 3: PGML (PG Markup Language)
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/WEBWORK_HEADER_STYLE.md
+goes to ->
+Textbook/04_Breaking_Down_the_Components/4.2-OPL_Header.html
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/PGML_QUESTION_TYPES.md
+->
+Chapter 5: Different Question Types in WeBWorK
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/QUESTION_STATEMENT_EMPHASIS.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/COLOR_CLASS_MIGRATION_PLAN.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/COLOR_TEXT_IN_WEBWORK.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.1-Coloring_text_and_emphasis.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/NICETABLES_TRANSLATION_PLAN.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.2-Tables_with_niceTables.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/MATCHING_PROBLEMS.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/matching_sets/MATCHING_SET_AUTHORING_GUIDE.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.3-Matching_problems.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/multiple_choice_statements/MC_STATEMENTS_AUTHORING_GUIDE.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.4-Multiple_choice_statements.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/RANDOMIZATION_REFERENCE.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.5-Advanced_randomization_patterns.html
+
+----
+new chapter 6 subchapters:
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/HOW_TO_MAKE_GRAPHS.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.6_Making_graphs.html
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/biochemistry-problems/PUBCHEM/README_PUBCHEM_PGML.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/biochemistry-problems/PUBCHEM/README_PUBCHEM_BPTOOLS.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/biochemistry-problems/PUBCHEM/PUBCHEM_PGML_SYNTAX_NOTES.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/problems/biochemistry-problems/PUBCHEM/PGML_PUBCHEM_CONVERSION_SUMMARY.md
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/RDKIT_MOLECULAR_STRUCTURES.md
+->
+Textbook/06_Advanced_PGML_Techniques/6.7_Rendering_chemical_structures.html
+
+----
+
+/Users/vosslab/nsh/PROBLEMS/biology-problems/docs/webwork/PG_COMMON_PITFALLS.md
+->
+Textbook/07_Testing_and_Debugging/7.2-Common_mistakes_and_how_to_fix_them.html
+
+----
+

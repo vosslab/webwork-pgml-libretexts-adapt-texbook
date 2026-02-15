@@ -49,9 +49,19 @@ Use the templates in Appendix 90.1 as your starting point so you do not forget r
 			<td data-th="Why it matters">Primary classification tags for the Open Problem Library.</td>
 		</tr>
 		<tr>
+			<td data-th="Field"><code>Level(...)</code></td>
+			<td data-th="Status">Required</td>
+			<td data-th="Why it matters">Bloom's taxonomy level (1-6) for difficulty classification.</td>
+		</tr>
+		<tr>
 			<td data-th="Field">Attribution fields</td>
 			<td data-th="Status">Recommended</td>
 			<td data-th="Why it matters">Credits authors and institutions for long-term reuse.</td>
+		</tr>
+		<tr>
+			<td data-th="Field"><code>Language(en)</code></td>
+			<td data-th="Status">Required</td>
+			<td data-th="Why it matters">ISO 639-1 code specifying the problem language.</td>
 		</tr>
 	</tbody>
 </table>
@@ -66,9 +76,11 @@ Use the templates in Appendix 90.1 as your starting point so you do not forget r
 ## DBsubject('Biochemistry')
 ## DBchapter('Enzymes')
 ## DBsection('Kinetics basics')
+## Level(2)
 ## Date('2026-01-28')
 ## Author('Author name')
 ## Institution('Institution name')
+## Language(en)
 </pre>
 
 <h2>TITLE field guidance</h2>
@@ -258,6 +270,90 @@ values that fit life science courses and match existing usage in your repository
 	<li><strong>Does it match existing usage?</strong> Search your repository for similar problems and copy the exact DBsubject string to maintain consistency.</li>
 </ol>
 
+<h3>Full list of biology-appropriate DBsubject values</h3>
+<p>
+Use these DBsubject values for life science content. If a new subject is needed, add it to the
+list so tags remain consistent across the repository.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 40%;">
+		<col style="width: 60%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>DBsubject value</th>
+			<th>When to use</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="DBsubject value"><code>Anatomy and Physiology</code></td>
+			<td data-th="When to use">Organ systems, body structures, physiological processes</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biochemistry</code></td>
+			<td data-th="When to use">Enzyme kinetics, metabolism, protein structure, buffers</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Bioinformatics and Computational Biology</code></td>
+			<td data-th="When to use">Sequence analysis, phylogenetics, computational methods</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biomedical Sciences</code></td>
+			<td data-th="When to use">Disease mechanisms, pharmacology, clinical applications</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Biostatistics</code></td>
+			<td data-th="When to use">Statistical tests, experimental design, data analysis</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Cell Biology</code></td>
+			<td data-th="When to use">Organelles, transport, signaling, cell cycle</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>DNA Profiling</code></td>
+			<td data-th="When to use">Forensic DNA analysis, STR markers, electrophoresis patterns</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Ecology</code></td>
+			<td data-th="When to use">Population dynamics, ecosystems, biodiversity</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Evolution</code></td>
+			<td data-th="When to use">Natural selection, phylogenetics, population genetics</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Immunology</code></td>
+			<td data-th="When to use">Immune responses, antibodies, vaccines, immunoassays</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Inheritance Genetics</code></td>
+			<td data-th="When to use">Inheritance patterns, Punnett squares, linkage, pedigrees</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Laboratory Techniques</code></td>
+			<td data-th="When to use">Dilutions, spectrophotometry, gel electrophoresis, qPCR</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Microbiology</code></td>
+			<td data-th="When to use">Bacteria, viruses, microbial growth, antimicrobials</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Molecular Biology</code></td>
+			<td data-th="When to use">DNA replication, transcription, translation, gene regulation</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Neuroscience</code></td>
+			<td data-th="When to use">Neural signaling, brain structure, synaptic transmission</td>
+		</tr>
+		<tr>
+			<td data-th="DBsubject value"><code>Organismic Biology</code></td>
+			<td data-th="When to use">Whole-organism biology, plant biology, animal biology</td>
+		</tr>
+	</tbody>
+</table>
+
 <h3>Complete classification examples</h3>
 
 <p><strong>Example 1: Dilution problem</strong></p>
@@ -280,6 +376,161 @@ values that fit life science courses and match existing usage in your repository
 ## DBchapter('Mendelian inheritance')
 ## DBsection('Dihybrid crosses')
 </pre>
+
+<h2>Problem level: Bloom's taxonomy scale</h2>
+<p>
+The <code>Level(...)</code> field uses a 1-6 scale aligned to Bloom's revised taxonomy:
+Remember, Understand, Apply, Analyze, Evaluate, Create. This field is required for
+problems in the biology-problems repository.
+</p>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 10%;">
+		<col style="width: 18%;">
+		<col style="width: 30%;">
+		<col style="width: 42%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Level</th>
+			<th>Bloom's category</th>
+			<th>Verbs</th>
+			<th>Biology example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Level">1</td>
+			<td data-th="Bloom's category">Remember</td>
+			<td data-th="Verbs">recall, define, label, list, match, identify</td>
+			<td data-th="Biology example">"Which amino acid has a sulfur atom in its side chain?"</td>
+		</tr>
+		<tr>
+			<td data-th="Level">2</td>
+			<td data-th="Bloom's category">Understand</td>
+			<td data-th="Verbs">explain, summarize, interpret, classify, compare</td>
+			<td data-th="Biology example">"Classify this molecule as a carbohydrate, lipid, protein, or nucleic acid."</td>
+		</tr>
+		<tr>
+			<td data-th="Level">3</td>
+			<td data-th="Bloom's category">Apply</td>
+			<td data-th="Verbs">apply, use, determine, solve, choose</td>
+			<td data-th="Biology example">"Using the genetic code table, translate this mRNA sequence."</td>
+		</tr>
+		<tr>
+			<td data-th="Level">4</td>
+			<td data-th="Bloom's category">Analyze</td>
+			<td data-th="Verbs">analyze, compare, contrast, categorize, infer</td>
+			<td data-th="Biology example">"Analyze this gel electrophoresis result to determine which protein is largest."</td>
+		</tr>
+		<tr>
+			<td data-th="Level">5</td>
+			<td data-th="Bloom's category">Evaluate</td>
+			<td data-th="Verbs">evaluate, justify, critique, defend</td>
+			<td data-th="Biology example">"Justify why an Arg-Glu-Asp peptide would be more soluble than Leu-Val-Ile at pH 7.0."</td>
+		</tr>
+		<tr>
+			<td data-th="Level">6</td>
+			<td data-th="Bloom's category">Create</td>
+			<td data-th="Verbs">design, propose, formulate, develop, create</td>
+			<td data-th="Biology example">"Design a peptide sequence that would be maximally soluble at pH 7.0."</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Level assessment tips</h3>
+<ul>
+	<li><strong>Level 1 (Remember):</strong> Direct recall, no inference or multi-step reasoning needed. Asking for definitions, names, or lists.</li>
+	<li><strong>Level 2 (Understand):</strong> Requires understanding and classification, but necessary reference values are given.</li>
+	<li><strong>Level 3 (Apply):</strong> Direct application of rules or formulas with clear instructions and provided data.</li>
+	<li><strong>Level 4 (Analyze):</strong> Student must infer relationships, analyze multiple factors, or synthesize information from different knowledge domains.</li>
+	<li><strong>Level 5 (Evaluate):</strong> Requires defending a conclusion, evaluating competing explanations, or justifying choices based on multiple criteria.</li>
+	<li><strong>Level 6 (Create):</strong> Requires synthesizing knowledge to create novel solutions, designs, or models.</li>
+</ul>
+
+<h3>Level format</h3>
+<pre>
+## Level(3)
+</pre>
+
+<h2>Language field</h2>
+<p>
+Use ISO 639-1 language codes to specify the problem language. This field is required.
+For English, use:
+</p>
+<pre>
+## Language(en)
+</pre>
+
+<h2>Attribution and provenance fields</h2>
+<p>
+These fields credit authors, track provenance, and clarify licensing. They are recommended
+for all problems and required for adapted content.
+</p>
+
+<h3>Minimal recommended set</h3>
+<pre>
+## Date('2026-01-28')
+## Author('Dr. Neil R. Voss')
+## Institution('Roosevelt University')
+</pre>
+
+<h3>Rules for attribution</h3>
+<ul>
+	<li>If the problem is adapted, also state that in DESCRIPTION (e.g., "Adapted from ...").</li>
+	<li>Use a real date when known. Prefer ISO format: YYYY-MM-DD.</li>
+	<li>Empty strings are acceptable when you do not know the details, but do not invent information.</li>
+</ul>
+
+<h3>Textbook provenance fields</h3>
+<p>
+Use these when the problem is adapted from a textbook, worksheet, or other source. Number the
+tags (TitleText1, TitleText2, etc.) to map to multiple texts when appropriate.
+</p>
+<pre>
+## TitleText1('Title of source')
+## EditionText1('Edition')
+## AuthorText1('Author(s)')
+## Section1('Section identifier')
+## Problem1('Problem identifier')
+</pre>
+
+<h2>License comments</h2>
+<p>
+OPL does not define a standard license tag. Use plain comment lines (single <code>#</code>, not
+<code>##</code>) to state licensing for the problem text and any included images or code.
+</p>
+<pre>
+# This work is licensed under CC BY 4.0 (Creative Commons Attribution 4.0
+# International License).
+# https://creativecommons.org/licenses/by/4.0/
+# Source code portions are licensed under LGPLv3.
+</pre>
+
+<h2>Tagging quality rules</h2>
+<ol>
+	<li>DBsubject reflects the discipline and course area, not the scenario.</li>
+	<li>KEYWORDS reflect methods and concepts, not superficial nouns.</li>
+	<li>Use consistent capitalization and spelling across the corpus.</li>
+	<li>Prefer stable, existing label strings over "better" new strings.</li>
+	<li>Avoid "meta noise" labels like <code>WeBWorK</code> or <code>ZZZ-Inserted Text</code> in new content.</li>
+</ol>
+
+<h2>Header review checklist</h2>
+<p>
+Before publishing a problem, verify the following:
+</p>
+<ul>
+	<li>DESCRIPTION exists and is short, accurate, and code-free.</li>
+	<li>KEYWORDS exist and are concept-focused (3-5 terms).</li>
+	<li>DBsubject uses an existing repo string from the local list.</li>
+	<li>DBchapter and DBsection are present (no empty strings).</li>
+	<li>Level is set using the 1-6 Bloom's taxonomy scale.</li>
+	<li>Author and Date are present when known.</li>
+	<li>Language(en) is present.</li>
+	<li>No smart quotes or non-ASCII characters in header lines.</li>
+</ul>
 
 <h2>Complete worked examples</h2>
 <p>

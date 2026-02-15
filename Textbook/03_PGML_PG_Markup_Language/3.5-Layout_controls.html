@@ -84,6 +84,15 @@ checked, or interpreted, it is usually a sign that the structure should be simpl
 refined. Clear structure matters more than visual polish.
 </p>
 
+<h2>Raw HTML and variable output</h2>
+<p>
+When a Perl variable contains HTML tags (such as <code>&lt;span&gt;</code> or
+<code>&lt;div&gt;</code>), PGML escapes them by default. To preserve the HTML, use the raw
+pass-through marker: <code>[$var]*</code>. Without the trailing asterisk, the student sees
+literal angle brackets instead of styled output. This is the same asterisk used after
+<code>[@ ... @]*</code> eval blocks.
+</p>
+
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
 	<li>If grading is failing, go back to Section 3.2.</li>

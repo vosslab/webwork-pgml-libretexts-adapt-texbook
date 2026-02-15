@@ -150,6 +150,11 @@ my $idx = random(0, 3, 1);
 $rb = RadioButtons([@choices], $choices[$idx]);
 </pre>
 <table class="mt-responsive-table">
+	<colgroup>
+		<col>
+		<col>
+		<col>
+	</colgroup>
 	<thead>
 		<tr>
 			<th>Keyword</th>
@@ -164,12 +169,27 @@ $rb = RadioButtons([@choices], $choices[$idx]);
 			<td data-th="Use for">Variables displayed or graded in PGML</td>
 		</tr>
 		<tr>
+			<td data-th="Keyword"><code>local $var = ...</code></td>
+			<td data-th="PGML visible?">Yes</td>
+			<td data-th="Use for">Temporary override of a package variable inside a block</td>
+		</tr>
+		<tr>
 			<td data-th="Keyword"><code>my $var = ...</code></td>
 			<td data-th="PGML visible?">No</td>
 			<td data-th="Use for">Helper variables, loop counters, temporary computation</td>
 		</tr>
 	</tbody>
 </table>
+
+<h3>Why <code>local</code> works but <code>my</code> does not</h3>
+<p>
+Authors who know that <code>my</code> is "more modern" than <code>local</code> sometimes avoid
+<code>local</code> entirely. In PG, the two keywords have critically different PGML visibility.
+<code>local</code> temporarily modifies a package variable, so it stays in the symbol table and
+PGML can still find it. <code>my</code> creates a lexical variable on the Perl pad stack, which is
+invisible to PGML's symbol-table lookup. For PG problems, the simplest approach is to use bare
+package variables (no <code>my</code>, no <code>local</code>) for anything PGML needs to see.
+</p>
 
 <h2>HTML escaping: the <code>[$var]*</code> rule</h2>
 <p>
@@ -212,6 +232,11 @@ the widget function is undefined and the renderer crashes.
 
 <h3>Symptom table: missing macro errors</h3>
 <table class="mt-responsive-table">
+	<colgroup>
+		<col>
+		<col>
+		<col>
+	</colgroup>
 	<thead>
 		<tr>
 			<th>Widget or feature</th>
@@ -504,12 +529,152 @@ BEGIN_TEXT
 END_TEXT
 </pre>
 
+<h2>Answer field naming</h2>
+<p>
+<strong>Symptom:</strong> The answer is always marked wrong, or grading silently fails.
+</p>
+<p>
+<strong>Cause:</strong> The <code>ANS()</code> function expects an answer field created by
+<code>ans_rule()</code>. When you create a hidden input with JavaScript or raw HTML, its
+<code>name</code> attribute does not match the name that <code>ANS()</code> is looking for
+(e.g., <code>AnSwEr0001</code>). The answer evaluator and the input field never connect.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+ANS(str_cmp($answer));  # Looks for AnSwEr0001
+# But JS or HTML creates an input with a different name -- no connection!
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+BEGIN_TEXT
+\{ MODES(HTML =&gt; '&lt;div style="display:none;"&gt;' . ans_rule(20) . '&lt;/div&gt;', TeX =&gt; '') \}
+END_TEXT
+ANS(str_cmp($answer));
+</pre>
+<p>
+<strong>The rule:</strong> <code>ans_rule()</code> creates the input field that <code>ANS()</code>
+checks. Always create the <code>ans_rule()</code> first, then call <code>ANS()</code>. When you
+need a custom UI with JavaScript, hide the <code>ans_rule()</code> input and use JavaScript to
+populate its value.
+</p>
+
+<h2>RDKit and SMILES chemistry errors</h2>
+<p>
+If your problems use RDKit to render molecular structures from SMILES strings, incorrect SMILES
+notation can cause silent rendering failures or chemically wrong diagrams.
+</p>
+
+<h3>Incorrect formal charges in ring systems</h3>
+<p>
+<strong>Symptom:</strong> Molecule renders with wrong structure, or RDKit rejects the SMILES
+string entirely.
+</p>
+<p>
+<strong>Cause:</strong> Using incorrect formal charge notation for nitrogen atoms in ring systems
+like imidazole. Writing <code>NH2+</code> implies two hydrogens on one nitrogen, which is
+chemically incorrect for the imidazole ring.
+</p>
+<p><strong>Wrong:</strong></p>
+<pre>
+# NH2+ implies TWO hydrogens on one nitrogen -- wrong for imidazole
+$imidazole_protonated = '...N=C[NH2+]1)...';
+</pre>
+<p><strong>Right:</strong></p>
+<pre>
+# Imidazole has two nitrogens: one NH, one NH+
+$imidazole_protonated = 'C1=C([NH]C=[NH+]1)...';
+</pre>
+<p>
+<strong>Prevention:</strong> Always validate SMILES strings with Python RDKit before embedding them
+in PG problems. A SMILES string that parses without errors can still be chemically wrong, so check
+the rendered structure visually.
+</p>
+
+<h2>Debugging strategies</h2>
+<p>
+When the quick reference table below does not solve your problem, use these strategies to isolate
+the issue systematically.
+</p>
+
+<h3>Check line numbers</h3>
+<p>
+When variables seem empty or undefined, check where the variable is used versus where it is
+defined. Find the usage with a search for the variable name, then find the definition (the line
+with <code>$var_name = ...</code>). The definition line number must be lower (earlier in the file)
+than the usage line number.
+</p>
+
+<h3>Isolate PGML errors with binary search</h3>
+<p>
+When you get <code>'*' was not closed</code> or similar PGML parsing errors:
+</p>
+<ol>
+	<li>Comment out the bottom half of your PGML block.</li>
+	<li>Render the problem. If the error is gone, the problem is in the bottom half.</li>
+	<li>Restore the bottom half and comment out the top half to confirm.</li>
+	<li>Keep splitting the offending half until you find the exact line.</li>
+	<li>Check for <code>*</code>, <code>**</code>, or <code>_</code> near variables on that line.</li>
+</ol>
+
+<h3>Test with a minimal example</h3>
+<p>
+Create the smallest possible problem file that reproduces the error:
+</p>
+<pre>
+DOCUMENT();
+loadMacros("PGstandard.pl", "PGML.pl");
+
+$var = "test";
+
+BEGIN_PGML
+Test: [$var]
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+Add complexity one piece at a time until the problem reappears. The last piece you added is the
+cause.
+</p>
+
+<h3>Check renderer output</h3>
+<p>
+If your local setup supports the <code>-r</code> flag on the renderer script, use it to inspect
+the actual HTML output. Look for HTML that was escaped when it should not have been
+(<code>&amp;lt;</code> instead of <code>&lt;</code>), missing elements, or structural problems in
+the generated markup.
+</p>
+
+<h2>Prevention checklist</h2>
+<p>
+Before committing a new PG problem file, verify each of these items:
+</p>
+<ul>
+	<li>Variables are defined before use (check line numbers).</li>
+	<li>No <code>my</code> on variables referenced in PGML (<code>$rb</code>, <code>$popup</code>, display variables).</li>
+	<li>No <code>\@</code> or <code>\%</code> references. Use <code>[@array]</code> or <code>~~@array</code> instead.</li>
+	<li>No <code>use</code> statements. Use <code>loadMacros()</code> for PG macros.</li>
+	<li>No <code>*</code> or <code>**</code> immediately around <code>[$variables]</code> in PGML.</li>
+	<li>HTML variables use <code>[$var]*</code> syntax (with the asterisk).</li>
+	<li>No Perl loops inside <code>BEGIN_TEXT...END_TEXT</code> blocks.</li>
+	<li>Hash keys sorted before random selection.</li>
+	<li>Shuffling happens after all items are defined.</li>
+	<li><code>ans_rule()</code> created before <code>ANS()</code> call.</li>
+	<li>SMILES strings validated with RDKit (if applicable).</li>
+	<li>No PGML parsing errors in renderer output.</li>
+</ul>
+
 <h2>Quick reference: error message table</h2>
 <p>
 Use this table to look up the error or symptom you are seeing. Find your row and follow the fix
 in the right column.
 </p>
 <table class="mt-responsive-table">
+	<colgroup>
+		<col>
+		<col>
+		<col>
+	</colgroup>
 	<thead>
 		<tr>
 			<th>Error message or symptom</th>
@@ -569,6 +734,11 @@ in the right column.
 			<td data-th="Fix">Restructure to avoid string eval</td>
 		</tr>
 		<tr>
+			<td data-th="Error message or symptom"><code>'open' trapped by operation mask</code></td>
+			<td data-th="Likely cause">File I/O in PG</td>
+			<td data-th="Fix">Not possible; use PG data macros</td>
+		</tr>
+		<tr>
 			<td data-th="Error message or symptom">Variable shows empty in PGML</td>
 			<td data-th="Likely cause"><code>my $var</code> instead of <code>$var</code></td>
 			<td data-th="Fix">Remove <code>my</code></td>
@@ -609,10 +779,12 @@ of these categories:
 	<li>A blocked HTML tag (switch to <code>niceTables.pl</code>).</li>
 	<li>Variables used before they are defined (move the definition earlier).</li>
 	<li>A backslash reference that does not work in the sandbox (use <code>[@array]</code>).</li>
+	<li>Answer field name mismatches (create <code>ans_rule()</code> before <code>ANS()</code>).</li>
+	<li>SMILES chemistry errors in RDKit problems (validate with Python RDKit).</li>
 </ul>
 <p>
 Start with the quick reference table above. Match your error message to the row, read the fix,
-and apply it. If your problem is still not working, use the debugging strategies in Section 7.1
-to isolate the issue: render with a fixed seed, change one thing at a time, and compare before
-and after.
+and apply it. If your problem is still not working, use the debugging strategies earlier on this
+page to isolate the issue: check line numbers, use binary search on PGML blocks, test with a
+minimal example, and inspect the renderer output.
 </p>

@@ -1,0 +1,566 @@
+<p>
+This page covers how to create graphs in WeBWorK PG/PGML problems. It focuses on
+<code>PGgraphmacros.pl</code>, which produces static GD bitmap images suitable for
+display-only graphs such as titration curves, enzyme kinetics plots, and dose-response data.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need to show a graph in a problem but students answer
+with RadioButtons, PopUp menus, or numeric blanks rather than by clicking on the graph itself.
+</p>
+
+<h2>Which graph macro to use</h2>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 35%;">
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Need</th>
+			<th>Macro</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Need">Display-only graph (titration curve, data plot)</td>
+			<td data-th="Macro"><code>PGgraphmacros.pl</code></td>
+			<td data-th="Notes">GD bitmap image, no answer entry</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Student clicks or draws on graph</td>
+			<td data-th="Macro"><code>parserGraphTool.pl</code></td>
+			<td data-th="Notes">JS canvas, registers an answer entry</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+<strong>Rule of thumb:</strong> if students answer via RadioButtons or other PGML widgets (not by
+clicking the graph), use <code>PGgraphmacros.pl</code>. GraphTool creates a phantom answer entry
+that can interfere with subsequent PGML answer evaluators.
+</p>
+
+<h2>Minimal example with PGgraphmacros</h2>
+
+<p>
+Copy this block into a new problem file, save, and preview. It draws a single sine curve on a
+labeled grid.
+</p>
+
+<pre>
+loadMacros(
+  'PGstandard.pl',
+  'MathObjects.pl',
+  'PGML.pl',
+  'PGgraphmacros.pl',
+  'PGcourse.pl',
+);
+
+# Create graph: init_graph(xmin, ymin, xmax, ymax, ...)
+$gr = init_graph(-1, 0, 10, 14,
+  axes  => [0, 0],
+  grid  => [11, 14],
+  size  => [480, 400],
+);
+
+# Plot a function (string formula, not a code reference)
+add_functions($gr,
+  "2 + 3*sin(x) for x in &lt;0,10&gt; using color:blue and weight:2"
+);
+
+# Render as an image
+$graph_img = image(insertGraph($gr), width => 480, height => 400, tex_size => 700);
+
+BEGIN_PGML
+Here is a graph:
+
+[$graph_img]*
+END_PGML
+</pre>
+
+<p>Key points:</p>
+<ul>
+	<li><code>init_graph</code> returns a GD graph object.</li>
+	<li><code>add_functions</code> takes a <strong>string</strong> formula with
+		<code>for x in &lt;min,max&gt; using color:COLOR and weight:N</code>.</li>
+	<li><code>image(insertGraph($gr), ...)</code> produces an HTML img tag.</li>
+	<li>Use <code>[$graph_img]*</code> in PGML. The asterisk prevents HTML escaping.</li>
+</ul>
+
+<h2>init_graph parameters</h2>
+
+<pre>
+$gr = init_graph($xmin, $ymin, $xmax, $ymax,
+  axes  => [$x_origin, $y_origin],  # where axes cross
+  grid  => [$x_divisions, $y_divisions],  # grid line count
+  size  => [$width_px, $height_px],  # image dimensions
+);
+</pre>
+
+<ul>
+	<li><code>axes =&gt; [0, 0]</code> places the origin at (0, 0).</li>
+	<li><code>grid</code> controls the number of light grid lines (not tick labels).</li>
+	<li><code>size</code> sets the GD image dimensions in pixels.</li>
+</ul>
+
+<h2>Adding labels</h2>
+
+<p>
+Labels are positioned in graph coordinates (not pixel coordinates). The constructor is:
+</p>
+
+<pre>
+new Label($x, $y, $text, $color, $h_align, $v_align)
+</pre>
+
+<p>
+Horizontal alignment: <code>'left'</code>, <code>'center'</code>, <code>'right'</code>.
+Vertical alignment: <code>'top'</code>, <code>'middle'</code>, <code>'bottom'</code>.
+</p>
+
+<h3>Axis labels at edges of the plot area</h3>
+
+<pre>
+$gr->lb(new Label($xmax, $ymin - 0.7, 'x-axis label', 'black', 'right', 'top'));
+$gr->lb(new Label($xmin - 0.1, $ymax, 'y-axis', 'black', 'right', 'top'));
+</pre>
+
+<h3>Tick labels</h3>
+
+<pre>
+# Tick labels on y-axis
+for $yv (0, 2, 4, 6, 8, 10, 12) {
+  $gr->lb(new Label($xmin - 0.08, $yv, $yv, 'black', 'right', 'middle'));
+}
+
+# Tick labels on x-axis
+for $xv (0, 1, 2, 3) {
+  $gr->lb(new Label($xv, $ymin - 0.3, $xv, 'black', 'center', 'top'));
+}
+</pre>
+
+<h2>add_functions syntax and computed coefficients</h2>
+
+<p>The function string format is:</p>
+
+<pre>
+"FORMULA for x in &lt;XMIN,XMAX&gt; using color:COLOR and weight:WEIGHT"
+</pre>
+
+<ul>
+	<li><code>FORMULA</code>: a Perl math expression using <code>x</code> as the variable
+		(e.g., <code>2*x**3 + x - 1</code>).</li>
+	<li><code>&lt;XMIN,XMAX&gt;</code>: domain interval (angle brackets).</li>
+	<li><code>color:COLOR</code>: <code>blue</code>, <code>red</code>, <code>green</code>,
+		<code>black</code>, etc.</li>
+	<li><code>weight:WEIGHT</code>: line thickness in pixels (1, 2, 3, ...).</li>
+</ul>
+
+<p>
+For computed coefficients, interpolate Perl variables into the string:
+</p>
+
+<pre>
+$a = 0.5;
+$b = -1.2;
+$c = 3.0;
+$d = 1.5;
+$func_str = "$a*x**3 + $b*x**2 + $c*x + $d";
+add_functions($gr, "$func_str for x in &lt;0,3&gt; using color:blue and weight:2");
+</pre>
+
+<h2>Multiple curves</h2>
+
+<p>
+Pass multiple formula strings to <code>add_functions</code>. Each string specifies its own
+color and weight.
+</p>
+
+<pre>
+add_functions($gr,
+  "$curve1 for x in &lt;0,10&gt; using color:blue and weight:2",
+  "$curve2 for x in &lt;0,10&gt; using color:red and weight:2",
+);
+</pre>
+
+<h2>Point-by-point curves with moveTo and lineTo</h2>
+
+<p>
+When a formula string cannot express the curve shape (parametric curves, physical models where
+x is not the independent variable), draw point-by-point with <code>moveTo</code> and
+<code>lineTo</code>. Use 300 to 400 points for smooth results.
+</p>
+
+<pre>
+$first_pt = 1;
+for $i (0..400) {
+  $t = $i / 400.0;
+  # compute ($x_val, $y_val) from $t
+  if ($first_pt) {
+    $gr->moveTo($x_val, $y_val);
+    $first_pt = 0;
+  } else {
+    $gr->lineTo($x_val, $y_val, 'blue', 2);
+  }
+}
+</pre>
+
+<p>
+This approach is essential when the x-axis value is a computed function of the sweep variable
+rather than the independent variable itself.
+</p>
+
+<h2>Dashed lines</h2>
+
+<p>
+PGgraphmacros has no built-in dash style. Draw dashes manually as short line segments with gaps:
+</p>
+
+<pre>
+# Horizontal dashed line at y=$pka from x=0 to x=$xeq
+for $d (0..29) {
+  $x1d = $d * 0.10;
+  $x2d = $x1d + 0.05;
+  if ($x1d &lt; $xeq) {
+    if ($x2d > $xeq) { $x2d = $xeq; }
+    $gr->moveTo($x1d, $pka);
+    $gr->lineTo($x2d, $pka, 'gray', 1);
+  }
+}
+</pre>
+
+<p>
+Tune dash length (0.05) and gap (0.05) relative to graph coordinates. For vertical dashes,
+swap x and y in the loop.
+</p>
+
+<h2>Dots and stamps</h2>
+
+<p>
+Use <code>stamps</code> with <code>closed_circle</code> or <code>open_circle</code> to mark
+individual points:
+</p>
+
+<pre>
+# Filled circle at a point
+$gr->stamps(closed_circle($x, $y, 'black'));
+
+# Open circle (hollow)
+$gr->stamps(open_circle($x, $y, 'black'));
+</pre>
+
+<h2>Label sizing: why labels look small</h2>
+
+<p>
+Labels in PGgraphmacros are GD bitmap text. This has important consequences:
+</p>
+
+<ul>
+	<li><code>tex_size</code> on <code>image()</code> only affects TeX/PDF output, not
+		HTML/GD output.</li>
+	<li>TeX size commands (<code>\Large</code>, <code>\huge</code>) in label strings render as
+		literal text in GD, not as formatting.</li>
+	<li><code>GD::Font-&gt;Giant</code> is the largest GD bitmap font (9 by 15 pixels) and is
+		still small.</li>
+	<li><strong>Rendering at 2x and displaying at 1x makes labels half-size.</strong> GD text
+		is fixed-pixel; there is no display-DPI concept.</li>
+</ul>
+
+<h3>GD font sizes</h3>
+
+<p>
+Available via <code>$label-&gt;font(GD::Font-&gt;NAME)</code>:
+</p>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 25%;">
+		<col style="width: 30%;">
+		<col style="width: 45%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Font</th>
+			<th>Pixel size</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Font"><code>Tiny</code></td>
+			<td data-th="Pixel size">5 x 8</td>
+			<td data-th="Notes">Too small for most uses</td>
+		</tr>
+		<tr>
+			<td data-th="Font"><code>Small</code></td>
+			<td data-th="Pixel size">6 x 12</td>
+			<td data-th="Notes">Default in most PG builds</td>
+		</tr>
+		<tr>
+			<td data-th="Font"><code>MediumBold</code></td>
+			<td data-th="Pixel size">7 x 13</td>
+			<td data-th="Notes">Slightly larger</td>
+		</tr>
+		<tr>
+			<td data-th="Font"><code>Large</code></td>
+			<td data-th="Pixel size">8 x 16</td>
+			<td data-th="Notes">Good default choice</td>
+		</tr>
+		<tr>
+			<td data-th="Font"><code>Giant</code></td>
+			<td data-th="Pixel size">9 x 15</td>
+			<td data-th="Notes">Largest available</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+All are fixed-size bitmap fonts. The size difference between Small and Giant is modest.
+</p>
+
+<h3>Pragmatic fixes for readable labels</h3>
+
+<p>
+Keep <code>size</code> at the final display dimensions (no 2x trick). Improve readability
+through layout:
+</p>
+
+<pre>
+# Slightly larger canvas with extra margin for labels
+$gr = init_graph(-0.6, -1.2, 3.4, 12.5,
+  axes => [0, 0],
+  grid => [8, 5],
+  size => [520, 420],
+);
+
+# Axis labels at edges (right-aligned at plot boundary)
+$gr->lb(new Label(3.4, -0.7, 'OH- (equivalents)', 'black', 'right', 'top'));
+$gr->lb(new Label(-0.1, 12.5, 'pH', 'black', 'right', 'top'));
+
+# Fewer tick labels to reduce crowding
+for $yv (0, 2, 4, 6, 8, 10, 12) {
+  $gr->lb(new Label(-0.08, $yv, $yv, 'black', 'right', 'middle'));
+}
+
+$graph_img = image(insertGraph($gr), width => 520, height => 420, tex_size => 700);
+</pre>
+
+<p>Key techniques:</p>
+<ul>
+	<li><strong>Widen graph bounds</strong> beyond data range (<code>-0.6</code> to
+		<code>3.4</code> instead of <code>0</code> to <code>3</code>) to create margin space
+		for labels.</li>
+	<li><strong>Place axis labels at edges</strong> using <code>$xmax</code>/<code>$ymax</code>
+		coordinates with <code>'right', 'top'</code> alignment.</li>
+	<li><strong>Reduce tick label count</strong> to avoid crowding (every 2 or 4 units instead
+		of every 1).</li>
+	<li><strong>Use high contrast</strong> (black text on white background).</li>
+</ul>
+
+<h2>Worked example: triprotic titration curve</h2>
+
+<p>
+A single cubic polynomial <strong>cannot</strong> produce the correct titration curve shape for a
+molecule with three pKa values. A cubic has at most one inflection point, but a 3-pKa titration
+needs three sigmoid steps. The correct approach uses a physical speciation model.
+</p>
+
+<h3>Why not a cubic?</h3>
+
+<p>
+A cubic <code>ax^3 + bx^2 + cx + d</code> through four points:
+</p>
+
+<ul>
+	<li>Has only <strong>one inflection point</strong> -- a triprotic titration needs three
+		sigmoid transitions.</li>
+	<li>Anchors pKa values at integer equivalents (1, 2) instead of the correct
+		half-equivalents (0.5, 1.5, 2.5).</li>
+	<li>Produces a smooth bend, not the characteristic staircase-with-shoulders shape.</li>
+</ul>
+
+<h3>Speciation model (correct shape)</h3>
+
+<p>
+Sweep pH and compute the equivalents of base (n_bar) from the charge balance:
+</p>
+
+<pre>
+n_bar = (Ka1*H^2 + 2*Ka1*Ka2*H + 3*Ka1*Ka2*Ka3)
+      / (H^3 + Ka1*H^2 + Ka1*Ka2*H + Ka1*Ka2*Ka3)
+</pre>
+
+<p>
+This gives three sigmoid steps with buffer flats at half-equivalence points (0.5, 1.5, 2.5
+equivalents) and steep transitions at equivalence points (1.0, 2.0 equivalents).
+</p>
+
+<h3>Copy and edit (triprotic titration)</h3>
+
+<pre>
+$Ka1_val = 10**(-$pKa1_num);
+$Ka2_val = 10**(-$pKaR_num);
+$Ka3_val = 10**(-$pKa2_num);
+
+$num_pts = 400;
+$ph_lo = 0.5;
+$ph_hi = 12.5;
+$first_pt = 1;
+for $i (0..$num_pts) {
+  $ph_sweep = $ph_lo + ($ph_hi - $ph_lo) * $i / $num_pts;
+  $H_conc = 10**(-$ph_sweep);
+
+  $denom = $H_conc**3
+         + $Ka1_val * $H_conc**2
+         + $Ka1_val * $Ka2_val * $H_conc
+         + $Ka1_val * $Ka2_val * $Ka3_val;
+  $nbar = ($Ka1_val * $H_conc**2
+         + 2 * $Ka1_val * $Ka2_val * $H_conc
+         + 3 * $Ka1_val * $Ka2_val * $Ka3_val) / $denom;
+
+  if ($nbar >= 0 &amp;&amp; $nbar &lt;= 3.0) {
+    if ($first_pt) {
+      $gr->moveTo($nbar, $ph_sweep);
+      $first_pt = 0;
+    } else {
+      $gr->lineTo($nbar, $ph_sweep, 'blue', 2);
+    }
+  }
+}
+</pre>
+
+<p>
+This sweeps pH (y-axis) uniformly and computes equivalents (x-axis) as the dependent variable.
+The <code>moveTo</code>/<code>lineTo</code> approach handles this naturally since x is not the
+sweep variable.
+</p>
+
+<h3>Alternative: stacked logistic sigmoids</h3>
+
+<p>
+If you do not need physical accuracy, three logistic functions centered at half-equivalents
+approximate the shape. Note that this version does <strong>not</strong> pass exactly through pKa
+at each half-equivalence point; the speciation model is preferred for accuracy.
+</p>
+
+<pre>
+$k = 10;  # steepness
+$y0 = 1.0;
+$y_top = 11.5;
+
+for $i (0..300) {
+  $xx = 3.0 * $i / 300.0;
+  $s1 = 1 / (1 + exp(-$k * ($xx - 0.5)));
+  $s2 = 1 / (1 + exp(-$k * ($xx - 1.5)));
+  $s3 = 1 / (1 + exp(-$k * ($xx - 2.5)));
+
+  $ph = $y0
+      + ($pKa1_num - $y0) * $s1
+      + ($pKaR_num - $pKa1_num) * $s2
+      + ($pKa2_num - $pKaR_num) * $s3
+      + ($y_top - $pKa2_num) * $s3 * 0.20;
+
+  # draw with moveTo/lineTo as shown above
+}
+</pre>
+
+<h2>GraphTool warning: answer evaluator interference</h2>
+
+<p>
+<code>parserGraphTool.pl</code> creates a JS-based interactive canvas where students can draw or
+place points. Its <code>ans_rule()</code> registers an answer entry (typically
+<code>AnSwEr0001</code>). This shifts the numbering of subsequent PGML answer blanks and can
+cause <code>"Unrecognized evaluator type ||"</code> errors on later RadioButtons or other PGML
+widgets.
+</p>
+
+<p><strong>Workaround</strong> (if you must use GraphTool alongside PGML answers):</p>
+<ul>
+	<li>Place GraphTool in a <code>BEGIN_TEXT</code> block with
+		<code>\{$gt-&gt;ans_rule()\}</code>.</li>
+	<li>Use <code>LABELED_ANS($gt_ans_id, $gt_checker)</code> before the PGML block.</li>
+	<li>Keep RadioButtons and other widgets in a separate <code>BEGIN_PGML</code> block.</li>
+</ul>
+
+<p>
+<strong>Better approach:</strong> if the graph is display-only, use
+<code>PGgraphmacros.pl</code> instead.
+</p>
+
+<h2>Sizing and margins</h2>
+
+<p>
+The <code>size</code> parameter in <code>init_graph</code> sets the GD image pixel dimensions.
+The <code>width</code> and <code>height</code> in <code>image()</code> control the HTML display
+size. <strong>Always keep these matched at 1x</strong> -- rendering at 2x and displaying at 1x
+shrinks bitmap labels.
+</p>
+
+<pre>
+# Good: matched sizes, extra margin from wider bounds
+$gr = init_graph(-0.6, -1.2, 3.4, 12.5,
+  axes => [0, 0],
+  grid => [8, 5],
+  size => [520, 420],
+);
+$graph_img = image(insertGraph($gr), width => 520, height => 420, tex_size => 700);
+</pre>
+
+<p>
+To create margin space for labels without shrinking the data region, widen the graph bounds
+beyond the data range (e.g., <code>-0.6</code> to <code>3.4</code> for data spanning 0 to 3).
+</p>
+
+<p>
+<code>tex_size</code> controls the image width in TeX/PDF output only (700 = 70% of text width).
+It has no effect on HTML/GD rendering.
+</p>
+
+<h2>Variable scoping reminder</h2>
+
+<p>
+Do <strong>not</strong> use <code>my</code> on any variable that PGML needs to interpolate. PG
+runs in a safe compartment where <code>my</code> variables are invisible to PGML.
+</p>
+
+<pre>
+# WRONG - invisible to PGML
+my $graph_img = image(insertGraph($gr), ...);
+
+# RIGHT - package-level, visible to PGML
+$graph_img = image(insertGraph($gr), ...);
+</pre>
+
+<h2>Unavailable macros</h2>
+
+<p>
+The following graph-related macros exist in the OPL but are <strong>not</strong> available in the
+local PG 2.17 renderer:
+</p>
+
+<ul>
+	<li><code>PGlateximage.pl</code> (LaTeX-to-image pipeline, requires LaTeX installation)</li>
+	<li><code>PGtikz.pl</code> (TikZ/pgfplots, requires LaTeX installation)</li>
+</ul>
+
+<p>
+Stick to <code>PGgraphmacros.pl</code> for display graphs and <code>parserGraphTool.pl</code>
+for interactive graphs.
+</p>
+
+<h2>Apply it today</h2>
+
+<ul>
+	<li>Use <code>PGgraphmacros.pl</code> for any display-only graph. Reserve
+		<code>parserGraphTool.pl</code> for problems where students answer by drawing.</li>
+	<li>Match <code>init_graph size</code> to <code>image() width/height</code> at 1x so bitmap
+		labels stay readable.</li>
+	<li>Widen graph bounds to create margin space for axis labels and tick marks.</li>
+	<li>Use <code>moveTo</code>/<code>lineTo</code> for curves where x is not the independent
+		variable (titration curves, parametric shapes).</li>
+	<li>Avoid <code>my</code> on any variable referenced inside PGML blocks.</li>
+</ul>

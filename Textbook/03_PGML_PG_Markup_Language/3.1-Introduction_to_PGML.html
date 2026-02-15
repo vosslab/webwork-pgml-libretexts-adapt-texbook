@@ -165,6 +165,28 @@ Right: The answer is [$radio->correct_ans]
 The wrong version tries to render "Blue" as LaTeX math. The right version displays the text value.
 </p>
 
+<h2>PGML is single-pass</h2>
+<p>
+PGML parses your text exactly once. This means that if you build PGML tag-wrapper syntax inside a
+Perl variable, PGML will not re-parse it. The variable's contents are inserted as literal text, so
+patterns like <code>[&lt;...&gt;]{[...]}</code> stored in a string will not produce the expected
+formatting.
+</p>
+
+<p>
+A related pitfall involves the <code>[&lt;</code> character sequence. If a Perl string assigned
+earlier in your code contains <code>[&lt;</code>, it can collide with PGML's own bracket-angle
+syntax and produce parser errors or garbled output. Watch for this when building HTML snippets or
+conditional text in Perl and then inserting them with <code>[$var]</code>.
+</p>
+
+<p>
+The single-pass rule also means that <code>[$...]</code> PGML interpolation inside a
+<code>[@ ... @]</code> eval block will not work. The eval block runs Perl; it does not re-enter
+the PGML parser. If you need formatted output from an eval block, return a string and let PGML
+display it.
+</p>
+
 <p>
 If you are writing your first problem, go to Section 3.2 now.
 </p>

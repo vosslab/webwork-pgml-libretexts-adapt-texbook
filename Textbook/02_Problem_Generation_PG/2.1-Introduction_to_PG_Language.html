@@ -1,8 +1,13 @@
 <p>
-This page only covers the PG you need to support a PGML prompt.
+PG is the programming language behind every WeBWorK problem. It is implemented in Perl and
+provides macros for answer checking, randomization, and formatting. Think of PG as the
+scaffolding that supports the student-facing prompt: it loads the tools you need, sets up
+variables, and wires the grading, but the text the student actually reads belongs in PGML.
 </p>
+
 <p>
-If you can read this page, you already know enough PG to write most biology problems.
+This page covers only the PG you need to support a PGML prompt. If you can read this page, you
+already know enough PG to write most science and math problems.
 </p>
 
 <p>
@@ -10,48 +15,251 @@ If you can read this page, you already know enough PG to write most biology prob
 student-facing prompt.
 </p>
 
-<h2>Copy and edit (minimal PG scaffolding)</h2>
+<h2>The five-component problem structure</h2>
+
+<p>
+Every PG problem file follows the same five components, in order. Keeping this structure
+consistent makes problems easier to read, debug, and share.
+</p>
+
+<ol>
+	<li>
+		<strong>OPL header</strong>: metadata comments for searchability and attribution
+		(covered in Section 2.2).
+	</li>
+	<li>
+		<strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...)</code>.
+	</li>
+	<li>
+		<strong>Setup</strong>: context selection, random values, computed answers, and answer
+		checkers.
+	</li>
+	<li>
+		<strong>Statement</strong>: the PGML text block that the student reads and interacts with.
+	</li>
+	<li>
+		<strong>Solution</strong>: a solution block (and optional hints) for student review.
+	</li>
+</ol>
+
+<h2>Canonical problem skeleton</h2>
+
+<p>
+Copy this skeleton and fill in the pieces you need.
+</p>
+
 <pre>
+## (Tagging header block goes here -- see Section 2.2)
+
 DOCUMENT();
 
+# ----------------------------
+# 1) Preamble
+# ----------------------------
 loadMacros(
-	"PGstandard.pl",
-	"MathObjects.pl",
-	"PGML.pl",
-	"PGcourse.pl",
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl",
 );
 
+$showPartialCorrectAnswers = 1;
+
+# ----------------------------
+# 2) Setup
+# ----------------------------
 Context("Numeric");
-$a = random(2, 8, 1);
+$a = random(2, 9, 1);
 $b = random(3, 9, 1);
-$ans = Real($a + $b);
-$ans->cmp();
+$ans = Compute("$a + $b");
+
+# ----------------------------
+# 3) Statement (PGML)
+# ----------------------------
+BEGIN_PGML
+Compute [`[$a] + [$b]`].
+
+Answer: [__________]{$ans}
+END_PGML
+
+# ----------------------------
+# 4) Solution
+# ----------------------------
+BEGIN_PGML_SOLUTION
+The answer is [`[$a] + [$b] = [$ans]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
 </pre>
 
-<p><strong>Common failure and fix</strong></p>
+<h2>Key rules</h2>
+
+<ul>
+	<li>
+		Every file must start with <code>DOCUMENT();</code> and end with
+		<code>ENDDOCUMENT();</code>.
+	</li>
+	<li>
+		Put all macro loads in a single <code>loadMacros(...)</code> block in the preamble.
+	</li>
+	<li>
+		All student-facing text goes inside <code>BEGIN_PGML</code> /
+		<code>END_PGML</code> blocks. Do not write long prompts in raw PG.
+	</li>
+	<li>
+		Always include a <code>BEGIN_PGML_SOLUTION ... END_PGML_SOLUTION</code> block, even
+		if it is only a single sentence.
+	</li>
+	<li>
+		Keep the five sections in order and visually separated with comment headings.
+	</li>
+</ul>
+
+<h2>Minimum recommended macros</h2>
+
+<p>
+Start every problem with these four macros. Add others only when you need them.
+</p>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 70%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>Purpose</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro"><code>PGstandard.pl</code></td>
+			<td data-th="Purpose">Core PG functions; required in practice for every problem.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro"><code>MathObjects.pl</code></td>
+			<td data-th="Purpose">Modern answer types such as <code>Real()</code>, <code>Compute()</code>, and <code>Formula()</code>.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro"><code>PGML.pl</code></td>
+			<td data-th="Purpose">Enables <code>BEGIN_PGML</code> / <code>END_PGML</code> blocks for writing prompts.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro"><code>PGcourse.pl</code></td>
+			<td data-th="Purpose">Commonly expected by WeBWorK installations; include unless you have a reason to drop it.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+If you add a specialized macro (for example <code>parserPopUp.pl</code> for dropdowns), add a
+short comment explaining why.
+</p>
+
+<h2>PGML-first authoring</h2>
+
+<p>
+In PGML-first problems, the student-facing text and answer blanks live entirely inside PGML
+blocks. PG handles everything that happens before and after the prompt: loading macros, choosing
+a context, generating random values, and defining correct answers.
+</p>
+
+<p>
+<strong>Inline grading principle:</strong> attach answer evaluators directly to blanks in the
+PGML block. Do not create a blank in PGML and then wire the grader separately with
+<code>ANS(...)</code> calls.
+</p>
+
 <pre>
-Broken: $ans = Real($a + $b);
-What you will see: Undefined subroutine &amp;main::Real called
-Fix: load "MathObjects.pl" before using Real(...)
+# Preferred: evaluator attached at the blank
+BEGIN_PGML
+Answer: [__________]{$ans}
+END_PGML
+
+# Avoid: blank in PGML with separate ANS() wiring
+BEGIN_PGML
+Answer: [__________]
+END_PGML
+ANS($ans-&gt;cmp());
 </pre>
 
 <p>
-PG is the language used to define WeBWorK problems. It is implemented in Perl and uses macros to
-provide features like answer checking, randomization, and formatting. This guide discourages
-writing long prompts in regular PG. Treat PG as the setup layer and write the student-facing
-prompt in PGML.
+When the evaluator lives next to the blank, the connection between the prompt and the grading
+stays obvious. This is especially helpful for problems with multiple answer blanks.
 </p>
 
-<h2>The minimum PG you need</h2>
-<ul>
-	<li><code>DOCUMENT();</code> at the top of the file.</li>
-	<li><code>loadMacros(...);</code> including <code>PGML.pl</code> and MathObjects.</li>
-	<li>A small setup block: random values, computed answers, and answer checkers.</li>
-	<li>A PGML text block between <code>BEGIN_PGML</code> and <code>END_PGML</code>.</li>
-	<li><code>ENDDOCUMENT();</code> at the end of the file.</li>
-</ul>
+<h2>File extensions: .pgml vs .pg</h2>
+
+<p>
+Use the <code>.pgml</code> extension for full PGML-first problems where the statement and
+graders are entirely inside PGML blocks. If a problem uses legacy <code>ANS(...)</code> wiring
+or mixed PG/PGML structure, keep the extension as <code>.pg</code>. The extension signals
+whether tooling should expect pure PGML structure.
+</p>
+
+<h2>Context selection</h2>
+
+<p>
+A context controls what kind of input WeBWorK accepts from the student. Always set an explicit
+context in the Setup section before defining answers.
+</p>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 25%;">
+		<col style="width: 75%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Context</th>
+			<th>When to use</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Context"><code>Numeric</code></td>
+			<td data-th="When to use">General numeric answers (the most common default).</td>
+		</tr>
+		<tr>
+			<td data-th="Context"><code>Real</code></td>
+			<td data-th="When to use">Answers that must be real numbers (no complex values).</td>
+		</tr>
+		<tr>
+			<td data-th="Context"><code>Vector</code></td>
+			<td data-th="When to use">Answers that are vectors.</td>
+		</tr>
+		<tr>
+			<td data-th="Context"><code>Matrix</code></td>
+			<td data-th="When to use">Answers that are matrices.</td>
+		</tr>
+		<tr>
+			<td data-th="Context"><code>Complex</code></td>
+			<td data-th="When to use">Answers that involve complex numbers.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Question order recommendation</h2>
+
+<p>
+Inside the PGML block, present information in this order so that questions are consistent and
+scannable for students.
+</p>
+
+<ol>
+	<li><strong>Background</strong>: context or scenario the student needs to understand.</li>
+	<li><strong>Statement</strong>: what is being asked.</li>
+	<li><strong>Data</strong>: any tables or given values.</li>
+	<li><strong>Directions</strong>: how to respond, constraints, formatting expectations.</li>
+</ol>
+
+<p>
+Keep directions concise and place them after the data or statement rather than before the prompt.
+</p>
 
 <h2>PG concepts you actually need</h2>
+
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 28%;">
@@ -94,7 +302,16 @@ prompt in PGML.
 	</tbody>
 </table>
 
+<h2>Common failure and fix</h2>
+
+<pre>
+Broken: $ans = Real($a + $b);
+What you will see: Undefined subroutine &amp;main::Real called
+Fix: load "MathObjects.pl" before using Real(...)
+</pre>
+
 <h2>A mindset for science problems</h2>
+
 <ul>
 	<li>Randomize the values, not the story.</li>
 	<li>Keep units explicit and consistent (and prevent unit drift: &mu;M vs mM, &mu;L vs mL).</li>
@@ -105,6 +322,7 @@ prompt in PGML.
 </ul>
 
 <h2>Safe defaults (micro-pattern)</h2>
+
 <ul>
 	<li>Choose a context early.</li>
 	<li>Define a small set of values with constrained ranges.</li>
@@ -118,7 +336,9 @@ enough to keep your PG setup stable.
 </p>
 
 <p><strong>Next, depending on what you are doing:</strong></p>
+
 <ul>
+	<li>Need the OPL header? Go to Section 2.2.</li>
 	<li>Need a clean starter .pg skeleton? Go to Section 2.3.</li>
 	<li>Not sure where setup ends and PGML begins? Go to Section 2.4.</li>
 	<li>Need macro help? Go to Section 2.5.</li>

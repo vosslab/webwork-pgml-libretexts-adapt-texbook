@@ -1,6 +1,87 @@
 # Changelog
 
+## 2026-02-15
+
+### New subchapters
+- Created Chapter 6.6 Making graphs (566 lines) from HOW_TO_MAKE_GRAPHS.md. Covers
+  PGgraphmacros.pl quick decision table, minimal example, init_graph parameters, axis labels and
+  tick labels with Label constructor, add_functions syntax with computed coefficients, multiple
+  curves, point-by-point curves with moveTo/lineTo, dashed lines, dots/stamps, label sizing and
+  GD bitmap font table, worked triprotic titration curve example (speciation model vs cubic
+  polynomial), GraphTool answer evaluator interference warning, sizing/margins guidance, variable
+  scoping reminder, and unavailable macros list.
+- Created Chapter 6.7 Rendering chemical structures (640 lines) from RDKIT_MOLECULAR_STRUCTURES.md
+  and four PubChem docs (README_PUBCHEM_PGML.md, README_PUBCHEM_BPTOOLS.md,
+  PUBCHEM_PGML_SYNTAX_NOTES.md, PGML_PUBCHEM_CONVERSION_SUMMARY.md). Covers RDKit.js quick start,
+  SMILES basics from scratch, charged species notation (critical for biochemistry), common
+  ionizable groups table, imidazole protonation notes, SMILES validation methods, canvas sizing
+  guidelines, rendering options (mdetails), multiple molecules (sequential and side-by-side),
+  randomization with sorted hash keys, common pitfalls, chemistry-specific guidelines (amino acids,
+  nucleotides, peptides), and troubleshooting.
+
+### Content enrichments
+- Enriched Chapter 6.5 Advanced randomization (49 to 254 lines) from RANDOMIZATION_REFERENCE.md.
+  Added comprehensive function reference table (core PG, auxiliary, parser widget, context, matrix,
+  statistics), built-in seeding explanation (random() is already seeded by problemSeed), manual
+  PGrandom pattern with correct/incorrect examples, expanded guard patterns with biology examples,
+  and practical tips for hash key sorting and avoiding deprecated macros.
+- Enriched Chapter 2.1 Introduction to PG Language (to 345 lines) from
+  WEBWORK_PROBLEM_AUTHOR_GUIDE.md. Added five-component problem skeleton, PGML-first requirement,
+  inline grading principle, minimum recommended macro set, context selection guidance, question
+  order recommendation, file extension guidance (.pgml vs .pg), and key structural rules.
+- Enriched Chapter 6.1 Coloring text and emphasis (47 to 350 lines) from
+  QUESTION_STATEMENT_EMPHASIS.md, COLOR_CLASS_MIGRATION_PLAN.md, and COLOR_TEXT_IN_WEBWORK.md.
+  Added emphasis styles by use case (numeric values, key terms, negation, multiple values), CSS
+  class approach with HEADER_TEXT, font size guidelines, color palette recommendations table,
+  accessibility considerations (contrast ratios, multiple emphasis methods), complete working
+  examples, matching label colors, and what does not work (TeX/MathJax color commands).
+- Enriched Chapter 2.2 OPL header (360 to 611 lines) and Chapter 4.2 OPL Header (207 to 311
+  lines) from WEBWORK_HEADER_STYLE.md. Added Bloom's taxonomy level examples, additional
+  biology-specific DBsubject classifications, attribution patterns for adapted problems, and
+  expanded worked header examples.
+- Enriched Chapter 2.5 Common PG Macros (497 to 825 lines) from PG_2_17_RENDERER_MACROS.md.
+  Added expanded macro inventory organized by category with notes on graph macros, statistics
+  macros, matrix macros, complex macros, and rarely-needed macros for biology.
+- Enriched Chapter 6.2 Tables with niceTables (89 to 223 lines) from
+  NICETABLES_TRANSLATION_PLAN.md. Added supported input shapes (plain text, hashrefs, arrayrefs),
+  table-level options reference, PGML table syntax, translation approach for HTML tables, and
+  unsupported table guidance.
+- Enriched Chapter 6.3 Matching problems (484 to 742 lines) from MATCHING_PROBLEMS.md and
+  MATCHING_SET_AUTHORING_GUIDE.md. Added YAML matching set authoring workflow including file
+  naming, YAML structure, matching pairs format, same-concept-different-phrasing rule, excluding
+  confusable pairs, replacement rules, quality checks, difficulty control, and yaml_match_to_pgml.py
+  workflow with copy-paste YAML example.
+- Enriched Chapter 6.4 Multiple choice statements (to 302 lines) from
+  MC_STATEMENTS_AUTHORING_GUIDE.md. Added YAML statement bank authoring including conflict groups,
+  statement IDs, replacement rules, when to use MC statements vs matching, good false statement
+  patterns, avoiding accidental cues, difficulty control, quality checks, and
+  yaml_mc_statements_to_pgml.py workflow with copy-paste YAML example.
+- Distributed PGML linter expectations across Chapter 3 (3.1, 3.3, 3.5, 3.6) from
+  PGML_LINTER_EXPECTATIONS.md. Added single-pass parsing rule to 3.1, ordered list auto-parsing
+  gotcha to 3.3, HTML escaping in variables to 3.6, MODES in eval blocks warning to 3.6, and
+  cross-references to 6.1 (MathJax color) and 6.2 (blocked HTML tags).
+- Distributed preferred PGML question type patterns across Chapter 5 (5.2-5.8) from
+  PGML_QUESTION_TYPES.md. Added RadioButtons pattern to 5.2, checkbox workaround to 5.3, PopUp
+  matching pattern to 5.4, numeric tolerance pattern to 5.5, string Context to 5.6, multi-part
+  evaluators to 5.7, and DraggableProof ordering pattern to 5.8.
+
+### Navigation and metadata updates
+- Updated 6.0-Index.html with entries for new subchapters 6.6 (graphs) and 6.7 (chemical
+  structures) in both the task-first menu and quick patterns table.
+- Updated TEXTBOOK_PAGE_SUMMARIES.md with three-sentence summaries and SEO tags for 6.6 and 6.7.
+- Total content expansion: approximately 3,700 new lines across 2 new files and 17 enriched files,
+  with content sourced from 15 documentation files in biology-problems/docs/webwork/ and
+  biology-problems/problems/.
+
 ## 2026-02-14
+
+### Chapter 7 enrichments
+- Enriched Chapter 7.2 Common mistakes (618 to 790 lines) by cross-referencing
+  PG_COMMON_PITFALLS.md. Added: local vs my comparison for PGML visibility (expanded scoping
+  table to 3 rows), answer field naming section (ans_rule/ANS mismatch), RDKit SMILES chemistry
+  errors (imidazole formal charge pitfall), four debugging strategies (check line numbers, binary
+  search PGML blocks, minimal example, renderer output), prevention checklist (12 items), and
+  'open' trapped error to the quick reference table. Added colgroup tags to all three tables.
 
 ### Chapter 7 rewrites
 - Rewrote Chapter 7.0 Index (116 lines) with a symptom-based "What just went wrong?" decision

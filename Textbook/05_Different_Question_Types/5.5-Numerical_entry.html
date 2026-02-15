@@ -35,6 +35,27 @@ tolerance_message: true
 Official example (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/NumericalTolerance.html">NumericalTolerance</a>.
 </p>
 
+<h2>Preferred PGML pattern</h2>
+<p>
+Use <code>Compute</code> with explicit tolerance settings and attach the evaluator inline
+in the PGML blank.
+</p>
+<pre>
+Context("Numeric");
+$ans = Compute("10.0")-&gt;with(tolType =&gt; "absolute", tolerance =&gt; 0.1);
+
+BEGIN_PGML
+You dilute 2.0 mL of a 50.0 mg/mL stock to 10.0 mL.
+What is the final concentration (mg/mL)?
+
+[__________]{$ans}
+END_PGML
+</pre>
+<p>
+Set up <code>Context("Numeric")</code> before defining numerical answers.
+State the tolerance policy in the question prompt when it matters for grading.
+</p>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>State units in the prompt and use the same units in the expected answer.</li>

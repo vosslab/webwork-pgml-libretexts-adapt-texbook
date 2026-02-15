@@ -1,7 +1,8 @@
 <p>
 This chapter introduces advanced PGML authoring patterns for richer layouts and interaction
-patterns. It focuses on CSS-based emphasis, tables with <code>niceTables.pl</code>, modern matching
-layouts, statement-by-statement evaluation, and safer randomization habits.
+patterns. It covers CSS-based emphasis, tables with <code>niceTables.pl</code>, modern matching
+layouts, statement-by-statement evaluation, safer randomization habits, display graphs with
+<code>PGgraphmacros.pl</code>, and chemical structure rendering with RDKit.js.
 </p>
 
 <p>
@@ -22,6 +23,8 @@ Chapter 3 are not enough.
 	<li>I need a two-column matching layout -> Section 6.3.</li>
 	<li>I need true/false per statement -> Section 6.4.</li>
 	<li>I need safer randomization -> Section 6.5.</li>
+	<li>I need a display graph (titration curve, data plot) -> Section 6.6.</li>
+	<li>I need to render chemical structures from SMILES -> Section 6.7.</li>
 </ul>
 
 <h2>Quick patterns</h2>
@@ -63,6 +66,16 @@ Chapter 3 are not enough.
 			<td data-th="Need">Stable random variants</td>
 			<td data-th="Use">problemSeed + guard checks</td>
 			<td data-th="Page">6.5</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Display graph (curve, data plot)</td>
+			<td data-th="Use">PGgraphmacros.pl + init_graph</td>
+			<td data-th="Page">6.6</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Chemical structure rendering</td>
+			<td data-th="Use">RDKit.js + SMILES strings</td>
+			<td data-th="Page">6.7</td>
 		</tr>
 	</tbody>
 </table>

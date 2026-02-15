@@ -39,6 +39,45 @@ answers_list:
 Official example (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html">MultipleChoiceCheckbox</a>.
 </p>
 
+<h2>Checkbox macro availability</h2>
+<p>
+Checkbox macros are unreliable in the PG 2.17 renderer snapshot used by this project.
+Do not use checkbox-style macros unless you have verified the macro exists in the renderer
+and tested that it renders correctly.
+</p>
+
+<h2>Preferred fallback pattern</h2>
+<p>
+Instead of checkboxes, use one <code>RadioButtons</code> or <code>PopUp</code> widget per
+statement. Each statement becomes its own True/False or Yes/No decision, and students
+answer all of them.
+</p>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserRadioButtons.pl",
+  "PGcourse.pl",
+);
+
+$rb1 = RadioButtons([ 'Yes', 'No' ], 'Yes',
+  labels => 'ABC', displayLabels => 1);
+$rb2 = RadioButtons([ 'Yes', 'No' ], 'Yes',
+  labels => 'ABC', displayLabels => 1);
+$rb3 = RadioButtons([ 'Yes', 'No' ], 'No',
+  labels => 'ABC', displayLabels => 1);
+
+BEGIN_PGML
+For each statement, select Yes if it is required for PCR.
+
+Template DNA: [_]{$rb1}
+
+Primers: [_]{$rb2}
+
+Restriction enzyme: [_]{$rb3}
+END_PGML
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Say "Select all that apply" explicitly.</li>

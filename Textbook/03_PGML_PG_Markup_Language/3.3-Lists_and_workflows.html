@@ -86,6 +86,32 @@ You are preparing a PCR reaction mix. Follow these steps:
 END_PGML
 </pre>
 
+<h2>Watch out for auto-parsed list labels</h2>
+<p>
+PGML's list parser is aggressive. Any line that starts with a letter followed by a period
+(for example, <code>A.</code> or <code>B.</code>) can be interpreted as an ordered list item,
+even when you intended it as a plain label. This is especially common when writing matching-style
+questions where you use letters as answer choices.
+</p>
+
+<p>
+Two easy fixes:
+</p>
+<ul>
+	<li>Make the label bold: <code>*A.*</code> &mdash; the bold wrapper prevents list parsing.</li>
+	<li>Escape the period: <code>A\.</code> &mdash; the backslash tells PGML that the period is literal text.</li>
+</ul>
+
+<pre>
+BEGIN_PGML
+Match each description to the correct answer.
+
+*A.* Mitochondria
+*B.* Chloroplast
+*C.* Ribosome
+END_PGML
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep each list item to one task.</li>

@@ -35,6 +35,39 @@ choices_list:
 Official example (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/Matching.html">Matching</a>. Macro reference: <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/PGchoicemacros.html">PGchoicemacros</a>.
 </p>
 
+<h2>Preferred PGML pattern</h2>
+<p>
+Use <code>PopUp</code> from <code>parserPopUp.pl</code> and place each dropdown inline in
+PGML next to its prompt. This gives a clean matching layout without legacy PG macros.
+</p>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl",
+);
+
+$popup1 = PopUp([ '?', 'Amino acids', 'Nucleotides', 'Monosaccharides' ],
+  'Amino acids');
+$popup2 = PopUp([ '?', 'Amino acids', 'Nucleotides', 'Monosaccharides' ],
+  'Nucleotides');
+$popup3 = PopUp([ '?', 'Amino acids', 'Nucleotides', 'Monosaccharides' ],
+  'Monosaccharides');
+
+BEGIN_PGML
+Match each macromolecule class with its monomer.
+
+1. Proteins [_]{$popup1}
+2. Nucleic acids [_]{$popup2}
+3. Polysaccharides [_]{$popup3}
+END_PGML
+</pre>
+<p>
+For advanced matching layouts with tables or formatted columns, see Chapter 6.3
+(Matching Problems).
+</p>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep the prompts and choices short and parallel.</li>

@@ -5,44 +5,250 @@ impossible values, repeated variants, and hard-to-reproduce failures.
 
 <p>
 <strong>Use this page when:</strong> you need multi-step randomization or constraints between
-values.
+values, or you want to choose the right randomization function for your situation.
 </p>
 
-<h2>Core patterns</h2>
+<h2>Built-in random functions are already seeded</h2>
+<p>
+The PG environment automatically seeds the random number generator with <code>$problemSeed</code>
+before your problem code runs. For most problems, you can use the built-in random functions
+directly without any manual seeding. The same <code>$problemSeed</code> always produces the same
+sequence of random values, so student results are reproducible.
+</p>
+<pre>
+# These functions are already deterministic based on $problemSeed.
+# No manual seeding required for most problems.
+$value = random(1, 10, 1);
+$item = list_random(@items);
+$nonzero = non_zero_random(-5, 5, 1);
+</pre>
+
+<h2>Core randomization functions (PGbasicmacros.pl)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 40%;">
+		<col style="width: 32%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Function</th>
+			<th>What it does</th>
+			<th>When to use it</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Function"><code>random(begin, end, incr)</code></td>
+			<td data-th="What it does">Returns a random number from begin to end stepping by incr.</td>
+			<td data-th="When to use it">Numeric ranges like concentrations, volumes, or counts.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>non_zero_random(begin, end, incr)</code></td>
+			<td data-th="What it does">Same as random but excludes zero from the result.</td>
+			<td data-th="When to use it">Denominators, divisors, or any value that must not be zero.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>list_random(@list)</code></td>
+			<td data-th="What it does">Returns one randomly chosen element from the list.</td>
+			<td data-th="When to use it">Choosing from named items like enzymes, organisms, or codons.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>SRAND(seed)</code></td>
+			<td data-th="What it does">Resets the global PG random generator to a specific seed.</td>
+			<td data-th="When to use it">Rarely needed. The environment already seeds with problemSeed.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Other randomization helpers</h2>
 <ul>
-	<li>Seed with <code>problemSeed</code> so failures are reproducible.</li>
-	<li>Guard against zero denominators, negative concentrations, and invalid domains.</li>
-	<li>Sort hash keys before random selection to keep order deterministic.</li>
+	<li><code>random_coprime([arrays...])</code> and <code>random_pairwise_coprime([arrays...])</code> from PGauxiliaryFunctions.pl return coprime integers.</li>
+	<li><code>randomOrder(...)</code> in parserPopUp.pl and parserRadioButtons.pl shuffles answer choices.</li>
+	<li><code>randomPrime(start, end)</code> from contextInteger.pl returns a random prime in the given range.</li>
 </ul>
 
-<h2>Copy and edit (guarded randomization)</h2>
-<pre>
-$prng = PGrandom($problemSeed);
-@choices = (2, 4, 6, 8);
-$factor = $prng->list_random(@choices);
+<h2>Statistics distribution functions</h2>
+<p>
+These functions generate random samples from common probability distributions, useful for
+statistics and quantitative biology problems.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 38%;">
+		<col style="width: 62%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Function</th>
+			<th>Distribution</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Function"><code>urand(mean, sd, N, digits)</code></td>
+			<td data-th="Distribution">Normal distribution with given mean and standard deviation.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>exprand(lambda, N, digits)</code></td>
+			<td data-th="Distribution">Exponential distribution with rate parameter lambda.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>poissonrand(lambda, N)</code></td>
+			<td data-th="Distribution">Poisson distribution with rate parameter lambda.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>binomrand(p, N, num)</code></td>
+			<td data-th="Distribution">Binomial distribution with probability p and N trials.</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>bernoullirand(p, num, options)</code></td>
+			<td data-th="Distribution">Bernoulli distribution (single trial, probability p).</td>
+		</tr>
+		<tr>
+			<td data-th="Function"><code>discreterand(n, @table)</code></td>
+			<td data-th="Distribution">Discrete distribution from a probability table.</td>
+		</tr>
+	</tbody>
+</table>
 
-$den = $prng->random(1, 9, 1);
-if ($den == 0) {
-	$den = 1;
+<h2>Manual PGrandom: when and how</h2>
+<p>
+Most problems do not need a manual PGrandom object. Only create one when you need multiple
+independent random streams or explicit control over seeding for complex multi-stage randomization.
+</p>
+<pre>
+# CORRECT: create an instance, then call srand on the instance.
+$local_random = PGrandom->new();
+$local_random->srand($problemSeed);
+
+# Use the instance methods for random values.
+$value = $local_random->random(1, 10, 1);
+$item = $local_random->list_random('A', 'B', 'C');
+</pre>
+
+<h3>Common PGrandom mistakes</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 42%;">
+		<col style="width: 58%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Mistake</th>
+			<th>Why it fails</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Mistake"><code>PGrandom->seed($problemSeed)</code></td>
+			<td data-th="Why it fails">The method is called <code>srand</code>, not <code>seed</code>.</td>
+		</tr>
+		<tr>
+			<td data-th="Mistake"><code>PGrandom->srand($problemSeed)</code></td>
+			<td data-th="Why it fails">Cannot call <code>srand</code> as a class method. Create an instance with <code>PGrandom->new()</code> first.</td>
+		</tr>
+		<tr>
+			<td data-th="Mistake"><code>SRAND($problemSeed)</code></td>
+			<td data-th="Why it fails">Resets the global RNG. Usually unnecessary because it is already seeded.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Practical tips</h2>
+<ul>
+	<li>
+		<strong>Sort hash keys before random selection.</strong> Hash key order is not guaranteed
+		in Perl. Always sort keys first so the same seed yields the same result across runs.
+	</li>
+	<li>
+		<strong>Avoid NchooseK and shuffle.</strong> These are deprecated in the PG 2.17 subset.
+		Use built-in random selection or manual array manipulation for subsets.
+	</li>
+	<li>
+		<strong>Record the seed when debugging.</strong> Use <code>$problemSeed</code> to
+		reproduce failures exactly.
+	</li>
+</ul>
+<pre>
+# Sort hash keys before selecting randomly.
+@sorted_keys = sort keys %hash;
+$selected = list_random(@sorted_keys);
+</pre>
+
+<h2>Guard patterns</h2>
+<p>
+Always add guard checks so randomization never produces impossible cases.
+</p>
+
+<h3>Zero denominators</h3>
+<pre>
+$den = random(1, 9, 1);
+if ($den == 0) { $den = 1; }
+$ratio = $num / $den;
+</pre>
+
+<h3>Repeated values</h3>
+<pre>
+$a = random(1, 10, 1);
+do { $b = random(1, 10, 1); } until ($b != $a);
+</pre>
+
+<h3>Invalid domains</h3>
+<pre>
+# Ensure the argument to log is positive.
+$conc = random(1, 100, 1);
+if ($conc &lt;= 0) { $conc = 1; }
+$pH = -log($conc / 1000) / log(10);
+</pre>
+
+<h3>Negative concentrations</h3>
+<pre>
+$stock = random(10, 100, 5);
+$dilution = random(2, 20, 1);
+$final = $stock / $dilution;
+if ($final &lt; 0.1) {
+	$dilution = 2;
+	$final = $stock / $dilution;
 }
-$ratio = $factor / $den;
 </pre>
 
-<h2>Random subsets (stable)</h2>
+<h2>Biology-specific randomization examples</h2>
+
+<h3>Randomized dilution series</h3>
 <pre>
-@items = ('A', 'B', 'C', 'D', 'E');
-@subset = random_subset(3, @items);
+$stock_mM = random(10, 50, 5);
+$dilution_factor = list_random(2, 5, 10, 20);
+$final_uM = ($stock_mM * 1000) / $dilution_factor;
 </pre>
 
-<h2>Biology examples to model</h2>
-<ul>
-	<li>Randomized dilution factors with bounded ranges.</li>
-	<li>Randomized genetics crosses with valid ratios.</li>
-	<li>Randomized qPCR conditions with plausible cycles.</li>
-</ul>
+<h3>Randomized genetics cross</h3>
+<pre>
+# Monohybrid cross with valid Mendelian ratios.
+@dominant_traits = ('Tall', 'Round', 'Purple', 'Axial');
+@recessive_traits = ('Short', 'Wrinkled', 'White', 'Terminal');
+$idx = random(0, scalar(@dominant_traits) - 1, 1);
+$dominant = $dominant_traits[$idx];
+$recessive = $recessive_traits[$idx];
+$total_offspring = random(40, 120, 4);
+$expected_dominant = 3 * $total_offspring / 4;
+$expected_recessive = $total_offspring / 4;
+</pre>
+
+<h3>Randomized qPCR conditions</h3>
+<pre>
+# qPCR problem with plausible Ct values and efficiency.
+$efficiency = random(90, 100, 1) / 100;
+$Ct_control = random(18, 25, 1);
+$fold_change = list_random(2, 4, 8, 16);
+$delta_Ct = -log($fold_change) / log(1 + $efficiency);
+$Ct_treated = $Ct_control + $delta_Ct;
+</pre>
 
 <h2>Apply it today</h2>
 <ul>
-	<li>Use <code>problemSeed</code> and record the seed when debugging.</li>
+	<li>Use the built-in <code>random()</code> functions for most problems. They are already seeded.</li>
+	<li>Only create a PGrandom instance when you need independent random streams.</li>
 	<li>Add guard checks so randomization never produces impossible cases.</li>
+	<li>Sort hash keys before random selection for deterministic results.</li>
 </ul>

@@ -1,0 +1,640 @@
+<p>
+This page explains how to render publication-quality chemical structures in WeBWorK problems using
+RDKit.js and SMILES strings. Students see interactive, consistent molecular drawings without any
+image files to manage.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you want to display chemical structures such as amino acids,
+nucleotides, or peptides in a PGML problem.
+</p>
+
+<h2>Why RDKit.js instead of static images</h2>
+<ul>
+	<li>High-quality, consistent rendering across all molecules and devices.</li>
+	<li>No image file management or hosting required.</li>
+	<li>SMILES strings are compact and easy to maintain in PG code.</li>
+	<li>Customizable rendering options (explicit hydrogens, stereochemistry labels, legends).</li>
+	<li>Students cannot reverse-image-search for answers.</li>
+</ul>
+<p>
+RDKit.js loads from a public CDN and runs entirely in the browser. It requires an internet
+connection and a modern browser with JavaScript enabled.
+</p>
+
+<h2>Quick start pattern</h2>
+<p>
+Every RDKit problem follows three steps: define a SMILES string, create an HTML canvas element,
+and load RDKit.js through <code>HEADER_TEXT</code>. Below is a minimal working example that
+displays L-alanine.
+</p>
+
+<h3>Step 1: Define SMILES and create a canvas</h3>
+<pre>
+# ----------------------------
+# 2) Setup
+# ----------------------------
+
+# SMILES for L-alanine (zwitterion at physiological pH)
+$smiles_alanine = 'C[C@@H](C(=O)[O-])[NH3+]';
+
+# Build the canvas element with a unique id
+$canvas_alanine = '&lt;canvas id="canvas_alanine" width="320" height="240"'
+    . ' data-smiles="' . $smiles_alanine . '"&gt;&lt;/canvas&gt;';
+</pre>
+
+<h3>Step 2: Load RDKit.js in HEADER_TEXT</h3>
+<p>
+Place this block after <code>loadMacros</code> but before <code>BEGIN_PGML</code>. The JavaScript
+finds every canvas that has a <code>data-smiles</code> attribute and draws the corresponding molecule.
+</p>
+<pre>
+HEADER_TEXT(&lt;&lt;'END_HEADER');
+&lt;script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+let RDKitReady = null;
+function getRDKit() {
+    if (!RDKitReady) {
+        RDKitReady = initRDKitModule();
+    }
+    return RDKitReady;
+}
+function initMoleculeCanvases() {
+    getRDKit().then(function(RDKit) {
+        const canvases = document.querySelectorAll('canvas[data-smiles]');
+        canvases.forEach((canvas) =&gt; {
+            const smiles = canvas.dataset.smiles;
+            if (!smiles) { return; }
+            const mol = RDKit.get_mol(smiles);
+            const mdetails = {
+                "legend": "",
+                "explicitMethyl": true
+            };
+            if (canvas &amp;&amp; mol) {
+                mol.draw_to_canvas_with_highlights(
+                    canvas, JSON.stringify(mdetails)
+                );
+                mol.delete();
+            }
+        });
+    }).catch(error =&gt; {
+        console.error('Error initializing RDKit:', error);
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMoleculeCanvases);
+} else {
+    initMoleculeCanvases();
+}
+&lt;/script&gt;
+END_HEADER
+</pre>
+
+<h3>Step 3: Display the canvas in PGML</h3>
+<pre>
+BEGIN_PGML
+**Identify this amino acid:**
+
+[$canvas_alanine]*
+
+[_]{$answer}
+END_PGML
+</pre>
+<p>
+The <code>*</code> after the closing bracket tells PGML not to escape the HTML, so the browser
+sees a real <code>&lt;canvas&gt;</code> element instead of literal tags.
+</p>
+
+<h2>SMILES basics</h2>
+<p>
+SMILES (Simplified Molecular Input Line Entry System) is a compact text notation for chemical
+structures. If you have never used SMILES before, the rules below are all you need for
+biochemistry problems.
+</p>
+
+<h3>Atoms and bonds</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 38%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Feature</th>
+			<th>Syntax</th>
+			<th>Example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Feature">Standard atoms</td>
+			<td data-th="Syntax">Uppercase letters: C, N, O, S, P</td>
+			<td data-th="Example"><code>CCO</code> (ethanol)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Single bond</td>
+			<td data-th="Syntax">Implicit (omitted between atoms)</td>
+			<td data-th="Example"><code>CC</code> (ethane)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Double bond</td>
+			<td data-th="Syntax"><code>=</code></td>
+			<td data-th="Example"><code>C=O</code> (formaldehyde core)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Triple bond</td>
+			<td data-th="Syntax"><code>#</code></td>
+			<td data-th="Example"><code>C#N</code> (cyanide)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Branches</td>
+			<td data-th="Syntax">Parentheses <code>(...)</code> for side chains</td>
+			<td data-th="Example"><code>CC(=O)O</code> (acetic acid)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Rings</td>
+			<td data-th="Syntax">Matching digits to close a ring</td>
+			<td data-th="Example"><code>C1CCCCC1</code> (cyclohexane)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Aromatic atoms</td>
+			<td data-th="Syntax">Lowercase letters</td>
+			<td data-th="Example"><code>c1ccccc1</code> (benzene)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Stereochemistry</h3>
+<p>
+Many biological molecules are chiral. SMILES encodes chirality at tetrahedral centers with
+<code>[C@@H]</code> and <code>[C@H]</code>, and double-bond geometry with <code>/</code>
+and <code>\</code>. For amino acids, the L-form typically uses <code>[C@@H]</code>.
+</p>
+<pre>
+# L-Alanine breakdown:
+#   C          methyl group (CH3)
+#   [C@@H]     chiral center (L-configuration)
+#   (C(=O)[O-])  carboxylate branch
+#   [NH3+]     protonated amino group
+
+$ala = 'C[C@@H](C(=O)[O-])[NH3+]';
+</pre>
+
+<h2>Charged species (critical for biochemistry)</h2>
+<p>
+Most biological molecules carry formal charges at physiological pH. SMILES uses square brackets
+<code>[...]</code> for atoms with formal charges, explicit hydrogens, or non-default valence.
+Getting charges right is the single most common source of errors in biochemistry SMILES.
+</p>
+
+<h3>Common ionizable groups</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 20%;">
+		<col style="width: 20%;">
+		<col style="width: 21%;">
+		<col style="width: 21%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Group</th>
+			<th>Neutral form</th>
+			<th>Charged form</th>
+			<th>SMILES (neutral)</th>
+			<th>SMILES (charged)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Group">Carboxylic acid</td>
+			<td data-th="Neutral form">COOH</td>
+			<td data-th="Charged form">COO-</td>
+			<td data-th="SMILES (neutral)"><code>C(=O)O</code></td>
+			<td data-th="SMILES (charged)"><code>C(=O)[O-]</code></td>
+		</tr>
+		<tr>
+			<td data-th="Group">Amino group</td>
+			<td data-th="Neutral form">NH2</td>
+			<td data-th="Charged form">NH3+</td>
+			<td data-th="SMILES (neutral)"><code>N</code></td>
+			<td data-th="SMILES (charged)"><code>[NH3+]</code></td>
+		</tr>
+		<tr>
+			<td data-th="Group">Imidazole (His)</td>
+			<td data-th="Neutral form">NH + N</td>
+			<td data-th="Charged form">NH + NH+</td>
+			<td data-th="SMILES (neutral)"><code>C1=CN=C([NH]1)</code></td>
+			<td data-th="SMILES (charged)"><code>C1=C([NH]C=[NH+]1)</code></td>
+		</tr>
+		<tr>
+			<td data-th="Group">Guanidinium (Arg)</td>
+			<td data-th="Neutral form">C(=NH)(NH2)NH2</td>
+			<td data-th="Charged form">C(=NH2+)(NH2)NH2</td>
+			<td data-th="SMILES (neutral)"><code>C(=N)(N)N</code></td>
+			<td data-th="SMILES (charged)"><code>C(=[NH2+])(N)N</code></td>
+		</tr>
+		<tr>
+			<td data-th="Group">Thiol (Cys)</td>
+			<td data-th="Neutral form">SH</td>
+			<td data-th="Charged form">S-</td>
+			<td data-th="SMILES (neutral)"><code>S</code></td>
+			<td data-th="SMILES (charged)"><code>[S-]</code></td>
+		</tr>
+		<tr>
+			<td data-th="Group">Phenol (Tyr)</td>
+			<td data-th="Neutral form">OH</td>
+			<td data-th="Charged form">O-</td>
+			<td data-th="SMILES (neutral)"><code>O</code></td>
+			<td data-th="SMILES (charged)"><code>[O-]</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Critical note: imidazole protonation</h3>
+<p>
+The imidazole ring on histidine is the most common source of SMILES errors. The protonated form
+has <strong>one hydrogen on each nitrogen</strong> (NH + NH+), not two hydrogens on one nitrogen.
+Using <code>[NH2+]</code> is incorrect for imidazole because that implies two hydrogens on a
+single nitrogen.
+</p>
+<pre>
+# CORRECT: protonated histidine (pH below 6)
+# Imidazole ring has NH and NH+ (one H on each nitrogen)
+$his_protonated = 'C1=C([NH]C=[NH+]1)C[C@@H](C(=O)[O-])[NH3+]';
+
+# CORRECT: neutral histidine (pH above 6)
+# Imidazole ring has NH and N (hydrogen on only one nitrogen)
+$his_neutral = 'C1=CN=C([NH]1)C[C@@H](C(=O)[O-])[NH3+]';
+
+# WRONG: do not use NH2+ for protonated imidazole
+# $his_wrong = 'C1=C(N=C[NH2+]1)...';
+</pre>
+
+<h2>Validating SMILES strings</h2>
+<p>
+Always validate every SMILES string before using it in a problem. An invalid SMILES will silently
+produce an empty canvas. Three methods are available, listed from most to least reliable.
+</p>
+
+<h3>Method 1: Python RDKit (recommended)</h3>
+<pre>
+from rdkit import Chem
+
+smiles = "C[C@@H](C(=O)[O-])[NH3+]"
+mol = Chem.MolFromSmiles(smiles)
+
+if mol is None:
+    print("ERROR: Invalid SMILES!")
+else:
+    print(f"Valid SMILES")
+    print(f"Formula: {Chem.rdMolDescriptors.CalcMolFormula(mol)}")
+    print(f"Charge: {Chem.GetFormalCharge(mol)}")
+</pre>
+
+<h3>Method 2: Online SMILES viewers</h3>
+<p>
+Paste a SMILES string into the PubChem Sketcher
+(<code>https://pubchem.ncbi.nlm.nih.gov/edit3/index.html</code>) or any other online SMILES
+viewer to see the rendered structure immediately.
+</p>
+
+<h3>Method 3: Test render in WeBWorK</h3>
+<p>
+Use the local renderer to preview the problem and confirm that the canvas draws the expected
+molecule.
+</p>
+
+<h2>Canvas sizing guidelines</h2>
+<p>
+The canvas dimensions control how large the structure appears. Choose a size based on molecule
+complexity.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 25%;">
+		<col style="width: 25%;">
+		<col style="width: 25%;">
+		<col style="width: 25%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Use case</th>
+			<th>Width x Height</th>
+			<th>Aspect ratio</th>
+			<th>Examples</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Use case">Standard molecule</td>
+			<td data-th="Width x Height">320 x 240</td>
+			<td data-th="Aspect ratio">4:3</td>
+			<td data-th="Examples">Single amino acids, monosaccharides</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Large molecule</td>
+			<td data-th="Width x Height">480 x 320</td>
+			<td data-th="Aspect ratio">3:2</td>
+			<td data-th="Examples">Dipeptides, nucleotides, fatty acids</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Very large molecule</td>
+			<td data-th="Width x Height">640 x 480</td>
+			<td data-th="Aspect ratio">4:3</td>
+			<td data-th="Examples">Tripeptides, complex lipids</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Compact (grid display)</td>
+			<td data-th="Width x Height">240 x 180</td>
+			<td data-th="Aspect ratio">4:3</td>
+			<td data-th="Examples">Side-by-side comparisons</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Rendering options (mdetails)</h2>
+<p>
+The <code>mdetails</code> object in the JavaScript controls how RDKit draws each molecule. Adjust
+these settings inside the <code>HEADER_TEXT</code> block.
+</p>
+
+<h3>Production settings (for students)</h3>
+<pre>
+const mdetails = {
+    "legend": "",
+    "explicitMethyl": true
+};
+</pre>
+
+<h3>Debug settings (for development)</h3>
+<pre>
+const mdetails = {
+    "legend": "Debug view",
+    "explicitMethyl": true,
+    "addAtomIndices": true,
+    "addBondIndices": true,
+    "addStereoAnnotation": true
+};
+</pre>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 50%;">
+		<col style="width: 20%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Option</th>
+			<th>Effect</th>
+			<th>Default</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Option"><code>legend</code></td>
+			<td data-th="Effect">Text label drawn below the molecule.</td>
+			<td data-th="Default"><code>""</code></td>
+		</tr>
+		<tr>
+			<td data-th="Option"><code>explicitMethyl</code></td>
+			<td data-th="Effect">Shows CH3 groups as text rather than a bare vertex.</td>
+			<td data-th="Default"><code>true</code></td>
+		</tr>
+		<tr>
+			<td data-th="Option"><code>addAtomIndices</code></td>
+			<td data-th="Effect">Numbers each atom (useful for debugging).</td>
+			<td data-th="Default"><code>false</code></td>
+		</tr>
+		<tr>
+			<td data-th="Option"><code>addBondIndices</code></td>
+			<td data-th="Effect">Numbers each bond (useful for debugging).</td>
+			<td data-th="Default"><code>false</code></td>
+		</tr>
+		<tr>
+			<td data-th="Option"><code>addStereoAnnotation</code></td>
+			<td data-th="Effect">Draws R/S and E/Z labels on stereocenters.</td>
+			<td data-th="Default"><code>false</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Multiple molecules in one problem</h2>
+
+<h3>Pattern 1: Sequential display</h3>
+<p>
+Create a separate canvas for each molecule. Each canvas must have a unique <code>id</code>.
+</p>
+<pre>
+$smiles_ala = 'C[C@@H](C(=O)[O-])[NH3+]';
+$smiles_gly = 'C(C(=O)[O-])[NH3+]';
+
+$canvas_ala = '&lt;canvas id="canvas_ala" width="320" height="240"'
+    . ' data-smiles="' . $smiles_ala . '"&gt;&lt;/canvas&gt;';
+$canvas_gly = '&lt;canvas id="canvas_gly" width="320" height="240"'
+    . ' data-smiles="' . $smiles_gly . '"&gt;&lt;/canvas&gt;';
+
+BEGIN_PGML
+**Molecule A:**
+[$canvas_ala]*
+
+**Molecule B:**
+[$canvas_gly]*
+
+Which molecule is glycine? [_]{$answer}
+END_PGML
+</pre>
+
+<h3>Pattern 2: Side-by-side with HTML wrapper</h3>
+<p>
+Wrap multiple canvases in a flex container to display them in a row.
+</p>
+<pre>
+$side_by_side = '&lt;div style="display: flex; gap: 1em;"&gt;'
+    . '&lt;div&gt;' . $canvas_ala . '&lt;p&gt;Molecule A&lt;/p&gt;&lt;/div&gt;'
+    . '&lt;div&gt;' . $canvas_gly . '&lt;p&gt;Molecule B&lt;/p&gt;&lt;/div&gt;'
+    . '&lt;/div&gt;';
+
+BEGIN_PGML
+Compare these molecules:
+
+[$side_by_side]*
+
+Which is glycine? [_]{$answer}
+END_PGML
+</pre>
+
+<h2>Randomization with RDKit</h2>
+<p>
+Use a Perl hash to map molecule names to SMILES strings, then randomly select one. Always sort
+the hash keys before random selection so the same problem seed produces the same molecule.
+</p>
+<pre>
+%amino_acids = (
+    'alanine' =&gt; 'C[C@@H](C(=O)[O-])[NH3+]',
+    'glycine' =&gt; 'C(C(=O)[O-])[NH3+]',
+    'serine'  =&gt; 'C([C@@H](C(=O)[O-])[NH3+])O',
+);
+
+# Sort keys before random selection for seed stability
+@aa_names = sort keys %amino_acids;
+$selected_name = list_random(@aa_names);
+$selected_smiles = $amino_acids{$selected_name};
+
+$canvas = '&lt;canvas id="canvas_aa" width="320" height="240"'
+    . ' data-smiles="' . $selected_smiles . '"&gt;&lt;/canvas&gt;';
+
+BEGIN_PGML
+Identify this amino acid:
+
+[$canvas]*
+
+[_]{$selected_name}
+END_PGML
+</pre>
+<p>
+<strong>Why sort the keys?</strong> Perl hashes have no guaranteed ordering. Without sorting, the
+same seed could map to different molecules on different runs or different servers, making grades
+unreproducible.
+</p>
+
+<h2>Common pitfalls</h2>
+
+<h3>1. Incorrect formal charges</h3>
+<pre>
+# WRONG: missing brackets around charged atom
+$smiles = 'CC(C(=O)O)NH3+';
+
+# RIGHT: square brackets enclose charged atoms
+$smiles = 'CC(C(=O)O)[NH3+]';
+</pre>
+
+<h3>2. Imidazole protonation errors</h3>
+<pre>
+# WRONG: NH2+ implies two H on one nitrogen
+$his = 'C1=C(N=C[NH2+]1)...';
+
+# RIGHT: NH and NH+ (one H on each nitrogen)
+$his = 'C1=C([NH]C=[NH+]1)...';
+</pre>
+
+<h3>3. Quote escaping in canvas attributes</h3>
+<pre>
+# WRONG: nested double quotes break the HTML attribute
+$canvas = "&lt;canvas data-smiles=\"$smiles\"&gt;&lt;/canvas&gt;";
+
+# RIGHT: use single-quoted string with dot concatenation
+$canvas = '&lt;canvas data-smiles="' . $smiles . '"&gt;&lt;/canvas&gt;';
+</pre>
+
+<h3>4. Canvas ID collisions</h3>
+<pre>
+# WRONG: duplicate IDs cause only one molecule to render
+$canvas1 = '&lt;canvas id="canvas" ...&gt;&lt;/canvas&gt;';
+$canvas2 = '&lt;canvas id="canvas" ...&gt;&lt;/canvas&gt;';
+
+# RIGHT: every canvas gets a unique ID
+$canvas1 = '&lt;canvas id="canvas_mol1" ...&gt;&lt;/canvas&gt;';
+$canvas2 = '&lt;canvas id="canvas_mol2" ...&gt;&lt;/canvas&gt;';
+</pre>
+
+<h3>5. Missing asterisk in PGML</h3>
+<pre>
+# WRONG: PGML escapes the HTML tags
+[$canvas]
+
+# RIGHT: the * tells PGML to output raw HTML
+[$canvas]*
+</pre>
+
+<h2>Chemistry-specific guidelines</h2>
+
+<h3>Amino acids</h3>
+<p>
+At physiological pH (around 7.4), amino acids exist as zwitterions with a protonated amino group
+(<code>[NH3+]</code>) and a deprotonated carboxylate (<code>C(=O)[O-]</code>). Side chains may
+carry additional charges depending on their pKa.
+</p>
+<pre>
+# L-Alanine (simple zwitterion)
+$ala = 'C[C@@H](C(=O)[O-])[NH3+]';
+
+# L-Lysine (charged side chain: extra NH3+)
+$lys = 'C(CC[NH3+])[C@@H](C(=O)[O-])[NH3+]';
+
+# L-Aspartate (charged side chain: extra COO-)
+$asp = 'C([C@@H](C(=O)[O-])[NH3+])C(=O)[O-]';
+
+# L-Histidine (protonated imidazole side chain)
+$his = 'C1=C([NH]C=[NH+]1)C[C@@H](C(=O)[O-])[NH3+]';
+</pre>
+
+<h3>Nucleotides and nucleobases</h3>
+<pre>
+# Adenine (neutral nucleobase)
+$adenine = 'C1=NC(=C2C(=N1)N=CN2)N';
+
+# Cytosine (neutral nucleobase)
+$cytosine = 'C1=CN(C(=O)N=C1N)C';
+</pre>
+
+<h3>Peptides</h3>
+<pre>
+# Dipeptide: Gly-Ala (peptide bond connects the two residues)
+$gly_ala = 'C[C@@H](C(=O)O)NC(=O)CN';
+</pre>
+<p>
+Use a larger canvas (480 x 320 or larger) for peptides because the extended backbone needs more
+horizontal space.
+</p>
+
+<h2>Troubleshooting</h2>
+
+<h3>Canvas shows an empty box</h3>
+<ul>
+	<li>RDKit.js may not have loaded. Open the browser console and look for network errors.</li>
+	<li>Confirm that the WeBWorK server allows loading external scripts from the CDN.</li>
+	<li>Verify that <code>HEADER_TEXT</code> appears after <code>loadMacros</code> and before
+		<code>BEGIN_PGML</code>.</li>
+</ul>
+
+<h3>Console shows "Error initializing RDKit"</h3>
+<ul>
+	<li>The SMILES string is probably invalid. Validate it with Python RDKit first.</li>
+	<li>Check that the <code>data-smiles</code> attribute is properly quoted (no nested double
+		quotes).</li>
+	<li>Confirm that every canvas has a unique <code>id</code>.</li>
+</ul>
+
+<h3>Molecule renders but looks wrong</h3>
+<ul>
+	<li>Check stereochemistry: <code>[C@@H]</code> vs <code>[C@H]</code> changes the 3D
+		arrangement.</li>
+	<li>Check formal charges: <code>[NH3+]</code> vs <code>N</code> changes protonation.</li>
+	<li>Check explicit hydrogens on charged atoms: <code>[NH+]</code> vs <code>[N+]</code>.</li>
+	<li>Check ring closures: mismatched numbers produce the wrong ring system.</li>
+</ul>
+
+<h2>Best practices checklist</h2>
+<ul>
+	<li>Validate all SMILES with Python RDKit or an online viewer before publishing.</li>
+	<li>Use correct formal charges, especially <code>[NH3+]</code>, <code>[O-]</code>, and
+		<code>[NH+]</code>.</li>
+	<li>Give every canvas a unique <code>id</code>.</li>
+	<li>Choose canvas dimensions appropriate for the molecule complexity.</li>
+	<li>Sort hash keys before random selection for seed stability.</li>
+	<li>Use <code>[$variable]*</code> (with the asterisk) in PGML for HTML variables.</li>
+	<li>Test the rendered output in a browser before assigning to students.</li>
+	<li>Use production <code>mdetails</code> settings for student-facing problems.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Copy the quick start pattern above into a new PG file and replace the SMILES string with
+		your target molecule.</li>
+	<li>Validate the SMILES, set the canvas size, and preview in a browser.</li>
+	<li>For problems that compare multiple structures, give each canvas a unique ID and consider
+		side-by-side layout.</li>
+</ul>

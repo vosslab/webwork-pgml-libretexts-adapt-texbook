@@ -110,6 +110,31 @@ compute numeric values, it can be omitted.
 			<td data-th="Macro to load">answerHints.pl</td>
 			<td data-th="Notes">Instructor-style feedback without extra widgets.</td>
 		</tr>
+		<tr>
+			<td data-th="What students see">Dropdown menus (select one from a list)</td>
+			<td data-th="Macro to load">parserPopUp.pl</td>
+			<td data-th="Notes">Use PopUp() for inline dropdown selection. Available in ADAPT.</td>
+		</tr>
+		<tr>
+			<td data-th="What students see">Drag-and-drop proof ordering</td>
+			<td data-th="Macro to load">draggableProof.pl</td>
+			<td data-th="Notes">Students arrange steps into the correct order.</td>
+		</tr>
+		<tr>
+			<td data-th="What students see">Drag-and-drop grouping into subsets</td>
+			<td data-th="Macro to load">draggableSubsets.pl</td>
+			<td data-th="Notes">Students sort items into labeled bins.</td>
+		</tr>
+		<tr>
+			<td data-th="What students see">Free-response essay box</td>
+			<td data-th="Macro to load">PGessaymacros.pl</td>
+			<td data-th="Notes">Open-ended text entry; requires manual grading.</td>
+		</tr>
+		<tr>
+			<td data-th="What students see">Fill-in-the-blank word completion</td>
+			<td data-th="Macro to load">parserWordCompletion.pl</td>
+			<td data-th="Notes">Accepts specific string answers from a word bank.</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -404,6 +429,41 @@ to diagnose and fix it.
 			<td data-th="Macro to load">unorderedAnswer.pl</td>
 			<td data-th="Why it matters">Grades set-style answers without order.</td>
 		</tr>
+		<tr>
+			<td data-th="Use it when">Answer must include physical units (e.g., "9.8 m/s^2")</td>
+			<td data-th="Macro to load">parserNumberWithUnits.pl</td>
+			<td data-th="Why it matters">Parses and validates a number paired with a unit string.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">Answer is a formula with units (e.g., "2*pi*r m")</td>
+			<td data-th="Macro to load">parserFormulaWithUnits.pl</td>
+			<td data-th="Why it matters">Extends FormulaWithUnits to accept symbolic expressions with units.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">Answer should be in scientific notation</td>
+			<td data-th="Macro to load">contextScientificNotation.pl</td>
+			<td data-th="Why it matters">Requires answers like 6.02E23 or 6.02 x 10^23. Useful for biology measurements.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">Answer must be a fraction, not a decimal</td>
+			<td data-th="Macro to load">contextFraction.pl</td>
+			<td data-th="Why it matters">Requires fractional form; rejects decimal equivalents.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">Answer is a percentage</td>
+			<td data-th="Macro to load">contextPercent.pl</td>
+			<td data-th="Why it matters">Parses answers like "45%" and validates the percent sign.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">You need a custom answer checker</td>
+			<td data-th="Macro to load">answerCustom.pl</td>
+			<td data-th="Why it matters">Build a fully custom grading subroutine when standard checkers are insufficient.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">Partial credit for multi-part problems</td>
+			<td data-th="Macro to load">PGgraders.pl</td>
+			<td data-th="Why it matters">Provides full_partial_grader and other grading strategies.</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -436,6 +496,16 @@ to diagnose and fix it.
 			<td data-th="Use it when">An interactive graph tool is required</td>
 			<td data-th="Macro to load">parserGraphTool.pl</td>
 			<td data-th="Why it matters">Provides interactive graph widgets.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">You need a TikZ-generated image in the problem</td>
+			<td data-th="Macro to load">PGtikz.pl</td>
+			<td data-th="Why it matters">Renders TikZ code to an image at display time.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it when">You need a LaTeX-generated diagram or figure</td>
+			<td data-th="Macro to load">PGlateximage.pl</td>
+			<td data-th="Why it matters">Renders arbitrary LaTeX snippets to images.</td>
 		</tr>
 	</tbody>
 </table>
@@ -481,6 +551,264 @@ to diagnose and fix it.
 	<p>
 	Local render shows the line and missing macro when ADAPT only reports a generic error (<a href="/@go/page/555731">Chapter 7</a>).
 	</p>
+
+<h2>Graph, plotting, and image macros</h2>
+<p>
+The renderer includes several macros for generating figures and plots. Most biology problems do not
+need dynamic graphs, but these are available when a problem requires a visual.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>What it does</th>
+			<th>When to use it</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGgraphmacros.pl</td>
+			<td data-th="What it does">Creates 2D function plots using the WWPlot/Fun system.</td>
+			<td data-th="When to use it">Simple function graphs (growth curves, dose-response). See Chapter 6.6.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGtikz.pl</td>
+			<td data-th="What it does">Renders TikZ code to an image.</td>
+			<td data-th="When to use it">Custom diagrams, flowcharts, or annotated figures.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGlateximage.pl</td>
+			<td data-th="What it does">Renders arbitrary LaTeX to an image.</td>
+			<td data-th="When to use it">Complex LaTeX-only figures or chemical structures.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">parserGraphTool.pl</td>
+			<td data-th="What it does">Interactive graph widget where students plot points or draw lines.</td>
+			<td data-th="When to use it">Problems that ask students to construct a graph.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">LiveGraphics3D.pl</td>
+			<td data-th="What it does">Embeds interactive 3D graphics.</td>
+			<td data-th="When to use it">Rarely needed for life-science problems. Available but niche.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGstatisticsGraphMacros.pl</td>
+			<td data-th="What it does">Pre-built statistical graph types (histograms, scatter plots).</td>
+			<td data-th="When to use it">Statistics-oriented problems with data visualization.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Statistics and numerical macros</h2>
+<p>
+These macros are available in the renderer and are useful for quantitative biology, biostatistics,
+or ecology problems that involve data analysis.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>What it provides</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGstatisticsmacros.pl</td>
+			<td data-th="What it provides">Statistical functions: mean, standard deviation, normal and t-distribution values.</td>
+			<td data-th="Notes">Useful for biostatistics problems involving hypothesis testing or confidence intervals.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGnumericalmacros.pl</td>
+			<td data-th="What it provides">Numerical methods: interpolation, numerical integration, Newton's method.</td>
+			<td data-th="Notes">Rarely needed for biology. More common in engineering or physics.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">RserveClient.pl</td>
+			<td data-th="What it provides">Connects to an R statistical computing server from within PG.</td>
+			<td data-th="Notes">Requires a running Rserve instance. Not available in most ADAPT deployments.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Matrix and linear algebra macros</h2>
+<p>
+Matrix macros are available in the renderer but are rarely needed for biology or life-science
+problems. They appear frequently in math and engineering problem libraries.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>What it provides</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGmatrixmacros.pl</td>
+			<td data-th="What it provides">Basic matrix display and input helpers.</td>
+			<td data-th="Notes">Use for problems involving transition matrices (population genetics, Markov chains).</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">MatrixCheckers.pl</td>
+			<td data-th="What it provides">Answer checkers for matrix-valued answers.</td>
+			<td data-th="Notes">Validates student matrix input against correct answer.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">MatrixReduce.pl</td>
+			<td data-th="What it provides">Row reduction and RREF utilities.</td>
+			<td data-th="Notes">Rarely needed for biology.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">contextMatrixExtras.pl</td>
+			<td data-th="What it provides">Extra MathObject operations for matrices.</td>
+			<td data-th="Notes">Extends the Matrix context with additional operations.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Complex number and specialized math macros</h2>
+<p>
+These macros exist in the renderer for completeness but are almost never needed in biology or
+life-science problems. They are listed here so you recognize them if encountered in borrowed code.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro</th>
+			<th>What it provides</th>
+			<th>Relevance to biology</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro">PGcomplexmacros.pl</td>
+			<td data-th="What it provides">Complex number arithmetic and display.</td>
+			<td data-th="Relevance to biology">None. Remove if found in copied code.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">contextComplexExtras.pl / contextComplexJ.pl</td>
+			<td data-th="What it provides">Extended complex number contexts (j instead of i).</td>
+			<td data-th="Relevance to biology">None. Engineering-oriented.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGdiffeqmacros.pl</td>
+			<td data-th="What it provides">Differential equation display and solution helpers.</td>
+			<td data-th="Relevance to biology">Rare. Could appear in population dynamics or pharmacokinetics problems.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">PGpolynomialmacros.pl</td>
+			<td data-th="What it provides">Polynomial manipulation utilities.</td>
+			<td data-th="Relevance to biology">None for typical biology problems.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">LinearProgramming.pl</td>
+			<td data-th="What it provides">Simplex method and LP helpers.</td>
+			<td data-th="Relevance to biology">None. Operations research only.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Quick reference: which macro for which task</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 45%;">
+		<col style="width: 55%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>I want to...</th>
+			<th>Load this macro</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="I want to...">Ask a multiple-choice question</td>
+			<td data-th="Load this macro">parserRadioButtons.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Ask a dropdown selection question</td>
+			<td data-th="Load this macro">parserPopUp.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Ask for a numeric answer with units</td>
+			<td data-th="Load this macro">parserNumberWithUnits.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Require scientific notation in the answer</td>
+			<td data-th="Load this macro">contextScientificNotation.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Accept a chemical reaction as input</td>
+			<td data-th="Load this macro">contextReaction.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Require a fraction (no decimals)</td>
+			<td data-th="Load this macro">contextFraction.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Accept a percentage answer like "45%"</td>
+			<td data-th="Load this macro">contextPercent.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Display a data table in the problem</td>
+			<td data-th="Load this macro">niceTables.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Create a multi-part scaffolded problem</td>
+			<td data-th="Load this macro">scaffold.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Show a dynamically generated graph or plot</td>
+			<td data-th="Load this macro">PGgraphmacros.pl (or PGtikz.pl for custom diagrams)</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Let students arrange steps in order</td>
+			<td data-th="Load this macro">draggableProof.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Give partial credit by part</td>
+			<td data-th="Load this macro">PGgraders.pl (or weightedGrader.pl for weighted scoring)</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Grade related answer blanks together</td>
+			<td data-th="Load this macro">parserMultiAnswer.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Write a custom answer checker from scratch</td>
+			<td data-th="Load this macro">answerCustom.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Provide targeted feedback for common mistakes</td>
+			<td data-th="Load this macro">answerHints.pl</td>
+		</tr>
+		<tr>
+			<td data-th="I want to...">Ask for a free-response essay</td>
+			<td data-th="Load this macro">PGessaymacros.pl</td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>Do not cargo-cult</h2>
 <ul>

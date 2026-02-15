@@ -86,6 +86,57 @@ To solve [: x + [$a] = [$b] x :], subtract [:x:] from both sides to get
 END_PGML
 </pre>
 
+<h2>HTML in variables is escaped by default</h2>
+<p>
+If you store HTML markup in a Perl variable (for example,
+<code>$label = "&lt;span style='color:red'&gt;Warning&lt;/span&gt;"</code>) and insert it with
+<code>[$label]</code>, PGML will escape the angle brackets and the student will see the raw tags
+instead of styled text.
+</p>
+
+<p>
+To pass HTML through unescaped, append an asterisk:
+</p>
+<pre>
+[$label]*
+</pre>
+
+<p>
+This tells PGML to treat the variable's output as pre-formatted HTML, the same trailing
+<code>*</code> used after <code>[@ ... @]*</code> eval blocks. Use it whenever a variable contains
+<code>&lt;span&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;sup&gt;</code>,
+<code>&lt;sub&gt;</code>, or any other HTML tags that should render as markup.
+</p>
+
+<h2>Avoid MODES() inside eval blocks</h2>
+<p>
+A common mistake is to use <code>MODES(HTML =&gt; '...')</code> inside a
+<code>[@ ... @]</code> eval block, expecting it to emit raw HTML. In practice,
+<code>MODES(...)</code> returns <code>1</code> in eval context, so the student sees the number 1
+instead of the intended content.
+</p>
+
+<p>
+If you need mode-dependent output, build it in the Perl setup section and insert the result with
+<code>[$var]*</code>, or use PGML tag wrappers and raw HTML outside eval blocks.
+</p>
+
+<h2>MathJax color commands</h2>
+<p>
+TeX color macros such as <code>\color{}</code> and <code>\textcolor{}</code> do not reliably
+render in PGML because MathJax may wrap them in <code>tex2jax_ignore</code> spans. If you need
+colored text in a prompt, use HTML <code>&lt;span style="color:..."&gt;</code> instead. For a
+fuller discussion of MathJax rendering constraints, see Section 6.1.
+</p>
+
+<h2>Blocked HTML tags</h2>
+<p>
+PGML's HTML whitelist does not allow raw <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
+<code>&lt;td&gt;</code>, or <code>&lt;th&gt;</code> tags. If you write them in PGML output they
+will be stripped or trigger warnings. Use <code>niceTables.pl</code> for any tabular layout. For
+more on the tag whitelist and workarounds, see Section 6.2.
+</p>
+
 <h2>Images and links (LibreTexts constraint)</h2>
 <p>
 Images can be inserted via helper functions and command substitution, but the textbook content in

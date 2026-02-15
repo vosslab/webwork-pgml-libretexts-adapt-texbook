@@ -30,6 +30,51 @@ ordered_answers_list:
 Official examples (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/techniques.html">Problem techniques list</a>.
 </p>
 
+<h2>Preferred PGML pattern (DraggableProof)</h2>
+<p>
+Use <code>draggableProof.pl</code> to create a drag-and-drop ordering widget. The inline
+<code>[_]{$ordering}</code> pattern is not supported in PG 2.17 (it produces an
+unrecognized evaluator error), so use the legacy <code>-&gt;Print</code> plus
+<code>ANS(...)</code> form instead.
+</p>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "draggableProof.pl",
+  "PGcourse.pl",
+);
+
+$ordering = DraggableProof(
+  [ "Denaturation", "Primer annealing", "Extension" ],
+  [],
+  SourceLabel =&gt; "Steps",
+  TargetLabel =&gt; "Put in correct order",
+);
+$ordering_html = $ordering-&gt;Print;
+
+BEGIN_PGML
+Put the PCR steps in the correct order.
+
+[$ordering_html]*
+END_PGML
+
+ANS($ordering-&gt;cmp);
+</pre>
+<p>
+Key points:
+</p>
+<ul>
+	<li>The first array holds items in the correct order; the second array (usually empty)
+		holds items that start in the target zone.</li>
+	<li>Include <code>MathObjects.pl</code>; it is required by the macro.</li>
+	<li>Use <code>[$ordering_html]*</code> to inject the widget HTML without PGML escaping
+		(the <code>*</code> flag is critical).</li>
+	<li>Use <code>ANS($ordering-&gt;cmp)</code> for grading because inline attachment is
+		not supported.</li>
+</ul>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Only use ORDER when there is a single standard sequence for the context you are testing.</li>

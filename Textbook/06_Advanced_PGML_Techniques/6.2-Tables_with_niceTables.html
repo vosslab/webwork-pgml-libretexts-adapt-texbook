@@ -1,20 +1,30 @@
 <p>
 This page explains how to build tables with <code>niceTables.pl</code>, which is the only supported
-way to create tables in this install. HTML table tags (<code>table</code>, <code>tr</code>,
-<code>td</code>, <code>th</code>) are blocked, so use DataTable or LayoutTable instead.
+way to create tables in this install. Standard HTML table tags (<code>&lt;table&gt;</code>,
+<code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>) are blocked by the
+server and will not render. Use <code>DataTable</code> or <code>LayoutTable</code> instead.
 </p>
 
 <p>
 <strong>Use this page when:</strong> you need to present measurements, observations, or structured
-data in a readable format.
+data in a readable format inside a WeBWorK problem.
+</p>
+
+<h2>Why niceTables is the only option</h2>
+<p>
+The WeBWorK PG rendering engine strips raw HTML table tags for security reasons. If you write
+<code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;...&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code> inside a
+problem, the tags are silently removed and the cell contents collapse into a single line. The
+<code>niceTables.pl</code> macro generates safe, styled tables that the server allows through. Every
+table in every problem must use this macro.
 </p>
 
 <h2>DataTable vs LayoutTable</h2>
 <table class="mt-responsive-table">
 	<colgroup>
-		<col style="width: 32%;">
-		<col style="width: 34%;">
-		<col style="width: 34%;">
+		<col style="width: 20%;">
+		<col style="width: 40%;">
+		<col style="width: 40%;">
 	</colgroup>
 	<thead>
 		<tr>
@@ -26,16 +36,22 @@ data in a readable format.
 	<tbody>
 		<tr>
 			<td data-th="Table type">DataTable</td>
-			<td data-th="Use it for">Real data with headers (measurements, conditions).</td>
-			<td data-th="Notes">Adds header structure and improves readability.</td>
+			<td data-th="Use it for">Real data with headers, captions, or semantic meaning (measurements, conditions, experimental results).</td>
+			<td data-th="Notes">Adds header structure and improves accessibility. Supports the <code>caption</code> option.</td>
 		</tr>
 		<tr>
 			<td data-th="Table type">LayoutTable</td>
-			<td data-th="Use it for">Visual layout or aligned blanks.</td>
-			<td data-th="Notes">Use sparingly; do not fake data tables.</td>
+			<td data-th="Use it for">Visual layout: side-by-side answer blanks, aligned labels, widget grids.</td>
+			<td data-th="Notes">No header semantics. Use sparingly; do not fake data tables with LayoutTable.</td>
 		</tr>
 	</tbody>
 </table>
+
+<p>
+<strong>Rule of thumb:</strong> if the content has a header row or a caption, use
+<code>DataTable</code>. If you are arranging blanks or labels spatially, use
+<code>LayoutTable</code>.
+</p>
 
 <h2>Copy and edit (DataTable)</h2>
 <pre>
@@ -63,8 +79,10 @@ END_PGML
 <h2>Copy and edit (LayoutTable)</h2>
 <pre>
 $layout = LayoutTable(
-  [ 'Lane 1', 'Lane 2', 'Lane 3' ],
-  [ '[________]{ $ans1 }', '[________]{ $ans2 }', '[________]{ $ans3 }' ],
+  [
+    [ 'Lane 1', 'Lane 2', 'Lane 3' ],
+    [ '[________]{ $ans1 }', '[________]{ $ans2 }', '[________]{ $ans3 }' ],
+  ],
   center => 1,
   horizontalrules => 1,
 );
@@ -74,15 +92,132 @@ BEGIN_PGML
 END_PGML
 </pre>
 
-<h2>Biology examples to model</h2>
+<h2>Cell content formats</h2>
+<p>
+Each cell in the 2-D array you pass to <code>DataTable</code> or <code>LayoutTable</code> can be
+one of three shapes.
+</p>
 <ul>
-	<li>Dilution series: stock and final concentrations in a small DataTable.</li>
-	<li>Enzyme kinetics: substrate vs velocity table with a single computed blank.</li>
-	<li>Gel/blot comparison: LayoutTable with aligned labels and answer blanks.</li>
+	<li><strong>Plain text</strong> (<code>'hello'</code>) -- most cells. Just pass a string or number.</li>
+	<li><strong>Hashref</strong> (<code>{ data =&gt; 'hello', halign =&gt; 'c' }</code>) -- when you need per-cell options like alignment or CSS.</li>
+	<li><strong>Arrayref</strong> (<code>[ 'hello', halign =&gt; 'c' ]</code>) -- shorthand for hashref. Item 0 is content; the rest are key/value options.</li>
 </ul>
+
+<h2>Table-level options reference</h2>
+<p>
+These options are passed as key/value pairs after the row data.
+</p>
+<ul>
+	<li><code>center</code> -- set to 1 to center the table horizontally.</li>
+	<li><code>caption</code> -- add a caption above the table (DataTable only).</li>
+	<li><code>horizontalrules</code> -- set to 1 to draw horizontal lines between rows.</li>
+	<li><code>valign</code> -- vertical alignment: <code>top</code>, <code>middle</code>, or <code>bottom</code>.</li>
+	<li><code>padding</code> -- array <code>[vertical, horizontal]</code> specifying cell padding in em.</li>
+</ul>
+<p>
+CSS hooks for fine-grained styling:
+</p>
+<ul>
+	<li><code>tablecss</code> -- CSS applied to the outer table element.</li>
+	<li><code>datacss</code> -- CSS applied to every data cell.</li>
+	<li><code>headercss</code> -- CSS applied to every header cell.</li>
+	<li><code>allcellcss</code> -- CSS applied to every cell (header and data).</li>
+	<li><code>columnscss</code> -- arrayref of CSS strings, one per column.</li>
+</ul>
+
+<h2>PGML table syntax</h2>
+<p>
+PGML also supports an inline table syntax using <code>[# ... #]</code>. This is backed by
+<code>niceTables</code> internally and is acceptable when it improves readability. Each row uses
+<code>[. ... .]</code> for cells.
+</p>
+<pre>
+BEGIN_PGML
+[# 'Tube'  , 'Stock (mM)' , 'Final (uM)' #]
+[. 'A'     , 2.0          , [________]{$ans1} .]
+[. 'B'     , 4.0          , [________]{$ans2} .]
+[. 'C'     , 8.0          , [________]{$ans3} .]
+END_PGML
+</pre>
+<p>
+For complex tables with many options, the explicit <code>DataTable()</code> or
+<code>LayoutTable()</code> call gives you more control.
+</p>
+
+<h2>Translating HTML tables</h2>
+<p>
+If you are converting a problem that originally used raw HTML tables, follow these rules.
+</p>
+<ul>
+	<li><strong>Header row or caption present:</strong> use <code>DataTable()</code>. Map
+		<code>&lt;th&gt;</code> cells to the first row of the array.</li>
+	<li><strong>Pure layout (two-column lists, widget grids):</strong> use
+		<code>LayoutTable()</code>.</li>
+	<li><strong>Nested tables:</strong> not supported. Flatten the content into a single table or
+		use separate tables.</li>
+	<li><strong>rowspan or colspan:</strong> not supported. Restructure the data into a simple
+		rectangular grid.</li>
+	<li>Never emit raw HTML table tags as a fallback. If the table cannot be translated, rewrite it
+		manually.</li>
+</ul>
+
+<h2>Biology examples</h2>
+
+<h3>Dilution series</h3>
+<p>
+A DataTable showing stock concentrations where students compute the final concentration.
+</p>
+<pre>
+$dilution = DataTable(
+  [
+    ['Tube', 'Stock (mM)', 'Dilution', 'Final (uM)'],
+    ['A', 2.0, '1:10', ''],
+    ['B', 4.0, '1:10', ''],
+    ['C', 8.0, '1:10', ''],
+  ],
+  caption => 'Serial dilution worksheet',
+  center => 1,
+  horizontalrules => 1,
+);
+</pre>
+
+<h3>Enzyme kinetics</h3>
+<p>
+Substrate concentration vs reaction velocity with one computed blank.
+</p>
+<pre>
+$kinetics = DataTable(
+  [
+    ['[S] (mM)', 'Velocity (umol/min)'],
+    [0.1, 12],
+    [0.5, 45],
+    [1.0, '[________]{ $vmax_half }'],
+    [5.0, 88],
+  ],
+  center => 1,
+  horizontalrules => 1,
+);
+</pre>
+
+<h3>Gel or blot comparison</h3>
+<p>
+A LayoutTable that arranges lane labels above answer blanks so students identify bands.
+</p>
+<pre>
+$gel = LayoutTable(
+  [
+    [ 'Marker', 'Sample 1', 'Sample 2', 'Control' ],
+    [ '[________]{ $band1 }', '[________]{ $band2 }',
+      '[________]{ $band3 }', '[________]{ $band4 }' ],
+  ],
+  center => 1,
+  allcellcss => 'padding: 4px 8px;',
+);
+</pre>
 
 <h2>Apply it today</h2>
 <ul>
-	<li>Use DataTable for real measurements and LayoutTable only for layout.</li>
-	<li>Avoid raw HTML table tags; they are blocked in this install.</li>
+	<li>Use <code>DataTable</code> for real measurements and <code>LayoutTable</code> only for visual arrangement.</li>
+	<li>Never use raw HTML table tags; they are blocked and will not render.</li>
+	<li>Start with the copy-and-edit examples above, then customize options as needed.</li>
 </ul>

@@ -28,6 +28,26 @@ answers_list:
 Official example (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html">StringsInContext</a>.
 </p>
 
+<h2>Preferred PGML pattern</h2>
+<p>
+Use a string <code>Context</code> and <code>Compute</code> to define the expected answer,
+then attach it inline in the PGML blank.
+</p>
+<pre>
+Context("String");
+$ans = Compute("mitochondrion");
+
+BEGIN_PGML
+The organelle primarily responsible for ATP production
+in eukaryotic cells is the [__________]{$ans}.
+END_PGML
+</pre>
+<p>
+If the string context is not available in your renderer snapshot, convert the question to
+multiple choice (<code>RadioButtons</code>) or a dropdown (<code>PopUp</code>) instead.
+This avoids grading failures from unsupported evaluator types.
+</p>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Decide whether you will accept plural vs singular forms, and list them explicitly.</li>

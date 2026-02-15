@@ -4,43 +4,347 @@ subset. Use this for terms like ABOVE/BELOW or NOT where color or bold weight pr
 </p>
 
 <p>
-<strong>Use this page when:</strong> you need to highlight key words or label classes in matching
-or statement-based prompts.
+<strong>Use this page when:</strong> you need to highlight key words, numeric values, or label
+classes in matching or statement-based prompts.
 </p>
 
-<h2>Preferred pattern (PGML tag wrapper)</h2>
+<h2>Why emphasize key information?</h2>
+<p>
+Students often miss critical details in question statements, leading to common errors:
+</p>
+<ul>
+	<li>Reading the wrong value (pH 7.4 instead of pH 8.0)</li>
+	<li>Missing important qualifiers like NOT, LEAST, or MOST</li>
+	<li>Overlooking units or experimental conditions</li>
+</ul>
+<p>
+Visual emphasis helps students quickly locate critical values and focus on what matters. Even a
+small amount of color or size change can dramatically reduce misreading errors.
+</p>
+
+<h2>Emphasis styles by use case</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 25%;">
+		<col style="width: 30%;">
+		<col style="width: 25%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Use case</th>
+			<th>Style</th>
+			<th>CSS properties</th>
+			<th>Example content</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Use case">Numeric values (pH, temperatures)</td>
+			<td data-th="Style">Blue badge</td>
+			<td data-th="CSS properties">color:#0066cc; font-size:1.35em; font-weight:700; background-color:#e6f2ff; padding:0.1em 0.4em; border-radius:4px</td>
+			<td data-th="Example content">pH 7.4</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Key terms (hydrophobic, polar)</td>
+			<td data-th="Style">Gold emphasis</td>
+			<td data-th="CSS properties">color:#997300; font-size:1.25em; font-weight:700</td>
+			<td data-th="Example content">hydrophobic</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Negation (NOT, EXCEPT)</td>
+			<td data-th="Style">Red warning</td>
+			<td data-th="CSS properties">color:#cc0000; font-size:1.3em; font-weight:700</td>
+			<td data-th="Example content">NOT</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Multiple values (pKa lists)</td>
+			<td data-th="Style">Monospace with background</td>
+			<td data-th="CSS properties">font-family:monospace; background-color:#f5f5f5; padding:0.2em 0.5em; border-radius:3px; font-size:1.1em</td>
+			<td data-th="Example content">1.82, 6.00, 9.17</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>CSS class approach (preferred)</h2>
+<p>
+Define CSS classes once in <code>HEADER_TEXT</code> at the top of the problem, then reference
+them with PGML tag wrappers. This keeps styles in one place and reusable throughout the problem.
+</p>
+<pre>
+HEADER_TEXT(MODES(TeX => '', HTML => &lt;&lt;'END_STYLE'));
+&lt;style&gt;
+.emph-data    { color:#0066cc; font-size:1.35em; font-weight:700;
+                background-color:#e6f2ff; padding:0.1em 0.4em; border-radius:4px; }
+.emph-term    { color:#997300; font-size:1.25em; font-weight:700; }
+.emph-warning { color:#cc0000; font-size:1.3em;  font-weight:700; }
+&lt;/style&gt;
+END_STYLE
+
+BEGIN_PGML
+Which amino acid is predominantly charged at
+[&lt;pH 7.4&gt;]{['span', class => 'emph-data']}{['','']}?
+
+Which of the following is
+[&lt;NOT&gt;]{['span', class => 'emph-warning']}{['','']}
+a nucleotide?
+END_PGML
+</pre>
+<p>
+The tag wrapper syntax is
+<code>[&lt;text&gt;]{['span', class =&gt; 'class-name']}{['','']}</code>. The first brace pair
+sets the HTML element and attributes; the second <code>{['','']}</code> closes the tag.
+</p>
+
+<h2>Inline style approach</h2>
+<p>
+If you only need emphasis in one place, you can use inline styles directly in the tag wrapper.
+This works but is harder to maintain when the same style appears in multiple places.
+</p>
 <pre>
 BEGIN_PGML
-[<Important>]{['span', style => 'color:#b91c1c; font-weight:700;']}{['','']}
+[&lt;Important&gt;]{['span', style => 'color:#b91c1c; font-weight:700;']}{['','']}
 END_PGML
 </pre>
 
+<h2>What does NOT work: TeX and MathJax color commands</h2>
 <p>
-TeX color commands do not render reliably in this install, so prefer HTML spans with simple CSS.
+Do not use <code>\color</code>, <code>\textcolor</code>, or other TeX/MathJax color commands for
+text coloring in PGML. In this install, PGML escapes backslashes into
+<code>tex2jax_ignore</code> spans before MathJax processes them, so the TeX color commands never
+reach the math renderer.
+</p>
+<pre>
+## These all FAIL - do not use them ##
+[\color{#cc00cc}{\text{colored text}}]
+\(\color{#cc00cc}{\text{colored text}}\)
+$colored = "\color{red}{\text{warning}}";
+[$colored]
+</pre>
+<p>
+Backslashes are escaped into <code>&lt;span class="tex2jax_ignore"&gt;\\&lt;/span&gt;</code>
+before MathJax runs, so the TeX commands are never processed. Use CSS styling instead.
 </p>
 
 <h2>Passing HTML variables through PGML</h2>
 <p>
-If you build an HTML snippet in setup (for example, a colored label), pass it through PGML using
-<code>[$var]*</code> so it does not get escaped.
+PGML tag wrappers are parsed at compile time. If you build HTML spans inside Perl variables,
+PGML will not re-parse them. Instead, pass them through using <code>[$var]*</code> so the HTML
+is not escaped.
 </p>
 <pre>
-$label = "<span style='color:#0f766e; font-weight:700;'>ABOVE</span>";
+# Build the HTML span in the Setup section
+$label = "&lt;span style='color:#0f766e; font-weight:700;'&gt;ABOVE&lt;/span&gt;";
 
 BEGIN_PGML
 Threshold: [$label]*
 END_PGML
 </pre>
+<p>
+The trailing <code>*</code> tells PGML to pass the content through as raw HTML. Without it, the
+HTML tags are escaped and displayed as literal text.
+</p>
 
-<h2>Common failure and fix</h2>
+<h2>Font size guidelines</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 35%;">
+		<col style="width: 45%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Size</th>
+			<th>Level of emphasis</th>
+			<th>When to use</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Size">1.1em</td>
+			<td data-th="Level of emphasis">Subtle</td>
+			<td data-th="When to use">Formulas, value lists, monospace data</td>
+		</tr>
+		<tr>
+			<td data-th="Size">1.25em</td>
+			<td data-th="Level of emphasis">Moderate</td>
+			<td data-th="When to use">Key terms, qualitative descriptors</td>
+		</tr>
+		<tr>
+			<td data-th="Size">1.35em</td>
+			<td data-th="Level of emphasis">Strong</td>
+			<td data-th="When to use">pH values, critical numeric data</td>
+		</tr>
+		<tr>
+			<td data-th="Size">1.5em</td>
+			<td data-th="Level of emphasis">Maximum</td>
+			<td data-th="When to use">Rarely needed; only for prominent warnings</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+Do not exceed 1.5em. Larger text becomes distracting and looks unprofessional.
+</p>
+
+<h2>Color palette recommendations</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 25%;">
+		<col style="width: 25%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Color</th>
+			<th>Hex value</th>
+			<th>Use case</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Color">Blue</td>
+			<td data-th="Hex value">#0066cc</td>
+			<td data-th="Use case">pH values, temperatures, concentrations</td>
+		</tr>
+		<tr>
+			<td data-th="Color">Gold</td>
+			<td data-th="Hex value">#997300</td>
+			<td data-th="Use case">Key terms like hydrophobic, polar, most, least</td>
+		</tr>
+		<tr>
+			<td data-th="Color">Red</td>
+			<td data-th="Hex value">#cc0000</td>
+			<td data-th="Use case">NOT, EXCEPT, CANNOT (use sparingly)</td>
+		</tr>
+		<tr>
+			<td data-th="Color">Light blue bg</td>
+			<td data-th="Hex value">#e6f2ff</td>
+			<td data-th="Use case">Data badge backgrounds behind blue text</td>
+		</tr>
+		<tr>
+			<td data-th="Color">Light gray bg</td>
+			<td data-th="Hex value">#f5f5f5</td>
+			<td data-th="Use case">Subtle monospace backgrounds for value lists</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+Avoid pure black (#000000) for emphasis, bright green or yellow (accessibility issues), and
+using more than two or three colors per question (visual clutter).
+</p>
+
+<h2>Accessibility considerations</h2>
+<p>
+Never rely on color alone to convey meaning. Combine color with at least one other method such
+as font size, font weight, or a background highlight so that colorblind users can still
+distinguish emphasized content. Aim for a minimum contrast ratio of 4.5:1 between text and
+background. The recommended palette above meets this threshold on white backgrounds
+(<code>#0066cc</code> = 8.6:1, <code>#997300</code> = 5.2:1, <code>#cc0000</code> = 5.9:1).
+</p>
+
+<h2>Complete working examples</h2>
+<p>
+<strong>pH question with blue badge</strong> (CSS class approach):
+</p>
 <pre>
-Broken: [$label]
-What you will see: raw &lt;span&gt; tags in the prompt
-Fix: use [$label]* to prevent escaping
+HEADER_TEXT(MODES(TeX => '', HTML => &lt;&lt;'END_STYLE'));
+&lt;style&gt;
+.emph-ph { color:#0066cc; font-size:1.35em; font-weight:700;
+           background-color:#e6f2ff; padding:0.1em 0.4em; border-radius:4px; }
+&lt;/style&gt;
+END_STYLE
+
+$ph_value = list_random(6.0, 7.0, 7.4, 8.0);
+
+BEGIN_PGML
+Which amino acid is predominantly charged at
+[&lt;pH [$ph_value]&gt;]{['span', class => 'emph-ph']}{['','']}?
+
+[_]{$answer}
+END_PGML
+</pre>
+<p>
+<strong>Negation question with red warning</strong> (variable approach):
+</p>
+<pre>
+$not_emph = "&lt;span style='color:#cc0000; font-size:1.3em; font-weight:700;'&gt;NOT&lt;/span&gt;";
+
+BEGIN_PGML
+Which of the following is [$not_emph]* a nucleotide?
+
+[_]{$answer}
+END_PGML
+</pre>
+<p>
+<strong>Multiple emphasized elements</strong> (mixed data and term emphasis):
+</p>
+<pre>
+HEADER_TEXT(MODES(TeX => '', HTML => &lt;&lt;'END_STYLE'));
+&lt;style&gt;
+.emph-data { color:#0066cc; font-size:1.25em; font-weight:700;
+             background-color:#e6f2ff; padding:0.1em 0.3em; border-radius:3px; }
+.emph-term { color:#997300; font-size:1.25em; font-weight:700; }
+&lt;/style&gt;
+END_STYLE
+
+$compound = "glucose";
+$temp = "37 degrees C";
+
+BEGIN_PGML
+At [&lt;[$temp]&gt;]{['span', class => 'emph-data']}{['','']},
+what is the solubility of
+[&lt;[$compound]&gt;]{['span', class => 'emph-term']}{['','']}
+in water?
+
+[_]{$answer} g/L
+END_PGML
 </pre>
 
-<h2>Apply it today</h2>
+<h2>Matching problem label colors</h2>
+<p>
+When labels in matching problems need fixed colors by meaning (not by randomized position),
+build an HTML mapping in Perl and emit each label with <code>*</code> so PGML does not escape
+the spans. This keeps colors tied to the label text even when the display order is randomized.
+</p>
+<pre>
+%answer_html = (
+  'ionic bond'    => "&lt;span style='color:#009900; font-weight:700;'&gt;ionic bond&lt;/span&gt;",
+  'hydrogen bond' => "&lt;span style='color:#e60000; font-weight:700;'&gt;hydrogen bond&lt;/span&gt;",
+);
+@answers_html = map { $answer_html{$_} || $_ } @answers;
+
+# In PGML, render each label with * to pass through HTML
+[$answers_html[$shuffle[0]]]*
+</pre>
+
+<h2>Common failure: missing the asterisk</h2>
+<pre>
+[$label]     # BROKEN - HTML is escaped, shows raw tags
+[$label]*    # CORRECT - asterisk prevents escaping
+</pre>
+<p>
+If you see literal <code>&lt;span&gt;</code> tags in the rendered question, the most likely
+cause is a missing <code>*</code>. Always use <code>[$var]*</code> when the variable contains
+HTML.
+</p>
+
+<h2>Best practices</h2>
+<h3>Do</h3>
 <ul>
-	<li>Use HTML spans for emphasis and keep the styling minimal.</li>
-	<li>Use <code>[$var]*</code> for HTML variables so PGML does not escape them.</li>
+	<li>Emphasize one to three key elements per question.</li>
+	<li>Use consistent colors for similar element types across your problem set.</li>
+	<li>Combine color with size or weight for accessibility.</li>
+	<li>Create emphasis variables in the Setup section, not inside PGML.</li>
+	<li>Use <code>[$var]*</code> to render HTML stored in Perl variables.</li>
+	<li>Prefer CSS classes defined in HEADER_TEXT over inline styles.</li>
+</ul>
+
+<h3>Do not</h3>
+<ul>
+	<li>Emphasize everything; it defeats the purpose.</li>
+	<li>Use more than three colors in one question.</li>
+	<li>Make text larger than 1.5em.</li>
+	<li>Use red for non-warning content.</li>
+	<li>Use TeX or MathJax color commands; they do not render in this install.</li>
+	<li>Forget the <code>*</code> in <code>[$var]*</code> when the variable contains HTML.</li>
 </ul>

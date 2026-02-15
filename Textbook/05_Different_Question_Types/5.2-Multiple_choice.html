@@ -44,6 +44,44 @@ answer_text: 1/4
 Official example (OpenWeBWorK PG samples): <a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html">MultipleChoiceRadio</a>.
 </p>
 
+<h2>Preferred PGML pattern</h2>
+<p>
+Use <code>RadioButtons</code> with <code>parserRadioButtons.pl</code> and attach the evaluator
+inline in the PGML blank. This is the standard pattern for all multiple choice questions.
+</p>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserRadioButtons.pl",
+  "PGcourse.pl",
+);
+
+$rb = RadioButtons(
+  [ [ 'Red', 'Blue', 'Green' ], 'None of these' ],
+  'Blue',
+  labels        => 'ABC',
+  displayLabels => 1,
+  randomize     => 0,
+);
+
+BEGIN_PGML
+My favorite color is
+
+[_]{$rb}
+END_PGML
+</pre>
+<p>
+Key options:
+</p>
+<ul>
+	<li><code>labels =&gt; 'ABC'</code> gives each choice a consistent letter label.</li>
+	<li><code>displayLabels =&gt; 1</code> shows the letter labels to students.</li>
+	<li><code>randomize =&gt; 0</code> is the default and keeps the order you defined.
+		Only enable randomization if you are safely mapping the correct answer.</li>
+	<li>For horizontal layout, use <code>separator =&gt; $SPACE x 5</code> or an HTML spacing string.</li>
+</ul>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep choices parallel in format (all fractions, all numbers, etc.).</li>

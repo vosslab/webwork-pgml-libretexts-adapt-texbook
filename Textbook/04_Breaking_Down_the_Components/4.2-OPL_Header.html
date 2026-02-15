@@ -19,9 +19,11 @@ problem before publishing.
 ## DBsubject('Biochemistry')
 ## DBchapter('Lab techniques')
 ## DBsection('Reporting conventions')
+## Level(2)
 ## Date('2026-01-28')
 ## Author('Example author')
 ## Institution('Example institution')
+## Language(en)
 </pre>
 
 <h2>Field checklist</h2>
@@ -60,9 +62,19 @@ problem before publishing.
 			<td data-th="Common mistakes">Leaving these blank or too generic.</td>
 		</tr>
 		<tr>
+			<td data-th="Field">Level</td>
+			<td data-th="What it should contain">Bloom's taxonomy level (1-6).</td>
+			<td data-th="Common mistakes">Omitted or set to wrong cognitive level.</td>
+		</tr>
+		<tr>
 			<td data-th="Field">Date/Author/Institution</td>
 			<td data-th="What it should contain">Attribution fields for reuse.</td>
 			<td data-th="Common mistakes">Omitted attribution.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">Language</td>
+			<td data-th="What it should contain">ISO 639-1 code (e.g., <code>en</code>).</td>
+			<td data-th="Common mistakes">Omitted entirely.</td>
 		</tr>
 	</tbody>
 </table>
@@ -181,6 +193,98 @@ focuses on interaction type and PGML features, not biology content (since this i
 Date, Author, and Institution provide credit and help track provenance for long-term reuse. Always
 include these fields, even for internal problems.
 </p>
+
+<h3>Textbook provenance fields</h3>
+<p>
+When a problem is adapted from a textbook or other source, use these fields to track the original.
+Number the tags (TitleText1, TitleText2, etc.) to map to multiple texts when appropriate.
+</p>
+<pre>
+## TitleText1('Title of source')
+## EditionText1('Edition')
+## AuthorText1('Author(s)')
+## Section1('Section identifier')
+## Problem1('Problem identifier')
+</pre>
+<p>
+If adapted, also state that in the DESCRIPTION block (e.g., "Adapted from ...").
+</p>
+
+<h2>Level field: Bloom's taxonomy</h2>
+<p>
+The <code>Level(...)</code> field uses a 1-6 scale aligned to Bloom's revised taxonomy. This field
+classifies the cognitive demand of the problem and is required.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 12%;">
+		<col style="width: 20%;">
+		<col style="width: 68%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Level</th>
+			<th>Category</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Level">1</td>
+			<td data-th="Category">Remember</td>
+			<td data-th="Description">Recall a term, definition, or basic fact. Verbs: recall, define, label, list, identify.</td>
+		</tr>
+		<tr>
+			<td data-th="Level">2</td>
+			<td data-th="Category">Understand</td>
+			<td data-th="Description">Describe, explain, or classify a concept. Verbs: explain, summarize, interpret, classify.</td>
+		</tr>
+		<tr>
+			<td data-th="Level">3</td>
+			<td data-th="Category">Apply</td>
+			<td data-th="Description">Use rules or methods in a direct way. Verbs: apply, use, determine, solve.</td>
+		</tr>
+		<tr>
+			<td data-th="Level">4</td>
+			<td data-th="Category">Analyze</td>
+			<td data-th="Description">Interpret data and connect to conclusions. Verbs: analyze, compare, contrast, infer.</td>
+		</tr>
+		<tr>
+			<td data-th="Level">5</td>
+			<td data-th="Category">Evaluate</td>
+			<td data-th="Description">Justify choices or critique evidence. Verbs: evaluate, justify, critique, defend.</td>
+		</tr>
+		<tr>
+			<td data-th="Level">6</td>
+			<td data-th="Category">Create</td>
+			<td data-th="Description">Design or propose something new. Verbs: design, propose, formulate, develop.</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+The worked example is Level 2 (Understand) because students classify color labels from given options.
+For the full Bloom's taxonomy scale with biology-specific examples, see Chapter 2.2.
+</p>
+
+<h2>Language field</h2>
+<p>
+Use ISO 639-1 language codes. This field is required. For English:
+</p>
+<pre>
+## Language(en)
+</pre>
+
+<h2>License comments</h2>
+<p>
+OPL does not define a standard license tag. Use plain comment lines (single <code>#</code>) to
+state licensing. This is not an OPL tag but is required for the repository.
+</p>
+<pre>
+# This work is licensed under CC BY 4.0 (Creative Commons Attribution 4.0
+# International License).
+# https://creativecommons.org/licenses/by/4.0/
+# Source code portions are licensed under LGPLv3.
+</pre>
 
 <h2>Cross-references for detailed guidance</h2>
 <ul>

@@ -1,12 +1,31 @@
 <p>
 This page shows how to build statement-by-statement evaluation prompts using RadioButtons or
-PopUp widgets for each statement. This avoids checkbox macros that are missing from the PG 2.17
-subset.
+PopUp widgets for each statement. It also covers how to create YAML-based statement banks and
+generate multiple-choice "Which statement is TRUE/FALSE?" questions from them.
 </p>
 
 <p>
 <strong>Use this page when:</strong> you want students to mark each statement as true/false or
-correct/incorrect rather than choose one best answer.
+correct/incorrect rather than choose one best answer, or when you want to generate
+multiple-choice questions from curated pools of true and false statements.
+</p>
+
+<h2>When to use MC statements vs matching sets</h2>
+<p>
+Statement-based multiple choice is best when you want students to <strong>evaluate ideas</strong>
+(truth or falsehood), not just map terms to definitions.
+</p>
+<p>
+Good fits for MC statements:
+</p>
+<ul>
+	<li>"Which statement is TRUE/FALSE?" conceptual checks</li>
+	<li>Misconception diagnostics (wrong molecule, wrong direction, wrong location, sign flips)</li>
+	<li>"Why" and "what changes" logic that is hard to make one-to-one</li>
+</ul>
+<p>
+If your goal is to map terms or components to their matching definitions or functions (especially
+pathways and part-to-function), consider a matching set instead (see Chapter 6.3).
 </p>
 
 <h2>Copy and edit (RadioButtons per statement)</h2>
@@ -35,6 +54,237 @@ Fix: use RadioButtons or PopUp per statement
 	<li>Keep each statement short so students can scan quickly.</li>
 </ul>
 
+<h2>Creating statement banks with YAML</h2>
+<p>
+Instead of hand-coding each PGML problem, you can define pools of true and false statements in
+a YAML file and use a generator script to produce multiple-choice questions automatically. Each
+generated question presents one correct answer among several distractors drawn from the bank.
+</p>
+
+<h3>YAML file structure</h3>
+<p>
+Each YAML file requires three top-level keys:
+</p>
+<table class="mt-responsive-table">
+<colgroup>
+<col />
+<col />
+<col />
+</colgroup>
+<thead>
+<tr>
+<th>Key</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-th="Key"><code>topic</code></td>
+<td data-th="Required">Yes</td>
+<td data-th="Description">Short phrase used in the question stem (e.g., <code>DNA structure</code>)</td>
+</tr>
+<tr>
+<td data-th="Key"><code>true_statements</code></td>
+<td data-th="Required">Yes</td>
+<td data-th="Description">Mapping of statement IDs to correct statement text</td>
+</tr>
+<tr>
+<td data-th="Key"><code>false_statements</code></td>
+<td data-th="Required">Yes</td>
+<td data-th="Description">Mapping of statement IDs to incorrect statement text</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Common optional keys</h3>
+<table class="mt-responsive-table">
+<colgroup>
+<col />
+<col />
+</colgroup>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-th="Key"><code>connection_words</code></td>
+<td data-th="Description">YAML list of stem connectors (defaults to built-in words like <code>concerning</code>, <code>about</code>, <code>regarding</code>)</td>
+</tr>
+<tr>
+<td data-th="Key"><code>replacement_rules</code></td>
+<td data-th="Description">Mapping of literal substring replacements for consistent formatting or color</td>
+</tr>
+<tr>
+<td data-th="Key"><code>override_question_true</code></td>
+<td data-th="Description">Replace the TRUE stem with custom text, or set to <code>~</code> to disable TRUE questions</td>
+</tr>
+<tr>
+<td data-th="Key"><code>override_question_false</code></td>
+<td data-th="Description">Replace the FALSE stem with custom text, or set to <code>~</code> to disable FALSE questions</td>
+</tr>
+</tbody>
+</table>
+<p>
+In YAML, <code>~</code> means null (like Python <code>None</code>). For
+<code>connection_words</code>, null means "use the built-in defaults." For override keys, null
+means "disable that question form entirely."
+</p>
+
+<h3>Statement IDs and conflict groups</h3>
+<p>
+Statement IDs follow the pattern <code>truth&lt;N&gt;a</code>, <code>truth&lt;N&gt;b</code>,
+<code>false&lt;N&gt;a</code>, <code>false&lt;N&gt;b</code>, and so on. Statements that share
+the same number represent the <strong>same concept with different phrasing</strong>. The
+generator automatically prevents variants of the same concept from appearing together in one
+question.
+</p>
+<pre>
+true_statements:
+  truth3a: Enzymes lower activation energy.
+  truth3b: Enzymes speed reactions by lowering activation energy.
+</pre>
+<p>
+Because <code>truth3a</code> and <code>truth3b</code> share the number 3, they will never both
+appear as choices in the same generated question. This lets you author multiple equivalent
+phrasings for the same idea without creating confusing near-duplicate answer choices.
+</p>
+
+<h3>Replacement rules for formatting consistency</h3>
+<p>
+The <code>replacement_rules</code> key is a simple search-and-replace table applied to all
+question text and choices. It is commonly used for:
+</p>
+<ul>
+	<li>Highlighting key terms with HTML color spans</li>
+	<li>Consistent symbols and typography (e.g., <code>&amp;Delta;G</code>, <code>&amp;nbsp;</code>)</li>
+</ul>
+<pre>
+replacement_rules:
+  cAMP: "&lt;strong&gt;cAMP&lt;/strong&gt;"
+  cGMP: "&lt;strong&gt;cGMP&lt;/strong&gt;"
+</pre>
+
+<h2>Generating PGML files from YAML</h2>
+<p>
+The <code>yaml_mc_statements_to_pgml.py</code> script reads the same YAML schema described
+above and generates WeBWorK PGML problem files. This workflow uses the same statement bank
+format, so you can maintain one YAML file and produce both Blackboard export files and PGML
+problems from it.
+</p>
+<pre>
+source source_me.sh
+python3 yaml_mc_statements_to_pgml.py -y your_set.yml -x 20
+</pre>
+<p>
+The <code>-x</code> flag controls how many question variants to generate. By default, the
+generator creates both "Which statement is TRUE?" and "Which statement is FALSE?" forms. You
+can disable either form with <code>--no-true</code> or <code>--no-false</code>.
+</p>
+
+<h2>Second messenger signaling example (complete YAML)</h2>
+<pre>
+---
+topic: second messenger signaling
+learning_objective: Distinguish cAMP vs cGMP roles and enzymes that regulate them.
+
+replacement_rules:
+  cAMP: "&lt;strong&gt;cAMP&lt;/strong&gt;"
+  cGMP: "&lt;strong&gt;cGMP&lt;/strong&gt;"
+
+true_statements:
+  truth1a: cAMP is a second messenger made from ATP
+  truth1b: cyclic AMP (cAMP) is produced from ATP by adenylyl cyclase
+  truth2: phosphodiesterase breaks down cyclic nucleotides to terminate a signal
+  truth3: Protein kinase A (PKA) is activated by cAMP
+
+false_statements:
+  false1a: cAMP is a second messenger made from glucose
+  false1b: cyclic AMP (cAMP) is produced from ADP by phosphodiesterase
+  false2: phosphodiesterase makes cAMP from ATP
+  false3: Protein kinase A (PKA) is activated by cGMP
+</pre>
+<p>
+Note the conflict groups: <code>truth1a</code> and <code>truth1b</code> both describe how cAMP
+is made, so they share number 1 and will not appear together. The same applies to
+<code>false1a</code> and <code>false1b</code>.
+</p>
+
+<h2>What makes a good false statement</h2>
+<p>
+False statements should be "plausible but wrong" in a way that diagnoses a specific
+misconception. Good patterns include:
+</p>
+<ul>
+	<li><strong>Wrong substrate or reactant:</strong> ATP vs GTP, NADH vs NADPH</li>
+	<li><strong>Wrong directionality:</strong> influx vs efflux, synthesis vs degradation</li>
+	<li><strong>Wrong cellular location:</strong> nucleus vs cytosol vs mitochondrion</li>
+	<li><strong>Swapped cofactors or ions:</strong> Mg2+ vs Ca2+</li>
+	<li><strong>Wrong sign or relationship:</strong> reversed thermodynamic logic using delta-G or equilibrium</li>
+</ul>
+<p>
+Practical trick: write the true statement first, then create the false version by changing
+exactly one detail.
+</p>
+
+<h2>Avoiding accidental cues</h2>
+<p>
+Three quick checks that prevent students from using test-taking strategies instead of content
+knowledge:
+</p>
+<ul>
+	<li><strong>Similar length:</strong> Do not let one statement be noticeably longer or shorter than the others.</li>
+	<li><strong>Parallel grammar:</strong> Use the same sentence structure across all choices (all noun phrases, or all full sentences).</li>
+	<li><strong>No unique keywords:</strong> Avoid terms that appear in only one choice, as they can give away the answer.</li>
+</ul>
+<p>
+Additional statement hygiene: one main idea per statement (avoid "and also..." bundles), use
+concrete biology verbs (binds, phosphorylates, opens, inhibits), avoid double negatives, and
+define abbreviations on first use.
+</p>
+
+<h2>Difficulty control</h2>
+<p>
+You can adjust question difficulty by varying how the false statements are constructed:
+</p>
+<table class="mt-responsive-table">
+<colgroup>
+<col />
+<col />
+</colgroup>
+<thead>
+<tr>
+<th>Difficulty</th>
+<th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-th="Difficulty">Easier</td>
+<td data-th="Strategy">Use direct definitions and unique vocabulary. Keep false statements clearly wrong with one obvious error.</td>
+</tr>
+<tr>
+<td data-th="Difficulty">Harder</td>
+<td data-th="Strategy">Make false statements "plausible but wrong" using common misconceptions. Use more similar terms across choices, relying on conflict groups to avoid near-duplicates in the same question.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Quality checks for statement banks</h2>
+<p>
+Before using a bank in an assessment, run through this checklist:
+</p>
+<ul>
+	<li><strong>Misfiled statements:</strong> Confirm all <code>truth*</code> entries are under <code>true_statements</code> and all <code>false*</code> entries are under <code>false_statements</code>.</li>
+	<li><strong>ID collisions:</strong> Do not reuse the same ID for two unrelated meanings (e.g., two different <code>truth5a</code> ideas).</li>
+	<li><strong>Duplicate text:</strong> The generator fails if the exact same sentence appears twice, even across true and false sections.</li>
+	<li><strong>Replacement rule overlap:</strong> Use specific, non-overlapping phrases to avoid nested spans or partial matches.</li>
+	<li><strong>Grammar scan:</strong> Fix typos and subject/verb agreement. Correct grammar improves student trust even when the biology is right.</li>
+</ul>
+
 <h2>Biology examples to model</h2>
 <ul>
 	<li>Experimental design statements (controls, variables, replication).</li>
@@ -45,4 +295,8 @@ Fix: use RadioButtons or PopUp per statement
 <ul>
 	<li>Use one RadioButtons object per statement and keep answer keys aligned.</li>
 	<li>Avoid checkbox macros not available in the PG 2.17 subset.</li>
+	<li>Create YAML statement banks with 8 to 20 items per truth category for good question variety.</li>
+	<li>Use conflict group IDs (e.g., <code>truth4a</code>, <code>truth4b</code>) for equivalent phrasings of the same concept.</li>
+	<li>Write the true statement first, then create the false version by changing one detail.</li>
+	<li>Run the quality checklist before deploying a bank to an assessment.</li>
 </ul>

@@ -471,6 +471,263 @@ everywhere.
 it's directly in PGML, no <code>MODES</code> needed.
 </p>
 
+<h2>Creating matching banks with YAML</h2>
+<p>
+Instead of writing each matching problem by hand, you can define a bank of matching pairs in a YAML
+file and use a generator script to produce PGML files automatically. This workflow separates content
+authoring from code, making it easier for instructors to contribute questions without editing Perl.
+</p>
+
+<h3>File naming convention</h3>
+<p>
+Use filenames that are readable to instructors and map naturally to course chapters. Follow the
+pattern: topic prefix + plain-English descriptor.
+</p>
+<ul>
+	<li><code>enzymes_basics.yml</code> -- enzyme classes matched to reaction types</li>
+	<li><code>senses_receptor_types.yml</code> -- receptor types matched to sensory modalities</li>
+	<li><code>metabolism_pathway_components.yml</code> -- pathway enzymes matched to functions</li>
+</ul>
+<p>
+Avoid deep jargon in filenames (keep jargon inside the YAML content). Future-you should know what
+the bank covers without opening the file.
+</p>
+
+<h3>YAML file structure</h3>
+<p>
+Every YAML bank requires four top-level keys that describe what students are matching:
+</p>
+<table class="mt-responsive-table">
+<colgroup><col /><col /><col /></colgroup>
+<thead>
+<tr>
+	<th data-th="Key">Key</th>
+	<th data-th="Purpose">Purpose</th>
+	<th data-th="Example">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td data-th="Key"><code>key description</code></td>
+	<td data-th="Purpose">Singular label for the left column</td>
+	<td data-th="Example"><code>enzyme class</code></td>
+</tr>
+<tr>
+	<td data-th="Key"><code>keys description</code></td>
+	<td data-th="Purpose">Plural label for the left column</td>
+	<td data-th="Example"><code>enzyme classes</code></td>
+</tr>
+<tr>
+	<td data-th="Key"><code>value description</code></td>
+	<td data-th="Purpose">Singular label for the right column</td>
+	<td data-th="Example"><code>reaction type</code></td>
+</tr>
+<tr>
+	<td data-th="Key"><code>values description</code></td>
+	<td data-th="Purpose">Plural label for the right column</td>
+	<td data-th="Example"><code>reaction types</code></td>
+</tr>
+</tbody>
+</table>
+<p>
+The fifth required key is <code>matching pairs</code>, which holds the actual content (see next section).
+</p>
+
+<h3>Matching pairs format</h3>
+<p>
+Under <code>matching pairs</code>, each key maps to a list of one or more values. Each key is a
+left-column concept; each value is a right-column definition or function.
+</p>
+<pre>
+matching pairs:
+  Kinase:
+    - Adds a phosphate group to a substrate (phosphorylation)
+    - Transfers a phosphate group to a molecule
+  Phosphatase:
+    - Removes a phosphate group from a substrate (dephosphorylation)
+    - Catalyzes phosphate removal from a molecule
+</pre>
+<p>
+Each key must map to a YAML list, even if there is only one value. For each generated question, the
+generator picks one value per key at random.
+</p>
+
+<h3>Same concept, different phrasing</h3>
+<p>
+The most important quality rule: put synonyms and equivalent statements under one key as multiple
+values. Do not split a single concept across multiple keys (that turns synonyms into trick questions).
+</p>
+<p>
+This makes banks feel fresh without changing what you are assessing. Students see one wording per
+key in any single question, but across different generated questions the bank naturally rotates
+through alternate wordings.
+</p>
+<pre>
+matching pairs:
+  Protease:
+    - Breaks peptide bonds in proteins
+    - Hydrolyzes peptide bonds
+  Ligase:
+    - Joins two molecules by forming a new bond (often using ATP)
+    - Catalyzes bond formation to link molecules
+</pre>
+
+<h3>Excluding confusable pairs</h3>
+<p>
+If two keys are too similar (or their values are too easy to mix up), use <code>exclude pairs</code>
+so they never appear together in the same question:
+</p>
+<pre>
+exclude pairs:
+  - [Coenzyme, Cofactor]
+  - [competitive inhibitor, non-competitive inhibitor]
+</pre>
+<p>
+Use <code>exclude pairs</code> sparingly, only for classic confusions where students can reasonably
+know both terms yet still mix them up under time pressure. Do not exclude pairs just because two
+terms are related -- that can remove the learning objective.
+</p>
+
+<h3>Replacement rules for formatting and color</h3>
+<p>
+The <code>replacement_rules</code> key defines simple search-and-replace substitutions applied after
+question text is constructed. This is commonly used for highlighting phrases with color or ensuring
+consistent typography.
+</p>
+<pre>
+replacement_rules:
+  releases&amp;nbsp;energy: "&lt;span style='color: #e60000;'&gt;releases&amp;nbsp;energy&lt;/span&gt;"
+</pre>
+<p>
+Colors are assigned deterministically: the same prompt set gets the same colors on every run.
+If any prompt already contains HTML color markup, automatic coloring is disabled for the
+entire question so author-chosen colors are preserved.
+</p>
+
+<h3>Optional metadata keys</h3>
+<p>
+The generators ignore unknown top-level keys, so you can add author-facing metadata for
+long-term maintenance:
+</p>
+<ul>
+	<li><code>topic</code> -- short label (e.g., <code>phototransduction</code>)</li>
+	<li><code>learning_objective</code> -- one sentence (e.g., <code>Trace the cGMP pathway in rods</code>)</li>
+	<li><code>source</code> -- textbook or chapter reference</li>
+	<li><code>items to match per question</code> -- how many pairs appear per question (default 5)</li>
+</ul>
+
+<h2>Generating PGML files from YAML</h2>
+<p>
+The <code>yaml_match_to_pgml.py</code> script reads a YAML bank and produces matching-problem PGML
+files. The generated files follow the same PopUp widget and <code>MODES</code> wrapper patterns
+described earlier in this chapter.
+</p>
+<p>
+<strong>What the generator does:</strong>
+</p>
+<ul>
+	<li>Reads the YAML matching pairs and descriptions</li>
+	<li>Selects one value per key at random (rotating through phrasings across runs)</li>
+	<li>Applies replacement rules for color and formatting</li>
+	<li>Unescapes HTML entities (named and numeric) into Unicode for rendering without MathJax</li>
+	<li>Converts <code>&lt;sub&gt;</code>/<code>&lt;sup&gt;</code> tags into Unicode subscripts/superscripts</li>
+	<li>Outputs PGML files using the two-column flexbox layout with PopUp widgets</li>
+</ul>
+<p>
+The default output uses inline HTML spans for replacement-rule colors. Use <code>--no-color</code>
+to disable styling.
+</p>
+
+<h2>Quality checks for matching banks</h2>
+<p>
+Before shipping a new matching set, run through these checks:
+</p>
+<table class="mt-responsive-table">
+<colgroup><col /><col /></colgroup>
+<thead>
+<tr>
+	<th data-th="Check">Check</th>
+	<th data-th="What to look for">What to look for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td data-th="Check">Single learning objective per key</td>
+	<td data-th="What to look for">Each key should test one concept, not a bundle of related facts</td>
+</tr>
+<tr>
+	<td data-th="Check">Parallel grammar</td>
+	<td data-th="What to look for">All values should use the same grammatical form (all noun phrases, or all full sentences)</td>
+</tr>
+<tr>
+	<td data-th="Check">Similar value length</td>
+	<td data-th="What to look for">If one answer is much longer than others, students use length as a hint</td>
+</tr>
+<tr>
+	<td data-th="Check">No keyword cues</td>
+	<td data-th="What to look for">If a prompt contains a distinctive word, do not repeat it in the matching value</td>
+</tr>
+<tr>
+	<td data-th="Check">Distinct values across keys</td>
+	<td data-th="What to look for">If multiple keys could match the same value text, students are guessing</td>
+</tr>
+<tr>
+	<td data-th="Check">Accessibility</td>
+	<td data-th="What to look for">Do not rely on color alone to convey meaning; use color as an accent</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Difficulty control</h2>
+<p>
+Adjust the difficulty of matching questions by changing the number of items and the phrasing style:
+</p>
+<ul>
+	<li><strong>Easier:</strong> Use direct definitions and unique vocabulary. Set
+	<code>items to match per question: 3</code> or <code>4</code> for fewer items per question.</li>
+	<li><strong>Harder:</strong> Use mechanism or consequence phrasing instead of definitions. Include
+	more similar terms in the bank, then use <code>exclude pairs</code> for the worst confusions.</li>
+</ul>
+
+<h2>Copy/paste YAML example: enzyme classes</h2>
+<p>
+This is a complete, working YAML file for a matching bank. Copy it as a starting point for new banks.
+</p>
+<pre>
+#YAML file for Matching Questions
+topic: enzymes_basics
+learning_objective: Match enzyme classes to what they do.
+
+items to match per question: 5
+
+key description: enzyme class
+keys description: enzyme classes
+
+value description: reaction type
+values description: reaction types
+
+matching pairs:
+  Kinase:
+    - Adds a phosphate group to a substrate (phosphorylation)
+    - Transfers a phosphate group to a molecule
+  Phosphatase:
+    - Removes a phosphate group from a substrate (dephosphorylation)
+    - Catalyzes phosphate removal from a molecule
+  Protease:
+    - Breaks peptide bonds in proteins
+    - Hydrolyzes peptide bonds
+  Ligase:
+    - Joins two molecules by forming a new bond (often using ATP)
+    - Catalyzes bond formation to link molecules
+  Isomerase:
+    - Rearranges atoms within a molecule to form an isomer
+    - Converts a molecule into its isomer
+</pre>
+<p>
+Each enzyme class key has two phrasing variants. The generator picks one wording per question, so
+students see different phrasings across attempts while always being assessed on the same concept.
+</p>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Write wrapper <code>&lt;div&gt;</code> tags directly in PGML whenever possible (Pattern 1).</li>
@@ -479,5 +736,7 @@ it's directly in PGML, no <code>MODES</code> needed.
 	<li>Define <code>@choices</code> once and use it for both PopUp widgets and right-column labels.</li>
 	<li>Test with multiple <code>problemSeed</code> values to verify shuffle mapping works correctly.</li>
 	<li>Use 4-8 pairs for optimal cognitive load and assessment effectiveness.</li>
+	<li>For YAML-based banks, define 8-20 keys with 2-4 phrasing variants each.</li>
+	<li>Run quality checks for parallel grammar, similar value length, and no keyword cues.</li>
 	<li>For more on colored emphasis, see Chapter 6.1. For statement-based questions, see Chapter 6.4.</li>
 </ul>
