@@ -2,6 +2,20 @@
 
 ## 2026-02-15
 
+### Cross-references and CSV page map
+- Updated `Textbook/Using_WeBWork_in_ADAPT-Map.csv` with corrected section numbers (shifted Ch 2
+  and Ch 4 to reflect inserted 2.2 and 4.2 sections), updated "New Page" titles across Chapters
+  5-7 to match actual content, corrected chapter titles for Ch 6 (Advanced PGML Techniques) and
+  Ch 7 (Testing and Debugging), fixed underscore titles in Ch 1.5 and Ch 3.x, and added TBD
+  placeholder rows for 10 sections without LibreTexts page IDs (2.2, 4.2, 7.3-7.6, 90.0-90.3).
+- Added 221 internal cross-reference links across 57 HTML files using the `/@go/page/PAGE_ID`
+  format. Links connect related content throughout the textbook: PG concepts to their PGML
+  counterparts, question type basics to advanced patterns, macro references to usage examples,
+  and error types to their debugging sections. Sections without page IDs (2.2, 4.2, 7.3-7.6,
+  90.x) are referenced as plain text without hyperlinks.
+- Added `/@go/page/` links to all chapter index pages (1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0,
+  90.0) for their section listings where page IDs exist.
+
 ### New subchapters
 - Created Chapter 6.6 Making graphs (566 lines) from HOW_TO_MAKE_GRAPHS.md. Covers
   PGgraphmacros.pl quick decision table, minimal example, init_graph parameters, axis labels and

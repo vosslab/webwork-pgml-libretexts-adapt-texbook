@@ -109,7 +109,7 @@ Fix: keep Context and answer objects in Setup above PGML
 
 <p>
 Most WeBWorK examples describe a PG file as having several sections (description, initialization,
-setup, text, answers/solutions). That model is still useful, but when you write PGML-first, the
+setup, text, answers/solutions). That model is still useful, but when you write PGML-first (see <a href="/@go/page/488661">Chapter 4</a> for a detailed breakdown), the
 roles shift:
 </p>
 
@@ -125,7 +125,8 @@ roles shift:
 		<strong>Setup</strong>: define variables and answers, pick a context, set tolerances.
 	</li>
 	<li>
-		<strong>Statement (PGML)</strong>: the prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>.
+		<strong>Statement (PGML)</strong>: the prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>
+		(see <a href="/@go/page/555703">Section 3.1</a> for PGML syntax).
 	</li>
 	<li>
 		<strong>Solution (optional)</strong>: use <code>BEGIN_PGML_SOLUTION</code> or
@@ -155,7 +156,7 @@ Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
 	<li>Need the OPL header? Go to Section 2.2.</li>
-	<li>Need a clean starter .pg skeleton? Go to Section 2.3.</li>
-	<li>Need macro help? Go to Section 2.5.</li>
-	<li>Copied legacy code? Go to Section 2.6.</li>
+	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">Section 2.3</a>.</li>
+	<li>Need macro help? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
+	<li>Copied legacy code? Go to <a href="/@go/page/555742">Section 2.6</a>.</li>
 </ul>

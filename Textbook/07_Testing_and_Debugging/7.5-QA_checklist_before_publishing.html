@@ -6,7 +6,7 @@ you ship.
 </p>
 
 <p>
-These checklists are distilled from the most common problems found in real WeBWorK files. Each item
+These checklists are distilled from the most common problems found in real WeBWorK files (see also <a href="/@go/page/555722">Section 5.9</a> for the full authoring workflow). Each item
 links back to the section where you can find a full explanation and fix. If you are not sure what an
 item means, follow the section reference first.
 </p>
@@ -29,37 +29,37 @@ helpful error -- the problem will simply render wrong or grade incorrectly.
 		<tr>
 			<td data-th="Check">Variables defined before use</td>
 			<td data-th="What to verify">All variables are assigned values before they are referenced in arrays, shuffles, or PGML</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">No <code>my</code> on PGML-visible variables</td>
 			<td data-th="What to verify">Variables referenced in PGML (<code>$rb</code>, <code>$popup</code>, display variables) do not use <code>my</code></td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">No <code>\@</code> or <code>\%</code> backslash references</td>
 			<td data-th="What to verify">Use <code>[@array]</code> or <code>~~@array</code> instead of <code>\@array</code></td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">No <code>use</code> statements</td>
 			<td data-th="What to verify">Use <code>loadMacros()</code> for PG macros, not Perl <code>use</code></td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">No <code>*</code> or <code>**</code> immediately around <code>[$variables]</code> in PGML</td>
 			<td data-th="What to verify">Asterisks near variables cause parse errors such as "* was not closed before paragraph ends"</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">HTML variables use <code>[$var]*</code> syntax</td>
 			<td data-th="What to verify">Variables containing HTML tags have the trailing asterisk so tags render instead of showing as literal text</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">No Perl loops inside <code>BEGIN_TEXT...END_TEXT</code> blocks</td>
 			<td data-th="What to verify">Build strings before the block, then insert them with a variable reference</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">Hash keys sorted before random selection</td>
@@ -72,19 +72,25 @@ helpful error -- the problem will simply render wrong or grade incorrectly.
 			<td data-th="Section reference">Section 7.4</td>
 		</tr>
 		<tr>
+			<td data-th="Check">OPL metadata complete</td>
+			<td data-th="What to verify">TITLE, DESCRIPTION, KEYWORDS, and DBsubject fields are filled in (see Section 2.2)</td>
+			<td data-th="Section reference">Section 2.2</td>
+		</tr>
+		<tr>
 			<td data-th="Check">No blocked HTML tags</td>
 			<td data-th="What to verify">No <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code> in PGML output (use <code>niceTables.pl</code> instead)</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check">Required macros loaded</td>
 			<td data-th="What to verify">Every widget and feature has its macro in the <code>loadMacros()</code> call</td>
-			<td data-th="Section reference">Section 7.2</td>
+			<td data-th="Section reference"><a href="/@go/page/555733">Section 7.2</a></td>
 		</tr>
 		<tr>
 			<td data-th="Check"><code>DOCUMENT()</code> and <code>ENDDOCUMENT()</code> present</td>
 			<td data-th="What to verify">File starts with <code>DOCUMENT()</code> and ends with <code>ENDDOCUMENT()</code></td>
 			<td data-th="Section reference">Section 7.3</td>
+
 		</tr>
 	</tbody>
 </table>
@@ -107,6 +113,7 @@ These are things only a human can verify by reading the problem as a student wou
 			<td data-th="Check">Render multiple variants</td>
 			<td data-th="What to verify">The problem works correctly with different seeds</td>
 			<td data-th="How to test">Change seeds in the editor and render at least five variants (Section 7.4)</td>
+
 		</tr>
 		<tr>
 			<td data-th="Check">Displayed question matches grader</td>

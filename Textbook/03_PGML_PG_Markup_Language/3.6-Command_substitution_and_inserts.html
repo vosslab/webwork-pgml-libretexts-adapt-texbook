@@ -1,6 +1,8 @@
 <p>
 Command substitution lets you run a small Perl expression and insert its output into the PGML
 prompt. This is useful for inserting images, computed strings, or helper-generated markup.
+Variables used in substitution are typically defined in the
+<a href="/@go/page/555711">Setup block</a> (Section 4.4).
 </p>
 <p>
 Command substitution is powerful, but it should not be the first solution to a formatting or
@@ -126,7 +128,7 @@ If you need mode-dependent output, build it in the Perl setup section and insert
 TeX color macros such as <code>\color{}</code> and <code>\textcolor{}</code> do not reliably
 render in PGML because MathJax may wrap them in <code>tex2jax_ignore</code> spans. If you need
 colored text in a prompt, use HTML <code>&lt;span style="color:..."&gt;</code> instead. For a
-fuller discussion of MathJax rendering constraints, see Section 6.1.
+fuller discussion of MathJax rendering constraints, see <a href="/@go/page/555723">Section 6.1</a>.
 </p>
 
 <h2>Blocked HTML tags</h2>
@@ -134,7 +136,7 @@ fuller discussion of MathJax rendering constraints, see Section 6.1.
 PGML's HTML whitelist does not allow raw <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
 <code>&lt;td&gt;</code>, or <code>&lt;th&gt;</code> tags. If you write them in PGML output they
 will be stripped or trigger warnings. Use <code>niceTables.pl</code> for any tabular layout. For
-more on the tag whitelist and workarounds, see Section 6.2.
+more on the tag whitelist and workarounds, see <a href="/@go/page/555724">Section 6.2</a>.
 </p>
 
 <h2>Images and links (LibreTexts constraint)</h2>
@@ -150,7 +152,7 @@ Treat this as an advanced escape hatch: keep substitutions small, readable, and 
 
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
-	<li>If you only need a data table, go to Section 3.4.</li>
-	<li>If you need a blank that grades correctly, go to Section 3.2.</li>
-	<li>If you are writing a workflow prompt, go to Section 3.3.</li>
+	<li>If you only need a data table, go to <a href="/@go/page/555706">Section 3.4</a>.</li>
+	<li>If you need a blank that grades correctly, go to <a href="/@go/page/555704">Section 3.2</a>.</li>
+	<li>If you are writing a workflow prompt, go to <a href="/@go/page/555705">Section 3.3</a>.</li>
 </ul>

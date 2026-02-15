@@ -10,7 +10,7 @@ sessions. If your problem is not working, there is a good chance the answer is o
 
 <h2>PGML parsing errors</h2>
 <p>
-PGML uses asterisks and other punctuation as formatting markers. When these markers appear near
+PGML uses asterisks and other punctuation as formatting markers (see <a href="/@go/page/488660">Chapter 3</a> for full PGML syntax). When these markers appear near
 variables, the parser can misinterpret them and produce confusing errors.
 </p>
 
@@ -226,7 +226,7 @@ through without escaping.
 
 <h2>Missing or wrong macros</h2>
 <p>
-PG widgets like RadioButtons and DropDown live in separate macro files. If you forget the macro,
+PG widgets like RadioButtons and DropDown live in separate macro files (see <a href="/@go/page/488659">Section 2.5</a> for macro basics). If you forget the macro,
 the widget function is undefined and the renderer crashes.
 </p>
 
@@ -531,7 +531,7 @@ END_TEXT
 
 <h2>Answer field naming</h2>
 <p>
-<strong>Symptom:</strong> The answer is always marked wrong, or grading silently fails.
+<strong>Symptom:</strong> The answer is always marked wrong, or grading silently fails (see <a href="/@go/page/555704">Section 3.2</a> for answer blank syntax).
 </p>
 <p>
 <strong>Cause:</strong> The <code>ANS()</code> function expects an answer field created by
@@ -657,8 +657,8 @@ Before committing a new PG problem file, verify each of these items:
 	<li>No <code>*</code> or <code>**</code> immediately around <code>[$variables]</code> in PGML.</li>
 	<li>HTML variables use <code>[$var]*</code> syntax (with the asterisk).</li>
 	<li>No Perl loops inside <code>BEGIN_TEXT...END_TEXT</code> blocks.</li>
-	<li>Hash keys sorted before random selection.</li>
-	<li>Shuffling happens after all items are defined.</li>
+	<li>Hash keys sorted before random selection (see <a href="/@go/page/555727">Section 6.5</a>).</li>
+	<li>Shuffling happens after all items are defined (see <a href="/@go/page/555727">Section 6.5</a>).</li>
 	<li><code>ans_rule()</code> created before <code>ANS()</code> call.</li>
 	<li>SMILES strings validated with RDKit (if applicable).</li>
 	<li>No PGML parsing errors in renderer output.</li>
