@@ -68,6 +68,105 @@ For advanced matching layouts with tables or formatted columns, see
 <a href="/@go/page/555725">Section 6.3</a> (Matching Problems).
 </p>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>Macromolecule matching</strong> -- Match each macromolecule class with its
+monomer unit using PopUp dropdowns.
+</p>
+<pre>
+## TITLE('Match macromolecule classes to monomers')
+## DESCRIPTION
+## Match each macromolecule class with its monomer unit
+## using PopUp dropdown widgets.
+## ENDDESCRIPTION
+## KEYWORDS('macromolecules','monomers','PopUp','matching')
+## DBsubject('Biochemistry')
+## DBchapter('Macromolecules')
+## DBsection('Structure')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"PGcourse.pl",
+);
+
+$popup1 = PopUp(
+	['?', 'Amino acids', 'Nucleotides', 'Monosaccharides'],
+	'Amino acids');
+$popup2 = PopUp(
+	['?', 'Amino acids', 'Nucleotides', 'Monosaccharides'],
+	'Nucleotides');
+$popup3 = PopUp(
+	['?', 'Amino acids', 'Nucleotides', 'Monosaccharides'],
+	'Monosaccharides');
+
+BEGIN_PGML
+Match each macromolecule class with its monomer.
+
+1. Proteins [_]{$popup1}
+
+2. Nucleic acids [_]{$popup2}
+
+3. Polysaccharides [_]{$popup3}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Bond type matching</strong> -- Match each molecular scenario with the type
+of bond or interaction involved.
+</p>
+<pre>
+## TITLE('Match molecular interactions to bond types')
+## DESCRIPTION
+## Match each molecular scenario to the correct bond type
+## using PopUp dropdown widgets.
+## ENDDESCRIPTION
+## KEYWORDS('chemical bonds','matching','PopUp')
+## DBsubject('Chemistry')
+## DBchapter('Chemical Bonding')
+## DBsection('Bond Types')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"PGcourse.pl",
+);
+
+$popup1 = PopUp(
+	['?', 'Ionic', 'Covalent', 'Hydrogen'],
+	'Covalent');
+$popup2 = PopUp(
+	['?', 'Ionic', 'Covalent', 'Hydrogen'],
+	'Ionic');
+$popup3 = PopUp(
+	['?', 'Ionic', 'Covalent', 'Hydrogen'],
+	'Hydrogen');
+
+BEGIN_PGML
+Match each molecular scenario to the type of bond
+or interaction involved.
+
+1. Two atoms share a pair of electrons [_]{$popup1}
+
+2. An electron is transferred from one atom to another [_]{$popup2}
+
+3. A partially positive H is attracted to a nearby electronegative atom [_]{$popup3}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep the prompts and choices short and parallel.</li>

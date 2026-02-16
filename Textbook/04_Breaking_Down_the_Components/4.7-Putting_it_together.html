@@ -139,3 +139,48 @@ fails to preview.
 When you want to swap interaction types, use the techniques list in the OpenWeBWorK PG samples as
 your menu of proven patterns.
 </p>
+
+<h2>Complete example: biology RadioButtons problem</h2>
+<p>
+This complete problem demonstrates all five sections (OPL header, preamble, setup,
+statement, and PGML prompt) working together. Copy this template and modify the
+content for your own biology questions.
+</p>
+<pre>
+## TITLE('Identify an amino acid property')
+## DESCRIPTION
+## Select the amino acid that is nonpolar from a short list.
+## Demonstrates RadioButtons with biology content.
+## ENDDESCRIPTION
+## KEYWORDS('amino acids','nonpolar','RadioButtons')
+## DBsubject('Biochemistry')
+## DBchapter('Amino Acids')
+## DBsection('Classification')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$rb = RadioButtons(
+	[ 'Leucine', 'Glutamate', 'Lysine', 'Serine' ],
+	'Leucine',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+Which of the following amino acids has a nonpolar
+(hydrophobic) side chain?
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>

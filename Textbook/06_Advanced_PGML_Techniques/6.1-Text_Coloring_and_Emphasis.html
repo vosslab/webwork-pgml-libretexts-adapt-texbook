@@ -302,6 +302,60 @@ in water?
 END_PGML
 </pre>
 
+<p>
+<strong>Complete renderable problem with emphasis</strong> -- A full problem using CSS
+class emphasis to highlight a pH value in the question stem.
+</p>
+<pre>
+## TITLE('Amino acid charge at a given pH')
+## DESCRIPTION
+## Identify whether an amino acid side chain is charged
+## at a specified pH, with the pH value visually emphasized.
+## ENDDESCRIPTION
+## KEYWORDS('amino acids','pH','emphasis','RadioButtons')
+## DBsubject('Biochemistry')
+## DBchapter('Amino Acids')
+## DBsection('Charge')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+HEADER_TEXT(MODES(TeX =&gt; '', HTML =&gt; &lt;&lt;'END_STYLE'));
+&lt;style&gt;
+.emph-ph { color:#0066cc; font-size:1.35em; font-weight:700;
+           background-color:#e6f2ff; padding:0.1em 0.4em;
+           border-radius:4px; }
+&lt;/style&gt;
+END_STYLE
+
+$rb = RadioButtons(
+	[ 'Positively charged', 'Negatively charged',
+	  'Neutral', 'Zwitterionic only' ],
+	'Positively charged',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+The side chain of lysine has a pKa of approximately 10.5.
+
+At [&lt;pH 7.4&gt;]{['span', class =&gt; 'emph-ph']}{['','']},
+is the lysine side chain:
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Matching problem label colors</h2>
 <p>
 When labels in matching problems need fixed colors by meaning (not by randomized position),

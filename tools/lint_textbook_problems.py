@@ -2,14 +2,18 @@
 
 """
 Extract complete PGML problems from textbook HTML and validate them
-via static lint and the pg-renderer API.
+via the pg-renderer API.
 """
 
 # Standard Library
 import os
 import csv
 import sys
+import json
+import time
+import random
 import argparse
+import urllib.request
 
 # Ensure sibling tools are importable
 TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -17,9 +21,12 @@ if TOOLS_DIR not in sys.path:
 	sys.path.insert(0, TOOLS_DIR)
 
 # local repo modules (sibling scripts under tools/)
-import pglint
-import webwork_simple_lint
 import extract_textbook_pre_blocks
+
+# Path to the full pg-renderer lint script
+RENDERER_SCRIPT_DIR = os.path.normpath(
+	os.path.join(TOOLS_DIR, "..", "..", "webwork-pg-renderer", "script")
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,7 +34,7 @@ def parse_args() -> argparse.Namespace:
 	Parse command-line arguments.
 	"""
 	parser = argparse.ArgumentParser(
-		description="Extract textbook PGML problems and validate via static + renderer lint.",
+		description="Extract textbook PGML problems and validate via the pg-renderer.",
 	)
 	parser.add_argument(
 		"-d",
@@ -43,19 +50,6 @@ def parse_args() -> argparse.Namespace:
 		default=os.path.join("output", "textbook_pre_blocks"),
 		help="Directory to write extracted .pg files (default: output/textbook_pre_blocks).",
 	)
-	parser.add_argument(
-		"--skip-renderer",
-		dest="skip_renderer",
-		action="store_true",
-		help="Skip renderer lint (static-only mode).",
-	)
-	parser.add_argument(
-		"--no-skip-renderer",
-		dest="skip_renderer",
-		action="store_false",
-		help="Run renderer lint (default).",
-	)
-	parser.set_defaults(skip_renderer=False)
 	parser.add_argument(
 		"-H",
 		"--host",
@@ -121,21 +115,124 @@ def extract_problems(input_dir: str, output_dir: str) -> list[dict]:
 #============================================
 
 
-def run_static_lint(problems: list[dict]) -> list[dict]:
+def check_renderer_health(host: str) -> bool:
 	"""
-	Run static lint on each extracted problem text.
+	Check whether the renderer is reachable by GETting its /health endpoint.
+	"""
+	url = f"{host.rstrip('/')}/health"
+	request = urllib.request.Request(url, method="GET")
+	try:
+		with urllib.request.urlopen(request, timeout=5) as response:
+			is_healthy = response.status == 200
+	except Exception:
+		is_healthy = False
+	return is_healthy
 
-	Adds static_status and static_messages keys to each problem dict.
+
+#============================================
+
+
+def render_pg_source(source_text: str, host: str, seed: int) -> dict:
 	"""
-	for problem in problems:
-		result = webwork_simple_lint.lint_text_to_result(problem["text"])
-		problem["static_status"] = result["status"]
-		# Format messages as semicolon-separated strings
-		messages = []
-		for issue in result["issues"]:
-			messages.append(f"{issue['severity']}: {issue['message']}")
-		problem["static_messages"] = "; ".join(messages)
-	return problems
+	Post PG source to the renderer /render-api endpoint and return the JSON response.
+	"""
+	url = f"{host.rstrip('/')}/render-api"
+	payload = {
+		"problemSource": source_text,
+		"problemSeed": seed,
+		"outputFormat": "classic",
+	}
+	body = json.dumps(payload).encode("utf-8")
+	headers = {"Content-Type": "application/json"}
+	# throttle API calls per repo guidance
+	time.sleep(random.random())
+	request = urllib.request.Request(url, data=body, headers=headers, method="POST")
+	with urllib.request.urlopen(request, timeout=60) as response:
+		raw_body = response.read().decode("utf-8")
+		try:
+			json_body = json.loads(raw_body)
+			return json_body
+		except json.JSONDecodeError:
+			return {
+				"renderedHTML": raw_body,
+				"warnings": ["renderer returned non-JSON response; parsing HTML only"],
+			}
+
+
+#============================================
+
+
+def normalize_messages(value) -> list[str]:
+	"""
+	Normalize response fields into a list of strings.
+	"""
+	if value is None:
+		return []
+	if isinstance(value, list):
+		return [str(item) for item in value if item is not None]
+	return [str(value)]
+
+
+#============================================
+
+
+def collect_lint_messages(response: dict) -> list[str]:
+	"""
+	Collect lint messages from the layered response fields.
+	"""
+	messages: list[str] = []
+	messages += normalize_messages(response.get("errors"))
+	# filter out informational notes about response format
+	raw_warnings = normalize_messages(response.get("warnings"))
+	for warning in raw_warnings:
+		if "non-JSON response" in warning:
+			continue
+		messages.append(warning)
+	messages += normalize_messages(response.get("error"))
+	messages += normalize_messages(response.get("warning"))
+	messages += normalize_messages(response.get("message"))
+
+	debug = response.get("debug", {}) if isinstance(response.get("debug"), dict) else {}
+	messages += normalize_messages(debug.get("pg_warn"))
+	messages += normalize_messages(debug.get("internal"))
+	messages += normalize_messages(debug.get("debug"))
+
+	if messages:
+		return messages
+
+	# fall back to scanning rendered HTML for error sections
+	rendered_html = response.get("renderedHTML", "")
+	if not rendered_html:
+		return messages
+	warning_terms = ("Translator errors", "Warning messages")
+	for term in warning_terms:
+		if term in rendered_html:
+			messages.append(f"renderedHTML contains '{term}' section")
+	return messages
+
+
+#============================================
+
+
+def is_error_flagged(response: dict) -> bool:
+	"""
+	Check whether the response flags an error via JSON fields or HTML content.
+	"""
+	# check structured JSON error fields
+	flags = response.get("flags", {}) if isinstance(response.get("flags"), dict) else {}
+	if bool(flags.get("error_flag")):
+		return True
+	if response.get("errors"):
+		return True
+	if response.get("error"):
+		return True
+	# check rendered HTML for error indicators (non-JSON responses)
+	rendered_html = response.get("renderedHTML", "")
+	if "Translator errors" in rendered_html:
+		return True
+	if "ERROR caught by Translator" in rendered_html:
+		return True
+	return False
 
 
 #============================================
@@ -143,52 +240,25 @@ def run_static_lint(problems: list[dict]) -> list[dict]:
 
 def run_renderer_lint(problems: list[dict], host: str, seed: int) -> list[dict]:
 	"""
-	Run renderer lint on each extracted .pg file.
+	Render each extracted problem through the pg-renderer and record status.
 
-	Adds renderer_status and renderer_messages keys to each problem dict.
+	Adds status and messages keys to each problem dict.
 	"""
 	for problem in problems:
-		from pathlib import Path
-		pg_path = Path(problem["pg_file"])
-		result = pglint.lint_file_to_result(pg_path, host=host, seed=seed)
-		problem["renderer_status"] = result["status"]
-		problem["renderer_messages"] = "; ".join(result["issues"])
+		# read the extracted .pg file
+		with open(problem["pg_file"], "r", encoding="utf-8") as handle:
+			source_text = handle.read()
+		response = render_pg_source(source_text, host, seed)
+		has_error = is_error_flagged(response)
+		messages = collect_lint_messages(response)
+		if has_error:
+			problem["status"] = "error"
+		elif messages:
+			problem["status"] = "warn"
+		else:
+			problem["status"] = "pass"
+		problem["messages"] = "; ".join(messages)
 	return problems
-
-
-#============================================
-
-
-def skip_renderer_lint(problems: list[dict]) -> list[dict]:
-	"""
-	Mark all problems as renderer-skipped when the renderer is not available.
-	"""
-	for problem in problems:
-		problem["renderer_status"] = "skipped"
-		problem["renderer_messages"] = ""
-	return problems
-
-
-#============================================
-
-
-def compute_overall_status(static_status: str, renderer_status: str) -> str:
-	"""
-	Compute an overall status from static and renderer results.
-	"""
-	# Error from either means overall error
-	if static_status == "error" or renderer_status == "error":
-		return "error"
-	# Warning from either means overall warn
-	if static_status == "warn" or renderer_status == "warn":
-		return "warn"
-	# Skipped renderer with passing static is still pass
-	if renderer_status == "skipped" and static_status == "pass":
-		return "pass"
-	# Both pass
-	if static_status == "pass" and renderer_status == "pass":
-		return "pass"
-	return "warn"
 
 
 #============================================
@@ -205,21 +275,13 @@ def write_csv_report(problems: list[dict], output_dir: str) -> str:
 		"source_file",
 		"block_index",
 		"pg_file",
-		"static_status",
-		"static_messages",
-		"renderer_status",
-		"renderer_messages",
-		"overall_status",
+		"status",
+		"messages",
 	]
 	with open(csv_path, "w", encoding="utf-8", newline="") as handle:
 		writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
 		writer.writeheader()
 		for problem in problems:
-			# Compute overall status
-			problem["overall_status"] = compute_overall_status(
-				problem.get("static_status", "pass"),
-				problem.get("renderer_status", "skipped"),
-			)
 			writer.writerow(problem)
 	return csv_path
 
@@ -235,19 +297,14 @@ def print_summary(problems: list[dict]) -> None:
 	pass_count = 0
 	warn_count = 0
 	error_count = 0
-	skipped_count = 0
 	for problem in problems:
-		overall = problem.get("overall_status", "pass")
-		if overall == "pass":
+		status = problem.get("status", "pass")
+		if status == "pass":
 			pass_count += 1
-		elif overall == "warn":
+		elif status == "warn":
 			warn_count += 1
-		elif overall == "error":
+		elif status == "error":
 			error_count += 1
-	# Count renderer-skipped separately
-	for problem in problems:
-		if problem.get("renderer_status") == "skipped":
-			skipped_count += 1
 	print("")
 	print("=" * 50)
 	print("Textbook PGML Problem Lint Summary")
@@ -255,8 +312,6 @@ def print_summary(problems: list[dict]) -> None:
 	print(f"  Pass:    {pass_count}")
 	print(f"  Warn:    {warn_count}")
 	print(f"  Error:   {error_count}")
-	if skipped_count > 0:
-		print(f"  Renderer skipped: {skipped_count}")
 	print("=" * 50)
 	print("")
 
@@ -266,7 +321,7 @@ def print_summary(problems: list[dict]) -> None:
 
 def main() -> None:
 	"""
-	Run the full textbook problem extraction and lint pipeline.
+	Run the full textbook problem extraction and renderer lint pipeline.
 	"""
 	args = parse_args()
 
@@ -278,24 +333,16 @@ def main() -> None:
 		print("No complete PG problems found. Nothing to lint.")
 		return
 
-	# Step 2: Static lint
-	print("Running static lint...")
-	problems = run_static_lint(problems)
+	# Step 2: Check renderer health
+	print(f"Checking renderer health at {args.host}...")
+	is_healthy = check_renderer_health(args.host)
+	if not is_healthy:
+		print(f"Renderer at {args.host} is not reachable. Cannot lint.")
+		raise SystemExit(1)
+	print("Renderer is healthy. Running renderer lint...")
 
-	# Step 3: Renderer lint (or skip)
-	if args.skip_renderer:
-		print("Renderer lint: skipped (--skip-renderer)")
-		problems = skip_renderer_lint(problems)
-	else:
-		# Check renderer health before trying
-		print(f"Checking renderer health at {args.host}...")
-		is_healthy = pglint.check_renderer_health(args.host)
-		if is_healthy:
-			print("Renderer is healthy. Running renderer lint...")
-			problems = run_renderer_lint(problems, args.host, args.seed)
-		else:
-			print(f"Renderer at {args.host} is not reachable. Marking as skipped.")
-			problems = skip_renderer_lint(problems)
+	# Step 3: Render each problem through the pg-renderer
+	problems = run_renderer_lint(problems, args.host, args.seed)
 
 	# Step 4: Write CSV report
 	csv_path = write_csv_report(problems, args.output_dir)

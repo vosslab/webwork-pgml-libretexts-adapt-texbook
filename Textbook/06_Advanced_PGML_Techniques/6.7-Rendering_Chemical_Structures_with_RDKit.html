@@ -633,6 +633,90 @@ horizontal space.
 	<li>Use production <code>mdetails</code> settings for student-facing problems.</li>
 </ul>
 
+<h2>Complete working example</h2>
+<p>
+<strong>Amino acid identification with RDKit</strong> -- A full problem that renders
+an amino acid structure using RDKit.js and asks students to identify it with
+RadioButtons.
+</p>
+<pre>
+## TITLE('Identify an amino acid from its structure')
+## DESCRIPTION
+## A chemical structure is rendered using RDKit.js. Students
+## identify the amino acid from its structure.
+## ENDDESCRIPTION
+## KEYWORDS('amino acids','RDKit','chemical structure','RadioButtons')
+## DBsubject('Biochemistry')
+## DBchapter('Amino Acids')
+## DBsection('Structure')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+HEADER_TEXT(&lt;&lt;'END_HEADER');
+&lt;script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+let RDKitReady = null;
+function getRDKit() {
+    if (!RDKitReady) { RDKitReady = initRDKitModule(); }
+    return RDKitReady;
+}
+function initMoleculeCanvases() {
+    getRDKit().then(function(RDKit) {
+        const canvases = document.querySelectorAll('canvas[data-smiles]');
+        canvases.forEach((canvas) =&gt; {
+            const smiles = canvas.dataset.smiles;
+            if (!smiles) { return; }
+            const mol = RDKit.get_mol(smiles);
+            const mdetails = {"legend": "", "explicitMethyl": true};
+            if (canvas &amp;&amp; mol) {
+                mol.draw_to_canvas_with_highlights(
+                    canvas, JSON.stringify(mdetails));
+                mol.delete();
+            }
+        });
+    }).catch(error =&gt; {
+        console.error('Error initializing RDKit:', error);
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMoleculeCanvases);
+} else {
+    initMoleculeCanvases();
+}
+&lt;/script&gt;
+END_HEADER
+
+$smiles = 'C[C@@H](C(=O)[O-])[NH3+]';
+$canvas = '&lt;canvas id="canvas_aa" width="320" height="240"'
+    . ' data-smiles="' . $smiles . '"&gt;&lt;/canvas&gt;';
+
+$rb = RadioButtons(
+	[ 'Alanine', 'Glycine', 'Valine', 'Serine' ],
+	'Alanine',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+Identify the amino acid shown below.
+
+[$canvas]*
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Copy the quick start pattern above into a new PG file and replace the SMILES string with

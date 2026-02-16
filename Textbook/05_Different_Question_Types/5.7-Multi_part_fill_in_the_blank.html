@@ -60,6 +60,98 @@ consistent (<code>$ans_a</code>, <code>$ans_b</code>, or <code>$ans1</code>,
 <code>$ans2</code>).
 </p>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>Genetics cross fractions</strong> -- Calculate two expected fractions from a
+monohybrid cross between heterozygous parents.
+</p>
+<pre>
+## TITLE('Monohybrid cross fractions')
+## DESCRIPTION
+## Calculate the expected fraction of homozygous recessive
+## and dominant phenotype offspring from Aa x Aa.
+## ENDDESCRIPTION
+## KEYWORDS('genetics','monohybrid','multi-part','numeric')
+## DBsubject('Genetics')
+## DBchapter('Mendelian Genetics')
+## DBsection('Monohybrid Cross')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$ans_a = Compute("1/4");
+$ans_b = Compute("3/4");
+
+BEGIN_PGML
+For a monohybrid cross Aa x Aa:
+
+Part A: The expected fraction of aa offspring is
+[__________]{$ans_a}.
+
+Part B: The expected fraction showing the dominant
+phenotype is [__________]{$ans_b}.
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Three-part dilution</strong> -- Calculate stock concentration, dilution factor,
+and final concentration across three answer blanks.
+</p>
+<pre>
+## TITLE('Three-part dilution problem')
+## DESCRIPTION
+## Given a dilution scenario, calculate the stock concentration
+## in different units, the dilution factor, and the final
+## concentration.
+## ENDDESCRIPTION
+## KEYWORDS('dilution','multi-part','numeric','concentration')
+## DBsubject('Biochemistry')
+## DBchapter('Concentrations')
+## DBsection('Dilution')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$stock_mM = random(10, 50, 10);
+$stock_uM = Real($stock_mM * 1000);
+$dilution_factor = list_random(5, 10, 20);
+$final_uM = Real($stock_uM / $dilution_factor);
+
+BEGIN_PGML
+A stock solution has a concentration of [$stock_mM] mM.
+
+Part A: What is the stock concentration in uM?
+[__________]{$stock_uM}
+
+Part B: If you dilute it 1:[$dilution_factor], what is the
+dilution factor? [__________]{$dilution_factor}
+
+Part C: What is the final concentration in uM?
+[__________]{$final_uM}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep blanks unambiguous and label them consistently.</li>

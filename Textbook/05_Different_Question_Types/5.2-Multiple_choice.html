@@ -85,6 +85,94 @@ Key options:
 	<li>For horizontal layout, use <code>separator =&gt; $SPACE x 5</code> or an HTML spacing string.</li>
 </ul>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>Genetics multiple choice</strong> -- Identify the expected fraction of homozygous
+recessive offspring from a monohybrid cross.
+</p>
+<pre>
+## TITLE('Monohybrid cross outcome')
+## DESCRIPTION
+## Determine the expected fraction of homozygous recessive
+## offspring from a cross between two heterozygous parents.
+## ENDDESCRIPTION
+## KEYWORDS('genetics','monohybrid cross','RadioButtons')
+## DBsubject('Genetics')
+## DBchapter('Mendelian Genetics')
+## DBsection('Monohybrid Cross')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$rb = RadioButtons(
+	[ '1/4', '1/2', '3/4', '1' ],
+	'1/4',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+In a diploid organism, allele A is dominant to allele a.
+Two heterozygous parents (Aa x Aa) produce offspring.
+What fraction of offspring are expected to be homozygous
+recessive (aa)?
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Organelle identification</strong> -- Identify the organelle responsible for
+protein synthesis.
+</p>
+<pre>
+## TITLE('Identify the protein synthesis organelle')
+## DESCRIPTION
+## Select the organelle that is the primary site of
+## protein synthesis in eukaryotic cells.
+## ENDDESCRIPTION
+## KEYWORDS('cell biology','organelles','RadioButtons')
+## DBsubject('Cell Biology')
+## DBchapter('Organelles')
+## DBsection('Function')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$rb = RadioButtons(
+	[ 'Ribosome', 'Golgi apparatus', 'Lysosome', 'Smooth ER' ],
+	'Ribosome',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+Which organelle is the primary site of protein synthesis
+in eukaryotic cells?
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Keep choices parallel in format (all fractions, all numbers, etc.).</li>

@@ -43,11 +43,10 @@
   - [tools/lint_textbook_problems.py](../tools/lint_textbook_problems.py) orchestrates the full workflow:
     1. Extract `<pre>` blocks from `Textbook/` HTML (reuses [extract_textbook_pre_blocks.py](../tools/extract_textbook_pre_blocks.py))
     2. Filter to complete PG problems (contain both `DOCUMENT()` and `ENDDOCUMENT()`)
-    3. Run static lint via [webwork_simple_lint.py](../tools/webwork_simple_lint.py) `lint_text_to_result()`
-    4. If renderer is available, run renderer lint via [pglint.py](../tools/pglint.py) `lint_file_to_result()`
-    5. Write `lint_report.csv` with per-problem results and print a console summary
-  - Entry point: `source source_me.sh && python3 tools/lint_textbook_problems.py --skip-renderer`
-  - Key dependencies: `lxml` (HTML parsing), `requests` (renderer API calls)
+    3. Render each problem through the pg-renderer API (`/render-api` endpoint)
+    4. Write `lint_report.csv` with per-problem results and print a console summary
+  - Entry point: `source source_me.sh && python3 tools/lint_textbook_problems.py`
+  - Key dependencies: `lxml` (HTML parsing), pg-renderer running at localhost:3000
 - Primary authoring flow
   - Edit chapter HTML under [Textbook/](../Textbook/) (PGML-first writing with minimal PG scaffolding).
   - Ensure chapter index pages end with the LibreTexts section listing include:

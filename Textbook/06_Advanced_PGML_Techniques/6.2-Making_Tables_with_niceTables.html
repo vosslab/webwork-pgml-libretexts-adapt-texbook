@@ -237,6 +237,73 @@ $gel = LayoutTable(
 );
 </pre>
 
+<h2>Complete working example</h2>
+<p>
+<strong>Enzyme kinetics data table</strong> -- A full problem presenting substrate
+concentration vs velocity data in a DataTable, with a RadioButtons question about
+the data pattern.
+</p>
+<pre>
+## TITLE('Enzyme kinetics data interpretation')
+## DESCRIPTION
+## Review an enzyme kinetics data table and identify the
+## relationship between substrate concentration and velocity.
+## ENDDESCRIPTION
+## KEYWORDS('enzyme kinetics','DataTable','niceTables','RadioButtons')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"niceTables.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$tbl = DataTable(
+	[
+		['[S] (mM)', 'Velocity (umol/min)'],
+		[0.1, 12],
+		[0.5, 45],
+		[1.0, 68],
+		[5.0, 88],
+		[10.0, 95],
+	],
+	center =&gt; 1,
+	horizontalrules =&gt; 1,
+);
+
+$rb = RadioButtons(
+	[ 'Velocity increases linearly with [S]',
+	  'Velocity approaches a maximum as [S] increases',
+	  'Velocity decreases as [S] increases',
+	  'Velocity is independent of [S]' ],
+	'Velocity approaches a maximum as [S] increases',
+	labels        =&gt; 'ABC',
+	displayLabels =&gt; 1,
+);
+
+BEGIN_PGML
+The following table shows enzyme kinetics data.
+
+[@ $tbl @]*
+
+Which statement best describes the relationship between
+substrate concentration and reaction velocity?
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Use <code>DataTable</code> for real measurements and <code>LayoutTable</code> only for visual arrangement.</li>

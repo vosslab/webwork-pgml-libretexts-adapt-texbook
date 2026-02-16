@@ -729,6 +729,56 @@ Each enzyme class key has two phrasing variants. The generator picks one wording
 students see different phrasings across attempts while always being assessed on the same concept.
 </p>
 
+<h2>Complete working example</h2>
+<p>
+<strong>Organelle function matching</strong> -- A full problem using PopUp dropdowns
+to match organelles with their primary functions.
+</p>
+<pre>
+## TITLE('Match organelles to functions')
+## DESCRIPTION
+## Match each organelle with its primary function using
+## PopUp dropdown widgets.
+## ENDDESCRIPTION
+## KEYWORDS('organelles','matching','PopUp','cell biology')
+## DBsubject('Cell Biology')
+## DBchapter('Organelles')
+## DBsection('Function')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserPopUp.pl",
+	"PGcourse.pl",
+);
+
+@functions = ('ATP production', 'Protein sorting',
+	'Intracellular digestion', 'Lipid synthesis');
+
+$popup1 = PopUp(['?', @functions], 'ATP production');
+$popup2 = PopUp(['?', @functions], 'Protein sorting');
+$popup3 = PopUp(['?', @functions], 'Intracellular digestion');
+$popup4 = PopUp(['?', @functions], 'Lipid synthesis');
+
+BEGIN_PGML
+Match each organelle with its primary function.
+
+1. Mitochondrion [_]{$popup1}
+
+2. Golgi apparatus [_]{$popup2}
+
+3. Lysosome [_]{$popup3}
+
+4. Smooth ER [_]{$popup4}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Write wrapper <code>&lt;div&gt;</code> tags directly in PGML whenever possible (Pattern 1).</li>

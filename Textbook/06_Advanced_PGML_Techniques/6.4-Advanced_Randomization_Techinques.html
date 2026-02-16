@@ -248,6 +248,52 @@ $delta_Ct = -log($fold_change) / log(1 + $efficiency);
 $Ct_treated = $Ct_control + $delta_Ct;
 </pre>
 
+<h2>Complete working example</h2>
+<p>
+<strong>Randomized genetics problem</strong> -- A full problem demonstrating
+<code>random()</code> and <code>list_random()</code> with biology content and
+a guard check to prevent repeated values.
+</p>
+<pre>
+## TITLE('Randomized genetics offspring count')
+## DESCRIPTION
+## Calculate the expected number of offspring showing the
+## dominant phenotype from a randomized monohybrid cross.
+## ENDDESCRIPTION
+## KEYWORDS('genetics','randomization','numeric','list_random')
+## DBsubject('Genetics')
+## DBchapter('Mendelian Genetics')
+## DBsection('Expected Ratios')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+@traits = ('Tall', 'Round', 'Purple', 'Axial');
+$trait = list_random(@traits);
+$total = random(40, 120, 4);
+$expected_dom = Real(3 * $total / 4);
+
+BEGIN_PGML
+In a monohybrid cross between two heterozygous plants,
+[$total] offspring are produced. The dominant trait is
+"[$trait]".
+
+How many offspring are expected to show the dominant
+phenotype? [________]{$expected_dom}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Use the built-in <code>random()</code> functions for most problems. They are already seeded.</li>

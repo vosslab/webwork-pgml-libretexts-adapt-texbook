@@ -76,6 +76,98 @@ Key points:
 		not supported.</li>
 </ul>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>PCR steps</strong> -- Order the three main steps of a PCR cycle using the
+DraggableProof drag-and-drop widget.
+</p>
+<pre>
+## TITLE('Order the PCR cycle steps')
+## DESCRIPTION
+## Put the three main steps of a PCR cycle in the correct
+## order using a drag-and-drop interface.
+## ENDDESCRIPTION
+## KEYWORDS('PCR','ordering','DraggableProof')
+## DBsubject('Molecular Biology')
+## DBchapter('Techniques')
+## DBsection('PCR')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"draggableProof.pl",
+	"PGcourse.pl",
+);
+
+$ordering = DraggableProof(
+	[ "Denaturation", "Primer annealing", "Extension" ],
+	[],
+	SourceLabel =&gt; "Steps",
+	TargetLabel =&gt; "Put in correct order",
+);
+$ordering_html = $ordering-&gt;Print;
+
+BEGIN_PGML
+Put the three main steps of a PCR cycle in the correct order.
+
+[$ordering_html]*
+END_PGML
+
+ANS($ordering-&gt;cmp);
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Mitosis phases</strong> -- Order the four phases of mitosis in the correct
+sequence.
+</p>
+<pre>
+## TITLE('Order the phases of mitosis')
+## DESCRIPTION
+## Put the four phases of mitosis in the correct order
+## using a drag-and-drop interface.
+## ENDDESCRIPTION
+## KEYWORDS('mitosis','cell division','ordering','DraggableProof')
+## DBsubject('Cell Biology')
+## DBchapter('Cell Division')
+## DBsection('Mitosis')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"draggableProof.pl",
+	"PGcourse.pl",
+);
+
+$ordering = DraggableProof(
+	[ "Prophase", "Metaphase", "Anaphase", "Telophase" ],
+	[],
+	SourceLabel =&gt; "Phases",
+	TargetLabel =&gt; "Put in correct order",
+);
+$ordering_html = $ordering-&gt;Print;
+
+BEGIN_PGML
+Put the four phases of mitosis in the correct order.
+
+[$ordering_html]*
+END_PGML
+
+ANS($ordering-&gt;cmp);
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Only use ORDER when there is a single standard sequence for the context you are testing.</li>

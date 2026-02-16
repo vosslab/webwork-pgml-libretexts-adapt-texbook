@@ -35,6 +35,23 @@ DEFAULT_BODY_STYLE = (
 	"line-height: 1.3 !important; "
 	"}"
 )
+DEFAULT_HEADING_STYLE = (
+	"h1, h2, h3, h4, h5, h6 { "
+	"font-family: 'Times New Roman', Times, serif !important; "
+	"line-height: 1.2 !important; "
+	"margin-top: 0.8em !important; "
+	"margin-bottom: 0.2em !important; "
+	"} "
+	"h1 { font-size: 1.65em !important; } "
+	"h2 { font-size: 1.45em !important; } "
+	"h3 { font-size: 1.30em !important; } "
+	"h4 { font-size: 1.18em !important; } "
+	"h5 { font-size: 1.08em !important; } "
+	"h6 { font-size: 1.00em !important; } "
+	"h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p { "
+	"margin-top: 0.2em !important; "
+	"}"
+)
 DEFAULT_CODE_STYLE = (
 	"pre, code, pre code, code.codehilite, pre code.codehilite, "
 	"pre *, code *, pre code *, code.codehilite * { "
@@ -211,7 +228,7 @@ def insert_base_tag(html_text: str, source_path: pathlib.Path) -> str:
 #============================================
 def insert_default_style(html_text: str) -> str:
 	"""Insert default CSS to normalize body text size in rendered PDF."""
-	style_text = DEFAULT_BODY_STYLE + DEFAULT_CODE_STYLE + PYGMENTS_CSS
+	style_text = DEFAULT_BODY_STYLE + DEFAULT_HEADING_STYLE + DEFAULT_CODE_STYLE + PYGMENTS_CSS
 	style_tag = f"<style>{style_text}</style>"
 	head_close_match = HEAD_CLOSE_RE.search(html_text)
 	if head_close_match is not None:

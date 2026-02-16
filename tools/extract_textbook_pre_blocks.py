@@ -3,8 +3,6 @@
 import argparse
 import os
 import re
-import subprocess
-import sys
 
 # PyPi
 import lxml.html
@@ -30,13 +28,6 @@ def parse_args() -> argparse.Namespace:
 		dest="output_dir",
 		default=os.path.join("output", "textbook_pre_blocks"),
 		help="Directory to write extracted .pg files (default: output/textbook_pre_blocks).",
-	)
-	parser.add_argument(
-		"--mode",
-		dest="mode",
-		default="simple",
-		choices=("simple", "pglint"),
-		help="Lint mode: simple (all blocks) or pglint (full problems only).",
 	)
 	return parser.parse_args()
 
@@ -65,7 +56,8 @@ def parse_html_fragment(html_text: str, file_path: str) -> lxml.html.HtmlElement
 	"""
 	Parse an HTML fragment and return a container element holding the parsed content.
 	"""
-	parser = lxml.html.HTMLParser(recover=False)
+	# recover=True tolerates malformed HTML (misplaced tags, unclosed elements)
+	parser = lxml.html.HTMLParser(recover=True)
 	container = lxml.html.Element("div")
 	fragments = lxml.html.fragments_fromstring(html_text, parser=parser)
 	for frag in fragments:
@@ -175,60 +167,13 @@ def extract_blocks(input_dir: str, output_dir: str) -> list[tuple[str, bool]]:
 #============================================
 
 
-def run_lint(output_dir: str) -> int:
-	"""
-	Run webwork_simple_lint on the extracted files.
-	"""
-	tools_dir = os.path.dirname(os.path.abspath(__file__))
-	lint_script = os.path.join(tools_dir, "webwork_simple_lint.py")
-	command = [sys.executable, lint_script, "-d", output_dir]
-	result = subprocess.run(command, check=False)
-	return result.returncode
-
-
-#============================================
-
-
-def run_pglint(file_paths: list[str]) -> int:
-	"""
-	Run pglint on a list of extracted files.
-	"""
-	if not file_paths:
-		print("No extracted blocks selected for pglint.")
-		return 0
-	tools_dir = os.path.dirname(os.path.abspath(__file__))
-	pglint_script = os.path.join(tools_dir, "pglint.py")
-	exit_code = 0
-	for path in file_paths:
-		command = [sys.executable, pglint_script, path]
-		result = subprocess.run(command, check=False)
-		if result.returncode > exit_code:
-			exit_code = result.returncode
-	return exit_code
-
-
-#============================================
-
-
 def main() -> None:
 	"""
-	Extract <pre> blocks and optionally lint them.
+	Extract <pre> blocks from textbook HTML.
 	"""
 	args = parse_args()
 	written_blocks = extract_blocks(args.input_dir, args.output_dir)
 	print(f"Wrote {len(written_blocks)} extracted blocks to {args.output_dir}")
-	exit_code = 0
-	if args.mode == "simple":
-		exit_code = max(exit_code, run_lint(args.output_dir))
-	if args.mode == "pglint":
-		selected = []
-		for path, is_full in written_blocks:
-			if not is_full:
-				continue
-			selected.append(path)
-		exit_code = max(exit_code, run_pglint(selected))
-	if exit_code != 0:
-		sys.exit(exit_code)
 
 
 if __name__ == "__main__":

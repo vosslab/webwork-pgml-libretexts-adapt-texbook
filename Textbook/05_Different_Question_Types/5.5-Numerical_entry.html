@@ -58,6 +58,93 @@ For more on answer blanks in PGML, see <a href="/@go/page/555704">Section 3.2</a
 For common tolerance mistakes, see <a href="/@go/page/555733">Section 7.2</a>.
 </p>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>Dilution calculation</strong> -- Calculate the final concentration after
+diluting a stock solution, with randomized values and absolute tolerance.
+</p>
+<pre>
+## TITLE('Dilution calculation')
+## DESCRIPTION
+## Calculate the final concentration after diluting a stock
+## solution to a larger final volume.
+## ENDDESCRIPTION
+## KEYWORDS('dilution','concentration','numeric','tolerance')
+## DBsubject('Biochemistry')
+## DBchapter('Concentrations')
+## DBsection('Dilution')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$stock = random(20, 80, 10);
+$vol_stock = random(1, 4, 1);
+$vol_final = random(10, 20, 5);
+$final_conc = Real($stock * $vol_stock / $vol_final);
+
+BEGIN_PGML
+You dilute [$vol_stock] mL of a [$stock] mg/mL stock solution
+to a final volume of [$vol_final] mL.
+
+What is the final concentration (mg/mL)? [________]{$final_conc}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Surface area to volume ratio</strong> -- Calculate a ratio using relative
+tolerance, demonstrating the <code>tolType</code> and <code>tolerance</code> options.
+</p>
+<pre>
+## TITLE('Surface area to volume ratio')
+## DESCRIPTION
+## Calculate the surface area to volume ratio of a spherical
+## cell and report it with relative tolerance.
+## ENDDESCRIPTION
+## KEYWORDS('ratio','relative tolerance','numeric')
+## DBsubject('Cell Biology')
+## DBchapter('Cell Size')
+## DBsection('Surface Area')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$radius = random(2, 8, 1);
+$ratio = Real(3 / $radius)-&gt;with(
+	tolType =&gt; "relative",
+	tolerance =&gt; 0.02,
+);
+
+BEGIN_PGML
+A spherical cell has a radius of [$radius] micrometers.
+
+The surface area to volume ratio of a sphere is 3/r.
+
+What is the surface area to volume ratio for this cell?
+[________]{$ratio}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>State units in the prompt and use the same units in the expected answer.</li>

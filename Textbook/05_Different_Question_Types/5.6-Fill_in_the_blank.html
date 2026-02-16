@@ -51,6 +51,82 @@ When a prompt requires multiple blanks, see
 <a href="/@go/page/555720">Section 5.7</a> (Multi-Part Fill-in-the-Blank).
 </p>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>Organelle naming</strong> -- Name the organelle responsible for ATP production
+using a String context answer.
+</p>
+<pre>
+## TITLE('Name the ATP-producing organelle')
+## DESCRIPTION
+## Name the organelle primarily responsible for ATP production
+## in eukaryotic cells using a fill-in-the-blank format.
+## ENDDESCRIPTION
+## KEYWORDS('organelles','fill in the blank','String')
+## DBsubject('Cell Biology')
+## DBchapter('Organelles')
+## DBsection('Energy')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextArbitraryString.pl",
+	"PGcourse.pl",
+);
+
+Context("ArbitraryString");
+$ans = Compute("mitochondrion");
+
+BEGIN_PGML
+The organelle primarily responsible for ATP production
+in eukaryotic cells is the [__________]{$ans}.
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Nucleic acid abbreviation</strong> -- Name the molecule that carries genetic
+information, demonstrating a simple string answer.
+</p>
+<pre>
+## TITLE('Name the genetic information molecule')
+## DESCRIPTION
+## Name the molecule that carries genetic information
+## in most organisms.
+## ENDDESCRIPTION
+## KEYWORDS('genetics','DNA','fill in the blank','String')
+## DBsubject('Molecular Biology')
+## DBchapter('Nucleic Acids')
+## DBsection('DNA')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextArbitraryString.pl",
+	"PGcourse.pl",
+);
+
+Context("ArbitraryString");
+$ans = Compute("DNA");
+
+BEGIN_PGML
+The molecule that stores hereditary information in most
+living organisms is [__________]{$ans}.
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Decide whether you will accept plural vs singular forms, and list them explicitly.</li>

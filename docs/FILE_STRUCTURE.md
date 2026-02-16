@@ -36,9 +36,7 @@
   - `FILE_STRUCTURE.md`: directory map and "where to put things" guidance.
 - `tools/`
   - `README.md`: tool catalog with one-line descriptions and usage examples for all tools.
-  - `lint_textbook_problems.py`: end-to-end pipeline to extract textbook PG problems and lint them (static + renderer).
-  - `pglint.py`: lint PG files via the renderer HTTP API (pyflakes-style output).
-  - `webwork_simple_lint.py`: lightweight static lint for `.pg` files (macro coverage, balanced markers).
+  - `lint_textbook_problems.py`: end-to-end pipeline to extract textbook PG problems and validate them via the pg-renderer.
   - `extract_textbook_pre_blocks.py`: extract `<pre>` blocks from textbook HTML into `.pg` files.
   - `textbook_code_block_validator.py`: scan `<pre>` blocks for unmatched PG/PGML markers.
   - `html_lint_checker.py`: lints `Textbook/` HTML for LibreTexts compatibility.

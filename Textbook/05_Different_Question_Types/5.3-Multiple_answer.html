@@ -81,6 +81,97 @@ Restriction enzyme: [_]{$rb3}
 END_PGML
 </pre>
 
+<h2>Complete working examples</h2>
+<p>
+<strong>PCR requirements</strong> -- Evaluate whether each component is required for a
+standard PCR reaction using per-statement RadioButtons.
+</p>
+<pre>
+## TITLE('Identify PCR requirements')
+## DESCRIPTION
+## For each component, indicate whether it is required for
+## a standard PCR reaction.
+## ENDDESCRIPTION
+## KEYWORDS('PCR','molecular biology','true false','RadioButtons')
+## DBsubject('Molecular Biology')
+## DBchapter('Techniques')
+## DBsection('PCR')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$rb1 = RadioButtons([ 'Yes', 'No' ], 'Yes');
+$rb2 = RadioButtons([ 'Yes', 'No' ], 'Yes');
+$rb3 = RadioButtons([ 'Yes', 'No' ], 'Yes');
+$rb4 = RadioButtons([ 'Yes', 'No' ], 'No');
+
+BEGIN_PGML
+For each component, select Yes if it is required for a
+standard PCR reaction.
+
+Template DNA: [_]{$rb1}
+
+Primers: [_]{$rb2}
+
+DNA polymerase: [_]{$rb3}
+
+Restriction enzyme: [_]{$rb4}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+<p>
+<strong>Enzyme properties</strong> -- Evaluate true/false statements about general
+enzyme characteristics.
+</p>
+<pre>
+## TITLE('Enzyme characteristics true or false')
+## DESCRIPTION
+## Evaluate whether each statement about enzyme properties
+## is true or false.
+## ENDDESCRIPTION
+## KEYWORDS('enzymes','biochemistry','true false','RadioButtons')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Properties')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$tf = [ 'True', 'False' ];
+$rb1 = RadioButtons($tf, 'True');
+$rb2 = RadioButtons($tf, 'False');
+$rb3 = RadioButtons($tf, 'True');
+
+BEGIN_PGML
+For each statement, select True or False.
+
+1. Enzymes lower the activation energy of a reaction. [_]{$rb1}
+
+2. Enzymes are consumed during the reaction they catalyze. [_]{$rb2}
+
+3. Enzyme activity is affected by temperature and pH. [_]{$rb3}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Authoring notes</h2>
 <ul>
 	<li>Say "Select all that apply" explicitly.</li>

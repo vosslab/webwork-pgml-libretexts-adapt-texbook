@@ -2,6 +2,68 @@
 
 ## 2026-02-15
 
+### Add complete working PG problem examples to Chapter 6
+- Added `<h2>Complete working example</h2>` sections with full PG problems to
+  seven Chapter 6 files: 6.1 through 6.7.
+- Each example includes a complete OPL header, `DOCUMENT()`/`ENDDOCUMENT()` wrapper,
+  `loadMacros(...)` block, `BEGIN_PGML`/`END_PGML` body, and biology-themed content.
+- Section 6.1 (Text coloring): amino acid charge at given pH with CSS class emphasis.
+- Section 6.2 (niceTables): enzyme kinetics DataTable with RadioButtons.
+- Section 6.3 (Graphs): linear function graph with PGgraphmacros and numeric answer.
+- Section 6.4 (Randomization): genetics offspring count using random() and list_random().
+- Section 6.5 (Matching): organelle function matching with PopUp dropdowns.
+- Section 6.6 (True/false MC): enzyme behavior true/false with per-statement RadioButtons.
+- Section 6.7 (RDKit): amino acid identification from RDKit.js chemical structure.
+- All 7 extracted PG problems pass renderer lint (0 errors, 0 warnings).
+
+### Add complete working PG problem examples to Chapter 5
+- Added `<h2>Complete working examples</h2>` sections with two full PG problems each
+  to seven Chapter 5 files: 5.2 through 5.8.
+- Each example includes a complete OPL header, `DOCUMENT()`/`ENDDOCUMENT()` wrapper,
+  `loadMacros(...)` block, `BEGIN_PGML`/`END_PGML` body, and biology-themed content.
+- Section 5.2 (Multiple choice): genetics RadioButtons and organelle identification.
+- Section 5.3 (Multiple answer): PCR requirements and enzyme properties via per-statement RadioButtons.
+- Section 5.4 (Matching): macromolecule-to-monomer and bond-type PopUp matching.
+- Section 5.5 (Numerical entry): dilution calculation and surface-area-to-volume ratio with tolerance.
+- Section 5.6 (Fill in the blank): organelle naming and nucleic acid abbreviation using ArbitraryString context; added `contextArbitraryString.pl` macro to loadMacros.
+- Section 5.7 (Multi-part fill in the blank): monohybrid cross fractions and three-part dilution.
+- Section 5.8 (Ordered list): PCR steps and mitosis phases using DraggableProof with ANS().
+- All 14 extracted PG problems pass renderer lint (0 errors, 0 warnings).
+
+### Add complete PG problem examples to Chapter 4.7 and Appendix 90.1
+- Added a complete biology RadioButtons example to `Textbook/04_Breaking_Down_the_Components/4.7-Putting_it_together.html` demonstrating all five sections (OPL header, preamble, setup, statement, PGML prompt).
+- Added two new templates to `Textbook/90_Appendices/90.1-Minimal_templates.html`: DraggableProof (ordered list) and fill-in-the-blank (String context), bringing the template count from 4 to 6.
+- Fixed fill-in-the-blank template: added missing `contextArbitraryString.pl` to `loadMacros()` so `Context("ArbitraryString")` resolves.
+
+### Fix broken PGML templates in Appendix 90.1
+- Fixed Block 3 (PopUp matching template): changed macro load from `PGchoicemacros.pl` to
+  `parserPopUp.pl` so the `PopUp()` function is defined, and switched from `\@choices`
+  named array reference to inline anonymous arrayrefs `[...]` as required by PG 2.17's
+  `parserPopUp.pl`.
+- Fixed Block 4 (multi-part template): replaced invalid inline `Compute("$ratio > 1")` in a
+  PGML answer blank with a pre-computed `$double = Real(2 * $ratio)` variable and a
+  pedagogically meaningful second prompt.
+
+### Remove static linter, use pg-renderer only
+- Removed `tools/webwork_simple_lint.py` (static lint produced false-positive warnings on
+  valid PG patterns like bare `$var =` assignments).
+- Refactored `tools/lint_textbook_problems.py` to validate exclusively via the pg-renderer
+  API (`/render-api` endpoint), removing the static lint step, `pglint.py` dependency, and
+  `--skip-renderer` flag.
+- Added HTML-based error detection to `is_error_flagged()` so Translator errors in non-JSON
+  renderer responses are caught.
+- Simplified CSV report columns from 8 to 5 (removed `static_status`, `static_messages`,
+  `renderer_status`, `renderer_messages`; replaced with `status` and `messages`).
+- Cleaned up `tools/extract_textbook_pre_blocks.py`: removed `run_lint()` and `run_pglint()`
+  functions, `--mode` argument, and unused `subprocess`/`sys` imports.
+- Updated `tests/test_lint_textbook_problems.py` to remove static lint tests and use
+  renderer-based assertions.
+- Updated `tools/README.md`, `docs/CODE_ARCHITECTURE.md`, and `docs/FILE_STRUCTURE.md` to
+  remove `webwork_simple_lint.py` and `pglint.py` references.
+- Changed `extract_textbook_pre_blocks.py` HTML parser from `recover=False` to `recover=True`
+  so the lint pipeline can scan directories with malformed HTML (e.g., `WebWorK-HTML/`)
+  without crashing on misplaced tags.
+
 ### PGML validation pipeline
 - Added `tools/lint_textbook_problems.py` -- end-to-end pipeline that extracts complete PG
   problems from textbook HTML, runs static lint via `webwork_simple_lint`, optionally runs

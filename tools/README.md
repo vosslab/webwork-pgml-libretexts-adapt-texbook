@@ -6,22 +6,14 @@ Single-purpose authoring and validation utilities for the textbook repo.
 
 The main workflow extracts PG problems from textbook HTML and validates them.
 
-- `lint_textbook_problems.py` -- End-to-end pipeline: extract problems, static lint, renderer lint, CSV report.
+- `lint_textbook_problems.py` -- End-to-end pipeline: extract problems, validate via the pg-renderer, CSV report.
   ```bash
-  source source_me.sh && python3 tools/lint_textbook_problems.py --skip-renderer
+  source source_me.sh && python3 tools/lint_textbook_problems.py
   source source_me.sh && python3 tools/lint_textbook_problems.py -H http://localhost:3000
   ```
 - `extract_textbook_pre_blocks.py` -- Extract `<pre>` blocks from textbook HTML into `.pg` files.
   ```bash
   source source_me.sh && python3 tools/extract_textbook_pre_blocks.py -d Textbook -o output/textbook_pre_blocks
-  ```
-- `pglint.py` -- Lint PG files by posting to the renderer HTTP API (pyflakes-style output).
-  ```bash
-  source source_me.sh && python3 tools/pglint.py tests/sample_pgml_problem.pg
-  ```
-- `webwork_simple_lint.py` -- Lightweight static lint for `.pg` files (macro coverage, balanced markers).
-  ```bash
-  source source_me.sh && python3 tools/webwork_simple_lint.py -d output/textbook_pre_blocks
   ```
 - `textbook_code_block_validator.py` -- Scan `<pre>` blocks for unmatched PG/PGML markers.
   ```bash

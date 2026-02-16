@@ -16,8 +16,6 @@ TOOLS_DIR = os.path.join(REPO_ROOT, "tools")
 if TOOLS_DIR not in sys.path:
 	sys.path.insert(0, TOOLS_DIR)
 
-import pglint
-import webwork_simple_lint
 import extract_textbook_pre_blocks
 
 # Import the pipeline module
@@ -96,14 +94,12 @@ ENDDOCUMENT();
 
 def test_extraction_count(tmp_path):
 	"""Extracting from sample HTML should find exactly 2 full problems."""
-	# Write sample HTML to a temp file
 	html_dir = tmp_path / "html"
 	html_dir.mkdir()
 	html_file = html_dir / "test_page.html"
 	html_file.write_text(SAMPLE_HTML, encoding="utf-8")
 	output_dir = tmp_path / "output"
 	output_dir.mkdir()
-	# Run extraction
 	problems = lint_textbook_problems.extract_problems(
 		str(html_dir), str(output_dir)
 	)
@@ -127,49 +123,6 @@ def test_extraction_writes_pg_files(tmp_path):
 
 
 #============================================
-# Tests for static lint
-#============================================
-
-
-def test_static_lint_missing_macros():
-	"""Static lint should detect missing MathObjects.pl when Compute() is used."""
-	# PG uses bare $ans = ... (no my/our), so use a non-blank variable to avoid
-	# the unrelated blank-assignment warning
-	text = (
-		"DOCUMENT();\n"
-		"loadMacros('PGstandard.pl', 'PGML.pl');\n"
-		"$ans = Compute('5');\n"
-		"BEGIN_PGML\nWhat is 5?\nEND_PGML\n"
-		"ENDDOCUMENT();\n"
-	)
-	result = webwork_simple_lint.lint_text_to_result(text)
-	assert result["status"] == "warn"
-	assert result["warn_count"] > 0
-	# Check that MathObjects or mathobjects is mentioned
-	found_macro_warning = False
-	for issue in result["issues"]:
-		if "mathobjects" in issue["message"].lower():
-			found_macro_warning = True
-			break
-	assert found_macro_warning
-
-
-def test_static_lint_clean_problem():
-	"""A well-formed problem with correct macros and no blanks should pass."""
-	text = (
-		"DOCUMENT();\n"
-		"loadMacros('PGstandard.pl', 'MathObjects.pl', 'PGML.pl');\n"
-		"TEXT(beginproblem());\n"
-		"BEGIN_PGML\nWhat is 2 + 3?\nEND_PGML\n"
-		"ENDDOCUMENT();\n"
-	)
-	result = webwork_simple_lint.lint_text_to_result(text)
-	assert result["status"] == "pass"
-	assert result["error_count"] == 0
-	assert result["warn_count"] == 0
-
-
-#============================================
 # Tests for CSV report columns
 #============================================
 
@@ -182,83 +135,41 @@ def test_csv_report_columns(tmp_path):
 	html_file.write_text(SAMPLE_HTML, encoding="utf-8")
 	output_dir = tmp_path / "output"
 	output_dir.mkdir()
-	# Run the pipeline steps
+	# Run extraction only (no renderer needed for CSV structure test)
 	problems = lint_textbook_problems.extract_problems(
 		str(html_dir), str(output_dir)
 	)
-	problems = lint_textbook_problems.run_static_lint(problems)
-	problems = lint_textbook_problems.skip_renderer_lint(problems)
+	# Set placeholder status for CSV test
+	for problem in problems:
+		problem["status"] = "pass"
+		problem["messages"] = ""
 	csv_path = lint_textbook_problems.write_csv_report(problems, str(output_dir))
-	# Read the CSV and check columns
 	with open(csv_path, "r", encoding="utf-8") as handle:
 		reader = csv.DictReader(handle)
 		expected_columns = [
 			"source_file",
 			"block_index",
 			"pg_file",
-			"static_status",
-			"static_messages",
-			"renderer_status",
-			"renderer_messages",
-			"overall_status",
+			"status",
+			"messages",
 		]
 		for col in expected_columns:
 			assert col in reader.fieldnames
 
 
 #============================================
-# Tests for compute_overall_status()
-#============================================
-
-
-def test_overall_status_both_pass():
-	"""Both pass should yield pass."""
-	result = lint_textbook_problems.compute_overall_status("pass", "pass")
-	assert result == "pass"
-
-
-def test_overall_status_static_error():
-	"""Static error should yield error regardless of renderer."""
-	result = lint_textbook_problems.compute_overall_status("error", "pass")
-	assert result == "error"
-
-
-def test_overall_status_renderer_error():
-	"""Renderer error should yield error regardless of static."""
-	result = lint_textbook_problems.compute_overall_status("pass", "error")
-	assert result == "error"
-
-
-def test_overall_status_warn():
-	"""Warn from either should yield warn."""
-	result = lint_textbook_problems.compute_overall_status("warn", "pass")
-	assert result == "warn"
-	result = lint_textbook_problems.compute_overall_status("pass", "warn")
-	assert result == "warn"
-
-
-def test_overall_status_skipped():
-	"""Skipped renderer with passing static should yield pass."""
-	result = lint_textbook_problems.compute_overall_status("pass", "skipped")
-	assert result == "pass"
-
-
-def test_overall_status_error_trumps_warn():
-	"""Error should trump warn."""
-	result = lint_textbook_problems.compute_overall_status("error", "warn")
-	assert result == "error"
-	result = lint_textbook_problems.compute_overall_status("warn", "error")
-	assert result == "error"
-
-
-#============================================
-# Integration test with renderer (skipped if unreachable)
+# Tests for renderer health check
 #============================================
 
 
 def renderer_available() -> bool:
 	"""Check whether localhost:3000 is reachable."""
-	return pglint.check_renderer_health("http://localhost:3000")
+	return lint_textbook_problems.check_renderer_health("http://localhost:3000")
+
+
+#============================================
+# Integration tests with renderer (skipped if unreachable)
+#============================================
 
 
 @pytest.mark.skipif(
@@ -267,21 +178,40 @@ def renderer_available() -> bool:
 )
 def test_renderer_lint_good_problem():
 	"""A valid PG problem should pass renderer lint."""
-	from pathlib import Path
-	pg_file = Path(REPO_ROOT) / "tests" / "sample_pgml_problem.pg"
-	result = pglint.lint_file_to_result(pg_file)
-	assert result["status"] == "pass"
-	assert result["exit_code"] == 0
+	source_text = (
+		"DOCUMENT();\n"
+		"loadMacros('PGstandard.pl', 'MathObjects.pl', 'PGML.pl');\n"
+		"Context('Numeric');\n"
+		"$a = random(1, 5, 1);\n"
+		"$ans = Real($a + 2);\n"
+		"BEGIN_PGML\n"
+		"What is [$a] + 2? [________]{$ans}\n"
+		"END_PGML\n"
+		"ENDDOCUMENT();\n"
+	)
+	response = lint_textbook_problems.render_pg_source(
+		source_text, "http://localhost:3000", 1
+	)
+	has_error = lint_textbook_problems.is_error_flagged(response)
+	assert has_error is False
 
 
 @pytest.mark.skipif(
 	not renderer_available(),
 	reason="pg-renderer not available at localhost:3000",
 )
-def test_renderer_lint_syntax_error():
-	"""A PG problem with syntax error should fail renderer lint."""
-	from pathlib import Path
-	pg_file = Path(REPO_ROOT) / "tests" / "sample_error_syntax.pg"
-	result = pglint.lint_file_to_result(pg_file)
-	assert result["status"] == "error"
-	assert result["exit_code"] != 0
+def test_renderer_lint_undefined_function():
+	"""A PG problem calling an undefined macro function should fail renderer lint."""
+	# PopUp without parserPopUp.pl triggers a Translator error
+	source_text = (
+		"DOCUMENT();\n"
+		"loadMacros('PGstandard.pl', 'PGML.pl');\n"
+		"$popup = PopUp(['?','A','B'], 'A');\n"
+		"BEGIN_PGML\nPick: [_]{$popup}\nEND_PGML\n"
+		"ENDDOCUMENT();\n"
+	)
+	response = lint_textbook_problems.render_pg_source(
+		source_text, "http://localhost:3000", 1
+	)
+	has_error = lint_textbook_problems.is_error_flagged(response)
+	assert has_error is True

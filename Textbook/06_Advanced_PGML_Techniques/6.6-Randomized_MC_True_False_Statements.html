@@ -293,6 +293,54 @@ Before using a bank in an assessment, run through this checklist:
 	<li>Pathway regulation claims (activation vs repression).</li>
 </ul>
 
+<h2>Complete working example</h2>
+<p>
+<strong>Enzyme true/false statements</strong> -- A full problem with per-statement
+RadioButtons evaluating claims about enzyme behavior.
+</p>
+<pre>
+## TITLE('Enzyme behavior true or false')
+## DESCRIPTION
+## Evaluate true/false statements about enzyme regulation
+## and kinetics using per-statement RadioButtons.
+## ENDDESCRIPTION
+## KEYWORDS('enzymes','true false','RadioButtons','kinetics')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Regulation')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$tf = [ 'True', 'False' ];
+$rb1 = RadioButtons($tf, 'True');
+$rb2 = RadioButtons($tf, 'False');
+$rb3 = RadioButtons($tf, 'True');
+$rb4 = RadioButtons($tf, 'False');
+
+BEGIN_PGML
+For each statement about enzymes, select True or False.
+
+1. Enzymes increase the rate of a reaction without being consumed. [_]{$rb1}
+
+2. A competitive inhibitor decreases the Vmax of an enzyme. [_]{$rb2}
+
+3. Allosteric regulation involves binding at a site other than the active site. [_]{$rb3}
+
+4. Increasing temperature always increases enzyme activity. [_]{$rb4}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
 <h2>Apply it today</h2>
 <ul>
 	<li>Use one RadioButtons object per statement and keep answer keys aligned.</li>

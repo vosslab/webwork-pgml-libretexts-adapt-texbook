@@ -89,13 +89,12 @@ DOCUMENT();
 loadMacros(
 	"PGstandard.pl",
 	"PGML.pl",
-	"PGchoicemacros.pl",
+	"parserPopUp.pl",
 	"PGcourse.pl",
 );
 
-@choices = ('A','B','C');
-$popup1 = PopUp(\@choices, 'A');
-$popup2 = PopUp(\@choices, 'B');
+$popup1 = PopUp(['?','A','B','C'], 'A');
+$popup2 = PopUp(['?','A','B','C'], 'B');
 
 BEGIN_PGML
 1. Term one [_]{$popup1}
@@ -132,11 +131,90 @@ Context("Numeric");
 $c1 = random(2, 6, 1);
 $c2 = random(1, 4, 1);
 $ratio = Real($c1 / $c2);
+$double = Real(2 * $ratio);
 
 BEGIN_PGML
 1. Compute the ratio: [________]{$ratio}
 
-2. Is this ratio greater than 1? [________]{Compute("$ratio > 1")}
+2. What is twice the ratio? [________]{$double}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Template: DraggableProof (ordered list)</h2>
+<pre>
+## TITLE('Order a sequence of steps')
+## DESCRIPTION
+## Put items in the correct order using a drag-and-drop
+## interface.
+## ENDDESCRIPTION
+## KEYWORDS('ordering','DraggableProof','sequence')
+## DBsubject('Molecular Biology')
+## DBchapter('Techniques')
+## DBsection('Protocols')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"draggableProof.pl",
+	"PGcourse.pl",
+);
+
+$ordering = DraggableProof(
+	[ "Step one", "Step two", "Step three" ],
+	[],
+	SourceLabel =&gt; "Items",
+	TargetLabel =&gt; "Correct order",
+);
+$ordering_html = $ordering-&gt;Print;
+
+BEGIN_PGML
+Put the steps in the correct order.
+
+[$ordering_html]*
+END_PGML
+
+ANS($ordering-&gt;cmp);
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Template: fill-in-the-blank (String)</h2>
+<pre>
+## TITLE('Name a biological term')
+## DESCRIPTION
+## Type the correct term in the blank using a string
+## context answer.
+## ENDDESCRIPTION
+## KEYWORDS('fill in the blank','String','terminology')
+## DBsubject('Cell Biology')
+## DBchapter('Vocabulary')
+## DBsection('Core terms')
+## Date('2026-02-15')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextArbitraryString.pl",
+	"PGcourse.pl",
+);
+
+Context("ArbitraryString");
+$ans = Compute("mitochondrion");
+
+BEGIN_PGML
+The organelle responsible for producing most of the cell's
+ATP is the [__________]{$ans}.
 END_PGML
 
 ENDDOCUMENT();
