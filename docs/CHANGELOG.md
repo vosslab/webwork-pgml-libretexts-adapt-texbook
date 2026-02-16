@@ -2,6 +2,56 @@
 
 ## 2026-02-15
 
+### PGML validation pipeline
+- Added `tools/lint_textbook_problems.py` -- end-to-end pipeline that extracts complete PG
+  problems from textbook HTML, runs static lint via `webwork_simple_lint`, optionally runs
+  renderer lint via `pglint`, and produces a CSV report (`lint_report.csv`) with per-problem
+  pass/warn/error/skipped status and a console summary.
+- Updated `tools/pglint.py` with JWT redaction (regex patterns ported from
+  `webwork-pg-renderer/script/lint_pg_via_renderer_api.py`), a `check_renderer_health()` function
+  that GETs `/health`, and a `lint_file_to_result()` importable API that returns structured dicts
+  without printing.
+- Updated `tools/webwork_simple_lint.py` with a `lint_text_to_result()` importable wrapper that
+  calls `validate_text()` and returns a structured dict with status, issues, error count, and
+  warning count.
+- Added `tools/README.md` documenting all 12 tools with one-line descriptions, usage examples,
+  grouped by purpose (pipeline, HTML, textbook utilities, other).
+- Added `tests/test_lint_textbook_problems.py` with 17 tests covering `is_full_problem()`,
+  HTML extraction, static lint, CSV report columns, `compute_overall_status()` logic, and
+  renderer integration (skipped when renderer is unavailable).
+- Added `output/textbook_pre_blocks/` to `.gitignore` (generated extraction artifacts).
+
+### Prose density improvements (Chapters 2-4 and 6)
+- Added contextual prose around code blocks and tables across 8 files in Chapters 2, 3, 4,
+  and 6 to improve readability and explain *why* and *when* for each code pattern.
+- Section 2.4 (`2.4-Sections_within_a_PG_question.html`): skeleton description before the
+  section map code block, customization guidance after it, top-to-bottom execution explanation
+  before the "Common failure and fix" block, and a lookup sentence before the "Where does this
+  go?" table.
+- Section 2.5 (`2.5-Common_PG_Macros.html`): "start here" note directing first-time authors
+  to the four core macros, symptom explanation before the "Common failure and fix" block,
+  foundation sentences before 6 macro reference tables, and a lookup sentence before the
+  "Quick reference" table.
+- Section 2.7 (`2.7-Future_PG_Version_Features.html`): practical impact summaries before PG
+  2.18, 2.19, and 2.20 feature tables, and workaround-mapping framing before the "What this
+  means for ADAPT authors today" summary table.
+- Section 3.1 (`3.1-Introduction_to_PGML.html`): lead-in and follow-up sentences for the
+  "Copy and edit" PGML template, and a symptom explanation before the "Common failure and
+  fix" block.
+- Section 3.2 (`3.2-Answer_blanks_and_answers.html`): lead-in and follow-up for the "Copy
+  and edit" template, symptom explanation before the failure/fix block, motivating paragraph
+  before text answers code, guidance on `Compute()`/`Formula()` for expression blanks, and a
+  grading-pipeline explanation before the "Why attach answers to blanks" list.
+- Section 4.1 (`4.1-Full_file.html`): debugging guidance before the "Section anchors" table,
+  expanded cross-reference paragraph, summary sentence before "Section quick reference", and
+  a read-it-as-a-story paragraph before the complete file code block.
+- Section 4.2 (`4.2-OPL_Header.html`): lead-in and follow-up for the "Worked example header"
+  code block, and a license-first sentence before the "License comments" code block.
+- Section 6.2 (`6.2-Making_Tables_with_niceTables.html`): template descriptions before both
+  "Copy and edit" code blocks, a plain-text-first tip before "Cell content formats", a
+  convenience note before "PGML table syntax", and a conversion context sentence before
+  "Translating HTML tables".
+
 ### Sibling repo content mining
 - Created `output/repo_mining/` with 9 structured reports (2,946 lines, 193KB total) mining all 8
   sibling repos for textbook-relevant content.

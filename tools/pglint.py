@@ -14,6 +14,16 @@ from pathlib import Path
 # PIP3 modules
 import requests
 
+JWT_PATTERN = re.compile(
+	r"(?<![A-Za-z0-9_-])"
+	r"([A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,})"
+	r"(?![A-Za-z0-9_-])"
+)
+JWT_INPUT_PATTERN = re.compile(
+	r"<input\b[^>]*\bname=[\"'][A-Za-z]+JWT[\"'][^>]*\bvalue=[\"'][^\"']+[\"'][^>]*>",
+	re.IGNORECASE,
+)
+
 
 DEFAULT_ERROR_KEYS: list[str] = ["errors", "warnings"]
 DEFAULT_MESSAGE_KEYS: list[str] = ["message", "error", "warning", "detail", "stderr"]
@@ -534,11 +544,27 @@ def request_render(
 #============================================
 
 
+def redact_jwt(text: str) -> str:
+	"""
+	Redact JWT-like strings from output to keep logs readable.
+	"""
+	if not text:
+		return text
+	redacted = JWT_INPUT_PATTERN.sub("", text)
+	redacted = JWT_PATTERN.sub("<REDACTED_JWT>", redacted)
+	return redacted
+
+
+#============================================
+
+
 def format_issue(path: Path, line: int, column: int, message: str) -> str:
 	"""
-	Format a single issue line for output.
+	Format a single issue line for output, redacting JWT tokens.
 	"""
-	formatted = f"{path}:{line}:{column}: {message}"
+	# Redact JWT tokens from message text
+	clean_message = redact_jwt(message)
+	formatted = f"{path}:{line}:{column}: {clean_message}"
 	return formatted
 
 
@@ -688,6 +714,68 @@ def lint_file(pg_file: Path, args: argparse.Namespace) -> int:
 			print_issue(pg_file, issue)
 		return 1
 	return 0
+
+
+#============================================
+
+
+def check_renderer_health(host: str) -> bool:
+	"""
+	Check whether the renderer is reachable by GETting its /health endpoint.
+	"""
+	url = f"{host.rstrip('/')}/health"
+	try:
+		response = requests.get(url, timeout=5)
+	except requests.RequestException:
+		return False
+	is_healthy = response.status_code == 200
+	return is_healthy
+
+
+#============================================
+
+
+def lint_file_to_result(
+	pg_file: Path,
+	host: str = DEFAULT_HOST,
+	seed: int = DEFAULT_SEED,
+	debug: bool = False,
+) -> dict:
+	"""
+	Lint a single PG file and return a structured result dict.
+
+	Returns a dict with keys: path, status, exit_code, issues.
+	This is the importable API for use by pipeline scripts.
+	"""
+	# Build a minimal namespace to reuse lint_file internals
+	args = argparse.Namespace(
+		host=host,
+		seed=seed,
+		debug=debug,
+	)
+	# Capture stdout to collect issue lines instead of printing
+	issues: list[str] = []
+	original_stdout = sys.stdout
+	sys.stdout = _capture = __import__("io").StringIO()
+	exit_code = lint_file(pg_file, args)
+	sys.stdout = original_stdout
+	captured_text = _capture.getvalue()
+	if captured_text.strip():
+		issues = [line for line in captured_text.strip().splitlines() if line.strip()]
+	# Determine status from exit code
+	if exit_code == 0:
+		status = "pass"
+	elif exit_code == 1:
+		status = "error"
+	else:
+		status = "error"
+	result = {
+		"path": str(pg_file),
+		"status": status,
+		"exit_code": exit_code,
+		"issues": issues,
+	}
+	return result
 
 
 #============================================

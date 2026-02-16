@@ -57,6 +57,10 @@ table in every problem must use this macro.
 </p>
 
 <h2>Copy and edit (DataTable)</h2>
+<p>
+This template shows a three-row DataTable with a header row. Customize the row data, column headers,
+and options to match your experiment.
+</p>
 <pre>
 loadMacros(
   "PGstandard.pl",
@@ -80,6 +84,10 @@ END_PGML
 </pre>
 
 <h2>Copy and edit (LayoutTable)</h2>
+<p>
+Use LayoutTable when you need to arrange answer blanks or labels side by side without header
+semantics. Customize the cell contents and answer variables.
+</p>
 <pre>
 $layout = LayoutTable(
   [
@@ -96,6 +104,10 @@ END_PGML
 </pre>
 
 <h2>Cell content formats</h2>
+<p>
+Most cells are plain text strings. Use a hashref or arrayref only when you need per-cell alignment
+or CSS overrides.
+</p>
 <p>
 Each cell in the 2-D array you pass to <code>DataTable</code> or <code>LayoutTable</code> can be
 one of three shapes.
@@ -130,6 +142,9 @@ CSS hooks for fine-grained styling:
 
 <h2>PGML table syntax</h2>
 <p>
+PGML's inline table syntax is convenient for simple tables that do not need heavy customization.
+</p>
+<p>
 PGML also supports an inline table syntax using <code>[# ... #]</code>. This is backed by
 <code>niceTables</code> internally and is acceptable when it improves readability. Each row uses
 <code>[. ... .]</code> for cells.
@@ -148,6 +163,10 @@ For complex tables with many options, the explicit <code>DataTable()</code> or
 </p>
 
 <h2>Translating HTML tables</h2>
+<p>
+If you are converting a problem from another platform or an older PG format, you will likely
+encounter raw HTML tables that need translation.
+</p>
 <p>
 If you are converting a problem that originally used raw HTML tables, follow these rules.
 </p>

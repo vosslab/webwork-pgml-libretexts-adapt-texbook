@@ -323,6 +323,34 @@ def validate_text(
 #============================================
 
 
+def lint_text_to_result(text: str) -> dict:
+	"""
+	Lint PG text using default rules and return a structured result dict.
+
+	Returns a dict with keys: status, issues, error_count, warn_count.
+	This is the importable API for use by pipeline scripts.
+	"""
+	issues = validate_text(text, DEFAULT_BLOCK_RULES, DEFAULT_MACRO_RULES)
+	error_count = len([i for i in issues if i["severity"] == "ERROR"])
+	warn_count = len([i for i in issues if i["severity"] != "ERROR"])
+	if error_count > 0:
+		status = "error"
+	elif warn_count > 0:
+		status = "warn"
+	else:
+		status = "pass"
+	result = {
+		"status": status,
+		"issues": issues,
+		"error_count": error_count,
+		"warn_count": warn_count,
+	}
+	return result
+
+
+#============================================
+
+
 def validate_file(
 	file_path: str,
 	block_rules: list[dict[str, str]],

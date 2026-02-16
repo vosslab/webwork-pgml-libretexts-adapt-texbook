@@ -18,6 +18,12 @@ online examples are missing in this subset, so check the allowlist before you ad
 For the full comparison table, see <code>docs/PG_MACRO_VERSION_COMPARISON.md</code>.
 </p>
 
+<p>
+If you are writing your first problem, start with the four core macros (PGstandard.pl, MathObjects.pl,
+PGML.pl, PGcourse.pl). Add interaction macros only when you need a specific widget like radio buttons
+or dropdowns.
+</p>
+
 <h2>Copy and edit (minimal macro set)</h2>
 <pre>
 DOCUMENT();
@@ -30,6 +36,12 @@ loadMacros(
 );
 </pre>
 
+<p>
+This is the most common macro error: calling a function that requires a macro you forgot to load.
+PG reports the function name as "Undefined subroutine" because the macro file that defines it was
+never loaded.
+</p>
+
 <p><strong>Common failure and fix</strong></p>
 <pre>
 Broken: RadioButtons(...) without parserRadioButtons.pl
@@ -38,6 +50,11 @@ Fix: add "parserRadioButtons.pl" to loadMacros()
 </pre>
 
 <h2>Core macros for PGML-first problems</h2>
+<p>
+These four macros form the foundation of every PGML problem. Load all four unless you have a
+specific reason to omit one. The table below shows what each macro enables and what breaks if you
+leave it out.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 22%;">
@@ -81,6 +98,11 @@ compute numeric values, it can be omitted.
 </p>
 
 <h2>Add-ons by interaction type</h2>
+<p>
+Beyond the core four, you add macros based on the interaction type your problem needs. Each row
+below corresponds to a student-facing widget. Load the macro only when you use that
+widget -- extra macros add no value and slow down debugging.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 34%;">
@@ -139,6 +161,10 @@ compute numeric values, it can be omitted.
 </table>
 
 <h2>Macro availability (subset vs full PG)</h2>
+<p>
+Not every PG macro is available in the ADAPT/renderer subset. The table below shows which macros
+work in your environment. If a macro shows "No" in the ADAPT column, you need a workaround.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 36%;">
@@ -390,6 +416,11 @@ to diagnose and fix it.
 </ul>
 
 <h2>Science-native contexts and grading helpers</h2>
+<p>
+These macros extend PG's answer checking to handle science-specific input formats like units,
+chemical reactions, and scientific notation. Use them when the standard Numeric or String contexts
+are too restrictive for what you want students to enter.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 34%;">
@@ -468,6 +499,10 @@ to diagnose and fix it.
 </table>
 
 <h2>Tables, layouts, and visual tools</h2>
+<p>
+These macros control how content is displayed, from data tables to scaffolded multi-part prompts to
+generated graphs. Most biology problems need at most niceTables.pl for data presentation.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 34%;">
@@ -731,6 +766,9 @@ life-science problems. They are listed here so you recognize them if encountered
 </table>
 
 <h2>Quick reference: which macro for which task</h2>
+<p>
+Use this table when you know what you want the problem to do but are not sure which macro provides it.
+</p>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 45%;">

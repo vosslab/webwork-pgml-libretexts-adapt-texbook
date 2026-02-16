@@ -14,6 +14,9 @@ grading logic close to the text students see.
 </p>
 
 <h2>Copy and edit (minimum viable PGML)</h2>
+<p>
+This template shows a minimal PGML block with inline math, variable substitution, and one answer blank.
+</p>
 <pre>
 $km = Real(2.5);
 $substrate = Real(12);
@@ -26,8 +29,14 @@ Report the rate [`v`] in &mu;M/s:
 [`v = `] [____]{$rate}
 END_PGML
 </pre>
+<p>
+Customize the variable names, the prompt text, and the answer expression in braces.
+</p>
 
 <p><strong>Common failure and fix</strong></p>
+<p>
+Without backtick delimiters, subscripts and Greek letters render as plain text instead of formatted math.
+</p>
 <pre>
 Broken: Km = 2.5 &mu;M
 Fix: [`K_m`] = 2.5 &mu;M

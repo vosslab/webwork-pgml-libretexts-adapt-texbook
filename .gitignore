@@ -5,4 +5,5 @@ report_pyflakes.txt
 report_ascii_compliance.txt
 report_bandit.txt
 report_pyright.txt
+output/textbook_pre_blocks/
 

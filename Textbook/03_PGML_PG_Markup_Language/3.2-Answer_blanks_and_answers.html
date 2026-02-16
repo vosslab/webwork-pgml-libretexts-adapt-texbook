@@ -11,6 +11,10 @@ text students read.
 </p>
 
 <h2>Copy and edit</h2>
+<p>
+The following template shows a numeric answer blank with the correct value attached inline, so the
+grading rule lives right next to the prompt text.
+</p>
 <pre>
 $value = Real(12);
 $answer = Real(24);
@@ -23,7 +27,16 @@ Report your answer in mM:
 [`2c = `] [____]{$answer} mM
 END_PGML
 </pre>
+<p>
+To adapt this for your own problem, change the variable names, the PGML prompt text, and the
+answer expression inside the braces.
+</p>
 
+<p>
+This error happens when you pass a numeric MathObject (like a Real) where PG expects a string
+answer. PG requires the type inside the braces to match the active Context, so passing
+<code>$ans2</code> (a Real) in a spot that needs a string produces a type mismatch.
+</p>
 <p><strong>Common failure and fix</strong></p>
 <pre>
 Broken: [`ATP = `] [_____]{$ans2}
@@ -42,6 +55,12 @@ the story and makes later edits much safer.
 Text answers are common in biology (gene/protein names, labels, or categories). Keep the accepted
 strings narrow and document what counts as correct to avoid over-accepting.
 </p>
+<p>
+Free-text answers are appropriate when the response is a specific term&mdash;a gene name, molecule,
+or category label&mdash;rather than a number or formula. Use free-text instead of multiple choice
+when you want students to recall the term rather than recognize it from a list. Keep the accepted
+string set narrow to avoid grading ambiguity.
+</p>
 <pre>
 Context("String");
 Context()->strings->add(
@@ -58,6 +77,8 @@ END_PGML
 <h2>Expression and formula blanks</h2>
 <p>
 If the correct answer is a formula, use a quoted string or a Formula MathObject.
+Use <code>Compute()</code> or <code>Formula()</code> when the correct answer is an expression
+students type, not just a number.
 </p>
 
 <pre>
@@ -69,6 +90,12 @@ END_PGML
 </pre>
 
 <h2>Why attach answers to blanks</h2>
+<p>
+When you attach an answer directly to a blank with <code>{$ans}</code>, PG registers the answer
+checker at parse time and binds it to that specific blank, so there is no separate answer-matching
+step that could go wrong. This matters most in multi-part problems where answer order can drift if
+answers and blanks are defined separately.
+</p>
 <ul>
 	<li>The grading rule stays next to the text that asks for it.</li>
 	<li>Multi-part science prompts are easier to maintain.</li>
