@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-02-16
+
+### Expand Section 2.6 with high-frequency legacy patterns from OPL analysis
+- Added `beginproblem()` (78% of OPL), `num_cmp()` (46%), `str_cmp()` (7%), and
+  `fun_cmp()` to the "Legacy patterns to recognize" table with OPL prevalence counts.
+- Added new "Legacy answer evaluators" section with a 5-row replacement table covering
+  `num_cmp`, `str_cmp`, `fun_cmp`, `std_num_str_cmp`, and `numerical_compare_with_units`,
+  each with OPL prevalence, description, and MathObjects replacement.
+- Added "beginproblem(): safe to delete" section explaining that `DOCUMENT()` alone
+  handles initialization (based on analysis of 72,734 OPL files).
+- Added 4 new rows to "Deprecated or fragile behaviors" table: legacy answer evaluators,
+  `TEXT(beginproblem())`, `AnswerFormatHelp.pl`, and `compoundProblem.pl`.
+
 ## 2026-02-15
 
 ### Create Appendix 90.4: Macro Demonstrations with Version History
@@ -16,12 +29,22 @@
   Appendix 90.1 for parserRadioButtons.pl, parserPopUp.pl, draggableProof.pl,
   contextArbitraryString.pl, niceTables.pl, and PGgraphmacros.pl.
 - All biology-themed: organelle matching, macromolecule sorting, enzyme kinetics, dilutions,
-  bacterial growth, photosynthesis, Mendelian genetics, Hardy-Weinberg, codon identification,
-  DNA base pairing, cellular respiration, and scaffolded genetics problems.
-- Legacy macros (PGchoicemacros.pl, PGgraders.pl, weightedGrader.pl) use BEGIN_TEXT/ANS()
-  patterns; all others use PGML-first style.
+  bacterial growth, Mendelian genetics, Hardy-Weinberg, pH range checking, scaffolded genetics.
+- All demos use PGML (`BEGIN_PGML`/`END_PGML`). Only 2 `ANS()` calls remain where
+  required by macro design: `PGchoicemacros.pl` (`str_cmp` for match list form fields)
+  and `PGessaymacros.pl` (`essay_cmp` for essay box form field).
 - Updated `90.0-Index.html` with description and link for Appendix 90.4.
 - Updated `TEXTBOOK_PAGE_SUMMARIES.md` with 3-sentence summary and SEO tags.
+
+### Add PGchoicemacros.pl deprecation guide to Section 2.6
+- Added three rows to the "Deprecated or fragile behaviors" table in
+  `2.6-Legacy_PG_and_deprecated_patterns.html`: `NchooseK()`, `shuffle()`, and
+  `new_match_list` with `print_q`/`print_a`.
+- Added a dedicated "PGchoicemacros.pl: widely used, mostly deprecated" section with a
+  5-row replacement table covering `NchooseK`, `shuffle`, `new_match_list`,
+  `new_select_list`, and `new_multiple_choice` with modern equivalents.
+- Clarified that `PGsort` is a core function from PGbasicmacros.pl, not from
+  PGchoicemacros.pl, and is not deprecated.
 
 ### Add complete working PG problem examples to Chapter 6
 - Added `<h2>Complete working example</h2>` sections with full PG problems to

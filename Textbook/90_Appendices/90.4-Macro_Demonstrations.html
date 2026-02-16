@@ -36,32 +36,33 @@ Appendix 90.1 (minimal template). See those pages for copy-paste PopUp demos.
 <strong>History:</strong> Long-running legacy macro (WeBWorK 2.0+, 2004). Predates MathObjects.
 </p>
 <p>
-<strong>Note:</strong> PGchoicemacros.pl is a legacy macro. The <code>print_q</code>/<code>print_a</code>
-methods generate their own HTML form fields and require <code>ANS()</code> for grading.
-For new problems, prefer PopUp (<code>parserPopUp.pl</code>) for matching and
-RadioButtons (<code>parserRadioButtons.pl</code>) for single-choice. This demo
-shows the <code>new_match_list</code> pattern because you may encounter it in
-older problems.
+<strong>Note:</strong> PGchoicemacros.pl is a legacy macro. Its utility functions
+(<code>NchooseK</code>, <code>shuffle</code>) are deprecated; <code>PGsort</code>
+is a core function from PGbasicmacros.pl, not from this macro. The
+non-deprecated core is <code>new_match_list</code> with
+<code>print_q</code>/<code>print_a</code>. These methods generate their own form
+fields, so <code>ANS()</code> is required. For new problems, prefer PopUp
+(<code>parserPopUp.pl</code>) or RadioButtons (<code>parserRadioButtons.pl</code>).
 </p>
 <pre>
-## TITLE('Match organelles to functions (legacy match list)')
+## TITLE('Match organelles to functions')
 ## DESCRIPTION
-## Use PGchoicemacros match list to associate organelles with
-## their primary cellular functions.
+## Use PGchoicemacros new_match_list to associate organelles
+## with their primary cellular functions.
 ## ENDDESCRIPTION
-## KEYWORDS('matching','organelles','legacy macros')
+## KEYWORDS('matching','organelles','match list')
 ## DBsubject('Cell Biology')
 ## DBchapter('Organelles')
 ## DBsection('Functions')
-## Date('2026-02-15')
+## Date('2026-02-16')
 ## Author('Textbook demo')
 ## Institution('LibreTexts')
 
 DOCUMENT();
 loadMacros(
 	"PGstandard.pl",
-	"PGchoicemacros.pl",
 	"PGML.pl",
+	"PGchoicemacros.pl",
 	"PGcourse.pl",
 );
 
@@ -75,8 +76,7 @@ $ml-&gt;qa(
 $ml-&gt;choose(4);
 
 BEGIN_PGML
-Match each function on the left with the correct organelle
-on the right.
+Match each function with the correct organelle.
 
 [@ $ml-&gt;print_q @]*
 

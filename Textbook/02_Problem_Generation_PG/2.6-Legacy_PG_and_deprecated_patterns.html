@@ -63,6 +63,11 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 	</thead>
 	<tbody>
 		<tr>
+			<td data-th="Legacy pattern"><code>beginproblem()</code> call in DOCUMENT section</td>
+			<td data-th="Why you see it">Found in 78% of OPL files. Was once required for initialization but is now handled by <code>DOCUMENT()</code>.</td>
+			<td data-th="PGML-first replacement">Delete the line. <code>DOCUMENT()</code> alone is sufficient.</td>
+		</tr>
+		<tr>
 			<td data-th="Legacy pattern">BEGIN_TEXT / END_TEXT blocks</td>
 			<td data-th="Why you see it">Pre-PGML format for the prompt text.</td>
 			<td data-th="PGML-first replacement">Use BEGIN_PGML / END_PGML for readable prompt text.</td>
@@ -76,6 +81,11 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 			<td data-th="Legacy pattern">String-built HTML ("<p>" . $x . "</p>")</td>
 			<td data-th="Why you see it">Manual HTML assembly in PG strings.</td>
 			<td data-th="PGML-first replacement">Use PGML with variable inserts for clean text.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy pattern"><code>ANS(num_cmp(...))</code> or <code>ANS(str_cmp(...))</code></td>
+			<td data-th="Why you see it"><code>num_cmp</code> appears in 46% and <code>str_cmp</code> in 7% of OPL files. Legacy evaluators from the pre-MathObjects era.</td>
+			<td data-th="PGML-first replacement">Use MathObjects and PGML inline blanks: <code>[_]{$answer}</code>. See the table below for specific replacements.</td>
 		</tr>
 		<tr>
 			<td data-th="Legacy pattern">ans_rule() without nearby answer object</td>
@@ -106,6 +116,21 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 	</thead>
 	<tbody>
 		<tr>
+			<td data-th="Pattern"><code>NchooseK($N, $K)</code></td>
+			<td data-th="Why it is fragile">Deprecated in PGchoicemacros.pl. Very common in OPL (1,000+ files). Returns K indices chosen from 0..N-1.</td>
+			<td data-th="Preferred approach">Use <code>random_subset($K, 0..$N-1)</code> from PGstandard.pl, or build an index array and <code>@list[@indices]</code>.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern"><code>shuffle($N)</code></td>
+			<td data-th="Why it is fragile">Deprecated in PGchoicemacros.pl. Returns a random permutation of indices 0..N-1.</td>
+			<td data-th="Preferred approach">Use <code>random_subset($N, 0..$N-1)</code> for a full permutation, or Perl's built-in list operations.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern"><code>new_match_list</code> with <code>print_q</code>/<code>print_a</code></td>
+			<td data-th="Why it is fragile">PGchoicemacros.pl legacy match list generates its own form fields, requiring <code>ANS(str_cmp(...))</code>.</td>
+			<td data-th="Preferred approach">Use PopUp widgets (<code>parserPopUp.pl</code>) with PGML inline blanks. See Appendix 90.4 for both patterns.</td>
+		</tr>
+		<tr>
 			<td data-th="Pattern">PopUp menus for choices</td>
 			<td data-th="Why it is fragile">Legacy UI pattern and inconsistent rendering.</td>
 			<td data-th="Preferred approach">Use DropDown or radio/checkbox patterns.</td>
@@ -121,12 +146,180 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 			<td data-th="Preferred approach">Set Context once and override only if necessary.</td>
 		</tr>
 		<tr>
+			<td data-th="Pattern"><code>num_cmp()</code>, <code>str_cmp()</code>, <code>fun_cmp()</code></td>
+			<td data-th="Why it is fragile">Legacy evaluators from pre-MathObjects era. <code>num_cmp</code> alone appears in 46% of OPL files.</td>
+			<td data-th="Preferred approach">Use MathObjects (<code>Compute()</code>, <code>String()</code>, <code>Formula()</code>) with <code>-&gt;cmp()</code> or PGML blanks. See table below.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern"><code>TEXT(beginproblem())</code></td>
+			<td data-th="Why it is fragile">No longer needed. Appears in 78% of OPL files but <code>DOCUMENT()</code> handles initialization.</td>
+			<td data-th="Preferred approach">Delete the line entirely. Use <code>DOCUMENT();</code> alone.</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern"><code>AnswerFormatHelp.pl</code></td>
+			<td data-th="Why it is fragile">Entire macro file deprecated in PG 2.17.</td>
+			<td data-th="Preferred approach">Use <code>helpLink()</code> from PGbasicmacros.pl (loaded via PGstandard.pl).</td>
+		</tr>
+		<tr>
+			<td data-th="Pattern"><code>compoundProblem.pl</code> / <code>compoundProblem5.pl</code></td>
+			<td data-th="Why it is fragile">Deprecated in PG 2.19. Legacy multi-section problem macros.</td>
+			<td data-th="Preferred approach">Use <code>scaffold.pl</code> with <code>Scaffold::Begin()</code> and <code>Section::Begin()</code>.</td>
+		</tr>
+		<tr>
 			<td data-th="Pattern">Old macro families loaded "just in case"</td>
 			<td data-th="Why it is fragile">Adds noise and can mask missing dependencies.</td>
 			<td data-th="Preferred approach">Load only the macros needed for the prompt.</td>
 		</tr>
 	</tbody>
 </table>
+
+<h2>Legacy answer evaluators (very common in copied code)</h2>
+<p>
+Before MathObjects existed, every problem used standalone evaluator functions like
+<code>num_cmp()</code> and <code>str_cmp()</code>. These still work but are discouraged because
+MathObjects provide richer error messages, tolerance handling, and direct attachment to PGML blanks.
+If you copy a problem from the OPL, there is roughly a 50% chance it uses at least one of these
+legacy evaluators.
+</p>
+
+<h3>Copy and edit (answer evaluator rewrite)</h3>
+<pre>
+# Legacy pattern (do not use in new problems)
+# $answer = 42;
+# ANS(num_cmp($answer));
+# ANS(num_cmp($answer, tol =&gt; 0.01));
+
+# MathObjects + PGML rewrite
+$answer = Compute("42");
+BEGIN_PGML
+Enter the answer: [_________]{$answer}
+END_PGML
+# Tolerance is set via: $answer-&gt;cmp(tolerance =&gt; 0.01)
+</pre>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 15%;">
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Legacy evaluator</th>
+			<th>OPL prevalence</th>
+			<th>What it does</th>
+			<th>MathObjects replacement</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Legacy evaluator"><code>num_cmp($x)</code></td>
+			<td data-th="OPL prevalence">46% (33,804 files)</td>
+			<td data-th="What it does">Compares student answer to a number. Supports tolerance, strings like "DNE".</td>
+			<td data-th="MathObjects replacement"><code>$x = Compute("42");</code> then PGML <code>[_]{$x}</code> or <code>ANS($x-&gt;cmp())</code></td>
+		</tr>
+		<tr>
+			<td data-th="Legacy evaluator"><code>str_cmp("text")</code></td>
+			<td data-th="OPL prevalence">7% (4,958 files)</td>
+			<td data-th="What it does">Compares student answer to a string. Used for word answers, matching.</td>
+			<td data-th="MathObjects replacement"><code>$x = String("text");</code> then PGML <code>[_]{$x}</code> or <code>ANS($x-&gt;cmp())</code></td>
+		</tr>
+		<tr>
+			<td data-th="Legacy evaluator"><code>fun_cmp("x^2")</code></td>
+			<td data-th="OPL prevalence">Common in math OPL</td>
+			<td data-th="What it does">Compares student formula by sampling points.</td>
+			<td data-th="MathObjects replacement"><code>$f = Formula("x^2");</code> then PGML <code>[_]{$f}</code> or <code>ANS($f-&gt;cmp())</code></td>
+		</tr>
+		<tr>
+			<td data-th="Legacy evaluator"><code>std_num_str_cmp()</code></td>
+			<td data-th="OPL prevalence">Low</td>
+			<td data-th="What it does">Hybrid number/string comparator. Formally deprecated in PG 2.17.</td>
+			<td data-th="MathObjects replacement">Use <code>Compute()</code> with appropriate Context.</td>
+		</tr>
+		<tr>
+			<td data-th="Legacy evaluator"><code>numerical_compare_with_units()</code></td>
+			<td data-th="OPL prevalence">Low</td>
+			<td data-th="What it does">Number comparison with unit checking. Formally deprecated in PG 2.17.</td>
+			<td data-th="MathObjects replacement">Use <code>NumberWithUnits()</code> from <code>parserNumberWithUnits.pl</code>.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+<strong>Key point:</strong> <code>num_cmp()</code> and <code>str_cmp()</code> are not formally
+marked deprecated in the PG source (they have been rewritten to use MathObjects internally),
+but the PG documentation recommends using MathObjects <code>-&gt;cmp()</code> methods directly.
+New problems should always use MathObjects.
+</p>
+
+<h2>beginproblem(): safe to delete</h2>
+<p>
+<code>beginproblem()</code> appears in 78% of OPL files (56,953 of 72,734). It was once required
+to initialize problem output, but <code>DOCUMENT()</code> now handles all initialization.
+If you copy a problem that includes <code>TEXT(beginproblem())</code>, simply delete that line.
+</p>
+<pre>
+# Legacy (found in most OPL files)
+# DOCUMENT();
+# TEXT(beginproblem());
+
+# Modern (just DOCUMENT is enough)
+DOCUMENT();
+</pre>
+
+<h2>PGchoicemacros.pl: widely used, mostly deprecated</h2>
+<p>
+PGchoicemacros.pl appears in over 1,000 OPL files, but most of its utility functions are
+now deprecated. If you copy a problem that loads PGchoicemacros.pl, check which functions
+it actually uses and consider whether a modern replacement exists.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 25%;">
+		<col style="width: 25%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Deprecated function</th>
+			<th>Replacement</th>
+			<th>Example rewrite</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Deprecated function"><code>NchooseK(5, 3)</code></td>
+			<td data-th="Replacement"><code>random_subset()</code></td>
+			<td data-th="Example rewrite"><code>@pick = random_subset(3, 0..4);</code></td>
+		</tr>
+		<tr>
+			<td data-th="Deprecated function"><code>shuffle(5)</code></td>
+			<td data-th="Replacement"><code>random_subset()</code></td>
+			<td data-th="Example rewrite"><code>@perm = random_subset(5, 0..4);</code></td>
+		</tr>
+		<tr>
+			<td data-th="Deprecated function"><code>new_match_list</code></td>
+			<td data-th="Replacement">PopUp widgets</td>
+			<td data-th="Example rewrite">Build PopUp objects and use PGML inline blanks (see <a href="/@go/page/555717">Section 5.4</a>).</td>
+		</tr>
+		<tr>
+			<td data-th="Deprecated function"><code>new_select_list</code></td>
+			<td data-th="Replacement">RadioButtons</td>
+			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Section 5.2</a>).</td>
+		</tr>
+		<tr>
+			<td data-th="Deprecated function"><code>new_multiple_choice</code></td>
+			<td data-th="Replacement">RadioButtons</td>
+			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Section 5.2</a>).</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+<strong>Not deprecated:</strong> <code>PGsort</code> is sometimes confused with PGchoicemacros.pl
+but is actually a core function from PGbasicmacros.pl (loaded via PGstandard.pl). It does not
+require loading PGchoicemacros.pl and is not deprecated.
+</p>
 
 <h2>Apply it today</h2>
 <ul>
