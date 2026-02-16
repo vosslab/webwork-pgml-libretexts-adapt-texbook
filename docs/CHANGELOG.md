@@ -2,6 +2,27 @@
 
 ## 2026-02-15
 
+### Create Appendix 90.4: Macro Demonstrations with Version History
+- Created `Textbook/90_Appendices/90.4-Macro_Demonstrations.html` with 22 macro entries: 6
+  cross-references to existing demos elsewhere in the textbook plus 16 new complete PG problems.
+- Each entry includes a one-line version history note (PG version introduced, key updates).
+- New demos organized into four groups: interaction widgets (PGchoicemacros.pl,
+  draggableSubsets.pl, parserWordCompletion.pl, PGessaymacros.pl), science-native contexts
+  (parserNumberWithUnits.pl, parserFormulaWithUnits.pl, contextScientificNotation.pl,
+  contextReaction.pl, contextFraction.pl, contextPercent.pl), grading and feedback
+  (answerCustom.pl, answerHints.pl, parserMultiAnswer.pl, PGgraders.pl, weightedGrader.pl),
+  and layout and scaffolding (scaffold.pl).
+- Cross-references point to existing demos in Sections 5.2, 5.4, 5.6, 5.8, 6.2, 6.3, and
+  Appendix 90.1 for parserRadioButtons.pl, parserPopUp.pl, draggableProof.pl,
+  contextArbitraryString.pl, niceTables.pl, and PGgraphmacros.pl.
+- All biology-themed: organelle matching, macromolecule sorting, enzyme kinetics, dilutions,
+  bacterial growth, photosynthesis, Mendelian genetics, Hardy-Weinberg, codon identification,
+  DNA base pairing, cellular respiration, and scaffolded genetics problems.
+- Legacy macros (PGchoicemacros.pl, PGgraders.pl, weightedGrader.pl) use BEGIN_TEXT/ANS()
+  patterns; all others use PGML-first style.
+- Updated `90.0-Index.html` with description and link for Appendix 90.4.
+- Updated `TEXTBOOK_PAGE_SUMMARIES.md` with 3-sentence summary and SEO tags.
+
 ### Add complete working PG problem examples to Chapter 6
 - Added `<h2>Complete working example</h2>` sections with full PG problems to
   seven Chapter 6 files: 6.1 through 6.7.

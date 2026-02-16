@@ -1,0 +1,880 @@
+<p>
+This appendix provides one complete, renderable PG problem for each of the most commonly used
+macros documented in <a href="/@go/page/488659">Section 2.5</a>. Every demo is a full
+<code>DOCUMENT()</code>/<code>ENDDOCUMENT()</code> problem with a biology-themed prompt that you can
+copy, paste, and render immediately.
+</p>
+<p>
+Some macros already have complete working examples elsewhere in the textbook. Where that is the case,
+a cross-reference replaces the demo. Each entry also includes a brief version history note so you
+know how long the macro has been available and what changed in recent PG releases.
+</p>
+
+<h2>Interaction widgets</h2>
+
+<h3>parserRadioButtons.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). Values display added PG 2.18 (2023).
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555715">Section 5.2</a> (multiple choice) and
+Appendix 90.1 (minimal template). See those pages for copy-paste RadioButtons demos.
+</p>
+
+<h3>parserPopUp.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). DropDown method added PG 2.18.
+Breaking change PG 2.19.
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555717">Section 5.4</a> (matching) and
+Appendix 90.1 (minimal template). See those pages for copy-paste PopUp demos.
+</p>
+
+<h3>PGchoicemacros.pl</h3>
+<p>
+<strong>History:</strong> Long-running legacy macro (WeBWorK 2.0+, 2004). Predates MathObjects.
+</p>
+<p>
+<strong>Note:</strong> PGchoicemacros.pl is a legacy macro. The <code>print_q</code>/<code>print_a</code>
+methods generate their own HTML form fields and require <code>ANS()</code> for grading.
+For new problems, prefer PopUp (<code>parserPopUp.pl</code>) for matching and
+RadioButtons (<code>parserRadioButtons.pl</code>) for single-choice. This demo
+shows the <code>new_match_list</code> pattern because you may encounter it in
+older problems.
+</p>
+<pre>
+## TITLE('Match organelles to functions (legacy match list)')
+## DESCRIPTION
+## Use PGchoicemacros match list to associate organelles with
+## their primary cellular functions.
+## ENDDESCRIPTION
+## KEYWORDS('matching','organelles','legacy macros')
+## DBsubject('Cell Biology')
+## DBchapter('Organelles')
+## DBsection('Functions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGchoicemacros.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+$ml = new_match_list();
+$ml-&gt;qa(
+	"Site of aerobic respiration",    "Mitochondrion",
+	"Site of protein synthesis",      "Ribosome",
+	"Packages and ships proteins",    "Golgi apparatus",
+	"Contains the cell's DNA",        "Nucleus",
+);
+$ml-&gt;choose(4);
+
+BEGIN_PGML
+Match each function on the left with the correct organelle
+on the right.
+
+[@ $ml-&gt;print_q @]*
+
+[@ $ml-&gt;print_a @]*
+END_PGML
+
+ANS(str_cmp($ml-&gt;ra_correct_ans));
+
+ENDDOCUMENT();
+</pre>
+
+<h3>draggableProof.pl</h3>
+<p>
+<strong>History:</strong> Introduced ~PG 2.14. Updated PG 2.17 (2022) for Gateway quiz support.
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555721">Section 5.8</a> (ordered list) and
+Appendix 90.1 (minimal template). See those pages for copy-paste DraggableProof demos.
+</p>
+
+<h3>draggableSubsets.pl</h3>
+<p>
+<strong>History:</strong> Introduced ~PG 2.14.
+</p>
+<pre>
+## TITLE('Sort molecules into macromolecule categories')
+## DESCRIPTION
+## Drag molecules into the correct macromolecule bin using
+## DraggableSubsets.
+## ENDDESCRIPTION
+## KEYWORDS('classification','macromolecules','drag and drop')
+## DBsubject('Biochemistry')
+## DBchapter('Macromolecules')
+## DBsection('Classification')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"draggableSubsets.pl",
+	"PGcourse.pl",
+);
+
+$draggable = DraggableSubsets(
+	[ "Glucose", "Starch", "Hemoglobin", "Phospholipid",
+	  "Cellulose", "Insulin", "Cholesterol", "Glycogen" ],
+	[
+		[ 0, 1, 4, 7 ],
+		[ 2, 5 ],
+		[ 3, 6 ],
+	],
+	DefaultSubsets =&gt; [
+		{ label =&gt; "Carbohydrates", indices =&gt; [] },
+		{ label =&gt; "Proteins", indices =&gt; [] },
+		{ label =&gt; "Lipids", indices =&gt; [] },
+	],
+);
+
+BEGIN_PGML
+Drag each molecule into the correct macromolecule category.
+
+[_]{$draggable}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>parserWordCompletion.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<pre>
+## TITLE('Fill in homeostasis from a word bank')
+## DESCRIPTION
+## Select the correct biological term from a word bank using
+## WordCompletion.
+## ENDDESCRIPTION
+## KEYWORDS('word bank','homeostasis','terminology')
+## DBsubject('Physiology')
+## DBchapter('Homeostasis')
+## DBsection('Core concepts')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserWordCompletion.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$wc = WordCompletion(
+	[ "homeostasis", "metabolism", "mitosis", "osmosis", "diffusion" ],
+	"homeostasis",
+);
+
+BEGIN_PGML
+The process by which organisms maintain a stable internal environment
+despite changes in external conditions is called
+[_]{$wc}.
+
+_Word bank: homeostasis, metabolism, mitosis, osmosis, diffusion_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>PGessaymacros.pl</h3>
+<p>
+<strong>History:</strong> Introduced ~PG 2.9 (2014). Equation editor added PG 2.16.
+</p>
+<p>
+<strong>Note:</strong> Essay questions cannot be auto-graded. The student sees a text box and
+the instructor must grade manually. The <code>essay_box()</code> function creates its
+own form field, so <code>ANS(essay_cmp())</code> is required after
+<code>END_PGML</code>.
+</p>
+<pre>
+## TITLE('Short essay on natural selection')
+## DESCRIPTION
+## Prompt students to write a short explanation of natural
+## selection using an essay box.
+## ENDDESCRIPTION
+## KEYWORDS('essay','natural selection','free response')
+## DBsubject('Evolution')
+## DBchapter('Natural Selection')
+## DBsection('Mechanisms')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGessaymacros.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+BEGIN_PGML
+In three to five sentences, explain how natural selection
+leads to adaptation in a population over time. Include at
+least one specific example from a real organism.
+
+[@ essay_box(8, 60) @]*
+END_PGML
+
+ANS(essay_cmp());
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Science-native contexts</h2>
+
+<h3>parserNumberWithUnits.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). Unit improvements PG 2.18.
+</p>
+<pre>
+## TITLE('Enzyme reaction rate with units')
+## DESCRIPTION
+## Calculate an enzyme reaction rate and report the answer
+## with correct units using NumberWithUnits.
+## ENDDESCRIPTION
+## KEYWORDS('units','enzyme kinetics','reaction rate')
+## DBsubject('Biochemistry')
+## DBchapter('Enzyme Kinetics')
+## DBsection('Reaction rates')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserNumberWithUnits.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$moles = random(2, 8, 1);
+$seconds = random(10, 30, 5);
+$rate_val = $moles / $seconds;
+$ans = NumberWithUnits("$rate_val mol/s");
+
+BEGIN_PGML
+An enzyme converts [$moles] mol of substrate in [$seconds] seconds.
+
+What is the reaction rate? Include units in your answer.
+
+Rate = [__________]{$ans}
+
+_(Enter your answer as a number followed by units, e.g. "0.5 mol/s")_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>parserFormulaWithUnits.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<pre>
+## TITLE('Dilution formula with units')
+## DESCRIPTION
+## Express a dilution formula C1*V1/V2 with units using
+## FormulaWithUnits.
+## ENDDESCRIPTION
+## KEYWORDS('formula','dilution','units')
+## DBsubject('Biochemistry')
+## DBchapter('Solutions')
+## DBsection('Dilutions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserFormulaWithUnits.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+Context()-&gt;variables-&gt;add(c =&gt; "Real");
+$ans = FormulaWithUnits("3 c ml");
+
+BEGIN_PGML
+A formula for the volume of a solution used in a serial
+dilution is [`V = 3c`] mL, where [`c`] is a
+concentration factor.
+
+Express this formula with units.
+
+[`V`] = [__________]{$ans}
+
+_(Enter a formula with units, e.g. "3 c ml")_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>contextScientificNotation.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<pre>
+## TITLE('Bacterial count after doublings')
+## DESCRIPTION
+## Calculate the number of bacteria after several doublings
+## and express the answer in scientific notation.
+## ENDDESCRIPTION
+## KEYWORDS('scientific notation','bacteria','exponential growth')
+## DBsubject('Microbiology')
+## DBchapter('Growth')
+## DBsection('Exponential growth')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextScientificNotation.pl",
+	"PGcourse.pl",
+);
+
+Context("ScientificNotation");
+$doublings = random(10, 20, 1);
+$initial = 1000;
+$final = $initial * 2**$doublings;
+$ans = ScientificNotation($final);
+
+BEGIN_PGML
+A bacterial culture starts with [$initial] cells and doubles
+every 30 minutes. After [$doublings] doublings, how many
+cells are present?
+
+Express your answer in scientific notation.
+
+Number of cells = [______________]{$ans}
+
+_(Example format: 1.5 x 10^6 or 1.5E6)_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>contextReaction.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). Improved PG 2.20 (2025).
+</p>
+<pre>
+## TITLE('Write a combustion reaction')
+## DESCRIPTION
+## Enter a balanced combustion reaction using the
+## Reaction context.
+## ENDDESCRIPTION
+## KEYWORDS('chemical equation','combustion','reaction')
+## DBsubject('Biochemistry')
+## DBchapter('Metabolism')
+## DBsection('Chemical reactions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextReaction.pl",
+	"PGcourse.pl",
+);
+
+Context("Reaction");
+$rxn = Formula("2 H_2 + O_2 --&gt; 2 H_2O");
+
+BEGIN_PGML
+Hydrogen gas reacts with oxygen gas to produce water.
+
+Write the balanced equation for this reaction.
+Use --&gt; for the reaction arrow. Use _ for subscripts
+(e.g., H_2 for [`\text{H}_2`]).
+
+Equation: [__________________________]{$rxn}
+
+_(Example format: 2 H_2 + O_2 --&gt; 2 H_2O)_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>contextFraction.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). <code>num</code>/<code>den</code> methods
+added PG 2.19 (2024). Updated PG 2.20.
+</p>
+<pre>
+## TITLE('Mendelian cross offspring ratio')
+## DESCRIPTION
+## Calculate the fraction of offspring with a recessive
+## phenotype from a monohybrid cross using Fraction context.
+## ENDDESCRIPTION
+## KEYWORDS('fraction','Mendelian genetics','monohybrid')
+## DBsubject('Genetics')
+## DBchapter('Mendelian Genetics')
+## DBsection('Monohybrid cross')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextFraction.pl",
+	"PGcourse.pl",
+);
+
+Context("Fraction");
+$ans = Fraction(1, 4);
+
+BEGIN_PGML
+In a monohybrid cross between two heterozygous parents
+(Aa x Aa), what fraction of the offspring are expected
+to show the recessive phenotype (aa)?
+
+Express your answer as a fraction.
+
+Fraction with recessive phenotype = [________]{$ans}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>contextPercent.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<pre>
+## TITLE('Hardy-Weinberg allele frequency as percent')
+## DESCRIPTION
+## Calculate a heterozygote frequency using Hardy-Weinberg
+## equilibrium and express it as a percentage.
+## ENDDESCRIPTION
+## KEYWORDS('percent','Hardy-Weinberg','allele frequency')
+## DBsubject('Genetics')
+## DBchapter('Population Genetics')
+## DBsection('Hardy-Weinberg')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"contextPercent.pl",
+	"PGcourse.pl",
+);
+
+Context("Percent");
+$q_sq = list_random(0.01, 0.04, 0.09, 0.16);
+$q = sqrt($q_sq);
+$p = 1 - $q;
+$heterozygote_freq = 2 * $p * $q;
+$ans = Percent($heterozygote_freq * 100);
+
+BEGIN_PGML
+In a population at Hardy-Weinberg equilibrium, the frequency of
+the homozygous recessive genotype (aa) is [$q_sq].
+
+What is the expected frequency of heterozygotes (Aa)?
+
+Express your answer as a percentage.
+
+Heterozygote frequency = [________]{$ans}
+
+_(Include the % sign in your answer, e.g. "48%")_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>contextArbitraryString.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555719">Section 5.6</a> (fill in the blank) and
+Appendix 90.1 (minimal template). See those pages for copy-paste ArbitraryString demos.
+</p>
+
+<h2>Grading and feedback</h2>
+
+<h3>answerCustom.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era).
+</p>
+<pre>
+## TITLE('Accept pH values in a custom range')
+## DESCRIPTION
+## Use a custom answer checker to accept any pH value
+## within the physiological range as correct.
+## ENDDESCRIPTION
+## KEYWORDS('custom checker','pH','physiology')
+## DBsubject('Biochemistry')
+## DBchapter('Buffers')
+## DBsection('pH')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"answerCustom.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$correct = Real(7.4);
+$checker = custom_cmp(
+	$correct,
+	sub {
+		my ($correct_ans, $student_ans) = @_;
+		return ($student_ans &gt;= 7.35 &amp;&amp; $student_ans &lt;= 7.45) ? 1 : 0;
+	},
+);
+
+BEGIN_PGML
+Normal blood pH is tightly regulated within a narrow range.
+
+Enter any pH value within the normal physiological range
+for human blood.
+
+pH = [________]{$checker}
+
+_(Hint: normal blood pH is approximately 7.35 to 7.45)_
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>answerHints.pl</h3>
+<p>
+<strong>History:</strong> Long-running. Updated PG 2.16 (2021): no hints in preview mode.
+</p>
+<pre>
+## TITLE('Dilution calculation with targeted error feedback')
+## DESCRIPTION
+## Calculate a dilution with AnswerHints providing feedback
+## for common student errors.
+## ENDDESCRIPTION
+## KEYWORDS('answer hints','dilution','feedback')
+## DBsubject('Biochemistry')
+## DBchapter('Solutions')
+## DBsection('Dilutions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"answerHints.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$c1 = 10;
+$v1 = 5;
+$v2 = 50;
+$c2 = Real($c1 * $v1 / $v2);
+$wrong_multiply = Real($c1 * $v2 / $v1);
+$wrong_ratio = Real($v2 / $v1);
+
+BEGIN_PGML
+You dilute [$v1] mL of a [$c1] mM solution to a final volume
+of [$v2] mL. What is the final concentration in mM?
+
+Final concentration = [________]{AnswerHints(
+	$wrong_multiply =&gt;
+		"Check your formula: C2 = C1*V1/V2, not C1*V2/V1.",
+	$wrong_ratio =&gt;
+		"You calculated the dilution factor, not the final concentration.",
+	$c2 =&gt; "Correct!",
+)} mM
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>parserMultiAnswer.pl</h3>
+<p>
+<strong>History:</strong> Long-running (MathObjects era). Bug fix PG 2.16 for singleResult scoring.
+</p>
+<pre>
+## TITLE('Linked dilution blanks graded together')
+## DESCRIPTION
+## Enter two related dilution values that are graded
+## together using MultiAnswer.
+## ENDDESCRIPTION
+## KEYWORDS('MultiAnswer','dilution','linked grading')
+## DBsubject('Biochemistry')
+## DBchapter('Solutions')
+## DBsection('Dilutions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"parserMultiAnswer.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$vol = Real(5);
+$conc = Real(2);
+
+$ma = MultiAnswer($vol, $conc)-&gt;with(
+	singleResult =&gt; 0,
+	checker =&gt; sub {
+		my ($correct, $student) = @_;
+		my ($sv, $sc) = @{$student};
+		my @scores = (0, 0);
+		$scores[0] = 1 if ($sv * $sc == 10);
+		$scores[1] = 1 if ($sv * $sc == 10);
+		return [@scores];
+	},
+);
+
+BEGIN_PGML
+You need a total of 10 mM*mL of solute. Choose a volume
+and concentration whose product equals 10.
+
+Volume (mL): [____]{$ma}
+
+Concentration (mM): [____]{$ma}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>PGgraders.pl</h3>
+<p>
+<strong>History:</strong> Long-running (WeBWorK 2.x+).
+<code>custom_problem_grader_0_60_100</code> removed PG 2.20.
+</p>
+<p>
+<strong>Note:</strong> The <code>install_problem_grader</code> call is setup code that works
+with PGML inline blanks. PGML blanks generate <code>ANS()</code> calls
+automatically, so no explicit <code>ANS()</code> is needed.
+</p>
+<pre>
+## TITLE('Calculate three enzyme rates with partial credit')
+## DESCRIPTION
+## Students calculate three enzyme reaction rates with
+## partial credit using full_partial_grader from PGgraders.
+## ENDDESCRIPTION
+## KEYWORDS('partial credit','enzyme kinetics','grading')
+## DBsubject('Biochemistry')
+## DBchapter('Enzyme Kinetics')
+## DBsection('Reaction rates')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGgraders.pl",
+	"PGcourse.pl",
+);
+
+install_problem_grader(~~&amp;full_partial_grader);
+
+Context("Numeric");
+$r1 = Real(10 / 2);
+$r2 = Real(20 / 4);
+$r3 = Real(30 / 5);
+
+BEGIN_PGML
+Calculate the reaction rate (substrate/min) for each enzyme.
+You will receive partial credit for each correct answer.
+
+Enzyme A converts 10 units in 2 min. Rate = [________]{$r1}
+
+Enzyme B converts 20 units in 4 min. Rate = [________]{$r2}
+
+Enzyme C converts 30 units in 5 min. Rate = [________]{$r3}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h3>weightedGrader.pl</h3>
+<p>
+<strong>History:</strong> Long-running (WeBWorK 2.x+).
+</p>
+<p>
+<strong>Note:</strong> Use <code>weight_ans()</code> to wrap a checker with a weight.
+The wrapped checker works with PGML inline blanks.
+</p>
+<pre>
+## TITLE('Weighted dilution: volume then concentration')
+## DESCRIPTION
+## A two-part dilution problem where the concentration
+## calculation is worth more, using weightedGrader.
+## ENDDESCRIPTION
+## KEYWORDS('weighted grading','dilution','partial credit')
+## DBsubject('Biochemistry')
+## DBchapter('Solutions')
+## DBsection('Dilutions')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"weightedGrader.pl",
+	"PGcourse.pl",
+);
+
+install_weighted_grader();
+
+Context("Numeric");
+$dilution_factor = Real(10);
+$final_conc = Real(5);
+
+BEGIN_PGML
+You dilute a 50 mM stock solution by a factor of 10.
+
+Part 1 (30%): What is the dilution factor?
+[________]{weight_ans($dilution_factor-&gt;cmp, 30)}
+
+Part 2 (70%): What is the final concentration in mM?
+[________]{weight_ans($final_conc-&gt;cmp, 70)}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Layout and scaffolding</h2>
+
+<h3>niceTables.pl</h3>
+<p>
+<strong>History:</strong> Long-running. Overhauled PG 2.18 (2023). Auto-loaded in PGML PG 2.19.
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555724">Section 6.2</a> (making tables with
+niceTables). See that page for copy-paste DataTable and LayoutTable demos.
+</p>
+
+<h3>scaffold.pl</h3>
+<p>
+<strong>History:</strong> Long-running. Replaces deprecated compoundProblem*.pl (deprecated PG 2.19).
+</p>
+<p>
+<strong>Authoring warning:</strong> Each <code>Section</code> block requires its own
+<code>BEGIN_PGML</code>/<code>END_PGML</code> pair. Variables defined in one section are
+visible in later sections, but each section's PGML block must be self-contained. Rendering
+quirks may appear with deeply nested scaffolds.
+</p>
+<pre>
+## TITLE('Two-section genetics: genotype then phenotype ratio')
+## DESCRIPTION
+## A scaffolded problem where students first identify a
+## genotype, then calculate the phenotype ratio in a
+## separate section.
+## ENDDESCRIPTION
+## KEYWORDS('scaffold','genetics','multi-section')
+## DBsubject('Genetics')
+## DBchapter('Mendelian Genetics')
+## DBsection('Monohybrid cross')
+## Date('2026-02-15')
+## Author('Textbook demo')
+## Institution('LibreTexts')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"scaffold.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$genotype_radio = RadioButtons(
+	[ "AA x AA", "Aa x Aa", "AA x aa", "aa x aa" ],
+	"Aa x Aa",
+);
+$ratio = Real(3/4);
+
+Scaffold::Begin();
+
+Section::Begin("Part 1: Identify the cross");
+BEGIN_PGML
+Both parents are heterozygous for a single gene with
+complete dominance. Which cross represents this mating?
+
+[_]{$genotype_radio}
+END_PGML
+Section::End();
+
+Section::Begin("Part 2: Calculate the ratio");
+BEGIN_PGML
+For the cross Aa x Aa, what fraction of offspring will
+show the dominant phenotype?
+
+Express your answer as a decimal.
+
+Fraction dominant = [________]{$ratio}
+END_PGML
+Section::End();
+
+Scaffold::End();
+
+ENDDOCUMENT();
+</pre>
+
+<h3>PGgraphmacros.pl</h3>
+<p>
+<strong>History:</strong> Long-running core macro (WeBWorK 2.x+).
+</p>
+<p>
+Complete examples appear in <a href="/@go/page/555728">Section 6.3</a> (making graphs). See
+that page for copy-paste graph demos with biology-themed content.
+</p>
