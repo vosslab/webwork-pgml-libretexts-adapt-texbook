@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-02-26
+
+### Add Markdown export script for AI-agent-friendly textbook output
+- Created `tools/textbook_html_to_markdown.py` — converts all `Textbook/*/*.html` files into a
+  single merged Markdown file via `pandoc`, with table of contents and section separators.
+- Reuses the same chapter/section sort logic as `tools/textbook_html_to_pdf.py`.
+- Added `pandoc` to `Brewfile`.
+
+### Add Section 6.8: Displaying Chemical Formulas with mhchem
+- Created `Textbook/06_Advanced_PGML_Techniques/6.8-Displaying_Chemical_Formulas_with_mhchem.html`
+  covering the `\ce{}` command for typesetting chemical formulas and reaction equations via MathJax.
+- Page includes inline vs display-mode syntax, common mhchem syntax table, usage inside
+  RadioButtons choices, and a complete PGML working example (cellular respiration oxidation question).
+- Updated `6.0-Index.html` with a new bullet ("I need to display chemical formulas or reaction
+  equations") and a new row in the Quick patterns table for Section 6.8.
+
 ## 2026-02-16
 
 ### Expand Section 2.6 with high-frequency legacy patterns from OPL analysis

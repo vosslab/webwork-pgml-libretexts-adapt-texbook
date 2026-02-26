@@ -1,0 +1,172 @@
+<p>
+This page explains how to display chemical formulas and reaction equations in WeBWorK problems
+using the mhchem extension for MathJax. Students see properly typeset formulas such as
+\( \ce{H2O} \) and balanced equations without any image files or external libraries.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need to display chemical formulas, ions, or reaction
+equations in a PGML problem. The <code>\ce{}</code> command is part of the mhchem package, which
+is loaded automatically by MathJax in WeBWorK. For rendering graphical molecular structures from
+SMILES strings, see <a href="/@go/page/555729">Section 6.7</a> instead.
+</p>
+
+<h2>Background on displaying chemical formulas</h2>
+<p>
+MathJax includes the mhchem extension, which provides the <code>\ce{}</code> command for
+typesetting chemical formulas and equations. This is the same syntax used in LaTeX chemistry
+documents and on LibreTexts pages. Because MathJax is already loaded in WeBWorK, no additional
+macros or JavaScript are required.
+</p>
+<p>
+Use <code>\ce{}</code> whenever you need chemical notation in a problem. It handles subscripts,
+superscripts, charges, reaction arrows, and stoichiometric coefficients automatically, producing
+cleaner output than manually formatting with standard math mode.
+</p>
+
+<h2>Displaying chemical formulas</h2>
+
+<h3>Inline formulas</h3>
+<p>
+Wrap <code>\ce{}</code> inside <code>\( ... \)</code> to display a formula inline with the
+surrounding text.
+</p>
+<pre>
+The molecular formula for glucose is \( \ce{C6H12O6} \).
+</pre>
+<p>
+This renders as: The molecular formula for glucose is \( \ce{C6H12O6} \).
+</p>
+
+<h3>Display-mode equations</h3>
+<p>
+Wrap <code>\ce{}</code> inside <code>\[ ... \]</code> (or use PGML double-backtick
+<code>``</code>) to display an equation on its own centered line.
+</p>
+<pre>
+[``\ce{C6H12O6 + 6 O2 -&gt; 6 CO2 + 6 H2O}``]
+</pre>
+<p>
+This renders as:
+</p>
+<p>\[ \ce{C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O} \nonumber \]</p>
+
+<h3>Common mhchem syntax</h3>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Feature</th>
+			<th>Syntax</th>
+			<th>Renders as</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Feature">Molecular formula</td>
+			<td data-th="Syntax"><code>\ce{H2SO4}</code></td>
+			<td data-th="Renders as">\( \ce{H2SO4} \)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Ionic charge</td>
+			<td data-th="Syntax"><code>\ce{SO4^2-}</code></td>
+			<td data-th="Renders as">\( \ce{SO4^2-} \)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Reaction arrow</td>
+			<td data-th="Syntax"><code>\ce{A -&gt; B}</code></td>
+			<td data-th="Renders as">\( \ce{A -> B} \)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Equilibrium arrow</td>
+			<td data-th="Syntax"><code>\ce{A &lt;=&gt; B}</code></td>
+			<td data-th="Renders as">\( \ce{A <=> B} \)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">State symbols</td>
+			<td data-th="Syntax"><code>\ce{NaCl(aq)}</code></td>
+			<td data-th="Renders as">\( \ce{NaCl(aq)} \)</td>
+		</tr>
+		<tr>
+			<td data-th="Feature">Stoichiometric coefficients</td>
+			<td data-th="Syntax"><code>\ce{2 H2 + O2 -&gt; 2 H2O}</code></td>
+			<td data-th="Renders as">\( \ce{2 H2 + O2 -> 2 H2O} \)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Using \ce{} inside RadioButtons choices</h3>
+<p>
+When chemical formulas appear as answer choices in a RadioButtons widget, wrap each formula in
+inline math delimiters <code>\( \ce{...} \)</code>. The radio button will render the formula
+using MathJax.
+</p>
+<pre>
+$rb = RadioButtons(
+	[ "\( \ce{C6H12O6} \)", "\( \ce{O2} \)", "\( \ce{CO2} \)", "\( \ce{H2O} \)" ],
+	"\( \ce{C6H12O6} \)",
+);
+</pre>
+
+<h2>Complete working example</h2>
+<p>
+<strong>Cellular respiration with mhchem</strong> -- A full problem that displays a balanced
+chemical equation using <code>\ce{}</code> and asks students to identify the oxidized reactant
+with RadioButtons.
+</p>
+<pre>
+## TITLE('Identify the oxidized reactant in cellular respiration')
+## DESCRIPTION
+## A balanced chemical equation is rendered using mhchem. Students
+## identify which reactant is being oxidized.
+## ENDDESCRIPTION
+## KEYWORDS('mhchem','chemical formula','cellular respiration','RadioButtons')
+## DBsubject('Chemistry')
+## DBchapter('Chemical Reactions')
+## DBsection('Oxidation-Reduction')
+## Date('2026-02-26')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$rb = RadioButtons(
+	[ "\( \ce{C6H12O6} \)", "\( \ce{O2} \)", "\( \ce{CO2} \)", "\( \ce{H2O} \)" ],
+	"\( \ce{C6H12O6} \)",
+	labels        =&gt; "ABC",
+	displayLabels =&gt; 1,
+	separator     =&gt; '&lt;div style="margin-bottom: 0.7em;"&gt;&lt;/div&gt;',
+	uncheckable   =&gt; 1,
+	randomize     =&gt; 1,
+);
+
+BEGIN_PGML
+In the following chemical reaction for cellular respiration, which reactant is being oxidized?
+
+[``\ce{C6H12O6 + 6 O2 -&gt; 6 CO2 + 6 H2O}``]
+
+[_]{$rb}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use <code>\ce{}</code> for any chemical formula or equation instead of manually formatting
+		subscripts and superscripts in math mode.</li>
+	<li>For inline formulas, use <code>\( \ce{...} \)</code>. For display equations, use
+		PGML double-backtick syntax: <code>[``\ce{...}``]</code>.</li>
+	<li>For graphical molecular structures (ring systems, stereochemistry), use RDKit.js instead
+		(see <a href="/@go/page/555729">Section 6.7</a>).</li>
+</ul>
