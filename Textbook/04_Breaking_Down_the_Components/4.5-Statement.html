@@ -1,7 +1,6 @@
-<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement</strong></p>
+<h3 style="background-color: #ffedd5; padding: 6px 10px;">Statement</h3>
 <p>
-The Statement is the student-facing prompt written in <a href="/@go/page/488660">PGML</a>
-(Chapter 3). It is where the story, data, and tasks become visible, and where each blank must be
+The Statement is the student-facing prompt written in <a href="/@go/page/488660">PGML</a>. It is where the story, data, and tasks become visible, and where each blank must be
 tied to one answer object from Setup.
 </p>
 <p>
@@ -31,8 +30,9 @@ The same question with horizontal options:
 My favorite color is [_]{$radio2}
 END_PGML
 </pre>
-<p><strong>Line notes</strong></p>
+<h3>Line notes</h3>
 <table class="mt-responsive-table">
+	<caption>How to read this code reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 40%;">
@@ -87,13 +87,14 @@ Example: the prompt asks for one choice, but the blank is tied to a different an
 <p>
 Choose the structure that reduces reading load: use short paragraphs for a single task, lists for
 steps, and tables for multi-value data. For emphasis and color options, see
-<a href="/@go/page/555723">Section 6.1</a>. If a prompt feels hard to scan, structure is usually
+<a href="/@go/page/555723">Text Coloring and Emphasis</a>. If a prompt feels hard to scan, structure is usually
 the fix, not more words.
 </p>
 <p>
 Why this exists: it is the student-facing prompt that ties the story to the answer blanks.
 </p>
 <table class="mt-responsive-table">
+	<caption>How to read this code: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -129,6 +130,7 @@ repeat.
 
 <h2>Blanks map</h2>
 <table class="mt-responsive-table">
+	<caption>Blanks map: blank label, what it asks for, answer object, and more.</caption>
 	<colgroup>
 		<col style="width: 20%;">
 		<col style="width: 30%;">
@@ -178,19 +180,19 @@ END_PGML
 In setup, <code>$radio1</code> and <code>$radio2</code> are both defined, but
 <code>$radio2</code> corresponds to a different question.
 </p>
-<p><strong>What went wrong</strong></p>
+<h3>What went wrong</h3>
 <ul>
 	<li>The blank is bound to the wrong answer object.</li>
 	<li>The prompt text and grading logic no longer refer to the same concept.</li>
 	<li>There is no syntax error, so nothing warns the author.</li>
 </ul>
-<p><strong>How to recognize it</strong></p>
+<h3>How to recognize it</h3>
 <ul>
 	<li>The blank accepts input, but grading feels random.</li>
 	<li>Swapping answers between blanks changes which one grades correctly.</li>
 	<li>Reviewing setup reveals multiple answer objects with similar names.</li>
 </ul>
-<p><strong>How to fix it</strong></p>
+<h3>How to fix it</h3>
 <p>
 Use consistent naming and keep the statement immediately adjacent to the setup during editing.
 When in doubt, temporarily print <code>-&gt;correct_ans</code> in the solution to confirm alignment.
@@ -203,6 +205,7 @@ short paragraphs are usually better for narrative prompts.
 
 <h2>Structure patterns</h2>
 <table class="mt-responsive-table">
+	<caption>Structure patterns: pattern, when to use, and avoid when.</caption>
 	<colgroup>
 		<col style="width: 20%;">
 		<col style="width: 40%;">

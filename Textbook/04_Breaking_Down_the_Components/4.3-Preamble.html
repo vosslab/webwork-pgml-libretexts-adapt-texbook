@@ -1,9 +1,9 @@
-<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble</strong></p>
+<h3 style="background-color: #dbeafe; padding: 6px 10px;">Preamble</h3>
 <p>
 The Preamble is the environment setup for the problem. It loads the macro files that make PGML
 work and unlocks specific interaction patterns the rest of the file assumes exist. For a reference
-list of commonly used macros, see <a href="/@go/page/488659">Section 2.5</a>. For background on
-PG files, see <a href="/@go/page/488657">Section 2.3</a>.
+list of commonly used macros, see <a href="/@go/page/488659">Common PG Macros</a>. For background on
+PG files, see <a href="/@go/page/488657">PG Problem Files</a>.
 </p>
 <p>
 When a problem fails to load with a generic error, the cause is almost always a missing or
@@ -31,8 +31,9 @@ loadMacros(
 	"PGcourse.pl"
 );
 </pre>
-<p><strong>Line notes</strong></p>
+<h3>Line notes</h3>
 <table class="mt-responsive-table">
+	<caption>How to read this code reference.</caption>
 	<colgroup>
 		<col style="width: 26%;">
 		<col style="width: 44%;">
@@ -81,6 +82,7 @@ When that happens, the problem often renders with no useful error message unless
 Why this exists: it declares which macro files and features the problem can use.
 </p>
 <table class="mt-responsive-table">
+	<caption>How to read this code: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -111,6 +113,7 @@ Why this exists: it declares which macro files and features the problem can use.
 
 <h2>Macro selection (what to load)</h2>
 <table class="mt-responsive-table">
+	<caption>Macro selection (what to load) reference.</caption>
 	<colgroup>
 		<col style="width: 18%;">
 		<col style="width: 22%;">
@@ -177,6 +180,7 @@ patterns shown in the official PG sample problems when choosing an interaction s
 
 <h2>When it breaks</h2>
 <table class="mt-responsive-table">
+	<caption>When it breaks: symptom, likely cause, and fix.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 36%;">
@@ -226,19 +230,19 @@ loadMacros(
 <p>
 Later in the file, the setup uses <code>RadioButtons</code>.
 </p>
-<p><strong>What went wrong</strong></p>
+<h3>What went wrong</h3>
 <ul>
 	<li>The interaction widget exists in setup, but the macro that defines it was never loaded.</li>
 	<li>The PG file parses, but rendering fails when the widget is encountered.</li>
 	<li>ADAPT typically reports a generic error loading the problem.</li>
 </ul>
-<p><strong>How to recognize it</strong></p>
+<h3>How to recognize it</h3>
 <ul>
 	<li>The file worked in another problem you copied from.</li>
 	<li>The error appears before any text renders.</li>
 	<li>Local rendering reports an undefined subroutine or missing macro.</li>
 </ul>
-<p><strong>How to fix it</strong></p>
+<h3>How to fix it</h3>
 <p>
 Add the missing macro to <code>loadMacros()</code> and re-render immediately. This is why preamble
 problems should always be tested locally before import.

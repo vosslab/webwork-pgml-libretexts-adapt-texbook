@@ -1,4 +1,5 @@
 <table class="mt-responsive-table">
+	<caption>Full file: section, what it controls, and what to check when debugging.</caption>
 	<colgroup>
 		<col style="width: 20%;">
 		<col style="width: 40%;">
@@ -12,38 +13,38 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr style="background-color: #e2e8f0;">
-			<td data-th="Section">OPL header</td>
-			<td data-th="What it controls">Metadata, searchability, and attribution.</td>
-			<td data-th="What to check when debugging">Missing TITLE/DESCRIPTION or wrong DBsubject tags.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #e2e8f0;">OPL header</td>
+			<td data-th="What it controls" style="background-color: #e2e8f0;">Metadata, searchability, and attribution.</td>
+			<td data-th="What to check when debugging" style="background-color: #e2e8f0;">Missing TITLE/DESCRIPTION or wrong DBsubject tags.</td>
 		</tr>
-		<tr style="background-color: #dbeafe;">
-			<td data-th="Section">Preamble</td>
-			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
-			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #dbeafe;">Preamble</td>
+			<td data-th="What it controls" style="background-color: #dbeafe;">Macros, rendering switches, and global knobs.</td>
+			<td data-th="What to check when debugging" style="background-color: #dbeafe;">Missing macro files, wrong load order, or disabled features.</td>
 		</tr>
-		<tr style="background-color: #dcfce7;">
-			<td data-th="Section">Setup</td>
-			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
-			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #dcfce7;">Setup</td>
+			<td data-th="What it controls" style="background-color: #dcfce7;">Values, constraints, answers, and graders.</td>
+			<td data-th="What to check when debugging" style="background-color: #dcfce7;">Bad ranges, unit mismatches, or tolerance mistakes.</td>
 		</tr>
-		<tr style="background-color: #ffedd5;">
-			<td data-th="Section">Statement</td>
-			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
-			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #ffedd5;">Statement</td>
+			<td data-th="What it controls" style="background-color: #ffedd5;">PGML prompt text, structure, and blanks.</td>
+			<td data-th="What to check when debugging" style="background-color: #ffedd5;">Blank binding, missing inserts, or formatting breaks.</td>
 		</tr>
-		<tr style="background-color: #fce7f3;">
-			<td data-th="Section">Solution</td>
-			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
-			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #fce7f3;">Solution</td>
+			<td data-th="What it controls" style="background-color: #fce7f3;">Explanations, trust, and grading alignment.</td>
+			<td data-th="What to check when debugging" style="background-color: #fce7f3;">Mismatch between solution conventions and the checker.</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>
 This page shows the full problem file as a reference copy so you can see the entire flow from top
-to bottom. For an overview of the five sections, see <a href="/@go/page/488658">Section 2.4</a>.
-The prompt text uses <a href="/@go/page/488660">PGML</a> (Chapter 3). Read the file once as a
+to bottom. For an overview of the five sections, see <a href="/@go/page/488658">Sections within a PG question</a>.
+The prompt text uses <a href="/@go/page/488660">PGML</a>. Read the file once as a
 story: macros are loaded, values are chosen, the prompt is written, answers are graded, and a
 solution explains the work.
 </p>
@@ -67,6 +68,7 @@ identifying which section contains the error, then jump to the section-specific 
 guidance.
 </p>
 <table class="mt-responsive-table">
+	<caption>Section anchors (reference map): section, starts at, ends at, and more.</caption>
 	<colgroup>
 		<col style="width: 18%;">
 		<col style="width: 22%;">
@@ -82,35 +84,35 @@ guidance.
 		</tr>
 	</thead>
 	<tbody>
-		<tr style="background-color: #e2e8f0;">
-			<td data-th="Section">OPL header</td>
-			<td data-th="Starts at">## TITLE(...)</td>
-			<td data-th="Ends at">## Institution(...)</td>
-			<td data-th="One-line description">Metadata that makes the problem searchable.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #e2e8f0;">OPL header</td>
+			<td data-th="Starts at" style="background-color: #e2e8f0;">## TITLE(...)</td>
+			<td data-th="Ends at" style="background-color: #e2e8f0;">## Institution(...)</td>
+			<td data-th="One-line description" style="background-color: #e2e8f0;">Metadata that makes the problem searchable.</td>
 		</tr>
-		<tr style="background-color: #dbeafe;">
-			<td data-th="Section">Preamble</td>
-			<td data-th="Starts at"># ===== PREAMBLE =====</td>
-			<td data-th="Ends at"># ===== SETUP =====</td>
-			<td data-th="One-line description">Loads macros and switches that unlock features.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #dbeafe;">Preamble</td>
+			<td data-th="Starts at" style="background-color: #dbeafe;"># ===== PREAMBLE =====</td>
+			<td data-th="Ends at" style="background-color: #dbeafe;"># ===== SETUP =====</td>
+			<td data-th="One-line description" style="background-color: #dbeafe;">Loads macros and switches that unlock features.</td>
 		</tr>
-		<tr style="background-color: #dcfce7;">
-			<td data-th="Section">Setup</td>
-			<td data-th="Starts at"># ===== SETUP =====</td>
-			<td data-th="Ends at"># ===== STATEMENT =====</td>
-			<td data-th="One-line description">Defines values, constraints, and answer objects.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #dcfce7;">Setup</td>
+			<td data-th="Starts at" style="background-color: #dcfce7;"># ===== SETUP =====</td>
+			<td data-th="Ends at" style="background-color: #dcfce7;"># ===== STATEMENT =====</td>
+			<td data-th="One-line description" style="background-color: #dcfce7;">Defines values, constraints, and answer objects.</td>
 		</tr>
-		<tr style="background-color: #ffedd5;">
-			<td data-th="Section">Statement</td>
-			<td data-th="Starts at"># ===== STATEMENT =====</td>
-			<td data-th="Ends at"># ===== SOLUTION =====</td>
-			<td data-th="One-line description">Contains the PGML prompt students read.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #ffedd5;">Statement</td>
+			<td data-th="Starts at" style="background-color: #ffedd5;"># ===== STATEMENT =====</td>
+			<td data-th="Ends at" style="background-color: #ffedd5;"># ===== SOLUTION =====</td>
+			<td data-th="One-line description" style="background-color: #ffedd5;">Contains the PGML prompt students read.</td>
 		</tr>
-		<tr style="background-color: #fce7f3;">
-			<td data-th="Section">Solution</td>
-			<td data-th="Starts at"># ===== SOLUTION =====</td>
-			<td data-th="Ends at">ENDDOCUMENT();</td>
-			<td data-th="One-line description">Explains the target and matches the grading rules.</td>
+		<tr>
+			<td data-th="Section" style="background-color: #fce7f3;">Solution</td>
+			<td data-th="Starts at" style="background-color: #fce7f3;"># ===== SOLUTION =====</td>
+			<td data-th="Ends at" style="background-color: #fce7f3;">ENDDOCUMENT();</td>
+			<td data-th="One-line description" style="background-color: #fce7f3;">Explains the target and matches the grading rules.</td>
 		</tr>
 	</tbody>
 </table>
@@ -126,11 +128,12 @@ The tables below give you a one-line summary of what each section does, what you
 there, and what fails most often.
 </p>
 <h2>Section quick reference</h2>
-<p style="background-color: #e2e8f0; padding: 6px 10px;"><strong>OPL header</strong></p>
+<h3 style="background-color: #e2e8f0; padding: 6px 10px;">OPL header</h3>
 <p>
 Why this exists: it documents metadata for search and attribution before any code runs.
 </p>
 <table class="mt-responsive-table">
+	<caption>OPL header: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -149,11 +152,12 @@ Why this exists: it documents metadata for search and attribution before any cod
 	</tbody>
 </table>
 
-<p style="background-color: #dbeafe; padding: 6px 10px;"><strong>Preamble</strong></p>
+<h3 style="background-color: #dbeafe; padding: 6px 10px;">Preamble</h3>
 <p>
 Why this exists: it declares the macros and global options that make the file render.
 </p>
 <table class="mt-responsive-table">
+	<caption>Preamble: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -172,11 +176,12 @@ Why this exists: it declares the macros and global options that make the file re
 	</tbody>
 </table>
 
-<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup</strong></p>
+<h3 style="background-color: #dcfce7; padding: 6px 10px;">Setup</h3>
 <p>
 Why this exists: it defines the answer objects and correct choices.
 </p>
 <table class="mt-responsive-table">
+	<caption>Setup: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -195,11 +200,12 @@ Why this exists: it defines the answer objects and correct choices.
 	</tbody>
 </table>
 
-<p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement</strong></p>
+<h3 style="background-color: #ffedd5; padding: 6px 10px;">Statement</h3>
 <p>
 Why this exists: it is the PGML prompt with readable structure and blanks.
 </p>
 <table class="mt-responsive-table">
+	<caption>Statement: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -218,11 +224,12 @@ Why this exists: it is the PGML prompt with readable structure and blanks.
 	</tbody>
 </table>
 
-<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution</strong></p>
+<h3 style="background-color: #fce7f3; padding: 6px 10px;">Solution</h3>
 <p>
 Why this exists: it explains the grading target and the method.
 </p>
 <table class="mt-responsive-table">
+	<caption>Solution: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">

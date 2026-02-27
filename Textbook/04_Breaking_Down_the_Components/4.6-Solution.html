@@ -1,4 +1,4 @@
-<p style="background-color: #fce7f3; padding: 6px 10px;"><strong>Solution</strong></p>
+<h3 style="background-color: #fce7f3; padding: 6px 10px;">Solution</h3>
 <p>
 The Solution is for trust and alignment, not grading. It shows students what the system expected
 and helps instructors confirm that the checker matches the stated method.
@@ -12,7 +12,7 @@ grader with a confusing solution still feels broken, and any mismatch creates di
 <p>
 The solution is not a second version of the prompt. It is a short explanation that mirrors the
 grading logic so students can reconcile their work with what the system checked. Solutions use
-the same <a href="/@go/page/555703">PGML syntax</a> (Section 3.1) as the statement block. A good
+the same <a href="/@go/page/555703">PGML syntax</a> as the statement block. A good
 solution is compact, accurate, and consistent with the setup section.
 </p>
 <p>
@@ -25,8 +25,9 @@ The correct answer to the first is [$radio1->correct_ans].
 The correct answer to the second is [$radio2->correct_ans].
 END_PGML_SOLUTION
 </pre>
-<p><strong>Line notes</strong></p>
+<h3>Line notes</h3>
 <table class="mt-responsive-table">
+	<caption>How to read this code reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 40%;">
@@ -81,6 +82,7 @@ Why this exists: it clarifies the target, the method, and the reporting format t
 expects.
 </p>
 <table class="mt-responsive-table">
+	<caption>How to read this code: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -111,6 +113,7 @@ expects.
 
 <h2>Solution checklist</h2>
 <table class="mt-responsive-table">
+	<caption>Solution checklist: include, why, and one-sentence example.</caption>
 	<colgroup>
 		<col style="width: 24%;">
 		<col style="width: 36%;">
@@ -158,6 +161,7 @@ Use this table as a quick alignment check: the solution should echo the same con
 checker uses so students see the expected format.
 </p>
 <table class="mt-responsive-table">
+	<caption>Debugging alignment: grading expectation and solution alignment.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -186,6 +190,7 @@ checker uses so students see the expected format.
 
 <h2>Helpful feedback hooks (optional)</h2>
 <table class="mt-responsive-table">
+	<caption>Helpful feedback hooks (optional): hook and why it helps.</caption>
 	<colgroup>
 		<col style="width: 32%;">
 		<col style="width: 68%;">
@@ -225,19 +230,19 @@ END_PGML_SOLUTION
 <p>
 In setup, the answer checker expects ADP.
 </p>
-<p><strong>What went wrong</strong></p>
+<h3>What went wrong</h3>
 <ul>
 	<li>The solution was written before the setup was finalized.</li>
 	<li>The grading logic changed, but the explanation did not.</li>
 	<li>Students see a contradiction between feedback and results.</li>
 </ul>
-<p><strong>How to recognize it</strong></p>
+<h3>How to recognize it</h3>
 <ul>
 	<li>Students say, "The solution says X but I was marked wrong for X."</li>
 	<li>Preview mode shows correct grading with an incorrect explanation.</li>
 	<li>Instructors trust the solution text instead of the grader.</li>
 </ul>
-<p><strong>How to fix it</strong></p>
+<h3>How to fix it</h3>
 <p>
 Treat the solution as a mirror of the grading logic, not an independent explanation. When
 debugging, temporarily echo the computed answer in the solution to verify consistency.

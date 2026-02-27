@@ -1,11 +1,11 @@
-<p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup</strong></p>
+<h3 style="background-color: #dcfce7; padding: 6px 10px;">Setup</h3>
 <p>
 Setup is where a general prompt becomes a specific, randomized instance. This is where you
 define values, choose realistic options, and create answer objects for the blanks in the
 Statement. For randomization patterns and best practices, see
-<a href="/@go/page/555727">Section 6.5</a>. Variables defined here are inserted into the prompt
-using <a href="/@go/page/555708">command substitution</a> (Section 3.6). For a catalog of
-question types and the widgets they use, see <a href="/@go/page/488662">Chapter 5</a>.
+<a href="/@go/page/555727">Advanced Randomization Techniques</a>. Variables defined here are inserted into the prompt
+using <a href="/@go/page/555708">command substitution</a>. For a catalog of
+question types and the widgets they use, see <a href="/@go/page/488662">Different Question Types</a>.
 </p>
 <p>
 Setup is the section most life science instructors edit. Think of it as the lab notebook for the
@@ -36,8 +36,9 @@ $radio2 = RadioButtons(
 	separator => $SPACE x 5
 );
 </pre>
-<p><strong>Line notes</strong></p>
+<h3>Line notes</h3>
 <table class="mt-responsive-table">
+	<caption>How to read this code reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 40%;">
@@ -88,6 +89,7 @@ spot.
 Why this exists: it turns a story into answer objects and grading rules that the PGML can use.
 </p>
 <table class="mt-responsive-table">
+	<caption>How to read this code: common edits and common failures.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -123,6 +125,7 @@ intended option and the layout is readable.
 
 <h2>Answer objects and choices</h2>
 <table class="mt-responsive-table">
+	<caption>Answer objects and choices reference.</caption>
 	<colgroup>
 		<col style="width: 24%;">
 		<col style="width: 40%;">
@@ -160,6 +163,7 @@ blanks in the prompt.
 
 <h2>Answer targets</h2>
 <table class="mt-responsive-table">
+	<caption>Answer targets: answer object, correct answer, how it is set, and more.</caption>
 	<colgroup>
 		<col style="width: 22%;">
 		<col style="width: 28%;">
@@ -192,6 +196,7 @@ blanks in the prompt.
 
 <h2>Answer object options</h2>
 <table class="mt-responsive-table">
+	<caption>Answer object options: option, what it controls, and when to use it.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 36%;">
@@ -237,19 +242,19 @@ $radio = RadioButtons(
 <p>
 The statement later asks which molecule has the highest energy.
 </p>
-<p><strong>What went wrong</strong></p>
+<h3>What went wrong</h3>
 <ul>
 	<li>The story implies ATP is correct.</li>
 	<li>The setup defines AMP as the correct answer.</li>
 	<li>The grader is doing exactly what it was told.</li>
 </ul>
-<p><strong>How to recognize it</strong></p>
+<h3>How to recognize it</h3>
 <ul>
 	<li>Multiple students report being marked wrong for the same choice.</li>
 	<li>Previewing the problem shows consistent wrong grading.</li>
 	<li>The solution displays a different answer than the prompt implies.</li>
 </ul>
-<p><strong>How to fix it</strong></p>
+<h3>How to fix it</h3>
 <p>
 Always read the setup and the statement back to back. When changing the story, update the setup
 first, then confirm the statement still matches.
