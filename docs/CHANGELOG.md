@@ -2,6 +2,13 @@
 
 ## 2026-02-27
 
+### Clean up TEXTBOOK_PAGE_SUMMARIES.md and add pytest guard
+- Replaced 7 fragile "Chapter N" references with descriptive alternatives
+  ("this chapter", "Section X.Y", "the Testing and Debugging sections").
+- Trimmed 35 entries exceeding the 500-character description limit.
+- Created `tests/test_textbook_summaries.py` pytest guard enforcing
+  the 500-character limit and no-chapter-references rule.
+
 ### Rewrite 7.3 to emphasize lint_pg_via_renderer_api.py
 - Restructured `Textbook/07_Testing_and_Debugging/7.3-Scripting_and_Automation_of_the_PG_Renderer.html`
   to lead with the ready-made linting script instead of generic DIY examples.
