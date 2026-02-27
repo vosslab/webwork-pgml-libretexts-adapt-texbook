@@ -10,7 +10,7 @@ sessions. If your problem is not working, there is a good chance the answer is o
 
 <h2>PGML parsing errors</h2>
 <p>
-PGML uses asterisks and other punctuation as formatting markers (see <a href="/@go/page/488660">Chapter 3</a> for full PGML syntax). When these markers appear near
+PGML uses asterisks and other punctuation as formatting markers (see <a href="/@go/page/488660">PGML (PG Markup Language)</a> for full PGML syntax). When these markers appear near
 variables, the parser can misinterpret them and produce confusing errors.
 </p>
 
@@ -23,25 +23,25 @@ variables, the parser can misinterpret them and produce confusing errors.
 a variable in single asterisks, PGML tries to treat everything between them as italic content. If
 the variable expands to something unexpected, the italic block never closes.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_PGML
 The answer is *[$variable]*.
 END_PGML
 </pre>
-<p><strong>Right (option 1 -- use bold instead of italic):</strong></p>
+<h4>Right (option 1 -- use bold instead of italic):</h4>
 <pre>
 BEGIN_PGML
 The answer is **[$variable]**.
 END_PGML
 </pre>
-<p><strong>Right (option 2 -- remove the emphasis):</strong></p>
+<h4>Right (option 2 -- remove the emphasis):</h4>
 <pre>
 BEGIN_PGML
 The answer is [$variable].
 END_PGML
 </pre>
-<p><strong>Right (option 3 -- build emphasis in a variable):</strong></p>
+<h4>Right (option 3 -- build emphasis in a variable):</h4>
 <pre>
 $answer_emph = "&lt;em&gt;$variable&lt;/em&gt;";
 
@@ -62,19 +62,19 @@ through without escaping.
 <strong>Cause:</strong> Bold markers (<code>**</code>) break when the variable content contains
 characters that PGML interprets as additional formatting.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_PGML
 At pH [$selected_ph], histidine exists in **[$correct_label]**.
 END_PGML
 </pre>
-<p><strong>Right (remove the bold):</strong></p>
+<h4>Right (remove the bold):</h4>
 <pre>
 BEGIN_PGML
 At pH [$selected_ph], histidine exists in [$correct_label].
 END_PGML
 </pre>
-<p><strong>Right (build emphasis in a variable):</strong></p>
+<h4>Right (build emphasis in a variable):</h4>
 <pre>
 $label_bold = "&lt;strong&gt;$correct_label&lt;/strong&gt;";
 
@@ -89,14 +89,14 @@ END_PGML
 also contain <code>*italic*</code> markers cause the parser to misread which asterisks are bullets
 and which are emphasis.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_PGML
 * *State 1* (pH &lt; 1.82): Description
 * *State 2* (pH &gt; 1.82): Description
 END_PGML
 </pre>
-<p><strong>Right (use dashes for bullets):</strong></p>
+<h4>Right (use dashes for bullets):</h4>
 <pre>
 BEGIN_PGML
 - **State 1** (pH &lt; 1.82): Description
@@ -122,7 +122,7 @@ directory (the package symbol table). The <code>my</code> keyword puts the varia
 closet that PGML cannot open. When PGML encounters <code>[_]{$radio}</code>, it checks the shared
 directory, finds nothing, and falls back to a generic text input.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 my $radio = RadioButtons(['Alpha', 'Beta'], 'Alpha');
 
@@ -130,7 +130,7 @@ BEGIN_PGML
 [_]{$radio}
 END_PGML
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 $radio = RadioButtons(['Alpha', 'Beta'], 'Alpha');
 
@@ -150,6 +150,7 @@ my $idx = random(0, 3, 1);
 $rb = RadioButtons([@choices], $choices[$idx]);
 </pre>
 <table class="mt-responsive-table">
+	<caption>Right:: keyword, pgml visible?, and use for.</caption>
 	<colgroup>
 		<col>
 		<col>
@@ -201,7 +202,7 @@ text, the student sees raw markup like
 <strong>Cause:</strong> PGML escapes HTML by default for safety. Every <code>&lt;</code> becomes
 <code>&amp;lt;</code> so the browser displays tags as text instead of rendering them.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 $html_content = '&lt;span style="color:red;"&gt;Important&lt;/span&gt;';
 
@@ -209,7 +210,7 @@ BEGIN_PGML
 This is [$html_content] text.
 END_PGML
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 $html_content = '&lt;span style="color:red;"&gt;Important&lt;/span&gt;';
 
@@ -226,12 +227,13 @@ through without escaping.
 
 <h2>Missing or wrong macros</h2>
 <p>
-PG widgets like RadioButtons and DropDown live in separate macro files (see <a href="/@go/page/488659">Section 2.5</a> for macro basics). If you forget the macro,
+PG widgets like RadioButtons and DropDown live in separate macro files (see <a href="/@go/page/488659">Common PG Macros</a> for macro basics). If you forget the macro,
 the widget function is undefined and the renderer crashes.
 </p>
 
 <h3>Symptom table: missing macro errors</h3>
 <table class="mt-responsive-table">
+	<caption>Symptom table: missing macro errors reference.</caption>
 	<colgroup>
 		<col>
 		<col>
@@ -293,7 +295,7 @@ loadMacros(
 and the PG sandbox blocks it for security. PG problems run on shared servers and cannot load
 arbitrary Perl modules.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 use POSIX qw(floor);
 use List::Util qw(shuffle);
@@ -323,7 +325,7 @@ Other trapped operations include <code>eval "string"</code>, <code>open()</code>
 <code>&lt;td&gt;</code>, and <code>&lt;th&gt;</code> are blocked by the HTML whitelist. The
 renderer strips them out silently.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_PGML
 &lt;table&gt;
@@ -371,13 +373,13 @@ eval blocks, typically for layout structures like two-column matching.
 <code>&lt;sub&gt;</code>, and <code>&lt;sup&gt;</code> renders directly without
 <code>MODES()</code>. Store the HTML in a variable and use <code>[$var]*</code> instead.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_PGML
 [@ MODES(HTML =&gt; '&lt;div&gt;content&lt;/div&gt;') @]*
 END_PGML
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 $content = '&lt;div&gt;content&lt;/div&gt;';
 
@@ -401,7 +403,7 @@ silently becomes an empty string with no warning.
 <p>
 <strong>Symptom:</strong> Empty output, missing content, or blank areas in the rendered problem.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 @all_cards = ($card1, $card2, $card3);
 # ... 50 lines later ...
@@ -409,7 +411,7 @@ $card1 = '&lt;div&gt;content 1&lt;/div&gt;';
 $card2 = '&lt;div&gt;content 2&lt;/div&gt;';
 $card3 = '&lt;div&gt;content 3&lt;/div&gt;';
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 $card1 = '&lt;div&gt;content 1&lt;/div&gt;';
 $card2 = '&lt;div&gt;content 2&lt;/div&gt;';
@@ -449,12 +451,12 @@ while (@temp) {
 <strong>Cause:</strong> Perl hash key iteration order is not guaranteed. Each run can return keys
 in a different order, making randomization unreproducible.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 %items = (a =&gt; 'Apple', b =&gt; 'Banana', c =&gt; 'Cherry');
 @choices = values %items;  # Random order!
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 %items = (a =&gt; 'Apple', b =&gt; 'Banana', c =&gt; 'Cherry');
 @sorted_keys = sort keys %items;
@@ -476,17 +478,17 @@ operations are blocked or behave differently.
 <strong>Cause:</strong> The PG sandbox blocks the backslash (<code>\</code>) operator for
 creating references. Writing <code>\@array</code> does not produce a usable array reference.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 @choices = ('Alpha', 'Beta', 'Gamma');
 $rb = RadioButtons(\@choices, 'Alpha');
 </pre>
-<p><strong>Right (option 1 -- anonymous copy, preferred):</strong></p>
+<h4>Right (option 1 -- anonymous copy, preferred):</h4>
 <pre>
 @choices = ('Alpha', 'Beta', 'Gamma');
 $rb = RadioButtons([@choices], 'Alpha');
 </pre>
-<p><strong>Right (option 2 -- PG double-tilde operator):</strong></p>
+<h4>Right (option 2 -- PG double-tilde operator):</h4>
 <pre>
 @choices = ('Alpha', 'Beta', 'Gamma');
 $rb = RadioButtons(~~@choices, 'Alpha');
@@ -509,7 +511,7 @@ The same rule applies to hash references:
 Perl code execution. A <code>foreach</code> loop inside it becomes part of the string rather
 than running as code.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 BEGIN_TEXT
 foreach my $item (@items) {
@@ -517,7 +519,7 @@ foreach my $item (@items) {
 }
 END_TEXT
 </pre>
-<p><strong>Right (build the string before BEGIN_TEXT):</strong></p>
+<h4>Right (build the string before BEGIN_TEXT):</h4>
 <pre>
 $all_items_html = '';
 foreach my $item (@items) {
@@ -531,7 +533,7 @@ END_TEXT
 
 <h2>Answer field naming</h2>
 <p>
-<strong>Symptom:</strong> The answer is always marked wrong, or grading silently fails (see <a href="/@go/page/555704">Section 3.2</a> for answer blank syntax).
+<strong>Symptom:</strong> The answer is always marked wrong, or grading silently fails (see <a href="/@go/page/555704">Answer blanks and answers</a> for answer blank syntax).
 </p>
 <p>
 <strong>Cause:</strong> The <code>ANS()</code> function expects an answer field created by
@@ -539,12 +541,12 @@ END_TEXT
 <code>name</code> attribute does not match the name that <code>ANS()</code> is looking for
 (e.g., <code>AnSwEr0001</code>). The answer evaluator and the input field never connect.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 ANS(str_cmp($answer));  # Looks for AnSwEr0001
 # But JS or HTML creates an input with a different name -- no connection!
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 BEGIN_TEXT
 \{ MODES(HTML =&gt; '&lt;div style="display:none;"&gt;' . ans_rule(20) . '&lt;/div&gt;', TeX =&gt; '') \}
@@ -574,12 +576,12 @@ string entirely.
 like imidazole. Writing <code>NH2+</code> implies two hydrogens on one nitrogen, which is
 chemically incorrect for the imidazole ring.
 </p>
-<p><strong>Wrong:</strong></p>
+<h4>Wrong:</h4>
 <pre>
 # NH2+ implies TWO hydrogens on one nitrogen -- wrong for imidazole
 $imidazole_protonated = '...N=C[NH2+]1)...';
 </pre>
-<p><strong>Right:</strong></p>
+<h4>Right:</h4>
 <pre>
 # Imidazole has two nitrogens: one NH, one NH+
 $imidazole_protonated = 'C1=C([NH]C=[NH+]1)...';
@@ -657,8 +659,8 @@ Before committing a new PG problem file, verify each of these items:
 	<li>No <code>*</code> or <code>**</code> immediately around <code>[$variables]</code> in PGML.</li>
 	<li>HTML variables use <code>[$var]*</code> syntax (with the asterisk).</li>
 	<li>No Perl loops inside <code>BEGIN_TEXT...END_TEXT</code> blocks.</li>
-	<li>Hash keys sorted before random selection (see <a href="/@go/page/555727">Section 6.5</a>).</li>
-	<li>Shuffling happens after all items are defined (see <a href="/@go/page/555727">Section 6.5</a>).</li>
+	<li>Hash keys sorted before random selection (see <a href="/@go/page/555727">Advanced Randomization Techniques</a>).</li>
+	<li>Shuffling happens after all items are defined (see <a href="/@go/page/555727">Advanced Randomization Techniques</a>).</li>
 	<li><code>ans_rule()</code> created before <code>ANS()</code> call.</li>
 	<li>SMILES strings validated with RDKit (if applicable).</li>
 	<li>No PGML parsing errors in renderer output.</li>
@@ -670,6 +672,7 @@ Use this table to look up the error or symptom you are seeing. Find your row and
 in the right column.
 </p>
 <table class="mt-responsive-table">
+	<caption>Quick reference: error message table reference.</caption>
 	<colgroup>
 		<col>
 		<col>

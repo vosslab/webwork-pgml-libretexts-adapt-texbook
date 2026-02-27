@@ -1,16 +1,132 @@
 <p>
 Use this section when you need to render or lint problems programmatically rather than through the
-browser editor. This covers the renderer API endpoints, scripting examples, and batch linting
-workflows. This section is for advanced users who are comfortable with command-line tools and
-scripting. The examples below assume the renderer is already running on
-<code>http://localhost:3000</code> (see <a href="/@go/page/555732">Section 7.1</a> for setup).
+browser editor. Rather than writing scripts from scratch, start with the ready-made linting script
+below. It handles the API call, error checking, warning collection, and output formatting so you can
+focus on fixing problems instead of debugging your tooling.
+</p>
+<p>
+The examples below assume the renderer is already running on
+<code>http://localhost:3000</code> (see <a href="/@go/page/555732">Setting Up the PG Renderer</a> for setup).
 </p>
 
-<h2>API endpoints</h2>
+<h2>Recommended linting script</h2>
 <p>
-The renderer exposes three HTTP endpoints. Use the primary endpoint for all new scripts.
+The <code>lint_pg_via_renderer_api.py</code> script is the fastest way to check a PG file from the
+command line. It reads a local <code>.pg</code> file, posts it to the renderer, and reports errors
+and warnings in one step. Copy the script below into your project or tools directory.
 </p>
+
+<h3>Quick start</h3>
+<pre>
+# Lint a single file (random seed)
+python3 lint_pg_via_renderer_api.py -i my_problem.pg
+
+# Lint with a fixed seed for reproducibility
+python3 lint_pg_via_renderer_api.py -i my_problem.pg -s 42
+
+# View the rendered HTML output instead of lint messages
+python3 lint_pg_via_renderer_api.py -i my_problem.pg -r
+
+# Use a remote renderer instead of localhost
+python3 lint_pg_via_renderer_api.py -i my_problem.pg -b https://renderer.example.edu
+</pre>
+
+<h3>Command-line options</h3>
 <table class="mt-responsive-table">
+	<caption>Command-line options for lint_pg_via_renderer_api.py.</caption>
+	<thead>
+		<tr>
+			<th>Flag</th>
+			<th>Default</th>
+			<th>What it does</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Flag"><code>-i / --input</code></td>
+			<td data-th="Default">(required)</td>
+			<td data-th="What it does">Path to the local PG file to lint</td>
+		</tr>
+		<tr>
+			<td data-th="Flag"><code>-s / --seed</code></td>
+			<td data-th="Default">random</td>
+			<td data-th="What it does">Problem seed for reproducible results</td>
+		</tr>
+		<tr>
+			<td data-th="Flag"><code>-b / --base-url</code></td>
+			<td data-th="Default">http://localhost:3000</td>
+			<td data-th="What it does">Renderer base URL</td>
+		</tr>
+		<tr>
+			<td data-th="Flag"><code>-r / --render</code></td>
+			<td data-th="Default">off</td>
+			<td data-th="What it does">Print rendered HTML instead of lint findings</td>
+		</tr>
+		<tr>
+			<td data-th="Flag"><code>-o / --output-format</code></td>
+			<td data-th="Default">classic</td>
+			<td data-th="What it does">Output format template id</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>What the script checks</h3>
+<p>
+The script collects messages from every place the renderer can report problems, so you do not need
+to remember which JSON field to inspect:
+</p>
+<ul>
+	<li><code>flags.error_flag</code> &ndash; fatal rendering errors</li>
+	<li><code>errors</code> and <code>error</code> &ndash; top-level error fields</li>
+	<li><code>warnings</code> and <code>warning</code> &ndash; top-level warning fields</li>
+	<li><code>debug.pg_warn</code> &ndash; PG-layer warnings (most common)</li>
+	<li><code>debug.internal</code> and <code>debug.debug</code> &ndash; internal renderer messages</li>
+	<li><code>renderedHTML</code> &ndash; scanned for embedded error blocks and "Translator errors" sections</li>
+</ul>
+<p>
+If nothing is found in any of these fields, the script prints "No lint messages detected." and exits
+cleanly. If <code>error_flag</code> is set, the script raises an error so it can be used in automated
+pipelines where a nonzero exit code signals failure.
+</p>
+
+<h3>Batch linting</h3>
+<p>
+To lint every <code>.pg</code> file in a directory, combine the script with a shell loop:
+</p>
+<pre>
+# Lint all .pg files in a directory tree
+for f in $(find problems/ -name '*.pg'); do
+    echo "=== $f ==="
+    python3 lint_pg_via_renderer_api.py -i "$f" -s 42
+    echo
+done
+</pre>
+<p>
+Use a fixed seed (<code>-s 42</code>) so that every failure is reproducible. If you need to sweep
+multiple seeds, wrap the call in a second loop over seed values.
+</p>
+
+<h3>Get the script</h3>
+<p>
+Download <code>lint_pg_via_renderer_api.py</code> from the
+<a href="https://github.com/vosslab/vosslab-skills/blob/main/skills/webwork-writer/references/scripts/lint_pg_via_renderer_api.py">vosslab-skills GitHub repository</a>
+and place it in your project directory. The script uses only the Python standard library
+(no <code>pip install</code> required).
+</p>
+<pre>
+# Download the script directly
+curl -O https://raw.githubusercontent.com/vosslab/vosslab-skills/main/skills/webwork-writer/references/scripts/lint_pg_via_renderer_api.py
+</pre>
+
+<h2>API reference</h2>
+<p>
+This section documents the renderer API for readers who want to understand what the script does or
+build custom integrations.
+</p>
+
+<h3>Endpoints</h3>
+<table class="mt-responsive-table">
+	<caption>API endpoints: endpoint, method, and use for.</caption>
 	<thead>
 		<tr>
 			<th>Endpoint</th>
@@ -20,14 +136,14 @@ The renderer exposes three HTTP endpoints. Use the primary endpoint for all new 
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Endpoint"><code>/</code></td>
-			<td data-th="Method">POST</td>
-			<td data-th="Use for">Primary endpoint for rendering problems (preferred for all new work)</td>
-		</tr>
-		<tr>
 			<td data-th="Endpoint"><code>/render-api</code></td>
 			<td data-th="Method">POST</td>
-			<td data-th="Use for">Legacy compatibility endpoint (same behavior as <code>/</code>)</td>
+			<td data-th="Use for">Primary endpoint for rendering problems (used by the linting script)</td>
+		</tr>
+		<tr>
+			<td data-th="Endpoint"><code>/</code></td>
+			<td data-th="Method">POST</td>
+			<td data-th="Use for">Alternative rendering endpoint (same behavior)</td>
 		</tr>
 		<tr>
 			<td data-th="Endpoint"><code>/health</code></td>
@@ -37,7 +153,7 @@ The renderer exposes three HTTP endpoints. Use the primary endpoint for all new 
 	</tbody>
 </table>
 
-<h2>Parameter precedence</h2>
+<h3>Input parameters</h3>
 <p>
 The renderer accepts three input types for specifying problem source. If you provide more than one,
 the renderer uses the highest-precedence source and ignores the rest.
@@ -47,6 +163,7 @@ the renderer uses the highest-precedence source and ignores the rest.
 <code>problemSource</code> (middle) &gt; <code>sourceFilePath</code> (lowest)
 </p>
 <table class="mt-responsive-table">
+	<caption>Input parameters: parameter, what it is, and use when.</caption>
 	<thead>
 		<tr>
 			<th>Parameter</th>
@@ -56,14 +173,14 @@ the renderer uses the highest-precedence source and ignores the rest.
 	</thead>
 	<tbody>
 		<tr>
+			<td data-th="Parameter"><code>problemSource</code></td>
+			<td data-th="What it is">Raw PG source as a string</td>
+			<td data-th="Use when">Source is read from a local file (this is what the linting script uses)</td>
+		</tr>
+		<tr>
 			<td data-th="Parameter"><code>problemSourceURL</code></td>
 			<td data-th="What it is">URL to a JSON endpoint that returns problem source</td>
 			<td data-th="Use when">Problem source lives on a remote server</td>
-		</tr>
-		<tr>
-			<td data-th="Parameter"><code>problemSource</code></td>
-			<td data-th="What it is">Raw PG source as a string</td>
-			<td data-th="Use when">Source is generated by a script or read from a file (most common for automation)</td>
 		</tr>
 		<tr>
 			<td data-th="Parameter"><code>sourceFilePath</code></td>
@@ -73,94 +190,12 @@ the renderer uses the highest-precedence source and ignores the rest.
 	</tbody>
 </table>
 
-<h2>Curl example</h2>
+<h3>Response fields</h3>
 <p>
-The simplest way to test the renderer from the command line is a form-encoded POST with
-<code>curl</code>:
-</p>
-<pre>
-curl -X POST "http://localhost:3000/" \
-  -F "sourceFilePath=private/myproblem.pg" \
-  -F "problemSeed=1234" \
-  -F "_format=json"
-</pre>
-<ul>
-	<li><code>sourceFilePath</code> -- path relative to the renderer's directory structure.</li>
-	<li><code>problemSeed</code> -- integer seed for randomization. Use a fixed seed so failures are reproducible.</li>
-	<li><code>_format=json</code> -- returns structured JSON instead of HTML. Always use this for scripted workflows.</li>
-</ul>
-<p>
-If the file is on your host machine but not mounted into the container, read it in your script and
-send it as <code>problemSource</code> instead.
-</p>
-
-<h2>Python example</h2>
-<p>
-This function reads a local <code>.pg</code> file, sends it to the renderer, and reports problems:
-</p>
-<pre>
-import requests
-
-def render_pg_file(filepath, seed=1234):
-    with open(filepath, 'r') as f:
-        pg_source = f.read()
-    response = requests.post(
-        'http://localhost:3000/',
-        json={
-            'problemSource': pg_source,
-            'problemSeed': seed,
-            '_format': 'json',
-        }
-    )
-    data = response.json()
-    error_flag = data.get('flags', {}).get('error_flag', 0)
-    warnings = data.get('debug', {}).get('pg_warn', [])
-    if error_flag:
-        print(f'Error rendering {filepath}')
-    elif warnings:
-        print(f'Warnings for {filepath}:')
-        for w in warnings:
-            print(f'  {w}')
-    else:
-        print(f'{filepath}: OK')
-    return data
-</pre>
-<p>
-Call <code>render_pg_file('problems/my_problem.pg')</code> to test a single file. The function
-returns the full JSON response so you can inspect <code>renderedHTML</code>, <code>answers</code>, or
-other fields as needed.
-</p>
-
-<h2>Batch linting</h2>
-<p>
-To lint all <code>.pg</code> files in a directory tree, walk the directory and render each file:
-</p>
-<pre>
-import os
-
-failed = []
-for root, dirs, files in os.walk('problems/'):
-    for f in files:
-        if f.endswith('.pg'):
-            path = os.path.join(root, f)
-            data = render_pg_file(path)
-            if data.get('flags', {}).get('error_flag'):
-                failed.append(path)
-
-if failed:
-    print(f'{len(failed)} files failed')
-else:
-    print('All files passed')
-</pre>
-<p>
-Use a fixed seed so that any failure you find is reproducible.
-</p>
-
-<h2>Response format</h2>
-<p>
-When <code>_format=json</code> is set, the renderer returns a structured JSON object. Key fields:
+The renderer returns a JSON object. Key fields:
 </p>
 <table class="mt-responsive-table">
+	<caption>Response fields: field, type, and description.</caption>
 	<thead>
 		<tr>
 			<th>Field</th>
@@ -192,10 +227,65 @@ When <code>_format=json</code> is set, the renderer returns a structured JSON ob
 	</tbody>
 </table>
 
-<h2>Checking for success</h2>
+<h3>Checking renderer health</h3>
+<p>
+Before linting or rendering, confirm the renderer is running. The <code>/health</code> endpoint
+returns a simple status check:
+</p>
+<pre>
+curl http://localhost:3000/health
+</pre>
+<p>
+A healthy renderer responds with a JSON object. If the request times out or returns a connection
+error, the container is not running. See
+<a href="/@go/page/555732">Setting Up the PG Renderer</a> for startup steps.
+</p>
+<p>
+If you are scripting a pipeline, check health before submitting files:
+</p>
+<pre>
+import urllib.request, json
+
+def check_health(base_url="http://localhost:3000"):
+    try:
+        req = urllib.request.urlopen(f"{base_url}/health", timeout=5)
+        return req.status == 200
+    except Exception:
+        return False
+
+if not check_health():
+    print("Renderer is not running -- start the container first.")
+</pre>
+
+<h3>Curl render example</h3>
+<p>
+If you prefer a quick one-off render check without Python:
+</p>
+<pre>
+curl -X POST "http://localhost:3000/render-api" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "problemSource": "DOCUMENT(); loadMacros(\"PGstandard.pl\",\"PGML.pl\",\"PGcourse.pl\"); BEGIN_PGML Hello END_PGML ENDDOCUMENT();",
+    "problemSeed": 42,
+    "outputFormat": "classic"
+  }'
+</pre>
+<p>
+You can also use the form-encoded style with <code>-F</code> flags if the problem source is in a
+file mounted inside the container:
+</p>
+<pre>
+curl -X POST "http://localhost:3000/render-api" \
+  -F "sourceFilePath=private/myproblem.pg" \
+  -F "problemSeed=1234" \
+  -F "_format=json"
+</pre>
+
+<h3>Checking for success manually</h3>
 <p>
 A clean render has <code>error_flag == 0</code> and an empty <code>pg_warn</code> array. Always
-check both, because a problem can render without a fatal error but still produce warnings:
+check both, because a problem can render without a fatal error but still produce warnings. The
+linting script handles this automatically, but if you are writing your own integration:
 </p>
 <pre>
 error_flag = data.get('flags', {}).get('error_flag', 0)
@@ -213,8 +303,9 @@ else:
 
 <h2>Apply it today</h2>
 <ul>
-	<li>Start with the curl example above to verify your renderer is responding.</li>
-	<li>Adapt the Python <code>render_pg_file</code> function for your own workflow.</li>
-	<li>Use the batch linting pattern to check an entire directory of problems before publishing.</li>
-	<li>Always set <code>_format=json</code> and check both <code>flags.error_flag</code> and <code>debug.pg_warn</code> in scripted workflows.</li>
+	<li>Copy <code>lint_pg_via_renderer_api.py</code> into your project and lint a file with <code>python3 lint_pg_via_renderer_api.py -i my_problem.pg</code>.</li>
+	<li>Use <code>-s 42</code> when reporting bugs so the failure is reproducible.</li>
+	<li>Use <code>-r</code> to view the rendered HTML when you need to check formatting.</li>
+	<li>Wrap the script in a shell loop to batch-lint an entire directory before publishing.</li>
+	<li>The script uses only the Python standard library, so no <code>pip install</code> is needed.</li>
 </ul>

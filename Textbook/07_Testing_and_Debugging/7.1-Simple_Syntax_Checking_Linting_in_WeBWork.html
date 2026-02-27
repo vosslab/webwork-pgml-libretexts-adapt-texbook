@@ -14,10 +14,10 @@ result in a browser.
 
 <h2>What linting catches that reading misses</h2>
 <ul>
-	<li>Variables that look correct in source but render wrong because of escaping or parsing rules (see <a href="/@go/page/555703">Section 3.1</a> for PGML syntax basics)</li>
+	<li>Variables that look correct in source but render wrong because of escaping or parsing rules (see <a href="/@go/page/555703">Introduction to PGML</a> for PGML syntax basics)</li>
 	<li>HTML that gets escaped when you wanted it to render as formatted content</li>
 	<li>PGML syntax that parses differently than you expected (list markers, bold, eval blocks)</li>
-	<li>Missing macros that only fail at render time, not while reading the code (see <a href="/@go/page/555733">Section 7.2</a> for common macro mistakes)</li>
+	<li>Missing macros that only fail at render time, not while reading the code (see <a href="/@go/page/555733">Common Mistakes and How to Fix Them</a> for common macro mistakes)</li>
 	<li>Layout issues that only appear in a browser (spacing, alignment, missing blanks)</li>
 </ul>
 
@@ -27,6 +27,7 @@ These are patterns you can search for in your source file before rendering. Each
 specific failure that is easy to miss in the code but obvious in the rendered output.
 </p>
 <table class="mt-responsive-table">
+	<caption>Static checks you can do by eye reference.</caption>
 	<thead>
 		<tr>
 			<th>What to look for</th>
@@ -74,6 +75,7 @@ These checks confirm that the required scaffolding of a PG file is in place. Mis
 causes the renderer to fail or produce partial output.
 </p>
 <table class="mt-responsive-table">
+	<caption>Structural checks: check, what to look for, and symptom if missing.</caption>
 	<thead>
 		<tr>
 			<th>Check</th>
