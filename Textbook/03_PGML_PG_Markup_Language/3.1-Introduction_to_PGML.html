@@ -33,7 +33,7 @@ END_PGML
 Customize the variable names, the prompt text, and the answer expression in braces.
 </p>
 
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <p>
 Without backtick delimiters, subscripts and Greek letters render as plain text instead of formatted math.
 </p>
@@ -83,6 +83,7 @@ copy-paste (for example, <code>[: Ct :]</code> or <code>[: C1*V1/V2 :]</code> fo
 </ul>
 
 <table class="mt-responsive-table">
+	<caption>Calculator notation delimiters: task, delimiter, and example.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 24%;">
@@ -126,6 +127,7 @@ copy-paste (for example, <code>[: Ct :]</code> or <code>[: C1*V1/V2 :]</code> fo
 PGML uses square brackets for two different purposes. Confusing them is a common mistake.
 </p>
 <table class="mt-responsive-table">
+	<caption>Math formatting vs variable substitution: purpose, syntax, example, and more.</caption>
 	<colgroup>
 		<col style="width: 22%;">
 		<col style="width: 26%;">
@@ -165,7 +167,7 @@ PGML uses square brackets for two different purposes. Confusing them is a common
 <strong>Key rule:</strong> Use backticks when you want LaTeX math rendering. Use plain brackets
 (no backticks) when you want to display a variable's value as text.
 </p>
-<p><strong>Common mistake</strong></p>
+<h3>Common mistake</h3>
 <pre>
 Wrong: The answer is [`$radio->correct_ans`]
 Right: The answer is [$radio->correct_ans]
@@ -197,12 +199,12 @@ display it.
 </p>
 
 <p>
-If you are writing your first problem, go to <a href="/@go/page/555704">Section 3.2</a> now.
+If you are writing your first problem, go to <a href="/@go/page/555704">Answer blanks and answers</a> now.
 </p>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Need a blank that grades correctly? See <a href="/@go/page/555704">Section 3.2</a>.</li>
-	<li>Building a multi-step workflow prompt? See <a href="/@go/page/555705">Section 3.3</a>.</li>
-	<li>Need a data table students read from? See <a href="/@go/page/555706">Section 3.4</a>.</li>
+	<li>Need a blank that grades correctly? See <a href="/@go/page/555704">Answer blanks and answers</a>.</li>
+	<li>Building a multi-step workflow prompt? See <a href="/@go/page/555705">Lists and workflows</a>.</li>
+	<li>Need a data table students read from? See <a href="/@go/page/555706">Tables and structured data</a>.</li>
 </ul>

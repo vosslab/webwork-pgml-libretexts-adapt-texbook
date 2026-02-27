@@ -2,7 +2,7 @@
 Answer blanks are the center of most WeBWorK problems. In PGML, blanks are written as
 <code>[_____]</code> and the correct answer can be attached immediately after the blank using
 braces. For the full catalog of question types that use answer blanks, see
-<a href="/@go/page/488662">Chapter 5</a>.
+<a href="/@go/page/488662">Different Question Types</a>.
 </p>
 
 <p>
@@ -37,7 +37,7 @@ This error happens when you pass a numeric MathObject (like a Real) where PG exp
 answer. PG requires the type inside the braces to match the active Context, so passing
 <code>$ans2</code> (a Real) in a spot that needs a string produces a type mismatch.
 </p>
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <pre>
 Broken: [`ATP = `] [_____]{$ans2}
 Fix: [`ATP = `] [_____]{"ATP"}
@@ -99,12 +99,12 @@ answers and blanks are defined separately.
 <ul>
 	<li>The grading rule stays next to the text that asks for it.</li>
 	<li>Multi-part science prompts are easier to maintain.</li>
-	<li>It reduces the chance of mismatching answer order and prompt order. For common answer blank mistakes and how to fix them, see <a href="/@go/page/555733">Section 7.2</a>.</li>
+	<li>It reduces the chance of mismatching answer order and prompt order. For common answer blank mistakes and how to fix them, see <a href="/@go/page/555733">Common Mistakes and How to Fix Them</a>.</li>
 </ul>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Writing a multi-step lab workflow? Go to <a href="/@go/page/555705">Section 3.3</a>.</li>
-	<li>Need a data table students read from? Go to <a href="/@go/page/555706">Section 3.4</a>.</li>
-	<li>If formatting is the only issue, try <a href="/@go/page/555707">Section 3.5</a>.</li>
+	<li>Writing a multi-step lab workflow? Go to <a href="/@go/page/555705">Lists and workflows</a>.</li>
+	<li>Need a data table students read from? Go to <a href="/@go/page/555706">Tables and structured data</a>.</li>
+	<li>If formatting is the only issue, try <a href="/@go/page/555707">Layout controls</a>.</li>
 </ul>
