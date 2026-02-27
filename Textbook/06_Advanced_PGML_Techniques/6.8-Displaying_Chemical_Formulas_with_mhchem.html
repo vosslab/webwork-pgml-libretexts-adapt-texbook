@@ -8,7 +8,7 @@ using the mhchem extension for MathJax. Students see properly typeset formulas s
 <strong>Use this page when:</strong> you need to display chemical formulas, ions, or reaction
 equations in a PGML problem. The <code>\ce{}</code> command is part of the mhchem package, which
 is loaded automatically by MathJax in WeBWorK. For rendering graphical molecular structures from
-SMILES strings, see <a href="/@go/page/555729">Section 6.7</a> instead.
+SMILES strings, see <a href="/@go/page/555729">Rendering Chemical Structures with RDKit</a> instead.
 </p>
 
 <h2>Background on displaying chemical formulas</h2>
@@ -53,6 +53,7 @@ This renders as:
 
 <h3>Common mhchem syntax</h3>
 <table class="mt-responsive-table">
+	<caption>Common mhchem syntax: feature, syntax, and renders as.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -168,5 +169,5 @@ ENDDOCUMENT();
 	<li>For inline formulas, use <code>\( \ce{...} \)</code>. For display equations, use
 		PGML double-backtick syntax: <code>[``\ce{...}``]</code>.</li>
 	<li>For graphical molecular structures (ring systems, stereochemistry), use RDKit.js instead
-		(see <a href="/@go/page/555729">Section 6.7</a>).</li>
+		(see <a href="/@go/page/555729">Rendering Chemical Structures with RDKit</a>).</li>
 </ul>

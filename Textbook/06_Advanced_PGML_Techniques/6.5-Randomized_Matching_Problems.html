@@ -7,7 +7,7 @@ emitted from inside Perl eval blocks that build dynamic HTML with <code>join()</
 <p>
 <strong>Use this page when:</strong> you need a two-column matching layout with consistent labels
 and randomized ordering. For basic matching with PopUp dropdowns, see
-<a href="/@go/page/555717">Section 5.4</a>.
+<a href="/@go/page/555717">Matching</a>.
 </p>
 
 <h2>When to use matching vs other question types</h2>
@@ -21,13 +21,11 @@ Matching problems work best for:
 	<li><strong>Classification:</strong> Match examples to categories (e.g., bond types to molecular scenarios)</li>
 </ul>
 
-<p>
-<strong>Not ideal for:</strong>
-</p>
+<h4>Not ideal for</h4>
 <ul>
 	<li>Pure memorization with no conceptual pairing</li>
 	<li>Sequence ordering (use drag-and-drop or ordered list instead)</li>
-	<li>True/false evaluation of statements (use RadioButtons per statement, see Chapter 6.4)</li>
+	<li>True/false evaluation of statements (use RadioButtons per statement, see <a href="/@go/page/555726">Randomized MC True and False Statements</a>)</li>
 </ul>
 
 <p>
@@ -283,7 +281,7 @@ with the trailing asterisk to pass through the HTML without escaping:
 <p>
 Without the trailing <code>*</code>, PGML escapes HTML tags for safety. Using <code>[$var]*</code>
 tells PGML to pass through the variable's content as raw HTML. This keeps colors tied to label
-meaning even when the order is randomized. For more on this pattern, see Chapter 6.1.
+meaning even when the order is randomized. For more on this pattern, see <a href="/@go/page/555723">Text Coloring and Emphasis</a>.
 </p>
 
 <h2>Biology examples</h2>
@@ -499,6 +497,7 @@ the bank covers without opening the file.
 Every YAML bank requires four top-level keys that describe what students are matching:
 </p>
 <table class="mt-responsive-table">
+	<caption>YAML file structure: key, purpose, and example.</caption>
 <colgroup><col /><col /><col /></colgroup>
 <thead>
 <tr>
@@ -623,9 +622,7 @@ The <code>yaml_match_to_pgml.py</code> script reads a YAML bank and produces mat
 files. The generated files follow the same PopUp widget and <code>MODES</code> wrapper patterns
 described earlier in this chapter.
 </p>
-<p>
-<strong>What the generator does:</strong>
-</p>
+<h4>What the generator does</h4>
 <ul>
 	<li>Reads the YAML matching pairs and descriptions</li>
 	<li>Selects one value per key at random (rotating through phrasings across runs)</li>
@@ -644,6 +641,7 @@ to disable styling.
 Before shipping a new matching set, run through these checks:
 </p>
 <table class="mt-responsive-table">
+	<caption>Quality checks for matching banks: check and what to look for.</caption>
 <colgroup><col /><col /></colgroup>
 <thead>
 <tr>
@@ -789,5 +787,5 @@ ENDDOCUMENT();
 	<li>Use 4-8 pairs for optimal cognitive load and assessment effectiveness.</li>
 	<li>For YAML-based banks, define 8-20 keys with 2-4 phrasing variants each.</li>
 	<li>Run quality checks for parallel grammar, similar value length, and no keyword cues.</li>
-	<li>For more on colored emphasis, see <a href="/@go/page/555723">Section 6.1</a>. For statement-based questions, see <a href="/@go/page/555726">Section 6.4</a>.</li>
+	<li>For more on colored emphasis, see <a href="/@go/page/555723">Text Coloring and Emphasis</a>. For statement-based questions, see <a href="/@go/page/555726">Randomized MC True and False Statements</a>.</li>
 </ul>

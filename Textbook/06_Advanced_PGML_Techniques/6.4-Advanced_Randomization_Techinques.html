@@ -7,8 +7,8 @@ impossible values, repeated variants, and hard-to-reproduce failures.
 <strong>Use this page when:</strong> you need multi-step randomization or constraints between
 values, or you want to choose the right randomization function for your situation.
 Randomization variables are typically defined in the Setup block
-(see <a href="/@go/page/555711">Section 4.4</a>). For testing randomized variants, see
-<a href="/@go/page/557411">Section 7.4</a>.
+(see <a href="/@go/page/555711">Setup</a>). For testing randomized variants, see
+<a href="/@go/page/557411">Testing Randomization and Edge Cases</a>.
 </p>
 
 <h2>Built-in random functions are already seeded</h2>
@@ -28,6 +28,7 @@ $nonzero = non_zero_random(-5, 5, 1);
 
 <h2>Core randomization functions (PGbasicmacros.pl)</h2>
 <table class="mt-responsive-table">
+	<caption>Core randomization functions (PGbasicmacros.pl) reference.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 40%;">
@@ -77,6 +78,7 @@ These functions generate random samples from common probability distributions, u
 statistics and quantitative biology problems.
 </p>
 <table class="mt-responsive-table">
+	<caption>Statistics distribution functions: function and distribution.</caption>
 	<colgroup>
 		<col style="width: 38%;">
 		<col style="width: 62%;">
@@ -132,6 +134,7 @@ $item = $local_random->list_random('A', 'B', 'C');
 
 <h3>Common PGrandom mistakes</h3>
 <table class="mt-responsive-table">
+	<caption>Common PGrandom mistakes: mistake and why it fails.</caption>
 	<colgroup>
 		<col style="width: 42%;">
 		<col style="width: 58%;">
