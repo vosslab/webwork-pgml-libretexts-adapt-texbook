@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>StringsInContext</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>StringsInContext</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html">https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Adding Strings to a Context</h1>
+				<p>Shows how to add strings to the context.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="StringsInContext.pg">StringsInContext.pg</a>
+</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Preamble</b></p>
+						These standard macros need to be loaded.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context()-&gt;strings-&gt;add(none =&gt; {});
+
+# or, if we wanted a case-sensitive string,
+#    we would instead use
+# Context()-&gt;strings-&gt;add(none=&gt;{caseSensitive=&gt;1});
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context()-&gt;strings-&gt;add(none =&gt; {});
+
+# or, if we wanted a case-sensitive string,
+#    we would instead use
+# Context()-&gt;strings-&gt;add(none=&gt;{caseSensitive=&gt;1});
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Setup</b></p>
+						<p>Add the strings that are to be allowed in answers to the Context. Note that the add call has the form string =&gt; { options }. The most common use of options is to allow "aliases", i.e., strings that are marked the same as others, e.g.,</p>
+<p>Context()-&gt;strings-&gt;add(none =&gt; {}, N =&gt; { alias =&gt; "none" }); (Which would allow "N" to be used instead of "none".)</p>
+<p>By default, strings are case-insensitive. To make them case sensitive, include this as an option in the Context call.</p>
+<p>There are some shortcuts available if you need to add many allowable strings all at once. See parserAutoStrings.pl</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+Enter the positive real value of [`x`] for which [`x^2 = -2`] :
+
+[`x = `] [___]{'none'}
+
+_(Enter **none** if there are no values that satisfy the equation .) _
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Enter the positive real value of [`x`] for which [`x^2 = -2`] :
+
+[`x = `] [___]{'none'}
+
+_(Enter **none** if there are no values that satisfy the equation .) _
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Statement</b></p>
+						<p>It's usually a good idea to include some indication of what strings are expected or allowed in the answer.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

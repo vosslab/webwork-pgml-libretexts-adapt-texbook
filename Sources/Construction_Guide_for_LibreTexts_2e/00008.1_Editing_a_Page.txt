@@ -1,0 +1,307 @@
+Oibretexts:
+
+8.1: Editing a Page
+
+If you are new to LibreTexts and need to start on your text, the best thing is to use the Remixer to start. Go to Chapter 7 to learn
+how to set up your book.
+
+The Mindtouch platform we are using for the LibreTexts uses a modified CKE editor that allows for module construction without
+having to build/edit the raw source (HTML) code directly. The LibreTexts editor is a WYSIWYG editor that automatically creates
+HTML from visual authoring. The editor displays when you create a new page or edit a page. We strongly recommend that you use
+the Remixer to create new pages as it will automatically renumber chapters and pages as needed after you add the page. The
+CKEditor is a ready-for-use open source WYSIWYG text editor from CKSource designed to bring common word processor
+features directly to web pages, simplifying their content creation.
+
+You can only edit pages for which you have editing permission, generally speaking pages in your sandbox, your team's sandbox if
+you are a team member, and pages in books that you have created, either de novo or by remixing.
+
+1. Navigate to the page you want to edit.
+
+2. On the MindTouch toolbar, select Edit.
+
+3. Edit the content as necessary. See a complete list of editor tools.
+
+4. In the Edit summary field at the bottom of the page, leave change notes for other editors or yourself (optional). Edit summaries
+can be viewed in the page revision history.
+
+5. Click Save to save the changes you made.
+
+Enter reason (viewable in Site History Report)
+
+Edit View Format Style Elements Help Words: 76, Chars: 617
+
+FE) save X Cancel Normal . B\T Ui A-~-Q- Ti:
+
+iil
+iil
+i
+lil
+%
+1}
+
+FA~ Boxss~|Q 8 O ?- @ </> HTML
+
+utomatic saving & Word Counts
+e Automatic saving - By default, the LibreTexts libraries autosaves pages every 25 seconds in case your browser crashes or
+computer restarts so that you can return to the page and pick up where you left off.
+e Word count - A word and character count is displayed in the upper right corner of the editor UI.
+
+The Editor
+
+The Editor has been configured for most of the needs contributors require. The layout is below; please refrain from using the
+advanced features in red until you are familiar with the Mindtouch structure. The Toolbar is the section located at the top of the
+editor window. It contains menu buttons that give you access to various functions of CKEditor. All buttons are grouped according
+to their function and include both simple operations (like basic text styling or formatting) and more advanced features (like
+inserting media or forms via a dialog window).
+
+https ://chem.libretexts .org/@go/page/483718
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Justification (alignment)
+
+USEFULL MOST TIMES Add Table Toggle between
+
+"visual mode"
+
+Find & Replace
+Text Color (do not use) P And HTML code
+Highlight Color Indentation Add Question
+Pull Down Menus with additional tools (do not use) (do not use) from ADAPT
+Or Query
+Edit View Format Style Elements Help Words: 685, Chats: 4557
+iad Save xX Cancel Normal + U A~ v Tt. 3= i= SE. =~ ? [e] EE~ Boxes ~ Q 8 ? 6) +) </> HTML
+Cancel Bold Bulleted Add Image Add Script
+Editing Redo ; Erase All Lists dd
+Save Italic Formatting Add Boxes
+Auto Check
+Page Undo Headings Hyperlink to "Notes on
+g . yp 7 Accessibility
+Underline Numbered Another Page Examples
+(do not use Lists -Figures
+-Etc.
+
+Figure 8.1.1: A simple layout of the Mindtouch editor. Tools in red are rarely used in the LibreTexts typesetting standard.
+
+# Dono harm (or illegal activities)
+
+You are responsible for the content that you provide, including but not limited to photos, profiles information, messages, search
+results edits, and other content that you upload, publish or display on or through LibreTexts, or transmit to or share with other
+users. You may not submit content to LibreTexts that you did not create or that you do not have permission to submit. You
+
+understand and agree that others may, but are not obligated to, edit, delete or remove (without notice) any content from
+LibreTexts, for any reason or no reason.
+
+Drop-down Menus
+
+Drop-down menus within the Editor Toolbar contain tools organized by Edit, View, Format, Style, Elements, and Help.
+
+Edit Menu Edit View Format Style Elements Help
+The Edit menu contains the basic actions your authors can use within the editor. owe 2 Cie BT
+e Undo
+e Paste: Paste cut or copied content from your operating system clipboard.
+o Modern browsers to not allow Paste as Plain Text or Paste from Word options. Paste
+e Find "es
+© Replace
+e Replace
+@ Select all
+e Select all
+View Menu
+
+The View menu allows authors different ways to see the content they'll be editing. Edt | View | Format Style Elements Help
+
+e Source - View and edit the HTML source for the page E1es} <> sone --v et
+
+e Show blocks - See the content blocks in WYSIWYG mode in order to better identify the -
+HTML structure and format of your content
+
+Format Menu
+
+The Format menu contains tools that allow authors to change the look of selected text.
+
+e Alignment
+e Indentation
+
+https ://chem.libretexts .org/@go/page/483718
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Font - Change the font for selected text. (DO NOT USE)
+
+Size
+
+Text color
+
+Background color
+
+Heading - In the pages, the headings start with H2, H1 is reserved for the title of the page
+Strikethrough: Strikes a line through selected text. For example: these-werds.
+
+Subscript: Add a small letter or symbol below a line. E.g. writing the chemical compound N>
+Superscript: Add a small letter or symbol above a line of text. E.g. writing equations 2° = 8
+Code: Insert a code block or apply a code block to selected text.
+
+Regular text: Exclude selected text from being parsed by the editor.
+
+Remove format: Remove all formatting from the selected content.
+
+Style Menu
+
+The Style menu contains options for changing content behavior or appearance.
+
+None
+
+<pre> Format (DO NOT USE)
+Blockquote
+
+Comment
+
+o Only appears when the page is being edited.
+o Great for showing a replaced image when one is updated or corrected.
+
+Conditional Text (ADVANCED USE ONLY)
+
+o Anonymous only
+
+o Community member only
+o Pro Member only
+DekiScript
+
+JavaScript (JEM)
+
+css
+
+Elements Menu
+
+The Elements menu contains options to insert media or alter HTML elements.
+
+Insert/Remove bulleted list
+Insert/Remove numbered list
+Definition list
+
+Insert horizontal line
+
+Page break
+
+Insert special character
+Content reuse
+
+Insert Path (DO NOT USE)
+Video
+
+Templates
+
+Link
+
+Anchor
+
+Image
+
+Table
+
+Help Menu
+
+The Help menu links to references about the MindTouch Editor.
+
+Help
+Keyboard shortcuts
+
+Format Style Elements
+| EE Alignment
+
+oR indentation
+
+F Font
+
+wT Size
+
+A Text color
+
+©) Background color
+
+H_ Heading
+
+S Strikethrough
+
+X, Subscript
+
+x? Superseript
+
+<P Code
+Regular text (no wiki formatting)
+
+Remove format
+
+a)
+
+Style Elements Help
+
+th)
+
+None
+
+<pre> Format
+
+Biockquote
+
+Comment
+
+Conditional text (anonymous only)
+Conditional text (community member onity)
+Conditional text (pro member only)
+DeisScrpt
+
+JavaScript (JEM)
+
+css
+
+Elements Help
+
+$= insertvRemove bulleted list
+
+j= InservRemove numbered list
+
+Definition tist
+
+= Insert norzontal line
+
+bet Page break
+
+QQ insert special character
+
+®
+
+f#Hhe%®*M Oa
+z
+g
+
+Content reuse
+Insert path
+Video
+Templates
+
+Link
+
+& Hep
+
+GB Keyvoard snortcus
+
+This page titled 8.1: Editing a Page is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+https ://chem.libretexts .org/@go/page/483718
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+e 3.2: Editing a Page by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483718

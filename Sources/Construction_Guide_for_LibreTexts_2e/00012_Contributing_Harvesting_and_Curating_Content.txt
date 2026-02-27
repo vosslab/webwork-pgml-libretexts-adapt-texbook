@@ -1,0 +1,21 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+12: Contributing, Harvesting, and Curating Content
+
+12.1: Harvesting Workflows
+
+12.2: A Harvesting Checklist
+
+12.3: More Advanced Typesetting Standards
+
+12.4: Contributing Existing Content (FAQ)
+
+12.5: Dynamic Indexes
+
+12.6: Auto-Population of Page Key Terms (meta-tags)
+12.7: Publishing Protocol
+
+This page titled 12: Contributing, Harvesting, and Curating Content is shared under a CC BY 1.3 license and was authored, remixed, and/or
+curated by Delmar Larsen.
+

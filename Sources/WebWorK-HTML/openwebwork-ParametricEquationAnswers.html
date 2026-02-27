@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ParametricEquationAnswers.pg</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>ParametricEquationAnswers.pg</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricEquationAnswers.html">https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricEquationAnswers.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Parametric Equation Answer Checker</h1>
+				<p>Check student answers that are parametric equations</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="ParametricEquationAnswers.pg">ParametricEquationAnswers.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">DOCUMENT</span>();
+
+<span class="(c)b">loadMacros</span>(<span class="(c)e">'PGstandard.pl'</span>, <span class="(c)e">'PGML.pl'</span>, <span class="(c)e">'parserMultiAnswer.pl'</span>, <span class="(c)e">'PGcourse.pl'</span>);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>
+macro is used to check parameterization equations and end points
+together.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context(&quot;Numeric&quot;)-&gt;variables-&gt;are(t =&gt; &quot;Real&quot;);
+Context()-&gt;variables-&gt;set(t =&gt; { limits =&gt; [ -5, 5 ] });
+
+$x  = Formula(&quot;cos(t)&quot;);
+$y  = Formula(&quot;sin(t)&quot;);
+$t0 = Compute(&quot;0&quot;);
+$t1 = Compute(&quot;pi/3&quot;);
+
+($x0, $y0) = (1, 0);
+($x1, $y1) = (1 / 2, sqrt(3) / 2);
+
+$multians = MultiAnswer($x, $y, $t0, $t1)-&gt;with(
+    singleResult =&gt; 0,
+    checker      =&gt; sub {
+        my ($correct, $student, $self) = @_;
+        my ($xstu, $ystu, $t0stu, $t1stu) = @{$student};
+        if ((($xstu**2 + $ystu**2) == 1)
+            &amp;&amp; (($xstu-&gt;eval(t =&gt; $t0stu)) == $x0)
+            &amp;&amp; (($ystu-&gt;eval(t =&gt; $t0stu)) == $y0)
+            &amp;&amp; (($xstu-&gt;eval(t =&gt; $t1stu)) == $x1)
+            &amp;&amp; (($ystu-&gt;eval(t =&gt; $t1stu)) == $y1))
+        {
+            return [ 1, 1, 1, 1 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)
+            &amp;&amp; (($xstu-&gt;eval(t =&gt; $t0stu)) == $x0)
+            &amp;&amp; (($ystu-&gt;eval(t =&gt; $t0stu)) == $y0))
+        {
+            return [ 1, 1, 1, 0 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)
+            &amp;&amp; (($xstu-&gt;eval(t =&gt; $t1stu)) == $x1)
+            &amp;&amp; (($ystu-&gt;eval(t =&gt; $t1stu)) == $y1))
+        {
+            return [ 1, 1, 0, 1 ];
+
+        } elsif ((($xstu**2 + $ystu**2) == 1)) {
+            return [ 1, 1, 0, 0 ];
+
+        } else {
+            return [ 0, 0, 0, 0 ];
+        }
+    }
+);" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">Context</span>(<span class="(c)e">"Numeric"</span>)-&gt;<span class="(c)g">variables</span>-&gt;<span class="(c)g">are</span>(<span class="(c)e">t</span> =&gt; <span class="(c)e">"Real"</span>);
+<span class="(c)b">Context</span>()-&gt;<span class="(c)g">variables</span>-&gt;<span class="(c)g">set</span>(<span class="(c)e">t</span> =&gt; { <span class="(c)e">limits</span> =&gt; [ -<span class="(c)d">5</span>, <span class="(c)d">5</span> ] });
+
+<span class="(c)h">$x</span>  = <span class="(c)b">Formula</span>(<span class="(c)e">"cos(t)"</span>);
+<span class="(c)h">$y</span>  = <span class="(c)b">Formula</span>(<span class="(c)e">"sin(t)"</span>);
+<span class="(c)h">$t0</span> = <span class="(c)b">Compute</span>(<span class="(c)e">"0"</span>);
+<span class="(c)h">$t1</span> = <span class="(c)b">Compute</span>(<span class="(c)e">"pi/3"</span>);
+
+(<span class="(c)h">$x0</span>, <span class="(c)h">$y0</span>) = (<span class="(c)d">1</span>, <span class="(c)d">0</span>);
+(<span class="(c)h">$x1</span>, <span class="(c)h">$y1</span>) = (<span class="(c)d">1</span> / <span class="(c)d">2</span>, <span class="(c)b">sqrt</span>(<span class="(c)d">3</span>) / <span class="(c)d">2</span>);
+
+<span class="(c)h">$multians</span> = <span class="(c)b">MultiAnswer</span>(<span class="(c)h">$x</span>, <span class="(c)h">$y</span>, <span class="(c)h">$t0</span>, <span class="(c)h">$t1</span>)-&gt;<span class="(c)g">with</span>(
+    <span class="(c)e">singleResult</span> =&gt; <span class="(c)d">0</span>,
+    <span class="(c)e">checker</span>      =&gt; <span class="(c)b">sub</span> {
+        <span class="(c)b">my</span> (<span class="(c)h">$correct</span>, <span class="(c)h">$student</span>, <span class="(c)h">$self</span>) = <span class="(c)h">@_</span>;
+        <span class="(c)b">my</span> (<span class="(c)h">$xstu</span>, <span class="(c)h">$ystu</span>, <span class="(c)h">$t0stu</span>, <span class="(c)h">$t1stu</span>) = @{<span class="(c)h">$student</span>};
+        <span class="(c)b">if</span> (((<span class="(c)h">$xstu</span>**<span class="(c)d">2</span> + <span class="(c)h">$ystu</span>**<span class="(c)d">2</span>) == <span class="(c)d">1</span>)
+            &amp;&amp; ((<span class="(c)h">$xstu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t0stu</span>)) == <span class="(c)h">$x0</span>)
+            &amp;&amp; ((<span class="(c)h">$ystu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t0stu</span>)) == <span class="(c)h">$y0</span>)
+            &amp;&amp; ((<span class="(c)h">$xstu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t1stu</span>)) == <span class="(c)h">$x1</span>)
+            &amp;&amp; ((<span class="(c)h">$ystu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t1stu</span>)) == <span class="(c)h">$y1</span>))
+        {
+            <span class="(c)b">return</span> [ <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">1</span> ];
+
+        } <span class="(c)b">elsif</span> (((<span class="(c)h">$xstu</span>**<span class="(c)d">2</span> + <span class="(c)h">$ystu</span>**<span class="(c)d">2</span>) == <span class="(c)d">1</span>)
+            &amp;&amp; ((<span class="(c)h">$xstu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t0stu</span>)) == <span class="(c)h">$x0</span>)
+            &amp;&amp; ((<span class="(c)h">$ystu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t0stu</span>)) == <span class="(c)h">$y0</span>))
+        {
+            <span class="(c)b">return</span> [ <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">0</span> ];
+
+        } <span class="(c)b">elsif</span> (((<span class="(c)h">$xstu</span>**<span class="(c)d">2</span> + <span class="(c)h">$ystu</span>**<span class="(c)d">2</span>) == <span class="(c)d">1</span>)
+            &amp;&amp; ((<span class="(c)h">$xstu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t1stu</span>)) == <span class="(c)h">$x1</span>)
+            &amp;&amp; ((<span class="(c)h">$ystu</span>-&gt;<span class="(c)g">eval</span>(<span class="(c)e">t</span> =&gt; <span class="(c)h">$t1stu</span>)) == <span class="(c)h">$y1</span>))
+        {
+            <span class="(c)b">return</span> [ <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">0</span>, <span class="(c)d">1</span> ];
+
+        } <span class="(c)b">elsif</span> (((<span class="(c)h">$xstu</span>**<span class="(c)d">2</span> + <span class="(c)h">$ystu</span>**<span class="(c)d">2</span>) == <span class="(c)d">1</span>)) {
+            <span class="(c)b">return</span> [ <span class="(c)d">1</span>, <span class="(c)d">1</span>, <span class="(c)d">0</span>, <span class="(c)d">0</span> ];
+
+        } <span class="(c)b">else</span> {
+            <span class="(c)b">return</span> [ <span class="(c)d">0</span>, <span class="(c)d">0</span>, <span class="(c)d">0</span>, <span class="(c)d">0</span> ];
+        }
+    }
+);</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>A <code>MultiAnswer</code> is used to verify that the student answers
+satisfy the equation for the circle and have the required starting and
+ending points. This answer checker will allow students to enter any
+correct parametrization. For example, both <code>x = \cos(t)</code>,
+<code>y = sin(t)</code>, <code>0 <= t <= pi/3</code> and
+<code>x = cos(2t)</code>, <code>y = sin(2t)</code>,
+<code>0 <= t <= pi/6</code> will be marked correct.</p>
+<p>When evaluating student's answers, it is important not to use quotes.
+For example, if the code were
+<code>$xstu-&gt;eval(t =&gt; "$t1stu")</code> with quotes, then if a
+student enters <code>pi</code> the answer checker will interpret it as
+the string "pi" which will need to be converted to a MathObject
+<code>Real</code> and numerical error will be introduced in the
+conversion. The correct code to use is
+<code>$xstu-&gt;eval(t =&gt; $t1stu)</code> without quotes so that the
+answer is interpreted without a conversion that may introduce error.</p>
+<p>The first <code>if</code> statement checks that the answer is fully
+correct, that is the parametric functions are on the unit circle and the
+initial and final points are correct. The next three <code>elsif</code>
+statements check the cases that the parametric functions are on the unit
+circle, but one of the second point, first point, or both points are
+incorrect.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+Find a parametrization of the unit circle from the point
+[`\big(1, 0\big)`] to [`\big(\frac{1}{2}, \frac{\sqrt{3}}{2}\big)`].
+Use [`t`] as the parameter for your answers.
+
+[`x(t) =`] [__]{$multians}
+
+[`y(t) =`] [__]{$multians}
+
+from [__]{$multians} to [__]{$multians}.
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">BEGIN_PGML</span>
+Find a parametrization of the unit circle from the point
+<span class="(c)n">[`</span><span class="(c)c">\big(1, 0\big)</span><span class="(c)n">`]</span> to <span class="(c)n">[`</span><span class="(c)c">\big(\frac{1}{2}, \frac{\sqrt{3}}{2}\big)</span><span class="(c)n">`]</span>.
+Use <span class="(c)n">[`</span><span class="(c)c">t</span><span class="(c)n">`]</span> as the parameter for your answers.
+
+<span class="(c)n">[`</span><span class="(c)c">x(t) =</span><span class="(c)n">`]</span> <span class="(c)c">[__]</span><span class="(c)n">{</span><span class="(c)h">$multians</span><span class="(c)n">}</span>
+
+<span class="(c)n">[`</span><span class="(c)c">y(t) =</span><span class="(c)n">`]</span> <span class="(c)c">[__]</span><span class="(c)n">{</span><span class="(c)h">$multians</span><span class="(c)n">}</span>
+
+from <span class="(c)c">[__]</span><span class="(c)n">{</span><span class="(c)h">$multians</span><span class="(c)n">}</span> to <span class="(c)c">[__]</span><span class="(c)n">{</span><span class="(c)h">$multians</span><span class="(c)n">}</span>.
+<span class="(c)b">END_PGML</span>
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						<p>The <code>$multians</code> object is used for all answer rules.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">BEGIN_PGML_SOLUTION</span>
+Solution explanation goes here.
+<span class="(c)b">END_PGML_SOLUTION</span>
+
+<span class="(c)b">ENDDOCUMENT</span><span class="(c)o">();</span></pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

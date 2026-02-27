@@ -1,0 +1,10 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+16: Conductor for Admins
+
+16.1: Control Panel
+16.2: Project Page for Administrators
+
+This page titled 16: Conductor for Admins is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+

@@ -1,0 +1,117 @@
+Oibretexts:
+
+12.2: A Harvesting Checklist
+
+This section is an overview for people who are tasked with copying a whole structure from a website into the LibreTexts format. It
+is short and does not contain everything so as to not overwhelm developers. It assumes that the content is copied into an empty
+skeleton textbook map with pre-made chapters and sections which we will set up for you if necessary.
+
+*% Pre-Editing Stage
+
+e Step 1: Obtain an instructor's account. This is either given via email from the LibreTexts team directly (e.g., via
+info@libretexts.org) or via the network of LibreTexts facilitators (e.g., on your campus).
+
+e Step 2 (Optional): Ensure that your campus has a campus hub in the library. This is optional as working projects can be
+stored in the general use "Remixer University" Campus Hub until a Campus Hub for your institution is created (upon
+request to the LibreTexts Team).
+
+Of the workflows discussed in the previous section, the most common involves building a skeleton and manually copying and
+pasting content ("From Scratch", "From Website", "From PDF", "From Word (mechanism II)", "From Google Doc (mechanism IT)"
+and "From "Latex source" workflows). Below is a more detailed overview of this process.
+
+Step 1A: Build the Infrastructure (the easy way)
+
+e Use the Remixer to build the skeleton from scratch
+
+Step 1A: Build the infrastructure (the Hard Way)
+
+e Rename the chapter titles to the desired titles (hover over title to get pencil icon to do this and then edit and save): use the
+format "1: I love LibreTexts" and "2: I really love Libretexts" as the general format with a colon and no "chapter" word
+
+e Rename the existing sections within each chapter to the desired section. Use the format "1.X: Ways that I love Libretexts" and
+"1.2: Ways that you should love Libretexts" as the general format with a colon after the second number. Avoid using a three
+number title, e.g., "1.2.3: Ways that Titles Can Be Poor"
+
+e Asa general rule, copy everything over even if it is not entirely clear that it will be useful. We can always delete or move things
+around later.
+
+e If you need to make new sections, then do so (via the "New" button on the black bar after you are logged in).
+
+e If your original sections do not have numbers in them, then ignore the numbers (for now).
+
+e We can address thumbnails (the images on the chapter boxes) later on.
+
+Step 2: Copy and Paste
+
+e For each section of original material, do a simple cut and paste from the website into each LibreTexts section (after clicking
+"Edit" on black bar after you are logged in).
+
+e When you do this, all text is copied over (often with undesired formatting) and the images from the original content are NOT
+transferred over (only a link back to them to give you that image). If the formatting is messed up in any way (e.g., small font,
+bad font etc), then it is best to just erase the formatting (the "removed format" button on the edit toolbar that looks like a T with
+a little x next to it). That is your best friend.
+
+Step 3: Upload Figures on to Libretexts Page
+
+e The simplest way to do this is to drag the figures from the original page onto your desktop, then drag them from your desktop
+into the appropriate spot on the LibreText page. You can find more details on how to do this here.
+
+Step 4: Format/Edit the Page
+
+Typically, the original content will not be in a format that "fits" into the existing format of the LibreTexts that it is to be integrated
+into. This includes: font size, colors, organization, etc. This is often best addressed at the initial steps if integrated by a
+straightforward "erasing" of formatting via the CKE editor (the eraser button). This then requires the reformatting of the content
+into the LibreTexts format.
+
+e General Formatting plan:
+e All section headings should use h2, h3, h4 ...
+
+(cc) (#) 12.2.1 https ://chem.|libretexts .org/@go/page/483773
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+e All text should be full justified (this is default and does not need to be selected).
+e All number lists should use the CKE list options, this also includes bullets.
+
+e Be sure to:
+
+erase all indentations
+
+avoid underlines (use bold or italic instead)
+
+full justify all text
+
+center justify all image captions
+
+center justify all images (after copying them in properly, discussed below)
+
+o 0 0 90 90
+
+Step 5: Format Equations
+
+e If there are equations, then you will need to convert them to MathJax (latex). Below are some tutorials to get people started:
+o https://www.tug.org/tutorials/tugindia/
+o http://meta.math.stackexchange.com/q...uick-reference
+© https://www.latex-tutorial.com/
+
+e It is best to just look at MathJax code on the LibreText to get the idea. This helps to make nice equations
+(https://www.codecogs.com/latex/eqneditor.php).
+
+© DO NOT copy links to codecogs to make a latex image on our site; use the internal MathJax system viathe \( and \{
+and \) and \| delimiters.
+
+Step 6: Typesetting and Advanced Editing
+
+e This is a more advanced stage that requires review by an advanced developer and includes fine tuning of things, such as table
+and figure captions, acknowledgements, table formatting, videos, hyperlinks to other pages, etc.
+e Typically, a page goes through many revisions to get things "just right".
+
+This page titled 12.2: A Harvesting Checklist is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+" 6.2: A Harvesting Checklist by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 12.2.2 https ://chem.|libretexts .org/@go/page/483773

@@ -1,0 +1,182 @@
+Oibretexts:
+
+8.2: Adding Images and Figures
+
+Images can be added to LibreTexts via two primary mechanisms:
+
+Adding Figures the Hard Way - Manual Upload
+
+Three steps to add non-copyrighted (e.g. public domain, Creative Commons, original photos or figures) images or pictures:
+
+e "Save" the figures into jpg, png, gif or some other graphics file depending on the program you are using to make the image.
+e Then "attach" the file using the lower right hand button on the page or under the "more" button.
+e Then "edit" the page with the edit button and "link" the file to your page with "insert/edit image" button.
+
+Adding Figures the Easy Way - Drag and Drop
+
+e "Save" or "export" the figures into jpg, png, gif or some other graphics file depending on the program you are using to make the
+image (JPG and PNG are preferred).
+e Drag and drop the image from your desktop to your page (while editing).
+
+@ https://chem.libretexts.org/Workshops/Work
++ Pagesettings
+Workshop Skills
+4 Workshop University | BCCE (2018) "
+
+Edit View Format Style Elements ~-Help Words: 144, Chars: 1158
+BP) save XX Cancel Headng~ |B J Ul\A-~ Q- |RIE E/E |e? B/Q </> HTML
+While the basic principles of editing and creating content on the LibreTexts site are limited, there are several skills need to Master to use the
+LibreTexts before creating and curating content. The Construction Guide and Forum are great resources to consult in building these skills:
+
+¢ Construction Forum: https://groups .io/g/Libretexts-ConstructionEorum/topics
+e Construction Guide: https://chem libretexts.org/Courses/.. fpuction Guide
+
+. [+ Copy
+
+Basic Skills Remixing Skills
+
+1. Make (or take) ownership of sandbox in the Workshop area 1. Construct a simple Remixing Map
+2. Make a chapter (guide) in your sandbox 2. Remix that map (either as transclusion or copy-source)
+1. Make a Section in your sandbox 3. Move remix to personal sandbox (i.e., take ownership)
+3. Rename Page (standard is "number: Title")
+4. Edit page (new or blank page and edit an existing page)
+1. Copy/past Existing Text
+2. Make hyperlink (chain link)
+3. Add Box via templates
+4. Add equation
+5. Add video
+6. Add table
+5. Transclude (reuse) a page
+6. Advanced
+1. Add interactive component (via transclusion)
+2. Add Executable code (e.g. Python, R Sagemath)
+7. Add Copyright
+8. Add Authorbar
+1. Watch a page (little star next to social media buttons)
+
+e NO BMP figures are allowed to be imported. Avoid TIFF. Use PNG, JPG, GIF figures instead.
+
+e Please CROP your figures to remove superfluous white space that makes reading your module awkward. The Microsoft
+Office Picture Editor or Paint will crop images and is free on MS operating systems.
+
+e All figures constructed for this project must have the original image files used uploaded to the LibreTexts, preferable in the
+module itself. DO NOT HOTLINK images. Hotlinks in general are prone to vaporization.
+
+The Medium Way - Copy and Paste Screenshots
+
+Often when integrating content from dead libraries like PDF or scanned images, the Print Screen option can be used. On PC, there
+is a "Print Screen" button on the upper right corner of the keyboard that will take a screen shot of the screen and store it in the
+computer clipboard. This can then be "pasted" directly via the control-v combination directly into the LibreTexts Editor. The
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483719
+
+
+--- Page Break ---
+
+Oibretexts:
+
+problem with this is that the image that is being copied and pasted via this mechanism will typically have superfluous content
+around it and will need to be cropped before editing. There are two ways to address this:
+
+e Paste the screen shot into a image editor (e.g., Paint in Windows or Powerpoint) and then crop it in that respective software,
+save into a file and drag-and-drop into the page as discussed above.
+e Alternatively, a screen shot snipping tool can be used to selectively copy the image on the page from the rest of the screen (sort
+
+of like pre-cropping) and then you can paste directly into the editor (https://support.microsoft.com/en-us/help/13776/windows-
+use-snipping-tool-to-capture-screenshots).
+
+There are other snipping tools available via a simple Internet Search. Apple computers have a similar snipping tool. You can use
+Shift-Cmd-4 to save a screen snip of an image on the screen. This image file can then be edited as needed and then imported into a
+LibreTexts page, following the protocol described above.
+
+Formatting Figures
+
+Double-click on an image (in edit mode) to open its settings and make sure these settings are set correctly:
+
+Image x
+
+Options |
+
+Size:
+
+Small Medium Large Original Custom
+
+Alignment: Make sure size is selected
+as "responsive"
+
+® ©) Default Left =3) Right
+
+A
+
+Picture of Antoine Lavoisier
+
+4 Image URL:
+:
+? /@api/deki/files/149768/graphics1 jpg
+
+Double check that image URL starts like this. If not the image has not
+been properly copied over and is still hosted on original server. ance
+
+Figure 8.2.1: Image settings
+
+To center justify figure, click on the right side of the image (not the figure) and you can use the center justification for text off the
+normal editing toolbar.
+
+https ://chem.libretexts .org/@go/page/483719
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Edit View Format = Style. = Elements ~--Help Words: 514, Chars
+
+[) save Xcancet | <> Heading -~ |B J UlA-~- O-|ZIEE! =-|P BH-/Q </> HTML
+Double check that image URL starts like thi Align left tries
+
+Ctri+Shift+
+been properly copied over and is still hosts _| | saveimage | Cancel
+Center hift+
+
+2178
+
+Align right Ctrl
+jp
+
+Figure \(\Pagelndex{1}\): figures.
+
+Justify Ctri+Shift+J L
+Figure 8.2.2: How to center justify figures
+Adding Captions
+
+To add a caption add a line under the figure formatted as
+
+| Figure \(\PageIndex{i}\): Copy and Paste Caption here. (Copyright; author via source
+
+where z is the number of the figure on the page. This automatically formats the caption into the caption style you see on the figures
+on this page. Unfortunately, if you add another figure that requires renumbering the figures after it this still has to be done
+manually. You can use (\PageIndex{n}\) to sequentially number tables, videos, examples, etc. All figures should be open source, if
+possible provide a link to the original source.
+
+# Figure captions Format
+
+The figure label should be formatted as shown for the figure above:
+
+e Center justified
+
+e "Figure" in bold followed by numbering with a page index command and a colon like this: Figure
+\(\PageIndex{1}\):
+e Manually enter the figure number in the \PageIndex command, "1" for the first figure of the page, "2" for the second, etc.
+
+Advanced (alt-texts)
+
+Each Figure and Table has a simple option to add alt-texts. Just double click on the image to get the figure setting (Figure 8.2.1)
+and you can add alt-test into the entry. See section on Alt-texts for more details.
+
+This page titled 8.2: Adding Images and Figures is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar
+
+Larsen.
+
+e 3.3: Adding Images and Figures and Video by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483719

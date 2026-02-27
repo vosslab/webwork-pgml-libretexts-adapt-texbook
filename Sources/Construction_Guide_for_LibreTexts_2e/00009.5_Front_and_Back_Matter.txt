@@ -1,0 +1,15 @@
+Oibretexts:
+
+9.5: Front and Back Matter
+The front matter and back matter are automatically updated on a weekly basis.
+
+e The back matter does not have content in it yet for most books, but that is where authors can add glossaries and indexes. The
+latter are dynamically constructed for textbooks. To add terms to the index, add metatages for each page on the page settings. To
+build a rollover glossary edit the glossary page and add word/phrases and their definition to the table.
+
+e The front matter always has three pages: titlepage, infopage, and table of contents. Other pages can be added like "preface",
+"about the author", "about the book", "acknowledgments" etc. Authors have flexibility in this matter.
+
+e 4.7: Front and Back Matter by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483739

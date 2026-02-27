@@ -1,0 +1,195 @@
+Oibretexts:
+
+16.1: Control Panel
+
+For administrators there is an additional choice of Control Panel at the top of the right hand menu when they login to the Conductor
+
+Conductor Home Projects
+
+Home
+
+Welcome,
+
+Joshua
+
+Control Panel a
+Commons eo
+My Alerts a
+Harvesting Request +
+Adoption Report
+Account Request <
+LibreTexts.org ¢
+
+The Control Panel provides LibreTexts and Campus administrators tools to manage their Conductor instances.
+
+* Control Panel
+
+(cc) (#) 16.1.1 https ://chem.libretexts .org/@go/page/483798
+
+
+--- Page Break ---
+
+Oibretexts:
+Conductor Home Projects
+
+Control Panel
+
+Control Panel
+
+Welcome to Control Panel. Here, you will find several tools to manage your Campus Conductor instance.
+
+LIBRETEXTS MASTER TOOLS
+
+a Account Requests
+
+View Account Requests submitted to the Conductor platform
+
+Adoption Reports
+
+View Adoption Reports submitted to the Conductor platform
+
+a Harvesting Requests
+View and manage OER Integration Requests submitted to the Conductor platform
+
+Hi Organizations Manager
+
+View and manage
+
+anizations on the Conductor platforn
+
+Homework Manager
+View and manage Homewor|
+
+k resources listed on the LibreCommons
+CAMPUS ADMIN TOOLS
+
+g Books Manager
+
+See the master Commons Catalog and manage which texts appear on your Campus Commons
+
+Collections Manager
+Create new Collections for your Campus Commons and manage existing Collection
+
+v
+
+Peer Review Rubrics
+Manage Peer Review rubrics available for use in Conductor projects
+
+fe)
+
+.. Campus Settings
+
+Manage branding settings for your Conductor instance and your Campus Commons
+
+Users Manager
+
+See which Conductor users have access to your instance and manage their permissions
+
+Master Tools Panel
+The first three tools in the Master Tools panel access databases populated from forms accessible in the conductor,
+
+e Account Requests View Account Requests submitted to the Conductor platform described here
+e Adoption Reports View Adoption Reports submitted to the Conductor platform described here
+e Harvesting Requests View and manage OER Integration Requests submitted to the Conductor Platform described here
+
+The last two tools are controlled through the Master Tools Panel
+
+e Organizations Manager View and manage Organizations on the Conductor platform
+e Homework Manager View and manage Homework resources listed on the LibreCommons
+
+The Organization Manager has the branding information entries for every LibreNET member organization.
+
+(cc) (#) 16.1.2 https ://chem.libretexts .org/@go/page/483798
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Edit Organization Details
+
+Branding Images
+Campus Cover Photo @ *
+
+https://cdn.libretexts.net/CommonsAssets/canada_cover.jpeg
+
+Campus Large Logo @ *
+
+https://cdn.libretexts.net/CommonsAssets/canada_large.png
+
+Campus Medium Logo @ *
+
+https://cdn.libretexts.net/CommonsAssets/canada_medium.png
+
+Campus Small Logo @
+
+Branding Links
+About Link @ *
+
+https://canadacollege.edu/about/
+
+Branding Text
+
+Campus Commons Header @
+
+Campus Commons Message @
+
+The Homework Manager is the database which populates the Homework dropdown in the Commons Blue Bar. It is synched daily
+at 12:30 AM PST to entries in the ADAPT Homework System.
+
+Campus Admin Tools
+The Books Manager is the database which populates the Commons Catalog. It is synched daily at 6:30 AM PST to the Libraries
+
+¥ Books Manager
+
+(cc) (#) 16.1.3 https ://chem.libretexts .org/@go/page/483798
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Conductor Home Projects Search... 2 | & Libraries ~ & Tools~ ey Joshua Halpern
+
+Books Manager
+
+Control Panel > Books Manager
+
+Sync Schedule: Daily at 6:30 AM PST © Sync Commons with Libraries
+
+Sort by Title a Q
+Displaying 10 + items per page of 2,076 results. ( 1 2 3 4 5 we 208 )
+Title Library Author License Affiliation Course Actions
+
+AandP for STEM James Madison James Madison Add to
+i -BY- 1
+Educators F Medicine Felicia Esteban CCBYSA University University Collection
+
+View on
+LibreTexts
+
+University of Add to
+
+Abi | Psychol Social Sci Jorden A. Cummi CC-BY-NC-SA ;
+normal Psychology - #88 Social Science Jorden A. Cummings Geerdeocen Collection
+
+View on
+LibreTexts
+
+Collections Manager is the database that manages Collections displayed through the Collections tab on the Commons Blue Bar.
+Administrators have the option to manage collections, adding or removing LibreTexts.
+
+Campus administrators can use the Peer Review Rubric tab on the Campus Admin Tool Panel to specify/create a campus peer
+review rubric that will be used for all Campus Books.
+
+The Campus Settings is the database that manages organizational details for LibreNET members which have their own branded
+Campus Commons. To access this Campus Admins need to first select their Campus Commons in the LibreTexts Commons before
+logging in to the Conductor.
+
+User Manager is a database of all Conductor users which provides information about the projects they are working on.
+
+This page titled 16.1: Control Panel is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+e 10.3.1: Control Panel by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 16.1.4 https ://chem.libretexts .org/@go/page/483798

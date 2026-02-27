@@ -1,0 +1,144 @@
+Oibretexts:
+
+14.2: Creating and Importing Existing Courses (Course View)
+
+The ADAPT system allows for the creation of new courses and the reusing of existing courses (with permission of the author).
+
+Creating New Courses
+
+1. Log into your instructors account
+2. Click Add Course
+
+My Courses
+
+Course Shown @ Start Date End Date Actions
+
+Figure 14.2.1: Add a new course to Adapt by clicking "Add Course"
+
+3. Add the name, section, start and end dates and choose whether you want to make the course public or not. Click "Submit"
+Public courses are available for import by other instructors, private courses are only available for import by you.
+
+Course Details
+
+Name New Course
+Section Main
+Start Date | Tuesday, June 1, 2021
+
+End Date Oo Saturday, July 31, 2021
+
+Public @ O Yes
+No
+
+Figure 14.2.2: Add information about your new course and click "Submit"
+
+Importing Existing Courses
+
+Import Course option allows you to clone another course that was created by you or someone else. Gradebook and students
+personal information will not be imported.
+
+1. Log into your instructors account
+2. Click Import Course
+
+My Courses
+
+Add Course
+
+Course Shown © Start Date End Date Actions
+
+Figure 14.2.3: Import existing course by clicking "Import Course"
+3. Start typing the name of the instructor or the name of the course that you want to import and select the course from the drop-
+down list.
+
+(cc) (#) 14.2.1 https ://chem.libretexts .org/@go/page/483785
+
+
+--- Page Break ---
+
+Gibretexts-
+
+Import Course
+
+Chem
+
+Chem 110A: Introductory Quantum Mechanics ---
+Delmar (instructor) Larsen
+
+Chem 28H: General Chemistry I] Honors --- Delmar
+(Instructor) Larsen
+
+Chem 1300: Preparatory Chemistry (UA Little Rock) ---
+Bob Belford
+
+Chem 2C: General Chemistry III --- Delmar (Instructor)
+
+Larsen
+
+Chem 2C: General Chemistry II! Import --- Bob Belford
+
+Figure 14.2.4: Choose the course that you want to import
+4. Click "Yes, import course"
+
+Note: Imported Courses are automatically set to Private. To allow other instructors to have access to the assignments of your newly
+important course, you have to select Public on the course properties page. Student information is never sharable.
+
+¥ Duplicating Courses
+
+If you want to duplicate an existing course on your account, you need to "import" that course (from your account into your
+account).
+
+Course View
+
+The top level of the ADAPT is an overview of your courses that includes a link to access the course, a toggle switch to allow
+students to view the course (and its assignments and assessment), the course start and end date and some options.
+
+Chem 110B: Properties of Atoms and Molecules (@ No } January 07, 2021 March 20, 2021 ao Wy
+Chem 2BH: General Chemistry II Honors (@ No } January 02, 2021 March 31, 2021 ao Wf
+Chem 110A: Introductory Quantum Mechanics (@ No } September 30, 2020 December 17, 2020 ao Wf
+
+Each course has three icons on the right side.
+
+Gradebook Delete Course
+
+ao wf
+
+t
+
+Course Properties
+
+Figure 14.2.5: Course action icons
+
+1. Gradebook - opens the gradebook associated with the course
+2. Delete Course - deletes the course permanently
+3. Course Properties - lets you access and edit course information, such as:
+
+e Name
+
+e Start and End dates
+
+e Public/Private
+
+e Add/Edit/Delete Sections
+
+(cc) (#) 14.2.2 https ://chem.libretexts .org/@go/page/483785
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+e Add/Delete Graders
+
+e Delete Students or view the course as any of the registered students
+e Set Assignment group weights
+
+e Set Percent to letter grades conversion
+
+e Course Gradebook
+
+This page titled 14.2: Creating and Importing Existing Courses (Course View) is shared under a CC BY 1.3 license and was authored, remixed,
+and/or curated by Delmar Larsen.
+
+e 9.2: Creating and Importing Existing Courses (Course View) by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 14.2.3 https ://chem.libretexts .org/@go/page/483785

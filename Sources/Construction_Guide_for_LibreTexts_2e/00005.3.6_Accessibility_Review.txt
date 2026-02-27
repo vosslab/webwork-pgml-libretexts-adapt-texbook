@@ -1,0 +1,202 @@
+Oibretexts:
+
+5.3.6: Accessibility Review
+
+The conductor provides a checklist for a complete manual peer review. There is also a simple accessibility checker built into the
+page editor. We are working on a software bot to handle more accessibility issues
+
+If you select Accessibility Check in the Project Ribbon
+
+# Accessibility Button
+
+Projects >" Completed Projects >" CHM 2000 General Chemistry for Engineering ID: WSLOTRQSXL z Unpin Project
+
+(# Edit Properties © Timeline & Peer Review @ Accessibility More Tools ~
+
+Project Information
+
+you will move to the Accessibility Check Page. The top of the Accessiblity Check Page is a Discussion area which is similar to the
+others in each LibreTexts Project Page
+
+# Accessibility Discussion
+
+Accessibility Discussion Hide
+
+Threads Pm] New | Messages
+
+No threads yet. Create one above!
+No thread selected. Select one from the list on the left or create one using the + button!
+
+Send a message...
+
+You **can** * format * *your* message!
+
+the bottom is the Accessibility Complicance Review Matrix which has 35 checks for each page
+
+Images
+
+. . For images not requiring alt text, is it Is all alt text under 150 characters?
+Do all images have meaningful alt text? . . oo
+marked as decorative? (Consider a caption instead)
+
+Links
+
+R dall colin ee 7 dail Sngnicione Line Tess Are URLs outside of LibreTexts labelled
+emoved all empty links? emoved all Suspicious Link Text? properly? (third party URL destination)
+
+Contrast
+
+Is text contrast 4.5:1 for text 18pt and Do graphical links/buttons have 3:1 contrast
+
+Is text contrast 3:1 for text over 18pt? .
+smaller? ratio?
+Text
+
+(cc) (#) 5.3.6.1 https ://chem.|libretexts .org/@go/page/483706
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Text
+Is all text larger than
+
+10pt? ize? i i
+Is ail text larger than ease" Keep line ai enact
+
+height at least 1.5 times following par.
+
+eC:
+Ze.
+
+Alter text size? Keep line Alter text size? Spacing _- Alter text size? Letter Alter text size? Word
+agraphs is Alterte is 0.12 times the Alterte is 0.16 times the
+)
+
+Spacing Iter text size? Letter Iter text size? Word
+ont size. nt size,
+
+height at least 1.5 times following paragraphsis spacing is 0.12 times the spacing is 0.16 times the
+
+10pt?
+Headings
+
+Alter text size? Word spacing is 0.16 times
+the font size.
+
+Forms
+
+Do form fields have a label?
+
+Tables
+
+Do tables have column and row headers? Are the tables labeled?
+
+Lists
+
+Are ordered lists properly labeled?
+
+Documents
+
+Does document link make sense and followed up with
+(FILETYPE)?
+
+Multimedia
+
+. . Can you navigate the video
+Does the video have captions? 7 6
+player controls?
+
+the font size. 2x the font size. font size. font size.
+
+There are no empty headings Heading Outline
+
+Can you navigate questions and answered radio buttons?
+
+No tables are embedded as images
+
+Are unordered lists properly labeled?
+
+DIV
+
+Is the document accessible?
+
+. . Does the video have audio
+
+If no transcript, does the audio - .
+. descriptions or a media
+
+have a transcript? oo
+alternative if necessary?
+
+Navigation DIV Sensory Characteristics Timing Computer Code
+
+Instructions provided for
+
+Inserting code for
+
+interactive content do not
+
+Can you use the All DIV boxes are
+keyboard to access all converted to SECTION
+content displayed? LANDSCAPE
+
+sound
+
+rely solely on shape,
+color, size, visual
+location, orientation, or
+
+review? Ensure that
+Time limits meet criteria characters and spaces are
+included as alt text for
+
+screenreaders.
+
+The compliance matrix can be synched to the books using the blue button on the far right
+
+# Accessibility Matix for Each LibreTexts Book
+
+https ://chem.libretexts .org/@go/page/483706
+
+
+
+--- Page Break ---
+
+Oibretexts:
+Accessibility Score: N/A
+
+Navigation Images Links [
+
+Can you use the For images not Is all alt text under Are URLs outside
+y 9 Removed all LibreTexts labelle
+
+keyboard to access Do all images have requiring alt text, is 150 characters? Removed all empty a . .
+. . . . . Suspicious Link properly? (third
+all content meaningful alt text? it marked as (Consider a caption links? Text?
+
+? 2
+displayed? decorative? instead) etinati n)
+
+TitlePage
+
+InfoPage
+
+Table of Contents
+
+Front Matter
+
+TitlePage
+
+InfoPage
+
+Table of Contents
+
+Preface
+
+This page titled 5.3.6: Accessibility Review is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+e 10.2.6: Accessibility Review by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483706

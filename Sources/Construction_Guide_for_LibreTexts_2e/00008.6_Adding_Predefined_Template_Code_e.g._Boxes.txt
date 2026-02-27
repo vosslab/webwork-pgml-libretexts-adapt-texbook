@@ -1,0 +1,122 @@
+Oibretexts:
+
+8.6: Adding Predefined Template Code (e.g., Boxes)
+
+Under Elements of the editing toolbar, there is an option for "Templates". These are specialized code snippets that are designed for adding standard code to your page. Some of these are available
+using the Boxes pull down at the right side of the editing bar.
+
+Adding Templates
+
+Insert template
+
+Templates
+
+CrossTransclude
+
+CrossTransclude
+
+Template:Adapt
+
+Template: AddAudio
+
+Template: AddAudioPlayer
+
+Template:AddFigureSingle Under Elements of the editing toolbar, there is an option for "Templates". These
+
+Template: AddHiddenText designed for adding standard code to your page.
+
+| Template:AddMultiFigureMultiCaption Some of these templates are for general use and other are more specific. The six BC
+_- . . around special text (see below). The Embed templates are for special HTMLS interac
+
+Template:AddMultiFigureSingleCaption interactive molecules. The other templates will be discussed in a different section. Fi
+
+Template: BoxDefinition to see what it does.
+
+Template:BoxEmphasis
+
+Template: BoxExample
+
+Template: BoxExercise
+
+Template: BoxInteractive
+
+Template:BoxNote
+
+Template: BoxObjectives
+
+Template: BoxQuery
+
+Template:BoxTheorem
+
+Template: BoxWarning
+
+Template:ChemCollective
+
+Template:Embed3Dmol
+
+Template:EmbedGLmol
+Template:EmbediCn3D
+Template:EmbedJSmol
+Template:PageIndex
+Template:QueryH5P
+Template:QueryIMath
+Template:QueryWebWork
+Template:Video Block
+
+Some of these templates are for general use and other are more specific. The six BOX templates add the text for a container around special text (see below). The Embed templates are for special
+HTMLS interactive code like Jupyer executable code or interactive molecules. The other templates will be discussed in a different section. Feel free to add any of them to a test page to see what it
+does.
+
+G Definition BOX
+
+The ideal gas law is easy to remember and apply in solving problems, as long as you get the proper values a
+
+¥Y Example BOX: 8.6.1
+
+Add text here.
+Solution
+
+Add text here.
+
+In the Example box the solution is always shown. In the Exercise box the reader has to click on the Answer to see it.
+
+? Exercise BOX: 8.6.1
+
+Add exercises text here.
+
+Answer
+
+Add texts here. Do not delete this text first.
+
+https ://chem.libretexts .org/@go/page/483723
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+X Note BOX
+
+The ideal gas law is easy to remember and apply in solving problems, as long as you get the proper values a
+
+e Explain the following laws within the Ideal Gas Law
+
+G Theorem BOX: 8.6.1
+
+The probabilities assigned to events by a distribution function on a sample space are given by.
+
+Proof
+Add proof here and it will automatically be hidden
+
+W& Caution BOX
+
+The ideal gas law is easy to remember and apply in solving problems, as long as you get the proper values a
+
+The colors are associated with code in the HTML for screen readers.
+
+This page titled 8.6: Adding Predefined Template Code (e.g., Boxes) is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+" 3.7: Adding Predefined Template Code (e.g., Boxes) by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/48372

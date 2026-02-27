@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MultipleChoiceRadio.pg</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>MultipleChoiceRadio.pg</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html">https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Multiple Choice with Radio Buttons</h1>
+				<p>Multiple choice template</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="MultipleChoiceRadio.pg">MultipleChoiceRadio.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a></li>
+					</ul>
+				</div>
+			<div class="col">
+				<h2>See Also</h2>
+				<ul>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoicePopup.html">
+Multiple Choice with Popup						</a>
+					</li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html">
+Multiple Choice with Checkbox						</a>
+					</li>
+					<li>
+						<a href="https://openwebwork.github.io/pg-docs/sample-problems/Misc/ManyMultipleChoice.html">
+Many Multiple Choice						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">DOCUMENT</span>();
+
+<span class="(c)b">loadMacros</span>(<span class="(c)e">'PGstandard.pl'</span>, <span class="(c)e">'PGML.pl'</span>, <span class="(c)e">'parserRadioButtons.pl'</span>, <span class="(c)e">'PGcourse.pl'</span>);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>The macro <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a>
+is used for radio button answers.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="$radio1 = RadioButtons(
+    [ [ 'Red', 'Blue', 'Green' ], 'None of these' ],
+    'Blue',    # correct answer
+);
+
+$radio2 = RadioButtons(
+    [ [ 'Red', 'Blue', 'Green' ], 'None of these' ],
+    2,         # correct answer as an index (starting at 0)
+    separator =&gt; $SPACE x 5
+);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)h">$radio1</span> = <span class="(c)b">RadioButtons</span>(
+    [ [ <span class="(c)e">'Red'</span>, <span class="(c)e">'Blue'</span>, <span class="(c)e">'Green'</span> ], <span class="(c)e">'None of these'</span> ],
+    <span class="(c)e">'Blue'</span>,    <span class="(c)o"># correct answer</span>
+);
+
+<span class="(c)h">$radio2</span> = <span class="(c)b">RadioButtons</span>(
+    [ [ <span class="(c)e">'Red'</span>, <span class="(c)e">'Blue'</span>, <span class="(c)e">'Green'</span> ], <span class="(c)e">'None of these'</span> ],
+    <span class="(c)d">2</span>,         <span class="(c)o"># correct answer as an index (starting at 0)</span>
+    <span class="(c)e">separator</span> =&gt; <span class="(c)l">$SPACE</span> x <span class="(c)d">5</span>
+);
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>Call <code>RadioButtons</code> to create a radio button answer
+object. The format is</p>
+<div class="sourceCode" id="constructor"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="constructor-1"><a href="#constructor-1" aria-hidden="true" tabindex="-1"></a>RadioButtons([choices, ...], correct, options);</span></code></pre></div>
+<p>For more details see <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserRadioButtons.html">parserRadioButtons.pl</a>.</p>
+<p>Setting the option <code>separator</code> to <code>$SPACE x 5</code>
+results in a horizontal list of radio buttons. Note that
+<code>$SPACE</code> should be used and not <code>&amp;nbsp;</code> so
+that this works in both html and hard copy.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+My favorite color is
+
+[_]{$radio1}
+
+The same question with horizontal options:
+
+My favorite color is [_]{$radio2}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">BEGIN_PGML</span>
+My favorite color is
+
+<span class="(c)c">[_]</span><span class="(c)n">{</span><span class="(c)h">$radio1</span><span class="(c)n">}</span>
+
+The same question with horizontal options:
+
+My favorite color is <span class="(c)c">[_]</span><span class="(c)n">{</span><span class="(c)h">$radio2</span><span class="(c)n">}</span>
+<span class="(c)b">END_PGML</span>
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+The correct answer to the first is [$radio1-&gt;correct_ans].
+
+The correct answer to the first is [$radio2-&gt;correct_ans].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll"><span class="(c)b">BEGIN_PGML_SOLUTION</span>
+The correct answer to the first is <span class="(c)n">[</span><span class="(c)h">$radio1</span>-&gt;<span class="(c)g">correct_ans</span><span class="(c)n">]</span>.
+
+The correct answer to the first is <span class="(c)n">[</span><span class="(c)h">$radio2</span>-&gt;<span class="(c)g">correct_ans</span><span class="(c)n">]</span>.
+<span class="(c)b">END_PGML_SOLUTION</span>
+
+<span class="(c)b">ENDDOCUMENT</span><span class="(c)o">();</span></pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						<p>The <code>correct_ans</code> method can be called to get the correct
+answer.</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

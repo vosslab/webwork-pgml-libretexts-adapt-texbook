@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Headings in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Headings in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/headings-pgml">https://commons.libretexts.org/insight/headings-pgml</a></div>
+	<div class="meta">Last updated at 03/31/2024 03:40 PM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/Headings_-_PGML</span></p>
+<div class="prose !max-w-full"><p>Heading are indicated by starting a line with hash marks (<code style="color: rgb(0, 0, 0); background-color: rgb(248, 249, 250);">#</code>). The number of hashes indicates the heading level. A top-level heading has one hash, the secondary headings have two, and so on. There are six levels of heading all together.</p><pre class="ql-syntax" spellcheck="false"> # Heading size 1 #
+ ## Heading size 2 ##
+ ### Heading size 3 ###
+ #### Heading size 4 ####
+ ##### Heading size 5 #####
+ ###### Heading size 6 ######
+</pre><p>If a heading has several lines in your PG file, they will be combined in the output (and will break according to the space available on screen).</p><pre class="ql-syntax" spellcheck="false"> ### Two separate lines ###
+ ### are combined ###
+</pre><p>If you want to force a line break in a heading, put two paces after the hashes where the break is to occur (they are marked as underscores in this example)</p><pre class="ql-syntax" spellcheck="false"> ### End with two spaces ###__
+ ### for two lines separately ###
+</pre><p>You can make a whole paragraph be a heading: just put the hashes at the beginning and ending of the paragraph.</p><pre class="ql-syntax" spellcheck="false"> ### A whole paragraph
+ can be a heading ###
+</pre><p>Actually, the trailing hashes are optional</p><pre class="ql-syntax" spellcheck="false"> ### The trailing hashes are optional.
+</pre><p>You can combine headings with indenting, centering, and other formatting:</p><pre class="ql-syntax" spellcheck="false"> &gt;&gt; ## centered heading ## &lt;&lt;
+ &gt;&gt; ## right-justified heading ##
+
+     ## indented heading ##
+
+ ## non-indented heading ##
+</pre></div>
+</body>
+</html>

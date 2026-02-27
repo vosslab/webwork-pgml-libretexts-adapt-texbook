@@ -1,0 +1,100 @@
+Oibretexts:
+
+11.6: Adding H5P (formative) Activities
+
+LibreTexts content can be enhanced with interactive HSP technology (https://h5p.org/). On this page we will discuss how this
+technology operates formatively (i.e., without a gradebook) within the LibreTexts platform. LibreText Adapt can be used to make
+H5P problems into summative activities. The H5P activities are stored on a dedicated Wordpress server, not on the Library servers.
+Embedding an activity into a LibreTexts page is a three-step process:
+
+Step 1: Create or locate the activity
+
+Browse the LibreStudio server (https://studio.libretexts.org) to see if there may already be an H5P activity that you can use. If your
+credentials do not allow logging into the server, consult the LibreTexts development team for access (info@libretexts.org).
+
+You can also upload the desired activity into the HSP LibreStudio server. There are many public domain H5P activities on the H5P
+project server and elsewhere that you may find useful and want to import into LibreStudio to use in a LibreText.
+
+And in the likely event you cannot find a problem that does exactly what you have in mind, you can create your own problem in
+LibreStudio! See the H5P project site (https://h5p.org/) for full instructions on this process, and look at example problems to get
+ideas.
+
+Step 2: Copy the ID Number of the desired activity
+
+Once you have created an H5P activity, look for the HSP ID number. Click on the activity and the following information should be
+displayed on the right. Note the H5P ID at the bottom of this list.
+
+H5P Type
+Multiple Choice
+
+Created On
+2021-05-23
+
+Last Updated
+2 weeks ago
+
+Shared in Library
+True
+
+Tags
+Vector Calculus
+
+H5P ID
+5
+
+Step 3: Insert ID Number into H5P Template on page
+The H5P template lets authors embed the H5P activity into a page (page > elements > template).
+
+¥ Template:Adapt x
+Template:AddAudio
+Template: AddFigureSingle
+Template: AddHiddenText
+Template: AddMultiFigureMultiCaption
+Template: AddMultiFigureSingleCaption
+Template:BoxDefinition
+Template:BoxExample
+Template:BoxExercise
+Template:Boxinteractive Cancel
+Template:BoxNote
+Template:BoxObjectives
+Template:BoxQuery
+Template:BoxTheorem
+Template:BoxWarning
+Template:ChemCollective
+Template:Embed3Dmol
+Template:EmbedGLmol
+Template:EmbediCn3D
+Template:EmbedJSmol
+Template:Pageindex
+Template:QueryiMath
+Tomplate:QueryWebWork
+
+Once the template is added to the page, all you have to do is change the ID number of the activity here to the one you located in
+Step 2 (in the place of 5 in below template).
+
+(cc) (#) 11.6.1 https ://chem.libretexts .org/@go/page/483766
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Query \(\PageIndex{1}\)
+
+- - DekiScript -
+
+Description: Direct Add of HSP Assessment from Server (i.e., bypass Query library)
+
+Enter DekiScript
+
+Save the page. An example activity is below:
+
+This page titled 11.6: Adding H5P (formative) Activities is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by
+
+Delmar Larsen.
+
+" 5.7: Adding H5P (formative) Activities by Delmar Larsen is licensed CC BY 1.3.
+
+cM)
+
+https ://chem.libretexts .org/@go/page/483766

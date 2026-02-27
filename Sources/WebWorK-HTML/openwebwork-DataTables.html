@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DataTables</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>DataTables</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/DataTables.html">https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/DataTables.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Data Table</h1>
+				<p>This shows how to present and format a table for data.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="DataTables.pg">DataTables.pg</a>
+</p>
+			</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">niceTables.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl','PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'niceTables.pl','PGcourse.pl');
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Preamble</b></p>
+						<p>This shows how to use the <code>DataTable</code> function in <code>niceTables.pl</code>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="# where the data goes in as an array ref of array refs.  The first row can
+@rows = (['\(x\)','\(y\)']);
+for $i (1..5) {
+  push(@rows,[$i, random(1,10) ]);
+}
+
+$tab1 = DataTable(~~@rows);
+
+$a = non_zero_random(-4,4);
+$f = Compute(&quot;x/(x-[$a])&quot;)-&gt;reduce;
+
+$tab2 = DataTable([
+  ['\(x\)','\(f(x)\)'],
+  [$a-2, ans_rule(10) ],
+  [$a-1, ans_rule(10) ],
+  [$a+1, ans_rule(10) ],
+  [$a+2, ans_rule(10) ]
+],
+align =&gt; '|r|l|',
+horizontalrules =&gt; 1
+);
+
+
+BEGIN_PGML
+Here's some data:
+
+[$tab1]*
+
+Fill out the following table for [``f(x)=[$f]``].
+
+[$tab2]*
+END_PGML
+
+for $i (-2,-1,1,2) {
+  ANS($f-&gt;eval(x=&gt;$a+$i)-&gt;cmp);
+}
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll"># where the data goes in as an array ref of array refs.  The first row can
+@rows = (['\(x\)','\(y\)']);
+for $i (1..5) {
+  push(@rows,[$i, random(1,10) ]);
+}
+
+$tab1 = DataTable(~~@rows);
+
+$a = non_zero_random(-4,4);
+$f = Compute("x/(x-[$a])")-&gt;reduce;
+
+$tab2 = DataTable([
+  ['\(x\)','\(f(x)\)'],
+  [$a-2, ans_rule(10) ],
+  [$a-1, ans_rule(10) ],
+  [$a+1, ans_rule(10) ],
+  [$a+2, ans_rule(10) ]
+],
+align =&gt; '|r|l|',
+horizontalrules =&gt; 1
+);
+
+
+BEGIN_PGML
+Here's some data:
+
+[$tab1]*
+
+Fill out the following table for [``f(x)=[$f]``].
+
+[$tab2]*
+END_PGML
+
+for $i (-2,-1,1,2) {
+  ANS($f-&gt;eval(x=&gt;$a+$i)-&gt;cmp);
+}
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Setup</b></p>
+						<p>We use the <code>DataTable</code> function from <code>niceTables.pl</code> to demonstrate some of it's features. A <code>DataTable</code> is meant to display data in a tabular format.</p>
+<p>The basic form of a <code>DataTable</code> is</p>
+<div class="sourceCode" id="datatable"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="datatable-1"><a href="#datatable-1" aria-hidden="true"></a><span class="dt">$table</span> = DataTable([</span>
+<span id="datatable-2"><a href="#datatable-2" aria-hidden="true"></a>   [row1],</span>
+<span id="datatable-3"><a href="#datatable-3" aria-hidden="true"></a>   [row2],</span>
+<span id="datatable-4"><a href="#datatable-4" aria-hidden="true"></a>   ...</span>
+<span id="datatable-5"><a href="#datatable-5" aria-hidden="true"></a>   [rowN]</span>
+<span id="datatable-6"><a href="#datatable-6" aria-hidden="true"></a> ],</span>
+<span id="datatable-7"><a href="#datatable-7" aria-hidden="true"></a> options);</span></code></pre></div>
+<p>(and is often) used for a header row. We will show some of the options here, but the full listing and explantion is in <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/niceTables.html">the niceTables.pl POD</a></p>
+<p>The first use is meant to show some tabular data and the data is filled in randomly and stored in the <code>@rows</code> array. Also, note that since a <code>DataTable</code> needs an array ref and typically in perl <code>\@rows</code> would be the arrayref, however, in a PG problem, to get a <code>\</code>, we use <code>~~</code></p>
+<p>The second table uses <code>ans_rule</code> for answer blanks. This example has rows hardcoded instead of in a loop.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

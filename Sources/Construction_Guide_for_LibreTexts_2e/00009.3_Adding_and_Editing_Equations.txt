@@ -1,0 +1,611 @@
+Oibretexts:
+
+9.3: Adding and Editing Equations
+
+Our adding equations video tutorial on YouTube:
+
+youtu.be/74bSIf-4Y 4A.
+Equations in LibreTexts are handled by the MathJax add-on (based on LaTeX). This page contains guidelines and references on how to use
+this system. It is fairly straight-forward for anyone who has ever worked with code (markup).
+Inline vs. Displaymode Equations
+To add an equation, authors have two choices: either (1) inline or (2) display. The difference is demonstrated here:
+
+An inline equation looks like this, E = mc", and is meant to be read with the paragraph. An equation that is presented in display mode looks
+like this
+
+E=me (9.3.1)
+with the equation taking up the entire line. Note that the displaystyle equation is automatically numbered.
+
+To invoke an inline equation add \( and \) around the LaTeX code (discussed below). To invoke the display mode add \| and \] around the
+LaTeX code. The code can be somewhat complicated and must be formulated properly or the MathJax add-on will not render the equation (or
+will do so improperly). Examples of MathJax code, including some useful templates, can be found at the bottom of this page.
+
+# Mathpix: The Tool you Can't Live Without
+
+MathJax is a little overwhelming at first but thankfully there is a tool that makes it super easy called MathPix Snip.
+
+e Download the tool from https://mathpix.com/ and install it on your computer
+
+e When you need to transfer an equation press ctrl+alt+m and select the equation that you want to copy.
+
+e Use the first line that doesn't have any environment coding and add the \( or \[ for inline or display mode environment manually.
+
+e Ifthe snipper got a few details wrong you can edit the code and check that it renders before copying it over
+
+e If it is a complicated equation zoom in on it using your browser before using the tool. If it still doesn't work consider snipping the
+equation in several parts.
+
+Intrapage Numbering and Referencing of Equations
+
+The MathJax system is ideal for referencing equations on a page. Equations in displaymode (i.e., used with
+(9.3.2)
+
+delimiters) are automatically numbered, inline equations (using delimiters) are not. If you want to reference a displayed equation you give it
+a label by writing \label{name} after the equation but before \]. For example, the following code
+
+\[- E =mc42 \label{Einstein} \] See Equation \ref{Einstein}
+
+renders as
+
+E=me (9.3.3)
+
+https ://chem.libretexts .org/@go/page/483736
+
+
+--- Page Break ---
+
+Oibretexts:
+
+See Equation 9.3.3
+
+If you do not want a display equation to be numbered you can use \nonumber after the equation (and drop the label text since that is
+unneeded.
+
+| \[- E =mc42 \nonumber\]
+
+renders as
+
+E=mc
+
+Interpage Numbering and Referencing of Equations
+Interpage referencing is a bit more complicated. The best option currently involves HTML rather than MathJax.
+
+e Source page: This is the page you want to link to. Once you edit the page, place your cursor at a place you wish to create a link. Then
+select Elements on the menu and choose the Anchor option. You can use it like you would \label in LaTeX/MathJax. It adds a little flag
+that is visible when in Edit mode.
+
+e Reference page: This is the page on which you wish to place a link to an anchor on another page. Go to this page and open the edit view.
+Highlight text you want to be a link. Go to Elements menu again and click Link (there is also a button on the blue WYSIWYG editor bar
+for this). Select the source page and at the bottom entry titled "Jump to anchor or section", you will see the text you used for the label on
+the source page. Save this link and save the page.
+
+If the equation shows up just under the floating blue bar, you can move the anchor to the paragraph before to make it display as desired (small
+issues until we get it fixed).
+
+When editing math pages
+
+e Besure to use the escape character \ in front of all trigonometric functions (sinz, cos z, tan x) natural logarithms (In x), etc. Then leave
+a space between the function and its argument unless there is a parentheses there. For example, \sin x or \sin(x) (rendering as sina and
+sin("), respectively). If you don't do this, the results may look like this: sina, cosa, \sinx, Inz, \lnx
+
+e Use the escape character \ in front of "lim" for limits.
+
+e If limits, integrals or sigma notation (sums) are to be used as part of inline mathematics, be sure to add \displaystyle as the first
+
+. sing
+commands of these inline math expressions. Here is what a limit should look like when rendered correctly: lim
+a0 2£
+
+, and incorrectly:
+
+. sing
+limz+0
+
+e Display mode mathematics will never need \displaystyle.
+
+¢ Do not use \displaystyle unless it is helpful for making one of the above mathematical notations render nicely.
+
+e To obtain larger fractions in an inline setting like - i instead of small ones like a use \dfrac instead of using \displaystyle with
+
+22
+\frac which would have the same effect, but is overkill unless the \displaystyle is needed for another reason like those listed above.
+
+e When using display mode mathematics between \| and \], consider whether the equation is an important result that may be referred to
+later in the text or not. By default display mode mathematics lines will be aut\nonumbered. If the equation is not a main result, it should
+typically not be numbered, so you will need to insert a \n\nonumber at the end of it but within the expression.
+
+¢ Do not use any extra commands, like \mathrm, in front of every instance of math in a page to try to get text to look a certain way. There
+should be a better way to get the desired effect.
+
+e When editing integrals, please use a spacing element before the differential. For example, \displaystyle \int x*2 \, dx.
+
+e en.wikibooks.org/wiki/LaTeX/Mathematics
+
+e This link www.codecogs.com/latex/eqneditor.php(external link) is an online WYSIWYG LaTeX editor that creates math expressions
+using templates. The LaTeX is automatically written and a preview is displayed. Just copy the code and paste it. Be sure to enclose
+the LaTeX in dollar signs ($).
+
+e en.wikibooks.org/wiki/LaTeX/Mathematics
+
+e https://www.cs.odu.edu/~zeil/cs390/l...math/demo.html
+
+e http://www.artofproblemsolving.com/W...LaTeX:Commands
+e http://www.onemathematicalcat.org/Ma.../TeXSyntax.htm
+e https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483736
+
+
+--- Page Break ---
+
+Oibretexts:
+
+DO NOT USE EXTERNAL SITES LIKE www.codecogs.com/latex TO RENDER THE EQUATION FOR YOU VIA PROVIDING
+AN IMAGE FILE. You can use them to build LaTex equations and then copy-paste the LaTex into your page.
+
+Table 1: Subscripts, superscripts, integrals
+
+Feature
+Superscript
+
+Subscript
+
+Grouping
+
+Combining sub & super
+
+Preceding and/or Additional sub & super
+
+Stacking
+
+Derivative (forced PNG)
+
+Derivative (f in italics may overlap primes in
+HTML)
+
+Derivative (wrong in HTML)
+Derivative (wrong in PNG)
+
+Derivative dots
+
+Underlines, overlines, vectors
+
+Arrows
+
+Overbraces
+
+Underbraces
+
+Sum
+
+Sum (force \displaystyle for inline
+use)
+
+Product
+
+Product (force \displaystyle for inline
+
+use)
+
+Coproduct
+
+cM)
+
+Syntax
+ah2
+a_2
+ah{2+2}
+a_{i,j}
+X_243
+\sideset {_142}{_344}\prod_a4b
+{}_142\!\Omega_344
+\overset {\alpha}{\omega}
+\underset{\alpha}{\omega}
+
+\overset{\alpha}
+{\underset{\gamma}{\omega}}
+
+\stackrel{\alpha}{\omega}
+
+x', y, f', FN!
+
+1
+
+x t Y, PM, F
+
+x\prime, y4{\prime\prime}
+x\prime, y\prime\prime
+\dot{x}, \ddot{x}
+\hat a \ \bar b \ \vec c
+
+\overrightarrow{a b} \
+\overleftarrowf{c d} \
+\widehat{d e f}
+
+\overline{g h i} \
+\underline{j k 1}
+
+A \xleftarrow{n+\mu-1} B
+\xrightarrow[T]{n\pm i-1} C
+
+\overbrace{ 1+2+\cdots+100
+A {£5050}
+
+\underbrace{ atb+\cdots+z
+
+$_{26}
+\sum_{k=1}4N kA2
+
+\displaystyle \sum_{k=1}4N kA2
+
+\prod_{i=1}4N x_i
+
+\displaystyle \prod_{i=1}/N
+x_i
+
+\coprod_{i=1}4N x_i
+
+How it looks rendered
+
+a
+
+11134
+
+REe ee
+
+Ee
+
+x,y", f'; f"
+z', y"
+
+zl, yl
+
+8:
+
+a,
+
+b
+
+Q>
+OL
+
+se
+ab cd def
+
+ghi jkl
+
+ntp-1 nti-1
+At- B--,>
+T
+
+5050
+FS
+1+2+---+100
+
+a+b+---+z
+eee
+26
+
+Dea
+
+https ://chem.libretexts .org/@go/page/483736
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Coproduct (force \displaystyle for
+inline use)
+
+Limit
+Limit (force \displaystyle for inline
+use)
+
+Integral
+
+Integral (force \displaystyle for inline
+use)
+
+Double integral
+
+Triple integral
+Quadruple integral
+
+Path integral
+Intersections
+
+Unions
+
+Cancelling factors
+
+Feature
+Fractions
+
+Small Fractions
+
+Large (normal) Fractions
+
+Large (nested) Fractions
+
+Binomial coefficients
+
+Small Binomial coefficients
+Large (normal) Binomial coefficients
+
+Matrices
+
+cM)
+
+\displaystyle \coprod_{i=1}4N
+x_i
+
+\lim_{n \to \infty}x_n
+\displaystyle \lim_{n \to
+\infty}x_n
+
+\int\limits_{-N}4{N} eAx\, dx
+
+\displaytstyle \int\limits_{-
+N}AEN} eAX\, AX
+\iint\limits_{D} \, dx\,dy
+
+\iiint\limits_{E} \,
+dx\, dy\, dz
+
+\iiiint\limits_{F} \,
+dx\,dy\,dz\,dt
+
+\oint\limits_{C} x43\, dx +
+4yA2\, dy
+
+\bigcap_14{n} p
+\bigcup_14{k} p
+
+\dfrac{\cancel{(x-3)}(x+5)}
+{\cancel{(x-3)}
+
+Table 2: Fractions, matrices, multilines
+
+Syntax
+\frac{2}{4}=0.5
+\tfrac{2}{4} = 0.5
+
+\dfrac{2}{4} = 0.5
+
+\cfrac{2}{c + \cfrac{2}{d +
+\cfrac{2}{4}}} =a
+
+\binom{n}{k}
+
+\tbinom{n}{k}
+
+\dbinom{n}{k}
+
+\begin{matrix}
+x &y \\
+z&v
+
+\end{matrix}
+
+N
+Ie
+i=1
+
+lim, 500 fn
+
+lim x,
+noo
+
+N
+f er dz
+-N
+
+N
+
+fea
+-N
+Jf dx dy
+D
+fff dx dydz
+EB
+Sf ff da dy dz dt
+F
+f x? dx + 4y dy
+c
+MP
+UrP
+(e>ar(e+5)
+(tsar
+
+How it looks rendered
+
+2 _
+4 = 0.5
+2 _
+4 = 0.5
+2 =0.5
+77°
+2
+=a
+2
+c+ 9
+d+-
+4
+
+https ://chem.libretexts .org/@go/page/483736
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+\begin{vmatrix}
+x &y \\
+z&v
+
+\end{vmatrix}
+
+\begin{Vmatrix}
+x &y \\
+z&v
+
+\end{vmatrix}
+
+Zz Vv
+
+\begin{bmatrix}
+0) & \cdots & 0 \\ [9 "0
+\vdots & \ddots & \vdots \\ |: -.. :
+) & \cdots & 0 ) oo @
+
+\end{bmatrix}
+
+\begin{Bmatrix}
+x&y \\ {2 4}
+ZzZ&v Zz v
+
+\end{Bmatrix}
+
+\begin{pmatrix}
+x&@y \\ (= ")
+ZzZ&v z uv
+
+\end{pmatrix}
+
+\bigl( \begin{smallmatrix}
+a&b\\ c&d (25)
+\end{smallmatrix} \bigr)
+
+F(n) =
+\begin{cases} p2 Con
+rr . . _ jn/2, ifn is even
+Case distinctions n/2, & Nalaesahr }n\mbox{ i gin) = {0 diica fea eal
+3n+1, & \mbox{if }n\mbox{ i
+\end{cases}
+
+Multiline equations (use * for n\nonumber) \begin{align*}
+
+f(x) & = (atb)A2 \\[4pt] f(z) = (a+b)
+[4pt] or [5pt], etc., are used to space between & = ad2+2ab+bA2 = a2 +2ab+P2
+lines \end{align*}
+
+https ://chem.libretexts .org/@go/page/483736
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Multiline equations with explanations
+
+Multiline equations (must define number of colums
+
+used ({Icr}) (should not be used unless needed)
+
+Multiline equations (more)
+
+Breaking up a long expression so that it wraps
+when necessary
+
+Simultaneous equations
+
+Long Division
+
+cM)
+
+\begin{align*}
+
+F(x) & (atb)*2 & &
+\text{Original binomial squa
+\\[5pt]
+
+&= aN2+2abt+tb*2 & &\text{Expa
+\end{align*}
+
+\begin{array}{1cl}
+z &=&a \\
+F(X,y,Z) &=&x+ytz
+\end{array}
+
+\begin{array}{1cr}
+z &=&a \\
+F(X,y,Z) &=&x+ytz
+\end{array}
+
+<math>f(x) \,\!</math>
+<math>= \sum_{n=0}4\infty a_n
+<math>= a_Q+a_1x+a_2x42+\cdot
+
+\begin{cases}
+3x + 5y + zN\\
+7X - 2y + 4z \\
+-6xX + 3y + 22
+\end{cases}
+
+\require{enclose}
+\begin{array}{r}x+\phantom{0}
+x+5\enclosef{longdiv}{x%2+\pha
+\underline{{\color {red} -}x2+
+4x+20\hspace{.5em}\\[-3pt]
+\underline{{\color {red} -}4x+(
+O\hspace{.33em}\end{array}
+
+f(z) = (a+b)? Original binomial sx
+=a? +2ab+? Expand.
+
+z = a
+
+f(@,y,2) = @t+yt2
+
+z = a
+
+f(t,y,2) = @t+ytz2
+
+f(@)= Ory Qn@" = a9 + ayae+ ann? +---
+
+3x + 5y+ z
+Tx - 2y+4z
+
+-6x + 3y + 2z
+
+z+ 4
+a+5)e2+ 92+20
+-a? + (-5a)
+4x + 20
+-4a + (-20)
+0
+
+https ://chem.libretexts .org/@go/page/483736
+
+
+--- Page Break ---
+
+Oibretexts:
+
+{\begin{farray}{c}-2\\ \\ \\
+\end{array}}
+{\begin{align*}&\\ [Opt]
+&{\beginfarray}{r|}\\[Opt]
+\\[Opt] \end{array}}\\[1pt] -2 /4 10 -6 -20
+Synthetic Division & \\[2pt]& \end{align*}}\!\! -8 -4 20
+{\begin{array}{rrrr} 4 2 -10 0
+4&10 & -6 & -20\\
+& -8 & -4 & 20 \\
+\hline 4 & 2& -10 & 0
+\end{array}}
+
+Chemistry Package
+The Libretexts libraries have also installed the mhchem, a tool for writing beautiful chemical equations easily. The syntax for this powerful
+add-on can be found here: https://mhchem.github.io/MathJax-mhchem/
+
+Contributors and Attributions
+e o SklogWiki
+
+This page titled 9.3: Adding and Editing Equations is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+" 4.5: Adding and Editing Equations by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483736

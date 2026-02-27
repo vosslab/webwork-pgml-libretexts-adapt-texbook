@@ -1,0 +1,23 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+7: Remixing
+
+The OER Remixer allows rapid assembly of customized Remixes from existing sources on our comprehensive and ever-growing
+libraries. This Remixer Tutorial is a detailed explanation of the Remixer's interface and a walkthrough of how to do basic tasks
+with the OER Remixer, as well as videos. Your Remixing Map is stored automatically on your computer as you build, so you do
+not have to complete your Remix in one setting. The Remixer works best on Chrome browsers running on W10.
+
+Before using the OER Remixer, it is important to construct a Remixing Map as described in Section 3.2. The gist of the map is to
+identify the content in the libraries that will map into the organization of the new remix . This requires faculty/instructional
+designers to peruse the Bookshelves of Source texts and of other Course Remixes to identify desired content. Once remixed, these
+pages can be then edited at the sub-page level (e.g., sub-sections, paragraph, pages etc). The Remixing Map reflects only the initial
+organization of a custom remix. Notice the customized organization; there is no limit other than imagination and the size/makeup
+of the LibreTexts libraries. It is often necessary to make placeholder pages in the Remixer if a gap exists in the libraries. New
+custom content can be added to these pages once the text is created.
+
+7.1: How to Make a LibreTexts Remix
+7.2: Copy-Transcluded and Copy-Forked Remixes
+
+This page titled 7: Remixing is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+

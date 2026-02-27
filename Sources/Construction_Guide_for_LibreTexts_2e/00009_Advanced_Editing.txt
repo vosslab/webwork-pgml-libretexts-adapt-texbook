@@ -1,0 +1,16 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+9: Advanced Editing
+
+9.1: Transcluding (Reusing) a Page
+9.2: Forking a Transcluded (Reused) Page
+9.3: Adding and Editing Equations
+9.3.1: Equation Formatting Conventions
+9.4: Adding Alt-Texts
+9.5: Front and Back Matter
+9.6: Compiling, Batching, and the Download Center
+9.7: Accessibility Checker in the Editor
+
+This page titled 9: Advanced Editing is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+

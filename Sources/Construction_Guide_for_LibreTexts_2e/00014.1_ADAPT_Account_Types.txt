@@ -1,0 +1,281 @@
+Oibretexts:
+
+14.1: ADAPT Account Types
+
+Adapt currently had three account types: (1) instructors, (2) graders, and (3) students. Below outlines how these accounts are
+created.
+
+Instructor Accounts
+
+Main Features:
+
+e Make courses and assignments
+
+e Add assessments to assignments
+
+e Set and edit course preferences
+
+e Grade assignments
+
+e Add Graders and give access to assignments
+
+How to access: Instructor account access code. Contact the LibreTexts development team for access (info@libretexts.org).
+
+# Creating Instructor Account
+
+1. Go to https://adapt.libretexts.org/
+
+2. Click "Register" in the top right corner
+
+3. Select "Instructor" from the drop-down menu
+
+4. Fill out your name, email, your unique access code, create password and choose your time zone from the drop-down menu
+Note: Please contact Delmar Larsen to obtain your instructor account access code.
+
+5. Click "Submit"
+
+Grader Accounts
+
+Grader accounts are designed to facilitate streamlined open-ended grading. These accounts are designed to handle the grading of
+
+questions that autograding technologies are poorly crafted to address and require human review. Main features of this account is the
+abiility to
+
+e grade assignments they are given access to
+e provide students with feedback
+e Answer students questions when contacted via ADAPT
+
+Graders cannot make or edit assignments. Only instructor accounts have that ability.
+
+How to access: Direct invitation from the instructor via ADAPT
+
+# Creating Grader Accounts
+
+Instructors Instructions
+
+1. Open Course Preferences
+
+My Courses
+
+Course Shown Start Date End Date Actions
+Chem 2C Lab: General Chemistry III Import [@ No } March 29, 2021 June 19, 2021 gos
+Chem 2C: General Chemistry Ill Import [@ No} March 29, 2021 June 19, 2021 ROM]
+Chem1300 Yes @ January 19, 2021 May 12, 2021 Bou
+
+i Propert
+General Chemistry Yes @ January 19, 2021 May 11, 2021 =a w
+
+Figure 14.1.1: Use the gear icon to access Course Properties
+
+2. Select "Graders" in the menu on the left
+3. Click "Invite Grader"
+
+https ://chem.libretexts .org/@go/page/483784
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Course Properties Graders
+
+General Information
+
+Ir Grader
+Sections
+Name Email Section(s) Actions
+
+Grader Permissions Liliane (grader) Poirot liliane.poirot@gmail.com Main uw
+
+Students
+Assignment Group Weights
+Letter Grades
+
+Gradebook
+
+Figure 14.1.2: Select "Graders" in the menu on the left and then click "Invite Grader"
+
+4. Enter Grader's email address
+5. Choose sections to give Grader access to or click "select all" to give access to all sections
+6. Click "Submit". Invited Grader will receive an email with the access code to join.
+
+Graders Instructions
+
+1. Open your invitation sent via email and copy access code
+
+Q, ~ OB +" i
+e--
+
+¢ 8 @8 82 O08 G&G BB B : + Boomerang GF 30
+ADAPT
+
+Oibrefexts-
+
+Invitation to Grade
+
+Bob Belford has just invited you to be a grader for Chem1300 - Main
+
+Please sign up below by using the access codq@a2f?.
+
+Note: if you already have an account with us, then you can just Log In and then "Add
+
+Course"
+SIGN UP
+
+Figure 14.1.3: Copy the access code from the email
+
+2. Go to https://adapt.libretexts.org
+
+3. Click "Register" in the top right corner
+
+4. Select "Grader" from the drop-down menu
+Note: if you already have a student or instructor account you will need to make a separate account to be a grader using
+another email
+
+5. Fill out your information to make your account
+
+6. After your account is created you will be brought to My Courses page
+
+7. Click "Add Course"
+
+My Courses
+Course Sections Start Date End Date Actions
+Chem1300 Main January 19, 2021 May 12, 2021 B
+General Chemistry Main January 19, 2021 May 11, 2021 =
+
+Figure 14.1.4: Click "Add Course" and paste the access code
+
+14.1.2 https ://chem.libretexts .org/@go/page/483784
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+8. Paste the Access Code you received via email
+9. Click Submit
+
+Grader Permissions
+
+After the grader has made their account and registered, you can set permissions for which assignments they can access.
+Under Course Properties select "Grader Permissions". You can give grading access to individual assignments and graders, or you
+can select "give all graders access" to give all graders access to all assignments
+
+Course Properties Grader Permissions
+
+General Information
+At the course level, you can give all graders access to all assignments or you can remove grader access to all
+
+Sections assignments.
+
+Cracers Assignment Name Can Access
+
+Grader Permissions
+
+test Liliane (grader) Poirot
+
+Students
+
+Assignment Group Weights
+
+2. Audio Test Liliane (grader) Poirot
+Letter Grades
+Gradebook
+Clicker Liliane (grader) Poirot
+New Assignment Liliane (grader) Poirot
+
+Remove all access
+
+Figure 14.1.5: Use "Grader Permissions" to select which grader will have access to which assignments or give all graders access to
+all assignments
+
+Student Account
+Main Features:
+
+e Join Courses
+
+e View Assignments
+
+e Submit Answers
+
+e View grader's feedback
+e Contact Grader
+
+How to access: Access code distrbiuted the instructor.
+
+*¥ Creating Student Accounts
+
+Instructors Instructions
+
+1. Open Course Preferences
+
+My Courses
+Course Shown (7 Start Date © End Date © Actions
+Chem 2C Lab: General Chemistry Ill Import (@ No } March 29, 2021 June 19, 2021 goog
+Chem 2C: General Chemistry III Import [@ No } March 29, 2021 June 19, 2021 Bou
+Chem1300 January 19, 2021 May 12, 2021 ROM
+General Chemistry Yes © January 19, 2021 May 11, 2021 = 7
+
+Figure 14.1.6: Use the gear icon to access Course Properties
+
+2. Select "Sections" in the menu on the left
+
+https ://chem.libretexts .org/@go/page/483784
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+3. Copy access code.
+Note: each section will have a different access code
+
+Course Properties Sections
+
+General Information
+
+Section Access Code Actions
+Sections
+
+Graders Main 71f54fbafb34 SBD
+Grader Permissions
+
+Add Section
+Students
+
+Figure 14.1.7: Copy the access code
+
+4. Give this access code to the students
+Students Instructions
+
+1. Make sure you have an access code from your instructor. Each course and each section will have a different access code.
+2. Go to https://adapt.libretexts.org
+
+3. Click Register in the top right corner
+
+4. Select "Student" from the drop-down menu
+
+5. Fill out your information to make your account
+
+6. After your account is created you will be brought to My Courses page.
+
+7. Click "Enroll in Course"
+
+My Courses
+
+Enroll In Course
+
+Either you are currently not enrolled in any courses or the only courses for which you are enrolled are currently unpublished.
+
+Figure 14.1.8: Click "Enroll in Course" and paste the access code you received from your instructor
+
+8. Paste the Access Code your instructor has provided
+9. Click "Submit"
+
+This page titled 14.1: ADAPT Account Types is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+e 9.1: ADAPT Account Types by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 14.1.4 https ://chem.libretexts .org/@go/page/483784

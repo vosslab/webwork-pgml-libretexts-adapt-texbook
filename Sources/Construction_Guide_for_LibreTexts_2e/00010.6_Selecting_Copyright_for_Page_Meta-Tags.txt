@@ -1,0 +1,147 @@
+Oibretexts:
+
+10.6: Selecting Copyright for Page (Meta-Tags)
+
+Each page should be marked with a copyright. This can be selected via the "Licensing" meta-tag in the collapsible "Page setting"
+panel on each page (see below).
+
+25 Contents| fp Home " [ff CampusCourses " [jf Remixer University " [f\ ConstructionGuide " a 2: Basic Editing
+
+- Page settings C2)
+Summary:
+Add page summary
+Article type: Stage: Author: Embed Hypothes.is?:
+Topic v (not set) Vv (not set) v not set) v
+Embebbed CalcPlot3D?: Embebbed Vlab?: Embed GLmol: Embed JSmol:
+(not set) v (not set) v (not set) v not set) v
+Embed 3Dmol: Embed Jupyter: Show TOC: hidetop:
+(not set) v (not set) v not set) Vv not set Vv
+Cover Page: License: Transcluded: Page Type:
+(not set) v (not set) v not set) v not set v
+(not set)
+Tags: Public Domain
+ca cc BY
++ Add new tag here CC BY-SA
+CC BY-NC-SA
+This page has no custom tags. CC BY-ND
+CC BY-NC-ND
+GNU GPL
+2.9: Selecting Copyright fa ai rignts Reserved
+oo -] CC BY-NC
+Last updated: May 22, 2019, 8:58 AM by admin | GNU FDL 4 2.8: Transcluding (Reusing) a Page | 3: Advanced Editing "
+
+Figure 10.6.1: Full page settings for Chemistry library. Each library has a different set of meta-tags. The licensing options for pages
+are selected via a pull down menu.
+
+Selecting the appropriate license requires more discussion about the nature of the license.
+
+Creative Commons Licensing
+
+The Creative Commons licenses are the most ubiquitous licensing in OER and grant "baseline rights", such as the right to distribute
+the copyrighted work worldwide for non-commercial purposes, and without modification. The details of each of these licenses
+depend on the version, and comprises a selection out of four conditions shown below.
+
+(cc) (#) 10.6.1 https ://chem.libretexts .org/@go/page/483725
+
+
+--- Page Break ---
+
+Oibretexts:
+
+i ©@
+©®
+OOO
+©OS
+OOO
+©OO©
+©OSO
+
+Gh
+
+Figure 10.6.2: Creative commons license spectrum between public domain (top) and all rights reserved (bottom). Left side
+indicates the use-cases allowed, right side the license components. (CC BY 4.0; Shaddim; original CC license symbols by Creative
+Commons).
+
+©
+
+g
+3
+
+© ©®
+
+rm
+=
+8
+a
+
+)
+
+®
+
+©
+
+nm
+Li
+g
+s
+
+*# Other Licensing Options
+
+Other licensing is possible including the GNU General Public License (GNU GPL) and the GNU Free Documentation License
+(GNU FPL). These are less common licensing in OER.
+
+CC Licensing
+Creative commons licenses are built in the following way.
+
+First use CC - to indicate that the material is covered by a Creative Commons copyright, then use one or more of the following to
+indicate further restrictions
+
+CC- 0 means that the material is public domain and there are no conditions
+BY means that the author much be acknowledged, if this is the only condition then the copyright would be CC-BY
+
+SA means that if the work is shared the conditions must be the same as the original. One could have CC-SA. CC-BY-SA is a
+common license
+
+NC meant that only non-commercial use of the work is permitted.
+
+ND means thar no changes can be made in the material.
+
+Cannot ARBITRARILY Mix and Match Content from Different Licensing
+
+Rights in an adaptation can be expressed by a CC license that is compatible with the status or licensing of the original work or
+works on which the adaptation is based.
+
+License compatibility chart for combining or mixing two CC licensed works
+
+oe
+Ox: [OMOMowes ops oes
+
+UBLIC Yes Yes Yes Yes No
+OMAIN
+
+https ://chem.libretexts .org/@go/page/483725
+
+
+--- Page Break ---
+
+Oibretexts:
+'Yes 'Yes 'Yes 'Yes No
+BY
+
+@) ©) Yes Yes Yes No No
+BY SA
+OS®
+BY NC
+Yes Yes No Yes No
+
+% NO-Derivative content
+
+Avoid adding any content into the Libretexts that has a ND license on it. These do not play well with the community remixing
+aspect of the LibreTexts project. There are a few texts with this annoying license on the platform, but not many.
+
+This page titled 10.6: Selecting Copyright for Page (Meta-Tags) is shared under a CC BY 1.3 license and was authored, remixed, and/or curated
+by Delmar Larsen.
+
+e 3.9: Selecting Copyright for Page (Meta-Tags) by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 10.6.3 https ://chem.libretexts .org/@go/page/483725

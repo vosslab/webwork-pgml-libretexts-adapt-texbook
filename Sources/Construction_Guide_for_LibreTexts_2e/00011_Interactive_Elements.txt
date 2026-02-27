@@ -1,0 +1,44 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+11: Interactive Elements
+
+The textbook of the future will be more than traditional textbooks of the past. The LibreText platform is designed to operate with
+this in mind with multiple interactive technologies available for integration to campus texts.
+11.1: Interactive Figures
+11.2: Jupyter Notebooks (Executable Programming Code and Figures)
+11.2.1: How to Incorporate Data Files in Your Code Blocks- For C++
+11.2.2: How to Incorporate Data Files in Your Code Blocks- For Julia
+11.2.3: How to Incorporate Data Files in Your Code Blocks- For Octave
+11.2.4: How to Incorporate Data Files in Your Code Blocks- For Python
+11.2.5: How to Incorporate Data Files in Your Code Blocks- For R
+11.2.6: How to Incorporate Data Files in Your Code Blocks- For SageMath
+11.2.7: Installing custom packages
+11.2.7.1: Documentation of Supported Kernels
+11.2.8: Using ipywidgets for Interactivity
+11.2.8.1: Enabling and Using Interactive Matplotlib Features
+
+11.2.8.2: Using ipyleaflet for Interactive Mapping
+
+11.2.8.3: Using ipyvolume for 3D plotting
+
+11.2.8.4: Using nglview to view molecular structures and trajectories
+11.2.8.5: Using pythreejs to generate and view three-dimensional models
+11.2.8.6: Using bqplot to make interactive plots
+
+11.2.8.7: Using IPyCytoscape to visualize graphs
+
+11.3: Interactive Molecules and Proteins - Direct Embedding
+11.4: Interactive Molecule and Protein - Molecule Generator
+11.5: Interactive Molecule and Protein - Reference Options
+11.6: Adding H5P (formative) Activities
+
+11.7: HSP
+
+11.8: Creating Dynamic Figures with CalcPlot3D
+
+11.9: Adding Geogebra Explorations to LibreTexts Pages
+11.10: Adding WeBWork Problems to LibreTexts
+
+This page titled 11: Interactive Elements is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+

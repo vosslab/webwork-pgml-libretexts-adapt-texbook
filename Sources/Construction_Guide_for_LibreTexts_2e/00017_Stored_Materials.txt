@@ -1,0 +1,635 @@
+Oibretexts:
+
+17: Stored Materials
+
+How to Login to a Library
+
+Sometimes you may need to login through a library. It you are in a library and the top line is gray you are not logged in. This will take you to the Login page
+
+4 S 1 tte Reader ode
+
+CHEMISTRY
+
+@ = Q How can we help you? nt Sign in
+
+Contents
+
+Figure 17.1: Login by clicking on the Sign in symbol
+
+After you login the gray bar will turn black. Move the cursor to your userID on the far right hand side of the black bar and you will see some options. My contributions provides a list of all pages you
+have edited. My preferences allows you to see and change your account information. My subscriptions provides a list of pages you are monitoring for changes. You can navigate to a book, chapter or
+pages you want to view using the tab at the left of the page at the top of the blue bar.
+
+Gj LibreTexts " Enter Reader Mode
+
+HUMANITIES
+
+Contents
+
+4B
+N Site tools
+
+2= My contributions
+
+Welcome to the Humanities Library. This Living Library is a principal hub of the LibreTexts project, which is a multi-institutional collab
+develop the next generation of open-access texts to improve postsecondary education at all levels of higher learning. The LibreTexts
+collaborative where an Open Access textbook environment is under constant revision by students, faculty, and outside experts to sup
+paper-based books.
+
+My preferences
+"@ My subscriptions
+
+& Sign out
+
+>
+i=
+a
+oO
+wT
+oO
+oD
+a §
+
+# BEST JUST SAVE
+
+Any references to templates and article type tags at the top of the page (such as
+
+"Tags recommended by the template") determine how the page is stored on the site. If you see these lines do not remove them.
+
+Creating a New Chapter
+
+1. On the black toolbar, click New.
+2. Select the following page default classifications:
+
+o Chapter
+3. Click the Create button.
+
+The Editor will create a new chapter in your book.
+
+Title Your Chapter
+LibreTexts has a uniform title format that that should be used unless it is impossible. Each chapter should be formatted like XX: Title
+
+e XX is the chapter number
+e title is the page title
+
+This approach preserves curation and remixing ability of the pages as well as automatic equations/figure/table numbering that work off of the title of the page.
+
+1. Title your Chapter as 1: First Chapter for now.
+2. You can add text in the box explaining the purpose of your book now or later.
+3. Click Save.
+
+The system will now invite you to build out a guide. Guides are the way that you and other users navigate through the system. Click on the tab at the left hand side with a "+" on it to see the choices
+for the guides. Select Article Directory and then click on the "add new tab" button. This creates a new guide (with nothing in it).
+
+Creating a New Page
+
+Add new page x
+
+an
+
+. On the black toolbar from the guide you just created, click New.
+
+2. Select the Page as the default classification.
+. 3. Enter the Title using the LibreTexts form as
+Section/Page a 6 '
+This is a subcategory within a guide, similar to a chapter of a book. XX.YY: Title; in this case 1.0: First Page.
+Chow all 7 available templates 4. Click Save
+5. On the black bar click Edit
+6. You can now start entering text or copy and paste some text of your own.
+@ Learn more about adding new pages Cancel
+7. When done, click Save
+
+https ://chem.libretexts .org/@go/page/48395.
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+You should see your first page of the chapter. You can continue editing by clicking Edit or create the next page.
+
+Editing a Page
+The Mindtouch platform LibreTexts uses has a modified CKE editor from CKSource that allows for construction without having to build/edit raw (HTML) code. The editor is WYSIWYG that
+
+automatically creates HTML from visual authoring. The editor displays when you create a new page or edit a page. It is designed to bring common word processor features directly to web pages,
+simplifying content creation.
+
+1. After saving the page on the MindTouch toolbar, select Edit.
+
+2. Edit the content as necessary. See a complete list of editor tools.
+
+3. In the Edit summary field at the bottom of the page, leave change notes for other editors or yourself (optional). Edit summaries can be viewed in the page revision history.
+4. Click Save to save the changes you made.
+
+¥ AUTOMATIC SAVING & WORD COUNTS
+
+e Automatic saving - By default, the LibreTexts libraries autosave pages every 25 seconds in case your browser crashes or computer restarts so that you can return to the page and pick up
+where you left off.
+¢ Word count - A word and character count is displayed in the upper right corner of the editor UI.
+
+The Editor
+
+The Editor has been configured for most of the needs contributors require. The layout is below; please refrain from using the advanced features in red until you are familiar with the Mindtouch
+structure. The Toolbar is the section located at the top of the editor window. It contains menu buttons that give you access to various functions of CKEditor. All buttons are grouped according to their
+function and include both simple operations (like basic text styling or formatting) and more advanced features (like inserting media or forms via a dialog window).
+
+Toggle between
+
+"visual"
+Justification (alignment) visual" mode
+
+" "
+(USE FULL MOST TIMES) and "HTML
+Text Color (do not use) source.
+Pull Down Menus with
+ighli . Add Table
+additional tools dome oe Indentation
+
+io nok use| (do not use) Find &
+
+i it ) Replace
+
+Edt View Format Style Elements Help
+
+Bi save X Cancet Heading |B JY A- O- | TIE =-|E- |? BB |\Q </> HTML,
+
+Save Cancel Headings Erase all Hyperlink to a Add |
+nc : image
+Page Editing Formatting Number Bulleted different page (slow way - just drag
+i :
+Undo Bold List and drop)
+
+Italicize
+Redo
+
+Underline (do not use)
+
+% DONO HARM (OR ILLEGAL Stuff)
+
+You are responsible for content that you provide, including but not limited to photos, profiles information, messages, search results, edits, etc. that you upload, publish or display on or through
+LibreTexts, or transmit to or share with others. You may not submit content to LibreTexts that you did not create or that you do not have permission to submit. You understand and agree that
+others may, but are not obligated to, edit, delete or remove (without notice) any content from LibreTexts, for any reason or no reason.
+
+Adding Figures the Easy Way - Drag and Drop
+
+e "Save" or "export" the figures into jpg, png, gif or some other graphics file depending on the program you are using to make the image (JPG and PNG are preferred).
+e Drag and drop the image from your desktop to your page (while editing).
+
+# Additional factors to pay attention to regarding figures
+
+" NO BMP figures are allowed to be imported. Use PNG, JPG, or GIF figures instead.
+
+e Please CROP your figures to remove superfluous white space that makes reading your module awkward. The Microsoft Office Picture Editor or Paint will crop images and is free on MS
+operating systems.
+
+e All figures constructed for this project must have the original non-image files used uploaded to the LibreTexts, preferable in the module itself. DO NOT HOTLINK images.
+
+Formatting Figures
+
+Double click on image (in edit mode) to open settings and make sure settings are set right.
+To center justify figure, click on the right side of the image (not the figure) and you can use the center
+
+justification for text off the normal editing toolbar.
+
+Double check that image URL starts like this. if not the image has not
+been properly copied over and is still hosted on original server.
+
+Caneel
+
+Adding Captions
+
+To add a caption add a line under the figure formatted as
+
+| Figure \(\PageIndex{i}\): Captiontext
+
+where i is the number of the figure on the page. This automatically formats the caption into the caption style you see on the figures on this page. Unfortunately, if you add another figure that requires
+renumbering the figures after it, this still has to be done manually.
+
+https ://chem.libretexts .org/@go/page/483952
+
+
+--- Page Break ---
+
+Oibretexts:
+
+# Figure captions Format
+
+The figure label should be formatted as shown for the figure above:
+
+¢ Center justified
+¢ "Figure" in bold followed by numbering with a page index command and a colon like this: Figure \(\PageIndex{1}\):
+e Manually enter the figure number in the \Pageindex command, "1" for the first figure of the page, "2" for the second, etc.
+
+Alt-Text for Accessibility
+
+Each Figure and Table has a simple option to add alt-texts. Just double right click on the image to get the figure setting and select image properties from the menu that appears and you can add alt-test
+into the entry. See section on Alt-texts for more details.
+
+Hyperlinking
+To ensure effective coupling of pages within the LibreTexts, content on pages can be "hyperlinked" to other pages. This is simple:
+
+e Mark the word you want to be the hyperlink, then click the hyperlink button with the "chain link" icon.
+
+¢ If you want to link to an outside page place the address in the "link to" box and click "update link".
+
+e If you want to link to an internal LibreTexts module you can use the "browse" option to find the page. You can also use the search function to look for key words (make sure you check that the
+page is a relevant link though).
+
+2.6: Hyperlinking
+
+© ® Last updated: May 20, 2019, 1:28 PMbyadmin Pagerestriction: Public Page ID: 148799 <4.2.5:Adding Tables | 2.7: Adding Predefined Template Code >
+Edit View Format Style Elements ~-- Help Words: 98, Chars: 517
+By save Xcancet_| | Heading |B J UlA- O- |Z} ||? @ -/Q)] but
+
+¥ Link Farming: DO NOT HYPERLINK OUTSIDE OF THE LIBRARY UNLESS NECESSARY
+
+WHILE CURATING IS KEY TO THE LIBRETEXTS PLATFORM, LINK FARMING (NEEDING TO CURATE DEAD LINKS) IS TO BE AVOIDED.
+
+Adding Templates
+
+Insert template x
+
+Templates:
+
+CrossTransclude a
+Under Elements of the editing toolbar, there is an option for "Templates". These are specialized code
+EmbedJupyterConfiguration .
+
+Template:AddDefinitionList snippets that are designed for adding standard code to your page.
+
+'Template:BoxDefinition
+
+Template:BoxExample Some of these templates are for general use and other are more specific. The six BOX templates add
+L TenvateborNote J the text for a container around special text (see below). The Embed templates are for special HTML5S
+
+'Template:BoxSkills interactive code like Jupyer executable code or interactive molecules. The other templates will be
+
+'Template:BoxTheorem . . . . .
+
+Template:Embed ChemWriter discussed in a different section. Feel free to add any of them to a test page to see what it does.
+
+'Template:Embed Query
+Template:Embed3Dmol
+Template:EmbedGLmol
+Template:EmbedJSmol
+Template:EmbedJupyter
+Template:Pageindex
+
+vY Example 17.1
+
+@ Definition Add text here. Add exercises text here
+A cow is an animal Solution Answer
+
+Add text here. Add texts here. Do not delete this text first.
+G Theorem 17.1
+
+@ Learning Objectives Sram,
+The ideal gas law is easy to remember and apply in solving , 5 cae
+mules e Explain the following laws within the Ideal Gas Law Proof
+
+Add proof here and it will automatically be hidden
+
+Remixing
+
+The OER Remixer allows rapid assembly of customized Remixes from existing sources on our comprehensive and ever-growing libraries. See the Remixer Tutorial in Chapter 7 of the Construction
+Guide for a more detailed explanation of the Remixer's interface and a walkthrough of how to do basic tasks with the OER Remixer, as well as videos. Your Remixing Map is stored automatically on
+your computer as you build, so you do not have to complete your Remix in one setting. The Remixer works best on Chrome browsers running on W10.
+
+Before using the OER Remixer, it is important to construct a Remixing Map. Lubbock Christian University created an excellent {j excel {] sheet to help out in this procedure. The gist of the map is to
+identify the content in the libraries (green) that will map into the organization of the new remix (yellow). This requires faculty/instructional designers to peruse the Bookshelves of Source texts and of
+other Course Remixes to identify desired content. Once remixed, these pages can be then edited at the sub-page level (e.g., sub-sections, paragraph, pages etc). The Remixing Map reflects only the
+initial organization of a custom remix. Notice the customized organization; there is no limit other than imagination and the size/makeup of the LibreTexts libraries. While the Remixing Map below
+does not demonstrate it, it is possible to make placeholder pages in the Remixer if a gap exists in the libraries. New custom content can be added to these pages once the text is created.
+
+When you login the gray bar will turn black. Move the cursor to your userID on the far right hand side of the black bar and click on Sandbox to go to your Sandbox(es) (some people have more than
+one!)
+
+https ://chem.libretexts .org/@go/page/483952
+
+
+--- Page Break ---
+
+Gibretexts-
+
+lQ & site tools
+Welcome to the Chemistry Library. This Living Library is a principal hub of the LibreTexts project, which is a multi-institutional
+collaborative venture to develop the next generation of open-access texts to improve postsecondary education at all levels of higher = My cont
+learning. The LibreTexts approach is highly collaborative where an Open Access textbook environment is under constant revision by
+students, faculty, and outside experts to supplant conventional paper-based books. %
+<
+a
+
+Options ate Site tools 2 TestBox
+
+b
+
+Contents| # Home " ib Sand
+
+Sandboxes
+Last updated: Feb 23, 2020, 12:18 AM by Delmar Larsen Page restriction: Semi-Private Page ID: 27631 od HR bility | Donate|
+
+Welcome to LibreTexts TestBox! This sandbox is just for you and you have complete control of what goes in here. Use this area to work on your customized courses
+
+and texts.
+
+LibreFest~
+
+a wh
+
+Training, Tutorials, & References LibreFest2021 TestBox
+
+Candhavee ie charad tindar a nat declared liranca and wise aitharad ramivad andlar curatad hw |ihraTavte
+
+When you have signed in to a library, either directly or through the Condutor, the black bar will have Edit, New and Options buttons.
+
+Choose Language "
+
+ptions SL Site tots
+
+ntents| #¢ Home > IN Sandboxes > ff TestBox
+
++ Page settings LibreTexts libraries follow a specialized site structure that is optimized for users. Book/Units have
+
+TestBox Chapters and Chapters have Sections/Pages. For more complex structures see the complete online
+
+Last updated: Oct 23, 2020, 3:15 PM by LibreBot Page restriction: Semi-Private Page 1D: 41308 ve Mbesdsbity EEF = Construction Guide, but for this workshop we will stick with the simple one where you will create
+Welcome to LibreTexts TestBox! your own book under the guide that has been created for the workshop. Let's get started. Next click on
+This sandbox is just for you and you have complete control of what goes in here. Use this area to work on your Texts. New on the black bar
+
+Welcome to your new category! e *
+
+Click on "New" to build out your category. Learn more
+
+BEST JUST SAVE
+Any references to templates and article type tags at the top of the page (such as
+
+"Tags recommended by the template") determine how the page is stored on the site. If you see these lines do not remove them.
+
+Creating a New Chapter
+
+1. On the black toolbar, click New.
+2. Select the following page default classifications:
+
+o Chapter
+3. Click the Create button.
+
+The Editor will create a new chapter in your book.
+
+Title Your Chapter
+LibreTexts has a uniform title format that that should be used unless it is impossible. Each chapter should be formatted like XX: Title
+
+e XX is the chapter number
+e title is the page title
+
+This approach preserves curation and remixing ability of the pages as well as automatic equations/figure/table numbering that work off of the title of the page.
+
+1. Title your Chapter as 1: First Chapter for now.
+2. You can add text in the box explaining the purpose of your book now or later.
+3. Click Save.
+
+The system will now invite you to build out a guide. Guides are the way that you and other users navigate through the system. Click on the tab at the left hand side with a "+" on it to see the choices
+for the guides. Select Article Directory and then click on the "add new tab" button. This creates a new guide (with nothing in it).
+
+https ://chem.libretexts .org/@go/page/483952
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Creating a New Page
+
+Add new page is 1. On the black toolbar from the guide you just created, click New.
+
+2. Select the Page as the default classification.
+. 3. Enter the Title using the LibreTexts form as
+Section/Page a 6 '
+This is a subcategory within a guide, similar to a chapter of a book. XX.YY: Title; in this case 1.0: First Page.
+Chow all 7 available templates 4. Click Save
+5. On the black bar click Edit
+6. You can now start entering text or copy and paste some text of your own.
+@ Learn more about adding new pages Cancel i
+7. When done, click Save
+
+You should see your first page of the chapter. You can continue editing by clicking Edit or create the next page.
+
+Editing a Page
+
+The Mindtouch platform LibreTexts uses has a modified CKE editor from CKSource that allows for construction without having to build/edit raw (HTML) code. The editor is WYSIWYG that
+automatically creates HTML from visual authoring. The editor displays when you create a new page or edit a page. It is designed to bring common word processor features directly to web pages,
+simplifying content creation.
+
+1. Navigate to a page and select Edit.
+
+2. Edit the content as necessary. See a complete list of editor tools.
+
+3. In the Edit summary field at the bottom of the page, leave change notes for other editors or yourself (optional). Edit summaries can be viewed in the page revision history.
+
+4. Click Save to save the changes you made.
+AUTOMATIC SAVING & WORD COUNTS
+
+e Automatic saving - By default, the LibreTexts libraries autosave pages every 25 seconds in case your browser crashes or computer restarts so that you can return to the page and pick up where
+
+you left off.
+¢ Word count - A word and character count is displayed in the upper right corner of the editor UI.
+
+The Editor
+
+The Editor has been configured for most of the needs contributors require. The layout is below; please refrain from using the advanced features in red until you are familiar with the Mindtouch
+structure. The Toolbar is the section located at the top of the editor window. It contains menu buttons that give you access to various functions of CKEditor. All buttons are grouped according to their
+function and include both simple operations (like basic text styling or formatting) and more advanced features (like inserting media or forms via a dialog window).
+
+Toggle between
+
+"visual"
+Justification (alignment) visual" mode
+
+" "
+
+(USE FULL MOST TIMES) and "HTML
+
+Text Color (do not use) source.
+Pull Down Menus with
+ighli . Add Table
+additional tools fyehlight Color Indentation
+(do not use) (do not use) Find &
+
+i | ) Replace
+Edt View Format Style Elements Help
+
+BP) save X cancet Heading - |B J Ul A- O-| ZIiE =-|8-|\f &B-/Q </> HTML
+
+Save Cancel Headings Xn
+Bold
+
+wae . Hyperlink to a Add Ima
+Page - Editin, Formattin; ge
+8 8 8 Number Bulleted different page (slow way - just drag
+! List
+
+Undo and drop)
+
+Italicize
+Redo
+
+Underline (do not use)
+DO NO HARM (OR ILLEGAL Stuff)
+You are responsible for content that you provide, including but not limited to photos, profiles information, messages, search results, edits, etc. that you upload, publish or display on or through
+
+LibreTexts, or transmit to or share with others. You may not submit content to LibreTexts that you did not create or that you do not have permission to submit. You understand and agree that others
+may, but are not obligated to, edit, delete or remove (without notice) any content from LibreTexts, for any reason or no reason.
+
+Adding Figures the Easy Way - Drag and Drop
+
+e "Save" or "export" the figures into jpg, png, gif or some other graphics file depending on the program you are using to make the image (JPG and PNG are preferred).
+e Drag and drop the image from your desktop to your page (while editing).
+
+Additional factors to pay attention to regarding figures
+
+¢ NO BMP or TIFF figures are allowed to be imported. Use PNG, JPG, or GIF figures instead.
+
+e Please CROP your figures to remove superfluous white space that makes reading your module awkward. The Microsoft Office Picture Editor or Paint will crop images and is free on MS operating
+systems.
+
+e All figures constructed for this project must have the original non-image files used uploaded to the LibreTexts, preferable in the module itself. DO NOT HOTLINK images.
+
+Formatting Figures
+
+image x
+rome || search {options \
+Bur Binen ve Bare ree sete Double click on image (in edit mode) to open settings and make sure settings are set right.
+: To center justify figure, click on the right side of the image (not the figure) and you can use the center
+nr justification for text off the normal editing toolbar.
+Double check that image URL starts like this. If not the image has not
+been properly copied over and is still hosted on original server. ost
+
+https ://chem.libretexts .org/@go/page/483952
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Adding Captions
+
+To add a caption add a line under the figure formatted as
+
+| Figure \(\PageIndex{i}\): Captiontext (Open License, Author, Source with URL as link)
+
+where i is the number of the figure on the page. This automatically formats the caption into the caption style you see on the figures on this page. Unfortunately, if you add another figure that requires
+renumbering the figures after it, this still has to be done manually.
+
+Figure captions Format
+
+The figure label should be formatted as shown for the figure above:
+
+¢ Center justified if short, otherwise is can be left justified for readability
+e "Figure" in bold followed by numbering with a page index command and a colon like this: Figure \(\PageIndex{i}\):
+e Manually enter the figure number in the \Pageindex command, "1" for the first figure of the page, "2" for the second, etc.
+
+Alt-Text for Accessibility
+
+Each Figure and Table has a simple option to add alt-texts. Just double right click on the image to get the figure setting and select image properties from the menu that appears and you can add alt-test
+into the entry. See section on Alt-texts for more details.
+
+Hyperlinking
+To ensure effective coupling of pages within the LibreTexts, content on pages can be "hyperlinked" to other pages. This is simple:
+
+e Mark the word you want to be the hyperlink, then click the hyperlink button with the "chain link" icon.
+
+¢ If you want to link to an outside page place the address in the "link to" box and click "update link".
+
+e If you want to link to an internal LibreTexts module you can use the "browse" option to find the page. You can also use the search function to look for key words (make sure you check that the
+page is a relevant link though).
+
+2.6: Hyperlinking
+
+© ® Last updated: May 20, 2019, 1:28 PMbyadmin Pagerestriction: Public Page ID: 148799 <4.2.5:Adding Tables | 2.7: Adding Predefined Template Code >
+Edit View Format Style Elements ~-- Help Words: 98, Chars: 517
+By save X cancel | | Heng |B 7 UlA-~ O-| Zi @ &-|Q| gear
+
+Link Farming: DO NOT HYPERLINK OUTSIDE OF THE LIBRARY UNLESS NECESSARY. WHILE CURATING IS KEY TO THE LIBRETEXTS PLATFORM, LINK FARMING (NEEDING
+TO CURATE DEAD LINKS) IS TO BE AVOIDED.
+
+Adding Templates
+
+Insert template
+
+Templates
+
+CrossTransclude
+
+CrossTransclude
+
+Template:Adapt
+
+Template:AddAudio
+
+Template: AddAudioPlayer
+
+Template:AddFigureSingle Under Elements of the editing toolbar, there is an option for "Templates". These
+
+Template: AddHiddenText designed for adding standard code to your page.
+
+| Template:AddMultiFigureMultiCaption Some of these templates are for general use and other are more specific. The six BC
+_- . . around special text (see below). The Embed templates are for special HTMLS interac
+
+Template:AddMultiFigureSingleCaption interactive molecules. The other templates will be discussed in a different section. Fi
+
+Template: BoxDefinition to see what it does.
+
+Template: BoxEmphasis
+
+Template: BoxExample
+
+Template: BoxExercise
+
+Template: BoxInteractive
+
+Template:BoxNote
+
+Template: BoxObjectives
+
+Template: BoxQuery
+
+Template:BoxTheorem
+
+Template: BoxWarning
+
+Template:ChemCollective
+
+Template:Embed3Dmol
+
+https ://chem.libretexts .org/@go/page/483952
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Template:EmbedGLmol
+Template:EmbediCn3D
+Template:EmbedJSmol
+Template:PageIndex
+Template:QueryH5P
+Template:QueryIMath
+Template: QueryWebWork
+Template:Video Block
+
+Box Templates
+Example 6.2.16.2.1 Exercise 6.2.16.2.1
+Definition Add text here. Add exercises text here
+A cow is an animal Solution Answer
+Add text here. Add texts here. Do not delete this text first.
+Theorem 6.2.16.2.1
+Note . ae
+The ideal gas law is easy to remember and apply in solvin: Le 8 Objectives Statement.
+problems 8 y PP'Y Be Explain the following laws within the Ideal Gas Law Proof
+
+Add proof here and it will automatically be hidden
+
+17: Stored Materials is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+https ://chem.libretexts .org/@go/page/483952

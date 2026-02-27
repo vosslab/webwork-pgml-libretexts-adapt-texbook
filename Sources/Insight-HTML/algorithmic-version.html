@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Algorithmic Questions</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Algorithmic Questions</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/algorithmic-version">https://commons.libretexts.org/insight/algorithmic-version</a></div>
+	<div class="meta">Last updated at 07/08/2024 02:21 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">Algorithmic version</span></p>
+<div class="prose !max-w-full"><p>Everything is the same&nbsp;except&nbsp;how we create the InexactValue. We're going to use the WeBWorK&nbsp;random&nbsp;utility and a built-in Perl function called&nbsp;sprintf.&nbsp;<a href="https://perldoc.perl.org/functions/sprintf" target="_blank" rel="noopener noreferrer">sprintf documentation here!</a></p><p>For a random mass: First, create a random value. First value is the minimum, second is the maximum, third is the smallest step between those two... The following creates a random value between 2 and 3 that varies by the hundredths place. i.e. 2.00, 2.01, ... , 2.99, 3.00</p><p>&nbsp; &nbsp; &nbsp;$massNumber = random(2, 3, 0.01);</p><p>Next, since&nbsp;$massNumber&nbsp;is a number, not a string, it will output 2.00 as 2 only. This is bad. Let's force it to output those extra places.&nbsp;sprintf&nbsp;is used for that.&nbsp;%.2f&nbsp;means output a fixed decimal number with 2 decimal places.</p><p>&nbsp; &nbsp; &nbsp;$massString = sprintf('%.2f', $massNumber);</p><p>Finally, since the&nbsp;$massString&nbsp;variable is a string, we can use it in InexactValue.</p><p>&nbsp; &nbsp; &nbsp;$mass = InexactValue($massString);</p><p>We can condense this entire process as much as needed, sacrificing readability:</p><p>&nbsp; &nbsp; &nbsp;$mass = InexactValue(sprintf('%.2f', random(2,3,0.01)));</p><h3>Randomize the number of sig figs</h3><p># random number: 2, 3, or 4 $randomDecimals = random(2,4,1);&nbsp;</p><p># Notice below, we switched from using single quotes to double quotes. &nbsp;Double quotes allows string interpolation,&nbsp;</p><p># meaning we can put variables inside the string. The dollar sign defines the beginning of the variable.&nbsp;</p><p># The curly braces defined the end of the variable name.&nbsp;</p><p>&nbsp; &nbsp; &nbsp;$massString = sprintf("%.${randomDecimals}f", $massNumber);</p><p>&nbsp;</p><p>Please, remember that we are randomizing the number of decimal places,&nbsp;not&nbsp;the number of sig figs. There will be one extra sig fig in this particular case since the value is going to be '2 point something'...</p><h3>&nbsp;</h3><h3>Scientific notation</h3><p>Switch from using&nbsp;f&nbsp;to&nbsp;e</p><p>&nbsp; &nbsp; &nbsp;$sciText = sprintf('%.3e', 234567);</p><p>&nbsp;</p><p>$sciText&nbsp;will contain the string:&nbsp;2.346e+05. The number of zeros in the exponent and whether the plus sign shows depends on the system where Perl is installed, but&nbsp;InexactValue&nbsp;will understand it in many formats.</p><h3>&nbsp;</h3><h3>Whole numbers with trailing zeros</h3><p>This is slightly tricky. If you want to generate a random number that has trailing zeros in the whole number position like&nbsp;25000&nbsp;and have those zeros be significant, it's probably better to generate scientific notation. However, if you need them in decimal form for display purposes, you can do the following:</p><p># generate random number: 24000, 25000, ...., 38000, 39000 $randomNumber = random(24000, 39000, 1000); # force a string in decimal format with a trailing decimal point&nbsp;</p><p>&nbsp; &nbsp; &nbsp;$wholeNumberString = sprintf('%0f', $randomNumber) . '.';</p><p>Notice the appending of a decimal point&nbsp;<i>after</i>&nbsp;the&nbsp;sprintf&nbsp;function. This would actually work without using the&nbsp;sprintf&nbsp;function, too. I have included it just in case.</p></div>
+</body>
+</html>

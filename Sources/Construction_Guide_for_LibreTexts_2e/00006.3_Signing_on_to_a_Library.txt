@@ -1,0 +1,53 @@
+Oibretexts:
+
+6.3: Signing on to a Library
+
+How to Login to a Library
+
+Sometimes you may need to login through a library. It you are in a library and the top line is gray you are not logged in. This will
+take you to the Login page
+
+CS LibreTexts" Enter Reader Mode
+
+CHEMISTRY
+
+@ = Q How can we help you? nd Sign in
+
+Contents
+
+Figure 6.3.1: Login by clicking on the Sign in symbol
+Arter you login the gray bar will turn black. Move the cursor to your userID on the far right hand side of the black bar and you will
+see some options. My contributions provides a list of all pages you have edited. My preferences allows you to see and change your
+account information. My subscriptions provides a list of pages you are monitoring for changes. You can navigate to a book, chapter
+or pages you want to view using the tab at the left of the page at the top of the blue bar.
+
+S LibreTexts"
+
+HUMANITIES
+
+Enter Reader Mode
+
+Contents
+
+SX Site tools
+
+My contributions
+
+Welcome to the Humanities Library. This Living Library is a principal hub of the LibreTexts project, which is a multi-institutional collab
+develop the next generation of open-access texts to improve postsecondary education at all levels of higher learning. The LibreTexts
+collaborative where an Open Access textbook environment is under constant revision by students, faculty, and outside experts to sup
+paper-based books.
+
+%& My preferences
+"@ My subscriptions
+
+WB Sign out
+
+Readability
+
+6.3: Signing on to a Library is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+e 1.6: Quick Start by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483953
+

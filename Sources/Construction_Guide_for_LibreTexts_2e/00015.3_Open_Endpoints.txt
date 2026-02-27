@@ -1,0 +1,23 @@
+Oibretexts:
+
+15.3: Open Endpoints
+Studio
+
+Here's the endpoint from Studio to get all collections: https://studio.libretexts.org/api/collections/list
+
+e Public endpoint, no auth needed
+e sorted by last modified
+e relevant fields:
+
+o "thumbnail": cover image if provided by author
+o "count": number of resources included in collection
+
+Here's what the Collections library looks like on Studio: https://studio.libretexts.org/browse/collections
+
+Here's what a specific collection looks like in Studio: https://studio.libretexts.org/collection/21639
+
+This page titled 15.3: Open Endpoints is shared under a CC BY license and was authored, remixed, and/or curated by Delmar Larsen.
+
+« Open Endpoints by Delmar Larsen is licensed CC BY 4.0.
+
+(cc) (#) 15.3.1 https ://chem.libretexts .org/@go/page/483795

@@ -1,0 +1,81 @@
+Gibretexts-
+
+10.3: Adding Summary
+
+In the Page Settings of each LibreTexts page is a summary block that will accept approximately three lines of text (Figure 10.3.1).
+Think of the summary as a tweet (like on Twitter) on the subject of the page. It is almost the same length as a tweet and has a
+similar impact.
+
+- Page settings 8
+
+Summary:
+
+In the Page Settings of each LibreTexts page is a summary block that will accept approximately three lines of text. Think of the summary as a tweet (viz. Twitter) on the
+| subject of the page. It is almost the same length as a tweet and has a similar impact.
+
+Article type: Stage: Author: Embed Hypothes.is?:
+
+Section or Page v (not set) v (not set) v (not set) v
+Figure 10.3.1: Summary block in the Page Settings of this page.
+
+Adding a Summary to a page is not necessary; you and your text can live without them if you like. However, they are beneficial in
+several ways:
+
+1. If you do a search on our platform, the summary will show up next to the page to help searchers identify the page(s) that best
+addresses their search
+
+2. The summaries of Sections (on pages of content of a text) will show up on the Table of Contents (in Chapter Overview) in
+PDFs and on chapter pages when viewed online (Figure 10.3.2).
+
+3. The summaries of Chapters will show up in the Table of Contents in PDFs and if you hover your mouse over the chapter
+thumbnails of a textbook.
+
+4. The summaries are also used by Google to aid in search results to guide traffic to your texts (i.e., Search Engine Optimization).
+
+3: Basic Editing
+
+© ® Last updated: Dec 4, 2019, 2:20 AM by Delmar Larsen Page restriction: Public Page ID: 148792
+
+yy "26: Bibliography | 3.1: Successfully Logging In > OE] Batch | ii Readability
+
+The LibreTexts libraries are powered by the Mindtouch system. An exhaustive set of references for the tools on this powerful system can be found online at
+attps://success.mindtouch.com/Author/Editor. The pages below summarize a subset of these tools that are useful in day-to-day use of the LibreTexts project.
+
+AN INSTRUCTOR'S ACCOUNTS ALLOWS EDITING CAPABILITY ON ESSENTIALLY ALL PAGES ON THE LIBRARY
+
+e The wiki infrastructure of the Libretexts makes it difficult to break anything. So feel free to experiment, play around, test things out.
+
+e All edits are saved as revisions. You can always revert to any older revision via the "Revision history" button under "Options"
+
+e All edits get sent to the LibreTexts development team for eventual review (not approval).
+
+e You can sign up with your personal account to "Watch" page(s) if any edits occur (using the little star next to forward/back right below page title).
+
+3.1: Successfully Logging In (2) 3.2: Creating a New Page
+
+Before editing a page, you must first log in to the Libretexts AND have an A Quick-Edit tutorial on how to create new pages in the LibreText platform.
+account that has editing capabilities.
+
+3.3: Editing a Page [) 3.4: Adding Figures
+A Quick-Edit tutorial on how to edit pages in the LibreText platform. A Quick-Edit tutorial on how to add figures to pages in the LibreText platform.
+#) 3.5: Adding Videos (YouTube) 2) 3.6: Adding Tables
+A Quick-Edit tutorial on how to add videos to pages in the LibreText platform. A Quick-Edit tutorial on how to add tables to pages in the LibreText platform.
+(2) 3.7: Hyperlinking #) 3.8: Adding Predefined Template Code (e.g., Boxes)
+A Quick-Edit tutorial on how to add hyperlinks to pages in the LibreText A Quick-Edit tutorial on how to add template code to pages in the LibreText
+platform. platform.
+
+Figure 10.3.2: Copy and Paste Caption here
+
+This page titled 10.3: Adding Summary is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+(cc) (#) 10.3.1 https ://chem.libretexts .org/@go/page/483728
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+e 3.12: Adding Summary by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) Q 10.3.2 https ://chem.libretexts .org/@go/page/483728

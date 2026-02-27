@@ -1,0 +1,223 @@
+Oibretexts:
+
+6.1: Applying for an Instructor's Account
+
+Let's start by walking through the process of registering for an instructor's account and creating a new book. Start at
+https://one.libretexts.org. If you have an account you can go directly to signing on, if not you will have to register. To register you
+will have to provide an Email account and a password. We strongly prefer that those registering for an instructor's account use an
+institutional email (for example .edu or .org in the US).
+
+Oibretexts:
+
+Register for a LibreOne Account
+
+LibreOne allows you to access all LibreTexts applications with just one login.
+
+Or, register with:
+Email
+
+EliRabett@gmail.com G Continue with Google
+Password an . cae
+
+nn Continue with Microsoft
+-- Good
+
+Create account
+
+By registering with LibreTexts, you agree to our Privacy Policy and Terms of Service.
+
+Already have an account? Sign in " Forgot your password? Reset password
+
+Figure 6.1.1: Form for registering for a LibreTexts Instructor's Account
+
+As usual these days for registration LibreTexts will send you a confirmation code which you have to enter in the next frame
+
+Oibretexts:
+
+Confirm Your Email
+
+We just sent a six-digit confirmation code to EliRabett@gmail.com. Please enter the code here to finish registering, If you did not receive a code, please check
+your spam folder.
+
+Confirmation Code
+
+{30804
+
+Thanks for helping to keep our community safe!
+
+Figure 6.1.2: Copy and Paste Caption here. (Copyright; author via source)
+
+We will ask a few questions starting with your name. Please take this seriously as spoofing your name or not filling out the entry
+bollixes user search functions in the system.
+
+Gibretexts:
+
+First things first.
+
+What should we call you?
+
+First Name
+
+Eli
+
+Last Name
+
+Rabet
+
+You can always update this information later.
+
+Figure 6.1.3: Copy and Paste Caption here. (Copyright; author via source)
+
+Next, your institution. Entering the first few letters will bring up the complete title which you should select.
+
+https ://chem.libretexts .org/@go/page/483945
+
+
+--- Page Break ---
+
+Oibretexts:
+Oibretexts:
+
+About your institution.
+
+What institution/organization are you part of?
+This will help us to better tailor your LibreTexts experience. Select your primary institution; if you're involved with multiple, you can add them later.
+
+Search for an Institution
+
+Results will update as you type.
+
+Results
+
+Borough of Manhattan Community College
+
+Select
+
+Peterborough Regional College
+Queensborough Community College
+
+queensborough communtiy college
+
+| don't see my organization listed
+
+Figure 6.1.4: Copy and Paste Caption here. (Copyright; author via source)
+And we want to know your timezone, especially useful when we need to get in touch
+
+Oibretexts:
+
+One last thing...
+
+What is your timezone?
+This will help us to better tailor your LibreTexts experience. This data is not used for tracking purposes.
+
+Timezone
+
+Select
+
+Figure 6.1.5: Copy and Paste Caption here. (Copyright; author via source)
+You have completed the basic registration, but now we need to start the Instructor verification segment
+
+Oibretexts:
+
+Registration Complete!
+
+Thanks for sticking with us. Now, let's get you on your way.
+
+You can now use LibreOne to complete your instructor verification. This will allow LibreTexts to give you advanced access to services reserved for
+educators only.
+
+Continue to Instructor Verification ©
+
+Your Instructor Profile
+
+Verified instructors can edit and contribute to the LibreTexts libraries
+
+Status: Not Attempted
+You have not yet attempted to verify your instructor status.
+
+Start Verification Request
+
+Figure 6.1.6
+
+LibreTexts provides free instructor accounts to any secondary or higher education instructor that applies. The most important thing
+for you to provide is a URL where it is clearly shown that you are an instructor.
+
+Don't provide:
+
+https ://chem.libretexts .org/@go/page/483945
+
+
+--- Page Break ---
+
+Gibretexts-
+
+e A LinkedIn or other social media app account (RateMyProfessor pages have convinced us)
+
+e A link to the top page of your institution. We do use a search if that is available, but that often does not work
+e A link which requires a login. Many course lists do that.
+
+e Do provide a link that clearly shows you are an instructor
+
+You can ask for an account for our OnLine homework/assessment system ADAPT, or our self standing OER system Nova which
+can be used in remote locations where connectivity is lacking. We also have three libraries with texts in Spanish and Ukrainian as
+well as smaller libraries in French, Portugues, Hindi, Arabic, Chinese and Kishwali
+
+Your Instructor Profile
+
+Verified instructors can edit and contribute to the LibreTexts libraries.
+
+Bio URL"
+
+To verify instructor status yo
+
+https://University.edu/Eli
+
+Applications
+
+Figure 6.1.1: Copy and Paste Caption here. (Copyright; author via source)
+When you have filled out the Instructor Verification Form you will see this page. Verification can take longer than 48 hours, but we
+try.
+
+Your Instructor Profile
+
+Verified instructors can edit and contribute to the LibreTexts libraries.
+
+Status: Pending
+Your instructor verification is pending. You will be notified by email
+
+when your request has been reviewed. This may take up to 48
+hours.
+
+Getting Started Tutorials
+Learn how to use the LibreTexts libraries and applications. Here are some tutorials to get you started.
+
+© Day 1: Commons8&C...
+
+Day 4: Building
+
+Self-Assessme!
+3ms/states can join for
+
+Activity
+
++ Miscellaneous Ubre- ter tral technologies to the
+LibreVerse in contrast to campus specific instances (e.g., LireCommons
+(vs. Campus Commons), LibreStudio (vs. Campus Studios), etc.
+
+sell for abs and collaborate project (6.
+ry aubmisnon of pictures of lective oF
+
+>
+
+LibreVerse 101 - Introduction to Commons & Conductor - Your Portal ADAPT I Building HSP Assessment in ADAPT
+LibreTexts to the LibreVerse and Studio Assessment Platforms
+
+Figure 6.1.1: Copy and Paste Caption here. (Copyright; author via source)
+
+You will receive an email when your account is approved and you can then go to to /https://one.libretexts.org or
+https://one.libretexts.org/home and login.
+
+6.1: Applying for an Instructor's Account is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+https ://chem.libretexts .org/@go/page/483945
+

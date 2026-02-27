@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>EquationEvaluators</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>EquationEvaluators</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/EquationEvaluators.html">https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/EquationEvaluators.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Implicit Equations Evaluators</h1>
+				<p>This code shows how to check student answers that are equations.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="EquationEvaluators.pg">EquationEvaluators.pg</a>
+</p>
+			</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserImplicitEquation.html">parserImplicitEquation.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserImplicitEquation.pl',
+  'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserImplicitEquation.pl',
+  'PGcourse.pl');
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Preamble</b></p>
+						<p>In the initialization section, we need to include the macros file <code>parserImplicitEquation.pl</code>.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context(&quot;ImplicitEquation&quot;);
+Context()-&gt;variables-&gt;set(
+x=&gt;{limits=&gt;[-2,2]},
+y=&gt;{limits=&gt;[0,4]}
+);
+
+$ans = ImplicitEquation(&quot;y = (x-1)^2&quot;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context("ImplicitEquation");
+Context()-&gt;variables-&gt;set(
+x=&gt;{limits=&gt;[-2,2]},
+y=&gt;{limits=&gt;[0,4]}
+);
+
+$ans = ImplicitEquation("y = (x-1)^2");
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Setup</b></p>
+						<p>We specify that the <code>Context</code> should be <code>ImplicitEquation</code>, and define the answer to be an equation. It's worth noting that there are a number of <code>Context</code> settings that may be specifying for equation answers. In particular, it's often important to pay attention to the limits used by the answer checker.</p>
+<p>By default, the <code>ImplicitEquation</code> context defines the variables x and y. To include other variables, it may be necessary to modify the context.</p>
+<p>Two other notes: if it's possible that a student's solution may evaluate to true for the test points that are used in the answer checker, it may be a good idea to specify what (x,y) solution values are used to check the answer. This can be done in the <code>ImplicitEquation</code> initialization call, e.g.,</p>
+<div class="sourceCode" id="specify-solutions"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="specify-solutions-1"><a href="#specify-solutions-1" aria-hidden="true"></a> <span class="dt">$eqn</span> = ImplicitEquation(<span class="kw">"</span><span class="st">y = (x-1)^2</span><span class="kw">"</span>,</span>
+<span id="specify-solutions-2"><a href="#specify-solutions-2" aria-hidden="true"></a> solutions=&gt;[[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">1</span>,<span class="dv">1</span>],[-<span class="dv">1</span>,<span class="dv">1</span>],[<span class="dv">2</span>,<span class="dv">4</span>],[-<span class="dv">2</span>,<span class="dv">4</span>]]);</span></code></pre></div>
+<p>And, for this type of answer checking it is more likely than for regular formulas that the student will represent the function in a form that exceeds the default problem checking tolerances, and so be marked as incorrect. To correct this, it may be necessary to specify a tolerance; an absolute tolerance can be set in the <code>ImplicitEquation</code> call, e.g.,</p>
+<div class="sourceCode" id="set-tolerance"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="set-tolerance-1"><a href="#set-tolerance-1" aria-hidden="true"></a> <span class="dt">$eqn</span> = ImplicitEquation(<span class="kw">"</span><span class="st">y = (x-1)^2</span><span class="kw">"</span>,</span>
+<span id="set-tolerance-2"><a href="#set-tolerance-2" aria-hidden="true"></a> tolerance=&gt;<span class="fl">0.0001</span>);</span></code></pre></div>
+<p>It is possible to remove the error message "Can't find any solutions to your equation" by remapping it to another error message. The message has to be non-empty, but it can be just a blank " ", as in</p>
+<div class="sourceCode" id="error-message"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="error-message-1"><a href="#error-message-1" aria-hidden="true"></a> Context()-&gt;{error}{msg}{<span class="kw">"</span><span class="st">Can't find any solutions to your equation</span><span class="kw">"</span>} = <span class="kw">"</span><span class="st"> </span><span class="kw">"</span>;</span></code></pre></div>
+<p>This will eliminate the error message (though the "messages" column will be displayed in the answer table at the top of the problem, but no message will be there).</p>
+<p>Another way to remove the error message "Can't find any solutions to your equation" would be to use a post-filter to remove the message after the answer has been graded. The answerHints.pl file provides one way to do this, but it is probably just as easy to do it manually, as replacing the <code>$ans</code> line with the following:</p>
+<div class="sourceCode" id="post-filter"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="post-filter-1"><a href="#post-filter-1" aria-hidden="true"></a> <span class="dt">$ans</span> = ImplicitEquation(<span class="kw">"</span><span class="st">y = (x-1)^2</span><span class="kw">"</span>)-&gt;<span class="kw">cmp</span>-&gt;withPostFilter(<span class="kw">sub </span>{</span>
+<span id="post-filter-2"><a href="#post-filter-2" aria-hidden="true"></a>    <span class="kw">my</span> <span class="dt">$ans</span> = <span class="fu">shift</span>;</span>
+<span id="post-filter-3"><a href="#post-filter-3" aria-hidden="true"></a>    <span class="dt">$ans</span>-&gt;{ans_message} = <span class="kw">"</span><span class="st"> </span><span class="kw">"</span> <span class="kw">if</span> <span class="dt">$ans</span>-&gt;{ans_message} <span class="kw">eq</span></span>
+<span id="post-filter-4"><a href="#post-filter-4" aria-hidden="true"></a>    <span class="kw">"</span><span class="st">Can't find any solutions to your equation</span><span class="kw">"</span>;</span>
+<span id="post-filter-5"><a href="#post-filter-5" aria-hidden="true"></a>    <span class="kw">return</span> <span class="dt">$ans</span>;</span>
+<span id="post-filter-6"><a href="#post-filter-6" aria-hidden="true"></a> }));</span></code></pre></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML
+Give the equation of a shift of the
+parabola [`y = x^2`] which is upward
+opening and has its vertex at [`(1,0)`].
+
+equation: [___]{$ans}
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML
+Give the equation of a shift of the
+parabola [`y = x^2`] which is upward
+opening and has its vertex at [`(1,0)`].
+
+equation: [___]{$ans}
+END_PGML
+</pre>
+				</div>
+				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Statement</b></p>
+						This is the problem statement in PGML.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

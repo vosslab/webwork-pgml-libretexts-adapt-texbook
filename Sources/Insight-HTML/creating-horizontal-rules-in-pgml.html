@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Creating Horizontal Rules in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Creating Horizontal Rules in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/creating-horizontal-rules-in-pgml">https://commons.libretexts.org/insight/creating-horizontal-rules-in-pgml</a></div>
+	<div class="meta">Last updated at 06/04/2024 02:02 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/Rules_-_PGML</span></p>
+<div class="prose !max-w-full"><p>Three or more dashes or equals on a line by itself forms a rule</p><pre class="ql-syntax" spellcheck="false"> -----
+</pre><p>Normally, the rule will extend to fill the horizontal space used by the problem, but you can specify the width and size (i.e., height) if you want:</p><pre class="ql-syntax" spellcheck="false"> ----{200px}
+ ----{50%}
+ ===={200px}{5px}
+ ===={size=&gt;'5px'}
+ ----{width=&gt;'200px',size=&gt;'5px'}
+</pre><p>You can center and right-justify rules:</p><pre class="ql-syntax" spellcheck="false"> &gt;&gt; ----{100px} &lt;&lt;
+ &gt;&gt; ----{100px}
+</pre><p>They can also be indented.</p></div>
+</body>
+</html>

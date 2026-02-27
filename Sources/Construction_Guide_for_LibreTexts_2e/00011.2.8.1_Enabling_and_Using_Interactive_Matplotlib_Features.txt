@@ -1,0 +1,142 @@
+Oibretexts:
+
+11.2.8.1: Enabling and Using Interactive Matplotliob Features
+
+Matplotlib is a Python library which supports a broad range of plotting functions and features. If you have ever created and
+displayed a plot using matplotlib yourself, then you may have noticed that the plot has some interactive features allowing
+you to pan, reset view, save the image, and more. These features are not available by default on Libretexts, but by using the ipymp!
+widget you can enable all of those same functions for your plots. We will follow a short and simple example to demonstrate this.
+
+To compare, run the following cell and check the output. Without the ipympl widget, matplotlib plots will simply appear
+like an embedded image.
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure()
+plt.plot(np.sin(np.linspace(Q, 20, 100)));
+
+run restart restart & run all
+
+Next, we will enable the ipympl backend which controls the interactive features of Matplotlib and then we will draw a
+3D plot, because we can. Run the code, and you should see that there is a vertical toolbar on the left-hand side of the plot which
+allows us to interact with the figure. At the moment, this toolbar does not work perfectly with 3D plots on Libretexts, so you may
+find that the 'rest original view' and 'forward/previous view' buttons do not work. You may still freely rotate the plot around.
+
+# Enable the ipympl backend with the following line
+%matplotlib widget
+
+from mpl_toolkits.mplot3d import axes3d
+
+fig = plt.figure()
+
+ax = fig.add subplot(111, projection='3d')
+
+X, Y, Z = axes3d.get_ test data(0.05)
+ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+plt.show()
+
+run | restart | restart & run all
+
+Once the widget is enabled, that change will persist throughout the whole page until the kernel is restarted (either by explicitly
+pressing the 'restart' button or by refreshing the page). If you go back and rerun the first cell after the one directly above, you will
+notice that it also has interactive features enabled. Whichever widget you have most recently enabled within a kernel session is the
+one that will be activated for the entire webpage. To return to the static plotting images, use "atplotlib inline . This
+allows you to include both static and interactive plots on your Libretexts page; just call the relevant °matplotlib magic
+command and you can switch between the two styles.
+
+smatplotlib inline
+
+fig - nit finiural\
+ax PYTHON SESSION: NOT STARTED rojection='3d')
+
+X, Y, Z = axes3d.get_ test data(0.05)
+
+11.2.8.1.1 https ://chem.libretexts .org/@go/page/483754
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+plt.show()
+
+n restart & run all
+
+You can also adjust the interactive features of your plot with fig.canvas_ booleans. The next cell demonstrates this by
+
+disabling the header, toolbox, and footer. You can find more options like this on this ipympl example page. Current limitations of
+
+the Libretexts code cell plugin prevent later code cells from interacting with earlier ones, so you will have to set all your
+fig.canvas_ options within the same cell that you display the plot.
+
+%matplotlib widget
+
+fig = plt.figure()
+
+ax = fig.add subplot(111, projection='3d')
+
+X, Y, Z = axes3d.get_ test data(0.05)
+ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+plt.show()
+
+fig.canvas.toolbar visible = False
+fig.canvas.header_ visible = False
+fig.canvas.footer visible = False
+
+restart restart & run all
+
+The github page for ipympl and usage guide for matplotlib are two external resources that may help you debug your
+code. If you run into any bugs or difficulties and those websites still do not resolve your issue, feel free to email us at
+jupyterteam@ucdavis.edu and we can provide you with more assistance.
+
+The ipywidgets also work with ipympl. For example:
+
+%matplotlib widget
+
+import ipywidgets as widgets
+import matplotlib.pyplot as plt
+import numpy as np
+
+xX = np.linspace(0,10)
+
+def sine func(x, w, amp):
+return amp*np.sin(w*x)
+
+@widgets.interact(w=(0, 4, 0.25), amp=(0, 4, .1))
+def update(w = 1, amp = 1):
+
+plt.clf()
+
+plt.ylim(-4, 4)
+
+plt.plot(x, sine func(x, w, amp))
+
+PYTHON SESSION: NOT STARTED
+
+11.2.8.1.2 https ://chem.libretexts .org/@go/page/483754
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Figure 1
+
+>
+
+<&euro;
+>
+}
+O
+(3)
+
+This page titled 11.2.8.1: Enabling and Using Interactive Matplotlib Features is shared under a CC BY 1.3 license and was authored, remixed,
+and/or curated by Delmar Larsen.
+
+e 5.2.8.1: Enabling and Using Interactive Matplotlib Features by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483754
+

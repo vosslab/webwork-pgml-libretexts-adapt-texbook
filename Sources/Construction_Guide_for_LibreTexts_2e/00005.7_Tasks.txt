@@ -1,0 +1,46 @@
+Oibretexts:
+
+5.7: Tasks
+
+Tasks can be created using the Task bar. The timeline displays the task schedule either as a calendar or a Gannt chart.
+
+Tasks
+Q © Timeline 1 Expand/Collapse All @ Batch Add + Add Task
+> Lecture 1. Basics of Astrophysics © a} +o]
+> Lecture 2. The Big Bang © la} +o]
+> Lecture 3. Origin of Elements © Bao
+
+Tasks can be set up and added singly (Add Task) or in a batch mode. Each task has a status, a creation date, a start and an end date.
+
+As appropriate, team members can be assigned to the task, status and dates changed, etc. Messages appropriate to the task can be
+communicated to people working on the task.
+
+Lecture 1. Basics of Astrophysics x
+STATUS CREATED START DATE END/DUE DATE ASSIGNEES ACTIONS
+Available ~ August 18th, 2023 01/30/2024 01/01/2025 6e ag
+Available
+In Progress
+
+Lecture 1. Basics of
+
+Completed 'S® Astrophysics
+
+No dependencies yet. Add one above!
+
+Subtasks No messages yet. Send one below!
+
+No subtasks yet. Add one above!
+
+* Format **your" Notify assignees bd
+
+message!
+
+Once set up subtasks can be added (the green + button) or the task can be edited (blue button with an eye on it).
+
+The timeline can be displayed as a Gannt chart or a calender.
+
+5.7: Tasks is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+e 10.2.4: Communications and Timeline by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483928

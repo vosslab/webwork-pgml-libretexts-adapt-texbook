@@ -1,0 +1,227 @@
+Gibretexts-
+
+12.1: Harvesting Workflows
+Development of content in the LibreTexts platform proceeds via five mechanisms operating in parallel:
+
+e Mechanism 1: Student contribution from scratch (e.g., via extra credit)
+
+e Mechanism 2: Student integration of existing content outside the LibreTexts platform from faculty and experts
+e Mechanism 3: Faculty construction of raw content from scratch
+
+e Mechanism 4: Faculty integration of existing content outside the LibreTexts platform from faculty and experts
+e Mechanism 5: Faculty and student re-editing of content already existing on the LibreTexts (with permission)
+
+Modules from all five mechanisms are processed through a sophisticated vetting structure, involving students and faculty (see
+below), to eventually guarantee reliable, fully-vetted content that is capable of substituting for that found in current paper-based
+textbooks. Content from higher ranked mechanisms typically supersedes content from lower ranked mechanisms, resulting in the
+continual evolution of the LibreTexts content.
+
+There is a range of different workflows possible for constructing texts and selecting the best workflow is an individualize or team
+decision. There are tools to facilitate construction efforts with the Remixer as most powerful.
+
+Create Empty Shell Construct Content Edit Content in Empty
+
+(Chapter & Sections) into Empty Shell Shell
+Curate Content
+
+Construct Content
+
+offline (e.g., word)
+
+Create Empty Shell Copy Content into Edit Content in Empty
+
+(Chapter & Sections) Empty Shell Shell
+Curate Content
+
+(G truct Content Edit Content in Empt
+ae See Import into LibreTexts mrontentinempty
+offline (e.g., word) Shell
+
+Import into Curate Content
+
+alternative platform
+
+(PressBooks, Google
+Docs, LaTex
+
+Harvesting project follow different workflows depending on the nature of the content and the nature of the format of the content.
+Below are several established workflows that may be followed in harvesting projects.
+
+From Scratch From Website (online) From PDF
+e Step 1: Build the empty Text Skeleton- ¢ Step 1: Build the empty Text Skeleton - Mechanism I
+User Remixer (New Remix mode) User Remixer (New Remix mode) e Pull PDF into google doc (via uploading
+e Step 2: Add content individually to e Step 2: Add content individually to to google drive)
+each page (i.e., page-by-page copy and each page (i.e., page-by-page copy and e Follow Google Doc workflow
+pasting or direct editing) pasting or direct editing) Mechanism IT
+e Step 3: Edit and typeset pages e Step 3: Edit and typeset pages e Build the empty Text Skeleton
+individually as needed individually as needed e Copy & Paste content into each page
+o Use Remixer to reorganize pages o Use Remixer to reorganize pages individually
+o Use page editor for curating content o Use page editor for curating content ¢ Edit and typeset pages as needed
+on pages on pages e Use Mathpix for OCRing equations as
+o Use Mathpix for OCRing equations needed
+as needed
+
+(cc) (#) 12.1.1 https ://chem.libretexts .org/@go/page/483772
+
+
+--- Page Break ---
+
+Oibretexts:
+
+From Word
+
+Mechanism I
+
+e Pull PDF into Google doc (first upload
+pdf to Google Drive, then select "Open
+in Google Doc")
+
+e Follow Google Doc workflow
+
+Mechanism IT
+
+e Build the empty Text Skeleton
+
+e Copy & Paste content into each page
+individually
+
+e Clear formatting as needed since word
+generates messy code)
+
+e Edit and typeset pages as needed
+
+e Use Mathpix for OCRing equations as
+needed
+
+e User GrindEQ to convert MS equations
+to latex
+
+From Latex Source
+
+e Build the empty Text Skeleton
+
+e Use Pandoc to convert latex source
+code to html/mathjax code
+o The command line code to use is
+
+"pandoc --mathjax -t htm15 input.tex
+-O output.txt"
+
+e Copy & Paste content into each page
+individually (as html source instead of
+GUI front end)
+
+e Edit and typeset pages as needed
+
+From EPUB3
+
+Direct Importer under development
+
+e Pull into EPUB reader and follow
+Website workflow
+
+From Google Doc
+
+Mechanism I
+
+e Convert to EPUB file
+
+e User LT Importer to import EPUB file
+(admin use only)
+
+e Edit and typeset pages as needed
+
+Mechanism IT
+
+e Build the empty Text Skeleton
+
+e Copy & Paste content into each page
+individually
+
+e Edit and typeset pages as needed
+
+e Use Mathpix for OCRing equations as
+needed
+
+From Pressbooks
+
+Mechanism I (if EPUB export option is
+
+available)
+
+e Export text into EPUB
+
+e User LT Importer to import EPUB file
+(admin use only)
+
+e Edit and typeset pages as needed
+
+Use Mathpix for OCRing equations as
+
+needed
+
+Mechanism II (if EPUB export option is
+
+not available)
+
+e Import into LT Pressbooks instance
+(admin use only)
+
+e Export text into EPUB
+
+e User LT Importer to import EPUB file
+(admin use only)
+
+e Edit and typeset pages as needed
+
+e Use Mathpix for OCRing equations as
+
+needed
+
+From XML
+Direct Importer under development
+
+From EPUB/Common Cartridge
+
+e User LT Importer to import EPUB file
+
+e Edit and typeset pages as needed
+
+If the EPUB is unvalidated (poorly
+constructed), then the LT importer will not
+generate all pages and will push chapter
+content into single pages. If this happened,
+then user Remixer (in remix mode) to flesh
+out the text generated from the Importer
+(e.g. add relevant pages).
+
+From Lumen (modified Pressbooks)
+
+Lumen platform is really a Pressbooks
+
+platform slightly modified with no export
+
+options (OER content is fettered).
+
+e Import into LT Pressbooks instance
+(admin use only)
+
+e Export text into EPUB
+
+e User LT Importer to import EPUB file
+(admin use only)
+
+e Edit and typeset pages as needed
+
+From Pretexts
+Requires admin access to the importer to
+harvest.
+
+This page titled 12.1: Harvesting Workflows is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+« 6.1: Harvesting Workflows by Delmar Larsen is licensed CC BY 1.3.
+
+cM)
+
+https ://chem.libretexts .org/@go/page/483772
+

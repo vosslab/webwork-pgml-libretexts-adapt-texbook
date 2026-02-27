@@ -1,0 +1,61 @@
+Oibretexts:
+
+11.2.8: Using ipywidgets for Interactivity
+
+In order to produce interactive plots and figures, Python modules such as ipywidgets provide a set of widgets which you may
+embed into your Libretexts page.
+
+First, we will import all of our dependencies. You may import ipywidgets directly, or you can pick specific widgets to
+import as done below. Even though the rest of the code is separated into different code blocks, each Libretexts page will
+"remember" all of the imports done on that page, so we only need to do this once at the beginning.
+
+import ipywidgets as widgets
+import matplotlib.pyplot as plt
+import numpy as np
+
+un restart restart & run all
+
+Next, lets define some functions to help us make an interactive matplotlib sine graph.
+xX = np.linspace(0,10)
+
+def sine func(x, w, amp):
+return amp*np.sin(w*x)
+
+restart restart & run all
+
+Next, we define our updating function. Generally, this is a function that will accept the widget values and then adjust the data of our
+plot accordingly. The function below will take the values from our amplitude and frequency widgets as its parameters and then
+create a new set of y values. Interact passes these values to the function through the sliders.
+
+@widgets.interact(w=(0, 4, 0.25), amp=(0, 4, .1))
+def update(w = 1, amp = 1):
+
+plt.clf()
+
+plt.ylim(-4, 4)
+
+plt.plot(x, sine func(x, w, amp))
+
+restart restart & run all
+
+PYTHON SESSION: NOT STARTED
+
+(cc) (#) 11.2.8.1 https ://chem.libretexts .org/@go/page/483753
+
+
+--- Page Break ---
+
+Oibretexts:
+
+LoS
+The easiest way to to display an interactive plot with ipywidgets is with the interact() function as shown above, though there are far
+
+more features available through ipywidgets that users are encouraged to explore on their own.
+
+This page titled 11.2.8: Using ipywidgets for Interactivity is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by
+Delmar Larsen.
+
+e 5.2.8: Using ipywidgets for Interactivity by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483753
+

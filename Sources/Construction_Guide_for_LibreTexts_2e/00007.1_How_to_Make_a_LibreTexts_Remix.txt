@@ -1,0 +1,531 @@
+Oibretexts:
+
+7.1: How to Make a LibreTexts Remix
+
+This tutorial will walk you through making a customized text using the LibreTexts remixing tool. The Remixer tool can be used for
+simple tasks like creating a book that consists of select chapters of an existing resource or it can be used to create complex remixes
+consisting of multiple resources potentially across libraries. You can also create empty pages if you want to create your own
+content in parts of your customized book. Before creating a customized remix it is recommended that you construct a Remixing
+Map to guide you in building your remixed text and this tutorial assumes that you have a remixing map prepared.
+
+% Analogy
+
+It can be useful to think of the remixer as email and imap/POP3 application on a personal computer.
+
+email Remixer
+'Your emails are on an email server somewhere Your texts are on the LibreTexts server
+
+You download the email to your personal computer when you You download an image of your text to your personal computer
+
+download emails to your email application when you" load a text" in the remixer or create a new text
+When you want a newly constructed/edited email to sent (go When you want a newly construction/edited text to be live, the
+live) your email browser talks to your email server remixer talks to the LibreTexts server (via "publishing).
+
+With the remixes, if you didn't publish the text (i.e., upload to
+With emails, if you edit/create an email and you didn't send it . y . P . ; ( P
+; . \ - the LibreTexts server), it doesn't go live (viewable on the
+(upload to your email server), it doesn't go live (i.e., sent) ; .
+LibreTexts websites)
+
+With the remixer, any changes to a text (or a newly created text) will not be reflected on the LibreTexts server until you
+"publish" those changes (green button). They will be saved as remixing maps on your personal computer only.
+
+Finding the Remixer
+The best place to access the remixer from is the Project Page with the @)yar@)Hi0s%Suie.i button.
+
+@& Edit Properties at Manage Team # AlCo-Author © Timeline
+
+Project Properties
+
+status: Open
+VISIBILITY: Private
+
+LIBRARY: Geosciences
+
+IMPORTANT ACTIONS:
+'Open Project Link [7 Open OER Remixer [7
+
+IMPORTANT TOOLS:
+
+Request to Publish
+
+Occasionally people will try and remix books in Libraries where they don't have permissions. In those cases trying to remix will
+fail with a message that permission was lacking. Should this happen you should contact an administrator at info@|ibretexts.org.
+
+You can also access the Remixer from your book when you are logged in. Each Library has a primary toolbar at the top (below the
+library logo). The toolbar is black when a user with an instructor's account has logged in and grey otherwise. There is a blue toolbar
+on the far left. The Tools selection on the blue toolbar has an icon labeled "Remixer" that when clicked will load a new page with
+the Remixer for making customized textbooks on the specified library.
+
+'Q Sx Site tools LZ TestBox
+
+Figure 7.1.1: Primary toolbar for a library shown after user has logged in with an instructor's account.
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+--- Page Break ---
+
+Gibretexts-
+
+S LibreTexts . Enter neader Mode
+
+CHEMISTRY
+n
+is
+8G = Q Howcan we help you? nt Sign in
+c
+fo}
+is)
+NAlAl an wan ba bn Cl na wnintens I ihe, Thin Picinn Dibens Te an min inn biel Af bn I ATR. neni nt waslhinb tn a ne lbi Ta ntibn bina anllab ncntinen cen ien ba
+
+Figure 7.1.2: Primary toolbar for a library shown if a user has not logged in with an instructor's account.
+
+&euro; Cs ft stats.libretexts.org Qaexr #ao@:
+
+Contents
+
+ADAPT Homework System
+
+Jupyter Hub
+
+OER Remixer
+
+exe gy
+
+LibreCommons
+
+Readability
+~
+S
+
+Page Citation
+Page Attribution
+
+Get Page Contents
+View Licensing Report
+
+Download Licensing Report (PDF)
+
+Resources
+
+mORFmMNG
+
+Toggle AutoAttribution
+
+Bookmark Page
+
+Glossary Source
+
+Libraries
+
+@ Textbook
+
+O None
+
+Figure 7.1.3: The blue toolbar at the far left in the Tools tab selected displays a menu with the OER Remixer selection third from
+the top
+
+We strongly recommend reaching the remixer from the @)pJae) Hikari) button of your Project Page.
+
+Getting Started
+
+Since users without instructor's accounts can access the Remixer, the first step in using the Remixer is to confirm you can, in fact,
+use it to publish a remix (i.e., your account allows publishing new texts). Once loaded, if the Remixer screen has a dark grey bar
+with the term "Demonstration Mode" on the left (Figure 7.1.4), then you will not be able to publish your text. However, you can
+still create an online map of your customized text and save it for future editing/publishing. Register for an instructors account
+https://register.libretexts.org that lets you publish .
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+
+--- Page Break ---
+
+Gibretexts-
+
+CS LibreTexts" Enter peor Mode
+
+HUMANITIES
+
+P = Q How can we help you? | Sign in
+
+£5 Contents | #% Home " Under Construction " Development Details " OER Remixer
+
+OER Remixer
+
+The Remixer worked best on Chrome or Firefox browsers, if using Safari please switch over to ensure full features.
+
+The OER Remixer tool allows the rapidly assemble of customized Remixes from existing sources on our comprehensive and ever-growing libraries. See
+the Remixer Tutorial in Chapter 7 of the Construction Guide for more details for an explanation of the Remixer's interface and videos to a walkthrough
+videos of how to do basic tasks with the OER Remixer. Your Remixing Map is stored automatically on your computer as you build, so you do not have to
+complete your Remix in one setting. If you switch to a different computer, you will want to save the Map.
+
+| LOAD SELECTION })> |
+
+Library Panel
+
++ @j Campus Bookshelves
+
+Figure 7.1.4: Example of thethe remixer in "Demonstration Mode"
+
+When logged into an account with publishing privileges, the grey bar will turn black and the "Demonstration Mode" will switch to
+"Basic Mode" (Figure 7.1.5). The name of the book you are remixing from either the Project Page or the Book should appear
+where the Remix Name is.
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+N <
+Q Options SX Site tools 2 TestBox
+n &
+= Contents | th Home " Under Construction " E Development Details " |) OER Remixer
+D
+OER Remixer
+
+The OER Remixer tool allows the rapidly assemble of customized Remixes from existing sources on our comprehensive and ever-growing libraries. See the Remixer
+Tutorial in Chapter 7 of the Construction Guide for more details for an explanation of the Remixer's interface and videos to a walkthrough videos of how to do basic
+tasks with the OER Remixer. Your Remixing Map is stored automatically on your computer as you build, so you do not have to complete your Remix in one setting. If
+you switch to a different computer, you will want to save the Map.
+
+Ci) New Remix Mode @ Edit Remix Mode LOAD FROM PREVIOUS SESSION
+
+Step 2
+
+Remixer Options
+B® Show tutorial
+
+Step 1
+; @® Enable Autonumber
+Remix name
+Your Remix will be saved to your personal sandbox AUTONUMBER OPTIONS Step 3
+
+SAVE MAP LOAD MAP
+
+Library Panel Remix Panel
+stats v - iN New Untitled Remix
+-++©* Campus Bookshelves = YT] Front Matter
+-+© Bookshelves A 01:_TitlePage
+-+-© Learning Objects # EJ 02:_InfoPage
+
+| A 03:_Table_of_Contents
+
+Figure 7.1.5: Example of the top of the remixer in "Admin Mode".
+
+Creation Steps
+
+Step 1: By default, the Remixer generates "copy-transcluded" pages that mirror the original Master content. To edit the content on
+the new Remixed page, authors have to have to "fork" the page in the Editor to copy the content from the original master page into
+the new Remixed page. Copy-forked pages copy as traditional copied pages, which, once copied, can be edited independently of the
+content of the master page. You can convert individual sections/pages to distinct forked copies at a later time in order to customize
+them. Only developers and administrators can generate copy-forked pages directly in the remixer
+
+Step 2: A popup tutorial can be turned on by flipping this switch. Use as needed.
+
+Step 3: The aut\nonumberer ensures the constructed Remix follows a consistent number scheme and more importantly, adapts to
+the changing structure of the remix as new content is added, deleted or reorganized. It is recommended to turn this on (switched to
+the right). There are options available for the aut\nonumber (blue button below aut\nonumber switch); it is recommended to avoid
+these until users are more proficient with the remixer tool.
+
+Dragging and Dropping Content
+
+The Remixer has two panels: The library panel and the Remix panel (Figure 7.1.6). The library panel on the left side contains the
+existing content on the LibreTexts libraries and the Remixer Panel on the right side is where you will create your new Remix. The
+basic remixing approach is to drag content with the mouse from the Library Panel to the Remix Panel. To insert a chapter or section
+from an existing book simply find it in the Library panel and drag it to where you want it in your remix.
+
+Step 4: Find content you desire to remix by selecting the library under "Library panel" (default is the library the Remixer was
+opened in) and page through the hierarchy tree. Once found, use the mouse to click on it and drag it to the Remix Panel. Content in
+the Remix panel will be green since this is a new page being created (ONLY after the Remix is published). You can continue to drag
+and drop content in different spots in your Remix Panel.
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+--- Page Break ---
+
+Gibretexts-
+
+Admin Mode @ io PUBLISH #
+
+Library Panel Remix Panel
+Chemistry "| == i Book: Organic Chemistry with a Biological Emphasis (Soderberg)
+-iiN = Organic Chemistry # + 1: Introduction to Organic Structure and Bonding I
+
++i. Supplemental Modules (Organic Chemistry) & - @Q)_ 2: Introduction to Organic Structure and Bonding II
+
+"FINS Exercises: Organic Chemistry # ) 2.1: Prelude to Organic Structure and Bonding II
+
+"Fill\ Book: Organic Chemistry Lab Techniques (Nichols) 2 E)_ 2.2: valence Bond Theory
+
+"Fil. Book: How to be a Successful Organic Chemist (Sandtorv) 1B] 2.3: Molecular orbital theory- conjugation and aromaticity
+
+=F ill\ Book: Organic Chemistry with a Biological Emphasis (Soderberg) & c> EI} 2.4: Resonance
+
+=F ill\ Book: Basic Principles of Organic Chemistry (Roberts and Caserio) & 8 2.5: Non-covalent interactions
+
+"FA Map: Organic Chemistry (McMurry) iB} 2.6: Physical properties of organic compounds
+
+"FA Map: Organic Chemistry (Wade) 2 iB} 2.7: Solutions to Chapter 2 exercises
+
+"FA Map: Organic Chemistry (Vollhardt and Schore) +E] 2: Problems for Chapter 2
+
++- Book: Virtual Textbook of OChem (Reusch) 2 ++ @_ 3: conformations and Stereochemistry
+
++ LY} Book: Organic Chemistry - A "Carbonyl Early" Approach (McMichael) & -- a 4: Structure Determination I- UV-Vis and Infrared Spectroscopy, Mass Spectrometry
++ LY) Book: Logic of Organic Synthesis (Rao) & + a 5: Structure Determination Part IT - Nuclear Magnetic Resonance Spectroscopy
+-Fi\ Map: Organic Chemistry (Bruice) & +. © 6: Overview of Organic Reactivity
+
+. --- LM 2. Aridhsen Dasrtinne
+
+Figure 7.1.6: Working panel of the remixer. Left panel is the "Library Panel" that gives users access to the pages on all 13 libraries.
+The right panel is the "Remix Panel" i.e., the customized text. Content is dragged with the mouse from the Library Panel to the
+Remix Panel.
+
+In both panels, the iit symbol indicates the top (book) level, the w symbol indicates a chapter, and the & symbol indicates a
+section (or subsection).
+
+# users can Select content from any library
+
+At the top of the Library Panel you will find the library selector, you can select material from any of our 13 libraries.
+
+Admin Mode @
+
+Library Panel
+l 4 ~"
+Chemistry iS bd - iN Book: oO
+Biology A
+Business + w 'Sure
+-@ 2:
+Engineering
+Espanol A 21
+Geology j
+Humanities 22
+Mathematics 23:
+Medicine
+Physics EA) 24
+Social Sciences
+Statistics e) 25
+Workforce I] 2.6:
++0 Map: Organic Chemistry (Wade) # O 27
+-+-i\ Map: Oraanic Chemistry (Vollhardt and Schore) & 1 fF an
+Figure 7.1.7: Users can select from content in different libraries on the platform. The first step is to select the library via pull-
+
+down menu.
+
+Reorganizing Remix Content
+
+You can edit your remix by inserting or deleting pages and dragging sections and chapters around as you desire. Above the Library
+and Remixer Panels is the editor bar (Figure 7.1.8). Here you can add a new (empty) page, change the title of a page or chapter,
+delete a page or a chapter, undo your latest changes, start over with a new remix, or publish a remix.
+
+Step 5: Rearrange chapters and pages as desired. If aut\nonumber is on, the title numbers will adjust as you reorganize your
+content. Delete unneeded pages and add new content from the Library Panel. Actions can be reverted via the undo/redo buttons.
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+The organization in the Remix panel will be automatically stored in on the user computer in the web browser's cookies. They can
+also be forced to be saved via the "Save Map" below the Aut\nonumber Options (Figure 7.1.5). This allows you to share your
+remixing map across computers or with other people. It is recommended that you save each remix until you become comfortable
+
+with the Remixer.
+
+Undo Redo Start Over
+
+VV
+
+CT - E
+
+tht
+
+New Pageor Edit Page Delete page Publish
+New Chapter Properties or Chapter when Ready
+
+Figure 7.1.8: Users can use the editor bar to add a new (empty) page, change the title of a page or chapter, delete a page or a
+chapter, undo your latest changes, start over with a new remix, or publish a remix.
+
+To change the name of a section or chapter first select it in the Remixing panel and then press "Page Properties" (button with pencil
+in Figure 7.1.8) or simply double click the page. Clicking on the "Page Title" text will allow users to manually change the name of
+that section in the remix (once published). The other properties in the Page Properties box are best reviewed once users are
+proficient with the Remixer.
+
+Properties for 2.3: Molecular orbital theory-
+conjugation and aromaticity [New]
+
+Page Title
+2.3: Molecular orbital theory- conjugation and aromaticity
+
+//only for new
+Source URL (optional
+
+https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Orgal
+
+& Visit https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Orga.
+- ¥ Override Copy Mode .
+Topi
+t Te This will override the Default Copy Mode
+Author tag:So... 3 authorname:s... authorname:s... &euro;9
+license:ccbyn... &euro;9 Lower Division &euro; Organic
+showtoc:no &euro;} (+ AddTag )
+
+CANCEL SAVEEDITS
+
+Figure 7.1.9: Users can edit the page properties of any page in the Remix panel via the Page Properties section.
+
+Publishing your Remix
+
+When you are ready to publish your remix press the green "Publish" button (Figure 7.1.8). You will then see an overview screen
+summary of your remix outlining the basic properties of the pages that will be created (Figure 7.1.10).
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483713
+
+
+--- Page Break ---
+
+Gibretexts-
+
+Step 6: If you are happy with the summary, press "publish" at the bottom left to publish remixing map. You can follow the
+publishing process as your remix is being created in the right panel. When it is all done click the link at the bottom of the right
+panel.
+
+PUBLISH SUMMARY _LIBRETEXT PREVIEW Publish In Progress (11.5%) Time Elapsed: 19 seconds
+21 / 182 Time Remaining: 2 minutes
+20 Transcluded 2.7: Solutions to Chapter 2 exercises "
+BO pages will be blank pages v 19 Transcluded 2.6: Physical properties of organic compounds
+
+18 Transcluded 2.5: Non-covalent interactions
+17 Transcluded 2.4: Resonance
+B 182 pages will be copy-transcluded v 16 Transcluded 2.3: Molecular orbital theory- conjugation and aromaticity
+15 Transcluded 2.2: Valence Bond Theory
+14 Transcluded 2.1: Prelude to Organic Structure and Bonding II
+B0 pages will be copy-forked v 13 Forked 2: Introduction to Organic Structure and Bonding II
+12 Transcluded 1.1: Solutions to selected Chapter 1 problems
+11 Transcluded 1.P: Problems for Chapter 1
+Bo pages will be copy-full a 10 Transcluded 1.5: Solutions to Chapter 1 Exercises
+9 Transcluded 1.4.4: Introduction to nucleic acid (DNA and RNA) structure
+
+B . \ 8 Transcluded 1.4.3: Introduction to lipid structure
+0 pages will have non-recommended structure! v 7 Transcluded 1.4.2: Introduction to carbohydrate structure
+
+6 Transcluded 1.4.1: Introduction to amino acids and proteins
+
+5 Transcluded 1.4: Structures of some important biomolecules
+
+4 Transcluded 1.3: Functional groups and organic nomenclature
+
+3 Transcluded 1.2: Drawing organic structures ~.
+4 "
+
+B® Overwrite existing pages A
+
+SEs
+
+Figure 7.1.10: Users can edit the page properties of any page in the Remix panel via the Page Properties section (left). Once
+pressed, the map then is created and progress can be viewed via the right panel.
+
+Take Ownership of your Remix
+
+New remixes will automatically be placed in the Workbench and be reachable through your Project Page in the Conductor. They
+can also be reached directly via their URL or
+
+Step 7: Click on the blue text in the lower right, "Your new LibreTexts is available here". This will open up the newly published
+Remix in your Sandbox.
+
+Edit Remix
+
+It is important to note that while the remixer is a powerful tool for combining existing content in the desired organization, typically
+further editing is desired at the paragraph/sentence level within the pages. This requires direct editing of the pages of the newly
+publish Remix using the procedures outlined in Chapter 8 and Chapter 4.
+
+Step 8: Edit/curate remix as needed by manually editing individual pages.
+
+Reremixing the Remixer
+
+Often, it is desired to reorganize existing remixes or to add or delete content in the remixes. To do that, the re-remixer mode should
+be used. Before going to the re-remixer you should move to the book you want re-remix on a tab in your browser and invoke the
+Remixer from there.
+
+Step 9: To do this go to the Remixer from your Project Page or from the Book as described above
+
+Once the Remixer is in the name of the book should appear. Except for Developers and Administrators users can ONLY remix texts
+linked to their projects or for which they have permission from the owners. In general these are texts on campus bookshelves for
+which they have permission (usually only the ones that they have created)
+
+Once the remix is generated, it pulls up in the Remix Panel just like Step 4. The remix can be reorganized with pages added and
+deleted just like in the Remixer mode. However, in contrast to the Remixer mode, different colors can be found depending on if a
+new page is created (green), or if a page title is changed (orange) - often via the aut\nonumberer - or if a page is deleted (red)
+(Figure 7.1.13). Users can also pull content from the Library and add to the Remix panel as desired.
+
+https ://chem.libretexts .org/@go/page/483713
+
+
+
+--- Page Break ---
+
+Oibretexts:
+Admin Mode @ ©) PUBLISH #
+
+Library Panel Remix Panel
+Chemistry *| == RN OFT: CHE 332 -- Organic Chemistry II (Lund) :
+aad a 1: Fall term review chapters & ° -- a 1: Fall term review chapters
++-Q) 7: Acid-base Reactions # + @) 2: Acid-base Reactions
++ ) 8: Nucleophilic Substitution Reactions -S 1] 3: Nucleophilic Substitution Reactions
+
++ ) 9: Phosphate Transfer Reactions & 3.1: Prelude to Nucleophilic Substitution Reactions
+
++ a 10: Nucleophilic Carbonyl Addition Reactions
++ a 11: Nucleophilic Acyl Substitution Reactions #
+++) 12: Reactions at the a-Carbon, Part I ¥
+"Fil OMT: CHE 333 - Organic Chemistry III (sample) &
+"Fil. OMT: CHE 333 - Organic Chemistry III (Lund) &
+HN Otterbein University &
++i. Palomar College &
+if. Pasadena City College
++H Portland Community College #
+"Fil. Prince Georges Community College #
+
+3.2: New Page
+
+3.3: Two Mechanistic Models for Nucleophilic Substitution
+
+3.4: Electrophiles
+
+3.5: Leaving Groups
+
+3.6: Regiochemistry of SN1 Reactions with Allylic Electrophiles
+3.7: SN1 or SN2? Predicting the Mechanism
+
+3.8: Biological Nucleophilic Substitution Reactions
+
+3.9: Nucleophilic Substitution Reactions (Exercises)
+
+6 0 a
+
+QAM" Muclannhilic Cubetititinn Dasctiane [Cummans\
+
+Figure 7.1.13: Edited remix showing deleted pages in red, new page (in green) and modified pages (in orange). These changes only
+take effect once the remix is "published"
+
+Step 10: Reremix the previously published remix from Step 7 as needed.
+
+The remixed text can be published following the instructions in Step 6 (clicking the Publish button).
+
+This page titled 7.1: How to Make a LibreTexts Remix is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar
+
+Larsen.
+
+e 7.3: How to Make a LibreTexts Remix by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483713
+

@@ -1,0 +1,102 @@
+Gibretexts-
+
+10.4: Thumbnails
+
+A page thumbnail is an image you can add to any article that will automatically show up for any book, chapter or page that has
+the ShowOrg template discussed in Section: Adding Automatic Organizations (The red arrows below point to thumbnails).
+
+8 _
+.
+
+LibreTexts" Catch us June 16 - 21 at the GRC - Chemistry Education Research and Practice
+
+& $ a § istt ; & is "
+
+Biology Business Chemistry Engineering Espafiol Geosciences Humanities | Mathematics Medicine Physics Social Sciences Statistics Workforce
+Periodic Table of the Elements Reference Tables Physical Constants Units and Conversions Organic Chemistry Glossary
+
+Q How can we help you? & Downloads sh, Remixer | admin eeecsese |
+
+' _ re
+Welco e Chemi Library
+
+Texts pi ich is a multi-institutional collaborative re to develop the next generation of oj texts to improve
+
+levels learning. The Texts approach is highly collaborative wh-r@ an Open Access textbook environment is constant revision by
+
+conventioi -based books.
+
+Bookshelves Homework Exercises Ancillary Materials
+
+Course Shells
+
+Steps to add a thumbnail image to a page:
+
+e Step 0: Log in as an Instructor and go to the Book or Chapter you want to add/change the thumbnail
+e Step 1: The page must be classified as "Book/Unit" or "Chapter" not "Section/Page" (refresh page if you switch it)
+e Step 2: The "page setting" grey bar just above the page title will need to be clicked if you don't see all the choices
+
+- Page settings
+
+CS LibreTexts~ Thun summary
+
+PHYSICS
+
+a University Physics is 1
+
+| Q and sequence of mos
+provides an importan
+
+and to the world arot
+
+2=Contents| Home " [jf\ Bookshelves " [jf University Physics "
+
+Category listing display :
+Simple [2] Detailed
+
++ Page settings
+
+University Physics II - Thermodynamics, Electric
+©® Last updated: Feb 20, 2022, 11:01 AM by admin Page restriction: Pub
+
+e Step 3: The box at the upper left in the should say "Thumbnail" and if you hover over it you will see a little blue pencil in its
+
+upper right hand corner. Click that.
+e Step 4: Now click "Browse" to select the image file from your file system.
+
+- Page settings
+
+Thumbnail Summary
+
+University Physics is designed for tl
+and sequence of most university pt
+provides an important opportunity -
+
+Choose File No file chosen
+
+Maximum upload file size: 256 MiB
+
+Category listing display :
+
+https ://chem.libretexts .org/@go/page/490001
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+The width of the thumbnails for books should be 500 pixels and for chapters 250 pixels. You can set this with Windows Paint
+or appropriate UNIX or Apple tools. Large thumbnails slow down page loading and hog storage.
+
+To remove a page thumbnail, hover over the thumbnail image in Page settings and click the Delete (X) icon.
+
+All thumbnails should be openly licensed. Two sources are pixabay.com and pexels.com discussed in Section: Image Resources.
+The source and Creative Commons license of the thumbnail should be written in book or chapter text, usually at the bottom as
+Thumbnail: Source (with link) License
+
+10.4: Thumbnails is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+e 4.4; Adding Automatic Organizations and Thumbnails by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/490001

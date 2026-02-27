@@ -1,0 +1,48 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+5: Conductor
+
+The Conductor is LibreTexts Project Building tool. It provides communication to the LibreTexts Administrators and among the
+users for construction and curation of their LibreTexts. Launchpad will take you back to the main Commons area, and the rest of
+the portions of the Project page are shown below.
+
+Launchpad Oibretexts
+
+Project: ARC CHEM 305 (Zumalt)
+Projects » ARC CHEM 305 (Zumalt) ID: CAbdVzehJp
+
+Rainbow Bar
+
+(# Edit Properties 22: Manage Team Timeline Peer Review ® Accessibility More Tools ~
+
+Project Properties
+
+STATUS: Open
+
+VISIBILITY: Private
+CLASSIFICATION: Harvesting
+LIBRARY: Chemistry
+IMPORTANT LINKS:
+
+Suppor
+Team ©
+
+5.1: Conductor Home
+5.2: Project
+5.3: Rainbow Bar
+
+5.3.1: Edit Properties
+5.3.2: Manage Team
+5.3.3: AI Co-Author
+5.3.4: Timeline
+5.3.5: Peer Review
+5.3.6: Accessibility Review
+5.3.7: More Tools
+5.4: Project Properties and Links
+5.5: Discussion
+5.6: Assets
+5.7: Tasks
+5.8: Support Center
+
+This page titled 5: Conductor is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.

@@ -1,0 +1,132 @@
+Oibretexts:
+
+6.2: LibreOne Single Sign On (SSO) and External Authentication
+
+There are two primary mechanisms for logging into LibreTexts libraries. The first is direct authentication that involves your
+username and password. The alternative is the Single Sign On (SSO) infrastructure that allows users to use campus credentials to
+authenticate. This is available for any user with an email that is either Google- or Microsoft enabled (most US campuses).
+
+Below is a step-by-step procedure to login
+
+Step 1 - LibreTexts Login using Email and Password
+
+Go to https://one.libretexts.org or https://one.libretexts.org/home and login
+
+Oibreexts:
+
+Login with LibreOne
+
+LibreOne allows you to access all LibreTexts applications with just one login.
+
+Local Login Campus Login
+Email Login with:
+demo@libretexts.org G Google Workspace
+i |] Microsoft Active
+an Directory
+ILoveLibreTexts! g
+Login
+
+Don't have an account yet? Register with LibreOne - Forgot your password? Reset your password
+
+If you have forgotten your password you can Reset it here. Email will be sent to you with further instructions
+
+©Cibretexts"
+
+@ Back to signin Back to sign in
+Forgot your password?
+No worries, just enter your email to receive a reset link.
+
+Email
+
+you@organization.edu
+
+Send Reset Link
+
+Step 2
+
+After registering you end on the Rocket page from which you can go to the applications or the libraries. In most cases you will
+select the Conductor or Adapt. If the login has been successful your account and status (Verified Instructor, Unverified Instructor,
+Student) is shown at the upper right where you can also log out.
+
+https ://chem.libretexts .org/@go/page/483708
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+At this time, the top line is extremely boring. The Rocket page is Home for this part of the system. Your profile is just your avatar
+and name. You can change your avatar and name by selecting Profile and then editing it. Security allows you to change your
+password. Instructor shows your Instructor status and has links to a few useful videos.
+
+il : . Demo Account
+G QGibretexts Home Profile Security Instructor Donate cancotecon on |veited nswuctor OP
+
+Your LibreVerse
+
+Access alll of your LibreTexts applications from one place. Applications with a tool icon have not yet been integrated with LibreOne sign-on
+
+* * COMING 2024 *
+Oibretexts: Qibretexts- Oibretexts: S LibreTexts~ Qibretexts: Qibretexts: Oibretexts-
+ADAPT COMMONS CONDUCTOR JUPYTERHUB: NOVA STUDIO
+ADAPT Commons Conductor JupyterHub Nova Studio Support Center
+
+Libraries
+
+All accounts have access to view the LibreTexts libraries. Instructors who wish to create or edit content on the libraries may need to request access. Libraries you have edit access to will be denoted with a key icon.
+
+© 6 6 & © GO = BS
+
+Biology Business Chemistry Engineering Espafiol Geosciences Global Humanities
+
+Biology OER Business OER Chemistry OER Engineering OER OER en espaol Geology OER OER in languages around the world Humanities OER
+
+K-12 Education Mathematics Health Physics Social Sciences Statistics Ukrayinska Workforce
+OER for K-12 education Mathematics OER Medicine and Health OER Physics OER Social Sciences OER Statistics OER yxpariicsKoro MoBo1O Workforce and trade education OER
+
+Google/Microsoft Directory Sign In
+
+The process for signing in is similar to the one used for many applications these days.
+
+The SSO system is coupled to accept both google and microsoft authenticated networks so that if your campus is part of either,
+you can use your campus account to sign in. However, Microsoft provide additional freedoms to campuses to verify vendors
+(like LibreTexts) to access campus authentication.
+
+Below is what it looks like for an admin to "Consent on behalf of your organization".
+
+B= Microsoft
+hagnew@libretexts.org
+
+Permissions requested
+
+LibreTexts SSO
+-* LibreTexts, Inc. @
+
+This app would like to:
+
+\W_ Sign you in and read your profile
+
+Consent on behalf of your organization
+
+Does this app look suspicious? Report it here
+
+https ://chem.libretexts .org/@go/page/483708
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Even though LibreTexts, Inc. is already verified with Microsoft, in this case it also has to verify with the local IT department of
+the campus. That can be a fast or slow process. If instant access is needed (and Google isn't an option), we provide local
+authentication via the Email/Pwd combination. Contact support@libretexts.org for help.
+
+This page titled 6.2: LibreOne Single Sign On (SSO) and External Authentication is shared under a CC BY 1.3 license and was authored,
+remixed, and/or curated by Delmar Larsen.
+
+e 1.7: Single Sign On (SSO) - External Authentication by Delmar Larsen is licensed CC BY 1.3.
+e 3.1: Successfully Logging In by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) https ://chem.libretexts .org/@go/page/483708

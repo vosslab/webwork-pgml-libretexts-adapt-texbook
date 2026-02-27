@@ -1,0 +1,186 @@
+Oibretexts:
+
+2.5: Scaffolding the Libretext
+
+e The primary mechanisms of scaffolding include structuring the learning task and problematizing the work.
+
+e Hypertexts, like the LibreTexts, provide non-linearity and interactivity.
+
+e How students use online materials is inherently different than a book read cover-to-cover; hypertext can provide the context
+that a narrative could provide.
+
+Scaffolding complexes provide a beneficial structure that aids in the learner's ability to learn new information, as well as
+accomplish more difficult tasks by giving directionality to learning.
+
+As you implement new scaffolding techniques inside LibreTexts, here are some things you may want to consider:
+
+1. Scaffolding should problematize work. Problematization is the process in which the student is challenged to recall material,
+either through quizzes, tests, worksheets, etc. In the short term, this is more difficult for the student. However, in the long term,
+student learning outcomes are improved. The trick is to find a balance, where the student is challenged in their work, but not
+over-challenged to the point where they are unmotivated, frustrated, and unproductive.
+
+2. Effective scaffolding should structure tasks logically. The structure of a task should be compatible with lesson plans and
+assignments, such that the progression of material makes sense. This will help learners maintain direction as they are working
+their way through new material. In LibreTexts, this can be done through the use of hypertext, as well as guided lesson plans.
+
+3. Hypertext extensions are also incredibly beneficial in the learning process (Hui, 2018). Hypertext enables users to navigate
+quickly between different pages, as well as access specific information that may be beneficial in the learning of specific
+material.
+
+An example of scaffolding
+
+Take some aluminum foil. Cut it in half. Now there are two smaller pieces of aluminum foil. Cut one of the pieces in half again. Cut one
+of those smaller pieces in half again. Continue cutting, making smaller and smaller pieces of aluminum foil. It should be obvious that
+the pieces are still aluminum foil; they are just becoming smaller and smaller. But how far can this exercise be taken, at least in theory?
+Can one continue cutting the aluminum foil into halves forever, making smaller and smaller pieces? Or is there some limit, some
+absolute smallest piece of aluminum foil? Thought experiments like this-and the conclusions based on them-were debated as far
+back as the fifth century BC.
+John Dalton (1766-1844) is the scientist credited for proposing the atomic theory. The theory explains several concepts that are relevant
+in the observable world: the composition of a pure gold necklace, what makes the pure gold necklace different than a pure silver
+necklace, and what occurs when pure gold is mixed with pure copper. This article explains the theories that Dalton used as a basis for
+his theory:
+
+1. Law of Conservation of Mass
+
+2. Law of Definite Proportions
+
+3. Law of Multiple Proportions
+
+Law 1: The Conservation of Mass
+
+"Nothing comes from nothing" is an important idea in ancient Greek philosophy that argues that what exists now has always existed,
+since no new matter can come into existence where there was none before. Antoine Lavoisier (1743-1794) restated this principle for
+chemistry with the law of conservation of mass, which "means that the atoms of an object cannot be created or destroyed, but can be
+moved around and be changed into different particles." This law says that when a chemical reaction rearranges atoms into a new
+product, the mass of the reactants (chemicals before the chemical reaction) is the same as the mass of the products (the new chemicals
+made). More simply, whatever you do, you will still have the same amount of stuff (however, certain nuclear reactions like fusion and
+fission can convert a small part of the mass into energy.
+
+The law of conservation of mass states that the total mass present before a chemical reaction is the same as the total mass present after
+the chemical reaction; in other words, mass is conserved. The law of conservation of mass was formulated by Lavoisier as a result of
+his combustion experiment, in which he observed that the mass of his original substance-a glass vessel, tin, and air-was equal to the
+
+mass of the produced substance-the glass vessel, "tin calx", and the remaining air.
+
+https ://chem.libretexts .org/@go/page/483693
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+An example of scaffolding
+
+4 We Burnt in Oxygen Yields Ashes Carbon Dioxide gas Water Vapor
+
+Mass of Wood | Mass of Ashes, Carbon Dioxide, and Water
+
+-_--
+
+Figure 2.1.1: Image of the wood courtesy of Ehamberg and Stannered on Wikimedia Commons, available under Creative Commons
+Attribution 2.5 Generic license. Image of ashes courtesy of Walter Siegmund. Image as a whole constructed by Jessica Thornton
+(UCD).
+
+4. Create an agenda page to organize complex material. Dr. Zsofia Veres et al. (2011) found that it is important to provide high-
+level content organizers that help guide the learner through the various hypertexts. This takes shape in the form of the agenda page,
+pictured below. This supplements the scaffolding, as it helps guide the learner through the material in an effective manner.
+
+Agenda for a class
+
+Agenda for today's class (80 minutes)
+1. (20 minutes) Review Pre-class assignment
+2. (30 minutes) Matrix Representation of Vector Spaces
+3. (30 minutes) Practice Example
+
+Agenda for a course
+
+Lecture 1: Administrative Matters and Experimental Design
+
+Welcome to Bis2A SS2!
+
+Read up on the characteristics of the three kingdoms of life: Archaea, Bacteria and Eukaryotes.
+Have your sketch book/note paper ready today. We will be drawing and sharing pictures!
+Learning Goals:
+
+e A.1 Be able to describe (or at least look up) the structure and administrative details for this course from the syllabus.
+
+e A.2 Be able to use the syllabus, Canvas, LibreText and Nota Bene as tools to gather information necessary to address questions
+you have been asked in class.
+
+e A.3 Define and correctly use vocabulary terms used in the pre-lecture study guide, in assigned readings, and in lecture.
+
+e A.4 Create a hypothesis or prediction based on given experimental data.
+
+e A.5 Design an experiment with proper controls based on background material provided.
+
+e A.6 Use the principles of the "design challenge" to dissect a complex problems into small manageable questions that can be
+addressed.
+
+e A.7 Create a conceptual drawing of a cell that reflects your current mental model for how several requirements for life are
+manifest.
+
+e A.8 Interpret information presented to you in graph form.
+
+Readings
+
+e Welcome to BIS2A
+
+e The Scientific Method
+e Problem Solving
+
+e The Design Challenge#
+
+Lecture 2: Organelles, Characteristics of Atoms and Functional Groups
+
+Chemistry review starts today! You will be expected to know Ionic, Covalent and Hydrogen bonding. Please check out all the
+learning goals associated with bonds and functional groups after lecture today. This is not a chemistry class but you would be
+
+https ://chem.libretexts .org/@go/page/483693
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+surprised how much chemistry is in biology.
+Cellular Infastructure LG:
+
+e 3.1 Identify and illustrate the components of subcellular infrastructure that are important for distinguishing prokaryotic and
+eukaryotic cells and different types of eukaryotic cells.
+
+e 3.2 Describe the functional roles of the cell membrane, the nucleus, the mitochondrion, the endoplasmic reticulum, the Golgi
+apparatus, the peroxisome, the lysosome, the vacuole, and the chloroplast and the interrelationships between them.
+
+Biological Chemistry LG
+
+e 1.1 Explain the nature of the different types of molecular bonds associated in biomolecules.
+
+e 1.6 Explain how water is used for condensation and hydrolytic reactions.
+
+e 1.8 Be able to use chemical principles to make predictions/hypothesis about familiar or unfamiliar functional groups.
+
+e 1.24 Define electronegativity and explain how this concept is used to predict bonding patterns and how two atoms interact.
+
+Readings
+
+e Bacterial and Archaeal Diversity*
+
+e Eukaryotic Cell: Structure and Function*
+e Electronegativity
+
+e Bond Types-Ionic and Covalent
+
+e Hydrogen Bonds
+
+e Functional Groups
+
+and so on...
+
+This page titled 2.5: Scaffolding the Libretext is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+e 2.5: Scaffolding the Libretext by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483693
+

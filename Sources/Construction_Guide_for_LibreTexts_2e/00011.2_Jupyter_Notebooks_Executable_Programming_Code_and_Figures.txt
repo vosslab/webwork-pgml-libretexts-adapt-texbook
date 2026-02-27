@@ -1,0 +1,267 @@
+Oibretexts:
+
+11.2: Jupyter Notebooks (Executable Programming Code and Figures)
+
+CKEditor is a rich text editor which enables the user to write content directly inside web pages or online applications. Through the
+Binder Plugin, authors of textbooks have the option to include code within their textbook pages to create a more interactive
+experience for their students. Currently the plugin supports Python 3, Julia, R, Octave, C++, and SageMath. Additionally, all
+languages with the exception of SageMath support syntax highlighting for an easier scripting experience.
+
+The following video tutorial provides a step-by-step walkthrough of the tutorial.
+
+Step-by-Step Process to use CKEditor Binder Plugin
+
+Creating a new page
+
+Authors have the option to add code to a new page.
+
+Oibretexts- eck out the ne Boaline Render on UsaTosts:Paking Ondine nding Mach Ea
+$ Ss * w# © &euro; 5 + @ a oP ae
+Ede IE} New fo) Options "x site tools L jupyterteam@ud|
+
+Development
+
+'On the bar above, click the New button to create a new page. In the popup dialog, click the Create button to create a new page. Feel free to make as many
+you want!
+
+Editing an existing page
+
+Additionally, authors can also add code to pages that they have already created. To do so, simply click on the "Edit" button.
+a a a, a s
+
+[2 sae [a ew [BR] ovrens Xi stetocs eres
+
+Example Page
+Last updated: Page restriction:
+
+(cc) (#) 11.2.1 https ://chem.libretexts .org/@go/page/483744
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Locating the Plugin and Adding Code
+
+The Binder Logo is the last button on the navigation bar of the text editor. Binder is an external resource that lets you build and run
+kernels which contain the necessary packages for executing any given code language.
+
+E @- #@m- a "&euro;
+
+Add Code
+
+To add a block of code, select the language and add your code in the text space. Be sure to press "run" and verify the code output
+
+before inserting the code cell into your page. This output will be displayed by default on the webpage even if the cell has not been
+run by the reader.
+
+Insert Interactive Script
+
+Select language for page:
+{Python 3
+
+© Insert without output @_ Insert with code hidden
+
+Please do not click OK until code has finished executing.
+
+Have feedback? Email us or open an issue on our issue tracker.
+
+| ox | | Cancel |
+Insert Interactive Script x
+Select language for page:
+Python 3
+Ea script:
+priati"aplbe marke")
+run | restart
+word
+Insert without output Insert with code hidden
+Please do net click OK until code has finished executing.
+Have feedback? Ce open on kemwe On Our issue tracker.
+coe
+Add Data
+Step 1:
+
+Go to the bottom of the page and attach data file by clicking "Attach a file" link.
+
+(cc) (#) 11.2.2 https ://chem.|libretexts .org/@go/page/483744
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Attachments
+Search file names and descriptions:
+Attach a file ,
+File " Last modified ¢ Size + Added by *
+[as] addCode.gif Apr 6, 2020, 1:54 AM 243 KiB Jupyter Team
+(no description)
+[D) auto-mpg.data Apr 12, 2020, 8:30 PM 30 KiB Jupyter Team
+
+(no description)
+
+[as] ckePlugin.png Apr 6, 2020, 1:58 AM 7 KiB Jupyter Team
+
+(no description)
+
+[As] editOld.gif Apr 6, 2020, 1:57 AM 232 KiB Jupyter Team
+
+(no description)
+
+Step 2:
+Select the file you want to upload from your local computer, and attach file.
+
+Attachments
+Search file names and descriptions:
+File " Last modified * Size ¢ Added by *
+[ae] addCode.gif Apr 6, 2020, 1:54 AM 243 KiB Jupyter Team
+
+(no description)
+
+auto-mpg.data Apr 12, 2020, 8:30 PM 30 KiB Jupyter Team
+
+(no description)
+
+[ag] ckePlugin.png Apr 6, 2020, 1:58 AM 7 KiB Jupyter Team
+
+(no description)
+
+lax] editOld.gif Apr 6, 2020, 1:57 AM 232 KiB Jupyter Team
+
+(no description)
+
+Step 3:
+Right click and get link address of file you have uploaded.
+
+Attach a file
+
+File " Last modified * Size ¢ Added by ¢
+[As] attach_file.png May 13, 2020, 3:02 PM 51 KiB Jupyter Team
+(no description)
+D > && GF Apri2, 2020, 8:30 PM 30 KiB Jupyter Team
+| 'Open linkin new tab
+(no de
+
+(Open link in new window
+
+Open link in incognito window
+
+Tag] ckePI
+
+Inspect CtrleShift+l
+
+Apr 6, 2020, 1:58 AM 7 KiB Jupyter Team
+
+[ac] data_trey May 13, 2020, 3:06 PM 65 KiB Jupyter Team
+
+(no des
+
+Step 4:
+
+To incorporate data into code, click CKEditor Binder Button, select language, and follow the examples below respective to the
+language you have chosen. when following the tutorial, replace the URL in the example with the one you have.
+
+For Python 3:
+
+This page provides multiples ways to incorporate data into your code blocks, and some possible examples of what you may want to
+do with your code.
+
+For R:
+This tutorial goes over some ways in which to load a data file from a URL for R
+
+For Julia:
+
+View this page to load a file from an URL in Julia
+
+For C++:
+Here are some ways for C++.
+
+cM)
+
+https ://chem.libretexts .org/@go/page/483744
+
+
+--- Page Break ---
+
+Oibretexts:
+
+For SageMath:
+This tutorial goes over some ways in which to load a data file from a URL for SageMath
+
+For Octave:
+View this page for Octave.
+
+Y An Example Page
+
+Remember to press save once edits to the page are done, the following is an example page utilizing the Binder Plugin. As seen,
+authors can use libraries and packages already available. If a package you would like to use is not available, simply email us,
+or open an issue on the GitHub repository (information found in the dialogue box of the plugin).
+
+Stub 3 (Machine Learning Exampies)
+Last updated: Page restriction:
+
+NumPy + Table of cor
+
+There are many python libraries that are useful for machine learning. On of the most foundational libraries used in NumPy, Through @ NumPy array it
+represent 2-D datasets as a matrix. Columns in the matrix can represent features, and rows can be samples, or vice versa. Here is an easy way for |
+2x3 NumPy array containing zeros.
+
+beray{{{0., 0., 0.) (0., 0., 0.)))
+
+Notice that the library needs to be imported in order to be implemented. Furthermore, NumPy represents matrices in a series of lists. If there are 2 rows,
+be 2 lists. If there are 3 columns, then there are 3 elements in each list. If you already have a list of values that you want to make into a NumiPy array, thi
+also possible.
+
+run restart
+beray({f 1, 2, 3, 41. £5, 6, 7, 8L.[ 9, 10, 11, 12), (13, 14, 15, 16]])
+MatPlotLib
+
+A oreat part about NumPy arravs is that thev can be used with MatPiotLib to olot the data points in the matrix.
+
+How does CKEditor Binder Plugin Work? (Work in Progress)
+
+A Jupyter Notebook Backend
+
+As mentioned above, CKEditor is the general interface that you use to edit Libretexts pages, while the CK Edtitor Binder plugin
+allows you to insert code cells and is accessed via the navigation bar in the text editor. The best way to understand how the Binder
+plugin works is to think of it as turning your Libretexts page into a Jupyter notebook. As explained by Jupyter, these notebooks
+"are both human-readable documents containing the analysis description and the results [of some project] (figures, tables, etc..) as
+well as executable documents which can be run to perform data analysis". This means that they can contain both computer code
+and rich text elements. Put this way it becomes clear as to how a Libretexts page, which may contain richly styled text in addition
+to code cells, operates very similarly to a Jupyter notebook.
+
+Just like in Jupyter notebooks, the Binder plugin uses kernels to execute code cells. On Libretexts, when you insert an interactive
+script and select a language the plugin will provide you with the proper kernel to execute that language. Each page may have only
+one kernel (programming language), and the kernel is activated behind the scenes the first time you "run" a code cell on a page.
+Once activated, the kernel remains alive and activated across the entire webpage just as it would in a Jupyter notebook. For
+instance, this is why you can put all of your Python import statements into a single code cell at the beginning of your document
+and later make calls to those modules in seperate cells.
+
+The Jupyter notebook image below should help solidify the analogy even further.
+
+(cc) (#) 11.2.4 https ://chem.libretexts .org/@go/page/483744
+
+
+--- Page Break ---
+
+Example-Notebook.ipynb
+
++ o fl > Download Code Python3 O
+
+Hello World!
+
+matplotlib.pyplot plt
+numpy np
+
+np.linspace(-2, 2,
+x**
+
+-plot(x, y)
+. show
+
+This page titled is shared under a license and was authored,
+remixed, and/or curated by
+
+. by is licensed
+
+eo

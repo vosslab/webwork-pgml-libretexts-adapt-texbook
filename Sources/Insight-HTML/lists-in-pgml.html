@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lists in PGML</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>Lists in PGML</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/lists-in-pgml">https://commons.libretexts.org/insight/lists-in-pgml</a></div>
+	<div class="meta">Last updated at 09/13/2024 01:02 AM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">https://webwork.maa.org/wiki/Introduction_to_PGML</span></p>
+<div class="prose !max-w-full"><p>You can create numbered, alphabetic, or bullet lists in PGML.</p><p>&nbsp;</p><h2><strong>Numbered Lists</strong></h2><p>Items in a numbered lists begin with a number followed by a period and at least one space.</p><p>&nbsp;</p><p>&nbsp;1. This is the first item 2. This is the second item which spans several lines.</p><p>A blank line ends the list, unless it is indented with four spaces, in which case it becomes a new paragraph in the previous numbered item.</p><p>&nbsp;Here is a list: 1. This is the first list item &nbsp; &nbsp; continued on the next line. 2. &nbsp;Additional items are easy to add. 3. &nbsp;Continuation need not be indented, such as this line. A paragraph break ends the list... 1. &nbsp;Unless you indent the paragraph... &nbsp; &nbsp; ...in which case it is part of the list item. 2. &nbsp;See?</p><p>Note that the actual numbers used don't matter. PGML will always number from 1 and increment by one each time. So</p><p>&nbsp;1. Item A 2. Item B 3. Item C</p><p>and</p><p>&nbsp;8. Item A 1. Item B 3. Item C</p><p>both produce the same numbered list in the output (numbered as in the first example).</p><p>&nbsp;</p><ul><li>Alphabetic lists start with a letter followed by a period or a close parenthesis:</li><li>A list with alphabetic markers: a) &nbsp;You can use dots b) &nbsp;or parens to indicate the items</li><li>Roman numerals can be obtained using lists starting with roman numbers an a period:</li><li>A list with roman numeral markers: i. &nbsp;Item 1 ii. Item 2</li><li>Uppercase letters or roman numerals produce lists with upper-case markers.</li></ul><p>&nbsp;</p><h2><strong>Unumbered Lists</strong></h2><ul><li>Bullet lists begin with an asterisk or a dash. Plus signs produce square bullets, and&nbsp;o&nbsp;produces open circles.</li><li>Bullets: * Item A * item B Squares: + Item A' + Item B' Circles: o Item A' o Item B'</li></ul><p>&nbsp;</p><p><strong>Here are some tips for creating ordered lists in PGML on WeBWorK:&nbsp;</strong></p><ul><li>Separate items with blank lines: To create paragraph breaks between list items, leave blank lines between them.&nbsp;</li><li>End a list with a new paragraph: Start a new paragraph that is not indented to end a list.&nbsp;</li><li>Keep paragraphs with list items: To keep a paragraph with a list item, add four spaces at the beginning of the second paragraph.&nbsp;</li></ul></div>
+</body>
+</html>

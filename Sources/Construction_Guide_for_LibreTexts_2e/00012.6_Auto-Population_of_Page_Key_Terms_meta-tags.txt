@@ -1,0 +1,25 @@
+Oibretexts:
+
+12.6: Auto-Population of Page Key Terms (meta-tags)
+
+The Dynamic Index require populating to be used effectively. While this can be done manually using the meta-tag approach in the
+previous section, an automatic tagger system is in place to facilitate the construction of comprehensive (book-wise) tagging.
+
+This experimental system relies on the author to create a excel or google doc spreadsheet
+
+1.1: Hardware?
+
+Last updated: Mar 3, 2021, 6:12 PM by Preeti Chitre Page restriction: Public Pag ID: 14599
+
+kg <1: Hardware, Software, and the Operating Sy
+
+} have an optical disk drive, and virtually all have a USB port.
+
+8540
+
+This page titled 12.6: Auto-Population of Page Key Terms (meta-tags) is shared under a CC BY 1.3 license and was authored, remixed, and/or
+curated by Delmar Larsen.
+
+e 6.6: Auto-Population of Page Key Terms (meta-tags) by Delmar Larsen is licensed CC BY 1.3.
+
+(cc) (#) 12.6.1 https ://chem.libretexts .org/@go/page/483777

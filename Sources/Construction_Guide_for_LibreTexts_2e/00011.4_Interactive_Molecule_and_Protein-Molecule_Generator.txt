@@ -1,0 +1,198 @@
+Oibretexts:
+
+11.4: Interactive Molecule and Protein - Molecule Generator
+The seven steps (from start to finish) for embedding interactive proteins/molecules via the molecular generates are:
+
+e Step 1 (Prepare the image)
+
+e Step 2 (Copy Code)
+
+e Step 3 (Navigation and Edit)
+e Step 4 (prepaste)
+
+e Step 5 (paste)
+
+e Step 6 (save and tag)
+
+e Step 7 (refresh)
+
+Step 1: Prepare the image
+
+Step 1 (Prepare the image): Go to
+https://bio.libretexts.org/Visualizations_and_Simulations/Molecular_and_Protein_Interactive_Figures/Molecule_Generator
+
+and organize how you want the image to go. Since you will probably want proteins most, select "Wwww.rcsb.org PDB ID" under the
+
+option (see red arrow in image below).
+
+Molecule Generator
+
+Last updated: Nov 13, 2018, 10:07 AM by Delmar Larsen Page restriction: Private Page ID: 1139 Jr < HowTo: Molecule Reference | Sandbox -Hoeg Donste
+
+Molecule Generator
+
+For molecules enter its common or IUPAC name.
+If it does not show up try to find it at https://pubchem.ncbi.nim.nih.gov/ or for proteins at https://www.rcsb.org/ to find a molecule ID number.
+
+common or IUPAC molecule name ' ae
+
+ex. caffeine or 2-propanol
+
+Show/Hide Help
+
+Then you put in the PDB code you want. For example "3PYP" for my favorite protein. That pops up the full menu of options
+including the way the interactive figure will look. Tweak with the options as you like (most are obvious).
+
+Step 2: Copy Code
+Step 2 (Copy image code): Press the blue button "Copy GLmol to Clipboard" (see red arrow in image below).
+
+(cc) (#) 11.4.1 https ://chem.libretexts .org/@go/page/483764
+
+
+--- Page Break ---
+
+Gibretexts-
+
+Heteroatoms style:
+ballAndStick2
+
+Show border:
+Show GLmo! label:
+
+Multiple molecules:
+
+vOUG.
+
+Enable spinning:
+Spin speed:
+
+any number
+
+The below options are only useful
+for proteins
+
+Mainchain style:
+thickRibbon °
+
+Mainchain color:
+chainbow
+
+Show sidechains: //Make sure to tag the "Embed GLmol" tag to "yes" under 'Page settings' at top of page to work
+<script type="text/javascript" src="https: //awesomefiles. Libretexts.org/GLmol/js/GLWrapper.js"
+
+Rough Beta sheets: ' .
+('data-id')="=2PYP" ></script>
+
+Base heteroatoms style:
+line
+
+Show nonbonded:
+none
+
+Show as unitcell: (@ x)
+Show as bioassembly: (@ x)
+Show as crystal packing: (@ x)
+
+Steps 3 & 4: Navigate, Edit and Prepaste
+Step 3 (Navigation and Edit): Go to the LibreTexts page you want to embed that code and "edit" the page.
+
+Step 4 (prepasting): In the spot you want the image to go to "style" and click on "Dekiscript" to add a block to the code.
+
+Edit View Format | Style Elements Help Words: 1737, Chars: 11804
+P) save X Cancel | Dy None Lilie Ele l2-le we e-lQ | <>
+<> <pre> Format
+OBJECTIVES
+---- _ 99 Blockquote
+After completing this S¢ @ comment Ctrl-Altem
+1. describe the nature | @ conditional text (anonymous oniy)
+2. describe the feature! 2
+. Conditional text (community member only) .
+3. calculate the specific vant experimental data.
+2 Conditional text (pro member only)
+KEY TERMS <> oeuscre coteates <a
+Make certain that youc "" "#v@Seret JEM) rms below.
+<> css
+¢ analyzer
+* dextrorotatory
++ levorotatory
+¢ optically active
+
+It will look like this:
+
+https ://chem.libretexts .org/@go/page/483764
+
+
+--- Page Break ---
+
+Oibretexts:
+
+For liquids, the specific rotation may be obtained using the neat liquid rather than a solution; in such cases the formula is
+[a] D temp (neat)= a Ixd
+where ais the observed rotation, / is the path length of the cell (measured in decimetres, dm), and d is the density of the liquid
+Identifying and distinguishing enantiomers is inherently difficult, since their physical and chemical properties are largely identical. Fortunately, a nearly two hundred year old
+
+discovery by the French physicist Jean-Baptiste Biot has made this task much easier. This discovery disclosed that the right- and left-handed enantiomers of a chiral compound
+perturb plane-polarized light in opposite ways. This perturbation is unique to chiral molecules, and has been termed optical activity
+
+- - DekiScript -
+
+Enter DekiScript
+
+Plane-polarized light is created by passing ordinary light through a polarizing device, which may be as simple as a lens taken from polarizing sun-glasses. Such devices
+transmit selectively only that component of a light beam having electrical and magnetic field vectors oscillating in a single plane. The plane of polarization can be determined by
+an instrument called a polarimeter, shown in the diagram below.
+
+Fixed
+Polarizer
+
+Plane-Polarized
+
+Field Vector Light
+
+Source
+Electric &
+Magnetic
+
+Field Vectors
+
+-90° 270°
+2 Movable
+
+180
+Detector Polarizer
+-180°
+
+Monochromatic (single wavelength) light, is polarized by a fixed polarizer next to the light source. A sample cell holder is located in line with the light beam, followed by a
+movahle nolarizer (the analv7er) and an eveniece through which the linht intensity can he ahserved In modern instriments an electronic linht detector takes the nlace of the
+
+Steps 5 and 6: Paste and Tag
+Step 5 (paste): Paste the code that was saved in step 2 from your clipboard to the red Dekiscript block under "Enter Dekiscript")
+
+Step 6 (save and tag): Save the page, and under page settings (it may be expanded or not) you will see a "Embed GLmol" option
+(see red arrow below)
+
+Summary:
+Add page summary
+Article type: Stage: Author: Embed Hypothes.is?:
+v ' Y ~
+Embebbed CalcPlot3D?: Embebbed Vlab?: Embed GLmol: Embed JSmol:
+v . Y ~
+Embed 3Dmol: Embed Jupyter: Show TOC: hidetop:
+t v ' ' +
+Cover Page: License:
+tset v t se '
+Tags:
++ Add new tag here
+
+The organization of the page settings is not standardized across the libraries; the one above is for chemistry and biology is
+organized differently, but find the proper tag and switch it to "yes"
+
+Step 7: Refresh
+Step 7 (refresh): Refresh the page (e.g., F5 on PCs) and be amazed at the embedded protein in your page.
+
+This page titled 11.4: Interactive Molecule and Protein - Molecule Generator is shared under a CC BY 1.3 license and was authored, remixed,
+and/or curated by Delmar Larsen.
+
+e 5.5: Interactive Molecule and Protein - Molecule Generator by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483764

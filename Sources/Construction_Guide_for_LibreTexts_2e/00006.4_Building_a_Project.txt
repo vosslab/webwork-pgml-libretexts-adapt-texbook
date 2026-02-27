@@ -1,0 +1,78 @@
+Oibretexts:
+
+6.4: Building a Project
+
+# Editing works best with Google Chrome and Windows 10
+
+LibreTexts can be read on any HTMLS device and any browser
+
+Instructions for getting to the Home Conductor Page are found in Section 5.1 and instructions for creating a Project Page are found
+
+in Section 5.2,
+G Glibretexts: Home Analytics Search... 2 |
+CONDUCTOR
+
++ Create Conductor Project
+¥ Pinned Projects 7)
+V elcome, Econ 1020: Principles of
+Demo Macroeconomics
+Last updated 02/05/24 at 12:35 AM
+
+Figure 6.4.1: Conductor Home Page
+To create a new Project select the @ieeval@oysleltlelte}n Bie) (ei tab. tab shown in the center of Figure 6.4.1
+
+Create Project
+
+This project will be created within LibreTexts. You can add tags, collaborators, and more after creation.
+Project Title *
+
+Project Visibility
+
+Private (only collaborators)
+Private (only collaborators)
+
+Public (within Conductor)
+
+Figure Figure 6.4.2: Create Project Menu
+
+Creating a project only requires entering the Project Title and setting the visibility. Private makes the project viewable only to team
+members, public can be seen by all registered instructors. Give some thought to the Project Title. After the Project has been created,
+the Project Page will be displayed.
+
+https ://chem.libretexts .org/@go/page/483709
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+G S LibreTexts~
+
+CONDUCTOR
+
+Project: Test
+
+S Project successfully created!
+
+@ Edit Properties 28: Manage Team Timeline Peer Review @ Accessibility More Tools ~
+
+Project Properties
+
+STATUS: Open
+
+VISIBILITY: Private
+
+IMPORTANT LINKS:
+Project/Textbook Link [7 'Commons Page
+Team
+
+0) Demo Account (Lead)
+
+Figure 6.4.2: Project Page
+
+This page titled 6.4: Building a Project is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by Delmar Larsen.
+
+e 1.6: Quick Start by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483709

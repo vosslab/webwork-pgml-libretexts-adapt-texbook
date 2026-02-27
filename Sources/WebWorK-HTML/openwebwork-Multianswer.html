@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multianswer.pg</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/@openwebwork/pg-codemirror-editor@0.0.5/dist/pg-codemirror-editor.js"
+		defer></script>
+	<link rel="stylesheet" href="https://openwebwork.github.io/pg-docs/sample-problems/sample-problem.css">
+</head>
+
+
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Multianswer Problem</h1>
+				<p>A simple multianswer problem.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>Download file: <a href="Multianswer.pg">Multianswer.pg</a></p>
+</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;);
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+loadMacros(&#39;PGstandard.pl&#39;, &#39;PGML.pl&#39;, &#39;parserMultiAnswer.pl&#39;, &#39;PGcourse.pl&#39;);
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Preamble</b></p>
+						<p>Load the <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>
+which provides the <code>MultiAnswer</code> method.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="$fac1 = Formula(&quot;(1 - x)&quot;);
+$fac2 = Formula(&quot;(1 + x)&quot;);
+
+$multians = MultiAnswer($fac1, $fac2)-&gt;with(
+    singleResult =&gt; 0,
+    checker      =&gt; sub {
+        my ($correct, $student, $self) = @_;
+        my ($f1stu, $f2stu) = @$student;
+        my ($f1,    $f2)    = @$correct;
+        if (($f1 == $f1stu &amp;&amp; $f2 == $f2stu)
+            || ($f1 == $f2stu &amp;&amp; $f2 == $f1stu))
+        {
+            return [ 1, 1 ];
+        } else {
+            if ($f1 == $f1stu || $f2 == $f1stu) {
+                return [ 1, 0 ];
+            } elsif ($f1 == $f2stu || $f2 == $f2stu) {
+                return [ 0, 1 ];
+            } else {
+                return [ 0, 0 ];
+            }
+        }
+    }
+);
+
+BEGIN_PGML
+Factor:
+[`1-x^2 = \big(`] [___]{$multians} [`\big)\big(`] [___]{$multians} [`\big)`]
+END_PGML
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">$fac1 = Formula(&quot;(1 - x)&quot;);
+$fac2 = Formula(&quot;(1 + x)&quot;);
+
+$multians = MultiAnswer($fac1, $fac2)-&gt;with(
+    singleResult =&gt; 0,
+    checker      =&gt; sub {
+        my ($correct, $student, $self) = @_;
+        my ($f1stu, $f2stu) = @$student;
+        my ($f1,    $f2)    = @$correct;
+        if (($f1 == $f1stu &amp;&amp; $f2 == $f2stu)
+            || ($f1 == $f2stu &amp;&amp; $f2 == $f1stu))
+        {
+            return [ 1, 1 ];
+        } else {
+            if ($f1 == $f1stu || $f2 == $f1stu) {
+                return [ 1, 0 ];
+            } elsif ($f1 == $f2stu || $f2 == $f2stu) {
+                return [ 0, 1 ];
+            } else {
+                return [ 0, 0 ];
+            }
+        }
+    }
+);
+
+BEGIN_PGML
+Factor:
+[`1-x^2 = \big(`] [___]{$multians} [`\big)\big(`] [___]{$multians} [`\big)`]
+END_PGML
+</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Setup</b></p>
+						<p>This problem is shown as an example of using <a
+href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserMultiAnswer.html">parserMultiAnswer.pl</a>.
+Another approach for this type of problem is shown in <a
+href="https://openwebwork.github.io/pg-docs/sample-problems/Algebra/FactoredPolynomial.html">Factored
+Polynomial</a>.</p>
+<p>Define a <code>MultiAnswer</code> object that takes two answers and
+check that they are correct (in either order).</p>
+<p>The <code>singleResult =&gt; 0</code> option indicates that the
+different answers in the problem will be evaluated as separate answers,
+rather than as a single unit. Other useful flags include
+<code>allowBlankAnswers</code>, <code>checkTypes</code>,
+<code>separator</code> and <code>tex_separator</code>. These are noted
+below.</p>
+<p>The <code>checker =&gt; sub { ... }</code> option defines a
+subroutine to check the answer. Its inputs are a reference to an array
+of correct answers, a reference to an array of student answers, and a
+reference to the <code>MultiAnswer</code> object itself. (There is a
+fourth input, as well. It is the answer hash, but that is not needed in
+this example.)</p>
+<p>The checker routine then returns a reference to a list of scores for
+the answers. In this case there are two answer blanks, so there are two
+return values. All return values should be a number from <code>0</code>
+to <code>1</code>. Of course <code>1</code> means the answer is fully
+correct, <code>0</code> means it is completely incorrect, and a number
+between means it is partially correct. Note that if
+<code>singleResult =&gt; 1</code> were set then only one return value
+needed and must be a number from 0 and 1.</p>
+<p>It is possible to set an answer message that will be displayed for an
+answer part. For example, a message could be shown for answers that
+result from a common mistake that is made in working the problem. For
+example the following code could be used in the checker.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="dt">$f1</span> == <span class="dt">$f1stu</span> || <span class="dt">$f2</span> == <span class="dt">$f1stu</span>) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$self</span>-&gt;<span class="dt">setMessage</span>(<span class="dv">1</span>, <span class="ot">&#39;</span><span class="ss">This is correct.</span><span class="ot">&#39;</span>);</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$self</span>-&gt;<span class="dt">setMessage</span>(<span class="dv">2</span>, <span class="ot">&#39;</span><span class="ss">Check your answer by using FOIL.</span><span class="ot">&#39;</span>);</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> [ <span class="dv">1</span>, <span class="dv">0</span> ];</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>} <span class="kw">elsif</span> (<span class="dt">$f1</span> == <span class="dt">$f1stu</span> || <span class="dt">$f2</span> == <span class="dt">$f2stu</span>) {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$self</span>-&gt;<span class="dt">setMessage</span>(<span class="dv">1</span>, <span class="ot">&#39;</span><span class="ss">Check your answer by using FOIL.</span><span class="ot">&#39;</span>);</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$self</span>-&gt;<span class="dt">setMessage</span>(<span class="dv">2</span>, <span class="ot">&#39;</span><span class="ss">This is correct.</span><span class="ot">&#39;</span>);</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> [ <span class="dv">0</span>, <span class="dv">1</span> ];</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="kw">else</span> {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> [<span class="dv">0</span>, <span class="dv">0</span>];</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1"
+						type="button" data-code="BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"/>
+						</svg>
+					</button>
+					<pre class="PGCodeMirror m-0 h-100 p-3 border border-secondary overflow-x-scroll">BEGIN_PGML_SOLUTION
+Solution explanation goes here.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation solution col-sm-12 col-md-6 order-md-last order-first p-3 border border-dark">
+					<p><b>Solution</b></p>
+						A solution should be provided here.
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.PGCodeMirror')) {
+			PGCodeMirrorEditor.runMode(pre.textContent, pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			if (navigator.clipboard)
+				btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+			else btn?.remove();
+		}
+	</script>
+</body>
+
+</html>

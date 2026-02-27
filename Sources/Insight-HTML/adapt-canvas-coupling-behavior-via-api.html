@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ADAPT-Canvas Coupling Behavior via LTI-API Linking</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>ADAPT-Canvas Coupling Behavior via LTI-API Linking</h1>
+	<div class="source">Source: <a href="https://commons.libretexts.org/insight/adapt-canvas-coupling-behavior-via-api">https://commons.libretexts.org/insight/adapt-canvas-coupling-behavior-via-api</a></div>
+	<div class="meta">Last updated at 08/23/2025 09:13 PM by Delmar Larsen</div>
+<p class="max-w-6xl"><span class="font-medium">Description</span>: <span class="italic">This a list of behaviors associated with Canvas-LMS coupled ADAPT courses</span></p>
+<div class="prose !max-w-full"><p>Once an ADAPT course is linked to a Canvas course through the LTI-API interface, the following behaviors can be expected:</p><h3>Setting Dates and Timing</h3><p>Currently, dates and timing are managed independently in ADAPT and Canvas. There is no automatic syncing between the two systems. Instructors tend to choose from three possible modes of operation to coordinate timing between the two systems.</p><ul><li>Mode 1: Canvas is the Gate Keeper</li><li>Mode 2: ADAPT is the Gate Keeper (recommended)</li><li>Mode 3: No Gate Keeper (ADAPT and Canvas perfectly synced)</li></ul><p>See the <a href="https://commons.libretexts.org/insight/adapt-lms-timing" target="_blank" rel="noopener noreferrer">Modes of Operation page</a> for more details on this page:&nbsp;</p><h3>Adding an assignment in ADAPT course</h3><p>When an instructor creates a new assignment in ADAPT, it will automatically appear in Canvas through the API connection. However, this process is one-way; changes or updates made to assignments in Canvas are not authomatically synced to ADAPT.</p><h3>Delete an Assignment in ADAPT course</h3><p>Deleting an assignment in ADAPT removes the corresponding assignment in Canvas.</p><h3>Delete an Module in Canvas</h3><p>If an instructor deletes a module in Canvas, it has no effect on the linked ADAPT course. The assignments housed in that module will still exist in ADAPT. In the future, it may be possible for ADAPT to use an API call to identify any 'phantom assignments' (i.e., assignments that still exist in ADAPT but are no longer visible in Canvas).</p><h3>Changing a Name of a Module in Canvas or Assignment in ADAPT</h3><p>Currently, the names of Canvas Module and ADAPT Assignments are managed independently in ADAPT and Canvas. There is no automatic syncing between the two systems. When the two systems are linked, Canvas Modules are automatically created and named after the corresponding ADAPT titles. That is currenlty the first and last time the two are connected. Changing one will not automatically change the other.</p><h3>Setting Points</h3><p>Currently, point values per question are managed <strong>separately</strong> in ADAPT and Canvas, with no automatic syncing between the two systems. To avoid confusion and discrepancies in grading, instructors should ensure that point settings in ADAPT and Canvas are aligned.</p><h3>Will Changing the point values in Canvas that affect the points posted from ADAPT or vice versa?</h3><p>No. ADAPT (like any LTI-based tool) sends <strong>only the proportion correct</strong> (a value between 0 and 1) back to Canvas. Canvas then multiplies this proportion by the total point value assigned to the corresponding Canvas assignment.</p><ul><li>Changing the <strong>point value in Canvas</strong> does <strong>not</strong> affect the proportion sent by ADAPT.</li><li>The <strong>score students see in ADAPT</strong> remains unchanged.</li><li>However, <strong>Canvas will display a different numeric score</strong> if its point value is changed - because it recalculates the score using the original proportion from ADAPT multiplied by the new total points.</li><li>This change is <strong>not retroactive</strong> for submissions that were already passed back <i>unless</i> the grades are explicitly re-sent from ADAPT.</li></ul><p>If a full re-pass of all grades is needed (e.g., after adjusting Canvas point values), it can be triggered manually - please contact the ADAPT team to initiate that process.</p></div>
+</body>
+</html>

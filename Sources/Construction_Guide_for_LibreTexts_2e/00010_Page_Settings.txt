@@ -1,0 +1,14 @@
+Oibretexts:
+CHAPTER OVERVIEW
+
+10: Page Settings
+10.1: Page Settings
+10.2: Article Type
+10.3: Adding Summary
+10.4: Thumbnails
+10.5: Adding Authorbars (Meta-Tags)
+10.6: Selecting Copyright for Page (Meta-Tags)
+10.7: Tags
+
+10: Page Settings is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+

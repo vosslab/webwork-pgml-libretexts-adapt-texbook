@@ -1,0 +1,41 @@
+Oibretexts:
+
+11.2.8.3: Using ipyvolume for 3D plotting
+
+The ipyvolume package for Python allows for 3d plotting straight in LibreTexts code blocks.
+
+A quick example, taken from the ipyvolume docs, showcases ipyvolume's ability to render three-dimensional objects with sliders to
+adjust attributes in real time.
+
+Because ipyvolume isn't included by default, we need to install it via pip at the top of the code block.
+
+!Ipip install ipyvolume -q
+import numpy as np
+import ipyvolume as ipv
+V = np.zeros((128,128,128)) # our 3d array
+# outer box
+V[30: -30,30:-30,30:-30] = 0.75
+0.
+
+V[35:-35,35:-35,35:-35] =
+# inner box
+
+V[50:-50,50:-50,50: -50]
+V[55:-55,55:-55,55:-55]
+ipv.quickvolshow(V, level=[0.25, 0.75], opacity=0.03, level _width=0.1, data min=0, da
+
+restart restart & run all
+
+This page titled 11.2.8.3: Using ipyvolume for 3D plotting is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by
+
+0.25
+= 0.0
+
+Delmar Larsen.
+
+e 5.2.8.3: Using ipyvolume for 3D plotting by Delmar Larsen is licensed CC BY 1.3.
+
+PYTHON SESSION: NOT STARTED
+
+11.2.8.3.1 https ://chem.libretexts .org/@go/page/483756
+

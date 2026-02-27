@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AnswerIsSolutionToEquation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+		pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+		pre { overflow-x: auto; padding: 0.75rem; border: 1px solid #ddd; }
+		blockquote { border-left: 4px solid #ddd; padding-left: 1rem; color: #444; }
+		.meta { color: #555; font-size: 0.95rem; margin: 0.75rem 0 1.25rem 0; }
+		.source { color: #555; font-size: 0.95rem; margin-bottom: 0.25rem; }
+	</style>
+</head>
+<body>
+	<h1>AnswerIsSolutionToEquation</h1>
+	<div class="source">Source: <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AnswerIsSolutionToEquation.html">https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AnswerIsSolutionToEquation.html</a></div>
+<body>
+	<div class="container-fluid p-3">
+		<div class="row">
+			<div class="col">
+				<h1>Answer is a Solution to an Equation</h1>
+				<p>The answer is a solution to an equation.</p>
+			</div>
+			<div class="col text-end">
+				<a href="https://openwebwork.github.io/pg-docs/sample-problems/../index.html">Return to the PG docs home</a>
+</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Complete Code</h2>
+				<p>
+				Download file: <a href="AnswerIsSolutionToEquation.pg">AnswerIsSolutionToEquation.pg</a>
+</p>
+			</div>
+				<div class="col">
+					<h2>POD for Macro Files</h2>
+					<ul>
+								<li><a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/parsers/parserSolutionFor.html">parserSolutionFor.pl</a></li>
+					</ul>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col text-center"><h2 class="fw-bold fs-3">PG problem file</h2></div>
+			<div class="col text-center"><h2 class="fw-bold fs-3">Explanation</h2></div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserSolutionFor.pl', 'PGcourse.pl');
+" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserSolutionFor.pl', 'PGcourse.pl');
+</pre>
+				</div>
+				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Preamble</b></p>
+						<p>We need to include the macros file <code>parserSolutionFor.pl</code></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 order-md-first order-last p-0 position-relative overflow-x-hidden">
+					<button class="clipboard-btn btn btn-sm btn-secondary position-absolute top-0 end-0 me-1 mt-1 z-1" type="button" data-code="Context('Vector')-&gt;variables-&gt;are(x =&gt; 'Real', y =&gt; 'Real');
+
+$f = SolutionFor(&quot;x^2 = cos(y)&quot;, &quot;(1,0)&quot;);
+#$f = SolutionFor(&quot;x^2 - y = 0&quot;, [ 2, 4 ]);
+#$f = SolutionFor(&quot;x^2 - y = 0&quot;, Point(4, 2), vars =&gt; [ 'y', 'x' ]);
+
+BEGIN_PGML
+A solution to [`[@ $f-&gt;{f} @]`] is [`(x,y) =`] [___]{$f}
+END_PGML
+
+ENDDOCUMENT();" aria-label="copy to clipboard">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2Z"></path>
+						</svg>
+					</button>
+					<pre class="CodeMirror cm-s-eclipse m-0 h-100 p-3 border border-secondary overflow-x-scroll">Context('Vector')-&gt;variables-&gt;are(x =&gt; 'Real', y =&gt; 'Real');
+
+$f = SolutionFor("x^2 = cos(y)", "(1,0)");
+#$f = SolutionFor("x^2 - y = 0", [ 2, 4 ]);
+#$f = SolutionFor("x^2 - y = 0", Point(4, 2), vars =&gt; [ 'y', 'x' ]);
+
+BEGIN_PGML
+A solution to [`[@ $f-&gt;{f} @]`] is [`(x,y) =`] [___]{$f}
+END_PGML
+
+ENDDOCUMENT();</pre>
+				</div>
+				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
+					<p><b>Setup</b></p>
+						<p>The routine SolutionFor('equation',point,options) takes an equation, a point that satisfies that equation, and options such as <code>vars=&gt;['y','x']</code> in case you want to change the order in which the variables appear in order pairs (the default is lexicographic ordering of the variables). section = statement</p>
+				</div>
+			</div>
+	</div>
+
+	<script type="module">
+		for (const pre of document.body.querySelectorAll('pre.CodeMirror')) {
+			CodeMirror.runMode(pre.textContent, 'PG', pre);
+		}
+
+		for (const btn of document.querySelectorAll('.clipboard-btn')) {
+			btn.addEventListener('click', () => navigator.clipboard.writeText(btn.dataset.code));
+		}
+	</script>
+
+
+
+</body>
+</body>
+</html>

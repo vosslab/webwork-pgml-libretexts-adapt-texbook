@@ -1,0 +1,20 @@
+Oibretexts:
+
+5.3.7: More Tools
+
+Flagging a project sends an email notification with a description of the reason for flagging to a LibreTexts Administrator, Campus
+Administrator, Project Liaison or Project Lead.
+
+Projects > Completed Projects >» Howard University General Chemistry An Atoms First Approach ID: rQUAT9Oshw
+
+(# Edit Properties 22 Manage Team #@ A\Co-Author © Timeline & Peer Review @ Accessibility More Tools ~
+
+@ Flag Project
+
+Figure 5.3.7.1: Copy and Paste Caption here. (Copyright; author via source)
+
+More tools may be added here at a later date.
+
+5.3.7: More Tools is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+https ://chem.libretexts .org/@go/page/483925

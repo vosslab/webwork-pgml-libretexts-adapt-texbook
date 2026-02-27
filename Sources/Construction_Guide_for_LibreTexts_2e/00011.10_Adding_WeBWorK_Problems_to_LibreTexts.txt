@@ -1,0 +1,310 @@
+Oibretexts:
+
+11.10: Adding WeBWorK Problems to LibreTexts
+
+Adding WeBWorkK problems to check for student understanding at appropriate places in your LibreTexts can keep students
+engaged and help them work out the details of definitions, concepts, and theorems.
+
+Although Adapt can allow you to incorporate graded "summative" problems (WeBWork, H5P, MyOpenMath, etc.) into your
+LibreTexts, this tutorial will focus on various ways to insert WeBWorK problems into LibreText pages for formative feedback, i.e.,
+to help students check and refine their understanding.
+
+Browsing Available WeBWork Problems
+Two methods to browse available WeBWork problems are:
+
+1. Use the Library Browser in any WeBWorkK course on a WeBWork server
+2. Use the LibreTexts Query Library to locate WeBWork problems
+
+Library Browser: Once logged into a WeBWorkK course with appropriate permissions, you can use the Library Browser link to
+search the contents of this library for appropriate problems to insert in your LibreTexts. Here you will need the OPL address to
+insert a WeBWork problem into a LibreTexts page. We'll discuss this more below.
+
+If you do not have access to a WeBWorkK server, it is possible that you could use the LibreTexts WeBWorkK server to explore the
+OPL in this way. If you are interested in this possibility, please request access.
+
+You may find this page about the WeBWorK OPL (Open Problem Library)
+helpful: https://webwork.maa.org/wiki/Open_Problem_Library
+
+Browsing Query: First, you will need to access the LibreTexts Query WeBWork library page. Then you can use the topical
+folder names to dig through the contents of the OPL (Open Problem Library) that are housed in Query. Note that what you'll need
+to insert a WeBWorkK problem from Query is its page ID. We'll discuss this more below. Also note that you do NOT need to be
+logged in to Query to browse problems.
+
+One other thing to consider is that browsing Query may allow you to find other types of problems as well (not just WeBWork).
+And these can be inserted into LibreTexts pages using the same method as we show for a WeBWorkK problem below.
+
+Inserting Formative WeBWorkK Problems into a LibreTexts Page
+
+Even when used formatively, there are currently three methods to insert WeBWork problems into your LibreTexts pages. Each
+method has its advantages and the method you choose may depend to some degree on how much experience you have with
+WeBWork.
+
+Inserting a WeBWorkK Problem Using its OPL (Open Problem Library) Address
+
+This method is great for those who have access to WeBWorK and either know which problems they wish to use from their own
+assignments or can use the Library Browser in WeBWorK to locate appropriate problems and obtain their OPL address.
+
+Say we found a problem in the OPL with the following address that we want to insert.
+Library/Michigan/Chap7Sec1/Q77.pg
+
+Select Elements > Templates > Template:QueryWebWork
+
+(cc) (#) 11.10.1 https ://chem.libretexts .org/@go/page/483770
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Insert template x
+
+¥ Template:Adapt
+Template:AddAudio
+Template: AddFigureCenterCenter
+Template: AddFigureCenterRight
+Template: AddFigureMultiplaCenterCenter
+Template: AddF igureMultipleCenterCenterOneCaption
+Template:AddHiddenText
+Template:BoxAdapt Cancel
+Template:BoxCode
+Template:BoxDefinition
+Template:BoxExample
+Template:BoxExercise
+Tomplate:Boxinteractive
+Template:BoxNote
+Template:BoxObjectives:
+Template:BoxQuery
+Template:BoxTheorem
+Template:BoxWarning
+Template:Pageindex
+Template:QueryH5P
+Template:QueryiMath
+
+Figure 11.10. Selecting the WeBWorK template to use with an
+OPL address.
+
+Once the template is added to the page, all you have to do is change the address of the problem to the one you located in the
+previous step. Note that you will need to click on the + sign on the DekiScript object to open the attributes for the template. See
+Figures 11.10.2and 11.10.3below.
+
+Figure11.10.2 New QueryWeBWorkK template
+
+Query \(\PageIndex{1}\)
++ - DekiScript -
+
+Figure11.10.3 QueryWeBWorK template opened
+
+Query \(\Pagelndex{1}\)
+
+= fa -beksarpt-
+
+Direct Add of WebWork Assessment from Server (i.e., bypass Query library)
+
+Enter DekiScript
+
+Replacing the defau addressin-the-code-with the WeBWork problem address we found above gives us:
+
+Enter DekiScript
+
+Figure 11.10.4 QueryWeBWork template with new OPL problem
+
+address
+
+Once the page is saved, this will render the problem as:
+
+Note that this problem is labeled as a Query even though it did not come from the Query database. This is intentional, as these
+types of interactive questions are being called Queries in LibreTexts.
+
+Inserting a WeBWorK Problem Using its Query ID
+
+This method may be easier for anyone who is not as familiar with WeBWork and/or who does not have access to a WeBWorK
+course and the OPL Library Browser. It uses the page ID for the corresponding problem in the LibreTexts Query problem
+database.
+
+As mentioned above, another advantage of this approach is that it can be used to insert problems of any type that you find in the
+Query problem database. Just find the page ID and insert it in the template as we show below and the problem will render in your
+LibreTexts page.
+
+Now from the Query database, let's say we found the following problem:
+
+(cc) (#) 11.10.2 https ://chem.|libretexts .org/@go/page/483770
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Last updated: Mar 2, 2020 Page ID: 21088 < Bifurcations | BDH-1-7-03.pg > [II"")) i Readability 66 Cite this page
+
+Determine the bifurcation value(s) for the one-parameter family y y y
+
+dy A
+
+-=y tk.
+
+dt y '
+
+A y
+
+k= help (numbers) e
+Determine which differential equation corresponds to each phase line. You should be able to state briefly how you know your choices are A
+correct. A B C
+
+2 v 1.k equal to the bifurcation value
+? ~ 2.k smaller than the bifurcation value
+
+2 " 3.k larger than the bifurcation value
+
+Preview My Answers Submit Answers
+
+Figure 11.10.5 WeBWorK problem in Query
+Note the Page ID: 21088 just below the problem title. We will need this number to identify this problem in the template.
+
+Now select Elements > Templates > Template:BoxQuery
+
+Insert template x
+
+¥ Template:Adapt
+Template: AddAudio
+Template: AddFigureCenterCenter
+Template: AdaFigureCenterRight
+Template: AddFigureMultipleCenterCenter
+Template: AddFigureMultipleCenterCenterOneCaption
+Template: AddHiddenText
+Template:BoxAdapt Cancel
+Template:BoxCode
+Template:BoxDefinition
+Template:BoxExample
+Tomplate:BoxExercise
+'Template:Boxinteractive
+Template:BoxNote
+Template:BoxObjectives:
+Template:BoxQuery
+Template:BoxTheorem
+Template:BoxWaming
+Template:Pageindex:
+Template:QueryH5P
+Template:QueryiMath
+
+Termplate:ueryWebWerk Figure 11.10.6 Selecting the BoxQuery template to use with a
+Page ID.
+
+Once the template is added to the page, all you have to do is change the Page ID of the problem to the one you located in the
+previous step. Note that you will need to click on the + sign on the DekiScript object to open the attributes for the template. See
+Figures 11.10.7and 11.10.8below.
+
+Figurel 1.10.7 New BoxQuery template Figure11.10.8
+
+Query \(\PageIndex{1}\)
+
+Query \(\PageIndex{1}\)
+kiScript -
+
+* an : BoxQuery template opened [~@-&trade;
+e with the Page ID for the WeBWorK prob iggggestormectnetines@ ucry database (21088)
+
+Replacing
+above gives us:
+
+Query \(\PageIndex{1}\)
+
+- - DekiScript -
+
+Description: Embed QUERY Assessment
+
+Enter DekiScript
+(
+
+Figure 11.10.9 BoxQuery template with new Page ID
+
+Once the page is saved, this will render the problem as:
+
+(cc) (#) 11.10.3 https ://chem.|libretexts .org/@go/page/483770
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+Note that we can update the PageIndex appropriately as we insert new Query problems.
+
+Inserting a WeBWorkK Problem from Your own WeBWorK Server
+
+This method is ideal for inserting your own created or customized problems in a LibreTexts page. It is currently still the least
+polished in its presentation, although this should soon be standardized to look like the other two methods above, using a new
+Template. This page will be updated once this is accomplished.
+
+At this point, there is not a template for this method. We will be editing the HTML version of the page directly.
+
+While editing the LibreTexts page that you wish to add a WeBWorkK problem to, click the </> HTML button in the upper-right
+corner. This button toggles the editing mode between WYSIWYG and HTML. We can accomplish most editing tasks in
+LibreTexts without worrying about the HTML, but for this WeBWork problem option, we need it.
+
+You can copy-and-paste the following code to modify it appropriately to create your linked WeBWorK problem. The base
+WeBWorkK server URL has been formatted to show it is code, but the rest of it should copy-and-paste correctly.
+
+<div><iframe frameborder="1" height="250" src="
+https://demo.webwork.rochester .edu/webwork2/html2xml1 ?
+
+&amp;answersSubmitted=0&amp;
+
+&amp;sourceFilePath=Problems/CalcIII/DivCurl/ur_vc_12_9.pg&amp;
+
+&amp;problemSeed=123567&amp;
+
+&amp;courseID=seeburger_course&amp;
+
+&amp;userID=daemon&amp;
+
+&amp;course_password=daemon&amp;
+
+&amp;showSummary=1&amp;
+
+&amp;displayMode=MathJax&amp;
+
+&amp;problemidentifierPrefix=102&amp;
+
+&amp;language=en&amp;
+
+&amp;outputformat=sticky" width="100%"></iframe></div>
+
+This code will generate the following WeBWork problem, served up from an external WeBWork server. Although it is not really a
+custom problem, it could be.
+
+Note that you can specify your desired WeBWorkK server and the path to the problem inside the course you set up for serving these
+problems. The courseID is the course name, and you need to create a user named "daemon" with password "daemon" and
+permission set to "login proctor" in that course. Alternatively, you could use "anonymous" instead of "daemon". Just be
+consistent.
+
+The path can be a Library problem too, although we recommend you use the QueryWebWork template described above unless you
+wish to use custom problems.
+
+(cc) (#) 11.10.4 https ://chem.libretexts .org/@go/page/483770
+
+
+
+--- Page Break ---
+
+Oibretexts:
+
+You can use the Library Browser in the WeBWorK course you use to locate any problem available there, even in your local
+customized problem sets.
+
+Putting these WeBWorkK Problems in a Query Box
+
+If you wish it to look more like the other problems, we can use the BoxQuery template for that, although there may soon be a
+custom template for this feature as well with appropriate parameters.
+
+To get the problem inside of a Query Box, I added the BoxQuery template, then switched to HTML mode and replaced the code:
+
+<p class="mt-script-comment">Embed QUERY Assessment</p></br>
+<pre class="script"></br>
+template('query', {'PageID':'35292'});</pre>
+
+with the HTML code for the desired WeBWorK problem.
+
+This page titled 11.10: Adding WeBWork Problems to LibreTexts is shared under a CC BY 1.3 license and was authored, remixed, and/or curated
+by Delmar Larsen.
+
+(cc) (#) 11.10.5 https ://chem.libretexts .org/@go/page/483770

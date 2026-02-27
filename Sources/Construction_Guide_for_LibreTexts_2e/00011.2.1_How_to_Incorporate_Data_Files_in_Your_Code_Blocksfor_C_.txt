@@ -1,0 +1,83 @@
+Oibretexts:
+
+11.2.1: How to Incorporate Data Files in Your Code Blocks- For C++
+
+There are a number of ways data files and can be incorporated into code blocks. However, ensure that you have already followed
+the steps in the introduction to the CKEditor Binder Plugin Tutorial here.
+
+Method 1: Using wget
+
+The first method that can be used to get a data file in your code block is with wget. Follow the example below and replace the
+example URL with the one attained in the previous step.
+
+lwget https://chem. libretexts.org/@api/deki/files/265970/auto-mpg.data
+
+run | restart restart & run all
+
+Remember to press the "Run" button prior to pressing "OK". Printing both the code and output will provide the below result, to
+avoid this simply check "Insert Code Only" after pressing "Run" in order to achieve the example above.
+
+lwget https://chem. libretexts.org/@api/deki/files/265970/auto-mpg.data
+
+restart restart & run all
+
+--2020-05-18 04:16:31--
+
+https://chem. Libretexts.org/@api/deki/files/265970/auto-mpg.data
+Resolving chem.libretexts.org (chem. libretexts.org)... 13.35.254.13,
+13.35.254.77, 13.35.254.102,
+
+Connecting to chem. libretexts.org
+
+(chem. Libretexts.org) ]13.35.254.13]:443... connected.
+
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://files.mtstatic.com/site 4334/265970/0?
+Expires=15897778168&Signature=HQdyAtgRqx~ikJAn8V8XF - kwzvhhBEh2Ru3hh -
+7~c7-
+a2MYbWKcKeYCrtY801FmxXtthLOVs9XJ3cnL36ZROdmnGIQOXWorZn4btiyaT ZMyGgiJ8m0¢
+6np-MayHoZOTRYqyT fgk7TpTLs8ipw3IcMgFak5VFURpGYs7ZtGysk S&Key-Pair-
+Id=APKAJ5Y6AV4GI7A555NA [following]
+
+--2020-05-18 04:16:31--
+
+https://files.mtstatic.com/site 4334/265970/0?
+Expires=15897778168&Signature=HQdyAtgRqx~ikJAn8V8XF - kwzvhhBEh2Ru3hh -
+7~c7-
+a2MYbWKcKeYCrtY801FmxXtthLOVs9XJ3cnL36ZROdmnGIQOXWorZn4btiyaT ZMyGgiJ8m0¢
+6np-MayHoZOTRYqyT fgk7TpTLs8ipw3IcMgFak5VFURpGYs7ZtGysk S&Key-Pair-
+Id=APKAJ5Y6AV4GI7A555NA
+
+Resolving files.mtstatic.com (files.mtstatic.com)... 143.204.201.91,
+143.204.201.75, 143.204.201.32,
+
+Connecting to files.mtstatic.com
+
+(files.mtstatic.com) |143.204.201.91|:443... connected.
+
+HTTP request sent, awaiting response... 200 OK
+
+Length: 30286 (30K) [application/octet-stream]
+
+Saving to: 'auto-mpg.data'
+
+Ole vee eee 100%
+TEXT/X-C++SRC SESSION: NOT STARTED
+
+https ://chem.libretexts .org/@go/page/483745
+
+
+--- Page Break ---
+
+Oibretexts:
+
+2020-05-18 04:16:31 (11.2 MB/s) - 'auto-mpg.data' saved [30286/30286]
+
+Once the data file has been loaded, use C++ code that you may normally use to read out the lines in the data file
+
+This page titled 11.2.1: How to Incorporate Data Files in Your Code Blocks- For C++ is shared under a CC BY 1.3 license and was authored,
+remixed, and/or curated by Delmar Larsen.
+
+e 5.2.1: How to Incorporate Data Files in Your Code Blocks- For C++ by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483745

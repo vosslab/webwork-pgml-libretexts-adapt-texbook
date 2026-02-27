@@ -1,0 +1,740 @@
+1
+00:00:00,000 --> 00:00:10,160
+ So I've been wanting to adapt my large collection of biology homework questions from kind of
+
+2
+00:00:10,160 --> 00:00:16,600
+ a blackboard format to using library text adapt, which kind of uses like a web work
+
+3
+00:00:16,600 --> 00:00:20,680
+ type format here, at least the way I've adapted them.
+
+4
+00:00:20,680 --> 00:00:26,040
+ That seems to be probably the best format for working with biology problems.
+
+5
+00:00:26,040 --> 00:00:30,680
+ But first I really needed a good sandbox tester for web work.
+
+6
+00:00:30,680 --> 00:00:37,040
+ So I took the web work PG renderer, oh gosh, I thought I had the page up, but I do not.
+
+7
+00:00:37,040 --> 00:00:41,280
+ I have too many repositories, apologies.
+
+8
+00:00:41,280 --> 00:00:42,280
+ That's a web work.
+
+9
+00:00:42,280 --> 00:00:43,280
+ That's a web work.
+
+10
+00:00:43,280 --> 00:00:44,280
+ That's there guys.
+
+11
+00:00:44,280 --> 00:00:48,720
+ So yeah, so I took the web work PG renderer, which installs itself via Docker.
+
+12
+00:00:48,720 --> 00:00:52,080
+ It's not the easiest thing to set up, I expanded it and modernized it.
+
+13
+00:00:52,080 --> 00:00:58,880
+ And now I have this nice thing where I can drop in web work questions, render the question.
+
+14
+00:00:58,880 --> 00:01:02,980
+ And if I want to go into debug mode, this is, you know, where all the nitty gritty nuts
+
+15
+00:01:02,980 --> 00:01:06,760
+ and bolts generated HTML stuff exists, if you want to try and figure out what's going
+
+16
+00:01:06,760 --> 00:01:07,760
+ wrong.
+
+17
+00:01:07,760 --> 00:01:11,640
+ And that was really critical for me and especially using AI agents.
+
+18
+00:01:11,640 --> 00:01:16,380
+ And it just kind of runs on my local computer, localhost 3000 here.
+
+19
+00:01:16,380 --> 00:01:21,980
+ But since about November, last year, November, 2025, AI coding agents have really transformed
+
+20
+00:01:21,980 --> 00:01:25,480
+ how I write computer code to tell you the truth, I really don't write computer code
+
+21
+00:01:25,480 --> 00:01:28,060
+ much anymore, but I program all day.
+
+22
+00:01:28,060 --> 00:01:32,840
+ It's vibe coding has really taken over.
+
+23
+00:01:32,840 --> 00:01:40,840
+ And one of the deals is that chatgpt is just literally terrible at writing web work questions.
+
+24
+00:01:40,840 --> 00:01:44,120
+ Let's let's do an example here.
+
+25
+00:01:44,120 --> 00:01:48,800
+ Write a simple web work question asking my favorite color where the answer is blue.
+
+26
+00:01:48,800 --> 00:01:55,320
+ All right, so I am on chatgpt 5.2 auto where it kind of sounds like, oh, yeah, sure, sure,
+
+27
+00:01:55,320 --> 00:01:56,320
+ sure.
+
+28
+00:01:56,320 --> 00:01:57,320
+ I can do that.
+
+29
+00:01:57,320 --> 00:02:00,280
+ Oh, the last few times I did it actually just that show partial correct answers to one,
+
+30
+00:02:00,280 --> 00:02:04,920
+ which means is there a partial correct like if I guess green, is that close to blue?
+
+31
+00:02:04,920 --> 00:02:05,920
+ I don't know.
+
+32
+00:02:05,920 --> 00:02:06,920
+ So let's see if it works.
+
+33
+00:02:06,920 --> 00:02:15,520
+ So I'm going to copy this and then go back to my renderer here and up air and you can
+
+34
+00:02:15,520 --> 00:02:18,660
+ actually go back and forth with chatgpt on this and eventually it'll convince you that
+
+35
+00:02:18,660 --> 00:02:22,480
+ your renderer is broken and it is it is correct.
+
+36
+00:02:22,480 --> 00:02:24,440
+ But for the most part chatgpt just cannot do it.
+
+37
+00:02:24,440 --> 00:02:26,780
+ Clod code on the other hand actually is pretty successful.
+
+38
+00:02:26,780 --> 00:02:29,240
+ But this is like the easiest question.
+
+39
+00:02:29,240 --> 00:02:36,240
+ If I Google PGML multiple choice example, it's the number two hit is literally I'm sorry,
+
+40
+00:02:36,240 --> 00:02:37,960
+ I guess it's not the number two hits.
+
+41
+00:02:37,960 --> 00:02:38,960
+ I did this on DuckDuckGo.
+
+42
+00:02:38,960 --> 00:02:40,900
+ So I know the number nine hit on DuckDuckGo.
+
+43
+00:02:40,900 --> 00:02:44,840
+ So I have to scroll all the way down.
+
+44
+00:02:44,840 --> 00:02:45,840
+ Number nine.
+
+45
+00:02:45,840 --> 00:02:50,000
+ Oh, gosh, really, oh, here multiple choice of radio buttons.
+
+46
+00:02:50,000 --> 00:02:52,440
+ This is literally the example question.
+
+47
+00:02:52,440 --> 00:02:54,480
+ My favorite color is blue, right?
+
+48
+00:02:54,480 --> 00:02:59,680
+ So it has this information on the internet to grab from, but it just gets confused with
+
+49
+00:02:59,680 --> 00:03:04,800
+ all the Perl out there because web works like Perl, but not quite.
+
+50
+00:03:04,800 --> 00:03:07,000
+ So what did I do?
+
+51
+00:03:07,000 --> 00:03:09,240
+ So I mean, this is like the worst part of programming.
+
+52
+00:03:09,240 --> 00:03:14,560
+ You're stuck debugging someone else's code, which is not what you want to do.
+
+53
+00:03:14,560 --> 00:03:21,880
+ So what I've done is probably the best example is like Clod code, you know, it's codex works
+
+54
+00:03:21,880 --> 00:03:23,020
+ okay.
+
+55
+00:03:23,020 --> 00:03:24,480
+ It's a little bit slower.
+
+56
+00:03:24,480 --> 00:03:29,640
+ Well, since I'm sticking to OpenAI, we'll stick with codex here.
+
+57
+00:03:29,640 --> 00:03:30,840
+ So this is the codex app.
+
+58
+00:03:30,840 --> 00:03:33,240
+ I have a web work codex forum here.
+
+59
+00:03:33,240 --> 00:03:38,880
+ And I've written a skill, which is invoked with dollars on here called web work writer,
+
+60
+00:03:38,880 --> 00:03:45,720
+ which basically gives it a whole bunch of documentation, it can use on how to write
+
+61
+00:03:45,720 --> 00:03:50,880
+ good web work questions, because it's really needed, and it actually is able to connect
+
+62
+00:03:50,880 --> 00:03:58,240
+ itself to the renderer to confirm that its code actually works.
+
+63
+00:03:58,240 --> 00:04:01,960
+ It's obsessed with finding other files on my file system to use the cheat.
+
+64
+00:04:01,960 --> 00:04:08,080
+ So we'll see if it gets up a thing, it's not the quickest thing I'm going to show a more
+
+65
+00:04:08,080 --> 00:04:13,520
+ complicated example here that I launched 11 minutes ago, and Clod is still thinking about
+
+66
+00:04:13,520 --> 00:04:14,520
+ it.
+
+67
+00:04:14,520 --> 00:04:15,520
+ So.
+
+68
+00:04:15,520 --> 00:04:20,680
+ All right, so here, favorite color blue, I think it was able to test it, we'll find out.
+
+69
+00:04:20,680 --> 00:04:23,040
+ So let's go back to my renderer.
+
+70
+00:04:23,040 --> 00:04:28,520
+ Bam, it's gotten a lot longer, and it's actually using pgml format, or it was kind of using
+
+71
+00:04:28,520 --> 00:04:32,080
+ a hacky format before, it didn't quite work.
+
+72
+00:04:32,080 --> 00:04:36,600
+ I really don't want to have to debug this some more, but I don't want to spend Oh, yeah,
+
+73
+00:04:36,600 --> 00:04:38,640
+ so you can't use mice.
+
+74
+00:04:38,640 --> 00:04:41,200
+ It should know that.
+
+75
+00:04:41,200 --> 00:04:46,560
+ But yeah, who wants to sit here and debug code for the I'm gonna try and pretend.
+
+76
+00:04:46,560 --> 00:04:51,400
+ But what if I want to write a more challenging question was my favorite color.
+
+77
+00:04:51,400 --> 00:04:56,120
+ I've been teaching I was teaching my students last week, on isoelectric points of amino
+
+78
+00:04:56,120 --> 00:05:00,120
+ acids, you know, it's kind of fancy curve, it's the point where there's no charge, and
+
+79
+00:05:00,120 --> 00:05:03,040
+ they really when I posted this up on the slides, they're kind of I'm like, which one has the
+
+80
+00:05:03,040 --> 00:05:06,120
+ neutral or what's the pi here, you know, and they're like, I don't know.
+
+81
+00:05:06,120 --> 00:05:12,220
+ I got like 50 glazed eyes looking back at me and I'm like, this would be a great question
+
+82
+00:05:12,220 --> 00:05:15,040
+ to add to adapt.
+
+83
+00:05:15,040 --> 00:05:16,640
+ I do have a working copy of it.
+
+84
+00:05:16,640 --> 00:05:23,160
+ But for example, here, I just kind of show random amino acid different charges, you should
+
+85
+00:05:23,160 --> 00:05:26,560
+ be able to add a plus and a minus cancel out to say no net charge and then figure out what
+
+86
+00:05:26,560 --> 00:05:30,920
+ the pi is based on a titration curve was my idea.
+
+87
+00:05:30,920 --> 00:05:38,200
+ So I wrote up a prompt and, you know, fairly detailed as give this basically give this
+
+88
+00:05:38,200 --> 00:05:42,120
+ whole prompt to chat GPT here, I want you to write a two part question from scratch
+
+89
+00:05:42,120 --> 00:05:45,960
+ amino acid isoelectric points part one student selects hypothetical amino acid for three
+
+90
+00:05:45,960 --> 00:05:46,960
+ pKa values.
+
+91
+00:05:46,960 --> 00:05:51,600
+ This is the repo is empty, it's a fresh project.
+
+92
+00:05:51,600 --> 00:05:56,780
+ But you know, the thing is, it has all these documents to consult because chat GPT wants
+
+93
+00:05:56,780 --> 00:06:03,320
+ to use kind of its own random function, which is not how web work once right.
+
+94
+00:06:03,320 --> 00:06:11,280
+ I was able to fire up codex earlier, I don't think I had to have I mean, it's not something
+
+95
+00:06:11,280 --> 00:06:12,280
+ I could really do live in a video.
+
+96
+00:06:12,280 --> 00:06:16,760
+ But basically, I gave it the prompt, I gave it a picture, I told it to load my skill.
+
+97
+00:06:16,760 --> 00:06:19,560
+ I told it that all the documents it needs is in the skills, so please don't search my
+
+98
+00:06:19,560 --> 00:06:27,040
+ hard drive, so it's, I have enough guidance to implement the problem now I've created
+
+99
+00:06:27,040 --> 00:06:30,080
+ a new problem also change log entry the promise.
+
+100
+00:06:30,080 --> 00:06:35,600
+ I'm now running the local renderer and I had some problems that do more up seeds problems
+
+101
+00:06:35,600 --> 00:06:36,600
+ with firmware.
+
+102
+00:06:36,600 --> 00:06:39,040
+ Yeah, I don't have to debug all that, let it do it.
+
+103
+00:06:39,040 --> 00:06:41,720
+ Alright, so let's see how its final code came out.
+
+104
+00:06:41,720 --> 00:06:48,720
+ So I'm going to open up the thing and then paste it back into my
+
+105
+00:06:48,720 --> 00:06:49,720
+ render here.
+
+106
+00:06:49,720 --> 00:06:53,200
+ I'm going to use my local renderer.
+
+107
+00:06:53,200 --> 00:06:59,520
+ So it's kind of nice it properly tags the question now, with things it looks like what
+
+108
+00:06:59,520 --> 00:07:00,840
+ strategy to use.
+
+109
+00:07:00,840 --> 00:07:06,320
+ I don't know, can you even read that code early?
+
+110
+00:07:06,320 --> 00:07:07,320
+ Does it work?
+
+111
+00:07:07,320 --> 00:07:08,320
+ It does.
+
+112
+00:07:08,320 --> 00:07:11,760
+ I find that the choice on the states is a little bit harder to read, I could use any
+
+113
+00:07:11,760 --> 00:07:13,960
+ some color, I guess that's probably the correct one there.
+
+114
+00:07:13,960 --> 00:07:19,400
+ And if we know choice two is the proper one, we can say the PI is probably between these
+
+115
+00:07:19,400 --> 00:07:20,400
+ two values.
+
+116
+00:07:20,400 --> 00:07:26,080
+ So somewhere around 3.2 should be the correct answer.
+
+117
+00:07:26,080 --> 00:07:27,080
+ And I got 100%.
+
+118
+00:07:27,080 --> 00:07:32,880
+ So it's that's one way it looks like cloud is finally getting back to me.
+
+119
+00:07:32,880 --> 00:07:35,640
+ So you have to have patience when working with these AI things.
+
+120
+00:07:35,640 --> 00:07:40,480
+ I launched this at 15 minutes ago, it came back and asked some questions about how I
+
+121
+00:07:40,480 --> 00:07:44,120
+ wanted to do it.
+
+122
+00:07:44,120 --> 00:07:49,880
+ It's not clear to me if it is, well, it hasn't given me a file, it still says tinkering.
+
+123
+00:07:49,880 --> 00:07:54,440
+ But you know, it's better for it to kind of sit there and struggle getting the problem
+
+124
+00:07:54,440 --> 00:07:58,080
+ correct than me sitting there to struggle, you can see it's kind of sending the problem
+
+125
+00:07:58,080 --> 00:08:00,320
+ to the local renderer to verify.
+
+126
+00:08:00,320 --> 00:08:03,120
+ So will it do a good job?
+
+127
+00:08:03,120 --> 00:08:04,120
+ I don't know.
+
+128
+00:08:04,120 --> 00:08:05,120
+ But I did try this earlier.
+
+129
+00:08:05,120 --> 00:08:07,520
+ And it did finish eventually.
+
+130
+00:08:07,520 --> 00:08:11,480
+ But I did delete its code, so kind of like that it was very similar kind of rendering
+
+131
+00:08:11,480 --> 00:08:15,680
+ to the one that came out into my problem here.
+
+132
+00:08:15,680 --> 00:08:21,400
+ The graph options available in web work are, I mean, they're not the greatest.
+
+133
+00:08:21,400 --> 00:08:24,320
+ There's some classic ways using LaTeX and stuff.
+
+134
+00:08:24,320 --> 00:08:27,880
+ And now it's asking for permission to run the renderer means that cloud is probably
+
+135
+00:08:27,880 --> 00:08:30,320
+ going to take another 15 to 20 minutes to solve the question.
+
+136
+00:08:30,320 --> 00:08:35,760
+ So I'm going to pop it up.
+
+137
+00:08:35,760 --> 00:08:39,880
+ I know where it's stuck, should I help give it some guidance, tell it to read the skill
+
+138
+00:08:39,880 --> 00:08:42,720
+ again.
+
+139
+00:08:42,720 --> 00:08:46,120
+ I literally have a document on how to render HTML correctly.
+
+140
+00:08:46,120 --> 00:08:52,560
+ It's complaining that I found the PG common pitfalls.
+
+141
+00:08:52,560 --> 00:09:00,360
+ Oh, I actually have a file I can test now.
+
+142
+00:09:00,360 --> 00:09:05,360
+ So let's see how Claude's version holds up to the codex version.
+
+143
+00:09:05,360 --> 00:09:08,080
+ But renders fine.
+
+144
+00:09:08,080 --> 00:09:13,620
+ Seems weird to have the state separate than the state selected, but the cool I'd recently
+
+145
+00:09:13,620 --> 00:09:15,720
+ just told it to add color.
+
+146
+00:09:15,720 --> 00:09:18,120
+ So it's figuring that out.
+
+147
+00:09:18,120 --> 00:09:24,320
+ It did not read the documentation on how to add color to what did just post an update.
+
+148
+00:09:24,320 --> 00:09:29,040
+ Oh, hey, we got blue questions in one place.
+
+149
+00:09:29,040 --> 00:09:32,800
+ I know why it was like giving me like, here, let me put the net charge here.
+
+150
+00:09:32,800 --> 00:09:36,360
+ And then it asked which one's net charge zero and it's like, yeah, no, it's what it renders
+
+151
+00:09:36,360 --> 00:09:39,740
+ fine in WebRK 2.0.
+
+152
+00:09:39,740 --> 00:09:43,860
+ This is PG 2.17.
+
+153
+00:09:43,860 --> 00:09:48,280
+ And okay, it says CPC colors are there and verified.
+
+154
+00:09:48,280 --> 00:09:52,200
+ Now the thing is, you get into a cycle of back and forth.
+
+155
+00:09:52,200 --> 00:09:59,760
+ And so what I'm going to do is I can take a screenshot and share it as only the side
+
+156
+00:09:59,760 --> 00:10:06,960
+ chains are colored, not back to fix that fairly quickly.
+
+157
+00:10:06,960 --> 00:10:11,200
+ I think when I was saying red and blue things, so I can hit the dice here and it gives me
+
+158
+00:10:11,200 --> 00:10:13,160
+ a different version of the problem.
+
+159
+00:10:13,160 --> 00:10:16,720
+ See now here's the COOH version.
+
+160
+00:10:16,720 --> 00:10:19,240
+ But the idea is I'm really into kind of randomizing my questions.
+
+161
+00:10:19,240 --> 00:10:25,040
+ So the P AKA should vary between different versions.
+
+162
+00:10:25,040 --> 00:10:27,000
+ So students just can't post them the check.
+
+163
+00:10:27,000 --> 00:10:31,040
+ Of course, this is, you know, chat GPT probably can't write the question very well, but it
+
+164
+00:10:31,040 --> 00:10:34,500
+ could probably solve this question fairly easy.
+
+165
+00:10:34,500 --> 00:10:35,500
+ But that's not the point.
+
+166
+00:10:35,500 --> 00:10:36,500
+ All right.
+
+167
+00:10:36,500 --> 00:10:42,860
+ And I just thought I'd share kind of my system for writing WebRK code using AI agent.
+
+168
+00:10:42,860 --> 00:10:44,860
+ Something you'd like to change about this?
+
+169
+00:10:44,860 --> 00:10:46,860
+ All charged groups.
+
+170
+00:10:46,860 --> 00:10:49,200
+ Sorry, I'm typing it there.
+
+171
+00:10:49,200 --> 00:10:50,200
+ The video's over.
+
+172
+00:10:50,200 --> 00:10:54,560
+ I'm just kind of, you'll see how it kind of I guess the question is, should we not color
+
+173
+00:10:54,560 --> 00:10:57,040
+ COOH and color COO minus?
+
+174
+00:10:57,040 --> 00:11:02,080
+ But if I look at the question now, you can see everything is rendered in color.
+
+175
+00:11:02,080 --> 00:11:07,440
+ Yeah, I'd probably do the neutral ones in like a gray color or something like that.
+
+176
+00:11:07,440 --> 00:11:09,640
+ So visually stands out more.
+
+177
+00:11:09,640 --> 00:11:14,960
+ I need to learn a lot more about accessibility, but you know, I do like my color.
+
+178
+00:11:14,960 --> 00:11:17,720
+ And I do try to avoid red greens.
+
+179
+00:11:17,720 --> 00:11:21,320
+ You know, being in the Chicago area, I find the bears colors work pretty well if contrast
+
+180
+00:11:21,320 --> 00:11:22,320
+ wise.
+
+181
+00:11:22,320 --> 00:11:23,860
+ So right.
+
+182
+00:11:23,860 --> 00:11:28,520
+ So anyway, that's one way to code a problem in WebRK.
+
+183
+00:11:28,520 --> 00:11:30,960
+ You know, I did need to give it some guidance.
+
+184
+00:11:30,960 --> 00:11:34,080
+ But all the tools are there to debug it at least.
+
+185
+00:11:34,080 --> 00:11:36,360
+ So I need to know how to program.
+

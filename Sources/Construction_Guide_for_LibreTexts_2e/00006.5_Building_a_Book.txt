@@ -1,0 +1,91 @@
+Oibretexts:
+
+6.5: Building a Book
+
+When you first create a project the top of the Project Page looks like this. The Project Properties are set in the Edit Properties menu
+described in Section 5.3.1
+
+S Project successfully created!
+
+@& Edit Properties 2&3 Manage Team © Timeline & Peer Review @ Accessibility More Tools ~
+
+Project Properties
+
+STATUS: Open
+VISIBILITY: Private
+
+IMPORTANT LINKS:
++ Create Book
+Team
+
+CD) Demo Account (Lead)
+
+Figure 6.5.1: Top of a new Project Page
+To create a book you only need to press the green Create Book tab
+
+Once a Library is selected and the new book created there, it cannot be moved.
+
+Create Book
+
+This creates an empty book on your chosen library and links it to this Conductor project.
+Library *
+
+Book Title *
+Test1
+
+CAUTION: Library cannot be changed after book is created! Please check your selection before submitting.
+
+Cancel
+
+Figure 6.5.2: Book creation menu.
+
+and after the book has been created the Project Page looks like the image on the left and if you invoke the Textbook link you will
+be taken to the book that you have created.
+
+LibreTexts"
+CHEMISTRY
+
+( Edit Properties
+
+fac)
+Enter Reader Mode
+
+ABAB*K.Z
+
+28: Manage Team
+
+Project Properties
+
+= f Home " BN Workbench " §ii¥ Testi
+STATUS: Open
+
+VISIBILITY: Private + Page settings
+
+LIBRARY: Chemistry Test1
+
+IMPORTANT LINKS: Last updated: Jul 21, 2024, 9:35 PM by LibreBot Page restriction: Semi-Private Page ID: 483933 a
+Textbook Link [7
+
+Team
+
+CD) Demo Account (Lead)
+
+Front Matter 1: First Chapter Back Matter
+
+Figure 6.5.3: Project Page with the Book next to it
+
+https ://chem.libretexts .org/@go/page/483819
+
+
+--- Page Break ---
+
+Oibretexts:
+
+The next step is to use the Remixer to build out the book. This is described in the next Chapter.
+
+6.5: Building a Book is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+e 10.2.3: Ancilliary Materials and Team Members by Delmar Larsen is licensed CC BY 1.3.
+e 1.6: Quick Start by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483819

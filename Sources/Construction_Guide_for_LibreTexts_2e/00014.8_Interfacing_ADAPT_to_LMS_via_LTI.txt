@@ -1,0 +1,29 @@
+Oibretexts:
+
+14.8: Interfacing ADAPT to LMS via LTI
+
+In terms of the URL, they all look the same except for the final parameter. For example, if you go to:
+https://adapt.libretexts.org/Iti/canvas/config/my-super-cool-college
+
+you'll find "my-super-cool-college" within their config information. The reason for this, is ADAPT consumes the final parameter to
+know which school it is and sends them back to the correct Canvas authorization endpoint.
+
+Also, once they go to the URL and fill out the form, I get an email with how they set it up and then I connect with them for the final
+steps (basic testing of the connection). So, feel free to pass out the URL with the last parameter to be changed to their college (or
+some abbreviation):
+
+https://adapt.libretexts.org/Iti/canvas/config/wwu
+
+or
+
+https://adapt.libretexts.org/Iti/canvas/config/western-washington-university
+
+would be some good examples.
+
+This page titled 14.8: Interfacing ADAPT to LMS via LTI is shared under a CC BY 1.3 license and was authored, remixed, and/or curated by
+Delmar Larsen.
+
+e 9.8: Interfacing ADAPT to LMS via LTI by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483791
+

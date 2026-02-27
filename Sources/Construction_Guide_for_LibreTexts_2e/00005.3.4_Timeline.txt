@@ -1,0 +1,55 @@
+LibreTexts"
+
+5.3.4: Timeline
+
+The Timeline displays a roadmap for construction as well as the timeline built in the Tasks menu at the bottom of the Project Page.
+
+g S LibreTexts&trade;
+
+CONDUCTOR
+
+Projects > Test! > Timeline
+
+Construction Roadmap Hide
+Steps Step 5c: Remixing
+© Step 1: Vision >
+
+Build Remix using Map and Remixer (blank pages for gaps) in sandbox.
+Your remix map will help guide you through selecting your chosen resources within the remixer. The
+
+Step 2: Accounts > ;
+Remixer consists of two panels and utilizes an easy drag and drop process to create new OER. Simply select
+
+Step 3: Training > | one of the libraries in the Library Panel on the left hand side of the Remixer and navigate to the resource
+you need in either the Campus Bookshelves, Bookshelves, or Learning Objects section of your chosen
+
+Step 4 > library. You can then use the plus signs to expand the list of items as you go. Once you have found what
+you're looking for, drag it to the Remix Panel in whatever order you have determined on your remix map.
+
+Step isa sca > |) The Remixer will automatically renumber your chapters, sections, and pages as you go. You may insert
+
+Ce 5 ||. blank pages as page holders for creating new content by clicking on the plus sign for New Page in the gray
+menu bar. Once your remix is ready to upload to your sandbox, you can click on the green Save to Server
+
+Step Sc: Remixing 5 | button. You can continue to work on your OER from your sandbox once it has been uploaded from the
+Remixer.
+
+Step 6: Skeleton >
+[7 Remixer Tutorial
+
+Step 7: Constructing >
+
+Step 8: Editing >
+
+Step 9: Advanced (optional) >
+
+Timeline
+
+Gantt View Calendar View
+
+You can use the Construction Roadmap to move step by step through the building of your book.
+
+5.3.4: Timeline is shared under a not declared license and was authored, remixed, and/or curated by LibreTexts.
+
+https ://chem.libretexts .org/@go/page/483922
+

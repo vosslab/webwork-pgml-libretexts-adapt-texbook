@@ -1,0 +1,59 @@
+Oibretexts:
+
+11.2.8.7: Using IPyCytoscape to visualize graphs
+
+Libretexts authors can create code blocks that utillize the ipyctyoscape package to create cytoscape.js graphs. Below is an example
+taken from the ipycytoscape repository and is licensed under the BSD 3-Clause License.
+
+import ipycytoscape
+data = {
+'nodes': [
+{ 'data': 'id': 'desktop', 'name': 'Cytoscape', 'href': 'http://cytoscape.org
+
+'data': 'id': ''a', 'name': ''Grid', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'b', 'name': 'Cola', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'c', 'name': 'Popper', 'href': 'http://cytoscape.org' } },
+'data': 'id': 'js', 'name': 'Cytoscape.js', 'href': ''http://js.cytoscape.or
+
+'source': 'desktop', 'target': 'js' }},
+'source': 'a', 'target': 'b' }},
+'source': 'a', 'target': 'c' }},
+'source': 'b', 'target': 'c' }},
+'source': 'js', 'target': 'b' }}
+]
+}
+cytoscapeobj = ipycytoscape.CytoscapeWidget ()
+cytoscapeobj.graph.add_ graph from _json(data)
+cytoscapeobj.set_style([{
+'selector': 'node',
+'css': {
+'content': 'data(name)',
+'text-valign': 'center',
+'color': 'white',
+''text-outline-width': 2,
+'text-outline-color': 'green',
+'background-color': 'green'
+}
+},
+{
+'selector': ':selected',
+'css': {
+'background-color': 'black',
+'Line-color': 'black',
+'target-arrow-color': 'black',
+'source-arrow-color': 'black',
+'text-outline-color': 'black'
+}}
+})
+
+cytoscapeobj
+
+n restart restart & run all
+
+This page titled 11.2.8.7: Using IPyCytoscape to visualize graphs is shared under a CC BY 1.3 license and was authored, remixed, and/or curated
+
+by Delp
+PYTHON SESSION: NOT STARTED
+e 5. = graphs by Delmar Larsen is licensed CC BY 1.3.
+
+11.2.8.7.1 https ://chem.libretexts .org/@go/page/483760

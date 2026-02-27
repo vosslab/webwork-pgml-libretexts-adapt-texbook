@@ -1,0 +1,48 @@
+Oibretexts:
+
+2.3: Architecture and Pedagogy in Relation to LibreTexts
+
+e Individual pages should have a layout that contributes to effective learning.
+e The units, weeks, or days can have their own effective architecture.
+e The course as a whole can have its own architecture to lower cognitive load.
+
+When building a LibreTexts course, the layout and design will influence learners and their ability to retain new information. This is
+both due to how content is laid out within a given page, but also in how to organize the pages into a full set of learning materials.
+Because online platforms provide the user with greater customization capabilities, we are able to implement psychologically sound
+architecture principles and pedagogical foundations. These principles include the implementation of multimedia, scaffolding
+complexes, and hypertext extensions.
+
+# Questions to Ask Yourself
+
+e How many learning objectives will be on a single web page?
+
+e If things are connected, should they be covered at the same time? On multiple pages? Hyperlinked in some way?
+
+e How integrated do you want your syllabus to be? Do you use an online course manager? Do you want that to be your
+syllabus?
+
+e Where will your homework be accessed? Do you need graded and ungraded homework?
+
+e How integrated into the real world (even online materials: journal articles or news sites) do you want your course to be?
+How is that integrated?
+
+e Does a single concept have multiple approaches or perspectives? How independent are they? Should they be linked or
+integrated?
+
+e Is the navigation of your syllabus and course intuitive? Does it help reinforce concepts or connections?
+
+e How important are multiple representations? 2D to 3D? Various models for representing similar materials? Real-world
+images vs. cartoons vs. models?
+
+e When will being able to interact with data/plots/models be beneficial? When may it be distracting?
+
+e How do you organize a page of information?
+
+e Are you including something because it can be included or because it helps learning?
+
+This page titled 2.3: Architecture and Pedagogy in Relation to LibreTexts is shared under a CC BY 1.3 license and was authored, remixed, and/or
+curated by Delmar Larsen.
+
+e 2.3: Architecture and Pedagogy in Relation to LibreTexts by Delmar Larsen is licensed CC BY 1.3.
+
+https ://chem.libretexts .org/@go/page/483691
