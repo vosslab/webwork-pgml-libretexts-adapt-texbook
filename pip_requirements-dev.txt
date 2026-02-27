@@ -5,6 +5,7 @@ lxml
 packaging  # version parsing/comparison helpers used by tooling/tests
 playwright
 pyflakes  # static analysis lint checks
+pygments
 pytest  # automated test runner
 rich  # formatted terminal output in developer tools
 WeasyPrint

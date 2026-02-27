@@ -2,19 +2,60 @@
 
 ## 2026-02-27
 
+### Rewrite 7.3 to emphasize lint_pg_via_renderer_api.py
+- Restructured `Textbook/07_Testing_and_Debugging/7.3-Scripting_and_Automation_of_the_PG_Renderer.html`
+  to lead with the ready-made linting script instead of generic DIY examples.
+- Added quick-start examples, CLI options table, what-it-checks list, batch linting shell loop,
+  and full copyable source code (standard library only, no pip install).
+- Pushed API reference (endpoints, parameters, response fields, curl) below as secondary content.
+
+### Refine color coding in Chapter 4 index pages
+- Removed colored backgrounds from section pages list items and Practical edit map table
+  in `4.0-Index.html` per user feedback (color only in section-reference tables and headings).
+
+### Add table captions and convert pseudo-headers (accessibility fixes)
+- Created `tools/add_table_captions.py` - adds `<caption>` elements to tables missing them.
+  Generates descriptive captions from nearest heading and column headers.
+- Created `tools/fix_pseudo_headers.py` - converts bold `<p>` pseudo-headers to proper
+  `<h3>`/`<h4>` elements. Handles colored background labels, subsection labels, navigation
+  labels, example labels, and Wrong:/Right: labels.
+- Added 120 `<caption>` elements across all chapters (Chapter 8's 9 already had them).
+  All 129 tables now have captions.
+- Converted 89 bold `<p>` pseudo-headers to proper heading elements across Chapters 2-4, 7.
+- Updated `docs/ACCESSIBILITY_REVIEW.md` with caption and heading rules, status, and
+  verification commands.
+
+### Add accessibility review and linking docs
+- Created `docs/ACCESSIBILITY_REVIEW.md` - accessibility rules for LibreTexts textbook HTML,
+  covering images, links, contrast, text, headings, tables, lists, forms, multimedia, navigation,
+  and code blocks. Includes current textbook status and automated verification commands.
+- Rewrote `docs/LINKING_AND_SECTION_NUMBERING.md` from a task-specific plan into a general style
+  guide with reference links to the LibreTexts Construction Guide source files.
+
+### Replace section/chapter numbers with titles in all textbook cross-reference links
+- Created `tools/fix_section_links.py` - automated script that reads the CSV page-ID-to-title
+  mapping and replaces link text containing section/chapter numbers (e.g., "Section 2.5",
+  "Chapter 7", "6.3") with the actual section title. Supports dry-run and `--apply` modes.
+- Automated replacements: 263 link text updates across 54 files, plus 5 redundant parenthetical
+  section-number removals (e.g., `</a> (Section 4.4)`).
+- Manual edits: 10 unlinked plain-text references (e.g., "Section 2.7", "Chapter 2.4",
+  "Appendix 90.1") converted to proper `<a href="/@go/page/{id}">Title</a>` links.
+- All 66 HTML files pass `tests/run_html_lint.sh`. No section/chapter number references remain
+  in anchor text or as unlinked navigation references.
+
 ### Write Chapter 08: Using AI Agents to Write WeBWorK
 - Wrote all 5 Chapter 08 HTML files (959 lines total), replacing placeholder stubs:
-  - `8.0-Index.html` (111 lines) — decision table, section map, prerequisites, start-here guide.
-  - `8.1-What_are_AI_Agents.html` (202 lines) — chatbot-vs-agent comparison, why chatbots fail at
+  - `8.0-Index.html` (111 lines) - decision table, section map, prerequisites, start-here guide.
+  - `8.1-What_are_AI_Agents.html` (202 lines) - chatbot-vs-agent comparison, why chatbots fail at
     WeBWorK, available agents table (Claude Code, OpenAI Codex), platform notes.
-  - `8.2-Knowledge_Documents_for_AI_Agents.html` (217 lines) — skills/forums terminology, the
+  - `8.2-Knowledge_Documents_for_AI_Agents.html` (217 lines) - skills/forums terminology, the
     webwork-writer skill install instructions, PG-vs-Perl traps, skill contents table (~10 rows),
     building custom document sets.
-  - `8.3-Connecting_AI_Agents_to_the_PG_Renderer.html` (135 lines) — 7-step render-test-fix
+  - `8.3-Connecting_AI_Agents_to_the_PG_Renderer.html` (135 lines) - 7-step render-test-fix
     feedback loop, renderer instructions, timing expectations, troubleshooting.
-  - `8.4-Advance_AI_Agents_Advice.html` (294 lines) — prompt engineering table, iterative
+  - `8.4-Advance_AI_Agents_Advice.html` (294 lines) - prompt engineering table, iterative
     refinement, accessibility/color, amino acid pI worked example, common pitfalls table, scaling.
-- Created `docs/VIDEO_TRANSCRIPT_ANALYSIS.md` — detailed analysis of the "Writing WeBWorK PG
+- Created `docs/VIDEO_TRANSCRIPT_ANALYSIS.md` - detailed analysis of the "Writing WeBWorK PG
   Problems with AI Agents" video transcript with timeline, topic mapping, key quotes, and
   transcription corrections.
 - All Chapter 08 files pass `tests/run_html_lint.sh`. Cross-references use `/@go/page/` with
@@ -23,7 +64,7 @@
 ## 2026-02-26
 
 ### Add Markdown export script for AI-agent-friendly textbook output
-- Created `tools/textbook_html_to_markdown.py` — converts all `Textbook/*/*.html` files into a
+- Created `tools/textbook_html_to_markdown.py` - converts all `Textbook/*/*.html` files into a
   single merged Markdown file via `pandoc`, with table of contents and section separators.
 - Reuses the same chapter/section sort logic as `tools/textbook_html_to_pdf.py`.
 - Added `pandoc` to `Brewfile`.
@@ -207,7 +248,7 @@
 - Created `Textbook/02_Problem_Generation_PG/2.7-Future_PG_Version_Features.html` documenting PG
   features from versions 2.18, 2.19, and 2.20 that are not yet available in ADAPT.
 - Content sourced from `biology-problems/docs/webwork/PG_2.19_to_2.16_features.txt` (OpenWeBWorK
-  wiki release notes for WW 2.16–2.19).
+  wiki release notes for WW 2.16-2.19).
 - Includes workaround-to-replacement mapping table showing what changes when ADAPT upgrades
   (CheckboxList replaces RadioButtons fallback, DropDown replaces PopUp, PGML div/span syntax
   replaces MODES wrappers, native PGML images, plotly3D, TikZ).
