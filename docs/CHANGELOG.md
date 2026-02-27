@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-02-27
+
+### Write Chapter 08: Using AI Agents to Write WeBWorK
+- Wrote all 5 Chapter 08 HTML files (959 lines total), replacing placeholder stubs:
+  - `8.0-Index.html` (111 lines) — decision table, section map, prerequisites, start-here guide.
+  - `8.1-What_are_AI_Agents.html` (202 lines) — chatbot-vs-agent comparison, why chatbots fail at
+    WeBWorK, available agents table (Claude Code, OpenAI Codex), platform notes.
+  - `8.2-Knowledge_Documents_for_AI_Agents.html` (217 lines) — skills/forums terminology, the
+    webwork-writer skill install instructions, PG-vs-Perl traps, skill contents table (~10 rows),
+    building custom document sets.
+  - `8.3-Connecting_AI_Agents_to_the_PG_Renderer.html` (135 lines) — 7-step render-test-fix
+    feedback loop, renderer instructions, timing expectations, troubleshooting.
+  - `8.4-Advance_AI_Agents_Advice.html` (294 lines) — prompt engineering table, iterative
+    refinement, accessibility/color, amino acid pI worked example, common pitfalls table, scaling.
+- Created `docs/VIDEO_TRANSCRIPT_ANALYSIS.md` — detailed analysis of the "Writing WeBWorK PG
+  Problems with AI Agents" video transcript with timeline, topic mapping, key quotes, and
+  transcription corrections.
+- All Chapter 08 files pass `tests/run_html_lint.sh`. Cross-references use `/@go/page/` with
+  descriptive link text. Only `8.0-Index.html` includes `{{template.ShowOrg()}}`.
+
 ## 2026-02-26
 
 ### Add Markdown export script for AI-agent-friendly textbook output
