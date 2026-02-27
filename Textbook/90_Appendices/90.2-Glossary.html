@@ -1,9 +1,10 @@
 <p>
 This glossary defines the key terms used throughout the textbook so you can look up unfamiliar
-jargon quickly. For additional context on these terms, see <a href="/@go/page/555734">Section 1.5</a>.
+jargon quickly. For additional context on these terms, see <a href="/@go/page/555734">Common terms and names</a>.
 </p>
 
 <table class="mt-responsive-table">
+	<caption>Glossary of key terms used in this textbook.</caption>
 	<colgroup>
 		<col style="width: 22%;">
 		<col style="width: 78%;">
@@ -16,40 +17,141 @@ jargon quickly. For additional context on these terms, see <a href="/@go/page/55
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Term">PG</td>
-			<td data-th="Definition">The Perl-based language that defines a WeBWorK problem file.</td>
+			<td data-th="Term">ADAPT</td>
+			<td data-th="Definition">LibreTexts assessment platform where WeBWorK problems are assigned to students. See <a href="/@go/page/555722">Workflow and QA</a> for how problems move from authoring to ADAPT.</td>
 		</tr>
 		<tr>
-			<td data-th="Term">PGML</td>
-			<td data-th="Definition">A markup layer inside PG for writing student-facing text and blanks (see <a href="/@go/page/488660">Chapter 3</a>).</td>
+			<td data-th="Term">Answer blank</td>
+			<td data-th="Definition">An input field where students type or select an answer. Created in PGML with <code>[___]</code> syntax. See <a href="/@go/page/555704">Answer blanks and answers</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Answer evaluator</td>
+			<td data-th="Definition">The grading function that checks student input against the correct answer. In PGML, the evaluator is attached directly to the answer blank. See <a href="/@go/page/555742">Legacy PG and deprecated patterns</a> for old-style evaluators.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">ArbitraryString</td>
+			<td data-th="Definition">A MathObject that accepts free-text student input without mathematical parsing. See <a href="/@go/page/557639">Macro Demonstrations</a> for a worked example.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">BEGIN_PGML / END_PGML</td>
+			<td data-th="Definition">Delimiters that mark the student-facing text block in a PG problem. Everything between them is rendered as PGML. See <a href="/@go/page/555703">Introduction to PGML</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">CheckboxList</td>
+			<td data-th="Definition">A widget that presents multiple options where students can select more than one correct answer. Provided by <code>parserCheckboxList.pl</code>. See <a href="/@go/page/555716">Multiple Answer</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Term">Context</td>
-			<td data-th="Definition">Rules that control what student input is allowed and how it is parsed.</td>
+			<td data-th="Definition">Rules that control what student input is allowed and how it is parsed. For example, <code>Context("Numeric")</code> accepts numbers and formulas. See <a href="/@go/page/488656">Introduction to PG Language</a>.</td>
 		</tr>
 		<tr>
-			<td data-th="Term">MathObjects</td>
-			<td data-th="Definition">Typed answer objects (numbers, formulas, lists) used for grading.</td>
+			<td data-th="Term">DBsubject / DBchapter</td>
+			<td data-th="Definition">OPL header fields that classify a problem by subject area and topic. Used for searchability in the Open Problem Library. See <a href="/@go/page/557378">OPL Header and Metadata</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">DOCUMENT() / ENDDOCUMENT()</td>
+			<td data-th="Definition">Required opening and closing function calls in every PG problem file. <code>DOCUMENT()</code> initializes the rendering engine; <code>ENDDOCUMENT()</code> signals the end. See <a href="/@go/page/488657">PG Problem Files</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">DraggableProof</td>
+			<td data-th="Definition">A widget that lets students drag and reorder items into a correct sequence. Provided by <code>draggableProof.pl</code>. See <a href="/@go/page/555721">Ordered List</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Dry-run</td>
+			<td data-th="Definition">Running a tool or script to preview changes without writing them to files. All tools in this textbook default to dry-run mode and require <code>--apply</code> to write changes.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">HEADER_TEXT</td>
+			<td data-th="Definition">A PG function that injects CSS or JavaScript into the page header. Used for custom styling since standard HTML tags are blocked in PGML. See <a href="/@go/page/555723">Text Coloring and Emphasis</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">loadMacros</td>
+			<td data-th="Definition">The function call in the preamble that loads macro files. Each macro unlocks specific features. See <a href="/@go/page/488659">Common PG Macros</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Term">Macro</td>
-			<td data-th="Definition">A reusable code library loaded by a problem to enable features (see <a href="/@go/page/488659">Section 2.5</a>).</td>
+			<td data-th="Definition">A reusable code library (<code>.pl</code> file) loaded by a problem to enable features such as widgets, grading helpers, or layout tools. See <a href="/@go/page/488659">Common PG Macros</a>.</td>
 		</tr>
 		<tr>
-			<td data-th="Term">Seed</td>
-			<td data-th="Definition">A number that reproduces one randomized variant of a problem.</td>
+			<td data-th="Term">MathObjects</td>
+			<td data-th="Definition">Typed answer objects (numbers, formulas, lists, strings) used for grading. They determine how student input is parsed and compared to the correct answer. See <a href="/@go/page/488656">Introduction to PG Language</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">niceTables</td>
+			<td data-th="Definition">A macro (<code>niceTables.pl</code>) for building formatted tables inside PGML without blocked HTML tags. See <a href="/@go/page/555724">Making Tables with niceTables</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">OPL</td>
+			<td data-th="Definition">Open Problem Library. A shared repository of WeBWorK problems with standardized metadata headers for search and discovery.</td>
 		</tr>
 		<tr>
 			<td data-th="Term">OPL header</td>
-			<td data-th="Definition">Metadata comment block used for searchability and attribution.</td>
+			<td data-th="Definition">Metadata comment block at the top of a PG file used for searchability and attribution. Includes fields like TITLE, DESCRIPTION, DBsubject, and AUTHOR. See <a href="/@go/page/557378">OPL Header and Metadata</a>.</td>
 		</tr>
 		<tr>
-			<td data-th="Term">ADAPT</td>
-			<td data-th="Definition">LibreTexts assessment platform where WeBWorK problems are assigned.</td>
+			<td data-th="Term">PG</td>
+			<td data-th="Definition">The Perl-based language that defines a WeBWorK problem file. PG provides the execution sandbox, variable scoping, and grading infrastructure. See <a href="/@go/page/488655">Problem Generation</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">PGcourse.pl</td>
+			<td data-th="Definition">A macro loaded at the end of every <code>loadMacros</code> call. It allows course-level customization without editing individual problem files. See <a href="/@go/page/488659">Common PG Macros</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">PGML</td>
+			<td data-th="Definition">PG Markup Language. A markup layer inside PG for writing student-facing text, math, and answer blanks. See <a href="/@go/page/488660">PGML (PG Markup Language)</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">PGstandard.pl</td>
+			<td data-th="Definition">The core macro that loads essential PG functions. Required in every problem. See <a href="/@go/page/488659">Common PG Macros</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">PopUp</td>
+			<td data-th="Definition">A dropdown menu widget for matching and selection problems. Provided by <code>parserPopUp.pl</code>. See <a href="/@go/page/555717">Matching</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Preamble</td>
+			<td data-th="Definition">The section of a PG file from <code>DOCUMENT()</code> through <code>loadMacros()</code>. It declares which macro libraries the problem needs. See <a href="/@go/page/555710">Preamble</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">RadioButtons</td>
+			<td data-th="Definition">A widget that presents a single-choice question with radio button options. Provided by <code>parserRadioButtons.pl</code>. See <a href="/@go/page/555715">Multiple Choice</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Term">Renderer</td>
-			<td data-th="Definition">Local webwork-pg-renderer service used for fast previews (see <a href="/@go/page/555732">Section 7.1</a>).</td>
+			<td data-th="Definition">The local webwork-pg-renderer service that compiles and previews PG problems outside of ADAPT. See <a href="/@go/page/555732">Setting Up the PG Renderer</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Sandbox</td>
+			<td data-th="Definition">The restricted execution environment in which PG code runs. It blocks most Perl builtins (<code>open</code>, <code>system</code>, <code>die</code>) for security. See <a href="/@go/page/555733">Common Mistakes and How to Fix Them</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Seed</td>
+			<td data-th="Definition">A number that reproduces one randomized variant of a problem. Each student receives a different seed, producing different random values but the same problem structure. See <a href="/@go/page/557411">Testing Randomization and Edge Cases</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Setup</td>
+			<td data-th="Definition">The Perl code section between the preamble and the PGML block. It defines variables, answer objects, and randomization logic. See <a href="/@go/page/555711">Setup</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Skill</td>
+			<td data-th="Definition">A curated set of reference documents that an AI coding agent reads before writing code. Called "forums" in OpenAI Codex. See <a href="/@go/page/557415">Knowledge Documents for AI Agents</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Solution</td>
+			<td data-th="Definition">An optional <code>BEGIN_PGML_SOLUTION</code> / <code>END_PGML_SOLUTION</code> block that shows the correct answer and rationale after the due date. See <a href="/@go/page/555713">Solutions</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Statement</td>
+			<td data-th="Definition">The <code>BEGIN_PGML</code> / <code>END_PGML</code> block that contains the problem text, data, and answer blanks that students see. See <a href="/@go/page/555712">Statement</a>.</td>
+		</tr>
+		<tr>
+			<td data-th="Term">WeBWorK</td>
+			<td data-th="Definition">An open-source online homework system that delivers randomized, auto-graded math and science problems. See <a href="/@go/page/488652">What is WeBWorK</a>.</td>
 		</tr>
 	</tbody>
 </table>
+
+<p class="mt-script-comment">Code for Glossarizer</p>
+
+<pre class="script">
+template('DynamicGlossary/Activate');</pre>
