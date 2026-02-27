@@ -1,1 +1,135 @@
-<p>Placeholder page for 8.3: Connecting AI Agents to the PG Renderer.</p>
+<p>
+The renderer connection is what separates a productive AI workflow from a chatbot copy-paste
+trap. Without it, you are the middleman copying code between the agent and the browser. With it,
+the agent tests its own work and fixes problems before you ever see them. Think of the renderer
+as the agent's bench assay: it runs the experiment and reads the results without asking you to
+hold the pipette.
+</p>
+
+<h2>Prerequisites</h2>
+<p>
+Before connecting your agent to the renderer, confirm that you have the following in place:
+</p>
+<ul>
+	<li>PG renderer running on localhost:3000 (see
+		<a href="/@go/page/555732">Setting Up the PG Renderer</a>)</li>
+	<li>Health check confirmed: <code>curl http://localhost:3000/health</code> returns a
+		response</li>
+	<li>Renderer API documentation included in your knowledge documents (see
+		<a href="/@go/page/557415">Knowledge Documents for AI Agents</a>)</li>
+	<li>Agent has permission to run terminal commands (Claude Code: approve when prompted;
+		Codex: enabled by default in sandbox)</li>
+</ul>
+
+<h2>How the agent uses the renderer</h2>
+<p>
+Once connected, the agent follows a feedback loop that mirrors the way you would debug a problem
+by hand, just faster:
+</p>
+<ol>
+	<li>Agent writes or edits a <code>.pg</code> file based on your prompt.</li>
+	<li>Agent sends the file to the renderer via HTTP POST to localhost:3000.</li>
+	<li>Agent reads the JSON response and checks the <code>error_flag</code> and
+		<code>pg_warn</code> fields.</li>
+	<li>If errors are found, the agent reads the error messages and revises the code.</li>
+	<li>Agent re-sends the revised file to the renderer.</li>
+	<li>Steps 3 through 5 repeat until the response is clean (no errors, no warnings).</li>
+	<li>Agent tests the problem with multiple random seeds to catch randomization bugs.</li>
+</ol>
+<p>
+Most simple problems take three to eight iterations. The agent handles this loop automatically.
+You do not need to intervene unless the agent asks a clarifying question about the biology or
+the intended problem behavior.
+</p>
+
+<h2>What to tell the agent about the renderer</h2>
+<p>
+Include the following instructions in your prompt or knowledge documents so the agent knows how
+to interact with the renderer:
+</p>
+<ul>
+	<li>The renderer URL is <code>http://localhost:3000</code>.</li>
+	<li>Always include <code>_format=json</code> in the POST request to get structured
+		output.</li>
+	<li>Check the <code>error_flag</code> field in the response: 0 means success, 1 means
+		errors.</li>
+	<li>Also check <code>pg_warn</code> for non-fatal warnings that may affect the
+		problem.</li>
+	<li>Use a fixed seed (for example, <code>problemSeed=1234</code>) during development for
+		reproducible results.</li>
+	<li>After the problem works with one seed, test with at least three different seeds.</li>
+	<li>Run the lint tool with the <code>-r</code> flag for renderer-based lint checks (see
+		<a href="/@go/page/557407">Linting</a>).</li>
+</ul>
+
+<h2>Typical timing</h2>
+<p>
+The table below shows approximate times from the video demonstration. These times are spent by
+the agent, not by you. While the agent works, you can review previous problems, prepare other
+materials, or take a break.
+</p>
+<table class="mt-responsive-table">
+	<caption>Expected agent time by problem complexity.</caption>
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Problem complexity</th>
+			<th>Expected time</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Problem complexity">Simple (one-part, fixed choices)</td>
+			<td data-th="Expected time">3 to 5 minutes</td>
+		</tr>
+		<tr>
+			<td data-th="Problem complexity">Moderate (multi-part, basic randomization)</td>
+			<td data-th="Expected time">5 to 10 minutes</td>
+		</tr>
+		<tr>
+			<td data-th="Problem complexity">Complex (multi-part, advanced randomization, color styling)</td>
+			<td data-th="Expected time">15 to 20+ minutes</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+In the video, the amino acid isoelectric point question took approximately 15 minutes including
+the color refinement pass. This is normal for a complex problem with multiple emphasis styles
+and randomized data.
+</p>
+<p>
+For batch processing of many problems, see
+<a href="/@go/page/557409">Scripting and Automation</a>.
+</p>
+
+<h2>When the agent gets stuck</h2>
+<p>
+Agents occasionally hit a wall, especially with less common macros or unusual answer evaluators.
+When that happens, you can nudge the agent back on track without writing code yourself:
+</p>
+<ul>
+	<li>Tell the agent to re-read its knowledge documents: "Read the skill again" or "Check the
+		common mistakes document."</li>
+	<li>Point the agent to a specific document when you can see what it is missing. For example:
+		"The answer is in the RadioButtons section of the PG reference."</li>
+	<li>Approve permission prompts promptly so the agent can continue its testing loop. A stalled
+		permission dialog looks like a stuck agent, but the fix is just one click.</li>
+	<li>If the agent starts searching your filesystem for example files, redirect it: "All the
+		documents you need are in the skill. Do not search my hard drive."</li>
+</ul>
+<p>
+For a full catalog of mistakes the agent may encounter, see
+<a href="/@go/page/555733">Common Mistakes</a>.
+</p>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Confirm your agent can reach the renderer: ask it to run
+		<code>curl http://localhost:3000/health</code> and report the result.</li>
+	<li>Ask your agent to write and render a simple multiple-choice question and watch the
+		feedback loop in action. A good first test: "Write a question that asks which monomer
+		makes up cellulose, with four answer choices."</li>
+</ul>

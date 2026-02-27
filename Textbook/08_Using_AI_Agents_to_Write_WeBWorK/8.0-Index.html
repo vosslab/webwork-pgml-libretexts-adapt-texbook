@@ -1,2 +1,111 @@
-<p>Placeholder index for Chapter 8: Using AI Agents to Write WeBWorK.</p>
+<p>
+AI coding agents can write WeBWorK PG problem files for you, so you can focus on your subject
+expertise instead of learning Perl syntax. Think of it like directing a trained lab technician: you
+describe the experiment you want, and the technician carries out the procedure. You still need to
+know what a good result looks like, but you do not need to pipette every reagent yourself.
+</p>
+
+<p>
+Since late 2025, several AI coding agents have become capable enough to produce working WeBWorK
+problems from a plain-language description. This chapter walks you through choosing an agent,
+giving it the right reference material, connecting it to a local renderer so it can test its own
+output, and refining your prompts to get better problems with less back-and-forth.
+</p>
+
+<h2>What is your goal today?</h2>
+<p>
+Use this table to jump straight to the section that matches what you want to do. If you are not
+sure where to start, read the "Start here" list below the table.
+</p>
+<table class="mt-responsive-table">
+	<caption>Decision table for Chapter 8 sections.</caption>
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 30%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>What you want</th>
+			<th>Go to</th>
+			<th>What you will find</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="What you want">Understand what AI agents are and which ones work for WeBWorK</td>
+			<td data-th="Go to"><a href="/@go/page/555730">What are AI Agents?</a></td>
+			<td data-th="What you will find">Overview of coding agents, comparison of current options, and what to look for when choosing one</td>
+		</tr>
+		<tr>
+			<td data-th="What you want">Set up documentation so the agent writes correct PG code</td>
+			<td data-th="Go to"><a href="/@go/page/557415">Knowledge Documents for AI Agents</a></td>
+			<td data-th="What you will find">How to prepare and organize reference files the agent reads before generating problems</td>
+		</tr>
+		<tr>
+			<td data-th="What you want">Connect the agent to a PG renderer so it can test its own output</td>
+			<td data-th="Go to"><a href="/@go/page/557416">Connecting AI Agents to the PG Renderer</a></td>
+			<td data-th="What you will find">Step-by-step setup for giving your agent access to a running renderer and interpreting the results</td>
+		</tr>
+		<tr>
+			<td data-th="What you want">Write better prompts and refine complex problems</td>
+			<td data-th="Go to"><a href="/@go/page/557417">Advance AI Agents Advice</a></td>
+			<td data-th="What you will find">Prompt-engineering techniques, iterative refinement strategies, and handling edge cases</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Section map</h2>
+<table class="mt-responsive-table">
+	<caption>Chapter 8 section overview.</caption>
+	<colgroup>
+		<col style="width: 35%;">
+		<col style="width: 65%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Section</th>
+			<th>What it covers</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Section"><a href="/@go/page/555730">8.1 What are AI Agents?</a></td>
+			<td data-th="What it covers">What coding agents are, how they differ from chatbots, and a comparison of agents that can produce WeBWorK problems.</td>
+		</tr>
+		<tr>
+			<td data-th="Section"><a href="/@go/page/557415">8.2 Knowledge Documents for AI Agents</a></td>
+			<td data-th="What it covers">How to assemble and maintain the reference documents an agent needs to write correct, idiomatic PG code.</td>
+		</tr>
+		<tr>
+			<td data-th="Section"><a href="/@go/page/557416">8.3 Connecting AI Agents to the PG Renderer</a></td>
+			<td data-th="What it covers">Giving your agent access to a local PG renderer so it can compile, render, and self-correct its output.</td>
+		</tr>
+		<tr>
+			<td data-th="Section"><a href="/@go/page/557417">8.4 Advance AI Agents Advice</a></td>
+			<td data-th="What it covers">Prompt-engineering tips, iterative refinement workflows, and strategies for complex multi-part problems.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Start here</h2>
+<ul>
+	<li>If you have never used an AI coding agent, start with <a href="/@go/page/555730">What are AI Agents?</a> to understand what they are and pick one that fits your setup.</li>
+	<li>If your agent writes code that does not render correctly, read <a href="/@go/page/557415">Knowledge Documents for AI Agents</a> to give it better reference material, then <a href="/@go/page/557416">Connecting AI Agents to the PG Renderer</a> so it can test its own output before you review it.</li>
+	<li>If your agent already produces working problems but you want better results, go to <a href="/@go/page/557417">Advance AI Agents Advice</a> for prompt-engineering techniques and refinement strategies.</li>
+</ul>
+
+<h2>Prerequisites</h2>
+<ul>
+	<li>A running PG renderer on your local machine (see <a href="/@go/page/555732">Setting Up the PG Renderer</a>).</li>
+	<li>Basic understanding of WeBWorK problem structure (see <a href="/@go/page/488655">Problem Generation (PG)</a>).</li>
+	<li>An AI coding agent installed on your computer (see <a href="/@go/page/555730">What are AI Agents?</a> for options and installation links).</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use the decision table above to jump directly to the section that matches your current goal instead of reading the chapter front to back.</li>
+	<li>If this is your first time, install an agent from the list in <a href="/@go/page/555730">What are AI Agents?</a> and try asking it to write a simple multiple-choice question about your favorite color to confirm the workflow end to end.</li>
+</ul>
+
 <p>{{template.ShowOrg()}}</p>

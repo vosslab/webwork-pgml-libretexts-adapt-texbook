@@ -1,1 +1,294 @@
-<p>Placeholder page for 8.4: Advance AI Agents Advice.</p>
+<p>
+The quality of the problem an agent produces depends on how clearly you communicate what you want.
+A vague prompt produces a generic question; a detailed prompt produces a polished, randomized
+problem ready for students. The amino acid isoelectric point problem from the video demonstrates
+every principle on this page.
+</p>
+
+<h2>Set boundaries before starting</h2>
+<p>
+Before you give the agent a biology prompt, set up a clean environment so it stays focused on
+your problem instead of wandering through unrelated files.
+</p>
+<ul>
+	<li>
+		Start with an empty project directory so the agent has a clean workspace. A folder
+		cluttered with old drafts and unrelated code invites the agent to copy patterns that
+		may not apply.
+	</li>
+	<li>
+		Tell the agent not to search your filesystem for example files. A simple instruction
+		like "all the documents you need are in the skill" prevents it from finding unrelated
+		<code>.pg</code> files and copying bad patterns.
+	</li>
+	<li>
+		Keep the working directory simple: one <code>.pg</code> file, the knowledge documents,
+		and nothing else. The fewer distractions the agent has, the better it follows your
+		instructions.
+	</li>
+	<li>
+		Claude Code runs locally with full filesystem access, so setting clear boundaries
+		matters. Codex runs in a cloud sandbox with limited access by default, but you should
+		still keep its workspace clean.
+	</li>
+</ul>
+
+<h2>Write detailed prompts</h2>
+<p>
+A good prompt tells the agent exactly what the problem should do. The table below lists the
+elements that produce the best results, with examples drawn from the amino acid isoelectric point
+problem in the video.
+</p>
+<table class="mt-responsive-table">
+	<caption>Prompt elements and examples from the amino acid isoelectric point video.</caption>
+	<colgroup>
+		<col style="width: 35%;">
+		<col style="width: 65%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Prompt element</th>
+			<th>Example from video</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Prompt element">Topic and learning objective</td>
+			<td data-th="Example from video">"amino acid isoelectric points"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Number of parts</td>
+			<td data-th="Example from video">"write a two-part question"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Interaction types</td>
+			<td data-th="Example from video">"part 1: select the charge state, part 2: calculate the pI"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Randomization requirements</td>
+			<td data-th="Example from video">"randomize the pKa values between versions so students cannot copy answers"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Visual and display preferences</td>
+			<td data-th="Example from video">"include a table showing the amino acid with its pKa values"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Constraints</td>
+			<td data-th="Example from video">"use a hypothetical amino acid with three pKa values"</td>
+		</tr>
+		<tr>
+			<td data-th="Prompt element">Color and formatting</td>
+			<td data-th="Example from video">"color the charged groups: red for negative, blue for positive, gray for neutral"</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Be patient</h2>
+<p>
+Complex problems take 15 to 20 minutes for the agent to write and debug. This is normal. The
+agent cycles through writing code, rendering it, reading error messages, and fixing problems.
+Each cycle brings the problem closer to working correctly.
+</p>
+<p>
+The agent asking clarifying questions is a sign it is working carefully, not a sign of failure.
+Answer its questions and let it continue. Do not interrupt the agent mid-cycle. Let it finish
+its render-test-fix loop before giving new instructions. Breaking into the loop disrupts the
+agent's context and often forces it to start over.
+</p>
+<p>
+It is better for the agent to sit there and struggle getting the problem correct than for you
+to sit there and struggle. You brought the biology expertise; let the agent handle the code.
+</p>
+
+<h2>Refine iteratively</h2>
+<p>
+Do not try to get a perfect problem on the first attempt. Use a three-pass approach that
+separates functionality from appearance from polish.
+</p>
+<ol>
+	<li>
+		<strong>Get it working.</strong> The problem renders without errors and accepts correct
+		answers. Do not worry about appearance yet. A working skeleton is always the first
+		milestone.
+	</li>
+	<li>
+		<strong>Improve presentation.</strong> Add color, adjust layout, and improve
+		readability. In the video, the instructor asked the agent to color the charge states
+		after the basic problem was already working.
+	</li>
+	<li>
+		<strong>Accessibility and polish.</strong> Ensure color-blind safety (avoid red-green
+		pairs), test with multiple random seeds, and verify all variants produce valid
+		questions.
+	</li>
+</ol>
+
+<h2>Accessibility and color</h2>
+<p>
+Color makes problems easier to read, but roughly 8 percent of males have red-green color
+blindness. Follow these guidelines so your problems work for everyone.
+</p>
+<ul>
+	<li>
+		Avoid red-green color pairs. Use high-contrast pairs instead: blue and orange, or
+		navy and gold. The video mentions that "Bears colors" work well for contrast.
+	</li>
+	<li>
+		Use gray for neutral or uncharged elements so positive and negative charges stand out
+		clearly.
+	</li>
+	<li>
+		Always pair color with another visual cue such as bold weight, font size, or a
+		background highlight. The meaning must survive without color so that colorblind users
+		and screen readers can still distinguish the elements.
+	</li>
+</ul>
+<p>
+See <a href="/@go/page/555723">Text Coloring and Emphasis</a> for CSS techniques and the
+recommended color palette.
+</p>
+
+<h2>Worked example: amino acid isoelectric point</h2>
+<p>
+The amino acid isoelectric point problem from the video illustrates the full workflow from
+prompt to finished problem. It also shows why detailed prompts matter and how iterative
+refinement produces a polished result.
+</p>
+<p>
+<strong>The teaching moment.</strong> The instructor described a familiar classroom experience:
+projecting a titration curve and seeing 50 glazed eyes looking back. The curve was accurate, but
+students could not connect the visual to the underlying concept. This problem turns that
+confusing lecture slide into an interactive exercise where students work through the logic
+step by step.
+</p>
+<p>
+<strong>The prompt.</strong> The instructor asked for a two-part question. Part 1: given a
+hypothetical amino acid with three randomized pKa values, identify which charge state has zero
+net charge. Part 2: calculate the isoelectric point (pI) by averaging the two pKa values that
+bracket the neutral state. The prompt specified randomized pKa values so that each student
+version would be different.
+</p>
+<p>
+<strong>The process.</strong> The agent took approximately 15 minutes. It asked clarifying
+questions about the display format, created the <code>.pg</code> file, rendered it against the
+local PG renderer, found seed-related bugs, and fixed them automatically. The instructor did
+not need to touch the code at any point during this cycle.
+</p>
+<p>
+<strong>Refinement.</strong> After the basic problem worked, the instructor asked for color. The
+agent added blue for positive charges and red for negative charges. A follow-up request changed
+neutral groups to gray so the charged groups stood out more clearly. Side chains were colored
+separately from backbone groups. Each refinement was a short prompt followed by another
+render-test-fix cycle.
+</p>
+<p>
+<strong>The result.</strong> A fully randomized two-part problem where pKa values vary between
+student versions. Students identify the zero-charge state and calculate the pI, practicing the
+concept that used to produce glazed eyes. As the instructor put it: "I don't need to know how
+to program."
+</p>
+<p>
+For techniques used in this problem, see
+<a href="/@go/page/555727">Advanced Randomization</a> and
+<a href="/@go/page/557411">Testing Randomization and Edge Cases</a>.
+</p>
+
+<h2>Common pitfalls</h2>
+<p>
+These mistakes appear repeatedly when instructors first work with AI agents. Most are easy to
+prevent once you know to watch for them.
+</p>
+<table class="mt-responsive-table">
+	<caption>Common pitfalls when using AI agents for WeBWorK and how to prevent them.</caption>
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 40%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Pitfall</th>
+			<th>What happens</th>
+			<th>Prevention</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Pitfall">No knowledge documents</td>
+			<td data-th="What happens">Agent writes standard Perl that fails in the PG sandbox because it does not know PG-specific conventions</td>
+			<td data-th="Prevention">Install the webwork-writer skill before starting (see <a href="/@go/page/557415">Knowledge Documents for AI Agents</a>)</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">Filesystem searching</td>
+			<td data-th="What happens">Agent finds unrelated <code>.pg</code> files on your system and copies outdated or incorrect patterns</td>
+			<td data-th="Prevention">Tell the agent to use only the provided documents and keep the working directory clean</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">Skipping the renderer</td>
+			<td data-th="What happens">Agent writes code it has never tested, producing problems that look plausible but fail when rendered</td>
+			<td data-th="Prevention">Connect the agent to a local renderer before starting (see <a href="/@go/page/557416">Connecting AI Agents to the PG Renderer</a>)</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">Not re-reading docs</td>
+			<td data-th="What happens">Agent forgets a rule mid-session and introduces a pattern the knowledge documents explicitly warn against</td>
+			<td data-th="Prevention">Prompt the agent: "re-read the common mistakes document" when you see suspicious output</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">Impatient intervention</td>
+			<td data-th="What happens">You interrupt the render-fix loop and break the agent's context, often forcing it to start over</td>
+			<td data-th="Prevention">Let the agent finish its current cycle before giving new instructions</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">No seed testing</td>
+			<td data-th="What happens">Problem works for seed 1 but breaks on other seeds because a randomized value hits an edge case</td>
+			<td data-th="Prevention">Require the agent to test with at least 3 random seeds before declaring the problem done</td>
+		</tr>
+		<tr>
+			<td data-th="Pitfall">Deprecated patterns</td>
+			<td data-th="What happens">Agent uses legacy PG syntax that produces warnings or fails on current PG versions</td>
+			<td data-th="Prevention">Ensure knowledge documents specify PG 2.17 rules and current macro names</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Scaling to many problems</h2>
+<p>
+Once you have one working problem, you can produce more efficiently by reusing what already works.
+</p>
+<ul>
+	<li>
+		Reuse a working problem as a template. Give the agent an existing <code>.pg</code>
+		file and ask for a variation on the same topic or a parallel question for a different
+		biological concept.
+	</li>
+	<li>
+		Use batch rendering to test many files at once instead of rendering them one by one.
+		See <a href="/@go/page/557409">Scripting and Automation</a> for how to set up batch
+		workflows.
+	</li>
+	<li>
+		Run the QA checklist on every problem before publishing, not just the first one in a
+		set. See <a href="/@go/page/557412">QA Checklist</a> for the full list.
+	</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>
+		Write a detailed prompt for one biology question following the prompt element table
+		above. Include the topic, the number of parts, the interaction types, and what should
+		be randomized.
+	</li>
+	<li>
+		Let the agent work through the full write-render-fix cycle without interrupting.
+		Observe how it self-corrects and how long the process takes.
+	</li>
+	<li>
+		Test the finished problem with at least 5 random seeds to verify that every variant
+		produces a valid question.
+	</li>
+	<li>
+		Run the QA checklist from <a href="/@go/page/557412">QA Checklist</a> before
+		publishing the problem to students.
+	</li>
+</ul>

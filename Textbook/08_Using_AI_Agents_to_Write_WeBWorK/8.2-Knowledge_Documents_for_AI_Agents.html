@@ -1,1 +1,217 @@
-<p>Placeholder page for 8.2: Knowledge Documents for AI Agents.</p>
+<p>
+Without WeBWorK-specific documentation, AI agents fall back on their general Perl training data
+and write code that looks syntactically correct but fails inside the PG sandbox. Curated reference
+documents prevent this. The analogy is straightforward: you would not hand a lab technician a set
+of reagents without a protocol and expect a reliable result. The same principle applies to AI
+agents. As one practitioner put it: "all the documents it needs is in the skill. So please don't
+search my hard drive."
+</p>
+
+<p>
+This page explains what knowledge documents are, introduces a ready-to-install skill that
+contains them, describes what those documents cover, and shows how to build your own set if you
+prefer to customize.
+</p>
+
+<h2>Skills and forums: same idea, different names</h2>
+<p>
+Different AI agents use different terminology for the same concept: a curated collection of
+reference documents that the agent reads before it starts writing code.
+</p>
+<table class="mt-responsive-table">
+	<caption>Terminology for knowledge documents across AI agents.</caption>
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 30%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Term</th>
+			<th>Used by</th>
+			<th>Where docs live</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Term">Skill</td>
+			<td data-th="Used by">Claude Code</td>
+			<td data-th="Where docs live"><code>.claude/skills/</code> directory in your project</td>
+		</tr>
+		<tr>
+			<td data-th="Term">Forum</td>
+			<td data-th="Used by">OpenAI Codex</td>
+			<td data-th="Where docs live">Forum panel in the Codex interface or a repository</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+The rest of this page uses "knowledge documents" as the agent-neutral term. Wherever you see it,
+substitute the word your agent uses.
+</p>
+
+<h2>The WeBWorK Writer skill (ready to install)</h2>
+<p>
+The fastest path for most users is to install a pre-built skill that already contains curated
+WeBWorK authoring documents. The webwork-writer skill is publicly available and maintained
+alongside this textbook.
+</p>
+<p>
+<strong>Claude Code install (one command):</strong>
+</p>
+<pre>
+claude plugin add https://github.com/vosslab/vosslab-skills/vosslab-skills:webwork-writer
+</pre>
+<p>
+<strong>GitHub repository:</strong> The source documents are hosted at
+<code>https://github.com/vosslab/vosslab-skills/tree/main/skills/webwork-writer</code>
+</p>
+<p>
+<strong>For Codex users:</strong> Download the reference documents from the same GitHub repository
+and add them to a forum in the Codex interface.
+</p>
+<p>
+The skill contains approximately ten reference documents covering PGML structure, common mistakes,
+macro allowlists, renderer API usage, CSS-based color and emphasis, advanced randomization,
+matching problems, niceTables, linting rules, and OPL header metadata. Installing this single
+skill gives the agent everything it needs to write most WeBWorK problems correctly, with no manual
+document assembly required.
+</p>
+
+<h2>Why agents need WeBWorK-specific documents</h2>
+<p>
+PG looks like Perl, but it is not standard Perl. Agents trained on general Perl code will
+confidently use patterns that break inside the PG sandbox. Here are the most common traps:
+</p>
+<ul>
+	<li>PG runs in a sandbox that blocks most Perl builtins. Calls to <code>open</code>,
+	<code>system</code>, and <code>die</code> will fail silently or throw errors.</li>
+	<li>The <code>my</code> keyword breaks radio buttons and checkboxes. PG scoping rules differ
+	from standard Perl, and lexical variables declared with <code>my</code> become invisible to
+	the answer evaluator.</li>
+	<li>Backslash references like <code>\@array</code> behave differently inside PGML than in
+	regular Perl.</li>
+	<li>PGML is single-pass. You cannot nest PGML commands or use Perl control-flow statements
+	(like <code>if</code> or <code>for</code>) inside a <code>BEGIN_PGML</code> block.</li>
+	<li>Standard HTML tags are blocked in PGML. Use CSS classes injected via
+	<code>HEADER_TEXT</code> instead.</li>
+	<li>Colors must use CSS, not TeX <code>\color{}</code> commands. The TeX color commands are
+	escaped before MathJax processes them.</li>
+	<li>Only PG 2.17 macros are available. Newer Perl modules are not loaded in the renderer.</li>
+</ul>
+<p>
+Without documentation that explains these differences, agents will hit every one of these traps.
+For detailed examples and fixes, see
+<a href="/@go/page/555733">Common Mistakes and How to Fix Them</a> and
+<a href="/@go/page/488659">Common PG Macros</a>.
+</p>
+
+<h2>What the skill documents cover</h2>
+<p>
+The following table lists the topics included in the webwork-writer skill. Think of this as a
+table of contents for what is already inside the skill rather than a list of documents you need to
+assemble yourself.
+</p>
+<table class="mt-responsive-table">
+	<caption>Reference documents included in the webwork-writer skill.</caption>
+	<colgroup>
+		<col style="width: 20%;">
+		<col style="width: 40%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Topic</th>
+			<th>Why the agent needs it</th>
+			<th>Textbook reference</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Topic">PG authoring basics</td>
+			<td data-th="Why the agent needs it">Correct file structure and PGML syntax so every problem compiles on the first attempt</td>
+			<td data-th="Textbook reference"><a href="/@go/page/488655">Problem Generation</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Common mistakes</td>
+			<td data-th="Why the agent needs it">Avoid known PG traps like <code>my</code> scoping and backslash escaping</td>
+			<td data-th="Textbook reference"><a href="/@go/page/555733">Common Mistakes and How to Fix Them</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Macro allowlist</td>
+			<td data-th="Why the agent needs it">Only load macros that exist in PG 2.17 to avoid undefined-subroutine errors</td>
+			<td data-th="Textbook reference"><a href="/@go/page/488659">Common PG Macros</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Renderer API</td>
+			<td data-th="Why the agent needs it">POST problems to the renderer and read JSON responses for self-testing</td>
+			<td data-th="Textbook reference"><a href="/@go/page/555732">Setting Up the PG Renderer</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Color and emphasis</td>
+			<td data-th="Why the agent needs it">CSS-only styling that works inside the PG sandbox</td>
+			<td data-th="Textbook reference"><a href="/@go/page/555723">Text Coloring and Emphasis</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Randomization</td>
+			<td data-th="Why the agent needs it">Correct use of <code>random()</code>, <code>list_random()</code>, and <code>NchooseK()</code></td>
+			<td data-th="Textbook reference"><a href="/@go/page/555727">Advanced Randomization</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">niceTables</td>
+			<td data-th="Why the agent needs it">Build HTML tables inside PGML without blocked tags</td>
+			<td data-th="Textbook reference"><a href="/@go/page/555724">niceTables</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Matching problems</td>
+			<td data-th="Why the agent needs it">Randomized matching with PopUp menus or RadioButtons</td>
+			<td data-th="Textbook reference"><a href="/@go/page/555725">Matching Problems</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">Lint rules</td>
+			<td data-th="Why the agent needs it">Static and renderer-based checks to catch errors before students see them</td>
+			<td data-th="Textbook reference"><a href="/@go/page/557407">Linting</a></td>
+		</tr>
+		<tr>
+			<td data-th="Topic">OPL header</td>
+			<td data-th="Why the agent needs it">Required metadata fields for the Open Problem Library</td>
+			<td data-th="Textbook reference"><a href="/@go/page/557378">OPL Header and Metadata</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Building your own document set</h2>
+<p>
+If you want to customize the reference material or use an agent that does not support skills,
+you can assemble your own document set. Keep these guidelines in mind:
+</p>
+<ul>
+	<li>Keep all documents in a single directory so the agent does not search your entire
+	filesystem. A dedicated folder like <code>webwork-docs/</code> works well.</li>
+	<li>Include an explicit instruction in your agent configuration: "Use only the provided
+	documents. Do not search for other files."</li>
+	<li>Start with a minimal set and add documents only as you encounter gaps. Four documents are
+	enough to get started: a PG authoring guide, the common mistakes list, the macro allowlist,
+	and the renderer API reference.</li>
+	<li>When you find a new trap or pattern, add it to your documents instead of relying on the
+	agent to remember it from a previous conversation.</li>
+</ul>
+<p>
+The textbook pages listed in the table above are a good source for building your own documents.
+You can adapt their content into plain-text or Markdown files that your agent can read.
+</p>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Install the webwork-writer skill with one command:
+	<pre>
+claude plugin add https://github.com/vosslab/vosslab-skills/vosslab-skills:webwork-writer
+</pre>
+	</li>
+	<li>Test with a simple problem. Ask your agent to write a multiple-choice question about your
+	favorite color. If the agent produces a working PG file that renders without errors, the
+	skill is installed correctly and the agent can find the documentation.</li>
+	<li>Once the skill is confirmed, move on to
+	<a href="/@go/page/557416">Connecting AI Agents to the PG Renderer</a> so the agent can
+	compile and test its own output automatically.</li>
+</ul>

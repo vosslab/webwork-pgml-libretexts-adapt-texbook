@@ -1,1 +1,202 @@
-<p>Placeholder page for 8.1: What are AI Agents?</p>
+<p>
+An AI coding agent is a program that reads your project files, runs terminal commands, and fixes
+its own mistakes without waiting for you to copy and paste. Unlike a chatbot, an agent works
+inside your development environment. You describe the biology question you want in plain English,
+and the agent writes the WeBWorK PG code, tests it against a local renderer, reads any error
+messages, and revises the code until the problem renders correctly.
+</p>
+
+<p>
+This style of development is sometimes called "vibe coding," a term that gained popularity in
+late 2025. The idea is simple: you bring the biology expertise and a clear description of the
+question, and the agent brings the PG syntax and debugging. You do not need to learn Perl or
+memorize macro names. The agent handles those details because it has access to curated
+documentation and a live renderer to check its work.
+</p>
+
+<h2>Chatbots versus agents</h2>
+<p>
+A chatbot (such as ChatGPT in its default web interface) generates text in a conversation window.
+It cannot see your files, run commands, or test whether its code actually works. An AI coding
+agent does all of those things. The table below summarizes the key differences.
+</p>
+<table class="mt-responsive-table">
+	<caption>Capabilities that distinguish a chatbot from an AI coding agent.</caption>
+	<colgroup>
+		<col style="width: 40%;">
+		<col style="width: 30%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Capability</th>
+			<th>Chatbot</th>
+			<th>AI Agent</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Capability">Reads your project files</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Capability">Runs terminal commands</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Capability">Connects to the PG renderer</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Capability">Self-corrects when code fails</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Capability">Accesses curated WeBWorK documentation</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Capability">Tests its own output</td>
+			<td data-th="Chatbot">No</td>
+			<td data-th="AI Agent">Yes</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Why chatbots fail at WeBWorK</h2>
+<p>
+Even the simplest WeBWorK question defeats a standard chatbot. In a classroom demonstration, a
+chatbot was asked to write a problem that asks "What is your favorite color?" with a free-response
+answer box. The chatbot produced code that looked reasonable but failed to render. It mixed up
+standard Perl syntax with PG-specific conventions and could not test or fix the result.
+</p>
+
+<p>
+The root cause is that PG (the Problem Generation language) looks like Perl but is not standard
+Perl. PG uses its own macros, its own document structure (<code>DOCUMENT()</code> through
+<code>ENDDOCUMENT()</code>), and its own markup language (PGML). A chatbot trained on general
+programming data treats PG as ordinary Perl and produces code that fails in subtle ways. When you
+ask the chatbot to fix the error, it often makes things worse because it cannot see the actual
+error message from the renderer.
+</p>
+
+<p>
+This creates a debugging trap: the chatbot confidently tells you the code is correct and suggests
+the renderer itself must be broken. You spend time troubleshooting your Docker setup, reinstalling
+containers, and searching forums, when the real problem was always in the generated code. For more
+on common errors and how to recognize them, see
+<a href="/@go/page/555733">Common Mistakes and How to Fix Them</a>. For renderer setup and
+verification, see <a href="/@go/page/555732">Setting Up the PG Renderer</a>.
+</p>
+
+<h2>What makes agents work for WeBWorK</h2>
+<p>
+An AI coding agent succeeds where a chatbot fails because it has four capabilities that close the
+gap between generating code and producing a working problem.
+</p>
+<ol>
+	<li>
+		<strong>Documentation access.</strong> The agent reads WeBWorK-specific reference
+		documents instead of guessing from general Perl knowledge. These documents describe
+		the correct macro signatures, PGML syntax, and problem structure. See
+		<a href="/@go/page/557415">Knowledge Documents for AI Agents</a> for how to load
+		these references.
+	</li>
+	<li>
+		<strong>Renderer connection.</strong> The agent POSTs your PG code to a local
+		renderer (typically running at <code>localhost:3000</code>) and reads the response.
+		This gives it immediate feedback on whether the code actually works. See
+		<a href="/@go/page/557416">Connecting AI Agents to the PG Renderer</a> for setup
+		details.
+	</li>
+	<li>
+		<strong>Self-correction loop.</strong> When the renderer returns an error, the agent
+		reads the error message, identifies the problem, edits the code, and resubmits. This
+		loop continues until the problem renders cleanly, without any action from you.
+	</li>
+	<li>
+		<strong>File management.</strong> The agent creates, edits, and organizes
+		<code>.pg</code> files directly in your project directory. You do not need to copy
+		and paste code between a chat window and your editor.
+	</li>
+</ol>
+
+<h2>Available agents for WeBWorK</h2>
+<p>
+Two commercial AI coding agents are currently well suited for writing WeBWorK problems. Both run
+as command-line tools and can connect to a local PG renderer.
+</p>
+<table class="mt-responsive-table">
+	<caption>AI coding agents that support WeBWorK problem development.</caption>
+	<colgroup>
+		<col style="width: 18%;">
+		<col style="width: 20%;">
+		<col style="width: 32%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Agent</th>
+			<th>Provider</th>
+			<th>How it works</th>
+			<th>Documentation mechanism</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Agent">Claude Code</td>
+			<td data-th="Provider">Anthropic</td>
+			<td data-th="How it works">Runs locally in your terminal</td>
+			<td data-th="Documentation mechanism">Skills (curated doc bundles in <code>.claude/skills/</code>)</td>
+		</tr>
+		<tr>
+			<td data-th="Agent">OpenAI Codex</td>
+			<td data-th="Provider">OpenAI</td>
+			<td data-th="How it works">Cloud sandbox with local CLI</td>
+			<td data-th="Documentation mechanism">Forums (doc collections in the Codex panel)</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+Open-source alternatives such as OpenCode also exist but are not covered in this handbook.
+</p>
+
+<h2>Platform notes</h2>
+<ul>
+	<li>
+		<strong>Apple Silicon Macs.</strong> Both agents run well as CLI tools. Claude Code
+		and the Codex CLI are the recommended interfaces on macOS.
+	</li>
+	<li>
+		<strong>Windows.</strong> Use WSL2 (Windows Subsystem for Linux) for the best
+		experience with both agents and the Docker-based renderer.
+	</li>
+	<li>
+		<strong>Cloud API keys.</strong> Both services require an API key or subscription.
+		Keep your keys private and never commit them to a repository.
+	</li>
+	<li>
+		<strong>Cost.</strong> Both Claude Code and Codex require paid subscriptions. Check
+		current pricing on each provider's website.
+	</li>
+</ul>
+
+<h2>What you need before starting</h2>
+<ol>
+	<li>A running PG renderer (see <a href="/@go/page/555732">Setting Up the PG Renderer</a>)</li>
+	<li>An AI coding agent installed (Claude Code or OpenAI Codex)</li>
+	<li>Knowledge documents loaded into the agent (see <a href="/@go/page/557415">Knowledge Documents for AI Agents</a>)</li>
+	<li>A clear description of the biology problem you want to write</li>
+</ol>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Install Claude Code or OpenAI Codex following the provider's setup guide.</li>
+	<li>Verify your renderer is running: open a terminal and run
+		<code>curl http://localhost:3000/health</code>.</li>
+</ul>
