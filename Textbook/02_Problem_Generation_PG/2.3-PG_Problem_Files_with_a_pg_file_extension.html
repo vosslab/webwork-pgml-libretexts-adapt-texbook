@@ -52,6 +52,7 @@ ENDDOCUMENT();
 </pre>
 
 <table class="mt-responsive-table">
+	<caption>Copy and edit (PGML-first skeleton): change this first and do not touch yet.</caption>
 	<colgroup>
 		<col style="width: 50%;">
 		<col style="width: 50%;">
@@ -80,7 +81,7 @@ ENDDOCUMENT();
 	</tbody>
 </table>
 
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <pre>
 Broken: BEGIN_PGML before DOCUMENT();
 What you will see: PGML block not recognized or raw text output
@@ -88,7 +89,7 @@ Fix: Keep DOCUMENT() and loadMacros() above PGML
 </pre>
 
 	<p>
-	After any macro change, render locally to catch missing macros early (<a href="/@go/page/555731">Chapter 7</a>).
+	After any macro change, render locally to catch missing macros early (<a href="/@go/page/555731">Testing and Debugging</a>).
 	</p>
 
 <p>
@@ -110,7 +111,7 @@ read problems faster and keep your own authoring consistent.
 	<li>
 		<strong>OPL header</strong>: metadata comments for searchability and attribution.
 	</li>
-	<li><strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...);</code> (see <a href="/@go/page/555710">Section 4.3</a>).</li>
+	<li><strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...);</code> (see <a href="/@go/page/555710">Preamble</a>).</li>
 	<li><strong>Setup</strong>: contexts, variables, randomization, answer objects.</li>
 	<li><strong>Statement</strong>: the student-facing prompt, typically in <code>BEGIN_PGML</code>.</li>
 	<li>
@@ -187,13 +188,13 @@ ENDDOCUMENT();
 
 	<h2>Test immediately (recommended)</h2>
 	<ul>
-		<li>After any macro or setup change, render locally with webwork-pg-renderer (<a href="/@go/page/555731">Chapter 7</a>) to catch missing macros and syntax errors early.</li>
+		<li>After any macro or setup change, render locally with webwork-pg-renderer (<a href="/@go/page/555731">Testing and Debugging</a>) to catch missing macros and syntax errors early.</li>
 		<li>If local setup feels like too much, preview in ADAPT instead, but expect slower debugging when something breaks.</li>
 	</ul>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Need macro help? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
-	<li>Copied legacy code? Go to <a href="/@go/page/555742">Section 2.6</a>.</li>
-	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Section 2.4</a>.</li>
+	<li>Need macro help? Go to <a href="/@go/page/488659">Common PG Macros</a>.</li>
+	<li>Copied legacy code? Go to <a href="/@go/page/555742">Legacy PG and deprecated patterns</a>.</li>
+	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Sections within a PG question</a>.</li>
 </ul>

@@ -8,7 +8,7 @@ variables, and wires the grading, but the text the student actually reads belong
 <p>
 This page covers only the PG you need to support a PGML prompt. If you can read this page, you
 already know enough PG to write most science and math problems. Set up a local
-renderer to test your work (<a href="/@go/page/555732">Section 7.1</a>).
+renderer to test your work (<a href="/@go/page/555732">Setting Up the PG Renderer</a>).
 </p>
 
 <p>
@@ -26,7 +26,7 @@ consistent makes problems easier to read, debug, and share.
 <ol>
 	<li>
 		<strong>OPL header</strong>: metadata comments for searchability and attribution
-		(covered in Section 2.2; see also <a href="/@go/page/488661">Chapter 4</a> for a detailed component breakdown).
+		(covered in <a href="/@go/page/557378">OPL Header and Metadata</a>; see also <a href="/@go/page/488661">Breaking Down the Components</a> for a detailed component breakdown).
 	</li>
 	<li>
 		<strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...)</code>.
@@ -37,7 +37,7 @@ consistent makes problems easier to read, debug, and share.
 	</li>
 	<li>
 		<strong>Statement</strong>: the PGML text block that the student reads and interacts with
-		(see <a href="/@go/page/488660">Chapter 3</a> for PGML details).
+		(see <a href="/@go/page/488660">PGML (PG Markup Language)</a> for PGML details).
 	</li>
 	<li>
 		<strong>Solution</strong>: a solution block (and optional hints) for student review.
@@ -124,6 +124,7 @@ Start every problem with these four macros. Add others only when you need them.
 </p>
 
 <table class="mt-responsive-table">
+	<caption>Minimum recommended macros: macro and purpose.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 70%;">
@@ -208,6 +209,7 @@ context in the Setup section before defining answers.
 </p>
 
 <table class="mt-responsive-table">
+	<caption>Context selection: context and when to use.</caption>
 	<colgroup>
 		<col style="width: 25%;">
 		<col style="width: 75%;">
@@ -263,6 +265,7 @@ Keep directions concise and place them after the data or statement rather than b
 <h2>PG concepts you actually need</h2>
 
 <table class="mt-responsive-table">
+	<caption>PG concepts you actually need: pg concept, why you care, and what you type.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 40%;">
@@ -337,11 +340,11 @@ You can stop here if you are only editing prompts or adding one numeric value. T
 enough to keep your PG setup stable.
 </p>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 
 <ul>
-	<li>Need the OPL header? Go to <a href="/@go/page/557378">Section 2.2</a>.</li>
-	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">Section 2.3</a>.</li>
-	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Section 2.4</a>.</li>
-	<li>Need macro help? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
+	<li>Need the OPL header? Go to <a href="/@go/page/557378">OPL Header and Metadata</a>.</li>
+	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">PG Problem Files</a>.</li>
+	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Sections within a PG question</a>.</li>
+	<li>Need macro help? Go to <a href="/@go/page/488659">Common PG Macros</a>.</li>
 </ul>

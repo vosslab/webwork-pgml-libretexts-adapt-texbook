@@ -42,6 +42,7 @@ what ADAPT currently supports.
 PG 2.18 is the first version that reduces the need for many of the workarounds you see in this textbook, especially for inserting images into PGML and creating checkbox (select-all-that-apply) questions.
 </p>
 <table class="mt-responsive-table">
+	<caption>New PGML syntax: feature and what it does.</caption>
 	<colgroup>
 		<col style="width: 35%;">
 		<col style="width: 65%;">
@@ -62,6 +63,7 @@ PG 2.18 is the first version that reduces the need for many of the workarounds y
 
 <h3>New macros</h3>
 <table class="mt-responsive-table">
+	<caption>New macros: macro and description.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 70%;">
@@ -83,7 +85,7 @@ PG 2.18 is the first version that reduces the need for many of the workarounds y
 		</tr>
 		<tr>
 			<td data-th="Macro"><code>parserCheckboxList.pl</code></td>
-			<td data-th="Description">Native checkbox answer type for select-all-that-apply questions. Replaces the RadioButtons-per-statement workaround documented in <a href="/@go/page/555716">Section 5.3</a>.</td>
+			<td data-th="Description">Native checkbox answer type for select-all-that-apply questions. Replaces the RadioButtons-per-statement workaround documented in <a href="/@go/page/555716">Multiple Answer</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro"><code>parserRadioMultiAnswer.pl</code></td>
@@ -102,7 +104,7 @@ PG 2.18 is the first version that reduces the need for many of the workarounds y
 
 <h3>Updated macros</h3>
 <ul>
-	<li><strong>niceTables.pl</strong>: Completely overhauled. If you are writing table-heavy problems, the 2.18 version has better options and cleaner syntax than what is documented in <a href="/@go/page/555724">Section 6.2</a>.</li>
+	<li><strong>niceTables.pl</strong>: Completely overhauled. If you are writing table-heavy problems, the 2.18 version has better options and cleaner syntax than what is documented in <a href="/@go/page/555724">Making Tables with niceTables</a>.</li>
 	<li><strong>parserCheckboxList.pl / parserRadioButtons.pl</strong>: Past-answer display now shows meaningful labels instead of B0, B1, etc.</li>
 	<li><strong>parserGraphTool.pl</strong>: Number line mode for intervals, default answer checkers, a <code>generateAnswerGraph</code> method for solutions, and a dynamic help system.</li>
 	<li><strong>parserPopUp.pl</strong>: New <code>DropDown</code> method as a modern replacement for <code>PopUp</code>.</li>
@@ -126,6 +128,7 @@ PG 2.19 adds several quality-of-life improvements for PGML authoring.
 PG 2.19's biggest authoring win is native PGML tables, which means you can build tables directly inside a PGML block without the explicit <code>loadMacros("niceTables.pl")</code> call you currently need.
 </p>
 <table class="mt-responsive-table">
+	<caption>New PGML syntax: feature and what it does.</caption>
 	<colgroup>
 		<col style="width: 35%;">
 		<col style="width: 65%;">
@@ -143,7 +146,7 @@ PG 2.19's biggest authoring win is native PGML tables, which means you can build
 		</tr>
 		<tr>
 			<td data-th="Feature">HTML div/span tags in PGML</td>
-			<td data-th="What it does">Add HTML <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> tags within PGML using <code>[&lt; ... &gt;]</code> syntax. This replaces the MODES workaround for wrapper divs documented in <a href="/@go/page/555725">Section 6.3</a>.</td>
+			<td data-th="What it does">Add HTML <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> tags within PGML using <code>[&lt; ... &gt;]</code> syntax. This replaces the MODES workaround for wrapper divs documented in <a href="/@go/page/555725">Randomized Matching Problems</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Feature">Horizontal rules fixed</td>
@@ -154,6 +157,7 @@ PG 2.19's biggest authoring win is native PGML tables, which means you can build
 
 <h3>New macros and MathObjects</h3>
 <table class="mt-responsive-table">
+	<caption>New macros and MathObjects: macro and description.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 70%;">
@@ -207,6 +211,7 @@ MathObjects, and cleanup of deprecated patterns.
 PG 2.20 brings unit-aware MathObjects through <code>contextUnits.pl</code>, so you can grade answers that include units as part of the MathObject system instead of relying on external workarounds. It also introduces a modern plotting macro and a new context extension mechanism.
 </p>
 <table class="mt-responsive-table">
+	<caption>New macros and features: macro / feature and description.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 70%;">
@@ -264,6 +269,7 @@ remain necessary. Here is a summary of what changes when ADAPT eventually update
 The following table maps each workaround documented in this textbook to the PG version that eliminates it, so you can plan which problems to update first when ADAPT upgrades.
 </p>
 <table class="mt-responsive-table">
+	<caption>What this means for ADAPT authors today reference.</caption>
 	<colgroup>
 		<col style="width: 35%;">
 		<col style="width: 30%;">
@@ -278,7 +284,7 @@ The following table maps each workaround documented in this textbook to the PG v
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Current workaround">RadioButtons per statement for select-all-that-apply (<a href="/@go/page/555716">Section 5.3</a>)</td>
+			<td data-th="Current workaround">RadioButtons per statement for select-all-that-apply (<a href="/@go/page/555716">Multiple Answer</a>)</td>
 			<td data-th="Available in">PG 2.18</td>
 			<td data-th="What replaces it">Native <code>parserCheckboxList.pl</code> with proper checkbox UI</td>
 		</tr>
@@ -288,7 +294,7 @@ The following table maps each workaround documented in this textbook to the PG v
 			<td data-th="What replaces it"><code>DropDown</code> method in <code>parserPopUp.pl</code></td>
 		</tr>
 		<tr>
-			<td data-th="Current workaround">MODES wrapper for flexbox divs in matching layouts (<a href="/@go/page/555725">Section 6.3</a>)</td>
+			<td data-th="Current workaround">MODES wrapper for flexbox divs in matching layouts (<a href="/@go/page/555725">Randomized Matching Problems</a>)</td>
 			<td data-th="Available in">PG 2.19</td>
 			<td data-th="What replaces it"><code>[&lt; ... &gt;]</code> div/span syntax in PGML</td>
 		</tr>
@@ -343,11 +349,11 @@ The following table maps each workaround documented in this textbook to the PG v
 	<li>If you copy a problem that uses <code>custom_problem_grader_0_60_100</code>, replace it with <code>custom_problem_grader_fluid</code> (required in PG 2.20, works in all versions).</li>
 </ul>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Need the current macro allowlist? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
-	<li>Copied legacy code and it looks strange? Go to <a href="/@go/page/555742">Section 2.6</a>.</li>
-	<li>Ready to write your first problem? Go to <a href="/@go/page/488657">Section 2.3</a>.</li>
+	<li>Need the current macro allowlist? Go to <a href="/@go/page/488659">Common PG Macros</a>.</li>
+	<li>Copied legacy code and it looks strange? Go to <a href="/@go/page/555742">Legacy PG and deprecated patterns</a>.</li>
+	<li>Ready to write your first problem? Go to <a href="/@go/page/488657">PG Problem Files</a>.</li>
 </ul>
 
 <p>{{template.ShowOrg()}}</p>

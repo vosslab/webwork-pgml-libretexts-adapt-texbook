@@ -56,7 +56,7 @@ To adapt this skeleton, replace the OPL header fields with your own metadata, ch
 <p>
 PG executes sections top-to-bottom, and the PGML block captures variable references at parse time. If you place <code>Context()</code> or answer object definitions after <code>BEGIN_PGML</code>, PGML will not see them because they do not exist yet when the block is parsed.
 </p>
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <pre>
 Broken: Context("Numeric") after BEGIN_PGML
 What you will see: parsing errors or wrong answer checking
@@ -68,6 +68,7 @@ Fix: keep Context and answer objects in Setup above PGML
 Use the following table as a quick lookup for deciding which section a new line of code belongs in.
 </p>
 <table class="mt-responsive-table">
+	<caption>Where does this go?: task, section, and example.</caption>
 	<colgroup>
 		<col style="width: 36%;">
 		<col style="width: 24%;">
@@ -121,7 +122,7 @@ Use the following table as a quick lookup for deciding which section a new line 
 
 <p>
 Most WeBWorK examples describe a PG file as having several sections (description, initialization,
-setup, text, answers/solutions). That model is still useful, but when you write PGML-first (see <a href="/@go/page/488661">Chapter 4</a> for a detailed breakdown), the
+setup, text, answers/solutions). That model is still useful, but when you write PGML-first (see <a href="/@go/page/488661">Breaking Down the Components</a> for a detailed breakdown), the
 roles shift:
 </p>
 
@@ -138,7 +139,7 @@ roles shift:
 	</li>
 	<li>
 		<strong>Statement (PGML)</strong>: the prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>
-		(see <a href="/@go/page/555703">Section 3.1</a> for PGML syntax).
+		(see <a href="/@go/page/555703">Introduction to PGML</a> for PGML syntax).
 	</li>
 	<li>
 		<strong>Solution (optional)</strong>: use <code>BEGIN_PGML_SOLUTION</code> or
@@ -165,10 +166,10 @@ something wrong.
 Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 </p>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Need the OPL header? Go to <a href="/@go/page/557378">Section 2.2</a>.</li>
-	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">Section 2.3</a>.</li>
-	<li>Need macro help? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
-	<li>Copied legacy code? Go to <a href="/@go/page/555742">Section 2.6</a>.</li>
+	<li>Need the OPL header? Go to <a href="/@go/page/557378">OPL Header and Metadata</a>.</li>
+	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">PG Problem Files</a>.</li>
+	<li>Need macro help? Go to <a href="/@go/page/488659">Common PG Macros</a>.</li>
+	<li>Copied legacy code? Go to <a href="/@go/page/555742">Legacy PG and deprecated patterns</a>.</li>
 </ul>

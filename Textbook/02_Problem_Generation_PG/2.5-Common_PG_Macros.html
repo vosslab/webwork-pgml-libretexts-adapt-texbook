@@ -42,7 +42,7 @@ PG reports the function name as "Undefined subroutine" because the macro file th
 never loaded.
 </p>
 
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <pre>
 Broken: RadioButtons(...) without parserRadioButtons.pl
 What you will see: Undefined subroutine &amp;main::RadioButtons called
@@ -56,6 +56,7 @@ specific reason to omit one. The table below shows what each macro enables and w
 leave it out.
 </p>
 <table class="mt-responsive-table">
+	<caption>Core macros for PGML-first problems reference.</caption>
 	<colgroup>
 		<col style="width: 22%;">
 		<col style="width: 38%;">
@@ -104,6 +105,7 @@ below corresponds to a student-facing widget. Load the macro only when you use t
 widget -- extra macros add no value and slow down debugging.
 </p>
 <table class="mt-responsive-table">
+	<caption>Add-ons by interaction type: what students see, macro to load, and notes.</caption>
 	<colgroup>
 		<col style="width: 34%;">
 		<col style="width: 28%;">
@@ -120,12 +122,12 @@ widget -- extra macros add no value and slow down debugging.
 		<tr>
 			<td data-th="What students see">Single-choice questions (radio buttons)</td>
 			<td data-th="Macro to load">parserRadioButtons.pl</td>
-			<td data-th="Notes">Visible options, one correct choice (see <a href="/@go/page/555715">Section 5.2</a>).</td>
+			<td data-th="Notes">Visible options, one correct choice (see <a href="/@go/page/555715">Multiple Choice</a>).</td>
 		</tr>
 		<tr>
 			<td data-th="What students see">Matching or shuffled lists</td>
 			<td data-th="Macro to load">PGchoicemacros.pl</td>
-			<td data-th="Notes">Matching and choice helpers (see <a href="/@go/page/555717">Section 5.4</a> and <a href="/@go/page/555725">Section 6.3</a>).</td>
+			<td data-th="Notes">Matching and choice helpers (see <a href="/@go/page/555717">Matching</a> and <a href="/@go/page/555725">Randomized Matching Problems</a>).</td>
 		</tr>
 		<tr>
 			<td data-th="What students see">Targeted feedback for common errors</td>
@@ -135,7 +137,7 @@ widget -- extra macros add no value and slow down debugging.
 		<tr>
 			<td data-th="What students see">Dropdown menus (select one from a list)</td>
 			<td data-th="Macro to load">parserPopUp.pl</td>
-			<td data-th="Notes">Use PopUp() for inline dropdown selection. Available in ADAPT (see <a href="/@go/page/555725">Section 6.3</a>).</td>
+			<td data-th="Notes">Use PopUp() for inline dropdown selection. Available in ADAPT (see <a href="/@go/page/555725">Randomized Matching Problems</a>).</td>
 		</tr>
 		<tr>
 			<td data-th="What students see">Drag-and-drop proof ordering</td>
@@ -166,6 +168,7 @@ Not every PG macro is available in the ADAPT/renderer subset. The table below sh
 work in your environment. If a macro shows "No" in the ADAPT column, you need a workaround.
 </p>
 <table class="mt-responsive-table">
+	<caption>Macro availability (subset vs full PG) reference.</caption>
 	<colgroup>
 		<col style="width: 36%;">
 		<col style="width: 21%;">
@@ -222,6 +225,7 @@ removed. This affects what widgets and helpers you can use in problems.
 
 <h3>Parser widgets: Key differences</h3>
 <table class="mt-responsive-table">
+	<caption>Parser widgets: Key differences reference.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 18%;">
@@ -241,7 +245,7 @@ removed. This affects what widgets and helpers you can use in problems.
 			<td data-th="Widget">PopUp</td>
 			<td data-th="ADAPT/renderer">Yes</td>
 			<td data-th="Full PG 2.17+">Yes</td>
-			<td data-th="Notes">Use for matching dropdowns (see <a href="/@go/page/555725">Section 6.3</a>)</td>
+			<td data-th="Notes">Use for matching dropdowns (see <a href="/@go/page/555725">Randomized Matching Problems</a>)</td>
 		</tr>
 		<tr>
 			<td data-th="Widget">RadioButtons</td>
@@ -253,7 +257,7 @@ removed. This affects what widgets and helpers you can use in problems.
 			<td data-th="Widget">CheckboxList</td>
 			<td data-th="ADAPT/renderer">No</td>
 			<td data-th="Full PG 2.17+">Yes</td>
-			<td data-th="Notes">Not available. Use RadioButtons per statement instead (<a href="/@go/page/555726">Section 6.4</a>)</td>
+			<td data-th="Notes">Not available. Use RadioButtons per statement instead (<a href="/@go/page/555726">Randomized MC True and False Statements</a>)</td>
 		</tr>
 		<tr>
 			<td data-th="Widget">DropDown</td>
@@ -266,6 +270,7 @@ removed. This affects what widgets and helpers you can use in problems.
 
 <h3>Core macros: All available</h3>
 <table class="mt-responsive-table">
+	<caption>Core macros: All available: macro, adapt/renderer, full pg 2.17+, and more.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 18%;">
@@ -303,13 +308,14 @@ removed. This affects what widgets and helpers you can use in problems.
 			<td data-th="Macro">niceTables.pl</td>
 			<td data-th="ADAPT/renderer">Yes</td>
 			<td data-th="Full PG 2.17+">Yes</td>
-			<td data-th="Notes">The only supported way to create tables (see <a href="/@go/page/555724">Section 6.2</a>)</td>
+			<td data-th="Notes">The only supported way to create tables (see <a href="/@go/page/555724">Making Tables with niceTables</a>)</td>
 		</tr>
 	</tbody>
 </table>
 
 <h3>Context macros: Most available, some missing</h3>
 <table class="mt-responsive-table">
+	<caption>Context macros: Most available, some missing reference.</caption>
 	<colgroup>
 		<col style="width: 28%;">
 		<col style="width: 18%;">
@@ -349,10 +355,10 @@ removed. This affects what widgets and helpers you can use in problems.
 <h3>What this means for problem authors</h3>
 <ul>
 	<li><strong>Use PopUp and RadioButtons:</strong> These work reliably across all PG versions and are available in the ADAPT/renderer subset.</li>
-	<li><strong>Avoid CheckboxList:</strong> It's not in the PG 2.17 subset. Use RadioButtons per statement instead (see <a href="/@go/page/555726">Section 6.4</a> for the pattern).</li>
+	<li><strong>Avoid CheckboxList:</strong> It's not in the PG 2.17 subset. Use RadioButtons per statement instead (see <a href="/@go/page/555726">Randomized MC True and False Statements</a> for the pattern).</li>
 	<li><strong>Check the allowlist before copying:</strong> Online examples may use macros that aren't in the subset. Always verify against the allowlist in <code>docs/PG_2_17_RENDERER_MACROS.md</code>.</li>
 	<li><strong>Use niceTables.pl for all tables:</strong> HTML table tags (<code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>) are blocked. niceTables.pl is the only supported way to create tables.</li>
-	<li><strong>Test locally:</strong> Use the local renderer (<a href="/@go/page/555731">Chapter 7</a>) to catch missing macros before deploying to ADAPT.</li>
+	<li><strong>Test locally:</strong> Use the local renderer (<a href="/@go/page/555731">Testing and Debugging</a>) to catch missing macros before deploying to ADAPT.</li>
 </ul>
 
 <h2>When a macro is missing</h2>
@@ -371,12 +377,13 @@ to diagnose and fix it.
 <h3>How to diagnose</h3>
 <ol>
 	<li><strong>Check the allowlist:</strong> Open <code>docs/PG_2_17_RENDERER_MACROS.md</code> and search for the macro file name. If it's not listed, it's not available.</li>
-	<li><strong>Test locally with renderer:</strong> Run the problem through the local renderer (<a href="/@go/page/555732">Section 7.1</a>). The error message will tell you which macro failed to load and where it was called.</li>
+	<li><strong>Test locally with renderer:</strong> Run the problem through the local renderer (<a href="/@go/page/555732">Setting Up the PG Renderer</a>). The error message will tell you which macro failed to load and where it was called.</li>
 	<li><strong>Search for alternatives:</strong> Look for similar functionality in macros that ARE in the allowlist. For example, use <code>PopUp</code> instead of <code>DropDown</code>.</li>
 </ol>
 
 <h3>Common workarounds</h3>
 <table class="mt-responsive-table">
+	<caption>Common workarounds: missing macro, what it provided, and workaround.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -393,7 +400,7 @@ to diagnose and fix it.
 		<tr>
 			<td data-th="Missing macro">parserCheckboxList.pl</td>
 			<td data-th="What it provided">Checkbox lists for multiple correct answers</td>
-			<td data-th="Workaround">Use RadioButtons per statement (True/False), see <a href="/@go/page/555726">Section 6.4</a></td>
+			<td data-th="Workaround">Use RadioButtons per statement (True/False), see <a href="/@go/page/555726">Randomized MC True and False Statements</a></td>
 		</tr>
 		<tr>
 			<td data-th="Missing macro">DropDown (PG 2.18+)</td>
@@ -411,8 +418,8 @@ to diagnose and fix it.
 <h3>Prevention</h3>
 <ul>
 	<li>Before copying code from online examples, check the macro list against the allowlist.</li>
-	<li>Use templates from Appendix 90.1, which are verified to work with the PG 2.17 subset.</li>
-	<li>Test problems locally (<a href="/@go/page/555732">Section 7.1</a>) before deploying to ADAPT.</li>
+	<li>Use templates from <a href="/@go/page/557637">Minimal Templates</a>, which are verified to work with the PG 2.17 subset.</li>
+	<li>Test problems locally (<a href="/@go/page/555732">Setting Up the PG Renderer</a>) before deploying to ADAPT.</li>
 </ul>
 
 <h2>Science-native contexts and grading helpers</h2>
@@ -422,6 +429,7 @@ chemical reactions, and scientific notation. Use them when the standard Numeric 
 are too restrictive for what you want students to enter.
 </p>
 <table class="mt-responsive-table">
+	<caption>Science-native contexts and grading helpers reference.</caption>
 	<colgroup>
 		<col style="width: 34%;">
 		<col style="width: 26%;">
@@ -504,6 +512,7 @@ These macros control how content is displayed, from data tables to scaffolded mu
 generated graphs. Most biology problems need at most niceTables.pl for data presentation.
 </p>
 <table class="mt-responsive-table">
+	<caption>Tables, layouts, and visual tools reference.</caption>
 	<colgroup>
 		<col style="width: 34%;">
 		<col style="width: 26%;">
@@ -547,6 +556,7 @@ generated graphs. Most biology problems need at most niceTables.pl for data pres
 
 <h2>Symptoms when missing</h2>
 <table class="mt-responsive-table">
+	<caption>Symptoms when missing: symptom, likely missing, and fix.</caption>
 	<colgroup>
 		<col style="width: 38%;">
 		<col style="width: 32%;">
@@ -584,7 +594,7 @@ generated graphs. Most biology problems need at most niceTables.pl for data pres
 </table>
 
 	<p>
-	Local render shows the line and missing macro when ADAPT only reports a generic error (<a href="/@go/page/555731">Chapter 7</a>).
+	Local render shows the line and missing macro when ADAPT only reports a generic error (<a href="/@go/page/555731">Testing and Debugging</a>).
 	</p>
 
 <h2>Graph, plotting, and image macros</h2>
@@ -593,6 +603,7 @@ The renderer includes several macros for generating figures and plots. Most biol
 need dynamic graphs, but these are available when a problem requires a visual.
 </p>
 <table class="mt-responsive-table">
+	<caption>Graph, plotting, and image macros: macro, what it does, and when to use it.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -609,7 +620,7 @@ need dynamic graphs, but these are available when a problem requires a visual.
 		<tr>
 			<td data-th="Macro">PGgraphmacros.pl</td>
 			<td data-th="What it does">Creates 2D function plots using the WWPlot/Fun system.</td>
-			<td data-th="When to use it">Simple function graphs (growth curves, dose-response). See <a href="/@go/page/555728">Section 6.6</a>.</td>
+			<td data-th="When to use it">Simple function graphs (growth curves, dose-response). See <a href="/@go/page/555728">Making Graphs</a>.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro">PGtikz.pl</td>
@@ -645,6 +656,7 @@ These macros are available in the renderer and are useful for quantitative biolo
 or ecology problems that involve data analysis.
 </p>
 <table class="mt-responsive-table">
+	<caption>Statistics and numerical macros: macro, what it provides, and notes.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -682,6 +694,7 @@ Matrix macros are available in the renderer but are rarely needed for biology or
 problems. They appear frequently in math and engineering problem libraries.
 </p>
 <table class="mt-responsive-table">
+	<caption>Matrix and linear algebra macros: macro, what it provides, and notes.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -724,6 +737,7 @@ These macros exist in the renderer for completeness but are almost never needed 
 life-science problems. They are listed here so you recognize them if encountered in borrowed code.
 </p>
 <table class="mt-responsive-table">
+	<caption>Complex number and specialized math macros reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -770,6 +784,7 @@ life-science problems. They are listed here so you recognize them if encountered
 Use this table when you know what you want the problem to do but are not sure which macro provides it.
 </p>
 <table class="mt-responsive-table">
+	<caption>Quick reference: which macro for which task: i want to... and load this macro.</caption>
 	<colgroup>
 		<col style="width: 45%;">
 		<col style="width: 55%;">
@@ -855,9 +870,9 @@ Use this table when you know what you want the problem to do but are not sure wh
 	<li>Let dependencies load themselves; do not list everything "just in case."</li>
 </ul>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Not sure where the macro block belongs? Go to <a href="/@go/page/488658">Section 2.4</a>.</li>
-	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">Section 2.3</a>.</li>
-	<li>Copied legacy code? Go to <a href="/@go/page/555742">Section 2.6</a>.</li>
+	<li>Not sure where the macro block belongs? Go to <a href="/@go/page/488658">Sections within a PG question</a>.</li>
+	<li>Need a clean starter .pg skeleton? Go to <a href="/@go/page/488657">PG Problem Files</a>.</li>
+	<li>Copied legacy code? Go to <a href="/@go/page/555742">Legacy PG and deprecated patterns</a>.</li>
 </ul>

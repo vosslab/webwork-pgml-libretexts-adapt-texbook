@@ -1,6 +1,6 @@
 <p>
 This page helps you recognize legacy PG patterns that show up in older problem libraries and
-online examples. The goal is to translate the useful idea into a PGML-first structure (see <a href="/@go/page/555703">Section 3.1</a> for modern PGML) without
+online examples. The goal is to translate the useful idea into a PGML-first structure (see <a href="/@go/page/555703">Introduction to PGML</a> for modern PGML) without
 carrying forward fragile formatting or scattered grading logic.
 </p>
 <p>
@@ -31,7 +31,7 @@ Find the final concentration: [________]{$c_final} &mu;M
 END_PGML
 </pre>
 
-<p><strong>Common failure and fix</strong></p>
+<h3>Common failure and fix</h3>
 <pre>
 Broken: $PAR and BEGIN_TEXT blocks mixed with PGML
 What you will see: raw $PAR output or missing blanks
@@ -49,6 +49,7 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 
 <h2>Legacy patterns to recognize (and replace)</h2>
 <table class="mt-responsive-table">
+	<caption>Legacy patterns to recognize (and replace) reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -102,6 +103,7 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 
 <h2>Deprecated or fragile behaviors</h2>
 <table class="mt-responsive-table">
+	<caption>Deprecated or fragile behaviors reference.</caption>
 	<colgroup>
 		<col style="width: 30%;">
 		<col style="width: 35%;">
@@ -128,7 +130,7 @@ Fix: move all prompt text into BEGIN_PGML/END_PGML
 		<tr>
 			<td data-th="Pattern"><code>new_match_list</code> with <code>print_q</code>/<code>print_a</code></td>
 			<td data-th="Why it is fragile">PGchoicemacros.pl legacy match list generates its own form fields, requiring <code>ANS(str_cmp(...))</code>.</td>
-			<td data-th="Preferred approach">Use PopUp widgets (<code>parserPopUp.pl</code>) with PGML inline blanks. See Appendix 90.4 for both patterns.</td>
+			<td data-th="Preferred approach">Use PopUp widgets (<code>parserPopUp.pl</code>) with PGML inline blanks. See <a href="/@go/page/557639">Macro Demonstrations</a> for both patterns.</td>
 		</tr>
 		<tr>
 			<td data-th="Pattern">PopUp menus for choices</td>
@@ -198,6 +200,7 @@ END_PGML
 </pre>
 
 <table class="mt-responsive-table">
+	<caption>Copy and edit (answer evaluator rewrite) reference.</caption>
 	<colgroup>
 		<col style="width: 20%;">
 		<col style="width: 15%;">
@@ -275,6 +278,7 @@ now deprecated. If you copy a problem that loads PGchoicemacros.pl, check which 
 it actually uses and consider whether a modern replacement exists.
 </p>
 <table class="mt-responsive-table">
+	<caption>PGchoicemacros.pl: widely used, mostly deprecated reference.</caption>
 	<colgroup>
 		<col style="width: 25%;">
 		<col style="width: 25%;">
@@ -301,17 +305,17 @@ it actually uses and consider whether a modern replacement exists.
 		<tr>
 			<td data-th="Deprecated function"><code>new_match_list</code></td>
 			<td data-th="Replacement">PopUp widgets</td>
-			<td data-th="Example rewrite">Build PopUp objects and use PGML inline blanks (see <a href="/@go/page/555717">Section 5.4</a>).</td>
+			<td data-th="Example rewrite">Build PopUp objects and use PGML inline blanks (see <a href="/@go/page/555717">Matching</a>).</td>
 		</tr>
 		<tr>
 			<td data-th="Deprecated function"><code>new_select_list</code></td>
 			<td data-th="Replacement">RadioButtons</td>
-			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Section 5.2</a>).</td>
+			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Multiple Choice</a>).</td>
 		</tr>
 		<tr>
 			<td data-th="Deprecated function"><code>new_multiple_choice</code></td>
 			<td data-th="Replacement">RadioButtons</td>
-			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Section 5.2</a>).</td>
+			<td data-th="Example rewrite">Use <code>parserRadioButtons.pl</code> with PGML (see <a href="/@go/page/555715">Multiple Choice</a>).</td>
 		</tr>
 	</tbody>
 </table>
@@ -325,12 +329,12 @@ require loading PGchoicemacros.pl and is not deprecated.
 <ul>
 	<li>When you copy an older example, rewrite the text block into PGML first.</li>
 	<li>Keep the macro list short and focused on what the prompt actually uses.</li>
-	<li>Use seeds to reproduce any unexpected grading or formatting behavior (see <a href="/@go/page/555733">Section 7.2</a> for common mistakes).</li>
+	<li>Use seeds to reproduce any unexpected grading or formatting behavior (see <a href="/@go/page/555733">Common Mistakes and How to Fix Them</a> for common mistakes).</li>
 </ul>
 
-<p><strong>Next, depending on what you are doing:</strong></p>
+<h3>Next, depending on what you are doing:</h3>
 <ul>
-	<li>Once it is PGML-first, go back to <a href="/@go/page/488657">Section 2.3</a> and rebuild from the minimal skeleton.</li>
-	<li>Need macro help? Go to <a href="/@go/page/488659">Section 2.5</a>.</li>
-	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Section 2.4</a>.</li>
+	<li>Once it is PGML-first, go back to <a href="/@go/page/488657">PG Problem Files</a> and rebuild from the minimal skeleton.</li>
+	<li>Need macro help? Go to <a href="/@go/page/488659">Common PG Macros</a>.</li>
+	<li>Not sure where setup ends and PGML begins? Go to <a href="/@go/page/488658">Sections within a PG question</a>.</li>
 </ul>
