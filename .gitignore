@@ -3,6 +3,8 @@ output/
 Construction_Guide_for_LibreTexts_2e
 output/textbook_pre_blocks/
 
+node_modules/
+package-lock.json
 
 # === UNIVERSAL ===
 report_*.txt

@@ -160,6 +160,32 @@ def test_csv_report_columns(tmp_path):
 #============================================
 
 
+def test_build_renderer_url_accepts_http_and_https():
+	"""Renderer endpoint construction should accept only web URL schemes."""
+	assert lint_textbook_problems.build_renderer_url(
+		"http://localhost:3000/", "/health"
+	) == "http://localhost:3000/health"
+	assert lint_textbook_problems.build_renderer_url(
+		"https://renderer.example.org", "render-api"
+	) == "https://renderer.example.org/render-api"
+
+
+@pytest.mark.parametrize(
+	"host",
+	[
+		"file:///tmp/renderer",
+		"ftp://renderer.example.org",
+		"localhost:3000",
+		"https://renderer.example.org?mode=test",
+		"https://renderer.example.org#health",
+	],
+)
+def test_build_renderer_url_rejects_unsafe_hosts(host):
+	"""Renderer endpoint construction should reject non-web and ambiguous bases."""
+	with pytest.raises(ValueError):
+		lint_textbook_problems.build_renderer_url(host, "health")
+
+
 def renderer_available() -> bool:
 	"""Check whether localhost:3000 is reachable."""
 	return lint_textbook_problems.check_renderer_health("http://localhost:3000")

@@ -13,6 +13,7 @@ import json
 import time
 import random
 import argparse
+import urllib.parse
 import urllib.request
 
 # Ensure sibling tools are importable
@@ -115,14 +116,28 @@ def extract_problems(input_dir: str, output_dir: str) -> list[dict]:
 #============================================
 
 
+def build_renderer_url(host: str, endpoint: str) -> str:
+	"""Build a renderer endpoint URL after requiring an HTTP(S) base URL."""
+	parsed = urllib.parse.urlsplit(host)
+	if parsed.scheme.lower() not in {"http", "https"} or parsed.hostname is None:
+		raise ValueError("Renderer host must be an HTTP or HTTPS URL.")
+	if parsed.query or parsed.fragment:
+		raise ValueError("Renderer host must not contain a query string or fragment.")
+	return f"{host.rstrip('/')}/{endpoint.lstrip('/')}"
+
+
+#============================================
+
+
 def check_renderer_health(host: str) -> bool:
 	"""
 	Check whether the renderer is reachable by GETting its /health endpoint.
 	"""
-	url = f"{host.rstrip('/')}/health"
+	url = build_renderer_url(host, "health")
 	request = urllib.request.Request(url, method="GET")
 	try:
-		with urllib.request.urlopen(request, timeout=5) as response:
+		# build_renderer_url permits only HTTP(S) request URLs.
+		with urllib.request.urlopen(request, timeout=5) as response:  # nosec B310
 			is_healthy = response.status == 200
 	except Exception:
 		is_healthy = False
@@ -136,7 +151,7 @@ def render_pg_source(source_text: str, host: str, seed: int) -> dict:
 	"""
 	Post PG source to the renderer /render-api endpoint and return the JSON response.
 	"""
-	url = f"{host.rstrip('/')}/render-api"
+	url = build_renderer_url(host, "render-api")
 	payload = {
 		"problemSource": source_text,
 		"problemSeed": seed,
@@ -147,7 +162,8 @@ def render_pg_source(source_text: str, host: str, seed: int) -> dict:
 	# throttle API calls per repo guidance
 	time.sleep(random.random())
 	request = urllib.request.Request(url, data=body, headers=headers, method="POST")
-	with urllib.request.urlopen(request, timeout=60) as response:
+	# build_renderer_url permits only HTTP(S) request URLs.
+	with urllib.request.urlopen(request, timeout=60) as response:  # nosec B310
 		raw_body = response.read().decode("utf-8")
 		try:
 			json_body = json.loads(raw_body)

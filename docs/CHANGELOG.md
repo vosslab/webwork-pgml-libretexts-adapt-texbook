@@ -1,5 +1,55 @@
 # Changelog
 
+## 2026-07-14
+
+### Additions and New Features
+
+- Added `tools/check_external_links.py`, a repository-wide Markdown and HTML URL extractor and
+  checker that deduplicates external links, follows redirects, reports source locations, fails on
+  confirmed 404/410 responses, and separates transient or access-controlled results as
+  inconclusive.
+- Added `tools/capture_published_handbook.mjs` for reproducible desktop capture of the
+  public Chemistry LibreTexts landing page used in the README.
+- Added `docs/screenshots/published_handbook.png` and embedded it in the README as visual proof of
+  the published book.
+
+### Behavior or Interface Changes
+
+- Restored reader-facing navigation to `README.md` with start choices, a linked chapter map,
+  curated project documentation, and a short related-resources list while keeping detailed
+  maintenance guidance in `docs/`.
+- Expanded `README.md` under the revised landing-page rubric with a science-authoring promise,
+  representative PGML example and expected behavior, ADAPT/PG 2.17 compatibility guidance,
+  separate educator and contributor paths, verified help routing, and the CC BY 4.0 content plus
+  LGPL 3.0 code license split.
+- Promoted the published Chemistry LibreTexts handbook to the top of `README.md`, routed readers
+  through its published Quickstart page, and made the published book the target for any future
+  landing-page screenshot.
+- Canonicalized root URLs in the external link checker so forms with and without `/` are checked
+  once, while preserving path slashes and query strings that may affect server behavior.
+- Trimmed closing Markdown emphasis markers from extracted URLs so bold links are checked without
+  false `404` results caused by trailing `)**` text.
+- Restricted renderer lint requests to validated HTTP and HTTPS base URLs before either health or
+  render API access, with focused Bandit B310 annotations at the guarded request calls.
+- Updated Chapter 7's GitHub and raw-download references for `lint_pg_via_renderer_api.py` to the
+  current `webwork-writer-expert` skill path after the checker found the old path returned 404,
+  and pinned the download to a tested `vosslab-skills` commit so later renames cannot break it.
+
+### Developer Tests and Notes
+
+- External-link checker smoke test scanned 89 Markdown and HTML files and confirmed all 25 unique,
+  normalized external URLs returned HTTP 200.
+- `tests/run_html_lint.sh`: all 66 textbook HTML files passed.
+- Direct Pyflakes, ASCII, and medium/high Bandit checks passed for the new checker, and
+  `git diff --check` passed.
+- README landing-page verification: all 48 first-paragraph and local Markdown-link tests passed,
+  the README passed the ASCII check, and all README external URLs returned HTTP 200.
+- Renderer URL validation and repository security verification: 52 tests passed and 2 renderer
+  integration tests skipped because the optional local service was not running.
+- `tools/textbook_code_block_validator.py` found 0 errors and 24 warnings across 66 files; the
+  quick-start page produced no warning. A live renderer check was unavailable because no service
+  was running on `localhost:3000`; the README instead shows the verified published handbook.
+
 ## 2026-02-27
 
 ### Clean up TEXTBOOK_PAGE_SUMMARIES.md and add pytest guard

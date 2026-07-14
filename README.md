@@ -1,102 +1,111 @@
-WebWork in ADAPT is a practical, end-to-end guide to creating, testing, and publishing interactive problems in WeBWorK
-within the ADAPT homework platform. It introduces the platform's purpose, terminology, and core features.
+# Writing automated questions using WeBWorK in ADAPT
 
-# Writing Automated Questions using WeBWorK in ADAPT
+A practical, PGML-first textbook for science educators creating randomized, automatically graded WeBWorK questions in ADAPT, with copy-ready biology examples and local validation tools.
 
-This repository is a chapter-based textbook/guide (not a traditional software project).
-The primary content lives in `Textbook/` as LibreTexts-ready HTML and is written for an audience
-in the sciences and descriptive fields, with life-science-first examples.
+**[Read The ADAPT WeBWorK Handbook on Chemistry LibreTexts](https://chem.libretexts.org/Courses/Remixer_University/The_ADAPT_WeBWorK_Handbook)**
 
-The guide is PGML-first: regular PG is treated as minimal scaffolding, and most authoring effort
-should go into clear, structured PGML prompts.
+The published book is the primary reading experience. This repository contains its LibreTexts-ready source chapters, examples, and validation tools.
 
-## Quick start
-- If you want a first win fast: start at `Textbook/01_Introduction/1.6-Quickstart_copy_edit_first_problem.html`.
-- If you want the framing and workflow first: start at `Textbook/01_Introduction/1.0-Index.html`.
-- If you are editing chapter content: use `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` as the source of truth for what each
-  page is intended to cover (align the HTML pages to match it).
+<!-- screenshots:begin (managed by screenshot-docs) -->
+![Published handbook landing page on Chemistry LibreTexts](docs/screenshots/published_handbook.png)
+<!-- screenshots:end -->
 
-## Documentation
-- Book plan and intended scope per page: [Textbook/TEXTBOOK_PAGE_SUMMARIES.md](Textbook/TEXTBOOK_PAGE_SUMMARIES.md)
-- LibreTexts authoring constraints: [docs/LIBRETEXTS_HTML_GUIDE.md](docs/LIBRETEXTS_HTML_GUIDE.md)
-- Repo conventions: [docs/REPO_STYLE.md](docs/REPO_STYLE.md)
-- Markdown style: [docs/MARKDOWN_STYLE.md](docs/MARKDOWN_STYLE.md)
-- Python style (for `tools/` scripts): [docs/PYTHON_STYLE.md](docs/PYTHON_STYLE.md)
-- Repo maps: [docs/CODE_ARCHITECTURE.md](docs/CODE_ARCHITECTURE.md), [docs/FILE_STRUCTURE.md](docs/FILE_STRUCTURE.md)
-- Changelog: [docs/CHANGELOG.md](docs/CHANGELOG.md)
+## Turn one working problem into many
 
-## Repository layout
-- `Textbook/`: the book content (HTML), organized by chapter folders.
-- `Insight-HTML/` and `WebWorK-HTML/`: extracted source material used for writing (do not edit).
-- `docs/`: repo conventions and HTML authoring rules.
-- `tools/`: authoring utilities (for example, linting/formatters).
-- `tests/`: local checks (HTML lint, Python checks).
+Start with a complete problem that already grades correctly, change the science story before changing the mathematics, and preview several randomized variants before publishing. This book makes that safe copy-edit-test cycle the center of WeBWorK authoring.
 
-## External resources
-Textbook pages under `Textbook/` avoid HTML links (`<a href=...>`) for LibreTexts compatibility, so external
-references live here (and in `Links/`).
+- Write student-facing prompts in PGML while keeping regular PG focused on setup and answer checking.
+- Adapt life-science examples built around counts, concentrations, protocols, structures, and data.
+- Choose among numeric entry, multiple choice, matching, ordering, and multi-part interactions.
+- Test problems through ADAPT or `webwork-pg-renderer`, then use line-level diagnostics when rendering fails.
+- Work within the documented ADAPT macro subset instead of discovering version incompatibilities after authoring.
 
-- LibreTexts Insight: [WeBWorK techniques](https://commons.libretexts.org/insight/webwork-techniques)
-- OpenWeBWorK PG docs: [sample problems index](https://openwebwork.github.io/pg-docs/sample-problems/)
-- OpenWeBWorK PG docs: [MultipleChoiceCheckbox example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html)
-- OpenWeBWorK PG docs: [MultipleChoicePopup example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoicePopup.html)
-- OpenWeBWorK PG docs: [MultipleChoiceRadio example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html)
-- OpenWeBWorK PG docs: [Matching example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/Matching.html)
-- OpenWeBWorK PG docs: [Multianswer example](https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/Multianswer.html)
-- OpenWeBWorK PG docs: [NumericalTolerance example](https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/NumericalTolerance.html)
-- OpenWeBWorK PG docs: [StringsInContext example](https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html)
-- OpenWeBWorK PG docs: [PGchoicemacros reference](https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/PGchoicemacros.html)
-- GitHub: [vosslab/webwork-pg-renderer](https://github.com/vosslab/webwork-pg-renderer)
-- Biology Problems: [biologyproblems.org](https://biologyproblems.org/)
+## See the PGML-first pattern
 
-## Entry points
-- `Textbook/01_Introduction/1.0-Index.html`
-- `Textbook/02_Problem_Generation_PG/2.0-Index.html`
-- `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`
-- `Textbook/04_Breaking_Down_the_Components/4.0-Index.html`
-- `Textbook/05_Different_Question_Types/5.0-Index.html`
-- `Textbook/06_Advanced_PGML_Techniques/6.0-Index.html`
-- `Textbook/07_Testing_and_Debugging/7.0-Index.html`
-- `Textbook/08_Using_AI_Agents_to_Write_WeBWorK/8.0-Index.html`
-- `Textbook/90_Appendices/90.0-Index.html`
+This excerpt from the complete quick-start problem randomizes two values, binds their sum to an answer object, and keeps the learner-facing language readable:
 
-## Chapter map (current)
-- 01 Introduction: audience, framing, and why WeBWorK is useful in science courses.
-- 02 Minimal PG scaffolding: `.pg` structure, macro loading, and keeping setup small.
-- 03 PGML: the core authoring layer (blanks, lists, tables, and a small "escape hatch").
-- 04 Worked example: a complete copy-and-edit PGML-first life-science problem.
-- 05 ADAPT workflow and question types: interaction patterns plus workflow habits and QA checks.
-- 06 Advanced PGML techniques: richer patterns including emphasis, tables, graphs, randomization, and structure rendering.
-- 07 Testing and debugging: linting, renderer setup, scripting, edge-case checks, and QA checklists.
-- 08 Using AI agents to write WeBWorK: chapter scaffold for AI-assisted authoring workflows.
-- 90 Appendices: templates, cheat sheets, glossary, troubleshooting, and "further techniques".
+```perl
+$a = random(2, 8, 1);
+$b = random(3, 9, 1);
+$ans = Real($a + $b);
 
-## LibreTexts authoring rules (high importance)
-This repo assumes LibreTexts import and LibreTexts navigation:
-- Avoid HTML links (`<a href=...>`) in `Textbook/` content (LibreTexts provides its own TOC).
-- Do not rely on JavaScript (`<script>` tags or inline event handlers).
-- Every chapter index file named `X.0-Index.html` must end with `<p>{{template.ShowOrg()}}</p>`.
-- Table format and other HTML conventions are documented in `docs/LIBRETEXTS_HTML_GUIDE.md`.
+BEGIN_PGML
+In a lab notebook, two counts were recorded: [$a] and [$b].
 
-## Editing workflow
-1. Edit or add chapter content in `Textbook/` (HTML).
-2. Keep examples life-science-first and PGML-first (PG setup only as needed).
-3. Align the page content with `Textbook/TEXTBOOK_PAGE_SUMMARIES.md`.
-4. Record your change in `docs/CHANGELOG.md`.
+What is the total count?
 
-## Validation
-Run the local lint checks before considering HTML "done":
-```bash
-/opt/homebrew/bin/bash tests/run_html_lint.sh
-/opt/homebrew/bin/bash tests/run_pyflakes.sh
+[`Total = `] [________]{$ans}
+END_PGML
 ```
 
-## Source material (do not edit)
-The extracted HTML in `Insight-HTML/` and `WebWorK-HTML/` is used as writing input. The textbook
-content should integrate the useful ideas as prose and examples, not as copied pages.
+Each preview produces a new pair of counts while the answer blank remains connected to the correct sum. The [complete quick-start skeleton](Textbook/01_Introduction/1.6-Quickstart_copy_edit_first_problem.html) includes the required document structure, macros, context, and ending.
 
-## Example style reference (local)
-If available on the same machine, use the Biology Problems OER style as a content and prompt
-reference:
-- `/Users/vosslab/nsh/biology-problems/`
-- `/Users/vosslab/nsh/biology-problems-website/`
+## Compatibility at a glance
+
+- The guide targets the flattened ADAPT and `webwork-pg-renderer` macro set based on PG 2.17; some macros from full or newer PG installations are unavailable.
+- Regular PG is used as minimal scaffolding. PGML is the preferred authoring layer for prompts, layout, and answer blanks.
+- Chapter HTML is designed for LibreTexts import and cannot depend on JavaScript.
+
+## Start here
+
+- New to WeBWorK or ADAPT? [Read the published handbook](https://chem.libretexts.org/Courses/Remixer_University/The_ADAPT_WeBWorK_Handbook) for the terminology, platform context, and PG-versus-PGML model.
+- Ready to make a question? Use the published [Quickstart: Edit Your First Problem](https://chem.libretexts.org/Courses/Remixer_University/The_ADAPT_WeBWorK_Handbook/01%3A_Introduction/1.06%3A_Quickstart_-_Edit_Your_First_Problem) for the first copy-edit-preview cycle.
+- Need a reusable starting file? Choose a complete pattern from [Textbook/90_Appendices/90.1-Minimal_templates.html](Textbook/90_Appendices/90.1-Minimal_templates.html).
+
+## Quick start
+
+You need access to an ADAPT question editor or a compatible local `webwork-pg-renderer` instance to preview and grade the result.
+
+1. Open [Quickstart: Edit Your First Problem](https://chem.libretexts.org/Courses/Remixer_University/The_ADAPT_WeBWorK_Handbook/01%3A_Introduction/1.06%3A_Quickstart_-_Edit_Your_First_Problem) in the published handbook.
+2. Copy its complete minimal skeleton into your question editor.
+3. Change only the lab-notebook story text while leaving variable names, mathematics, and the answer object intact.
+4. Preview several variants, confirm that the displayed counts change, and submit their sums.
+
+Success means every variant reads naturally and accepts the sum shown in that variant. Once that works, change numbers or formulas one small step at a time.
+
+## Book contents
+
+- [Textbook/01_Introduction/1.0-Index.html](Textbook/01_Introduction/1.0-Index.html): WeBWorK, ADAPT, core terminology, and a first copy-and-edit workflow.
+- [Textbook/02_Problem_Generation_PG/2.0-Index.html](Textbook/02_Problem_Generation_PG/2.0-Index.html): Minimal PG scaffolding, metadata, macros, and legacy patterns.
+- [Textbook/03_PGML_PG_Markup_Language/3.0-Index.html](Textbook/03_PGML_PG_Markup_Language/3.0-Index.html): PGML syntax for student-facing prompts, notation, lists, tables, and substitutions.
+- [Textbook/04_Breaking_Down_the_Components/4.0-Index.html](Textbook/04_Breaking_Down_the_Components/4.0-Index.html): A complete problem divided into its header, preamble, setup, statement, and solution.
+- [Textbook/05_Different_Question_Types/5.0-Index.html](Textbook/05_Different_Question_Types/5.0-Index.html): Interaction patterns, ADAPT workflow, and question-quality checks.
+- [Textbook/06_Advanced_PGML_Techniques/6.0-Index.html](Textbook/06_Advanced_PGML_Techniques/6.0-Index.html): Richer formatting, randomization, graphs, and scientific structures.
+- [Textbook/07_Testing_and_Debugging/7.0-Index.html](Textbook/07_Testing_and_Debugging/7.0-Index.html): Linting, renderer-based testing, debugging, and final QA.
+- [Textbook/08_Using_AI_Agents_to_Write_WeBWorK/8.0-Index.html](Textbook/08_Using_AI_Agents_to_Write_WeBWorK/8.0-Index.html): AI-assisted authoring, knowledge documents, renderer feedback, and prompt design.
+- [Textbook/90_Appendices/90.0-Index.html](Textbook/90_Appendices/90.0-Index.html): Templates, glossary entries, and troubleshooting references.
+
+## Contribute to the textbook
+
+The source chapters are LibreTexts-ready HTML under `Textbook/`. Keep edits aligned with [Textbook/TEXTBOOK_PAGE_SUMMARIES.md](Textbook/TEXTBOOK_PAGE_SUMMARIES.md), then run the local content checks from the repository root:
+
+```bash
+bash tests/run_html_lint.sh
+source source_me.sh && python tools/check_external_links.py
+```
+
+A clean run reports that all textbook HTML files pass and that no confirmed 404 or 410 external links remain.
+
+## Documentation
+
+- [Textbook/TEXTBOOK_PAGE_SUMMARIES.md](Textbook/TEXTBOOK_PAGE_SUMMARIES.md): Scope, learner outcome, and intended use of every textbook page.
+- [docs/LIBRETEXTS_HTML_GUIDE.md](docs/LIBRETEXTS_HTML_GUIDE.md): Supported HTML patterns and LibreTexts import constraints.
+- [docs/ACCESSIBILITY_REVIEW.md](docs/ACCESSIBILITY_REVIEW.md): Accessibility requirements and verification guidance.
+- [docs/LINKING_AND_SECTION_NUMBERING.md](docs/LINKING_AND_SECTION_NUMBERING.md): Internal linking and page-numbering conventions.
+- [docs/CODE_ARCHITECTURE.md](docs/CODE_ARCHITECTURE.md): Authoring workflow, supporting tools, and validation flow.
+- [docs/FILE_STRUCTURE.md](docs/FILE_STRUCTURE.md): Repository layout and where new work belongs.
+
+## Getting help
+
+Report errors, broken examples, or unclear explanations through [GitHub Issues](https://github.com/vosslab/webwork-pgml-libretexts-adapt-texbook/issues). Maintainer and project background are documented in [docs/AUTHORS.md](docs/AUTHORS.md).
+
+## Related resources
+
+- [LibreTexts Insight: WeBWorK techniques](https://commons.libretexts.org/insight/webwork-techniques)
+- [OpenWeBWorK PG documentation and sample problems](https://openwebwork.github.io/pg-docs/)
+- [vosslab/webwork-pg-renderer](https://github.com/vosslab/webwork-pg-renderer)
+- [Biology Problems](https://biologyproblems.org/)
+
+## License
+
+The textbook and documentation use [Creative Commons Attribution 4.0 International](LICENSE), the repository's primary license. Code and utilities use the [GNU Lesser General Public License, version 3](LICENSE.LGPL-3.0.md).
