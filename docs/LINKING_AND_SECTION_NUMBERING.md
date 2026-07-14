@@ -2,7 +2,7 @@
 
 Rules for cross-references and navigation links in LibreTexts textbook HTML files.
 These rules derive from the
-[LibreTexts Construction Guide](Sources/Construction_Guide_for_LibreTexts_2e/)
+`Construction_Guide_for_LibreTexts_2e`
 and project-specific conventions.
 
 ## Internal links use page IDs, not URLs
@@ -17,13 +17,13 @@ form for all internal cross-references:
 The page ID survives reorganization, renaming, and remixing. A full URL does not.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
+[00008.5_Hyperlinking.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
 
 ## Link text uses titles, never section numbers
 
 Section numbers (e.g., "2.4", "Section 5.2", "Chapter 6") are dynamic. LibreTexts
 reassigns them automatically when the book is reorganized
-([Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt)).
+([00008.8_Page_Titles.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt)).
 There is no mechanism for dynamic section numbering in link text, so any number
 written into an `<a>` tag becomes stale after a reorder.
 
@@ -40,7 +40,7 @@ Avoid linking outside LibreTexts unless necessary. When an external link is requ
 point to a stable URL and use descriptive link text.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
+[00008.5_Hyperlinking.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
 
 ## Page title format
 
@@ -49,7 +49,7 @@ for automatic figure, table, and equation numbering. Colons within a title are
 converted to dashes.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt)
+[00008.8_Page_Titles.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.8_Page_Titles.txt)
 
 ## Anchors for within-page links
 
@@ -58,7 +58,7 @@ next to equations, images, tables, or other targets. Use the "Jump to anchor or
 section" selector in the link dialog to reference them.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
+[00008.5_Hyperlinking.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.5_Hyperlinking.txt)
 
 ## Accessibility requirements for links
 
@@ -68,8 +68,8 @@ The LibreTexts accessibility review checks links for:
 - External URLs labelled with their destination, not raw URLs.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt](Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt),
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt)
+[00005.3.6_Accessibility_Review.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt),
+[00008.7_Accessibility_Checking.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt)
 
 ## Page ID lookup
 

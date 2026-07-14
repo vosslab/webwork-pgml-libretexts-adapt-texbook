@@ -87,13 +87,13 @@ def parse_args() -> argparse.Namespace:
 
 #============================================
 def get_repo_root() -> pathlib.Path:
-	"""Resolve repository root by reusing tests/git_file_utils.py."""
+	"""Resolve repository root by reusing tests/file_utils.py."""
 	script_path = pathlib.Path(__file__).resolve()
 	repo_root_from_script = script_path.parent.parent
 	tests_dir = repo_root_from_script / "tests"
 	sys.path.insert(0, str(tests_dir))
-	import git_file_utils
-	repo_root = pathlib.Path(git_file_utils.get_repo_root()).resolve()
+	import file_utils
+	repo_root = pathlib.Path(file_utils.get_repo_root()).resolve()
 	return repo_root
 
 

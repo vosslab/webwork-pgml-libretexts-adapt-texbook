@@ -1,3 +1,6 @@
+WebWork in ADAPT is a practical, end-to-end guide to creating, testing, and publishing interactive problems in WeBWorK
+within the ADAPT homework platform. It introduces the platform's purpose, terminology, and core features.
+
 # Writing Automated Questions using WeBWorK in ADAPT
 
 This repository is a chapter-based textbook/guide (not a traditional software project).

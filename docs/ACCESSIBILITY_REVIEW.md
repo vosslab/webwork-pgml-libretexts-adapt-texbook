@@ -2,7 +2,7 @@
 
 Rules for accessible content in LibreTexts textbook HTML files. These rules derive
 from the
-[LibreTexts Construction Guide](Sources/Construction_Guide_for_LibreTexts_2e/)
+`Construction_Guide_for_LibreTexts_2e`
 accessibility checklist and WCAG conventions.
 
 ## Images
@@ -15,7 +15,7 @@ accessibility checklist and WCAG conventions.
 - Do not hotlink images from external servers. Upload originals to LibreTexts.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.2_Adding_Images_and_Figures.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.2_Adding_Images_and_Figures.txt)
+[00008.2_Adding_Images_and_Figures.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.2_Adding_Images_and_Figures.txt)
 
 ## Links
 
@@ -23,10 +23,10 @@ Reference:
 - No suspicious link text ("click here", "here", "link", "read more").
 - External URLs must be labeled with their destination, not left as raw URLs.
 - Internal links use `/@go/page/{pageID}` with the section title as link text.
-  See [docs/LINKING_AND_SECTION_NUMBERING.md](docs/LINKING_AND_SECTION_NUMBERING.md).
+  See [LINKING_AND_SECTION_NUMBERING.md](LINKING_AND_SECTION_NUMBERING.md).
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt](Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt)
+[00005.3.6_Accessibility_Review.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt)
 
 ## Color contrast
 
@@ -40,7 +40,7 @@ LibreTexts platform colors already meet these ratios on white backgrounds
 light pastels with black text, which exceed the 4.5:1 threshold.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00015.1_Color_Codes_and_Contrasts.txt](Sources/Construction_Guide_for_LibreTexts_2e/00015.1_Color_Codes_and_Contrasts.txt)
+[00015.1_Color_Codes_and_Contrasts.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00015.1_Color_Codes_and_Contrasts.txt)
 
 ## Text and typography
 
@@ -54,7 +54,7 @@ This textbook does not set font sizes or spacing in its HTML. LibreTexts platfor
 provides accessible defaults for all of these.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt](Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt)
+[00005.3.6_Accessibility_Review.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00005.3.6_Accessibility_Review.txt)
 
 ## Headings
 
@@ -69,13 +69,13 @@ Reference:
 - Add row headers where applicable.
 - Use the `data-th` attribute on `<td>` elements for responsive display.
 - Every `<table>` must have a `<caption>` as its first child element.
-  Captions should be descriptive sentence fragments ending with a period (30–80 chars).
+  Captions should be descriptive sentence fragments ending with a period (30-80 chars).
 - Add a table caption or describe the table in surrounding text.
 - Never embed a table as an image.
 - Use the LibreTexts "Make table responsive" class (`mt-responsive-table`).
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.4_Adding_Tables.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.4_Adding_Tables.txt)
+[00008.4_Adding_Tables.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.4_Adding_Tables.txt)
 
 ## Lists
 
@@ -113,7 +113,7 @@ headings, image alt tags, tables, links, color contrast, labels, abbreviations, 
 general issues. Run it before publishing any page.
 
 Reference:
-[Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt](Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt)
+[00008.7_Accessibility_Checking.txt](../Sources/Construction_Guide_for_LibreTexts_2e/00008.7_Accessibility_Checking.txt)
 
 ## Current textbook status
 

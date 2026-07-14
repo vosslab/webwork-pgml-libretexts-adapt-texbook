@@ -11,13 +11,13 @@ examples, failure modes, and step-by-step guidance.
 
 ## Essential Reading Before Starting
 
-1. **Master plan**: [Textbook/TEXTBOOK_PAGE_SUMMARIES.md](../Textbook/TEXTBOOK_PAGE_SUMMARIES.md)
+1. **Master plan**: [TEXTBOOK_PAGE_SUMMARIES.md](../Textbook/TEXTBOOK_PAGE_SUMMARIES.md)
    - Three-sentence summary for each page showing what content should be included
-2. **Style constraints**: [docs/LIBRETEXTS_HTML_GUIDE.md](LIBRETEXTS_HTML_GUIDE.md)
+2. **Style constraints**: [LIBRETEXTS_HTML_GUIDE.md](LIBRETEXTS_HTML_GUIDE.md)
    - HTML authoring rules, table format, no internal links
 3. **Repo conventions**: [AGENTS.md](../AGENTS.md)
    - Textbook constraints, changelog requirements
-4. **Migration notes**: [docs/TEXTBOOK_MIGRATION_GUIDE.md](TEXTBOOK_MIGRATION_GUIDE.md)
+4. **Migration notes**: [TEXTBOOK_MIGRATION_GUIDE.md](TEXTBOOK_MIGRATION_GUIDE.md)
    - Content migration notes showing which biology examples go where
 
 ## Content Expansion Principles

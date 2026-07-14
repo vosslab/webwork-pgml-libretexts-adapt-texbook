@@ -11,7 +11,7 @@ import re
 
 import pytest
 
-from git_file_utils import get_repo_root
+from file_utils import get_repo_root
 
 
 REPO_ROOT = get_repo_root()
@@ -88,7 +88,7 @@ def test_description_length(file_path, description):
 @pytest.mark.parametrize("file_path,description", _ENTRIES, ids=_IDS)
 def test_no_chapter_references(file_path, description):
 	"""No entry should contain 'Chapter N' or 'Chapter N.N' references."""
-	matches = CHAPTER_REF_PATTERN.findall(description)
+	#matches = CHAPTER_REF_PATTERN.findall(description)
 	full_matches = CHAPTER_REF_PATTERN.finditer(description)
 	found = [m.group() for m in full_matches]
 	assert not found, (

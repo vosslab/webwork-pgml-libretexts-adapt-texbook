@@ -227,7 +227,7 @@ def main():
 
 	print(f"Total: {total_link} link text replacements, {total_paren} parenthetical removals")
 	if not args.apply:
-		print("(dry-run — use --apply to write changes)")
+		print("(dry-run - use --apply to write changes)")
 
 
 if __name__ == "__main__":

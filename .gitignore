@@ -1,10 +1,12 @@
 output/
 .DS_Store
 Construction_Guide_for_LibreTexts_2e
-report_shebang.txt
-report_pyflakes.txt
-report_ascii_compliance.txt
-report_bandit.txt
-report_pyright.txt
 output/textbook_pre_blocks/
+
+
+# === UNIVERSAL ===
+report_*.txt
+output*/
+_temp*.?*
+OTHER_REPOS/
 
